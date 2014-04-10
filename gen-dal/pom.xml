@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.jcl.build</groupId>
+		<artifactId>jcl-pom</artifactId>
+ 		<version>dev-SNAPSHOT</version>
+ 		<relativePath>../jcl-pom.xml</relativePath>
+	</parent>
+	
+	
+	<groupId>com.jcl.tool</groupId>
+	<artifactId>gen-dal</artifactId>
+    <version>dev-SNAPSHOT</version>
+		
+		
+	
+	<dependencies>
+		
+		<dependency>
+        	 <groupId>com.jcl.dependen</groupId>
+            <artifactId>island-dependen</artifactId>
+            <version>1.0</version>
+        </dependency>
+		
+		
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.16</version>
+		</dependency>
+	</dependencies>
+
+</project>
+

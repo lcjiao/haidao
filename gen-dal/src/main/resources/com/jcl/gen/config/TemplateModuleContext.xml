@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<bean id="configuration" class="com.jcl.core.config.ConfigurationFactoryBean">
+		<property name="name" value="dal" />
+		<property name="encoding" value="utf8" />
+	</bean>
+	<bean id="templateFactory" class="com.jcl.gen.config.TemplateFactoryBean">
+		<property name="path" value="classpath:/META-INF/templates/dal" />
+		<property name="encoding" value="utf8" />
+	</bean>
+		
+</beans>
