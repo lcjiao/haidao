@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.island.domain.dal.mapper.BrokerPpcCeilingLogMapper">
+	<resultMap id="BrokerPpcCeilingLogRslMap" type="com.island.domain.model.BrokerPpcCeilingLog">		
+		
+			<id property="id" column="id" />
+			<result property="brokerId" column="broker_id" />
+			<result property="ceilingDay" column="ceiling_day" />
+			<result property="siteType" column="site_type" />
+			<result property="updTime" column="upd_time" />
+	</resultMap>
+
+	<select id="queryById" parameterType="java.util.Map" resultMap="BrokerPpcCeilingLogRslMap">
+		SELECT
+			id,
+			broker_id,
+			ceiling_day,
+			site_type,
+			upd_time
+		FROM
+			test_tab
+		<where>
+			and id=#{id}
+		</where>
+			limit 1
+	</select>
+
+	<select id="queryByModel" parameterType="com.island.domain.model.BrokerPpcCeilingLog" resultMap="BrokerPpcCeilingLogRslMap">		
+		SELECT
+			id,
+			broker_id,
+			ceiling_day,
+			site_type,
+			upd_time
+		FROM
+			test_tab
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="brokerId !=  null">			        
+				and broker_id=#{brokerId}
+			</if>
+			<if test="ceilingDay !=  null">			        
+				and ceiling_day=#{ceilingDay}
+			</if>
+			<if test="siteType !=  null">			        
+				and site_type=#{siteType}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+		</where>
+		
+	</select>
+		
+	<select id="queryByMap" parameterType="java.util.Map" resultMap="BrokerPpcCeilingLogRslMap">				
+		SELECT
+			id,
+			broker_id,
+			ceiling_day,
+			site_type,
+			upd_time
+		FROM
+			test_tab
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="brokerId !=  null">			        
+				and broker_id=#{brokerId}
+			</if>
+			<if test="ceilingDay !=  null">			        
+				and ceiling_day=#{ceilingDay}
+			</if>
+			<if test="siteType !=  null">			        
+				and site_type=#{siteType}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+		</where>
+		
+	</select>
+	
+	<select id="countByModel" parameterType="com.island.domain.model.BrokerPpcCeilingLog" resultType="java.lang.Integer">	
+		SELECT
+			count(*)
+		FROM
+			test_tab
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="brokerId !=  null">			        
+				and broker_id=#{brokerId}
+			</if>
+			<if test="ceilingDay !=  null">			        
+				and ceiling_day=#{ceilingDay}
+			</if>
+			<if test="siteType !=  null">			        
+				and site_type=#{siteType}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+		</where>
+		
+	</select>
+	
+	<select id="countByMap" parameterType="java.util.Map" resultType="java.lang.Integer">				
+		SELECT
+			count(*)
+		FROM
+			test_tab
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="brokerId !=  null">			        
+				and broker_id=#{brokerId}
+			</if>
+			<if test="ceilingDay !=  null">			        
+				and ceiling_day=#{ceilingDay}
+			</if>
+			<if test="siteType !=  null">			        
+				and site_type=#{siteType}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+		</where>
+				
+	</select>
+	
+	<select id="pageQuery" parameterType="com.jcl.core.dal.Page" resultMap="BrokerPpcCeilingLogRslMap" fetchSize="15">
+		SELECT
+			id,
+			broker_id,
+			ceiling_day,
+			site_type,
+			upd_time
+		FROM
+			test_tab
+		<where>
+			<if test="params !=  null">
+				<if test="params.id !=  null">
+					and id=#{params.id}
+				</if>
+				<if test="params.brokerId !=  null">
+					and broker_id=#{params.brokerId}
+				</if>
+				<if test="params.ceilingDay !=  null">
+					and ceiling_day=#{params.ceilingDay}
+				</if>
+				<if test="params.siteType !=  null">
+					and site_type=#{params.siteType}
+				</if>
+				<if test="params.updTime !=  null">
+					and upd_time=#{params.updTime}
+				</if>
+			</if>
+		</where>
+			limit #{start},#{end}	
+	</select>
+
+	<insert id="insert" parameterType="com.island.domain.model.BrokerPpcCeilingLog" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO	test_tab
+			(id,broker_id,ceiling_day,site_type,upd_time)
+			VALUES(#{id},#{brokerId},#{ceilingDay},#{siteType},#{updTime})		
+	</insert>
+	
+	<update id="update" parameterType="com.island.domain.model.BrokerPpcCeilingLog">
+		update 
+			test_tab
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="brokerId !=  null">			        
+				broker_id=#{brokerId},
+			</if>
+			<if test="ceilingDay !=  null">			        
+				ceiling_day=#{ceilingDay},
+			</if>
+			<if test="siteType !=  null">			        
+				site_type=#{siteType},
+			</if>
+			<if test="updTime !=  null">			        
+				upd_time=#{updTime},
+			</if>
+		</set>
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="brokerId !=  null">			        
+				and broker_id=#{brokerId}
+			</if>
+			<if test="ceilingDay !=  null">			        
+				and ceiling_day=#{ceilingDay}
+			</if>
+			<if test="siteType !=  null">			        
+				and site_type=#{siteType}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+		</where>
+		
+	</update>
+	<update id="updateByMap" parameterType="java.util.Map">
+		update 
+			test_tab
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="brokerId !=  null">			        
+				broker_id=#{brokerId},
+			</if>
+			<if test="ceilingDay !=  null">			        
+				ceiling_day=#{ceilingDay},
+			</if>
+			<if test="siteType !=  null">			        
+				site_type=#{siteType},
+			</if>
+			<if test="updTime !=  null">			        
+				upd_time=#{updTime},
+			</if>
+		</set>
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="brokerId !=  null">			        
+				and broker_id=#{brokerId}
+			</if>
+			<if test="ceilingDay !=  null">			        
+				and ceiling_day=#{ceilingDay}
+			</if>
+			<if test="siteType !=  null">			        
+				and site_type=#{siteType}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+		</where>
+		
+	</update>
+	
+	<update id="cmplxUpdate" parameterType="java.util.Map">
+		update 
+			test_tab
+		<set>
+			<if test="updNewMap.id !=  null">
+				id=#{updNewMap.id},
+			</if>
+			<if test="updNewMap.brokerId !=  null">
+				broker_id=#{updNewMap.brokerId},
+			</if>
+			<if test="updNewMap.ceilingDay !=  null">
+				ceiling_day=#{updNewMap.ceilingDay},
+			</if>
+			<if test="updNewMap.siteType !=  null">
+				site_type=#{updNewMap.siteType},
+			</if>
+			<if test="updNewMap.updTime !=  null">
+				upd_time=#{updNewMap.updTime},
+			</if>
+		</set>
+		<where>
+			<if test="updCondMap.id !=  null">
+				and id=#{updCondMap.id}
+			</if>
+			<if test="updCondMap.brokerId !=  null">
+				and broker_id=#{updCondMap.brokerId}
+			</if>
+			<if test="updCondMap.ceilingDay !=  null">
+				and ceiling_day=#{updCondMap.ceilingDay}
+			</if>
+			<if test="updCondMap.siteType !=  null">
+				and site_type=#{updCondMap.siteType}
+			</if>
+			<if test="updCondMap.updTime !=  null">
+				and upd_time=#{updCondMap.updTime}
+			</if>
+		</where>
+		
+	</update>
+	
+	<delete id="delete" parameterType="com.island.domain.model.BrokerPpcCeilingLog">		
+		DELETE
+		FROM
+			test_tab 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="brokerId !=  null">			        
+				and broker_id=#{brokerId}
+			</if>
+			<if test="ceilingDay !=  null">			        
+				and ceiling_day=#{ceilingDay}
+			</if>
+			<if test="siteType !=  null">			        
+				and site_type=#{siteType}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+		</where>
+		
+	</delete>
+	<delete id="deleteByMap" parameterType="java.util.Map">		
+		DELETE
+		FROM
+			test_tab 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="brokerId !=  null">			        
+				and broker_id=#{brokerId}
+			</if>
+			<if test="ceilingDay !=  null">			        
+				and ceiling_day=#{ceilingDay}
+			</if>
+			<if test="siteType !=  null">			        
+				and site_type=#{siteType}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+		</where>
+		
+	</delete>
+</mapper>
