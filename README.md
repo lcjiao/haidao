@@ -31,6 +31,16 @@
 		
 -------------
 		3:island-dependencies.jar 是封装好得依赖包,database.properties 是数据库配置
+		
+#配置说明
+
+-------------
+
+		1:配置得读取路径次序
+		a:优先读取外围配置
+		windows环境读取路径 c:\config\
+		linux环境读取路径 /config/
+		b:没有外围配置则使用项目内配置
 
 
 
