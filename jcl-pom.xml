@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.jcl.build</groupId>
+	<artifactId>jcl-pom</artifactId>
+	<version>dev-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>JCL POM</name>
+
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<anjuke.spring.version>2.5.6.SEC01</anjuke.spring.version>
+	</properties>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>aspectj-maven-plugin</artifactId>
+										<versionRange>[1.0,)</versionRange>
+										<goals>
+											<goal>test-compile</goal>
+											<goal>compile</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.6</source>
+						<target>1.6</target>
+						<encoding>utf-8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<forkMode>once</forkMode>
+						<argLine>-Dfile.encoding=UTF-8</argLine>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<configuration>
+						<downloadSources>true</downloadSources>
+						<downloadJavadocs>false</downloadJavadocs>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-idea-plugin</artifactId>
+					<configuration>
+						<downloadSources>true</downloadSources>
+						<downloadJavadocs>false</downloadJavadocs>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<configuration>
+						<configLocation>../build/checkstyle/anjuke.xml</configLocation>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.4</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>anjuke-releases</id>
+			<url>http://maven.apidev.anjuke.com:8081/nexus/content/repositories/anjuke-releases/</url>
+			<name>Anjuke Release Repository</name>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>anjuke-snapshots</id>
+			<url>http://maven.apidev.anjuke.com:8081/nexus/content/repositories/anjuke-snapshots/</url>
+			<name>Anjuke Snapshot Repository</name>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy />
+			</snapshots>
+		</repository>
+		<repository>
+			<id>office-mirrors</id>
+			<name>Maven Repository Office Mirrors</name>
+			<layout>default</layout>
+			<url>http://maven.apidev.anjuke.com:8081/nexus/content/groups/public/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>office-mirrors</id>
+			<name>Maven Plugin Repository Office Mirrors</name>
+			<url>http://maven.apidev.anjuke.com:8081/nexus/content/groups/public/</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<distributionManagement>
+		<repository>
+			<id>anjuke-releases</id>
+			<uniqueVersion>false</uniqueVersion>
+			<name>Anjuke Release Repository</name>
+			<url>http://maven.apidev.anjuke.com:8081/nexus/content/repositories/anjuke-releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>anjuke-snapshots</id>
+			<uniqueVersion>false</uniqueVersion>
+			<name>Anjuke Snapshot Repository</name>
+			<url>http://maven.apidev.anjuke.com:8081/nexus/content/repositories/anjuke-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+</project>
