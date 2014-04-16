@@ -365,6 +365,109 @@
 --------------
         
 
+##17. 购物车表
+-------------
+
+        CREATE TABLE `shopping_car` (
+        `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        `package_ids` varchar(500) DEFAULT NULL COMMENT '套餐编号 多个编号以逗号间隔',
+        `ip` varchar(50) DEFAULT NULL COMMENT 'ip',
+        `session_id` varchar(200) DEFAULT NULL COMMENT 'seesion_id',
+        `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
+        `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
+        `upd_time` int(10) DEFAULT NULL COMMENT '更新时间',
+        PRIMARY KEY (`id`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+        
+--------------
+
+##18. 联系方式表
+--------------
+
+        CREATE TABLE `contact` (
+        `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        `tel` varchar(100) DEFAULT NULL COMMENT '联系电话 多个以逗号间隔',
+        `phone` varchar(100) DEFAULT NULL COMMENT '座机 多个以逗号间隔',
+        `person` varchar(100) DEFAULT NULL COMMENT '联系人 多个以逗号间隔',
+        `address` varchar(200) DEFAULT NULL COMMENT '联系地址 多个以逗号间隔',
+        `qq` varchar(100) DEFAULT NULL COMMENT 'qq号码 多个以逗号间隔',
+        `mail` varchar(200) DEFAULT NULL COMMENT '邮箱地址 多个以逗号间隔',
+        `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
+        `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
+        `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
+        `upd_time` int(10) DEFAULT NULL COMMENT '更新时间',
+        `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
+        PRIMARY KEY (`id`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+        
+---------------
+
+##19. 后台用户表
+--------------
+
+        CREATE TABLE `user` (
+        `id` int(5) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        `user_name` varchar(50) NOT NULL COMMENT '用户名称',
+        `user_pass` varchar(200) NOT NULL COMMENT '用户密码',
+        `user_role_id` int(5) NOT NULL COMMENT '用户角色编号',
+        `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
+        `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
+        `upd_time` int(10) DEFAULT NULL COMMENT '更新时间',
+        `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
+        `valid` int(2) NOT NULL DEFAULT '1' COMMENT '是否有效',
+        `role_name` varchar(50) DEFAULT '' COMMENT '角色名称',
+        PRIMARY KEY (`id`)
+        ) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8
+        
+---------------
+
+##20. 后台角色表
+--------------
+
+        CREATE TABLE `role` (
+        `id` int(5) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        `role_name` varchar(200) NOT NULL COMMENT '角色名称',
+        `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
+        `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
+        `upd_time` int(10) DEFAULT NULL COMMENT '更新时间',
+        `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
+        `valid` int(2) NOT NULL DEFAULT '1' COMMENT '是否有效',
+        PRIMARY KEY (`id`)
+        ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8
+        
+--------------
+
+##21. 后台角色权限表
+-------------
+
+        CREATE TABLE `role_right` (
+        `id` int(5) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        `role_id` int(5) NOT NULL COMMENT '角色编号',
+        `menu_ids` varchar(200) DEFAULT NULL COMMENT '拥有的权限菜单编号集合以逗号间隔如 3,6,8',
+        `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
+        `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
+        `upd_time` int(10) DEFAULT NULL COMMENT '更新时间',
+        `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
+        `valid` int(2) NOT NULL DEFAULT '1' COMMENT '是否有效',
+        PRIMARY KEY (`id`)
+        ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8
+        
+--------------
+
+##22. 后台菜单表
+--------------
+        
+        CREATE TABLE `menu` (
+        `id` int(5) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        `menu_name` varchar(50) NOT NULL COMMENT '菜单名称',
+        `menu_url` varchar(256) DEFAULT NULL COMMENT '菜单链接',
+        `menu_parent` int(5) NOT NULL COMMENT '父菜单编号',
+        `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
+        `valid` int(2) NOT NULL DEFAULT '1' COMMENT '是否有效',
+        PRIMARY KEY (`id`)
+        ) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8
+
+---------------
 
 
     
