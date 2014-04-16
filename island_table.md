@@ -116,5 +116,89 @@
 ---------
 
 
-##6.
+##6. 套餐详细信息表
+---------
+
+        CREATE TABLE `package_detail_info` (
+        `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        `package_id` int(8) DEFAULT NULL COMMENT '套餐编号',
+        `package_type` int(2) DEFAULT NULL COMMENT '套餐类别  1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐 5:自由行套餐',
+        `content` text COMMENT '套餐详细介绍',
+        `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
+        `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
+        `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
+        `upd_time` int(10) DEFAULT NULL COMMENT '更新时间',
+        `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
+        PRIMARY KEY (`id`),
+        KEY `package_index` (`package_id`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+        
+-----------
+
+##7. 套餐图片推荐表
+-----------
+
+        CREATE TABLE `package_img_recommend` (
+        `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        `package_id` int(8) DEFAULT NULL COMMENT '套餐编号',
+        `package_type` int(2) DEFAULT NULL COMMENT '套餐类别  1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐 5:自由行套餐',
+        `img_url` varchar(500) DEFAULT NULL COMMENT '图片地址',
+        `img_desc` varchar(500) DEFAULT NULL COMMENT '图片描述',
+        `is_master` int(2) DEFAULT NULL COMMENT '是否主推 1:是  0否',
+        `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
+        `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
+        `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
+        `upd_time` int(10) DEFAULT NULL COMMENT '更新时间',
+        `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
+        `index` varchar(4) DEFAULT NULL COMMENT '排序',
+        PRIMARY KEY (`id`),
+        KEY `package_index` (`package_id`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+        
+------------
+
+##8. 套餐客片留影表
+-----------
+
+        CREATE TABLE `package_kepianliuying` (
+        `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        `package_id` int(8) DEFAULT NULL COMMENT '套餐编号',
+        `package_type` int(2) DEFAULT NULL COMMENT '套餐类别  1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐 5:自由行套餐',
+        `img` varchar(500) DEFAULT NULL COMMENT '图片地址',
+        `desc` varchar(500) DEFAULT NULL COMMENT '描述',
+        `link` varchar(500) DEFAULT NULL COMMENT '链接地址',
+        `index` int(4) DEFAULT NULL COMMENT '排序',
+        `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
+        `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
+        `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
+        `upd_time` int(10) DEFAULT NULL COMMENT '更新时间',
+        `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
+        PRIMARY KEY (`id`),
+        KEY `package_index` (`package_id`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+        
+------------
+
+##9. 套餐客户咨询表
+------------
+
+        CREATE TABLE `package_qa` (
+        `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        `package_id` int(8) DEFAULT NULL COMMENT '套餐编号',
+        `package_type` int(2) DEFAULT NULL COMMENT '套餐类别  1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐 5:自由行套餐',
+        `question` varchar(500) DEFAULT NULL COMMENT '咨询内容',
+        `answer` varchar(500) DEFAULT NULL COMMENT '答复内容',
+        `is_guest` int(2) DEFAULT NULL COMMENT '1:游客提问  2:客服提问',
+        `is_answer` int(2) DEFAULT NULL COMMENT '是否回复 1回复 0没回复',
+        `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
+        `ask_time` int(10) DEFAULT NULL COMMENT '提问时间',
+        `asker` varchar(50) DEFAULT NULL COMMENT '咨询人',
+        `answer_time` int(10) DEFAULT NULL COMMENT '答复时间',
+        `answer_person` varchar(50) DEFAULT NULL COMMENT '答复人',
+        PRIMARY KEY (`id`),
+        KEY `package_index` (`package_id`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+        
+-------------
+
     
