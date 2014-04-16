@@ -201,4 +201,76 @@
         
 -------------
 
+##10. 前台菜单表
+-------------
+
+        CREATE TABLE `front_menu` (
+        `id` int(4) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        `module_id` int(2) DEFAULT NULL COMMENT '所属模块编号',
+        `module_name` varchar(50) DEFAULT NULL COMMENT '所属模块名称如婚礼套餐',
+        `country` varchar(50) DEFAULT NULL COMMENT '归属国家',
+        `menu_name` varchar(50) DEFAULT NULL COMMENT '菜单名称',
+        `menu_url` varchar(500) DEFAULT NULL COMMENT '菜单链接',
+        `parent_id` int(4) DEFAULT NULL COMMENT '父菜单编号',
+        `has_child` int(2) DEFAULT NULL COMMENT '是否有子菜单 1有  0无',
+        `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
+        `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
+        `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
+        `upd_time` int(10) DEFAULT NULL COMMENT '更新时间',
+        `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
+        PRIMARY KEY (`id`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+        
+-------------
+
+##11. 摄影团队表
+-------------
+
+        CREATE TABLE `work_team` (
+        `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        `name` varchar(50) DEFAULT NULL COMMENT '名称',
+        `content` varchar(5000) DEFAULT NULL COMMENT '简介',
+        `team_person` varchar(2000) DEFAULT NULL COMMENT '团队构建',
+        `img` varchar(500) DEFAULT NULL COMMENT 'log',
+        `tel` varchar(20) DEFAULT NULL COMMENT '电话',
+        `level` varchar(50) DEFAULT NULL COMMENT '等级',
+        `price_small` varchar(50) DEFAULT NULL COMMENT '淡季价格',
+        `price_big` varchar(50) DEFAULT NULL COMMENT '旺季价格',
+        `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
+        `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
+        `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
+        `upd_time` int(10) DEFAULT NULL COMMENT '更新时间',
+        `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
+        PRIMARY KEY (`id`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+        
+------------
+
+##12. 摄影工作人员表
+------------
+
+        CREATE TABLE `workman` (
+        `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        `work_type` int(2) DEFAULT NULL COMMENT '工种类型 1摄影师 2化妆师 3影片师',
+        `name` varchar(50) DEFAULT NULL COMMENT '名称',
+        `content` varchar(5000) DEFAULT NULL COMMENT '个人简介',
+        `img` varchar(500) DEFAULT NULL COMMENT '头像',
+        `tel` varchar(20) DEFAULT NULL COMMENT '电话',
+        `level` varchar(50) DEFAULT NULL COMMENT '等级',
+        `team_id` int(4) DEFAULT NULL COMMENT '所属团队',
+        `price_small` varchar(50) DEFAULT NULL COMMENT '淡季价格',
+        `price_big` varchar(50) DEFAULT NULL COMMENT '旺季价格',
+        `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
+        `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
+        `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
+        `upd_time` int(10) DEFAULT NULL COMMENT '更新时间',
+        `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
+        `team_name` varchar(500) DEFAULT NULL COMMENT '团队名称',
+        PRIMARY KEY (`id`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+        
+--------------
+
+
+
     
