@@ -271,6 +271,100 @@
         
 --------------
 
+##13. 客户案例表
+-------------
+
+        CREATE TABLE `guest_example` (
+        `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        `exam_type` int(2) DEFAULT NULL COMMENT '案例类型1:摄影案例 2:视频案例',
+        `package_id` int(8) DEFAULT NULL COMMENT '套餐编号',
+        `package_name` varchar(500) DEFAULT NULL COMMENT '套餐名称',
+        `package_content` varchar(1000) DEFAULT NULL COMMENT '套餐项目',
+        `wed_person` varchar(50) DEFAULT NULL COMMENT '新人姓名',
+        `wed_time` varchar(50) DEFAULT NULL COMMENT '时间',
+        `wed_lensman` varchar(50) DEFAULT NULL COMMENT '摄影师',
+        `wed_dresser` varchar(50) DEFAULT NULL COMMENT '化妆师',
+        `default_img` varchar(500) DEFAULT NULL COMMENT '缩略图',
+        `view_url` varchar(500) DEFAULT NULL COMMENT '视频地址',
+        `exam_imgs` varchar(500) COMMENT '图片id集合 多个以逗号间隔',
+        `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
+        `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
+        `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
+        `upd_time` int(10) DEFAULT NULL COMMENT '更新时间',
+        `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
+        PRIMARY KEY (`id`),
+        KEY `package_index` (`package_id`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+        
+------------
+
+##14.疑难解答表
+------------
+
+        CREATE TABLE `global_qa` (
+        `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        `question_type` varchar(50) DEFAULT NULL COMMENT '问题种类',
+        `title` varchar(500) DEFAULT NULL COMMENT '问题标题',
+        `answer` varchar(10000) DEFAULT NULL COMMENT '回答',
+        `index` int(4) DEFAULT NULL COMMENT '展示次序',
+        `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
+        `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
+        `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
+        `upd_time` int(10) DEFAULT NULL COMMENT '更新时间',
+        `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
+        PRIMARY KEY (`id`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+        
+-------------
+
+##15.用户访问记录表
+-------------
+
+        CREATE TABLE `guest_visit_log` (
+        `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        `package_id` int(8) DEFAULT NULL COMMENT '套餐编号',
+        `package_name` varchar(500) DEFAULT NULL COMMENT '套餐名称',
+        `package_img` varchar(500) DEFAULT NULL COMMENT '套餐图片',
+        `package_url` varchar(500) DEFAULT NULL COMMENT '套餐链接',
+        `package_title` varchar(500) DEFAULT NULL COMMENT '套餐标题',
+        `ip` varchar(50) DEFAULT NULL COMMENT '套餐链接',
+        `visit_time` int(10) DEFAULT NULL COMMENT '访问时间',
+        `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
+        `session_id` varchar(200) DEFAULT NULL COMMENT 'session_id',
+        PRIMARY KEY (`id`),
+        KEY `ip_index` (`ip`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+        
+-------------
+
+##16.订单表
+-------------
+
+        CREATE TABLE `island_order` (
+        `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        `country` varchar(20) DEFAULT NULL COMMENT '国家',
+        `wed_area` varchar(20) DEFAULT NULL COMMENT '婚礼区域',
+        `wed_from` int(20) DEFAULT NULL COMMENT '出发地',
+        `budget` int(8) DEFAULT NULL COMMENT '婚礼预算单位元',
+        `wed_person_num` int(4) DEFAULT NULL COMMENT '婚礼人数',
+        `wed_name` varchar(20) DEFAULT NULL COMMENT '新人姓名',
+        `tel` varchar(20) DEFAULT NULL COMMENT '手机号码',
+        `qq` varchar(20) DEFAULT NULL COMMENT 'qq号码',
+        `mail` varchar(20) DEFAULT NULL COMMENT '邮箱地址',
+        `ip` varchar(50) DEFAULT NULL COMMENT 'ip地址',
+        `ask_msg` text COMMENT '咨询内容',
+        `is_send` int(2) DEFAULT NULL COMMENT '1已经发送邮件  0没有发送邮件',
+        `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
+        `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
+        `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
+        `upd_time` int(10) DEFAULT NULL COMMENT '更新时间',
+        `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
+        PRIMARY KEY (`id`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+        
+--------------
+        
+
 
 
     
