@@ -327,7 +327,7 @@
         `package_img` varchar(500) DEFAULT NULL COMMENT '套餐图片',
         `package_url` varchar(500) DEFAULT NULL COMMENT '套餐链接',
         `package_title` varchar(500) DEFAULT NULL COMMENT '套餐标题',
-        `ip` varchar(50) DEFAULT NULL COMMENT '套餐链接',
+        `ip` varchar(50) DEFAULT NULL COMMENT 'ip地址',
         `visit_time` int(10) DEFAULT NULL COMMENT '访问时间',
         `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
         `session_id` varchar(200) DEFAULT NULL COMMENT 'session_id',
