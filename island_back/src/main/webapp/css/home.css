@@ -1,0 +1,37 @@
+@charset "utf-8";
+/* CSS Document */
+
+div{margin:0 auto;overflow:hidden;}
+
+body{background-color:#B9C5D5;}
+#homepage{font-size:14px;overflow:visible;}
+#homepagebox{width:455px;height:270px;margin-top:163px; background:url('../images/login_mbg24.png') no-repeat;
+/* background:#fff;
+ border-radius:11px;
+ -moz-border-radius:11px;
+ -webkit-border-radius:11px;
+ -khtml-border-radius:11px;
+ behavior: url(ie-css3.htc);
+ box-shadow:0px 0px 4px #AAA;
+ -moz-box-shadow:0px 0px 4px #AAA;
+ -webkit-box-shadow:0px 0px 4px #AAA; */
+}
+#homepagebox p.ajkinclogo{margin:42px 52px 0;height:45px; text-indent:-9999em; background:url('../images/logo_ajk_inc.png') no-repeat;}
+#homepagebox p.error{margin:2px 52px 0;height:24px;padding-left:60px; font-size:14px; color:#f00;
+filter:alpha(opacity=0);/* IE */
+  -moz-opacity:0; /* 老版Mozilla */
+  -khtml-opacity:0;     /* 老版Safari */
+  opacity: 0;           /* 支持opacity的浏览器*/
+}
+#homepagebox dl{margin:0 52px 0;height:44px;}
+#homepagebox dl dt{float:left;width:60px;margin-top:6px;}
+#homepagebox dl dt span{ visibility: hidden;}
+#homepagebox dl dd{/*float:left;*/}
+#homepagebox dl dd input.userinput{width:262px; font-size:13px;border:1px solid #D9D9D9; padding:5px 6px 6px;}
+#homepagebox dl dd input.focus{border-color:green;background-color:#D0EEA8; outline:none;  }
+#homepagebox dl dd input.blur{}
+
+#homepagebox dl dd code{float: left;width: 95px; height:30px; display:block; background:url('../images/login_btn.png') no-repeat; }
+#homepagebox dl dd code input{width: 95px; height:30px;border:none;background:none; cursor:pointer;}
+#homepagebox dl dd cite{float:right;margin-top:8px;}
+#homepagebox dl dd cite a{color:#666;font-size:13px;}

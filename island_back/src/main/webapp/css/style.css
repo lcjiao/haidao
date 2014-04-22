@@ -1,0 +1,130 @@
+/*-------------------------------------------------------------------------------
+ * Website Screen Presentation Layer
+ * Author: QN
+ * Created: Mar. 2012
+ -------------------------------------------------------------------------------*/
+body{overflow-x:hidden;}
+header{width:100%;clear:both; height:44px;_height:34px;display:block;border-bottom:2px solid #4788FA;
+background:url(../images/p6575-haopanadmin.png) -185px -29px #F4F4F4 no-repeat;
+_background:none #F4F4F4 no-repeat;
+}
+#header{height:44px;overflow:hidden; margin-bottom:-46px;
+
+background:url(../images/p6575-haopanadmin.png) -185px -29px #F4F4F4 no-repeat;
+
+}
+
+
+div#district{margin:0 0 auto 195px;top:22px;*top:22px;height:20px; position: relative;z-index:2;}
+.cityto{float:left;height:18px;}
+
+div#district a:hover{text-decoration: none;}
+div#district .local{display:block;float:left;color:#333;cursor:pointer; height:18px;line-height:18px;line-height:21px\0;*line-height:20px;_line-height:16px; overflow:hidden; padding:0 16px 0 13px;
+background:url(../images/p6575-haopanadmin.png) right -76px no-repeat;
+}															
+.cityto ul{display:none; position:absolute;left:0px;top:19px;background:#fff; width:80px;
+max-height:227px;
+height: expression( this.scrollHeight > 227 ? “227px” : “auto” );
+-webkit-max-height:227px;
+overflow-x:hidden; overflow-y:auto;
+border:1px solid #BCBCBC;}
+.cityto.showul ul{display:block;}
+div#district ul li{height:23px;float:left;width:100%;  overflow:hidden;}
+div#district ul li a{display:block;height:23px;cursor:pointer;padding-left:13px;line-height:23px;line-height:26px\0;*line-height:25px;_line-height:23px;white-space:nowrap; }
+div#district ul li a:hover{background:#E7E7E7;}
+div#district ul li a.location{color:#333;background:#E7E7E7;}/*当前选项*/
+div#district ul li a.location:hover{color:#333;}
+
+article{display:block;}
+article #main{border-top:2px solid #4788FA;}
+
+#main .select-search{height:40px;margin:39px 10px 0;}
+#selects{}
+.selectd{float:left; }
+.selectd select{margin-right:8px;}
+#saleprice,#area,#proptype,#quyu,#bankuai{position: relative; }
+.select{float:left;margin-right:12px;}
+.select a:hover{text-decoration: none;}
+.select .default{display:block;cursor:pointer;outline:none;-moz-outline:none;
+padding:0;border:none; float:left;width:73px; height:29px;line-height:29px; overflow:hidden;color:#333;
+background:url(../images/p6575-haopanadmin.png) -66px -29px no-repeat;text-indent:13px;font-size:14px;}
+
+.select .default.changeval{font-size:12px;width:102px; background-position:-66px -58px;}
+
+.select ul{display:none; position:absolute;left:0px;top:28px;background:#fff; width:100px;overflow-x:hidden; overflow-y:auto; border:1px solid #BCBCBC;}
+
+.select ul li{height:23px;float:left;width:100%;  overflow:hidden;}
+.select ul li a{display:block;height:23px;padding-left:13px;line-height:23px;line-height:26px\0;*line-height:25px;_line-height:23px;white-space:nowrap; }
+.select ul li a:hover{background:#E7E7E7;color:#333;}
+.select ul li a.location{color:#333;background:#E7E7E7;}/*当前选项*/
+.select ul li a.location:hover{color:#333;}
+
+
+.selectright{float:right;margin-right:12px;}
+.selectright a:hover{text-decoration: none;}
+.selectright .default{display:block;cursor:pointer;outline:none;-moz-outline:none;
+padding:0;border:none; float:left;width:73px; height:29px;line-height:29px; overflow:hidden;color:#333;
+background:url(../images/p6575-haopanadmin.png) -66px -29px no-repeat;text-indent:13px;font-size:14px;}
+
+.selectright .default.changeval{font-size:12px;width:102px; background-position:-66px -58px;}
+
+.selectright ul{display:none; position:absolute;left:0px;top:28px;background:#fff; width:100px;overflow-x:hidden; overflow-y:auto; border:1px solid #BCBCBC;}
+
+.selectright ul li{height:23px;float:left;width:100%;  overflow:hidden;}
+.selectright ul li a{display:block;height:23px;padding-left:13px;line-height:23px;line-height:26px\0;*line-height:25px;_line-height:23px;white-space:nowrap; }
+.selectright ul li a:hover{background:#E7E7E7;color:#333;}
+.selectright ul li a.location{color:#333;background:#E7E7E7;}/*当前选项*/
+.selectright ul li a.location:hover{color:#333;}
+
+#search{float:right;width:292px;height:29px;background:url(../images/p6575-haopanadmin.png) -82px 0 no-repeat;position:relative;}
+#search input.for-search{width:32px;height:29px;border:0;padding:0;cursor:pointer;background:none;position:absolute;right:0;top:0;}
+#search input.comm{color:#999;width:245px;padding:0px 5px 0;border:none;background:none;position:absolute;left:0;top:8px; }
+#search input.comm.focus{color:#333}
+#search ul{position:absolute;top:28px;left:0px;width:290px;border:1px solid #DADADA;background:#fff;}
+#search ul li{font-family: simsun,宋体,sans-serif,arial;    line-height: 25px;}
+#search ul li p{color: #999999;    cursor: pointer;    padding: 0 10px;}
+#search ul li p strong{margin-right:1em;color:#333;}
+#search ul li a{display:block;line-height:23px;padding-left:6px;}
+#search ul li a:hover{color:#f60;}
+
+
+table.table td{vertical-align:middle;}
+table.table thead td{ background:#F4F4F4;padding:0 14px;text-align:center; height:28px;border-top:1px solid #ECECEC; border-bottom:1px solid #4788FA;font-weight:bold;color:#666;}
+table.table tbody td{padding:20px 14px;line-height:20px;border:1px solid #ECECEC;text-align:center; }
+table.table thead td.d001,table.table tbody td.d001{padding: 0 0 0 15px;border-left:1px solid #ECECEC;text-align:left; }
+table.table tbody td span{color:#999;}
+table.table tfoot td{padding:0 11px 0;}
+.pages{float:right;margin-top:15px;height:37px; }
+table.table tfoot td span{color:#999;float:left;margin-right:12px;line-height:22px;}
+
+table.table tfoot td a{float:left;display:block;height:20px;margin-right:1px;padding:0 9px;line-height:20px;border:1px solid #ccc;overflow:hidden;}
+table.table tfoot td a:hover{text-decoration:none;}
+table.table tfoot td a.now{color:#f60;border-color:#fff;font-weight:bold;}
+table.table tfoot td strong{float:left;font-weight:normal; }
+table.table tfoot td strong.page{width:66px;height:22px;overflow:hidden; display:block;margin-right:1px;line-height:22px;*line-height:24px;_line-height:22px;
+background:url(../images/p6575-haopanadmin.png) no-repeat; }
+table.table tfoot td strong.pageup{background-position:0px -29px;}
+table.table tfoot td strong.pagedown{background-position:0px -51px;}
+table.table tfoot td strong.no{color:#aaa;}
+table.table tfoot td strong a{display:block;border:none;padding:0;*line-height:24px;_line-height:22px;width:66px;}
+table.table tfoot td strong.pageup a,
+table.table tfoot td strong.pageup.no{padding-left:18px;}
+table.table tfoot td strong.pageup.no{_padding-left:0px; width:48px;_text-indent:18px;}
+
+table.table tfoot td strong.pagedown a{padding-left:12px;}
+table.table tfoot td strong.pagedown a,
+table.table tfoot td strong.pagedown.no{padding-left:12px;}
+table.table tfoot td strong.pagedown.no{_padding-left:0px; width:54px;*width:54px;_width:66px;}
+
+a.last_page,a.last_page:visited,a.last_page:hover{cursor:default; color:#aaa;}
+
+.winout{position:fixed;z-index:5;background:#fff;_position:absolute; top:100px;_top: expression(documentElement.scrollTop + 100 + "px"); left:50%;width:616px; margin-left:-308px;display:none;border:1px solid #ECECEC;}
+.winout div.x{height:25px;overflow:hidden;}
+.winout div.x a{float:right;cursor:pointer;margin-top:3px;margin-right:4px;}
+.winout div.x a:hover{text-decoration:none;}
+.winout table.table tbody td{padding:10px;line-height:normal;}
+
+body{position:relative;}
+#iframe{position:absolute;z-index:4;background:#000;top: 0; width: 100%;display:none;
+ }
+

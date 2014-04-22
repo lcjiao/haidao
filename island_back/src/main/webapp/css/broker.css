@@ -1,0 +1,41 @@
+.phone{
+	padding: 40px 80px;
+	font-size: 16px;
+	line-height: 50px;
+}
+.phone .phone-text{
+	font-size: 30px;
+	padding-left: 10px;
+	vertical-align: -3px;
+	font-family: 'microsoft yahei';
+}
+.phone .phone-btn{
+	width: 70px;
+	margin: 30px 0 0 90px;
+}
+#phone-tool{
+	height: 50px;
+	width: 5000px;
+	margin: -15px 0 15px -20px;
+}
+.icon-call{
+	width: 12px;
+	height: 13px;
+	background: url("../images/phone_icon.png") -8px -160px no-repeat;
+	padding-right:8px;
+	margin-left:-5px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.phone-call{
+	letter-spacing: 0;
+	position: absolute;
+	left: 70px;
+	top: -5px;
+}
+.phone-call-dark .icon-call{
+	background-position: -7px -200px;
+}
+.phone-call-dark{
+	color: #999;
+}

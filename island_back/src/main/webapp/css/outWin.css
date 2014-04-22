@@ -1,0 +1,56 @@
+table.table td{vertical-align:middle;}
+table.table thead td{ background:#F4F4F4;padding:0 14px;text-align:center; height:28px;border-top:1px solid #ECECEC; border-bottom:1px solid #4788FA;font-weight:bold;color:#666;}
+table.table tbody td{padding:20px 14px;line-height:20px;border:1px solid #ECECEC;text-align:center; }
+table.table thead td.d001,table.table tbody td.d001{padding: 0 0 0 15px;border-left:1px solid #ECECEC;text-align:left; }
+table.table tbody td span{color:#999;}
+table.table tfoot td{padding:0 11px 0;}
+.pages{float:right;margin-top:15px;height:37px; }
+table.table tfoot td span{color:#999;float:left;margin-right:12px;line-height:22px;}
+
+table.table tfoot td a{float:left;display:block;height:20px;margin-right:1px;padding:0 9px;line-height:20px;border:1px solid #ccc;overflow:hidden;}
+table.table tfoot td a:hover{text-decoration:none;}
+table.table tfoot td a.now{color:#f60;border-color:#fff;font-weight:bold;}
+table.table tfoot td strong{float:left;font-weight:normal; }
+table.table tfoot td strong.page{width:66px;height:22px;overflow:hidden; display:block;margin-right:1px;line-height:22px;*line-height:24px;_line-height:22px;
+background:url(../images/p6575-haopanadmin.png) no-repeat; }
+table.table tfoot td strong.pageup{background-position:0px -29px;}
+table.table tfoot td strong.pagedown{background-position:0px -51px;}
+table.table tfoot td strong.no{color:#aaa;}
+table.table tfoot td strong a{display:block;border:none;padding:0;*line-height:24px;_line-height:22px;width:66px;}
+table.table tfoot td strong.pageup a,
+table.table tfoot td strong.pageup.no{padding-left:18px;}
+table.table tfoot td strong.pageup.no{_padding-left:0px; width:48px;_text-indent:18px;}
+
+table.table tfoot td strong.pagedown a{padding-left:12px;}
+table.table tfoot td strong.pagedown a,
+table.table tfoot td strong.pagedown.no{padding-left:12px;}
+table.table tfoot td strong.pagedown.no{_padding-left:0px; width:54px;*width:54px;_width:66px;}
+
+.winout{position:fixed;z-index:5;background:#fff;_position:absolute;
+top:50px;
+_top: expression(documentElement.scrollTop + 50 + "px");
+left:50%;width:616px; margin-left:-308px;display:none;border:2px solid #316AC5;}
+.winout div.x{height:25px;overflow:hidden;}
+.winout div.x a{float:right;cursor:pointer;margin-top:3px;margin-right:4px;}
+.winout div.x a:hover{text-decoration:none;}
+.winout div.y{height:25px;overflow:hidden;}
+.winout div.y a{float:left;cursor:pointer;margin-top:3px;margin-right:4px;}
+.winout div.y a:hover{text-decoration:none;}
+.winout table.table tbody td{padding:7px 10px;line-height:normal;}
+
+.winout1{position:fixed;z-index:5;background:#fff;_position:absolute;
+top:50px;
+_top: expression(documentElement.scrollTop + 50 + "px");
+left:50%;width:616px; margin-left:-308px;display:none;border:2px solid #316AC5;}
+.winout1 div.x1{height:25px;overflow:hidden;}
+.winout1 div.x1 a{float:right;cursor:pointer;margin-top:3px;margin-right:4px;}
+.winout1 div.x1 a:hover{text-decoration:none;}
+.winout1 div.y{height:25px;overflow:hidden;}
+.winout1 div.y a{float:left;cursor:pointer;margin-top:3px;margin-right:4px;}
+.winout1 div.y a:hover{text-decoration:none;}
+.winout1 table.table tbody td{padding:7px 10px;line-height:normal;}
+
+
+body{position:relative;}
+#iframe{position:absolute;z-index:4;background:#000;top: 0; width: 100%;display:none;}
+#iframe1{position:absolute;z-index:4;background:#000;top: 0; width: 100%;display:none;}

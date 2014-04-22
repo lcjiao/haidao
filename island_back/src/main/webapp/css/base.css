@@ -1,0 +1,14 @@
+/* 初始化样式表 */
+frameset,frame,iframe{border:none 0;}
+frame{overflow-x:hidden;}
+body{ margin:0; padding:0;font-size:12px;}
+div,dl,dt,dd,ul,ol,li,pre,code,fieldset,legend,p,blockquote{border:none;margin:0;padding:0;text-align:left;}
+dl,dt,dd,ul,ol,li{list-style:none;}
+h1,h2,h3,h4,h5,h6{margin:0;}
+div{margin:0;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,var{font-style:normal;font-weight:normal;}
+.none{ display:none;}
+a{text-decoration:none;color:#069;}
+a:hover{text-decoration:underline;}

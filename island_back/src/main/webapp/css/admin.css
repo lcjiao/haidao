@@ -1,0 +1,492 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+margin:0px;
+font:12px Arial, Helvetica, sans-serif;
+text-align:left;
+color:#333;
+}
+td{
+margin:0px;
+font:12px Arial, Helvetica, sans-serif;
+text-align:left;
+}
+body{
+background:#D7E0F6;
+}
+input, select, textarea{
+border:1px solid #A4ADC2;
+background:#fff;
+margin:1px 0;
+font-size:12px;
+color:#666;
+line-height:1.3em;
+}
+
+.a_button{
+border:1px solid #A4ADC2;
+background:#fff;
+font-size:12px;
+color:#666;
+line-height:1.3em;
+text-decoration:none;
+display:block;
+padding:10px;
+width:53px;
+}
+
+form{
+margin:0;
+padding:0;
+}
+textarea{
+overflow:auto;
+}
+img {
+border: none;
+}
+
+.button {
+cursor:hand;
+border:1px solid #A4ADC2;
+padding:0 5px;
+background-color:#fff;
+}
+
+/* - public style - */
+.red { color: #F00; }
+.bold { font-weight: bold; }
+.green { color: #06A53B; }
+.gray { color: #333; }
+.blue { color: #0086d2; }
+.black {color:#000;}
+.yellow { color: #ECF73A; }
+.white { color: #FFF; }
+.orange{color:#FB6603;}
+.brown {color:#af4c0a;}
+.darkbrown{color:#6a3906;}
+.purple{color:#8a2be2;}
+.title{color:#748BA2;}
+.clear { clear: both; }
+.overflow { overflow: hidden; }
+.padding { padding: 1px; }
+.left { float: left; }
+.right { float: right; }
+.fcenter{clear: both;float: none;margin-left: auto;margin-right: auto;margin-top: 0px;}
+.center { text-align: center; }
+.textL { text-align: left; }
+.textR {text-align: right; }
+.marX8{margin:0 8px;}
+.marY8{margin:8px 0;}
+.mar8{margin:8px;}
+.f16{font-size:16px;}
+.hand_{cursor:pointer;}
+.no_underline{text-decoration:none;}
+.hide{display:none;}
+.tail{margin:25px 0;}
+/*top*/
+#topbar{
+width:100%;
+height:40px;
+background:url(images/top_bg_1x40.gif) repeat-x;
+}
+.logobox {
+padding:4px 0 0 15px;
+width:168px;
+height:28px;
+background:url(images/top_line_2x26.gif) no-repeat right;
+float:left;
+}
+.logobox span{
+padding:0 0 0 8px;
+font-weight:bold;
+color:#364254;
+font-size:14px;
+}
+.editiontext {
+padding:8px 0 0 10px;
+width:200px;
+color:#666;
+font-size:12px;
+font-weight:100;
+float:left;
+}
+.systembox{
+margin:15px 0 0 0;
+float:right;
+}
+.systembox a{
+margin-right:10px;
+color:#000;
+text-decoration:none;
+}
+.systembox a:hover{
+text-decoration:underline;
+}
+/*left*/
+#leftbigbox{
+width:180px;
+height:100%;
+}
+#leftbox{
+width:180px;
+height:75%;
+background-color:#fff;
+border:1px solid #495876;
+}
+.lefttitle{
+width:180px;
+height:30px;
+background:url(images/left_title_180x1.gif) repeat-y;
+}
+.lefttitle span{
+line-height:200%;
+padding:15px;
+font-size:14px;
+font-weight:bold;
+color:#fff;
+}
+.leftmenulist{
+width:170px;
+height:auto;
+margin:5px;
+}
+.leftmenulist a{
+color:#000;
+text-decoration:none;
+}
+.leftmenulist a:hover{
+color:#000;
+background-color:#ECE9D8;
+}
+.fathermenu{
+width:100%;
+margin-bottom:5px;
+}
+.sunmenu{
+padding-left:15px;
+margin-bottom:5px;
+}
+.sunmenu ul{
+padding-left:30px;
+margin:0;
+}
+.sunmenu ul li{
+margin-bottom:5px;
+list-style-type:none;
+}
+/*menu*/
+.menubox{
+width:180px;
+height:auto;
+color:#000;
+font-size:13px;
+font-weight:bold;
+}
+.menubox ul{
+padding:0;
+margin:0;
+}
+.menubox ul li{
+LIST-STYLE-TYPE: none;
+float:left;
+}
+.menubox a:hover span{
+text-decoration:none;
+background:url(images/menuon_bg03_1x33.gif) repeat-x;
+}
+.menubox span{
+border-bottom:1px solid #4A5977;
+border-left:1px solid #4A5977;
+border-right:1px solid #4A5977;
+width:160px;
+color:#000;
+text-decoration:none;
+height:25px;
+padding:4px 10px;
+background:url(images/menuon_bg01_1x33.gif) repeat-x;
+float:left;
+}
+#menuon {
+color:#fff;
+height:33px;
+background:url(images/menuon_bg02_1x33.gif) repeat-x;
+float:left;
+}
+#menuon span {
+border-bottom:1px solid #4A5977;
+border-left:1px solid #4A5977;
+border-right:1px solid #4A5977;
+color:#fff;
+height:25px;
+padding:4px 10px;
+background:url(images/menuon_bg02_1x33.gif) repeat-x;
+float:left;
+}
+/*right*/
+#rightbox{
+width:100%;
+}
+.righttitle{
+height:31px;
+background-color:#6588CF;
+border:1px solid gray;
+}
+.righttitle span{
+line-height:200%;
+padding:15px;
+font-size:14px;
+font-weight:bold;
+color:#fff;
+}
+#searchbox{
+margin:10px;
+}
+#butbar{
+margin:10px;
+width:98%;
+height:26px;
+border:1px solid #939FBF;
+background:url(images/button_bigbg_1x26.gif) repeat-x;
+}
+#butbar ul{
+padding:0;
+margin:0;
+}
+#butbar ul li{
+width:74px;
+height:20px;
+padding-top:6px;
+text-align:center;
+list-style-type:none;
+float:left;
+}
+#butbar ul li a:link{
+width:60px;
+height:22px;
+text-decoration:none;
+color:#000;
+}
+#butbar ul li a:hover{
+width:58px;
+height:20px;
+padding:2px 5px;
+color:#000;
+text-decoration:none;
+border:1px solid #939FBF;
+background:url(images/button_bg_1x20.gif) repeat-x;
+}
+#butbar ul li a:active{
+width:58px;
+height:20px;
+padding:2px 5px;
+color:#000;
+text-decoration:none;
+border:1px solid #939FBF;
+background-color:#E8EBEE;
+}
+#butbar ul li a:visited{
+width:60px;
+height:22px;
+text-decoration:none;
+color:#000;
+}
+
+#butbar ul li span {
+width:58px;
+height:20px;
+padding:2px 5px;
+color:#000;
+text-decoration:none;
+border:1px solid #939FBF;
+background:url(images/button_bg_1x20.gif) repeat-x;
+}
+/*table*/
+#tablebox{
+margin:10px;
+width:98%;
+}
+.tableborder {
+border:1px solid #939FBF;
+border-collapse:collapse;
+empty-cells: show;
+}
+.tableborder input{
+border:0;
+background:none;
+}
+.tableborder th {
+border:1px solid #939FBF;
+padding-left:12px;
+background-color:#E8EBEE;
+line-height:1.6em;
+}
+.tableborder td {
+border:1px solid #939FBF;
+padding-left:12px;
+background-color:#fff;
+line-height:1.6em;
+}
+.tableborder td a{
+text-decoration:none;
+color:#235FC0;
+}
+.tableborder td a:hover{
+text-decoration:underline;
+color:#f60;
+}
+.tableborder td img{
+margin-top:8px;
+}
+td.altbg {
+background-color:#fff;
+}
+.altbg td {
+background-color:#fff;
+}
+.altbg1 td {
+background-color:#d6d6d6;
+}
+td.altgbmouseover {
+background-color:#ffffcc;
+}
+.altgbmouseover td {
+background-color:#ffffcc;
+}
+
+/*multipage*/
+.multipage {
+	margin-right:10px;
+	float:right;
+    position:relative;
+}
+.multipage a:hover span {
+    color:#fff;
+    background:#5F80C4;
+	text-decoration:none;
+}
+.multipage span{
+	color:#666;
+    text-decoration:none;
+    list-style:none;
+    float:left;
+    height:18px;
+    padding:0 6px;
+    background-color: #fff;
+    border: 1px solid #C5CBDC;
+    margin-right:1px;
+    line-height:18px;
+    cursor:pointer;
+}
+.multipage .nolink {
+    color:#ccc;
+    cursor:default;
+}
+.multipage .total {
+    background-color: #F5FBFF;
+    border: 1px solid #ccc;
+    font-weight: bold;
+}
+.multipage .button{
+    border:0px;
+}
+.multipage .input{
+    border: 1px;
+    width: 30px;
+    height: 16px;
+    background: #FFFFFF;
+}
+.multipage .current {
+    background: none;
+    color: #eb6100;
+	font-weight:bold;
+    border:none;
+    cursor:default;
+}
+.multipage .etc {
+    background: none;
+    border:none;
+    cursor:default;
+}
+/*  map error correction */
+
+.map_ecc {
+	width:100%;
+	border-top: 1px solid #BBDCF1;
+	empty-cells: show;
+	border-collapse: separate !important;
+	border-collapse: collapse !important;
+	border-collapse: collapse;
+	color:#748BA2;
+}
+
+.map_ecc td,.map_ecc th{
+	border-bottom: 1px solid #BBDCF1;
+	border-left:1px solid #BBDCF1;
+	border-right:1px solid #BBDCF1;
+	line-height: 1.5em;
+	height: 2em;
+	padding-left: 12px;
+	background: #FFFFFF;
+}
+.map_ecc tbody tr:hover td{
+  background:#FFEDCE;
+}
+.bgcolorx th{
+  background-color:#E2E4FF;
+  font-weight:bold;
+}
+
+.bgcolor1 td{
+  background-color:#EFEFEF;
+}
+.bgcolorPurple td{
+  background-color:#FAD163;
+}
+.bgbold td{
+	font-weight:bold;
+}
+
+.spread_outer{
+	margin:5px;
+	border:1px solid gray;
+}
+.spread_in{
+	padding:11px;
+}
+
+.map_container{
+	clear:both;
+	border:1px solid #cde391;
+	padding:5px;
+	position:relative;
+}
+
+.bdmap_search {
+    border: 1px solid gray;
+    color: #2F83C9;
+    display: block;
+    float: left;
+    padding: 1px;
+    cursor:pointer;
+    width:50px;
+    height:20px;
+    line-height:20px;
+    text-align:center;
+    background:url("http://openapi.baidu.com/map/images/wxp_bt_img_1.gif") repeat scroll 0 0 transparent;
+    display:block;
+}
+
+.inputT_2{
+  float:left;
+  width:200px;
+  height:19px;
+}
+
+/* 分页 form style*/
+.total_records{color:red;}
+.multipage form{float:left;}
+.multipage form input{padding:0;margin:0;color:#333;}
+.multipage form span{color:#333;}
+.multipage form .goto{width:35px;height:17px;border:1px solid #ccc;margin:0 5px;}
+.multipage form .submit{width:36px;height:19px;background-position:0 -48px;border:none;color:#333}

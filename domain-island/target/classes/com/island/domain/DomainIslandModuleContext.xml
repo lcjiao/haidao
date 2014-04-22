@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="common" class="com.jcl.core.config.ConfigurationFactoryBean">
+		<property name="name" value="common" />
+		<property name="type" value="xml" />
+		<property name="delimiterParsingDisabled" value="true" />
+		<property name="encoding" value="utf8" />
+	</bean>
+	
+	<bean id="MenuDAO" class="com.island.domain.dal.MenuIbatisDAOImpl" />	
+	
+	<bean id="RoleDAO" class="com.island.domain.dal.RoleIbatisDAOImpl" />		
+	
+	<bean id="RoleRightDAO" class="com.island.domain.dal.RoleRightIbatisDAOImpl"/>	
+	
+	<bean id="UserDAO" class="com.island.domain.dal.UserIbatisDAOImpl" />	
+	
+	<bean id="roleBiz" class="com.island.domain.biz.RoleBiz">
+		<property name="dependencyConfig">
+  			<list>
+  				<ref bean="common"/>
+  			</list>
+  		</property>	
+		<property name="menuDao" ref="MenuDAO"></property>
+		<property name="roleDao" ref="RoleDAO"></property>
+		<property name="roleRightDao" ref="RoleRightDAO"></property>
+		<property name="userDao" ref="UserDAO"></property>
+	</bean>
+	
+	
+</beans>

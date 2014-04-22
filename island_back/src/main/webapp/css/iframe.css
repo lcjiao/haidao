@@ -1,0 +1,186 @@
+
+body{font-size:12px; overflow-y:auto;overflow-x:hidden;padding:10px;_padding-right:20px; }
+
+td{padding:4px 5px;color:#333; font-size:12px;font-family:Tahoma,Verdana,arial;}
+input.text{border-style:inset;border-width:1px;border-color:#333 #ccc #ccc #333; padding:2px 4px 2px;
+font-family:Tahoma,Verdana,arial;color:#069;_font-family:arial,宋体; font-size:13px;}
+.userforsearch{}
+input.btn{cursor:pointer;}
+input.ie6btn{font-family:arial;font-size:13px;line-height:20px;height:24px;}
+
+.searchbar{
+/* Webkit (Safari/Chrome 10) */ 
+background:-webkit-gradient(linear, 0 0, 0 100%, from(#EDF7FB), to(#F8FCFD));
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-linear-gradient(top, #EDF7FB 0%, #F8FCFD 100%);
+/* 低版本 Firefox */
+background:-moz-linear-gradient(top,#EDF7FB,#F8FCFD);
+/* Opera */ 
+background: -o-linear-gradient(top, #EDF7FB 0%, #F8FCFD 100%);
+/* IE6-9 */
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#EDF7FB,endColorstr=#F8FCFD,grandientType=0);
+/* IE10 */ 
+background: -ms-linear-gradient(top, #EDF7FB 0%, #F8FCFD 100%);
+/* Proposed W3C Markup */ 
+background:linear-gradient(top,#EDF7FB,#F8FCFD);
+ border:1px solid #A4B6D7;margin-bottom:10px;
+ -moz-box-shadow: 0 1px 2px #EEE, 0 -1px 2px #EEE; 
+ box-shadow: 0 1px 2px #EEE, 0 -1px 2px #EEE;
+ -webkit-box-shadow: 0 1px 2px #EEE, 0 -1px 2px #EEE;}
+.searchbar td{white-space: nowrap;}
+.searchbar select,.datalist select{font-size:13px;color:#006699;}
+.searchbar select option,.datalist select option{color:#006699;}
+
+.datalist{}
+.datalist td{ padding:6px 5px; text-align:center; border:1px solid #A4B6D7;}
+.datalist thead td{background-color:#EEF3FB;}
+.datalist a{text-decoration:underline;}
+.customlist{border:1px solid #D9E4F2;}
+.customlist .datalist thead td{font-weight:bold;color:#0A2D4E;}
+.customlist thead td.tdr input{margin-left:5px;}
+.datalist td.companytd{text-align:left;padding-left:16px;}
+
+/*问题分类列表*/
+.ask_rel thead td{}
+.ask_rel tbody td{text-align:left;}
+
+#pagebar {padding:10px 0 0px; font-size:13px; font-family:Tahoma,Verdana,arial;} 
+#pagebar a,#pagebar .page_now { display:block; float:left; margin-right:4px; padding:2px 5px; border:1px solid #A4B6D7; color:#316AC5;background:#EEF3FB;} 
+#pagebar code{ display:block; float:left; margin-right:4px; padding:3px 5px 1px; border:1px solid #fff; /*color:#316AC5;*/}
+#pagebar code strong{color:#f00;}
+#pagebar a { display:inline;} 
+#pagebar a:hover {color: #fff;background:#39A0D1; text-decoration:none; border-color:#1A7DC0;}  
+#pagebar .page_now { border-color:#EEF3FB;background:#F8FCFE; font-weight:800; } 
+#pagebar input{float:left;margin:0 2px;}
+#pagebar input.num{ text-align: center;ime-mode:disabled;}
+#pagebar  .disable{color:#aaa;}
+
+/*新建客户*/
+.creatcustomer{border:1px solid #A4B6D7;padding:1px;}
+.creatcustomer td{text-align: left;}
+.creatcustomer thead td,thead.gonxt td{padding:7px 5px;font-weight:bold;color:#0A2D4E;border-width:0;background-color:#EEF3FB;
+/* Mozilla Firefox */ 
+background:-moz-linear-gradient(top,#ffffff,#EEF3FB);
+/* Opera */ 
+background: -o-linear-gradient(top, #ffffff 0%, #EEF3FB 100%);
+/* Webkit (Safari/Chrome 10) */ 
+background:-webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#EEF3FB));
+/* Webkit (Chrome 11+) */ 
+background:-webkit-linear-gradient(top, #ffffff 0%, #EEF3FB 100%);
+/* IE10 */ 
+background:-ms-linear-gradient(top, #ffffff 0%, #EEF3FB 100%); 
+/* IE6-9 */
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff,endColorstr=#EEF3FB,grandientType=0);
+
+/* Proposed W3C Markup */ 
+background:linear-gradient(top,#ffffff 0%,#EEF3FB 100%);
+}
+thead.gonxt td{padding:8px 6px;}
+.creatcustomer tbody input{width:260px;}
+.creatcustomer table.datalist tbody td{padding:4px 5px;}
+
+.creatcustomer_tfoot{margin:6px auto 6px;}
+.creatcustomer_tfoot tfoot td{text-align:right;}
+.creatcustomer_tfoot tfoot td input{margin-left:5px;cursor:pointer;}
+
+
+/*沟通记录详情*/
+.switchtbodytoshow tbody{display:none;}
+.switch_code{width:14px;height:15px;display:inline-block;float:right;cursor:pointer;
+ background:url(../images/icon_tohide.gif) no-repeat;}
+.switchtbodytoshow thead td code.switch_code{ background-image:url(../images/icon_toshow.gif);}
+
+
+/*新增跟进记录*/
+.newgorecord tbody td input{width:auto;}
+.newgorecord tbody td label{cursor:pointer;position:relative;top:-1px;}
+.newgorecord textarea{width:80%;border-style: inset;overflow-y:auto;
+    border-width: 1px;color:#069;font-size:13px;font-family:Tahoma,Verdana, Geneva, Arial, Helvetica, sans-serif;}
+.calendarimg{position:relative;top:3px;margin:0 2px;cursor:pointer;}
+.forcalendar{position:relative;}
+.forcalendarshow .calendartable{display:block;}
+.calendartable{position:absolute;left:0;top:24px;display:none;}
+
+
+/*新建编辑沟通记录   编辑沟通记录部分*/
+.creatcustomer tbody input.type009{width:325px;}
+.outwin{position:relative;}
+ul.outwindiv{width:323px; position:absolute;left:0;top:22px;display:none;padding:0px 0px; border:1px solid #A4B6D7;background-color:#EEF3FB;}
+ul.outwindiv li{cursor:pointer;padding:4px 8px;border-bottom:1px solid #fff;color:#39A0D1;}
+.outwin img{position:relative;top:2px;cursor:pointer;}
+
+/*沟通记录表*/
+.customerrecordlist{border:1px solid #A4B6D7;padding:3px 0;}
+.customerrecordlist .datalist td{border-width:0; text-align:left;padding:3px 6px; /*white-space: nowrap;*/}
+.customerrecordlist .datalist input.text{width:118px;*width:116px;}
+
+
+.forassign{ position:relative;}
+.forassign a{cursor: pointer;}
+.forassign em{color:#ddd; margin:0 6px;}
+.forassign .assigndiv{display:none; position:absolute;right:-6px;top:20px; width:315px;border:2px solid #939FBF;background-color:#D7E0F6;padding:2px 3px;}
+.assigndiv td{border:none;background:none!important;padding:0;text-align:left!important;}
+.assigndiv thead td{padding:5px 1px 0px;}
+.customlist .datalist .assigndiv thead td{font-weight:normal;} 
+.assigndiv tbody td{padding:7px 1px 0; vertical-align: top;}
+
+/* time:2012-07-05*/
+/*新建邮件列表*/
+.question_type{width:215px;}
+.mail{width:260px;}
+.mailtb td{ text-align:left; padding:0 0 0 15px; height:30px;}
+.mailtb td p{line-height:20px;}
+.customlist td span{display:inline-block;margin:0 15px; height:20px; width:1px; background:#BFCCE3; vertical-align:middle;}
+/*新增接入口*/
+.mailentry td{padding:0; margin:0; border:1px solid #A4B6D7; height:30px; padding:0 0 0 20px;}
+td.city{padding:0;}
+.cityinfos{width:100%; height:auto;}
+.cityinfos .title{width:100%;border-bottom:1px solid #A4B6D7; padding:0 0 5px 20px;height:20px; line-height:20px;}
+.title span,.cityrow span{color:#999; margin:0 10px 0 0;}
+.title span a,.cityrow span a{display:inline-block; padding:0 5px; display:inline-block; margin:0 2px;}
+.infos{padding:0 0 0 20px;}
+.infos .cityrow{height:20px; line-height:20px; margin:8px 0;}
+.cityrow span a.active,.title a.active{background:#EC5F00; color:#fff;}
+.txt_box .txt_input{margin-top:5px;}
+.qustion_type,.qustioninfos,.carbon,.recipient{position:relative; z-index:999;}
+.txt_input span{padding:0 0 0 10px;}
+.popupdiv_1{display:none; z-index:10; width:268px;height:220px;overflow-x:hidden;overflow-y:scroll; border:1px solid #CCCCCE; background:#EEF3FB; position:absolute;top:23px;left:0;}
+.popupdiv_2{display:none; z-index:10;width:275px;height:220px;overflow-x:hidden;overflow-y:scroll; border:1px solid #CCCCCE; background:#EEF3FB; position:absolute;top:52px;left:0;}
+.miallist li{width:100%;height:22px; line-height:22px;}
+.miallist li a{display:block; background:#EEF3FB; text-decoration:none; border-bottom:1px solid #fff; padding:0 0 0 15px;}
+.miallist .active a{background:#39A0D1; color:#fff;}
+.miallist li a em{margin:0 0 0 8px;}
+.recipient .addname,.carbon .addname,.addname{margin:5px 0;}
+.addname em{display:inline-block;width:11px; height:11px; background:url(../images/addname.png) no-repeat;}
+/*弹出信息*/
+.btnbox{position:relative;}
+#dialog,#dialog1,#dialog2,#dialog3{display:none; position:absolute; top:0; left:0; background:#fff;}
+.box{width:370px;height:170px; border:1px solid #003c74; text-align:center; position:relative;}
+.box_del{width:370px;height:200px; border:1px solid #003c74; text-align:center; position:relative;}
+.xinfos{width:330px; padding:20px 10px 15px 30px;}
+.dialog_hd h3{fon-size:16px;}
+.dialog_radio,.dialog_text,.dialog_txt{margin:12px 0 0 0; height:28px;}
+.dialog_radio span{margin:0 10px 0 0;}
+.dialog_text span{display:inline-block;float:left; width:60px;}
+.dialog_text input{display:inline-block; float:left;width:220px; height:23px; line-height:23px; border:1px solid #A5ACB2; color:#999;}
+.dialogbtn{position:absolute; bottom:0;width:310px;height:40px; line-height:40px;background:#F2F2F2; padding:0 30px; text-align:right; left:0;}
+.dialogbtn input{ margin:10px 5px 0 0;}
+.dialog_txt p{line-height:30px;}
+/*新建沟通页*/
+.import input{width:200px;}
+.import span{display:inline-block; margin:0 0 0 8px;}
+.forcalendar select{background:#EEF3FB;}
+.forcalendar option{line-height:25px;}
+.q_type,.qinfos{ position:relative; z-index:999;}
+.txt_box_1 .text{margin-top:5px; width:315px;}
+.popupdiv_3{display:none;position:absolute;top:28px; left:0; z-index:999;width:323px;height:230px;overflow-x:hidden;overflow-y:scroll; border:1px solid #CCCCCE; background:#EEF3FB;}
+/*沟通列表*/
+.choice_tb{border:1px solid #A4B6D7; margin:10px 0;}
+.choice_tb  select{color:#069;}
+.blue{color:#069; padding:0 5px;}
+.right{float:right;}
+
+
+
+
+

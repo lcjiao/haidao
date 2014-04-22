@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.island.domain.dal.mapper.UserMapper">
+	<resultMap id="UserRslMap" type="com.island.domain.model.User">		
+		
+			<id property="id" column="id" />
+			<result property="userName" column="user_name" />
+			<result property="userPass" column="user_pass" />
+			<result property="userRoleId" column="user_role_id" />
+			<result property="createTime" column="create_time" />
+			<result property="createPerson" column="create_person" />
+			<result property="updTime" column="upd_time" />
+			<result property="updPerson" column="upd_person" />
+			<result property="valid" column="valid" />
+			<result property="roleName" column="role_name" />
+	</resultMap>
+
+	<select id="queryById" parameterType="java.util.Map" resultMap="UserRslMap">
+		SELECT
+			id,
+			user_name,
+			user_pass,
+			user_role_id,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person,
+			valid,
+			role_name
+		FROM
+			user
+		<where>
+			and id=#{id}
+		</where>
+			limit 1
+	</select>
+
+	<select id="queryByModel" parameterType="com.island.domain.model.User" resultMap="UserRslMap">		
+		SELECT
+			id,
+			user_name,
+			user_pass,
+			user_role_id,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person,
+			valid,
+			role_name
+		FROM
+			user
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="userName !=  null">			        
+				and user_name=#{userName}
+			</if>
+			<if test="userPass !=  null">			        
+				and user_pass=#{userPass}
+			</if>
+			<if test="userRoleId !=  null">			        
+				and user_role_id=#{userRoleId}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="roleName !=  null">			        
+				and role_name=#{roleName}
+			</if>
+		</where>
+		
+	</select>
+		
+	
+	<select id="queryUserCount" parameterType="java.util.Map" resultType="int">				
+		SELECT
+			count(id)
+		FROM
+			user
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="userName !=  null">			        
+				and user_name=#{userName}
+			</if>
+			<if test="userPass !=  null">			        
+				and user_pass=#{userPass}
+			</if>
+			<if test="userRoleId !=  null">			        
+				and user_role_id=#{userRoleId}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="roleName !=  null">			        
+				and role_name=#{roleName}
+			</if>
+		</where>
+		
+	</select>
+	
+	<select id="queryByMap" parameterType="java.util.Map" resultMap="UserRslMap">				
+		SELECT
+			id,
+			user_name,
+			user_pass,
+			user_role_id,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person,
+			valid,
+			role_name
+		FROM
+			user
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="userName !=  null">			        
+				and user_name=#{userName}
+			</if>
+			<if test="userPass !=  null">			        
+				and user_pass=#{userPass}
+			</if>
+			<if test="userRoleId !=  null">			        
+				and user_role_id=#{userRoleId}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="roleName !=  null">			        
+				and role_name=#{roleName}
+			</if>
+		</where>
+		<if test="begin !=  null">			        
+				limit #{begin},#{size}
+		</if>
+		
+	</select>
+	
+	<select id="countByModel" parameterType="com.island.domain.model.User" resultType="java.lang.Integer">	
+		SELECT
+			count(*)
+		FROM
+			user
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="userName !=  null">			        
+				and user_name=#{userName}
+			</if>
+			<if test="userPass !=  null">			        
+				and user_pass=#{userPass}
+			</if>
+			<if test="userRoleId !=  null">			        
+				and user_role_id=#{userRoleId}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="roleName !=  null">			        
+				and role_name=#{roleName}
+			</if>
+		</where>
+		
+	</select>
+	
+	<select id="countByMap" parameterType="java.util.Map" resultType="java.lang.Integer">				
+		SELECT
+			count(*)
+		FROM
+			user
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="userName !=  null">			        
+				and user_name=#{userName}
+			</if>
+			<if test="userPass !=  null">			        
+				and user_pass=#{userPass}
+			</if>
+			<if test="userRoleId !=  null">			        
+				and user_role_id=#{userRoleId}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="roleName !=  null">			        
+				and role_name=#{roleName}
+			</if>
+		</where>
+				
+	</select>
+	
+	<select id="pageQuery" parameterType="com.jcl.core.dal.Page" resultMap="UserRslMap" fetchSize="15">
+		SELECT
+			id,
+			user_name,
+			user_pass,
+			user_role_id,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person,
+			valid,
+			role_name
+		FROM
+			user
+		<where>
+			<if test="params !=  null">
+				<if test="params.id !=  null">
+					and id=#{params.id}
+				</if>
+				<if test="params.userName !=  null">
+					and user_name=#{params.userName}
+				</if>
+				<if test="params.userPass !=  null">
+					and user_pass=#{params.userPass}
+				</if>
+				<if test="params.userRoleId !=  null">
+					and user_role_id=#{params.userRoleId}
+				</if>
+				<if test="params.createTime !=  null">
+					and create_time=#{params.createTime}
+				</if>
+				<if test="params.createPerson !=  null">
+					and create_person=#{params.createPerson}
+				</if>
+				<if test="params.updTime !=  null">
+					and upd_time=#{params.updTime}
+				</if>
+				<if test="params.updPerson !=  null">
+					and upd_person=#{params.updPerson}
+				</if>
+				<if test="params.valid !=  null">
+					and valid=#{params.valid}
+				</if>
+				<if test="params.roleName !=  null">
+					and role_name=#{params.roleName}
+				</if>
+			</if>
+		</where>
+			limit #{start},#{end}	
+	</select>
+
+	<insert id="insert" parameterType="com.island.domain.model.User" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO	user
+			(id,user_name,user_pass,user_role_id,create_time,create_person,upd_time,upd_person,valid,role_name)
+			VALUES(#{id},#{userName},#{userPass},#{userRoleId},#{createTime},#{createPerson},#{updTime},#{updPerson},#{valid},#{roleName})		
+	</insert>
+	
+	<update id="update" parameterType="com.island.domain.model.User">
+		update 
+			user
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="userName !=  null">			        
+				user_name=#{userName},
+			</if>
+			<if test="userPass !=  null">			        
+				user_pass=#{userPass},
+			</if>
+			<if test="userRoleId !=  null">			        
+				user_role_id=#{userRoleId},
+			</if>
+			<if test="createTime !=  null">			        
+				create_time=#{createTime},
+			</if>
+			<if test="createPerson !=  null">			        
+				create_person=#{createPerson},
+			</if>
+			<if test="updTime !=  null">			        
+				upd_time=#{updTime},
+			</if>
+			<if test="updPerson !=  null">			        
+				upd_person=#{updPerson},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="roleName !=  null">			        
+				role_name=#{roleName},
+			</if>
+		</set>
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+		</where>
+		
+	</update>
+	<update id="updateByMap" parameterType="java.util.Map">
+		update 
+			user
+		<set> 
+			<if test="userName !=  null">			        
+				user_name=#{userName},
+			</if>
+			<if test="userPass !=  null">			        
+				user_pass=#{userPass},
+			</if>
+			<if test="userRoleId !=  null">			        
+				user_role_id=#{userRoleId},
+			</if>
+			<if test="createTime !=  null">			        
+				create_time=#{createTime},
+			</if>
+			<if test="createPerson !=  null">			        
+				create_person=#{createPerson},
+			</if>
+			<if test="updTime !=  null">			        
+				upd_time=#{updTime},
+			</if>
+			<if test="updPerson !=  null">			        
+				upd_person=#{updPerson},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="roleName !=  null">			        
+				role_name=#{roleName},
+			</if>
+		</set>
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+		</where>
+		
+	</update>
+	
+	<update id="cmplxUpdate" parameterType="java.util.Map">
+		update 
+			user
+		<set>
+			<if test="updNewMap.id !=  null">
+				id=#{updNewMap.id},
+			</if>
+			<if test="updNewMap.userName !=  null">
+				user_name=#{updNewMap.userName},
+			</if>
+			<if test="updNewMap.userPass !=  null">
+				user_pass=#{updNewMap.userPass},
+			</if>
+			<if test="updNewMap.userRoleId !=  null">
+				user_role_id=#{updNewMap.userRoleId},
+			</if>
+			<if test="updNewMap.createTime !=  null">
+				create_time=#{updNewMap.createTime},
+			</if>
+			<if test="updNewMap.createPerson !=  null">
+				create_person=#{updNewMap.createPerson},
+			</if>
+			<if test="updNewMap.updTime !=  null">
+				upd_time=#{updNewMap.updTime},
+			</if>
+			<if test="updNewMap.updPerson !=  null">
+				upd_person=#{updNewMap.updPerson},
+			</if>
+			<if test="updNewMap.valid !=  null">
+				valid=#{updNewMap.valid},
+			</if>
+			<if test="updNewMap.roleName !=  null">
+				role_name=#{updNewMap.roleName},
+			</if>
+		</set>
+		<where>
+			<if test="updCondMap.id !=  null">
+				and id=#{updCondMap.id}
+			</if>
+			<if test="updCondMap.userName !=  null">
+				and user_name=#{updCondMap.userName}
+			</if>
+			<if test="updCondMap.userPass !=  null">
+				and user_pass=#{updCondMap.userPass}
+			</if>
+			<if test="updCondMap.userRoleId !=  null">
+				and user_role_id=#{updCondMap.userRoleId}
+			</if>
+			<if test="updCondMap.createTime !=  null">
+				and create_time=#{updCondMap.createTime}
+			</if>
+			<if test="updCondMap.createPerson !=  null">
+				and create_person=#{updCondMap.createPerson}
+			</if>
+			<if test="updCondMap.updTime !=  null">
+				and upd_time=#{updCondMap.updTime}
+			</if>
+			<if test="updCondMap.updPerson !=  null">
+				and upd_person=#{updCondMap.updPerson}
+			</if>
+			<if test="updCondMap.valid !=  null">
+				and valid=#{updCondMap.valid}
+			</if>
+			<if test="updCondMap.roleName !=  null">
+				and role_name=#{updCondMap.roleName}
+			</if>
+		</where>
+		
+	</update>
+	
+	<delete id="delete" parameterType="com.island.domain.model.User">		
+		DELETE
+		FROM
+			user 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="userName !=  null">			        
+				and user_name=#{userName}
+			</if>
+			<if test="userPass !=  null">			        
+				and user_pass=#{userPass}
+			</if>
+			<if test="userRoleId !=  null">			        
+				and user_role_id=#{userRoleId}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="roleName !=  null">			        
+				and role_name=#{roleName}
+			</if>
+		</where>
+		
+	</delete>
+	<delete id="deleteByMap" parameterType="java.util.Map">		
+		DELETE
+		FROM
+			user 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="userName !=  null">			        
+				and user_name=#{userName}
+			</if>
+			<if test="userPass !=  null">			        
+				and user_pass=#{userPass}
+			</if>
+			<if test="userRoleId !=  null">			        
+				and user_role_id=#{userRoleId}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="roleName !=  null">			        
+				and role_name=#{roleName}
+			</if>
+		</where>
+		
+	</delete>
+</mapper>
