@@ -44,33 +44,16 @@ public class MasterecommendAction extends ActionSupport {
 		return "add";
 	}
 	 public String execute() {  
-		  
-	       // 把上传的文件放到指定的路径下  
-	  
 	       String path = imageServPath;
-	  
-	       // 写到指定的路径中  
-	  
 	       File file = new File(path);  
-	  
-	       // 如果指定的路径没有就创建  
-	  
 	       if (!file.exists()) {  
-	  
 	           file.mkdirs();  
 	       }  
-	       // 把得到的文件的集合通过循环的方式读取并放在指定的路径下  
 	       try {  
-	    		  
-	  
 	              FileUtils.copyFile(image, new File(file, imageFileName));  
-	  
-	           } catch (IOException e) {  
-	  
+	        } catch (IOException e) {  
 	              e.printStackTrace();  
-	          }  
-	           
-	  
+	        }  
 	       return "add";  
 	    }  
 
