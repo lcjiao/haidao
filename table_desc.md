@@ -64,8 +64,7 @@
     `type_id` int(4) DEFAULT NULL COMMENT '推荐类型',
     `type_name` varchar(50) DEFAULT NULL COMMENT '推荐类型名称',
     `view_link` varchar(500) DEFAULT NULL COMMENT '视频地址',
-    PRIMARY KEY (`id`),
-    UNIQUE KEY `module_key` (`module_id`)
+    PRIMARY KEY (`id`)
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8
     
 --------
