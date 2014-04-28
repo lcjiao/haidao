@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>首页主打推荐图片更换</title>
+<title>首页套餐推荐添加</title>
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
@@ -11,19 +11,27 @@
 </head>
 <body>
 <div  class="creatcustomer" >
-<s:form action="/front/masterecommend/masterecommend.action" enctype="multipart/form-data" method="post">  
+<s:form action="/front/packagerecommend/packagerecommend.action" enctype="multipart/form-data" method="post">  
 	
 	<table class="datalist" width="100%">
 		<tr>
-			 	 <s:file label="选择图片" name="image"></s:file>  
+			 	<s:textfield label="链接地址" name="link"></s:textfield> 
 		</tr>
 		<tr>
-			 	  <s:submit value="更换图片" />  
+			 	<s:textfield label="描述" name="desc"></s:textfield> 
+		</tr>
+		<tr>
+			 	<s:textfield label="排序" name="index"></s:textfield> 
+		</tr>
+		<tr>
+			 	 <s:file label="上传图片" name="image"></s:file>  
+		</tr>
+		<tr>
+			 	  <s:submit value="提交" />  
 		</tr>
 	</table>
            
-<input type="hidden" id="id" name="id" value="${id}"/>
-<input type="hidden" id="type" name="type" value="changeImg"/>         
+           
 </s:form>  
 </div>
 </body>

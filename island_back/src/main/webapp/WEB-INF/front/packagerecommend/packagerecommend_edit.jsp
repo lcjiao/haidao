@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>首页主打推荐修改</title>
+<title>首页套餐推荐修改</title>
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
 
 </head>
 <body>
-<form action="${ctx}/front/masterecommend/masterecommend!edit.action" id="form" method="post">
+<form action="${ctx}/front/packagerecommend/packagerecommend!edit.action" id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" width="100%">
 	<tbody>
@@ -59,7 +59,7 @@
 	}
 	
 	function resetCreate(){
-		var url = "${ctx}/front/masterecommend/masterecommend!list.action";
+		var url = "${ctx}/front/packagerecommend/packagerecommend!list.action";
 		window.location.href = url;
 	}
 	//表单提交前数据验证

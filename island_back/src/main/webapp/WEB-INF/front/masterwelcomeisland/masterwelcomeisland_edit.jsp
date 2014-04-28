@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>首页主打推荐修改</title>
+<title>首页最受欢迎岛屿修改</title>
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
 
 </head>
 <body>
-<form action="${ctx}/front/masterecommend/masterecommend!edit.action" id="form" method="post">
+<form action="${ctx}/front/masterwelcomeisland/masterwelcomeisland!edit.action" id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" width="100%">
 	<tbody>
@@ -19,8 +19,8 @@
 			<td><input type=text class="text" value="${link}" id="link" name="link"  style="_width:316px;"/></td>					
 		</tr>
 		<tr>
-			<td>描述</td>
-			<td><input type=text class="text" value="${desc}" id="desc" name="desc"  style="_width:316px;"/></td>					
+			<td>岛屿名称</td>
+			<td><input type=text class="text" value="${title}" id="title" name="title"  style="_width:316px;"/></td>					
 		</tr>
 		<tr>
 			<td>排序</td>
@@ -59,7 +59,7 @@
 	}
 	
 	function resetCreate(){
-		var url = "${ctx}/front/masterecommend/masterecommend!list.action";
+		var url = "${ctx}/front/masterwelcomeisland/masterwelcomeisland!list.action";
 		window.location.href = url;
 	}
 	//表单提交前数据验证

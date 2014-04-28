@@ -3,28 +3,33 @@
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>首页主打推荐修改</title>
+<title>首页咨询内容修改</title>
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
+<script type="text/javascript" src="${ctx}/js/My97DatePicker/WdatePicker.js"></script>
 
 </head>
 <body>
-<form action="${ctx}/front/masterecommend/masterecommend!edit.action" id="form" method="post">
+<form action="${ctx}/front/newconsult/newconsult!edit.action" id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" width="100%">
 	<tbody>
 		<tr>
 			<td>链接地址</td>
-			<td><input type=text class="text" value="${link}" id="link" name="link"  style="_width:316px;"/></td>					
+			<td><input type=text class="text" value="${link}" id="link" name="link"  style="width:255px;"/></td>					
 		</tr>
 		<tr>
-			<td>描述</td>
-			<td><input type=text class="text" value="${desc}" id="desc" name="desc"  style="_width:316px;"/></td>					
+			<td>标题</td>
+			<td><input type=text class="text" value="${title}" id="title" name="title"  style="width:255px;"/></td>					
 		</tr>
+		<tr>
+			<td>时间</td>
+			 <td><input type="text" id = "time"  value="${time}"  class="Wdate" onfocus="WdatePicker()" name="time"/></td>
+		 </tr>
 		<tr>
 			<td>排序</td>
-			<td><input type=text class="text" value="${index}" id="index" name="index"  style="_width:316px;"/><span style="color:red;">顺序调整为对调方式</span></td>
+			<td><input type=text class="text" value="${index}" id="index" name="index"  style="width:255px;"/><span style="color:red;">顺序调整为对调方式</span></td>
 		</tr>
 		
 	</tbody>	
@@ -59,7 +64,7 @@
 	}
 	
 	function resetCreate(){
-		var url = "${ctx}/front/masterecommend/masterecommend!list.action";
+		var url = "${ctx}/front/newconsult/newconsult!list.action";
 		window.location.href = url;
 	}
 	//表单提交前数据验证
