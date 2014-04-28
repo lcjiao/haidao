@@ -73,17 +73,17 @@ public class Recommend extends AbsModel{
   		return this.content;
   	}
   	/**
-	 * 
+	 * 备注
 	 */
   	private String recommendDesc;
   	/**
-	 * 设置
+	 * 设置备注
 	 */
   	public void setRecommendDesc(String recommendDesc){
   		this.recommendDesc=recommendDesc;
   	}
   	/**
-	 * 获取
+	 * 获取备注
 	 */
   	public String getRecommendDesc(){
   		return this.recommendDesc;
@@ -217,17 +217,17 @@ public class Recommend extends AbsModel{
   		return this.islandName;
   	}
 	/**
-	 * 
+	 * 排序
 	 */
   	private Integer recommendIndex;
   	/**
-	 * 设置
+	 * 设置排序
 	 */
   	public void setRecommendIndex(Integer recommendIndex){
   		this.recommendIndex=recommendIndex;
   	}
   	/**
-	 * 获取
+	 * 获取排序
 	 */
   	public Integer getRecommendIndex(){
   		return this.recommendIndex;
@@ -439,6 +439,22 @@ public class Recommend extends AbsModel{
 	 */
   	public String getViewLink(){
   		return this.viewLink;
+  	}
+  	/**
+	 * 推荐时间
+	 */
+  	private String recommendTime;
+  	/**
+	 * 设置推荐时间
+	 */
+  	public void setRecommendTime(String recommendTime){
+  		this.recommendTime=recommendTime;
+  	}
+  	/**
+	 * 获取推荐时间
+	 */
+  	public String getRecommendTime(){
+  		return this.recommendTime;
   	}
 	/**
 	 * 保存时非空数据项校验；

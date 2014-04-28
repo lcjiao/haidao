@@ -34,6 +34,7 @@
 			<result property="typeId" column="type_id" />
 			<result property="typeName" column="type_name" />
 			<result property="viewLink" column="view_link" />
+			<result property="recommendTime" column="recommend_time" />
 	</resultMap>
 
 	<select id="queryById" parameterType="java.util.Map" resultMap="RecommendRslMap">
@@ -65,7 +66,8 @@
 			upd_person,
 			type_id,
 			type_name,
-			view_link
+			view_link,
+			recommend_time
 		FROM
 			recommend
 		<where>
@@ -103,7 +105,8 @@
 			upd_person,
 			type_id,
 			type_name,
-			view_link
+			view_link,
+			recommend_time
 		FROM
 			recommend
 		<where>			
@@ -191,6 +194,9 @@
 			<if test="viewLink !=  null">			        
 				and view_link=#{viewLink}
 			</if>
+			<if test="recommendTime !=  null">			        
+				and recommend_time=#{recommendTime}
+			</if>
 		</where>
 		
 	</select>
@@ -224,7 +230,8 @@
 			upd_person,
 			type_id,
 			type_name,
-			view_link
+			view_link,
+			recommend_time
 		FROM
 			recommend
 		<where>
@@ -311,6 +318,9 @@
 			</if>
 			<if test="viewLink !=  null">			        
 				and view_link=#{viewLink}
+			</if>
+			<if test="recommendTime !=  null">			        
+				and recommend_time=#{recommendTime}
 			</if>
 		</where>
 		<if test="begin !=  null">			        
@@ -408,6 +418,9 @@
 			<if test="viewLink !=  null">			        
 				and view_link=#{viewLink}
 			</if>
+			<if test="recommendTime !=  null">			        
+				and recommend_time=#{recommendTime}
+			</if>
 		</where>
 		
 	</select>
@@ -502,6 +515,9 @@
 			<if test="viewLink !=  null">			        
 				and view_link=#{viewLink}
 			</if>
+			<if test="recommendTime !=  null">			        
+				and recommend_time=#{recommendTime}
+			</if>
 		</where>
 				
 	</select>
@@ -535,7 +551,8 @@
 			upd_person,
 			type_id,
 			type_name,
-			view_link
+			view_link,
+			recommend_time
 		FROM
 			recommend
 		<where>
@@ -624,6 +641,9 @@
 				<if test="params.viewLink !=  null">
 					and view_link=#{params.viewLink}
 				</if>
+				<if test="params.recommendTime !=  null">
+					and recommend_time=#{params.recommendTime}
+				</if>
 			</if>
 		</where>
 			limit #{start},#{end}	
@@ -631,8 +651,8 @@
 
 	<insert id="insert" parameterType="com.island.domain.model.Recommend" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO	recommend
-			(id,module_id,module_desc,title,content,recommend_desc,img_url,link_url,price,tel,area_id,area_name,island_id,island_name,recommend_index,valid,big_img_url,small_img_url,link_obligate,price_big,price_small,create_time,create_person,upd_time,upd_person,type_id,type_name,view_link)
-			VALUES(#{id},#{moduleId},#{moduleDesc},#{title},#{content},#{recommendDesc},#{imgUrl},#{linkUrl},#{price},#{tel},#{areaId},#{areaName},#{islandId},#{islandName},#{recommendIndex},#{valid},#{bigImgUrl},#{smallImgUrl},#{linkObligate},#{priceBig},#{priceSmall},#{createTime},#{createPerson},#{updTime},#{updPerson},#{typeId},#{typeName},#{viewLink})		
+			(id,module_id,module_desc,title,content,recommend_desc,img_url,link_url,price,tel,area_id,area_name,island_id,island_name,recommend_index,valid,big_img_url,small_img_url,link_obligate,price_big,price_small,create_time,create_person,upd_time,upd_person,type_id,type_name,view_link,recommend_time)
+			VALUES(#{id},#{moduleId},#{moduleDesc},#{title},#{content},#{recommendDesc},#{imgUrl},#{linkUrl},#{price},#{tel},#{areaId},#{areaName},#{islandId},#{islandName},#{recommendIndex},#{valid},#{bigImgUrl},#{smallImgUrl},#{linkObligate},#{priceBig},#{priceSmall},#{createTime},#{createPerson},#{updTime},#{updPerson},#{typeId},#{typeName},#{viewLink},#{recommendTime})		
 	</insert>
 	
 	<update id="update" parameterType="com.island.domain.model.Recommend">
@@ -723,6 +743,9 @@
 			<if test="viewLink !=  null">			        
 				view_link=#{viewLink},
 			</if>
+			<if test="recommendTime !=  null">			        
+				recommend_time=#{recommendTime},
+			</if>
 		</set>
 		<where>			
 			<if test="id !=  null">
@@ -808,6 +831,9 @@
 			</if>
 			<if test="viewLink !=  null">			        
 				and view_link=#{viewLink}
+			</if>
+			<if test="recommendTime !=  null">			        
+				and recommend_time=#{recommendTime}
 			</if>
 		</where>
 		
@@ -899,6 +925,9 @@
 			</if>
 			<if test="viewLink !=  null">			        
 				view_link=#{viewLink},
+			</if>
+			<if test="recommendTime !=  null">			        
+				recommend_time=#{recommendTime},
 			</if>
 		</set>
 		<where>
@@ -997,6 +1026,9 @@
 			<if test="updNewMap.viewLink !=  null">
 				view_link=#{updNewMap.viewLink},
 			</if>
+			<if test="updNewMap.recommendTime !=  null">
+				recommend_time=#{updNewMap.recommendTime},
+			</if>
 		</set>
 		<where>
 			<if test="updCondMap.id !=  null">
@@ -1082,6 +1114,9 @@
 			</if>
 			<if test="updCondMap.viewLink !=  null">
 				and view_link=#{updCondMap.viewLink}
+			</if>
+			<if test="updCondMap.recommendTime !=  null">
+				and recommend_time=#{updCondMap.recommendTime}
 			</if>
 		</where>
 		
@@ -1176,6 +1211,9 @@
 			<if test="viewLink !=  null">			        
 				and view_link=#{viewLink}
 			</if>
+			<if test="recommendTime !=  null">			        
+				and recommend_time=#{recommendTime}
+			</if>
 		</where>
 		
 	</delete>
@@ -1267,6 +1305,9 @@
 			</if>
 			<if test="viewLink !=  null">			        
 				and view_link=#{viewLink}
+			</if>
+			<if test="recommendTime !=  null">			        
+				and recommend_time=#{recommendTime}
 			</if>
 		</where>
 		
