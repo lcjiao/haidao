@@ -1,0 +1,1274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.island.domain.dal.mapper.RecommendMapper">
+	<resultMap id="RecommendRslMap" type="com.island.domain.model.Recommend">		
+		
+			<id property="id" column="id" />
+			<result property="moduleId" column="module_id" />
+			<result property="moduleDesc" column="module_desc" />
+			<result property="title" column="title" />
+			<result property="content" column="content" />
+			<result property="recommendDesc" column="recommend_desc" />
+			<result property="imgUrl" column="img_url" />
+			<result property="linkUrl" column="link_url" />
+			<result property="price" column="price" />
+			<result property="tel" column="tel" />
+			<result property="areaId" column="area_id" />
+			<result property="areaName" column="area_name" />
+			<result property="islandId" column="island_id" />
+			<result property="islandName" column="island_name" />
+			<result property="recommendIndex" column="recommend_index" />
+			<result property="valid" column="valid" />
+			<result property="bigImgUrl" column="big_img_url" />
+			<result property="smallImgUrl" column="small_img_url" />
+			<result property="linkObligate" column="link_obligate" />
+			<result property="priceBig" column="price_big" />
+			<result property="priceSmall" column="price_small" />
+			<result property="createTime" column="create_time" />
+			<result property="createPerson" column="create_person" />
+			<result property="updTime" column="upd_time" />
+			<result property="updPerson" column="upd_person" />
+			<result property="typeId" column="type_id" />
+			<result property="typeName" column="type_name" />
+			<result property="viewLink" column="view_link" />
+	</resultMap>
+
+	<select id="queryById" parameterType="java.util.Map" resultMap="RecommendRslMap">
+		SELECT
+			id,
+			module_id,
+			module_desc,
+			title,
+			content,
+			recommend_desc,
+			img_url,
+			link_url,
+			price,
+			tel,
+			area_id,
+			area_name,
+			island_id,
+			island_name,
+			recommend_index,
+			valid,
+			big_img_url,
+			small_img_url,
+			link_obligate,
+			price_big,
+			price_small,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person,
+			type_id,
+			type_name,
+			view_link
+		FROM
+			recommend
+		<where>
+			and id=#{id}
+		</where>
+			limit 1
+	</select>
+
+	<select id="queryByModel" parameterType="com.island.domain.model.Recommend" resultMap="RecommendRslMap">		
+		SELECT
+			id,
+			module_id,
+			module_desc,
+			title,
+			content,
+			recommend_desc,
+			img_url,
+			link_url,
+			price,
+			tel,
+			area_id,
+			area_name,
+			island_id,
+			island_name,
+			recommend_index,
+			valid,
+			big_img_url,
+			small_img_url,
+			link_obligate,
+			price_big,
+			price_small,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person,
+			type_id,
+			type_name,
+			view_link
+		FROM
+			recommend
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="moduleId !=  null">			        
+				and module_id=#{moduleId}
+			</if>
+			<if test="moduleDesc !=  null">			        
+				and module_desc=#{moduleDesc}
+			</if>
+			<if test="title !=  null">			        
+				and title=#{title}
+			</if>
+			<if test="content !=  null">			        
+				and content=#{content}
+			</if>
+			<if test="recommendDesc !=  null">			        
+				and recommend_desc=#{recommendDesc}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+			<if test="linkUrl !=  null">			        
+				and link_url=#{linkUrl}
+			</if>
+			<if test="price !=  null">			        
+				and price=#{price}
+			</if>
+			<if test="tel !=  null">			        
+				and tel=#{tel}
+			</if>
+			<if test="areaId !=  null">			        
+				and area_id=#{areaId}
+			</if>
+			<if test="areaName !=  null">			        
+				and area_name=#{areaName}
+			</if>
+			<if test="islandId !=  null">			        
+				and island_id=#{islandId}
+			</if>
+			<if test="islandName !=  null">			        
+				and island_name=#{islandName}
+			</if>
+			<if test="recommendIndex !=  null">			        
+				and recommend_index=#{recommendIndex}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="bigImgUrl !=  null">			        
+				and big_img_url=#{bigImgUrl}
+			</if>
+			<if test="smallImgUrl !=  null">			        
+				and small_img_url=#{smallImgUrl}
+			</if>
+			<if test="linkObligate !=  null">			        
+				and link_obligate=#{linkObligate}
+			</if>
+			<if test="priceBig !=  null">			        
+				and price_big=#{priceBig}
+			</if>
+			<if test="priceSmall !=  null">			        
+				and price_small=#{priceSmall}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="typeId !=  null">			        
+				and type_id=#{typeId}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
+			<if test="viewLink !=  null">			        
+				and view_link=#{viewLink}
+			</if>
+		</where>
+		
+	</select>
+		
+	<select id="queryByMap" parameterType="java.util.Map" resultMap="RecommendRslMap">				
+		SELECT
+			id,
+			module_id,
+			module_desc,
+			title,
+			content,
+			recommend_desc,
+			img_url,
+			link_url,
+			price,
+			tel,
+			area_id,
+			area_name,
+			island_id,
+			island_name,
+			recommend_index,
+			valid,
+			big_img_url,
+			small_img_url,
+			link_obligate,
+			price_big,
+			price_small,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person,
+			type_id,
+			type_name,
+			view_link
+		FROM
+			recommend
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="moduleId !=  null">			        
+				and module_id=#{moduleId}
+			</if>
+			<if test="moduleDesc !=  null">			        
+				and module_desc=#{moduleDesc}
+			</if>
+			<if test="title !=  null">			        
+				and title=#{title}
+			</if>
+			<if test="content !=  null">			        
+				and content=#{content}
+			</if>
+			<if test="recommendDesc !=  null">			        
+				and recommend_desc=#{recommendDesc}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+			<if test="linkUrl !=  null">			        
+				and link_url=#{linkUrl}
+			</if>
+			<if test="price !=  null">			        
+				and price=#{price}
+			</if>
+			<if test="tel !=  null">			        
+				and tel=#{tel}
+			</if>
+			<if test="areaId !=  null">			        
+				and area_id=#{areaId}
+			</if>
+			<if test="areaName !=  null">			        
+				and area_name=#{areaName}
+			</if>
+			<if test="islandId !=  null">			        
+				and island_id=#{islandId}
+			</if>
+			<if test="islandName !=  null">			        
+				and island_name=#{islandName}
+			</if>
+			<if test="recommendIndex !=  null">			        
+				and recommend_index=#{recommendIndex}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="bigImgUrl !=  null">			        
+				and big_img_url=#{bigImgUrl}
+			</if>
+			<if test="smallImgUrl !=  null">			        
+				and small_img_url=#{smallImgUrl}
+			</if>
+			<if test="linkObligate !=  null">			        
+				and link_obligate=#{linkObligate}
+			</if>
+			<if test="priceBig !=  null">			        
+				and price_big=#{priceBig}
+			</if>
+			<if test="priceSmall !=  null">			        
+				and price_small=#{priceSmall}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="typeId !=  null">			        
+				and type_id=#{typeId}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
+			<if test="viewLink !=  null">			        
+				and view_link=#{viewLink}
+			</if>
+		</where>
+		<if test="begin !=  null">			        
+				limit #{begin},#{size}
+		</if>
+	</select>
+	
+	<select id="countByModel" parameterType="com.island.domain.model.Recommend" resultType="java.lang.Integer">	
+		SELECT
+			count(*)
+		FROM
+			recommend
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="moduleId !=  null">			        
+				and module_id=#{moduleId}
+			</if>
+			<if test="moduleDesc !=  null">			        
+				and module_desc=#{moduleDesc}
+			</if>
+			<if test="title !=  null">			        
+				and title=#{title}
+			</if>
+			<if test="content !=  null">			        
+				and content=#{content}
+			</if>
+			<if test="recommendDesc !=  null">			        
+				and recommend_desc=#{recommendDesc}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+			<if test="linkUrl !=  null">			        
+				and link_url=#{linkUrl}
+			</if>
+			<if test="price !=  null">			        
+				and price=#{price}
+			</if>
+			<if test="tel !=  null">			        
+				and tel=#{tel}
+			</if>
+			<if test="areaId !=  null">			        
+				and area_id=#{areaId}
+			</if>
+			<if test="areaName !=  null">			        
+				and area_name=#{areaName}
+			</if>
+			<if test="islandId !=  null">			        
+				and island_id=#{islandId}
+			</if>
+			<if test="islandName !=  null">			        
+				and island_name=#{islandName}
+			</if>
+			<if test="recommendIndex !=  null">			        
+				and recommend_index=#{recommendIndex}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="bigImgUrl !=  null">			        
+				and big_img_url=#{bigImgUrl}
+			</if>
+			<if test="smallImgUrl !=  null">			        
+				and small_img_url=#{smallImgUrl}
+			</if>
+			<if test="linkObligate !=  null">			        
+				and link_obligate=#{linkObligate}
+			</if>
+			<if test="priceBig !=  null">			        
+				and price_big=#{priceBig}
+			</if>
+			<if test="priceSmall !=  null">			        
+				and price_small=#{priceSmall}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="typeId !=  null">			        
+				and type_id=#{typeId}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
+			<if test="viewLink !=  null">			        
+				and view_link=#{viewLink}
+			</if>
+		</where>
+		
+	</select>
+	
+	<select id="countByMap" parameterType="java.util.Map" resultType="java.lang.Integer">				
+		SELECT
+			count(*)
+		FROM
+			recommend
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="moduleId !=  null">			        
+				and module_id=#{moduleId}
+			</if>
+			<if test="moduleDesc !=  null">			        
+				and module_desc=#{moduleDesc}
+			</if>
+			<if test="title !=  null">			        
+				and title=#{title}
+			</if>
+			<if test="content !=  null">			        
+				and content=#{content}
+			</if>
+			<if test="recommendDesc !=  null">			        
+				and recommend_desc=#{recommendDesc}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+			<if test="linkUrl !=  null">			        
+				and link_url=#{linkUrl}
+			</if>
+			<if test="price !=  null">			        
+				and price=#{price}
+			</if>
+			<if test="tel !=  null">			        
+				and tel=#{tel}
+			</if>
+			<if test="areaId !=  null">			        
+				and area_id=#{areaId}
+			</if>
+			<if test="areaName !=  null">			        
+				and area_name=#{areaName}
+			</if>
+			<if test="islandId !=  null">			        
+				and island_id=#{islandId}
+			</if>
+			<if test="islandName !=  null">			        
+				and island_name=#{islandName}
+			</if>
+			<if test="recommendIndex !=  null">			        
+				and recommend_index=#{recommendIndex}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="bigImgUrl !=  null">			        
+				and big_img_url=#{bigImgUrl}
+			</if>
+			<if test="smallImgUrl !=  null">			        
+				and small_img_url=#{smallImgUrl}
+			</if>
+			<if test="linkObligate !=  null">			        
+				and link_obligate=#{linkObligate}
+			</if>
+			<if test="priceBig !=  null">			        
+				and price_big=#{priceBig}
+			</if>
+			<if test="priceSmall !=  null">			        
+				and price_small=#{priceSmall}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="typeId !=  null">			        
+				and type_id=#{typeId}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
+			<if test="viewLink !=  null">			        
+				and view_link=#{viewLink}
+			</if>
+		</where>
+				
+	</select>
+	
+	<select id="pageQuery" parameterType="com.jcl.core.dal.Page" resultMap="RecommendRslMap" fetchSize="15">
+		SELECT
+			id,
+			module_id,
+			module_desc,
+			title,
+			content,
+			recommend_desc,
+			img_url,
+			link_url,
+			price,
+			tel,
+			area_id,
+			area_name,
+			island_id,
+			island_name,
+			recommend_index,
+			valid,
+			big_img_url,
+			small_img_url,
+			link_obligate,
+			price_big,
+			price_small,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person,
+			type_id,
+			type_name,
+			view_link
+		FROM
+			recommend
+		<where>
+			<if test="params !=  null">
+				<if test="params.id !=  null">
+					and id=#{params.id}
+				</if>
+				<if test="params.moduleId !=  null">
+					and module_id=#{params.moduleId}
+				</if>
+				<if test="params.moduleDesc !=  null">
+					and module_desc=#{params.moduleDesc}
+				</if>
+				<if test="params.title !=  null">
+					and title=#{params.title}
+				</if>
+				<if test="params.content !=  null">
+					and content=#{params.content}
+				</if>
+				<if test="params.recommendDesc !=  null">
+					and recommend_desc=#{params.recommendDesc}
+				</if>
+				<if test="params.imgUrl !=  null">
+					and img_url=#{params.imgUrl}
+				</if>
+				<if test="params.linkUrl !=  null">
+					and link_url=#{params.linkUrl}
+				</if>
+				<if test="params.price !=  null">
+					and price=#{params.price}
+				</if>
+				<if test="params.tel !=  null">
+					and tel=#{params.tel}
+				</if>
+				<if test="params.areaId !=  null">
+					and area_id=#{params.areaId}
+				</if>
+				<if test="params.areaName !=  null">
+					and area_name=#{params.areaName}
+				</if>
+				<if test="params.islandId !=  null">
+					and island_id=#{params.islandId}
+				</if>
+				<if test="params.islandName !=  null">
+					and island_name=#{params.islandName}
+				</if>
+				<if test="params.recommendIndex !=  null">
+					and recommend_index=#{params.recommendIndex}
+				</if>
+				<if test="params.valid !=  null">
+					and valid=#{params.valid}
+				</if>
+				<if test="params.bigImgUrl !=  null">
+					and big_img_url=#{params.bigImgUrl}
+				</if>
+				<if test="params.smallImgUrl !=  null">
+					and small_img_url=#{params.smallImgUrl}
+				</if>
+				<if test="params.linkObligate !=  null">
+					and link_obligate=#{params.linkObligate}
+				</if>
+				<if test="params.priceBig !=  null">
+					and price_big=#{params.priceBig}
+				</if>
+				<if test="params.priceSmall !=  null">
+					and price_small=#{params.priceSmall}
+				</if>
+				<if test="params.createTime !=  null">
+					and create_time=#{params.createTime}
+				</if>
+				<if test="params.createPerson !=  null">
+					and create_person=#{params.createPerson}
+				</if>
+				<if test="params.updTime !=  null">
+					and upd_time=#{params.updTime}
+				</if>
+				<if test="params.updPerson !=  null">
+					and upd_person=#{params.updPerson}
+				</if>
+				<if test="params.typeId !=  null">
+					and type_id=#{params.typeId}
+				</if>
+				<if test="params.typeName !=  null">
+					and type_name=#{params.typeName}
+				</if>
+				<if test="params.viewLink !=  null">
+					and view_link=#{params.viewLink}
+				</if>
+			</if>
+		</where>
+			limit #{start},#{end}	
+	</select>
+
+	<insert id="insert" parameterType="com.island.domain.model.Recommend" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO	recommend
+			(id,module_id,module_desc,title,content,recommend_desc,img_url,link_url,price,tel,area_id,area_name,island_id,island_name,recommend_index,valid,big_img_url,small_img_url,link_obligate,price_big,price_small,create_time,create_person,upd_time,upd_person,type_id,type_name,view_link)
+			VALUES(#{id},#{moduleId},#{moduleDesc},#{title},#{content},#{recommendDesc},#{imgUrl},#{linkUrl},#{price},#{tel},#{areaId},#{areaName},#{islandId},#{islandName},#{recommendIndex},#{valid},#{bigImgUrl},#{smallImgUrl},#{linkObligate},#{priceBig},#{priceSmall},#{createTime},#{createPerson},#{updTime},#{updPerson},#{typeId},#{typeName},#{viewLink})		
+	</insert>
+	
+	<update id="update" parameterType="com.island.domain.model.Recommend">
+		update 
+			recommend
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="moduleId !=  null">			        
+				module_id=#{moduleId},
+			</if>
+			<if test="moduleDesc !=  null">			        
+				module_desc=#{moduleDesc},
+			</if>
+			<if test="title !=  null">			        
+				title=#{title},
+			</if>
+			<if test="content !=  null">			        
+				content=#{content},
+			</if>
+			<if test="recommendDesc !=  null">			        
+				recommend_desc=#{recommendDesc},
+			</if>
+			<if test="imgUrl !=  null">			        
+				img_url=#{imgUrl},
+			</if>
+			<if test="linkUrl !=  null">			        
+				link_url=#{linkUrl},
+			</if>
+			<if test="price !=  null">			        
+				price=#{price},
+			</if>
+			<if test="tel !=  null">			        
+				tel=#{tel},
+			</if>
+			<if test="areaId !=  null">			        
+				area_id=#{areaId},
+			</if>
+			<if test="areaName !=  null">			        
+				area_name=#{areaName},
+			</if>
+			<if test="islandId !=  null">			        
+				island_id=#{islandId},
+			</if>
+			<if test="islandName !=  null">			        
+				island_name=#{islandName},
+			</if>
+			<if test="recommendIndex !=  null">			        
+				recommend_index=#{recommendIndex},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="bigImgUrl !=  null">			        
+				big_img_url=#{bigImgUrl},
+			</if>
+			<if test="smallImgUrl !=  null">			        
+				small_img_url=#{smallImgUrl},
+			</if>
+			<if test="linkObligate !=  null">			        
+				link_obligate=#{linkObligate},
+			</if>
+			<if test="priceBig !=  null">			        
+				price_big=#{priceBig},
+			</if>
+			<if test="priceSmall !=  null">			        
+				price_small=#{priceSmall},
+			</if>
+			<if test="createTime !=  null">			        
+				create_time=#{createTime},
+			</if>
+			<if test="createPerson !=  null">			        
+				create_person=#{createPerson},
+			</if>
+			<if test="updTime !=  null">			        
+				upd_time=#{updTime},
+			</if>
+			<if test="updPerson !=  null">			        
+				upd_person=#{updPerson},
+			</if>
+			<if test="typeId !=  null">			        
+				type_id=#{typeId},
+			</if>
+			<if test="typeName !=  null">			        
+				type_name=#{typeName},
+			</if>
+			<if test="viewLink !=  null">			        
+				view_link=#{viewLink},
+			</if>
+		</set>
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="moduleId !=  null">			        
+				and module_id=#{moduleId}
+			</if>
+			<if test="moduleDesc !=  null">			        
+				and module_desc=#{moduleDesc}
+			</if>
+			<if test="title !=  null">			        
+				and title=#{title}
+			</if>
+			<if test="content !=  null">			        
+				and content=#{content}
+			</if>
+			<if test="recommendDesc !=  null">			        
+				and recommend_desc=#{recommendDesc}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+			<if test="linkUrl !=  null">			        
+				and link_url=#{linkUrl}
+			</if>
+			<if test="price !=  null">			        
+				and price=#{price}
+			</if>
+			<if test="tel !=  null">			        
+				and tel=#{tel}
+			</if>
+			<if test="areaId !=  null">			        
+				and area_id=#{areaId}
+			</if>
+			<if test="areaName !=  null">			        
+				and area_name=#{areaName}
+			</if>
+			<if test="islandId !=  null">			        
+				and island_id=#{islandId}
+			</if>
+			<if test="islandName !=  null">			        
+				and island_name=#{islandName}
+			</if>
+			<if test="recommendIndex !=  null">			        
+				and recommend_index=#{recommendIndex}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="bigImgUrl !=  null">			        
+				and big_img_url=#{bigImgUrl}
+			</if>
+			<if test="smallImgUrl !=  null">			        
+				and small_img_url=#{smallImgUrl}
+			</if>
+			<if test="linkObligate !=  null">			        
+				and link_obligate=#{linkObligate}
+			</if>
+			<if test="priceBig !=  null">			        
+				and price_big=#{priceBig}
+			</if>
+			<if test="priceSmall !=  null">			        
+				and price_small=#{priceSmall}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="typeId !=  null">			        
+				and type_id=#{typeId}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
+			<if test="viewLink !=  null">			        
+				and view_link=#{viewLink}
+			</if>
+		</where>
+		
+	</update>
+	<update id="updateByMap" parameterType="java.util.Map">
+		update 
+			recommend
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="moduleId !=  null">			        
+				module_id=#{moduleId},
+			</if>
+			<if test="moduleDesc !=  null">			        
+				module_desc=#{moduleDesc},
+			</if>
+			<if test="title !=  null">			        
+				title=#{title},
+			</if>
+			<if test="content !=  null">			        
+				content=#{content},
+			</if>
+			<if test="recommendDesc !=  null">			        
+				recommend_desc=#{recommendDesc},
+			</if>
+			<if test="imgUrl !=  null">			        
+				img_url=#{imgUrl},
+			</if>
+			<if test="linkUrl !=  null">			        
+				link_url=#{linkUrl},
+			</if>
+			<if test="price !=  null">			        
+				price=#{price},
+			</if>
+			<if test="tel !=  null">			        
+				tel=#{tel},
+			</if>
+			<if test="areaId !=  null">			        
+				area_id=#{areaId},
+			</if>
+			<if test="areaName !=  null">			        
+				area_name=#{areaName},
+			</if>
+			<if test="islandId !=  null">			        
+				island_id=#{islandId},
+			</if>
+			<if test="islandName !=  null">			        
+				island_name=#{islandName},
+			</if>
+			<if test="recommendIndex !=  null">			        
+				recommend_index=#{recommendIndex},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="bigImgUrl !=  null">			        
+				big_img_url=#{bigImgUrl},
+			</if>
+			<if test="smallImgUrl !=  null">			        
+				small_img_url=#{smallImgUrl},
+			</if>
+			<if test="linkObligate !=  null">			        
+				link_obligate=#{linkObligate},
+			</if>
+			<if test="priceBig !=  null">			        
+				price_big=#{priceBig},
+			</if>
+			<if test="priceSmall !=  null">			        
+				price_small=#{priceSmall},
+			</if>
+			<if test="createTime !=  null">			        
+				create_time=#{createTime},
+			</if>
+			<if test="createPerson !=  null">			        
+				create_person=#{createPerson},
+			</if>
+			<if test="updTime !=  null">			        
+				upd_time=#{updTime},
+			</if>
+			<if test="updPerson !=  null">			        
+				upd_person=#{updPerson},
+			</if>
+			<if test="typeId !=  null">			        
+				type_id=#{typeId},
+			</if>
+			<if test="typeName !=  null">			        
+				type_name=#{typeName},
+			</if>
+			<if test="viewLink !=  null">			        
+				view_link=#{viewLink},
+			</if>
+		</set>
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+		</where>
+		
+	</update>
+	
+	<update id="cmplxUpdate" parameterType="java.util.Map">
+		update 
+			recommend
+		<set>
+			<if test="updNewMap.id !=  null">
+				id=#{updNewMap.id},
+			</if>
+			<if test="updNewMap.moduleId !=  null">
+				module_id=#{updNewMap.moduleId},
+			</if>
+			<if test="updNewMap.moduleDesc !=  null">
+				module_desc=#{updNewMap.moduleDesc},
+			</if>
+			<if test="updNewMap.title !=  null">
+				title=#{updNewMap.title},
+			</if>
+			<if test="updNewMap.content !=  null">
+				content=#{updNewMap.content},
+			</if>
+			<if test="updNewMap.recommendDesc !=  null">
+				recommend_desc=#{updNewMap.recommendDesc},
+			</if>
+			<if test="updNewMap.imgUrl !=  null">
+				img_url=#{updNewMap.imgUrl},
+			</if>
+			<if test="updNewMap.linkUrl !=  null">
+				link_url=#{updNewMap.linkUrl},
+			</if>
+			<if test="updNewMap.price !=  null">
+				price=#{updNewMap.price},
+			</if>
+			<if test="updNewMap.tel !=  null">
+				tel=#{updNewMap.tel},
+			</if>
+			<if test="updNewMap.areaId !=  null">
+				area_id=#{updNewMap.areaId},
+			</if>
+			<if test="updNewMap.areaName !=  null">
+				area_name=#{updNewMap.areaName},
+			</if>
+			<if test="updNewMap.islandId !=  null">
+				island_id=#{updNewMap.islandId},
+			</if>
+			<if test="updNewMap.islandName !=  null">
+				island_name=#{updNewMap.islandName},
+			</if>
+			<if test="updNewMap.recommendIndex !=  null">
+				recommend_index=#{updNewMap.recommendIndex},
+			</if>
+			<if test="updNewMap.valid !=  null">
+				valid=#{updNewMap.valid},
+			</if>
+			<if test="updNewMap.bigImgUrl !=  null">
+				big_img_url=#{updNewMap.bigImgUrl},
+			</if>
+			<if test="updNewMap.smallImgUrl !=  null">
+				small_img_url=#{updNewMap.smallImgUrl},
+			</if>
+			<if test="updNewMap.linkObligate !=  null">
+				link_obligate=#{updNewMap.linkObligate},
+			</if>
+			<if test="updNewMap.priceBig !=  null">
+				price_big=#{updNewMap.priceBig},
+			</if>
+			<if test="updNewMap.priceSmall !=  null">
+				price_small=#{updNewMap.priceSmall},
+			</if>
+			<if test="updNewMap.createTime !=  null">
+				create_time=#{updNewMap.createTime},
+			</if>
+			<if test="updNewMap.createPerson !=  null">
+				create_person=#{updNewMap.createPerson},
+			</if>
+			<if test="updNewMap.updTime !=  null">
+				upd_time=#{updNewMap.updTime},
+			</if>
+			<if test="updNewMap.updPerson !=  null">
+				upd_person=#{updNewMap.updPerson},
+			</if>
+			<if test="updNewMap.typeId !=  null">
+				type_id=#{updNewMap.typeId},
+			</if>
+			<if test="updNewMap.typeName !=  null">
+				type_name=#{updNewMap.typeName},
+			</if>
+			<if test="updNewMap.viewLink !=  null">
+				view_link=#{updNewMap.viewLink},
+			</if>
+		</set>
+		<where>
+			<if test="updCondMap.id !=  null">
+				and id=#{updCondMap.id}
+			</if>
+			<if test="updCondMap.moduleId !=  null">
+				and module_id=#{updCondMap.moduleId}
+			</if>
+			<if test="updCondMap.moduleDesc !=  null">
+				and module_desc=#{updCondMap.moduleDesc}
+			</if>
+			<if test="updCondMap.title !=  null">
+				and title=#{updCondMap.title}
+			</if>
+			<if test="updCondMap.content !=  null">
+				and content=#{updCondMap.content}
+			</if>
+			<if test="updCondMap.recommendDesc !=  null">
+				and recommend_desc=#{updCondMap.recommendDesc}
+			</if>
+			<if test="updCondMap.imgUrl !=  null">
+				and img_url=#{updCondMap.imgUrl}
+			</if>
+			<if test="updCondMap.linkUrl !=  null">
+				and link_url=#{updCondMap.linkUrl}
+			</if>
+			<if test="updCondMap.price !=  null">
+				and price=#{updCondMap.price}
+			</if>
+			<if test="updCondMap.tel !=  null">
+				and tel=#{updCondMap.tel}
+			</if>
+			<if test="updCondMap.areaId !=  null">
+				and area_id=#{updCondMap.areaId}
+			</if>
+			<if test="updCondMap.areaName !=  null">
+				and area_name=#{updCondMap.areaName}
+			</if>
+			<if test="updCondMap.islandId !=  null">
+				and island_id=#{updCondMap.islandId}
+			</if>
+			<if test="updCondMap.islandName !=  null">
+				and island_name=#{updCondMap.islandName}
+			</if>
+			<if test="updCondMap.recommendIndex !=  null">
+				and recommend_index=#{updCondMap.recommendIndex}
+			</if>
+			<if test="updCondMap.valid !=  null">
+				and valid=#{updCondMap.valid}
+			</if>
+			<if test="updCondMap.bigImgUrl !=  null">
+				and big_img_url=#{updCondMap.bigImgUrl}
+			</if>
+			<if test="updCondMap.smallImgUrl !=  null">
+				and small_img_url=#{updCondMap.smallImgUrl}
+			</if>
+			<if test="updCondMap.linkObligate !=  null">
+				and link_obligate=#{updCondMap.linkObligate}
+			</if>
+			<if test="updCondMap.priceBig !=  null">
+				and price_big=#{updCondMap.priceBig}
+			</if>
+			<if test="updCondMap.priceSmall !=  null">
+				and price_small=#{updCondMap.priceSmall}
+			</if>
+			<if test="updCondMap.createTime !=  null">
+				and create_time=#{updCondMap.createTime}
+			</if>
+			<if test="updCondMap.createPerson !=  null">
+				and create_person=#{updCondMap.createPerson}
+			</if>
+			<if test="updCondMap.updTime !=  null">
+				and upd_time=#{updCondMap.updTime}
+			</if>
+			<if test="updCondMap.updPerson !=  null">
+				and upd_person=#{updCondMap.updPerson}
+			</if>
+			<if test="updCondMap.typeId !=  null">
+				and type_id=#{updCondMap.typeId}
+			</if>
+			<if test="updCondMap.typeName !=  null">
+				and type_name=#{updCondMap.typeName}
+			</if>
+			<if test="updCondMap.viewLink !=  null">
+				and view_link=#{updCondMap.viewLink}
+			</if>
+		</where>
+		
+	</update>
+	
+	<delete id="delete" parameterType="com.island.domain.model.Recommend">		
+		DELETE
+		FROM
+			recommend 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="moduleId !=  null">			        
+				and module_id=#{moduleId}
+			</if>
+			<if test="moduleDesc !=  null">			        
+				and module_desc=#{moduleDesc}
+			</if>
+			<if test="title !=  null">			        
+				and title=#{title}
+			</if>
+			<if test="content !=  null">			        
+				and content=#{content}
+			</if>
+			<if test="recommendDesc !=  null">			        
+				and recommend_desc=#{recommendDesc}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+			<if test="linkUrl !=  null">			        
+				and link_url=#{linkUrl}
+			</if>
+			<if test="price !=  null">			        
+				and price=#{price}
+			</if>
+			<if test="tel !=  null">			        
+				and tel=#{tel}
+			</if>
+			<if test="areaId !=  null">			        
+				and area_id=#{areaId}
+			</if>
+			<if test="areaName !=  null">			        
+				and area_name=#{areaName}
+			</if>
+			<if test="islandId !=  null">			        
+				and island_id=#{islandId}
+			</if>
+			<if test="islandName !=  null">			        
+				and island_name=#{islandName}
+			</if>
+			<if test="recommendIndex !=  null">			        
+				and recommend_index=#{recommendIndex}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="bigImgUrl !=  null">			        
+				and big_img_url=#{bigImgUrl}
+			</if>
+			<if test="smallImgUrl !=  null">			        
+				and small_img_url=#{smallImgUrl}
+			</if>
+			<if test="linkObligate !=  null">			        
+				and link_obligate=#{linkObligate}
+			</if>
+			<if test="priceBig !=  null">			        
+				and price_big=#{priceBig}
+			</if>
+			<if test="priceSmall !=  null">			        
+				and price_small=#{priceSmall}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="typeId !=  null">			        
+				and type_id=#{typeId}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
+			<if test="viewLink !=  null">			        
+				and view_link=#{viewLink}
+			</if>
+		</where>
+		
+	</delete>
+	<delete id="deleteByMap" parameterType="java.util.Map">		
+		DELETE
+		FROM
+			recommend 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="moduleId !=  null">			        
+				and module_id=#{moduleId}
+			</if>
+			<if test="moduleDesc !=  null">			        
+				and module_desc=#{moduleDesc}
+			</if>
+			<if test="title !=  null">			        
+				and title=#{title}
+			</if>
+			<if test="content !=  null">			        
+				and content=#{content}
+			</if>
+			<if test="recommendDesc !=  null">			        
+				and recommend_desc=#{recommendDesc}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+			<if test="linkUrl !=  null">			        
+				and link_url=#{linkUrl}
+			</if>
+			<if test="price !=  null">			        
+				and price=#{price}
+			</if>
+			<if test="tel !=  null">			        
+				and tel=#{tel}
+			</if>
+			<if test="areaId !=  null">			        
+				and area_id=#{areaId}
+			</if>
+			<if test="areaName !=  null">			        
+				and area_name=#{areaName}
+			</if>
+			<if test="islandId !=  null">			        
+				and island_id=#{islandId}
+			</if>
+			<if test="islandName !=  null">			        
+				and island_name=#{islandName}
+			</if>
+			<if test="recommendIndex !=  null">			        
+				and recommend_index=#{recommendIndex}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="bigImgUrl !=  null">			        
+				and big_img_url=#{bigImgUrl}
+			</if>
+			<if test="smallImgUrl !=  null">			        
+				and small_img_url=#{smallImgUrl}
+			</if>
+			<if test="linkObligate !=  null">			        
+				and link_obligate=#{linkObligate}
+			</if>
+			<if test="priceBig !=  null">			        
+				and price_big=#{priceBig}
+			</if>
+			<if test="priceSmall !=  null">			        
+				and price_small=#{priceSmall}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="typeId !=  null">			        
+				and type_id=#{typeId}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
+			<if test="viewLink !=  null">			        
+				and view_link=#{viewLink}
+			</if>
+		</where>
+		
+	</delete>
+</mapper>

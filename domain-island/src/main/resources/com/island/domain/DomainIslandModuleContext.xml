@@ -30,5 +30,9 @@
 		<property name="userDao" ref="UserDAO"></property>
 	</bean>
 	
+	<bean id="RecommendDAO" class="com.island.domain.dal.RecommendIbatisDAOImpl" />		
+	<bean id="frontIndexBiz" class="com.island.domain.biz.FrontIndexBiz">
+		<property name="recommendDao" ref="RecommendDAO"></property>
+	</bean>
 	
 </beans>

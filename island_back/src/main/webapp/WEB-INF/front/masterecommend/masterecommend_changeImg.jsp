@@ -15,23 +15,15 @@
 	
 	<table class="datalist" width="100%">
 		<tr>
-			 	<s:textfield label="链接地址" name="link"></s:textfield> 
+			 	 <s:file label="选择图片" name="image"></s:file>  
 		</tr>
 		<tr>
-			 	<s:textfield label="描述" name="desc"></s:textfield> 
-		</tr>
-		<tr>
-			 	<s:textfield label="排序" name="index"></s:textfield> 
-		</tr>
-		<tr>
-			 	 <s:file label="上传图片" name="image"></s:file>  
-		</tr>
-		<tr>
-			 	  <s:submit value="提交" />  
+			 	  <s:submit value="更换图片" />  
 		</tr>
 	</table>
            
-           
+<input type="hidden" id="id" name="id" value="${id}"/>
+<input type="hidden" id="type" name="type" value="changeImg"/>         
 </s:form>  
 </div>
 </body>
