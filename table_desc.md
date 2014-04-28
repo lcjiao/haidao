@@ -41,6 +41,7 @@
     `module_desc` varchar(50) DEFAULT NULL COMMENT '模块描述 如 首页大图推荐 ',
     `title` varchar(200) DEFAULT NULL COMMENT '主题',
     `content` varchar(500) DEFAULT NULL COMMENT '内容',
+    `recommend_time` varchar(50) DEFAULT NULL COMMENT '推荐时间',
     `recommend_desc` varchar(500) DEFAULT NULL COMMENT '备注',
     `img_url` varchar(500) DEFAULT NULL COMMENT '图片地址',
     `link_url` varchar(500) DEFAULT NULL COMMENT '链接地址',
