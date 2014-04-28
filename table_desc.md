@@ -41,7 +41,7 @@
     `module_desc` varchar(50) DEFAULT NULL COMMENT '模块描述 如 首页大图推荐 ',
     `title` varchar(200) DEFAULT NULL COMMENT '主题',
     `content` varchar(500) DEFAULT NULL COMMENT '内容',
-    `desc` varchar(500) DEFAULT NULL COMMENT '备注',
+    `recommend_desc` varchar(500) DEFAULT NULL COMMENT '备注',
     `img_url` varchar(500) DEFAULT NULL COMMENT '图片地址',
     `link_url` varchar(500) DEFAULT NULL COMMENT '链接地址',
     `price` varchar(50) DEFAULT NULL COMMENT '价格',
@@ -50,7 +50,7 @@
     `area_name` varchar(50) DEFAULT NULL COMMENT '区域名称',
     `island_id` int(4) DEFAULT NULL COMMENT '岛屿编号',
     `island_name` varchar(50) DEFAULT NULL COMMENT '岛屿名称',
-    `index` int(4) DEFAULT NULL COMMENT '排序',
+    `recommend_index` int(4) DEFAULT NULL COMMENT '排序',
     `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
     `big_img_url` varchar(500) DEFAULT NULL COMMENT '大图地址',
     `small_img_url` varchar(500) DEFAULT NULL COMMENT '小图图地址',
@@ -64,8 +64,7 @@
     `type_id` int(4) DEFAULT NULL COMMENT '推荐类型',
     `type_name` varchar(50) DEFAULT NULL COMMENT '推荐类型名称',
     `view_link` varchar(500) DEFAULT NULL COMMENT '视频地址',
-    PRIMARY KEY (`id`),
-    UNIQUE KEY `module_key` (`module_id`)
+    PRIMARY KEY (`id`)
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8
     
 --------
