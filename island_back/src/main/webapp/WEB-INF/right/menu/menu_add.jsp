@@ -29,6 +29,11 @@
 			<td><input type=text class="text" value="" id="parent_id" name="parentId"  style="_width:316px;"/></td>					
 		</tr>
 		
+		<tr>
+			<td>显示次序</td>
+			<td><input type=text class="text" value="" id="show_index" name="showIndex"  style="_width:316px;"/></td>					
+		</tr>
+		
 	</tbody>	
 </table>
 </div>

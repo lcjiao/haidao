@@ -32,6 +32,7 @@
 							<td>菜单url</td>
 							<td>父菜单编号</td>
 							<td>菜单编号</td>
+							<td>显示次序</td>
 							<td>操作</td>
 						</tr>
 					</thead>
@@ -49,7 +50,10 @@
 								</td>
 								<td>
 									<c:out value="${menu.id}"></c:out>
-								</td>	
+								</td>
+								<td>
+									<c:out value="${menu.showIndex}"></c:out>
+								</td>		
 								<td>
 									<a title="${menu.id}" onclick="editMenu(this)" >修改</a>
 								</td>									

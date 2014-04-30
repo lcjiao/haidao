@@ -11,6 +11,7 @@
 			<result property="menuUrl" column="menu_url" />
 			<result property="menuParent" column="menu_parent" />
 			<result property="createTime" column="create_time" />
+			<result property="showIndex" column="show_index" />
 			<result property="valid" column="valid" />
 	</resultMap>
 
@@ -21,6 +22,7 @@
 			menu_url,
 			menu_parent,
 			create_time,
+			show_index,
 			valid
 		FROM
 			menu
@@ -37,6 +39,7 @@
 			menu_url,
 			menu_parent,
 			create_time,
+			show_index,
 			valid
 		FROM
 			menu
@@ -70,6 +73,7 @@
 			menu_url,
 			menu_parent,
 			create_time,
+			show_index,
 			valid
 		FROM
 			menu
@@ -159,6 +163,7 @@
 			menu_url,
 			menu_parent,
 			create_time,
+			show_index,
 			valid
 		FROM
 			menu
@@ -189,8 +194,8 @@
 
 	<insert id="insert" parameterType="com.island.domain.model.Menu" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO	menu
-			(id,menu_name,menu_url,menu_parent,create_time,valid)
-			VALUES(#{id},#{menuName},#{menuUrl},#{menuParent},#{createTime},#{valid})		
+			(id,menu_name,menu_url,menu_parent,create_time,valid,show_index)
+			VALUES(#{id},#{menuName},#{menuUrl},#{menuParent},#{createTime},#{valid},#{showIndex})		
 	</insert>
 	
 	<update id="update" parameterType="com.island.domain.model.Menu">
@@ -214,6 +219,9 @@
 			</if>
 			<if test="valid !=  null">			        
 				valid=#{valid},
+			</if>
+			<if test="showIndex !=  null">			        
+				show_index=#{showIndex},
 			</if>
 		</set>
 		<where>			
@@ -260,6 +268,9 @@
 			<if test="valid !=  null">			        
 				valid=#{valid},
 			</if>
+			<if test="showIndex !=  null">			        
+				show_index=#{showIndex},
+			</if>
 		</set>
 		<where>
 			<if test="id !=  null">
@@ -269,51 +280,7 @@
 		
 	</update>
 	
-	<update id="cmplxUpdate" parameterType="java.util.Map">
-		update 
-			menu
-		<set>
-			<if test="updNewMap.id !=  null">
-				id=#{updNewMap.id},
-			</if>
-			<if test="updNewMap.menuName !=  null">
-				menu_name=#{updNewMap.menuName},
-			</if>
-			<if test="updNewMap.menuUrl !=  null">
-				menu_url=#{updNewMap.menuUrl},
-			</if>
-			<if test="updNewMap.menuParent !=  null">
-				menu_parent=#{updNewMap.menuParent},
-			</if>
-			<if test="updNewMap.createTime !=  null">
-				create_time=#{updNewMap.createTime},
-			</if>
-			<if test="updNewMap.valid !=  null">
-				valid=#{updNewMap.valid},
-			</if>
-		</set>
-		<where>
-			<if test="updCondMap.id !=  null">
-				and id=#{updCondMap.id}
-			</if>
-			<if test="updCondMap.menuName !=  null">
-				and menu_name=#{updCondMap.menuName}
-			</if>
-			<if test="updCondMap.menuUrl !=  null">
-				and menu_url=#{updCondMap.menuUrl}
-			</if>
-			<if test="updCondMap.menuParent !=  null">
-				and menu_parent=#{updCondMap.menuParent}
-			</if>
-			<if test="updCondMap.createTime !=  null">
-				and create_time=#{updCondMap.createTime}
-			</if>
-			<if test="updCondMap.valid !=  null">
-				and valid=#{updCondMap.valid}
-			</if>
-		</where>
-		
-	</update>
+	
 	
 	<delete id="delete" parameterType="com.island.domain.model.Menu">		
 		DELETE
@@ -375,6 +342,7 @@
 			menu_url,
 			menu_parent,
 			create_time,
+			show_index,
 			valid
 		FROM
 			menu

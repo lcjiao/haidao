@@ -29,6 +29,12 @@
 			<td><input type=text class="text" value="${parentId}" id="parent_id" name="parentId"  style="_width:316px;"/></td>					
 		</tr>
 		
+		<tr>
+			<td>显示次序</td>
+			<td><input type=text class="text" value="${showIndex}" id="show_index" name="showIndex"  style="_width:316px;"/></td>					
+		</tr>
+		
+		
 	</tbody>	
 </table>
 <input type="hidden" id="menu_id" name="menuId" value="${menuId}"/>

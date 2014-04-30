@@ -2,7 +2,7 @@ package com.island.domain.model;
 
 import com.jcl.core.dal.AbsModel;
 
-public class Recommend extends AbsModel{
+public class Recommend extends AbsModel implements Comparable{
 
 	public String get(){
 		return "haidao_db.recommend";
@@ -462,5 +462,19 @@ public class Recommend extends AbsModel{
 	public boolean validate(){
 		boolean passed = true;
 		return true;
+	}
+	@Override
+	public int compareTo(Object arg) {
+		Recommend obj = (Recommend)arg;
+		if(this.recommendIndex ==null || obj.getRecommendIndex() == null){
+			return 0;
+		}
+		if( this.recommendIndex > obj.getRecommendIndex()){
+			return 1;
+		}
+		if( this.recommendIndex < obj.getRecommendIndex()){
+			return -1;
+		}
+		return 0;
 	}
 }

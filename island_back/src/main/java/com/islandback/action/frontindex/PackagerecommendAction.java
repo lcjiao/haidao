@@ -5,6 +5,7 @@ package com.islandback.action.frontindex;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -167,7 +168,7 @@ public class PackagerecommendAction extends ActionSupport {
 		if( list != null && !list.isEmpty()){
 			oldIndexObj = list.get(0);
 		}
-		if( oldIndexObj != null ){
+		if( oldIndexObj != null && thisObj != null){
 			Map<String,Object> oldObjParams = new HashMap<String,Object>(0);
 			oldObjParams.put("recommendIndex", thisObj.getRecommendIndex());
 			oldObjParams.put("updPerson", creater);
@@ -200,10 +201,15 @@ public class PackagerecommendAction extends ActionSupport {
 			this.totalSize=0;
 		}
 		initTotalPageSize();
+		Collections.sort(list);
 		this.recommendList = list;
 	}
 	
 	 public String upload() {  
+		 if(image == null){
+			   return "";
+		   }
+
 		   Date date = new Date();
 	   	   String namePrefix=format.format(date);
 	       String path = imageServPath+namePrefix;

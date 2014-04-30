@@ -5,6 +5,7 @@ package com.islandback.action.frontindex;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +16,7 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ResultPath;
 
 import com.jcl.core.module.ModuleRegistry;
+import com.anjuke.core.util.ObjectUtils;
 import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.FrontIndexBiz;
 import com.island.domain.model.Recommend;
@@ -167,7 +169,7 @@ public class MasterecommendAction extends ActionSupport {
 		if( list != null && !list.isEmpty()){
 			oldIndexObj = list.get(0);
 		}
-		if( oldIndexObj != null ){
+		if( oldIndexObj != null && thisObj != null){
 			Map<String,Object> oldObjParams = new HashMap<String,Object>(0);
 			oldObjParams.put("recommendIndex", thisObj.getRecommendIndex());
 			oldObjParams.put("updPerson", creater);
@@ -200,10 +202,14 @@ public class MasterecommendAction extends ActionSupport {
 			this.totalSize=0;
 		}
 		initTotalPageSize();
+		Collections.sort(list);
 		this.recommendList = list;
 	}
 	
 	 public String upload() {  
+		   if(image == null){
+			   return "";
+		   }
 		   Date date = new Date();
 	   	   String namePrefix=format.format(date);
 	       String path = imageServPath+namePrefix;

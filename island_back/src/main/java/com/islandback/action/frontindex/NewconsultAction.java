@@ -2,6 +2,7 @@ package com.islandback.action.frontindex;
 
 
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,6 +71,8 @@ public class NewconsultAction extends ActionSupport {
 		addObj.setCreateTime(now);
 		addObj.setRecommendIndex(index);
 		addObj.setValid(1);
+		
+				
 		this.frontIndexBiz.addMasterRecommend(addObj);
 		doList();
 		return "list";
@@ -115,11 +118,36 @@ public class NewconsultAction extends ActionSupport {
 		params.put("updPerson", creater);
 		params.put("id", id);
 		
-		
+		changeIndexBySys(creater);
+
 		this.frontIndexBiz.updRecommend(params);		
 		doList();
 		return "list";
 	}
+	
+	private void changeIndexBySys(String creater){
+		Recommend thisObj = this.frontIndexBiz.queryById(id);
+		/**
+		 * 查询之前此排序得条目 如存在对调排序次序
+		 */
+		Map<String,Object> indexParams = new HashMap<String,Object>(0);
+		indexParams.put("recommendIndex", index);
+		indexParams.put("moduleId", ModuleEnum.FRONT_NEW_CONSULT);
+		indexParams.put("valid", 1);
+		List<Recommend> list = frontIndexBiz.queryByMap(indexParams);
+		Recommend oldIndexObj = null;
+		if( list != null && !list.isEmpty()){
+			oldIndexObj = list.get(0);
+		}
+		if( oldIndexObj != null && thisObj != null){
+			Map<String,Object> oldObjParams = new HashMap<String,Object>(0);
+			oldObjParams.put("recommendIndex", thisObj.getRecommendIndex());
+			oldObjParams.put("updPerson", creater);
+			oldObjParams.put("id", oldIndexObj.getId());
+			this.frontIndexBiz.updRecommend(oldObjParams);
+		}	
+	}
+
 	
 	private void doList(){
 		if(pageNo == null || pageNo < 1){
@@ -146,6 +174,7 @@ public class NewconsultAction extends ActionSupport {
 			this.totalSize=0;
 		}
 		initTotalPageSize();
+		Collections.sort(list);
 		this.recommendList = list;
 	}
 	

@@ -27,11 +27,13 @@ public class MenuAction extends ActionSupport{
 	private String menuUrl;
 	private Integer parentId;
 	private Integer menuId;
+	private Integer showIndex;
 	public String addMenu(){
 		Menu addObj = new Menu();
 		addObj.setMenuName(menuName);
 		addObj.setMenuParent(parentId);
 		addObj.setMenuUrl(menuUrl);
+		addObj.setShowIndex(showIndex);
 		this.roleBiz.addMenu(addObj);
 		
 		Map<String,Object> params = new HashMap<String,Object>(0);
@@ -56,6 +58,7 @@ public class MenuAction extends ActionSupport{
 		this.menuName=menu.getMenuName();
 		this.menuUrl=menu.getMenuUrl();
 		this.parentId=menu.getMenuParent();
+		this.showIndex=menu.getShowIndex();
 		return "edit";
 	}
 	
@@ -66,6 +69,7 @@ public class MenuAction extends ActionSupport{
 		params.put("menuName", menuName);
 		params.put("menuUrl", menuUrl);
 		params.put("menuParent", parentId);
+		params.put("showIndex", showIndex);
 		this.roleBiz.updMenuByMap(params);
 		
 		Map<String,Object> qparams = new HashMap<String,Object>(0);
@@ -113,6 +117,14 @@ public class MenuAction extends ActionSupport{
 
 	public void setMenuId(Integer menuId) {
 		this.menuId = menuId;
+	}
+
+	public Integer getShowIndex() {
+		return showIndex;
+	}
+
+	public void setShowIndex(Integer showIndex) {
+		this.showIndex = showIndex;
 	}
 	
 	

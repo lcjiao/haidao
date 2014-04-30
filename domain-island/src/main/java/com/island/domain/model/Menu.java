@@ -107,13 +107,21 @@ public class Menu extends AbsModel implements Comparable{
 		this.childList = childList;
 	}
 	
+	private Integer showIndex;
+	public Integer getShowIndex() {
+		return showIndex;
+	}
+	public void setShowIndex(Integer showIndex) {
+		this.showIndex = showIndex;
+	}
+	
 	
 	public int compareTo(Object obj) {
 		Menu menu = (Menu) obj;
-		if(menu.getId() > this.id ){
+		if(menu.getShowIndex() > this.showIndex){
 			return -1;
 		}
-		if( menu.getId() < this.id){
+		if( menu.getShowIndex() < this.showIndex){
 			return 1;
 		}
 		return 0;

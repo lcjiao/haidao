@@ -65,10 +65,10 @@
 	//表单提交前数据验证
 	function checkData(){
 		var role_name = $("#link").val();
-		if(role_name == ''){
+		/* if(role_name == ''){
 			alert('请输入角色名');
 			return false;
-		}
+		} */
 		return true;
 		
 	}
