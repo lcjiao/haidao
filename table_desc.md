@@ -21,6 +21,7 @@
     `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '主键id',
     `area_id` int(8) DEFAULT NULL COMMENT '归属区域编号',
     `name` varchar(50) DEFAULT NULL COMMENT '岛屿名称',
+    `island_desc` text DEFAULT NULL COMMENT '岛屿描述',
     `country` varchar(50) DEFAULT NULL COMMENT '归属国家',
     `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
     `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
