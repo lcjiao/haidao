@@ -35,4 +35,12 @@
 		<property name="recommendDao" ref="RecommendDAO"></property>
 	</bean>
 	
+	<bean id="AreaDAO" class="com.island.domain.dal.AreaIbatisDAOImpl" />		
+	<bean id="IslandDAO" class="com.island.domain.dal.IslandIbatisDAOImpl" />		
+	
+	<bean id="areaIslandBiz" class="com.island.domain.biz.AreaIslandBiz">
+		<property name="areaDao" ref="AreaDAO"></property>
+		<property name="islandDao" ref="IslandDAO"></property>
+	</bean>
+	
 </beans>
