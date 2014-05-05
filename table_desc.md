@@ -20,6 +20,7 @@
     CREATE TABLE `island` (
     `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '主键id',
     `area_id` int(8) DEFAULT NULL COMMENT '归属区域编号',
+    `area_name` varchar(50) DEFAULT NULL COMMENT '归属区域名称',
     `name` varchar(50) DEFAULT NULL COMMENT '岛屿名称',
     `island_desc` text DEFAULT NULL COMMENT '岛屿描述',
     `country` varchar(50) DEFAULT NULL COMMENT '归属国家',
