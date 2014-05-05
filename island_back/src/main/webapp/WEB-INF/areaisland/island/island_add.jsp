@@ -8,9 +8,32 @@
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
 
-
-
-
+	<style>
+			form {
+				margin: 0;
+			}
+			textarea {
+				display: block;
+			}
+		</style>
+		<link rel="stylesheet" href="${ctx}/kindeditor/themes/default/default.css" />
+		<script charset="utf-8" src="${ctx}/kindeditor/kindeditor-min.js"></script>
+		<script charset="utf-8" src="${ctx}/kindeditor/lang/zh_CN.js"></script>
+		<script>
+			var editor;
+			KindEditor.ready(function(K) {
+				editor = K.create('textarea[name="content"]', {
+					resizeType : 1,
+					allowPreviewEmoticons : false,
+					allowImageUpload : false,
+					items : [
+						'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+						'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+						'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+				});
+			});
+		</script>	
+		
 
 </head>
 <body>
@@ -37,20 +60,10 @@
 			<td>所属国家</td>
 			<td><input type=text class="text" value="" id="country" name="country"  style="_width:316px;"/></td>					
 		</tr>
-		<!-- <tr>
-			<td>岛屿简介</td>
-			<td><input type=text class="text" value="" id="island_desc" name="desc"  style="_width:316px;"/></td>					
-		</tr> -->
 		<tr>
 			<td>岛屿简介</td>
 			<td>
-				<div class="btn-toolbar" data-role="editor-toolbar"
-            		data-target="#editor">
-     				 ...
-    			</div> 
-    			
-    			<div id="editor">
-    			</div> 
+				<textarea name="content" style="width:700px;height:200px;">KindEditor1</textarea>
 			</td>
 		</tr>
 	</tbody>	
@@ -58,18 +71,17 @@
 </div>
 <table class="creatcustomer_tfoot" width="100%">
 	<tfoot>
-		<td><input type=button  value="保存" id="save"/>
-		   <input style="display: none" type=button  value="继续添加" id="add_more"/>
-		   <!-- <input type=button  value="返回" id="reset"/> -->
-		  </td>
+		<td>
+			<input type=button  value="保存" id="save"/>
+		 </td>
 </tfoot>
 </table>
 <input type="hidden" id="area_name" name="areaName" value=""/>
+<input type="hidden" id="island_desc" name="desc" value=""/>
 </form>
 </body>
 <script>
 	$(function(){
-		$('#editor').wysiwyg();
 		$("#area_id").bind('change',setAreaName);
 		$("#save").bind('click',submitSave);
 		$("#reset").bind('click',resetCreate);
@@ -84,6 +96,7 @@
 	});
 	
 	function submitSave(){
+		$("#island_desc").val(editor.html());
 		if( checkData() ){
 			$("#form").submit();
 		}

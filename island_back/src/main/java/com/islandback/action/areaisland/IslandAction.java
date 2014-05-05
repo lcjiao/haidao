@@ -172,6 +172,10 @@ public class IslandAction extends ActionSupport {
 			
 	}
 	
+	public String testKindeditor(){
+		return "demo";
+	}
+	
 	public String getName() {
 		return name;
 	}
