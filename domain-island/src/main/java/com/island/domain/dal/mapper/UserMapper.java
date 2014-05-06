@@ -9,4 +9,6 @@ import com.island.domain.model.User;
 public interface UserMapper extends IMapper<User>{
 
 	public Integer queryUserCount(Map<String,Object> params);
+	
+	public void updateByRoleId(Map<String,Object> params);
 }

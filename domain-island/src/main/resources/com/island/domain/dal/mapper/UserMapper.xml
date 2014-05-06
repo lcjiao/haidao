@@ -521,4 +521,45 @@
 		</where>
 		
 	</delete>
+	
+	
+	<update id="updateByRoleId" parameterType="java.util.Map">
+		update 
+			user
+		<set> 
+			<if test="userName !=  null">			        
+				user_name=#{userName},
+			</if>
+			<if test="userPass !=  null">			        
+				user_pass=#{userPass},
+			</if>
+			<if test="userRoleId !=  null">			        
+				user_role_id=#{userRoleId},
+			</if>
+			<if test="createTime !=  null">			        
+				create_time=#{createTime},
+			</if>
+			<if test="createPerson !=  null">			        
+				create_person=#{createPerson},
+			</if>
+			<if test="updTime !=  null">			        
+				upd_time=#{updTime},
+			</if>
+			<if test="updPerson !=  null">			        
+				upd_person=#{updPerson},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="roleName !=  null">			        
+				role_name=#{roleName},
+			</if>
+		</set>
+		<where>
+			<if test="roleId !=  null">
+				user_role_id=#{roleId}
+			</if>
+		</where>
+		
+	</update>
 </mapper>

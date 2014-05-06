@@ -49,6 +49,18 @@ public class UserIbatisDAOImpl extends AbsiBatisDAOImpl<User> {
 			session.commit();
 			session.close();
 		}
-
+	}
+	
+	public void updateByRoleId(Map<String,Object> params){
+		SqlSession session = SqlmapUtils.openSession(DataSourceDefinition.HAIDAO_DB);
+		try {
+			UserMapper mapper = session.getMapper(UserMapper.class);
+			mapper.updateByRoleId(params);
+		} catch (SessionException e) {
+			e.printStackTrace();
+		} finally {
+			session.commit();
+			session.close();
+		}
 	}
 }

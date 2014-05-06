@@ -58,5 +58,9 @@ public class AreaIslandBiz {
 	public Integer countIslandByMap(Map<String,Object> params){
 		return this.islandDao.countByMap(params);
 	}
+	
+	public void updateIslandByAreaId(Map<String,Object> params){
+		this.islandDao.updateByAreaId(params);
+	}
 
 }

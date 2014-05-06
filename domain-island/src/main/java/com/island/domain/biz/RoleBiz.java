@@ -104,6 +104,10 @@ public class RoleBiz extends AbsCfgListener{
 		 this.menuDao.updateByMap(params);
 	}
 	
+	public void updateUserByRoleId(Map<String,Object> params){
+		this.userDao.updateByRoleId(params);
+	}
+	
 	private MenuIbatisDAOImpl menuDao;
 	private RoleIbatisDAOImpl roleDao;
 	private RoleRightIbatisDAOImpl roleRightDao;
