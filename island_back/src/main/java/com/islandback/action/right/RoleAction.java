@@ -174,6 +174,15 @@ public class RoleAction extends ActionSupport{
 		setParams.put("id", roleId);
 		this.roleBiz.updRole(setParams);
 		
+		/**
+		 * 更新用户表对应得角色名称
+		 */
+		Map<String,Object> updUserParams = new HashMap<String,Object>(0);
+		updUserParams.put("roleName", roleName);
+		updUserParams.put("updPerson", creater);
+		updUserParams.put("roleId", roleId);
+		this.roleBiz.updateUserByRoleId(updUserParams);
+		
 		Map<String,Object> params = new HashMap<String,Object>(0);
 		params.put("valid", 1);
 		List<Role> list = this.roleBiz.queryRoleByMap(params);

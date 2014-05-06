@@ -40,7 +40,7 @@
 							<td>岛屿名称</td>
 							<td>所属区域</td>
 							<td>所属国家</td>
-							<td>岛屿简介</td>
+							<!-- <td>岛屿简介</td> -->
 							<td>操作</td>
 						</tr>
 					</thead>
@@ -56,9 +56,9 @@
 								<td>
 									<c:out value="${island.country}"></c:out>
 								</td>
-								<td>
-									<c:out value="${island.islandDesc}"></c:out>
-								</td>
+								<%-- <td>
+									<c:out value="${island.islandDesc}"></c:out> 
+								</td> --%>
 								<td>
 									<a title="${island.id}" onclick="editIsland(this)" >修改</a>&nbsp;|&nbsp;
 									<a title="${island.id}"  onclick="delIsland(this)">删除</a>&nbsp;&nbsp;

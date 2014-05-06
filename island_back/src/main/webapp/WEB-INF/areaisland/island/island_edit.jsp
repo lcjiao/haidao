@@ -8,8 +8,8 @@
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
 
-
-<style>
+<%@ include file="/common/kindeditor.jsp"%>
+<%-- <style>
 			form {
 				margin: 0;
 			}
@@ -34,7 +34,7 @@
 				});
 			});
 		</script>	
-		
+		 --%>
 
 
 </head>
@@ -76,7 +76,7 @@
 	</tbody>	
 </table>
 </div>
-<input type="hidden" id="area_name" name="areaName" value=""/>
+<input type="hidden" id="area_name" name="areaName" value="${areaName}"/>
 <input type="hidden" id="island_id" name="id" value="${id}"/>
 <input type="hidden" id="island_desc" name="desc" value=""/>
 <table class="creatcustomer_tfoot" width="100%">

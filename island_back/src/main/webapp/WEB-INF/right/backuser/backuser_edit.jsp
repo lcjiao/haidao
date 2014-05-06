@@ -36,7 +36,7 @@
 	</tbody>	
 </table>
 </div>
-<input type="hidden" value=" " id="role_name" name="roleName"/>
+<input type="hidden" value="${roleName}" id="role_name" name="roleName" />
 <input type="hidden" value="${userId}" name="userId"/>
 <table class="creatcustomer_tfoot" width="100%">
 	<tfoot>

@@ -79,6 +79,16 @@ function pageCustomize(pageNo,totalPages){
 
 
 
+function getSubString(str,length){
+    var subStr ="";
+    if(str.length > length){
+    	subStr = str.substring(0,length)+"...";
+    }else{
+    	subStr= str;
+    }
+   return subStr;
+    }
+
 
 
 

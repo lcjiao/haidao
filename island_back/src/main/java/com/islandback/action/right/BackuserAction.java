@@ -304,6 +304,7 @@ public class BackuserAction extends ActionSupport{
 			user = list.get(0);
 			this.userName = user.getUserName();
 			this.roleId = user.getUserRoleId();
+			this.roleName=user.getRoleName();
 		}
 		return "edit";
 	}

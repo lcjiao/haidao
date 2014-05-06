@@ -105,6 +105,15 @@ public class AreaAction extends ActionSupport {
 
 		
 		this.areaIslandBiz.updArea(params);		
+		/**
+		 * 更新岛屿表对于区域得名称
+		 */
+		Map<String,Object> updIslandParams = new HashMap<String,Object>(0);
+		updIslandParams.put("areaName", name);
+		updIslandParams.put("updPerson", creater);
+		updIslandParams.put("areaId", id);
+		this.areaIslandBiz.updateIslandByAreaId(updIslandParams);
+		
 		doList();
 		return "list";
 	}

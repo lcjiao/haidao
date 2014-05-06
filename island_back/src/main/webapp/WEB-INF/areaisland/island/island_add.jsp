@@ -8,7 +8,9 @@
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
 
-	<style>
+
+<%@ include file="/common/kindeditor.jsp"%>
+	<%-- <style>
 			form {
 				margin: 0;
 			}
@@ -32,7 +34,7 @@
 						'insertunorderedlist', '|', 'emoticons', 'image', 'link']
 				});
 			});
-		</script>	
+		</script> --%>	
 		
 
 </head>
