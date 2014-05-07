@@ -470,3 +470,34 @@
         ) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8
 
 ---------------
+
+
+##23. 套餐图片映射表
+
+---------------
+        
+        
+        CREATE TABLE `package_image_relation` (
+        `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        `package_type` int(4) DEFAULT NULL COMMENT '套餐类别  1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐 5:自由行套餐',
+        `package_id` int(10) DEFAULT NULL COMMENT '套餐编号',
+        `img_id` int(10) DEFAULT NULL COMMENT '图片编号',
+        `img_type` int(4) DEFAULT NULL COMMENT '图片类型',
+        `img_des` varchar(500) DEFAULT NULL COMMENT '图片描述',
+        `img_index` int(4) DEFAULT NULL COMMENT '图片展示次序',
+        `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
+        `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
+        `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
+        `upd_time` int(10) DEFAULT NULL COMMENT '更新时间',
+        `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
+        PRIMARY KEY (`id`),
+        KEY `img_id` (`img_id`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+        
+-------------------
+        
+        
+        
+        
+        
+        
