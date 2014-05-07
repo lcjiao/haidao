@@ -93,7 +93,7 @@
 ##5.套餐表
 ---------
 
-    CREATE TABLE `package` (
+    CREATE TABLE `island_package` (
     `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '主键id',
     `package_type` int(2) DEFAULT NULL COMMENT '套餐类别  1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐  5:自由行套餐',
     `title` varchar(200) DEFAULT NULL COMMENT '套餐标题',
