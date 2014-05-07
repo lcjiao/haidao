@@ -98,8 +98,6 @@
     `package_type` int(2) DEFAULT NULL COMMENT '套餐类别  1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐  5:自由行套餐',
     `title` varchar(200) DEFAULT NULL COMMENT '套餐标题',
     `content` varchar(10000) DEFAULT NULL COMMENT '套餐内容',
-    `default_img` varchar(500) DEFAULT NULL COMMENT '默认图',
-    `package_imgs` varchar(500) DEFAULT NULL COMMENT '套餐图片集  图片id 以逗号间隔',
     `price_big` varchar(50) DEFAULT NULL COMMENT '旺季价格',
     `price_small` varchar(50) DEFAULT NULL COMMENT '淡季价格',
     `area_id` int(4) DEFAULT NULL COMMENT '区域编号',
