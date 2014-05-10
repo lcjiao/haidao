@@ -1,6 +1,12 @@
 package com.islandback.module;
 
 public class ModuleEnum {
+	/**
+	 * 图片存放路径
+	 */
+	public static final String IMAGE_SAVE_PATH="/Users/lcjiao/index/";
+	
+	public static final String IMAGE_SERV_PREFIX="http://127.0.0.1:8888/";
 
 	/**
 	 * 首页主推产品

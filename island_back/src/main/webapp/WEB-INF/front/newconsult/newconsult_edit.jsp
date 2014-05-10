@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<form action="${ctx}/front/newconsult/newconsult!edit.action" id="form" method="post">
+<form action="${ctx}/front/newconsult/newconsult!edit.action" enctype="multipart/form-data" id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" width="100%">
 	<tbody>
@@ -29,9 +29,12 @@
 		 </tr>
 		<tr>
 			<td>排序</td>
-			<td><input type=text class="text" value="${index}" id="index" name="index"  style="width:255px;"/><span style="color:red;">顺序调整为对调方式</span></td>
+			<td><input type=text class="text" value="${index}" id="index_num" name="index"  style="width:255px;"/><span style="color:red;">顺序调整为对调方式</span></td>
 		</tr>
-		
+		<tr>
+			<td>上传图片</td>
+			<td><input type="file" name="image"/></td>					
+		</tr>
 	</tbody>	
 </table>
 </div>
@@ -69,14 +72,15 @@
 	}
 	//表单提交前数据验证
 	function checkData(){
-		var role_name = $("#link").val();
-		/* if(role_name == ''){
-			alert('请输入角色名');
+		var r = /^[0-9]+$/;
+		var index_num = $("#index_num").val();
+		if(!r.test(index_num)){
+			alert('排序只能为数字');
 			return false;
+		}else{
+			return true;
 		}
- */		return true;
-		
-	}
+	}	
 	
 </script>
 </html>

@@ -2,6 +2,7 @@ package com.island.domain;
 
 import com.island.domain.biz.AreaIslandBiz;
 import com.island.domain.biz.FrontIndexBiz;
+import com.island.domain.biz.MarrayPackageBiz;
 import com.island.domain.biz.RoleBiz;
 import com.jcl.core.module.annotation.Bean;
 
@@ -15,6 +16,9 @@ public interface DomainIslandModule {
 
 	@Bean("areaIslandBiz")
 	public AreaIslandBiz getAreaIslandBiz();
+
+	@Bean("marrayPackageBiz")
+	public MarrayPackageBiz getMarrayPackageBiz();
 
 	
 

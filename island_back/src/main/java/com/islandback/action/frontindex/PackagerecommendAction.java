@@ -41,7 +41,8 @@ public class PackagerecommendAction extends ActionSupport {
 	private String desc;
 	private File image;
 	private String imageFileName;
-	private String imageServPath="/Users/lcjiao/index/";
+	private String imageServPath=ModuleEnum.IMAGE_SAVE_PATH;
+	private String imageServPrefix=ModuleEnum.IMAGE_SERV_PREFIX;
 	private Integer pageNo;
 	private Integer totalPageSize;
 	private Integer totalSize;
@@ -82,7 +83,9 @@ public class PackagerecommendAction extends ActionSupport {
 			Map<String,Object> setParams = new HashMap<String,Object>(0);
 			setParams.put("updPerson", creater);
 			setParams.put("id", id);
-			setParams.put("imgUrl", upload());
+			if(image != null){
+				setParams.put("imgUrl", upload());
+			}
 			this.frontIndexBiz.updRecommend(setParams);	
 			doList();
 			return "list";
@@ -93,7 +96,9 @@ public class PackagerecommendAction extends ActionSupport {
 		addObj.setModuleId(ModuleEnum.FRONT_PACKAGE_RECOMMEND);
 		addObj.setLinkUrl(link);
 		addObj.setRecommendDesc(desc);
-		addObj.setImgUrl(upload());
+		if(image != null ){
+			addObj.setImgUrl(upload());
+		}
 		addObj.setCreatePerson(creater);
 		addObj.setCreateTime(now);
 		addObj.setRecommendIndex(index);
@@ -222,7 +227,7 @@ public class PackagerecommendAction extends ActionSupport {
 	        } catch (IOException e) {  
 	              e.printStackTrace();  
 	        }  
-	       return "http://127.0.0.1:8888/"+namePrefix+"/"+imageFileName;  
+	       return imageServPrefix+namePrefix+"/"+imageFileName;  
 	  }  
 
 	private void initTotalPageSize(){

@@ -10,32 +10,54 @@
 
 </head>
 <body>
+
+<form action="${ctx}/front/packagerecommend/packagerecommend.action" enctype="multipart/form-data" id="form" method="post">
 <div  class="creatcustomer" >
-<s:form action="/front/packagerecommend/packagerecommend.action" enctype="multipart/form-data" method="post">  
-	
-	<table class="datalist" width="100%">
+<table class="datalist" width="100%">
+	<tbody>
 		<tr>
-			 	<s:textfield label="链接地址" name="link"></s:textfield> 
+			<td>链接地址</td>
+			<td><input type=text class="text" value="" id="link" name="link"  style="_width:316px;"/></td>					
 		</tr>
 		<tr>
-			 	<s:textfield label="描述" name="desc"></s:textfield> 
+			<td>描述</td>
+			<td><input type=text class="text" value="" id="desc" name="desc"  style="_width:316px;"/></td>					
 		</tr>
 		<tr>
-			 	<s:textfield label="排序" name="index"></s:textfield> 
+			<td>排序</td>
+			<td><input type=text class="text" value="" id="index_num" name="index"  style="_width:316px;"/></td>					
 		</tr>
 		<tr>
-			 	 <s:file label="上传图片" name="image"></s:file>  
+			<td>上传图片</td>
+			<td><input type="file" name="image"/></td>					
 		</tr>
-		<tr>
-			 	  <s:submit value="提交" />  
-		</tr>
-	</table>
-           
-           
-</s:form>  
+	</tbody>	
+</table>
 </div>
+<input type="hidden" value=" " id="role_name" name="roleName"/>
+<table class="creatcustomer_tfoot" width="100%">
+	<tfoot>
+		<td>
+			<input type=button  value="保存" id="save" onclick="checkData()"/>
+			<input style="display: none" type=button  value="继续添加" id="add_more"/>
+			<!-- <input type=button  value="返回" id="reset"/> -->
+		</td>
+</tfoot>
+</table>
+</form>
+
+
 </body>
 <script>
-	
+function checkData(){
+	var r = /^[0-9]+$/;
+	var index_num = $("#index_num").val();
+	if(!r.test(index_num)){
+		alert('排序只能为数字');
+		return;
+	}else{
+		$("#form").submit();
+	}
+}
 </script>
 </html>

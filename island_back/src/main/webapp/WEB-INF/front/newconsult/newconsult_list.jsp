@@ -40,6 +40,7 @@
 							<td>标题</td>
 							<td>链接地址</td>
 							<td>时间</td>
+							<td>图片</td>
 							<td>排序</td>
 							<td>操作</td>
 						</tr>
@@ -56,7 +57,9 @@
 								<td style="text-align:center;">
 									<c:out value="${recommend.recommendTime}"></c:out>
 								</td>
-								
+								<td style="text-align:center;">
+									<img style="width:150px;height:120px;" alt="" src="${recommend.imgUrl}">
+								</td>
 								<td style="text-align:center;">
 									<c:out value="${recommend.recommendIndex}"></c:out>
 									<%-- <input style="width:50px;" type="text" value="${recommend.recommendIndex}" id="r_index" name="index">

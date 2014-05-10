@@ -147,7 +147,7 @@
 	
 	
 	function findByNo(pageNo){
-		var url = "${ctx}/front/packagerecommend/packagerecommend!list?pageNo="+pageNo;
+		var url = "/island_back/front/packagerecommend/packagerecommend!list.action?pageNo="+pageNo;
 		window.location.href = url;
 	}
 	

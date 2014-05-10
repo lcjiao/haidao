@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<form action="${ctx}/front/newconsult/newconsult.action" id="form" method="post">
+<form action="${ctx}/front/newconsult/newconsult.action" enctype="multipart/form-data" id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" width="100%">
 	<tbody>
@@ -28,12 +28,16 @@
 		
 		<tr>
 			<td>排序</td>
-			<td><input type=text class="text" value="" id="index" name="index" style="width:255px;" /></td>					
+			<td><input type=text class="text" value="" id="index_num" name="index" style="width:255px;" /></td>					
 		</tr>
 		<tr>
 			<td>时间</td>
 			 <td><input type="text" id = "time"  value=""  class="Wdate" onfocus="WdatePicker()" name="time"/></td>
 		 </tr>
+		 <tr>
+			<td>上传图片</td>
+			<td><input type="file" name="image"/></td>					
+		</tr>
 	</tbody>	
 </table>
 </div>
@@ -46,11 +50,21 @@
 </body>
 <script>
 	$(function(){
-		$("#save").bind('click',submitSave);
+		$("#save").bind('click',checkData);
 	});
 	
 	function submitSave(){
 		$("#form").submit();
 	}
+	function checkData(){
+		var r = /^[0-9]+$/;
+		var index_num = $("#index_num").val();
+		if(!r.test(index_num)){
+			alert('排序只能为数字');
+			return;
+		}else{
+			$("#form").submit();
+		}
+	}	
 </script>
 </html>

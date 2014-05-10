@@ -10,7 +10,7 @@
 
 </head>
 <body>
-<div  class="creatcustomer" >
+<%-- <div  class="creatcustomer" >
 <s:form action="/front/masterecommend/masterecommend.action" enctype="multipart/form-data" method="post">  
 	
 	<table class="datalist" width="100%">
@@ -25,9 +25,34 @@
 <input type="hidden" id="id" name="id" value="${id}"/>
 <input type="hidden" id="type" name="type" value="changeImg"/>         
 </s:form>  
+</div> --%>
+
+<form action="${ctx}/front/masterecommend/masterecommend.action" enctype="multipart/form-data" id="form" method="post">
+<div  class="creatcustomer" >
+<table class="datalist" width="100%">
+	<tbody>
+		<tr>
+			<td>更换图片</td>
+			<td><input type="file" name="image" id="file"/></td>					
+		</tr>
+	</tbody>	
+</table>
 </div>
+<input type="hidden" id="id" name="id" value="${id}"/>
+<input type="hidden" id="type" name="type" value="changeImg"/>         
+<table class="creatcustomer_tfoot" width="100%">
+	<tfoot>
+		<td>
+			<input type=button  value="更换图片" id="save" onclick="checkData()"/>
+		</td>
+</tfoot>
+</table>
+</form>
+
 </body>
 <script>
-	
+	function checkData(){
+		$("#form").submit();
+	}
 </script>
 </html>

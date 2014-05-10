@@ -84,6 +84,7 @@ public class LoginAction extends ActionSupport {
 			if(StringUtils.isBlank(userName)){
 				this.loginErr = "true";
 				this.errMsg = "用户名不存在或密码错误";
+				this.errMsg = "username or pass wrong";
 				return ActionSupport.INPUT;
 			}
 			
@@ -97,6 +98,7 @@ public class LoginAction extends ActionSupport {
 			if(StringUtils.isBlank(userPass)){
 				this.loginErr = "true";
 				this.errMsg = "用户名不存在或密码错误";
+				this.errMsg = "username or pass wrong";
 				return ActionSupport.INPUT;
 			}
 			
@@ -108,6 +110,7 @@ public class LoginAction extends ActionSupport {
 		if(list == null || list.isEmpty()){
 			this.loginErr = "true";
 			this.errMsg = "用户名不存在或密码错误";
+			this.errMsg = "username or pass wrong";
 			return ActionSupport.INPUT;
 		}
 		SessionInfo sessinInfo = new SessionInfo();

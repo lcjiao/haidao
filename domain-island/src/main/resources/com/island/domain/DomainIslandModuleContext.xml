@@ -43,4 +43,9 @@
 		<property name="islandDao" ref="IslandDAO"></property>
 	</bean>
 	
+	<bean id="islandPackageDao" class="com.island.domain.dal.IslandPackageIbatisDAOImpl" />		
+	<bean id="marrayPackageBiz" class="com.island.domain.biz.MarrayPackageBiz">
+		<property name="islandPackageDao" ref="islandPackageDao"></property>
+	</bean>
+	
 </beans>

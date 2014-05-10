@@ -2,11 +2,16 @@ package com.islandback.action.frontindex;
 
 
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ResultPath;
 
@@ -38,8 +43,14 @@ public class NewconsultAction extends ActionSupport {
 	private Integer pageNo=1;
 	private Integer pageSize=10;
 	private List<Recommend> recommendList;
+	private File image;
+	private String imageFileName;
+	private String imageServPath=ModuleEnum.IMAGE_SAVE_PATH;
+	private String imageServPrefix=ModuleEnum.IMAGE_SERV_PREFIX;
+	
 	FrontIndexBiz frontIndexBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getFrontIndexBiz();
+	private SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 	
 	public String list(){
 		doList();
@@ -67,6 +78,9 @@ public class NewconsultAction extends ActionSupport {
 		addObj.setLinkUrl(link);
 		addObj.setTitle(title);
 		addObj.setRecommendTime(time);
+		if(image != null ){
+			addObj.setImgUrl(upload());
+		}
 		addObj.setCreatePerson(creater);
 		addObj.setCreateTime(now);
 		addObj.setRecommendIndex(index);
@@ -115,6 +129,9 @@ public class NewconsultAction extends ActionSupport {
 		params.put("recommendIndex", index);
 		params.put("recommendTime", time);
 		params.put("linkUrl", link);
+		if(image != null ){
+			params.put("imgUrl", upload());
+		}
 		params.put("updPerson", creater);
 		params.put("id", id);
 		
@@ -148,7 +165,24 @@ public class NewconsultAction extends ActionSupport {
 		}	
 	}
 
-	
+	public String upload() {  
+		   if(image == null){
+			   return "";
+		   }
+		   Date date = new Date();
+	   	   String namePrefix=format.format(date);
+	       String path = imageServPath+namePrefix;
+	       File file = new File(path);  
+	       if (!file.exists()) {  
+	           file.mkdirs();  
+	       }  
+	       try {  
+	              FileUtils.copyFile(image, new File(file, imageFileName));  
+	        } catch (IOException e) {  
+	              e.printStackTrace();  
+	        }  
+	       return imageServPrefix+namePrefix+"/"+imageFileName;  
+	  }  
 	private void doList(){
 		if(pageNo == null || pageNo < 1){
 			pageNo = 1;
@@ -246,6 +280,18 @@ public class NewconsultAction extends ActionSupport {
 	}
 	public void setTime(String time) {
 		this.time = time;
+	}
+	public File getImage() {
+		return image;
+	}
+	public void setImage(File image) {
+		this.image = image;
+	}
+	public String getImageFileName() {
+		return imageFileName;
+	}
+	public void setImageFileName(String imageFileName) {
+		this.imageFileName = imageFileName;
 	}
 	
 }

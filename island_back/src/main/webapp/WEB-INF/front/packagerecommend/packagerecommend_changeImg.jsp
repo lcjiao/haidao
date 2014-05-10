@@ -10,24 +10,32 @@
 
 </head>
 <body>
+<form action="${ctx}/front/packagerecommend/packagerecommend.action" enctype="multipart/form-data" id="form" method="post">
 <div  class="creatcustomer" >
-<s:form action="/front/packagerecommend/packagerecommend.action" enctype="multipart/form-data" method="post">  
-	
-	<table class="datalist" width="100%">
+<table class="datalist" width="100%">
+	<tbody>
 		<tr>
-			 	 <s:file label="选择图片" name="image"></s:file>  
+			<td>更换图片</td>
+			<td><input type="file" name="image" id="file"/></td>					
 		</tr>
-		<tr>
-			 	  <s:submit value="更换图片" />  
-		</tr>
-	</table>
-           
+	</tbody>	
+</table>
+</div>
 <input type="hidden" id="id" name="id" value="${id}"/>
 <input type="hidden" id="type" name="type" value="changeImg"/>         
-</s:form>  
-</div>
+<table class="creatcustomer_tfoot" width="100%">
+	<tfoot>
+		<td>
+			<input type=button  value="更换图片" id="save" onclick="checkData()"/>
+		</td>
+</tfoot>
+</table>
+</form>
+
 </body>
 <script>
-	
+function checkData(){
+	$("#form").submit();
+}
 </script>
 </html>

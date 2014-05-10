@@ -37,7 +37,8 @@
 				<table class="datalist ask_rel" width="100%">
 					<thead>
 						<tr>
-							<td>岛屿名称</td>
+							<td>图片( 悬浮显示)</td>
+							<td>图片</td>
 							<td>链接地址</td>
 							<td>排序</td>
 							<td>操作</td>
@@ -47,7 +48,10 @@
 						<c:forEach var="recommend" items="${recommendList}">
 							<tr >
 								<td style="text-align:center;">
-									<c:out value="${recommend.title}"></c:out>
+									<img style="width:80px;height:20px;" alt="" src="${recommend.bigImgUrl}">
+								</td>
+								<td style="text-align:center;">
+									<img style="width:80px;height:20px;" alt="" src="${recommend.imgUrl}">
 								</td>
 								<td style="text-align:center;">
 									<c:out value="${recommend.linkUrl}"></c:out>

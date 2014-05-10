@@ -2,11 +2,16 @@ package com.islandback.action.frontindex;
 
 
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ResultPath;
 
@@ -37,8 +42,19 @@ public class MasterwelcomeislandAction extends ActionSupport {
 	private Integer pageNo=1;
 	private Integer pageSize=10;
 	private List<Recommend> recommendList;
+	
+	private File image;
+	private String imageFileName;
+	private String imageServPath=ModuleEnum.IMAGE_SAVE_PATH;
+	private String imageServPrefix=ModuleEnum.IMAGE_SERV_PREFIX;
+	private File bigImage;
+	private String bigImageFileName;
+	private String type;
+	
 	FrontIndexBiz frontIndexBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getFrontIndexBiz();
+	private SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+	
 	
 	public String list(){
 		doList();
@@ -59,12 +75,35 @@ public class MasterwelcomeislandAction extends ActionSupport {
 		if(sessionInfo != null ){
 			creater = sessionInfo.getUser().getUserName(); 
 		}
+		if("changeImg".equalsIgnoreCase(type)){
+			Map<String,Object> setParams = new HashMap<String,Object>(0);
+			setParams.put("updPerson", creater);
+			setParams.put("id", id);
+			if(image != null ){
+				setParams.put("imgUrl", uploadImage());
+			}
+			if(bigImage != null){
+				setParams.put("bigImgUrl", uploadBigImage());
+				
+			}
+			setParams.put("recommendIndex", index);
+			changeIndexBySys(creater);
+			this.frontIndexBiz.updRecommend(setParams);	
+			doList();
+			return "list";
+		}
 		Recommend addObj = new Recommend();
 		addObj.setCreatePerson(creater);
 		int now = (int)(System.currentTimeMillis()/1000);
 		addObj.setModuleId(ModuleEnum.FRONT_INDEX_MASTER_WELCOME_ISLAND);
 		addObj.setLinkUrl(link);
-		addObj.setTitle(title);
+		if(bigImage != null){
+			addObj.setBigImgUrl(uploadBigImage());
+		}
+		if(image != null ){
+			addObj.setImgUrl(uploadImage());
+			
+		}
 		addObj.setCreatePerson(creater);
 		addObj.setCreateTime(now);
 		addObj.setRecommendIndex(index);
@@ -75,6 +114,44 @@ public class MasterwelcomeislandAction extends ActionSupport {
 		return "list";
 		
 	}
+	
+	public String uploadBigImage() {  
+		   if(bigImage == null){
+			   return "";
+		   }
+		   Date date = new Date();
+	   	   String namePrefix=format.format(date);
+	       String path = imageServPath+namePrefix;
+	       File file = new File(path);  
+	       if (!file.exists()) {  
+	           file.mkdirs();  
+	       }  
+	       try {  
+	              FileUtils.copyFile(bigImage, new File(file, bigImageFileName));  
+	        } catch (IOException e) {  
+	              e.printStackTrace();  
+	        }  
+	       return imageServPrefix+namePrefix+"/"+bigImageFileName;  
+	  }  
+	
+	public String uploadImage() {  
+		   if(image == null){
+			   return "";
+		   }
+		   Date date = new Date();
+	   	   String namePrefix=format.format(date);
+	       String path = imageServPath+namePrefix;
+	       File file = new File(path);  
+	       if (!file.exists()) {  
+	           file.mkdirs();  
+	       }  
+	       try {  
+	              FileUtils.copyFile(image, new File(file, imageFileName));  
+	        } catch (IOException e) {  
+	              e.printStackTrace();  
+	        }  
+	       return imageServPrefix+namePrefix+"/"+imageFileName;  
+	  }  
 	
 	public String del(){
 		String creater = "";
@@ -94,7 +171,6 @@ public class MasterwelcomeislandAction extends ActionSupport {
 	public String toEdit(){
 		Recommend obj = frontIndexBiz.queryById(id);
 		this.link=obj.getLinkUrl();
-		this.title=obj.getTitle();
 		this.index=obj.getRecommendIndex();
 		return "edit";
 	}
@@ -107,7 +183,13 @@ public class MasterwelcomeislandAction extends ActionSupport {
 			creater = sessionInfo.getUser().getUserName(); 
 		}
 		Map<String,Object> params = new HashMap<String,Object>(0);
-		params.put("title", title);
+		if(image != null ){
+			params.put("imgUrl", uploadImage());
+		}
+		if(bigImage != null){
+			params.put("bigImgUrl", uploadBigImage());
+			
+		}
 		params.put("recommendIndex", index);
 		params.put("linkUrl", link);
 		params.put("updPerson", creater);
@@ -174,6 +256,7 @@ public class MasterwelcomeislandAction extends ActionSupport {
 		this.recommendList = list;
 	}
 	
+	
 
 	private void initTotalPageSize(){
 			if(totalSize % pageSize == 0 ){
@@ -237,5 +320,44 @@ public class MasterwelcomeislandAction extends ActionSupport {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+
+	public File getImage() {
+		return image;
+	}
+	public void setImage(File image) {
+		this.image = image;
+	}
+	public String getImageFileName() {
+		return imageFileName;
+	}
+	public void setImageFileName(String imageFileName) {
+		this.imageFileName = imageFileName;
+	}
+	public String getImageServPath() {
+		return imageServPath;
+	}
+	public void setImageServPath(String imageServPath) {
+		this.imageServPath = imageServPath;
+	}
+	public File getBigImage() {
+		return bigImage;
+	}
+	public void setBigImage(File bigImage) {
+		this.bigImage = bigImage;
+	}
+	public String getBigImageFileName() {
+		return bigImageFileName;
+	}
+	public void setBigImageFileName(String bigImageFileName) {
+		this.bigImageFileName = bigImageFileName;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 	
 }
