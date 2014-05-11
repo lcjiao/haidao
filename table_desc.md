@@ -212,6 +212,7 @@
         `country` varchar(50) DEFAULT NULL COMMENT '归属国家',
         `menu_name` varchar(50) DEFAULT NULL COMMENT '菜单名称',
         `menu_url` varchar(500) DEFAULT NULL COMMENT '菜单链接',
+        `menu_index` int(4) DEFAULT NULL COMMENT '菜单次序',
         `parent_id` int(4) DEFAULT NULL COMMENT '父菜单编号',
         `has_child` int(2) DEFAULT NULL COMMENT '是否有子菜单 1有  0无',
         `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
