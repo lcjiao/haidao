@@ -18,12 +18,15 @@
 			<td width="10">
 				<select id="island_id" name="islandId">
 					<option value="0" selected="selected">--请选择--</option>
+					<c:forEach var="island" items="${islandList}">
+							<option value="${island.id}" >${island.name}</option>
+				   </c:forEach>
 				</select>
 			</td>
 			<td width="48">套餐名称</td>
-			<td width="10"><input type="text" name="title" value=""/></td>
+			<td width="10"><input type="text" name="title" value="${title}" id="sear_title"/></td>
 			<td width="48">套餐价格</td>
-			<td width="10"><input type="text" name="price" value=""/></td>
+			<td width="10"><input type="text" name="price" value="${price}" id="sear_price"/></td>
 			<td><input class="btn" type="button" value="搜索" id="search"/>
 			</td>
 		</tr>
@@ -58,6 +61,7 @@
 							<td>所属岛屿</td>
 							<td>淡季价格</td>
 							<td>旺季价格</td>
+							<td>是否在售</td>
 							<td>操作</td>
 						</tr>
 					</thead>
@@ -69,6 +73,7 @@
 								<td>${package.islandName}</td>
 								<td>${package.priceBig}</td>
 								<td>${package.priceSmall}</td>
+								<td>${package.onlineStr}</td>
 								<td width="360px">
 									<a title="${package.id}" onclick="editArea(this)" >基本信息修改</a>&nbsp;|&nbsp;
 									<a title="${package.id}" onclick="editArea(this)" >图片调整</a>&nbsp;|&nbsp;
@@ -84,15 +89,13 @@
 		</tr>
 	</tbody>
 </table>
-<input type="hidden" name="sourceWeb"  value="${sourceWeb}" id="source_web_serarch"/>
-<input type="hidden" name="parentId" value="${parentId}" id="parent_id_search"/>
 </body>
 <script>
 	var  numCat = /^[1-9]*$/;
 	$(function(){
 		loadPage();
 		
-		//initParam();
+		initParam();
 		
 		bindEvent();
 	});
@@ -100,14 +103,11 @@
 	//绑定事件
 	function bindEvent(){
 		$("#search").bind('click',search);
-		$("#source_web").bind('change',changeByWeb);
-		$("#question_parent").bind('change',changeSearchParam);
+		//$("#source_web").bind('change',changeByWeb);
+		//$("#question_parent").bind('change',changeSearchParam);
 		$("#go").bind('click',gotoPageNo);
 		$("#new_create").bind('click',newCreate);
 		
-		/* $("#question_list a[title]").each(function(i){
-			$(this).bind('click',hideQuestion());
-		}); */
 	}
 	
 	function loadPage(){
@@ -119,11 +119,8 @@
 	
 	//初始化参数
 	function initParam(){
-		var source_web = '${sourceWeb}';
-		$("#source_web option[value='"+source_web+"']").attr('selected',true);
-		var parent_id = '${parentId}';
-		$("#question_parent option[value='"+parent_id+"']").attr('selected',true);
-		
+		var islandId = '${islandId}';
+		$("#island_id option[value='"+islandId+"']").attr('selected',true);
 		var pageNo = '${pageNo}';
 		if(pageNo < 2){
 			$("#go_page").hide();
@@ -148,10 +145,14 @@
 			alert('请输入数字');
 			return;
 		}
-		/* if(pageNo < 1 || pageNo > maxNo){
+		 if(pageNo < 1 ){
 			alert('请输入正确页数');
 			return;
-		} */
+		} 
+		if(pageNo > maxNo){
+			alert('请输入正确页数');
+			return;
+		}
 		findByNo(pageNo);
 	}
 	
@@ -162,11 +163,20 @@
 	
 	
 	function findByNo(pageNo){
-		var sourceWeb = $("#source_web_serarch").val();
-		var parentId = $("#parent_id_search").val();
-		var url = "${ctx}/callcenter/question/question!search.action?sourceWeb="+sourceWeb+"&parentId="+parentId+"&pageNo="+pageNo;
+		var islandId = $("#island_id").val();
+		var title = $("#sear_title").val();
+		var price = $("#sear_price").val();
+		var url = "${ctx}/marrypackage/package/package!list.action?islandId="+islandId+"&title="+title+"&price="+price;
 		window.location.href = url;
 	}
+	
+	function newCreate(){
+		var url = "${ctx}/marrypackage/package/package!toAddBase.action";
+		window.location.href = url;
+	};
+	
+	////
+	
 	function changeByWeb(){
 		$("#source_web_serarch").val( $("#source_web").val() );
 		var sourceWeb = $("#source_web").val();
@@ -232,11 +242,5 @@
 		
 	}
 	
-	
-	
-	function newCreate(){
-		var url = "${ctx}/callcenter/question/question!toCreate.action";
-		window.location.href = url;
-	};
 </script>
 </html>
