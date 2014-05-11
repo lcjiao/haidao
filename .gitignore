@@ -1,0 +1,23 @@
+*.class
+/.idea
+
+
+target/
+
+.project
+.classpath
+
+.settings/
+
+
+
+Servers/
+
+# Package Files #
+*.jar
+build-bootstrap.jar
+*.war
+*.ear
+.metadata
+/gen-dal
+gen-dal/*
