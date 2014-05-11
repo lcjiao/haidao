@@ -386,14 +386,17 @@
 ##18. 联系方式表
 --------------
 
-        CREATE TABLE `contact` (
+        CREATE TABLE `company` (
         `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '主键id',
-        `tel` varchar(100) DEFAULT NULL COMMENT '联系电话 多个以逗号间隔',
-        `phone` varchar(100) DEFAULT NULL COMMENT '座机 多个以逗号间隔',
-        `person` varchar(100) DEFAULT NULL COMMENT '联系人 多个以逗号间隔',
-        `address` varchar(200) DEFAULT NULL COMMENT '联系地址 多个以逗号间隔',
-        `qq` varchar(100) DEFAULT NULL COMMENT 'qq号码 多个以逗号间隔',
-        `mail` varchar(200) DEFAULT NULL COMMENT '邮箱地址 多个以逗号间隔',
+        `name` varchar(100) DEFAULT NULL COMMENT '公司名称',
+        `logo` varchar(200) DEFAULT NULL COMMENT '公司logo图片地址',
+        `introduction` text DEFAULT NULL COMMENT '公司介绍',
+        `tel` varchar(100) DEFAULT NULL COMMENT '联系电话',
+        `phone` varchar(100) DEFAULT NULL COMMENT '座机',
+        `person` varchar(100) DEFAULT NULL COMMENT '联系人名称',
+        `address` varchar(200) DEFAULT NULL COMMENT '公司地址',
+        `qq` varchar(100) DEFAULT NULL COMMENT 'qq号码 ',
+        `mail` varchar(500) DEFAULT NULL COMMENT '邮箱地址 ',
         `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
         `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
         `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
@@ -401,7 +404,6 @@
         `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
         PRIMARY KEY (`id`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8
-        
 ---------------
 
 ##19. 后台用户表
