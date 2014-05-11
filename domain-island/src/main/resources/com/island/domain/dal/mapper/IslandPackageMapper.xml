@@ -151,10 +151,7 @@
 				and package_type=#{packageType}
 			</if>
 			<if test="title !=  null">			        
-				and title=#{title}
-			</if>
-			<if test="content !=  null">			        
-				and content=#{content}
+				and title = #{title}
 			</if>
 			<if test="priceBig !=  null">			        
 				and price_big=#{priceBig}
@@ -191,6 +188,12 @@
 			</if>
 			<if test="updPerson !=  null">			        
 				and upd_person=#{updPerson}
+			</if>
+			<if test="titleSear !=  null">			        
+				and title like #{titleSear}
+			</if>
+			<if test="price !=  null">			        
+				and price_small <![CDATA[<=]]> #{price} and price_big >= #{price}
 			</if>
 		</where>
 		<if test="begin !=  null">			        
@@ -309,6 +312,12 @@
 			</if>
 			<if test="updPerson !=  null">			        
 				and upd_person=#{updPerson}
+			</if>
+			<if test="titleSear !=  null">			        
+				and title like #{titleSear}
+			</if>
+			<if test="price !=  null">			        
+				and price_small <![CDATA[<=]]> #{price} and price_big >= #{price}
 			</if>
 		</where>
 				

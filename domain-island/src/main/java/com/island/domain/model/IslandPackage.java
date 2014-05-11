@@ -168,6 +168,14 @@ public class IslandPackage extends AbsModel{
   	public Integer getIsOnline(){
   		return this.isOnline;
   	}
+  	
+  	public String getOnlineStr(){
+  		if(this.isOnline != null && this.isOnline.intValue()==1){
+  			return "在售";
+  		}else{
+  			return "非在售";
+  		}
+  	}
 	/**
 	 * 是否有效 1有效  0无效
 	 */
