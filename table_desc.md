@@ -466,6 +466,7 @@
         `menu_name` varchar(50) NOT NULL COMMENT '菜单名称',
         `menu_url` varchar(256) DEFAULT NULL COMMENT '菜单链接',
         `menu_parent` int(5) NOT NULL COMMENT '父菜单编号',
+        `show_index` int(4) DEFAULT NULL COMMENT '显示次序',
         `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
         `valid` int(2) NOT NULL DEFAULT '1' COMMENT '是否有效',
         PRIMARY KEY (`id`)
