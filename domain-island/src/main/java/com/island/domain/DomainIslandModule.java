@@ -19,6 +19,8 @@ public interface DomainIslandModule {
 
 	@Bean("marrayPackageBiz")
 	public MarrayPackageBiz getMarrayPackageBiz();
+	
+	//test
 
 	
 
