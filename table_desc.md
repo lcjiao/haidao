@@ -93,19 +93,18 @@
 ##5.套餐表
 ---------
 
-    CREATE TABLE `package` (
+    CREATE TABLE `island_package` (
     `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '主键id',
     `package_type` int(2) DEFAULT NULL COMMENT '套餐类别  1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐  5:自由行套餐',
     `title` varchar(200) DEFAULT NULL COMMENT '套餐标题',
     `content` varchar(10000) DEFAULT NULL COMMENT '套餐内容',
-    `default_img` varchar(500) DEFAULT NULL COMMENT '默认图',
-    `package_imgs` varchar(500) DEFAULT NULL COMMENT '套餐图片集  图片id 以逗号间隔',
     `price_big` varchar(50) DEFAULT NULL COMMENT '旺季价格',
     `price_small` varchar(50) DEFAULT NULL COMMENT '淡季价格',
     `area_id` int(4) DEFAULT NULL COMMENT '区域编号',
     `area_name` varchar(50) DEFAULT NULL COMMENT '区域名称',
     `island_id` int(4) DEFAULT NULL COMMENT '岛屿编号',
     `island_name` varchar(50) DEFAULT NULL COMMENT '岛屿名称',
+    `is_online` int(2) DEFAULT NULL COMMENT '是否有效 1上架  2下架',
     `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
     `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
     `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
@@ -136,26 +135,6 @@
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8
         
 -----------
-
-##7. 套餐图片推荐表
------------
-
-        CREATE TABLE `package_img_recommend` (
-        `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '主键id',
-        `package_id` int(8) DEFAULT NULL COMMENT '套餐编号',
-        `package_type` int(2) DEFAULT NULL COMMENT '套餐类别  1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐 5:自由行套餐',
-        `img_url` varchar(500) DEFAULT NULL COMMENT '图片地址',
-        `img_desc` varchar(500) DEFAULT NULL COMMENT '图片描述',
-        `is_master` int(2) DEFAULT NULL COMMENT '是否主推 1:是  0否',
-        `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
-        `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
-        `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
-        `upd_time` int(10) DEFAULT NULL COMMENT '更新时间',
-        `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
-        `index` varchar(4) DEFAULT NULL COMMENT '排序',
-        PRIMARY KEY (`id`),
-        KEY `package_index` (`package_id`)
-        ) ENGINE=MyISAM DEFAULT CHARSET=utf8
         
 ------------
 
@@ -213,6 +192,7 @@
         `country` varchar(50) DEFAULT NULL COMMENT '归属国家',
         `menu_name` varchar(50) DEFAULT NULL COMMENT '菜单名称',
         `menu_url` varchar(500) DEFAULT NULL COMMENT '菜单链接',
+        `menu_index` int(4) DEFAULT NULL COMMENT '菜单次序',
         `parent_id` int(4) DEFAULT NULL COMMENT '父菜单编号',
         `has_child` int(2) DEFAULT NULL COMMENT '是否有子菜单 1有  0无',
         `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
@@ -383,17 +363,20 @@
         
 --------------
 
-##18. 联系方式表
+##18. 公司信息表
 --------------
 
-        CREATE TABLE `contact` (
+        CREATE TABLE `company` (
         `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '主键id',
-        `tel` varchar(100) DEFAULT NULL COMMENT '联系电话 多个以逗号间隔',
-        `phone` varchar(100) DEFAULT NULL COMMENT '座机 多个以逗号间隔',
-        `person` varchar(100) DEFAULT NULL COMMENT '联系人 多个以逗号间隔',
-        `address` varchar(200) DEFAULT NULL COMMENT '联系地址 多个以逗号间隔',
-        `qq` varchar(100) DEFAULT NULL COMMENT 'qq号码 多个以逗号间隔',
-        `mail` varchar(200) DEFAULT NULL COMMENT '邮箱地址 多个以逗号间隔',
+        `name` varchar(100) DEFAULT NULL COMMENT '公司名称',
+        `logo` varchar(200) DEFAULT NULL COMMENT '公司logo图片地址',
+        `introduction` text DEFAULT NULL COMMENT '公司介绍',
+        `tel` varchar(100) DEFAULT NULL COMMENT '联系电话',
+        `phone` varchar(100) DEFAULT NULL COMMENT '座机',
+        `person` varchar(100) DEFAULT NULL COMMENT '联系人名称',
+        `address` varchar(200) DEFAULT NULL COMMENT '公司地址',
+        `qq` varchar(100) DEFAULT NULL COMMENT 'qq号码 ',
+        `mail` varchar(500) DEFAULT NULL COMMENT '邮箱地址 ',
         `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
         `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
         `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
@@ -401,7 +384,6 @@
         `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
         PRIMARY KEY (`id`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8
-        
 ---------------
 
 ##19. 后台用户表
@@ -464,9 +446,41 @@
         `menu_name` varchar(50) NOT NULL COMMENT '菜单名称',
         `menu_url` varchar(256) DEFAULT NULL COMMENT '菜单链接',
         `menu_parent` int(5) NOT NULL COMMENT '父菜单编号',
+        `show_index` int(4) DEFAULT NULL COMMENT '显示次序',
         `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
         `valid` int(2) NOT NULL DEFAULT '1' COMMENT '是否有效',
         PRIMARY KEY (`id`)
         ) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8
 
 ---------------
+
+
+##23. 套餐图片映射表
+
+---------------
+        
+        
+        CREATE TABLE `package_image_relation` (
+        `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        `package_type` int(4) DEFAULT NULL COMMENT '套餐类别  1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐 5:自由行套餐',
+        `package_id` int(10) DEFAULT NULL COMMENT '套餐编号',
+        `img_id` int(10) DEFAULT NULL COMMENT '图片编号',
+        `img_type` int(4) DEFAULT NULL COMMENT '图片类型',
+        `img_des` varchar(500) DEFAULT NULL COMMENT '图片描述',
+        `img_index` int(4) DEFAULT NULL COMMENT '图片展示次序',
+        `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
+        `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
+        `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
+        `upd_time` int(10) DEFAULT NULL COMMENT '更新时间',
+        `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
+        PRIMARY KEY (`id`),
+        KEY `img_id` (`img_id`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+        
+-------------------
+        
+        
+        
+        
+        
+        
