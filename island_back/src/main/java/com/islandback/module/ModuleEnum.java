@@ -27,4 +27,9 @@ public class ModuleEnum {
 	 * 首页套餐推荐
 	 */
 	public static final Integer FRONT_PACKAGE_RECOMMEND=4;
+	
+	/**
+	 * 婚纱摄影套餐推荐图片
+	 */
+	public static final Integer WEDDING_PHOTO_RECOMMEND=20;
 }
