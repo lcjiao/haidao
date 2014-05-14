@@ -24,6 +24,15 @@ public class MarrayPackageBiz {
 	public Integer countPackageByMap(Map<String,Object> params){
 		return this.islandPackageDao.countByMap(params);
 	}
+	public void addPackage(IslandPackage model){
+		this.islandPackageDao.insert(model);
+	}
+	public IslandPackage queryById(Integer id){
+		return this.islandPackageDao.queryById(id);
+	}
 	
+	public void updByMap(Map<String,Object> params){
+		this.islandPackageDao.updateByMap(params);
+	}
 
 }
