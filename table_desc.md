@@ -467,6 +467,7 @@
         `img_id` int(10) DEFAULT NULL COMMENT '图片编号',
         `img_type` int(4) DEFAULT NULL COMMENT '图片类型',
         `img_des` varchar(500) DEFAULT NULL COMMENT '图片描述',
+        `img_url` varchar(300) DEFAULT NULL COMMENT '图片地址',
         `img_index` int(4) DEFAULT NULL COMMENT '图片展示次序',
         `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
         `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
