@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>婚礼套餐列表</title>
+<title>婚礼套餐图片列表</title>
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
@@ -11,29 +11,27 @@
 
 </head>
 <body>
-<form action="${ctx}/marrypackage/package/package!list.action" id="form" method="post">
+<form action="${ctx}/marrypackage/package/package!toImgList.action" id="form" method="post">
 <table class="searchbar" width="100%">
 	<tbody>
 		<tr>
-			<td width="48">所属岛屿</td>
+			<td width="48">图片类型</td>
 			<td width="10">
-				<select id="island_id" name="islandId">
+				<select id="img_type" name="imgType">
 					<option value="0" selected="selected">--请选择--</option>
-					<c:forEach var="island" items="${islandList}">
-							<option value="${island.id}" >${island.name}</option>
-				   </c:forEach>
+					<option value="1" >logo图</option>
+					<option value="2" >套餐图片集</option>
+					<option value="3" >套餐大图</option>
+					<option value="4" >套餐小图</option>
 				</select>
 			</td>
-			<td width="48">套餐名称</td>
-			<td width="10"><input type="text" name="title" value="${title}" id="sear_title"/></td>
-			<td width="48">套餐价格</td>
-			<td width="10"><input type="text" name="price" value="${price}" id="sear_price"/></td>
 			<td><input class="btn" type="button" value="搜索" id="search"/>
 			</td>
 		</tr>
 	</tbody>
 </table>
 <input type="hidden" value="${pageNo}" name="pageNo" id="page_no"/>
+<input type="hidden" value="${id}" name="id" id="p_id"/>
 </form>
 <table class="customlist" width="100%">
 <thead>
@@ -58,30 +56,25 @@
 				<table class="datalist ask_rel" width="100%">
 					<thead>
 						<tr>
-							<td>套餐名称</td>
-							<td>所属区域</td>
-							<td>所属岛屿</td>
-							<td>淡季价格</td>
-							<td>旺季价格</td>
-							<td>是否在售</td>
+							<td>图片类型</td>
+							<td>图片</td>
+							<td>图片描述</td>
+							<td>次序</td>
 							<td>操作</td>
 						</tr>
 					</thead>
 					<tbody id="question_list">
-						<c:forEach var="package" items="${packageList}" varStatus="status">
+						<c:forEach var="img" items="${packageImgList}" varStatus="status">
 							<tr>
-								<td>${package.title}</td>
-								<td>${package.areaName}</td>
-								<td>${package.islandName}</td>
-								<td>${package.priceSmall}</td>
-								<td>${package.priceBig}</td>
-								<td>${package.onlineStr}</td>
-								<td width="360px">
-									<a title="${package.id}" onclick="editBase(this)" >基本信息管理</a>&nbsp;|&nbsp;
-									<a title="${package.id}" onclick="editDetail(this)" >详细信息管理</a>&nbsp;|&nbsp;
-									<a title="${package.id}" onclick="editImg(this)" >图片管理</a>&nbsp;|&nbsp;
-									<a title="${package.id}" onclick="editArea(this)" >客片留影管理</a>&nbsp;|&nbsp;
-									<a title="${package.id}"  onclick="delArea(this)">删除</a>&nbsp;&nbsp;
+								<td style="text-align:center;">${img.typeName}</td>
+								<td style="text-align:center;">
+									<img style="width:150px;height:120px;" alt="" src="${img.imgUrl}">
+								</td>
+								<td style="text-align:center;">${img.imgDes}</td>
+								<td style="text-align:center;">${img.imgIndex}</td>
+								<td style="text-align:center;">
+									<a title="${img.id}" onclick="editImg(this)" >修改</a>&nbsp;|&nbsp;
+									<a title="${img.id}"  onclick="delImg(this)">删除</a>&nbsp;&nbsp;
 								</td>	
 							</tr>
 						</c:forEach>
@@ -119,8 +112,8 @@
 	
 	//初始化参数
 	function initParam(){
-		var islandId = '${islandId}';
-		$("#island_id option[value='"+islandId+"']").attr('selected',true);
+		var imgType = '${imgType}';
+		$("#img_type option[value='"+imgType+"']").attr('selected',true);
 		var pageNo = '${pageNo}';
 		if(pageNo < 2){
 			$("#go_page").hide();
@@ -163,38 +156,31 @@
 	
 	
 	function findByNo(pageNo){
-		/* var islandId = $("#island_id").val();
-		var title = $("#sear_title").val();
-		title = encodeURI(title);
-		var price = $("#sear_price").val();
-		var url = "${ctx}/marrypackage/package/package!list.action?islandId="+islandId+"&title="+title+"&price="+price;
-		window.location.href = url; */
 		$("#page_no").val(pageNo);
 		$("#form").submit();
 	}
 	
 	function newCreate(){
-		var url = "${ctx}/marrypackage/package/package!toAddBase.action";
+		var packageId =$("#p_id").val();
+		var url = "${ctx}/marrypackage/package/package!toAddImg.action?id="+packageId;
 		window.location.href = url;
 	};
 	
-	function editBase(ele){
-		var packageId = $(ele).attr('title');
-		var url =  "${ctx}/marrypackage/package/package!toEditBase.action?id="+packageId;
-		window.location.href = url; 
-	}
-	
-	function editDetail(ele){
-		var packageId = $(ele).attr('title');
-		var url =  "${ctx}/marrypackage/package/package!toManagerDetail.action?id="+packageId;
-		window.location.href = url; 
-	}
-	
-	
 	function editImg(ele){
-		var packageId = $(ele).attr('title');
-		var url =  "${ctx}/marrypackage/package/package!toImgList.action?id="+packageId;
+		var imgId = $(ele).attr('title');
+		var packageId =$("#p_id").val();
+		var url =  "${ctx}/marrypackage/package/package!toEditImg.action?imgId="+imgId+"&id="+packageId;
 		window.location.href = url; 
 	}
+	function delImg(ele){
+		var isHide = confirm('确定删除吗?');
+		if(isHide){
+			var imgId = $(ele).attr('title');
+			var packageId =$("#p_id").val();
+			var url =  "${ctx}/marrypackage/package/package!delImg.action?imgId="+imgId+"&id="+packageId;
+			window.location.href = url; 
+		}
+	}
+	
 </script>
 </html>

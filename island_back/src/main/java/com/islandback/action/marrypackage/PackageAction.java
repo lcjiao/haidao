@@ -3,12 +3,17 @@ package com.islandback.action.marrypackage;
 
 
 
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ResultPath;
 
@@ -17,7 +22,11 @@ import com.island.domain.biz.AreaIslandBiz;
 import com.island.domain.biz.MarrayPackageBiz;
 import com.island.domain.model.Island;
 import com.island.domain.model.IslandPackage;
+import com.island.domain.model.PackageDetailInfo;
+import com.island.domain.model.PackageImageRelation;
+import com.island.domain.model.Recommend;
 import com.island.domain.model.User;
+import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
 import com.islandback.web.util.RequestProcc;
@@ -45,11 +54,21 @@ public class PackageAction extends ActionSupport {
 	private Integer bigPrice;
 	private Integer online;
 	private Integer actionType;//1保存基本信息返回列表 2:保存基本信息返回详细信息添加页 
-	//3保存详细信息返回列表  4:保存基本信息返回图片信息添加页
-	//5保存图片信息返回列表  6:保存图片信息返回客户留影添加页
-	//7保存客户留影信息返回列表
+	//3保存详细信息并添加图片  4:管理详细信息
+	
 	private String detailInfo;
+	
+	private Integer imgId;
+	private Integer imgType;
+	private String imgDesc;
+	private Integer imgIndex;
+	private File image;
+	private String imageFileName;
+	private String imageServPath=ModuleEnum.IMAGE_SAVE_PATH;
+	private String imageServPrefix=ModuleEnum.IMAGE_SERV_PREFIX;
+	
 	private List<IslandPackage> packageList = new ArrayList<IslandPackage>(0);
+	private List<PackageImageRelation> packageImgList;
 	private List<Island> islandList = new ArrayList<Island>(0);
 	AreaIslandBiz areaIslandBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getAreaIslandBiz();
@@ -75,22 +94,11 @@ public class PackageAction extends ActionSupport {
 		return "addbase";
 	}
 	
+	
 	/**
-	 * 进入基本信息修改页
+	 * 基本信息录入页
 	 * @return
 	 */
-	public String toEditBase(){
-		initIslandList();
-		IslandPackage obj = this.packageBiz.queryById(id);
-		this.title=obj.getTitle();
-		this.islandId=obj.getIslandId();
-		this.bigPrice=Integer.parseInt(obj.getPriceBig());
-		this.smallPrice=Integer.parseInt(obj.getPriceSmall());
-		this.online=obj.getIsOnline();
-		return "editbase";
-	}
-	
-	
 	public String addBaseInfo(){
 		String creater = "";
 		SessionInfo sessionInfo = RequestProcc.getSessionInfo();
@@ -131,11 +139,32 @@ public class PackageAction extends ActionSupport {
 			return "list";
 		}
 		if( actionType.intValue() == 2 ){
-			return "adddetail";
+			this.id = addObj.getId();
+			this.actionType=3;
+			return "managerdetail";
 		}
 		return null;
 	}
 	
+	/**
+	 * 进入基本信息修改页
+	 * @return
+	 */
+	public String toEditBase(){
+		initIslandList();
+		IslandPackage obj = this.packageBiz.queryById(id);
+		this.title=obj.getTitle();
+		this.islandId=obj.getIslandId();
+		this.bigPrice=Integer.parseInt(obj.getPriceBig());
+		this.smallPrice=Integer.parseInt(obj.getPriceSmall());
+		this.online=obj.getIsOnline();
+		return "editbase";
+	}
+	
+	/**
+	 * 基本信息修改
+	 * @return
+	 */
 	public String editBaseInfo(){
 		String creater = "";
 		SessionInfo sessionInfo = RequestProcc.getSessionInfo();
@@ -174,13 +203,155 @@ public class PackageAction extends ActionSupport {
 		return "list";
 	}
 	
-	public String adddetail(){
+	
+	/**
+	 * 进入详情管理页
+	 * @return
+	 */
+	public String toManagerDetail(){
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("packageId", id);
+		params.put("valid", 1);
+		List<PackageDetailInfo> list = packageBiz.queryPackageDetailByMap(params);
+		if( list != null && !list.isEmpty()){//更新套餐详情
+			PackageDetailInfo detail = list.get(0);
+			this.detailInfo=detail.getContent();
+		}
+		this.actionType=4;
+		return "managerdetail";
+	}
+	
+	/**
+	 * 详情信息管理
+	 * @return
+	 */
+	public String managerDetail(){
 		String creater = "";
 		SessionInfo sessionInfo = RequestProcc.getSessionInfo();
 		if(sessionInfo != null ){
 			creater = sessionInfo.getUser().getUserName(); 
 		}
-		return null;
+		int now = (int)(System.currentTimeMillis()/1000);
+		
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("packageId", id);
+		params.put("valid", 1);
+		List<PackageDetailInfo> list = packageBiz.queryPackageDetailByMap(params);
+		if( list != null && !list.isEmpty()){//更新套餐详情
+			Map<String,Object> updParams = new HashMap<String,Object>(0);
+			updParams.put("packageId", id);
+			updParams.put("content", detailInfo);
+			updParams.put("updPerson", creater);
+			updParams.put("updTime", now);
+			this.packageBiz.updPackageDetailByMap(updParams);
+		}else{//添加套餐详情
+			PackageDetailInfo packageDetail = new PackageDetailInfo();
+			packageDetail.setPackageId(id);
+			packageDetail.setPackageType(packageType);
+			packageDetail.setContent(detailInfo);
+			packageDetail.setValid(1);
+			packageDetail.setCreatePerson(creater);
+			packageDetail.setCreateTime(now);
+			this.packageBiz.addPackageDetail(packageDetail);
+		}
+		dolist();
+		return "list";
+	}
+	
+	public String toImgList(){
+		doimgList();
+		return "imglist";
+	}
+	
+	public String toAddImg(){
+		return "addimg";
+	}
+	
+	public String addImg(){
+		String creater = "";
+		SessionInfo sessionInfo = RequestProcc.getSessionInfo();
+		if(sessionInfo != null ){
+			creater = sessionInfo.getUser().getUserName(); 
+		}
+		PackageImageRelation addObj = new PackageImageRelation();
+		addObj.setCreatePerson(creater);
+		int now = (int)(System.currentTimeMillis()/1000);
+		addObj.setCreateTime(now);
+		if( imgDesc != null){
+			addObj.setImgDes(imgDesc);
+		}
+		if( imgIndex != null ){
+			addObj.setImgIndex(imgIndex);
+		}
+		if( imgType != null ){
+			addObj.setImgType(imgType);
+		}
+		addObj.setValid(1);
+		addObj.setPackageType(1);
+		addObj.setPackageId(id);
+		addObj.setImgUrl(upload());
+		this.packageBiz.addPackageImg(addObj);
+		doimgList();
+		return "imglist";
+	}
+
+	public String delImg(){
+		String creater = "";
+		SessionInfo sessionInfo = RequestProcc.getSessionInfo();
+		if(sessionInfo != null ){
+			creater = sessionInfo.getUser().getUserName(); 
+		}
+		int now = (int)(System.currentTimeMillis()/1000);
+		Map<String,Object> setParams = new HashMap<String,Object>(0);
+		setParams.put("updTime", now);
+		setParams.put("valid", 0);
+		setParams.put("updPerson", creater);
+		setParams.put("id", imgId);
+		this.packageBiz.updPackageImgByMap(setParams);	
+		doimgList();
+		return "imglist";
+	}
+	
+	public String toEditImg(){
+		PackageImageRelation obj = packageBiz.queryPackageImgById(imgId);
+		this.imgDesc=obj.getImgDes();
+		this.imgIndex=obj.getImgIndex();
+		this.imgType=obj.getImgType();
+		return "editimg";
+	}
+	
+	public String editImg(){
+		String creater = "";
+		SessionInfo sessionInfo = RequestProcc.getSessionInfo();
+		if(sessionInfo != null ){
+			creater = sessionInfo.getUser().getUserName(); 
+		}
+		int now = (int)(System.currentTimeMillis()/1000);
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		if( imgDesc != null ){
+			params.put("imgDes", imgDesc);
+		}
+		if( imgIndex != null ){
+			params.put("imgIndex", imgIndex);
+		}
+		if( imgType != null ){
+			params.put("imgType", imgType);
+		}
+		if( image != null ){
+			params.put("imgUrl", upload());
+		}
+		params.put("updPerson", creater);
+		params.put("updTime", now);
+		params.put("id", imgId);
+		
+		this.packageBiz.updPackageImgByMap(params);		
+		doimgList();
+		return "imglist";
+	}
+	
+	public String back(){
+		dolist();
+		return "list";
 	}
 	public String dolist(){
 		initIslandList();
@@ -222,6 +393,43 @@ public class PackageAction extends ActionSupport {
 		initTotalPageSize();
 		this.packageList = list;
 		
+		return "imglist";
+	}
+	
+	
+	/**
+	 * 套餐图片列表
+	 * @return
+	 */
+	public String doimgList(){
+		
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("valid", 1);
+		Page page = new Page();
+		page.setPageNo(pageNo);
+		page.setPageSize(pageSize);
+		params.put("begin", page.getBegin());
+		params.put("size", page.getPageSize());
+		if(imgType != null && imgType.intValue() > 0 ){
+			params.put("imgType", imgType);
+		}
+		params.put("packageId", id);
+		List<PackageImageRelation> list = packageBiz.queryPackageImgByMap(params);
+		if(list != null && list.size()>0){
+			Map<String,Object> countParam = new HashMap<String,Object>(0);
+			countParam.put("valid", 1);
+			countParam.put("packageId", id);
+			if(imgType != null && imgType.intValue() > 0 ){
+				countParam.put("imgType", imgType);
+			}
+			
+			this.totalSize = packageBiz.countPackageImgByMap(countParam);
+		}else{
+			this.totalSize=0;
+		}
+		initTotalPageSize();
+		this.packageImgList = list;
+		
 		return "list";
 	}
 	
@@ -239,7 +447,30 @@ public class PackageAction extends ActionSupport {
 			this.totalPageSize = ( totalSize / pageSize )+ 1;
 		}
 	}
-
+	
+	
+	
+	public String upload() {  
+		   if(image == null){
+			   return "";
+		   }
+		   Date date = new Date();
+	   	   String namePrefix=format.format(date);
+	       String path = imageServPath+namePrefix;
+	       File file = new File(path);  
+	       if (!file.exists()) {  
+	           file.mkdirs();  
+	       }  
+	       try {  
+	              FileUtils.copyFile(image, new File(file, imageFileName));  
+	        } catch (IOException e) {  
+	              e.printStackTrace();  
+	        }  
+	       return imageServPrefix+namePrefix+"/"+imageFileName;  
+	  }  
+	
+	private SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+	
 	public Integer getPageNo() {
 		return pageNo;
 	}
@@ -343,6 +574,48 @@ public class PackageAction extends ActionSupport {
 	}
 	public void setDetailInfo(String detailInfo) {
 		this.detailInfo = detailInfo;
+	}
+	public Integer getImgType() {
+		return imgType;
+	}
+	public void setImgType(Integer imgType) {
+		this.imgType = imgType;
+	}
+	public List<PackageImageRelation> getPackageImgList() {
+		return packageImgList;
+	}
+	public void setPackageImgList(List<PackageImageRelation> packageImgList) {
+		this.packageImgList = packageImgList;
+	}
+	public String getImgDesc() {
+		return imgDesc;
+	}
+	public void setImgDesc(String imgDesc) {
+		this.imgDesc = imgDesc;
+	}
+	public Integer getImgIndex() {
+		return imgIndex;
+	}
+	public void setImgIndex(Integer imgIndex) {
+		this.imgIndex = imgIndex;
+	}
+	public File getImage() {
+		return image;
+	}
+	public void setImage(File image) {
+		this.image = image;
+	}
+	public String getImageFileName() {
+		return imageFileName;
+	}
+	public void setImageFileName(String imageFileName) {
+		this.imageFileName = imageFileName;
+	}
+	public Integer getImgId() {
+		return imgId;
+	}
+	public void setImgId(Integer imgId) {
+		this.imgId = imgId;
 	}
 	
 	
