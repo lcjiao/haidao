@@ -47,6 +47,8 @@
 	<bean id="islandPackageDao" class="com.island.domain.dal.IslandPackageIbatisDAOImpl" />		
 	<bean id="marrayPackageBiz" class="com.island.domain.biz.MarrayPackageBiz">
 		<property name="islandPackageDao" ref="islandPackageDao"></property>
+		<property name="islandPackageDetailDao" ref="PackageDetailInfoDAO"></property>
+		<property name="islandPackageImgDao" ref="PackageImageRelationDAO"></property>
 	</bean>
 	
 	<bean id="weddingPhotoBiz" class="com.island.domain.biz.WeddingPhotoBiz">

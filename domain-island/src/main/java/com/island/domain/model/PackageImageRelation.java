@@ -207,4 +207,28 @@ public class PackageImageRelation extends AbsModel{
 		boolean passed = true;
 		return true;
 	}
+	
+	private String typeName;
+	public String getTypeName() {
+		if(this.imgType == null ){
+			return "";
+		}
+		if( this.imgType.intValue() == 1 ){
+			return "logo图";
+		}
+		if( this.imgType.intValue() == 2 ){
+			return "套餐图片集";
+		}
+		if( this.imgType.intValue() == 3 ){
+			return "套餐大图";
+		}
+		if( this.imgType.intValue() == 4 ){
+			return "套餐小图";
+		}
+		return "";
+	}
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
+	}
+	
 }
