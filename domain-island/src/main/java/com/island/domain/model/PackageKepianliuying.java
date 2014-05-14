@@ -2,10 +2,10 @@ package com.island.domain.model;
 
 import com.jcl.core.dal.AbsModel;
 
-public class PackageDetailInfo extends AbsModel{
+public class PackageKepianliuying extends AbsModel{
 
 	public String get(){
-		return "haidao_db.package_detail_info";
+		return "haidao_db.package_kepianliuying";
 	}
 
 	/**
@@ -41,20 +41,68 @@ public class PackageDetailInfo extends AbsModel{
   		return this.packageType;
   	}
   	/**
-	 * 套餐详细介绍
+	 * 图片地址
 	 */
-  	private String content;
+  	private String img;
   	/**
-	 * 设置套餐详细介绍
+	 * 设置图片地址
 	 */
-  	public void setContent(String content){
-  		this.content=content;
+  	public void setImg(String img){
+  		this.img=img;
   	}
   	/**
-	 * 获取套餐详细介绍
+	 * 获取图片地址
 	 */
-  	public String getContent(){
-  		return this.content;
+  	public String getImg(){
+  		return this.img;
+  	}
+  	/**
+	 * 描述
+	 */
+  	private String desc;
+  	/**
+	 * 设置描述
+	 */
+  	public void setDesc(String desc){
+  		this.desc=desc;
+  	}
+  	/**
+	 * 获取描述
+	 */
+  	public String getDesc(){
+  		return this.desc;
+  	}
+  	/**
+	 * 链接地址
+	 */
+  	private String link;
+  	/**
+	 * 设置链接地址
+	 */
+  	public void setLink(String link){
+  		this.link=link;
+  	}
+  	/**
+	 * 获取链接地址
+	 */
+  	public String getLink(){
+  		return this.link;
+  	}
+	/**
+	 * 排序
+	 */
+  	private Integer index;
+  	/**
+	 * 设置排序
+	 */
+  	public void setIndex(Integer index){
+  		this.index=index;
+  	}
+  	/**
+	 * 获取排序
+	 */
+  	public Integer getIndex(){
+  		return this.index;
   	}
 	/**
 	 * 是否有效 1有效  0无效

@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.island.domain.dal.mapper.PackageImageRelationMapper">
+	<resultMap id="PackageImageRelationRslMap" type="com.island.domain.model.PackageImageRelation">		
+		
+			<id property="id" column="id" />
+			<result property="packageType" column="package_type" />
+			<result property="packageId" column="package_id" />
+			<result property="imgId" column="img_id" />
+			<result property="imgType" column="img_type" />
+			<result property="imgDes" column="img_des" />
+			<result property="imgIndex" column="img_index" />
+			<result property="valid" column="valid" />
+			<result property="createTime" column="create_time" />
+			<result property="createPerson" column="create_person" />
+			<result property="updTime" column="upd_time" />
+			<result property="updPerson" column="upd_person" />
+			<result property="imgUrl" column="img_url" />
+	</resultMap>
+
+	<select id="queryById" parameterType="java.util.Map" resultMap="PackageImageRelationRslMap">
+		SELECT
+			id,
+			package_type,
+			package_id,
+			img_id,
+			img_type,
+			img_des,
+			img_index,
+			valid,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person,
+			img_url
+		FROM
+			package_image_relation
+		<where>
+			and id=#{id}
+		</where>
+			limit 1
+	</select>
+
+	<select id="queryByModel" parameterType="com.island.domain.model.PackageImageRelation" resultMap="PackageImageRelationRslMap">		
+		SELECT
+			id,
+			package_type,
+			package_id,
+			img_id,
+			img_type,
+			img_des,
+			img_index,
+			valid,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person,
+			img_url
+		FROM
+			package_image_relation
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="packageId !=  null">			        
+				and package_id=#{packageId}
+			</if>
+			<if test="imgId !=  null">			        
+				and img_id=#{imgId}
+			</if>
+			<if test="imgType !=  null">			        
+				and img_type=#{imgType}
+			</if>
+			<if test="imgDes !=  null">			        
+				and img_des=#{imgDes}
+			</if>
+			<if test="imgIndex !=  null">			        
+				and img_index=#{imgIndex}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+		</where>
+		
+	</select>
+		
+	<select id="queryByMap" parameterType="java.util.Map" resultMap="PackageImageRelationRslMap">				
+		SELECT
+			id,
+			package_type,
+			package_id,
+			img_id,
+			img_type,
+			img_des,
+			img_index,
+			valid,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person,
+			img_url
+		FROM
+			package_image_relation
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="packageId !=  null">			        
+				and package_id=#{packageId}
+			</if>
+			<if test="imgId !=  null">			        
+				and img_id=#{imgId}
+			</if>
+			<if test="imgType !=  null">			        
+				and img_type=#{imgType}
+			</if>
+			<if test="imgDes !=  null">			        
+				and img_des=#{imgDes}
+			</if>
+			<if test="imgIndex !=  null">			        
+				and img_index=#{imgIndex}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+		</where>
+		<if test="begin !=  null">			        
+				limit #{begin},#{size}
+		</if>
+	</select>
+	
+	<select id="countByModel" parameterType="com.island.domain.model.PackageImageRelation" resultType="java.lang.Integer">	
+		SELECT
+			count(*)
+		FROM
+			package_image_relation
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="packageId !=  null">			        
+				and package_id=#{packageId}
+			</if>
+			<if test="imgId !=  null">			        
+				and img_id=#{imgId}
+			</if>
+			<if test="imgType !=  null">			        
+				and img_type=#{imgType}
+			</if>
+			<if test="imgDes !=  null">			        
+				and img_des=#{imgDes}
+			</if>
+			<if test="imgIndex !=  null">			        
+				and img_index=#{imgIndex}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+		</where>
+		
+	</select>
+	
+	<select id="countByMap" parameterType="java.util.Map" resultType="java.lang.Integer">				
+		SELECT
+			count(*)
+		FROM
+			package_image_relation
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="packageId !=  null">			        
+				and package_id=#{packageId}
+			</if>
+			<if test="imgId !=  null">			        
+				and img_id=#{imgId}
+			</if>
+			<if test="imgType !=  null">			        
+				and img_type=#{imgType}
+			</if>
+			<if test="imgDes !=  null">			        
+				and img_des=#{imgDes}
+			</if>
+			<if test="imgIndex !=  null">			        
+				and img_index=#{imgIndex}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+		</where>
+				
+	</select>
+	
+	<select id="pageQuery" parameterType="com.jcl.core.dal.Page" resultMap="PackageImageRelationRslMap" fetchSize="15">
+		SELECT
+			id,
+			package_type,
+			package_id,
+			img_id,
+			img_type,
+			img_des,
+			img_index,
+			valid,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person,
+			img_url
+		FROM
+			package_image_relation
+		<where>
+			<if test="params !=  null">
+				<if test="params.id !=  null">
+					and id=#{params.id}
+				</if>
+				<if test="params.packageType !=  null">
+					and package_type=#{params.packageType}
+				</if>
+				<if test="params.packageId !=  null">
+					and package_id=#{params.packageId}
+				</if>
+				<if test="params.imgId !=  null">
+					and img_id=#{params.imgId}
+				</if>
+				<if test="params.imgType !=  null">
+					and img_type=#{params.imgType}
+				</if>
+				<if test="params.imgDes !=  null">
+					and img_des=#{params.imgDes}
+				</if>
+				<if test="params.imgIndex !=  null">
+					and img_index=#{params.imgIndex}
+				</if>
+				<if test="params.valid !=  null">
+					and valid=#{params.valid}
+				</if>
+				<if test="params.createTime !=  null">
+					and create_time=#{params.createTime}
+				</if>
+				<if test="params.createPerson !=  null">
+					and create_person=#{params.createPerson}
+				</if>
+				<if test="params.updTime !=  null">
+					and upd_time=#{params.updTime}
+				</if>
+				<if test="params.updPerson !=  null">
+					and upd_person=#{params.updPerson}
+				</if>
+				<if test="params.imgUrl !=  null">
+					and img_url=#{params.imgUrl}
+				</if>
+			</if>
+		</where>
+			limit #{start},#{end}	
+	</select>
+
+	<insert id="insert" parameterType="com.island.domain.model.PackageImageRelation" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO	package_image_relation
+			(id,package_type,package_id,img_id,img_type,img_des,img_index,valid,create_time,create_person,upd_time,upd_person,img_url)
+			VALUES(#{id},#{packageType},#{packageId},#{imgId},#{imgType},#{imgDes},#{imgIndex},#{valid},#{createTime},#{createPerson},#{updTime},#{updPerson},#{imgUrl})		
+	</insert>
+	
+	<update id="update" parameterType="com.island.domain.model.PackageImageRelation">
+		update 
+			package_image_relation
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="packageType !=  null">			        
+				package_type=#{packageType},
+			</if>
+			<if test="packageId !=  null">			        
+				package_id=#{packageId},
+			</if>
+			<if test="imgId !=  null">			        
+				img_id=#{imgId},
+			</if>
+			<if test="imgType !=  null">			        
+				img_type=#{imgType},
+			</if>
+			<if test="imgDes !=  null">			        
+				img_des=#{imgDes},
+			</if>
+			<if test="imgIndex !=  null">			        
+				img_index=#{imgIndex},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="createTime !=  null">			        
+				create_time=#{createTime},
+			</if>
+			<if test="createPerson !=  null">			        
+				create_person=#{createPerson},
+			</if>
+			<if test="updTime !=  null">			        
+				upd_time=#{updTime},
+			</if>
+			<if test="updPerson !=  null">			        
+				upd_person=#{updPerson},
+			</if>
+			<if test="imgUrl !=  null">			        
+				img_url=#{imgUrl},
+			</if>
+		</set>
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="packageId !=  null">			        
+				and package_id=#{packageId}
+			</if>
+			<if test="imgId !=  null">			        
+				and img_id=#{imgId}
+			</if>
+			<if test="imgType !=  null">			        
+				and img_type=#{imgType}
+			</if>
+			<if test="imgDes !=  null">			        
+				and img_des=#{imgDes}
+			</if>
+			<if test="imgIndex !=  null">			        
+				and img_index=#{imgIndex}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+		</where>
+		
+	</update>
+	<update id="updateByMap" parameterType="java.util.Map">
+		update 
+			package_image_relation
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="packageType !=  null">			        
+				package_type=#{packageType},
+			</if>
+			<if test="packageId !=  null">			        
+				package_id=#{packageId},
+			</if>
+			<if test="imgId !=  null">			        
+				img_id=#{imgId},
+			</if>
+			<if test="imgType !=  null">			        
+				img_type=#{imgType},
+			</if>
+			<if test="imgDes !=  null">			        
+				img_des=#{imgDes},
+			</if>
+			<if test="imgIndex !=  null">			        
+				img_index=#{imgIndex},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="createTime !=  null">			        
+				create_time=#{createTime},
+			</if>
+			<if test="createPerson !=  null">			        
+				create_person=#{createPerson},
+			</if>
+			<if test="updTime !=  null">			        
+				upd_time=#{updTime},
+			</if>
+			<if test="updPerson !=  null">			        
+				upd_person=#{updPerson},
+			</if>
+			<if test="imgUrl !=  null">			        
+				img_url=#{imgUrl},
+			</if>
+		</set>
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="packageId !=  null">			        
+				and package_id=#{packageId}
+			</if>
+			<if test="imgId !=  null">			        
+				and img_id=#{imgId}
+			</if>
+			<if test="imgType !=  null">			        
+				and img_type=#{imgType}
+			</if>
+			<if test="imgDes !=  null">			        
+				and img_des=#{imgDes}
+			</if>
+			<if test="imgIndex !=  null">			        
+				and img_index=#{imgIndex}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+		</where>
+		
+	</update>
+	
+	<update id="cmplxUpdate" parameterType="java.util.Map">
+		update 
+			package_image_relation
+		<set>
+			<if test="updNewMap.id !=  null">
+				id=#{updNewMap.id},
+			</if>
+			<if test="updNewMap.packageType !=  null">
+				package_type=#{updNewMap.packageType},
+			</if>
+			<if test="updNewMap.packageId !=  null">
+				package_id=#{updNewMap.packageId},
+			</if>
+			<if test="updNewMap.imgId !=  null">
+				img_id=#{updNewMap.imgId},
+			</if>
+			<if test="updNewMap.imgType !=  null">
+				img_type=#{updNewMap.imgType},
+			</if>
+			<if test="updNewMap.imgDes !=  null">
+				img_des=#{updNewMap.imgDes},
+			</if>
+			<if test="updNewMap.imgIndex !=  null">
+				img_index=#{updNewMap.imgIndex},
+			</if>
+			<if test="updNewMap.valid !=  null">
+				valid=#{updNewMap.valid},
+			</if>
+			<if test="updNewMap.createTime !=  null">
+				create_time=#{updNewMap.createTime},
+			</if>
+			<if test="updNewMap.createPerson !=  null">
+				create_person=#{updNewMap.createPerson},
+			</if>
+			<if test="updNewMap.updTime !=  null">
+				upd_time=#{updNewMap.updTime},
+			</if>
+			<if test="updNewMap.updPerson !=  null">
+				upd_person=#{updNewMap.updPerson},
+			</if>
+			<if test="updNewMap.imgUrl !=  null">
+				img_url=#{updNewMap.imgUrl},
+			</if>
+		</set>
+		<where>
+			<if test="updCondMap.id !=  null">
+				and id=#{updCondMap.id}
+			</if>
+			<if test="updCondMap.packageType !=  null">
+				and package_type=#{updCondMap.packageType}
+			</if>
+			<if test="updCondMap.packageId !=  null">
+				and package_id=#{updCondMap.packageId}
+			</if>
+			<if test="updCondMap.imgId !=  null">
+				and img_id=#{updCondMap.imgId}
+			</if>
+			<if test="updCondMap.imgType !=  null">
+				and img_type=#{updCondMap.imgType}
+			</if>
+			<if test="updCondMap.imgDes !=  null">
+				and img_des=#{updCondMap.imgDes}
+			</if>
+			<if test="updCondMap.imgIndex !=  null">
+				and img_index=#{updCondMap.imgIndex}
+			</if>
+			<if test="updCondMap.valid !=  null">
+				and valid=#{updCondMap.valid}
+			</if>
+			<if test="updCondMap.createTime !=  null">
+				and create_time=#{updCondMap.createTime}
+			</if>
+			<if test="updCondMap.createPerson !=  null">
+				and create_person=#{updCondMap.createPerson}
+			</if>
+			<if test="updCondMap.updTime !=  null">
+				and upd_time=#{updCondMap.updTime}
+			</if>
+			<if test="updCondMap.updPerson !=  null">
+				and upd_person=#{updCondMap.updPerson}
+			</if>
+			<if test="updCondMap.imgUrl !=  null">
+				and img_url=#{updCondMap.imgUrl}
+			</if>
+		</where>
+		
+	</update>
+	
+	<delete id="delete" parameterType="com.island.domain.model.PackageImageRelation">		
+		DELETE
+		FROM
+			package_image_relation 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="packageId !=  null">			        
+				and package_id=#{packageId}
+			</if>
+			<if test="imgId !=  null">			        
+				and img_id=#{imgId}
+			</if>
+			<if test="imgType !=  null">			        
+				and img_type=#{imgType}
+			</if>
+			<if test="imgDes !=  null">			        
+				and img_des=#{imgDes}
+			</if>
+			<if test="imgIndex !=  null">			        
+				and img_index=#{imgIndex}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+		</where>
+		
+	</delete>
+	<delete id="deleteByMap" parameterType="java.util.Map">		
+		DELETE
+		FROM
+			package_image_relation 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="packageId !=  null">			        
+				and package_id=#{packageId}
+			</if>
+			<if test="imgId !=  null">			        
+				and img_id=#{imgId}
+			</if>
+			<if test="imgType !=  null">			        
+				and img_type=#{imgType}
+			</if>
+			<if test="imgDes !=  null">			        
+				and img_des=#{imgDes}
+			</if>
+			<if test="imgIndex !=  null">			        
+				and img_index=#{imgIndex}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+		</where>
+		
+	</delete>
+</mapper>

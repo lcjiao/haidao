@@ -54,4 +54,8 @@
 		<property name="recommendDao" ref="RecommendDAO"></property>
 	</bean>
 	
+	<bean id="PackageKepianliuyingDAO" class="com.island.domain.dal.PackageKepianliuyingIbatisDAOImpl" />		
+	<bean id="PackageImageRelationDAO" class="com.island.domain.dal.PackageImageRelationIbatisDAOImpl" />		
+	
+	
 </beans>

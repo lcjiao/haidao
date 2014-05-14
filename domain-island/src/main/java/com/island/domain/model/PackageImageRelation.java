@@ -2,12 +2,28 @@ package com.island.domain.model;
 
 import com.jcl.core.dal.AbsModel;
 
-public class PackageDetailInfo extends AbsModel{
+public class PackageImageRelation extends AbsModel{
 
 	public String get(){
-		return "haidao_db.package_detail_info";
+		return "haidao_db.package_image_relation";
 	}
 
+	/**
+	 * 套餐类别  1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐 5:自由行套餐
+	 */
+  	private Integer packageType;
+  	/**
+	 * 设置套餐类别  1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐 5:自由行套餐
+	 */
+  	public void setPackageType(Integer packageType){
+  		this.packageType=packageType;
+  	}
+  	/**
+	 * 获取套餐类别  1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐 5:自由行套餐
+	 */
+  	public Integer getPackageType(){
+  		return this.packageType;
+  	}
 	/**
 	 * 套餐编号
 	 */
@@ -25,36 +41,68 @@ public class PackageDetailInfo extends AbsModel{
   		return this.packageId;
   	}
 	/**
-	 * 套餐类别  1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐 5:自由行套餐
+	 * 图片编号
 	 */
-  	private Integer packageType;
+  	private Integer imgId;
   	/**
-	 * 设置套餐类别  1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐 5:自由行套餐
+	 * 设置图片编号
 	 */
-  	public void setPackageType(Integer packageType){
-  		this.packageType=packageType;
+  	public void setImgId(Integer imgId){
+  		this.imgId=imgId;
   	}
   	/**
-	 * 获取套餐类别  1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐 5:自由行套餐
+	 * 获取图片编号
 	 */
-  	public Integer getPackageType(){
-  		return this.packageType;
+  	public Integer getImgId(){
+  		return this.imgId;
+  	}
+	/**
+	 * 图片类型
+	 */
+  	private Integer imgType;
+  	/**
+	 * 设置图片类型
+	 */
+  	public void setImgType(Integer imgType){
+  		this.imgType=imgType;
   	}
   	/**
-	 * 套餐详细介绍
+	 * 获取图片类型
 	 */
-  	private String content;
-  	/**
-	 * 设置套餐详细介绍
-	 */
-  	public void setContent(String content){
-  		this.content=content;
+  	public Integer getImgType(){
+  		return this.imgType;
   	}
   	/**
-	 * 获取套餐详细介绍
+	 * 图片描述
 	 */
-  	public String getContent(){
-  		return this.content;
+  	private String imgDes;
+  	/**
+	 * 设置图片描述
+	 */
+  	public void setImgDes(String imgDes){
+  		this.imgDes=imgDes;
+  	}
+  	/**
+	 * 获取图片描述
+	 */
+  	public String getImgDes(){
+  		return this.imgDes;
+  	}
+	/**
+	 * 图片展示次序
+	 */
+  	private Integer imgIndex;
+  	/**
+	 * 设置图片展示次序
+	 */
+  	public void setImgIndex(Integer imgIndex){
+  		this.imgIndex=imgIndex;
+  	}
+  	/**
+	 * 获取图片展示次序
+	 */
+  	public Integer getImgIndex(){
+  		return this.imgIndex;
   	}
 	/**
 	 * 是否有效 1有效  0无效
@@ -135,6 +183,22 @@ public class PackageDetailInfo extends AbsModel{
 	 */
   	public String getUpdPerson(){
   		return this.updPerson;
+  	}
+  	/**
+	 * 图片地址
+	 */
+  	private String imgUrl;
+  	/**
+	 * 设置图片地址
+	 */
+  	public void setImgUrl(String imgUrl){
+  		this.imgUrl=imgUrl;
+  	}
+  	/**
+	 * 获取图片地址
+	 */
+  	public String getImgUrl(){
+  		return this.imgUrl;
   	}
 	/**
 	 * 保存时非空数据项校验；
