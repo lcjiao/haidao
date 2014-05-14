@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>婚礼套餐基本信息录入页</title>
+<title>婚礼套餐基本信息管理页</title>
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<form action="${ctx}/marrypackage/package/package!addBaseInfo.action"   id="form" method="post">
+<form action="${ctx}/marrypackage/package/package!editBaseInfo.action" id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" width="100%">
 	<tbody>
@@ -28,15 +28,15 @@
 		</tr>
 		<tr>
 			<td>套餐标题</td>
-			<td><input type="text" name="title" id="p_title" value=""/></td>					
+			<td><input type="text" name="title" id="p_title" value="${title}"/></td>					
 		</tr>
 		<tr>
 			<td>淡季价格</td>
-			<td><input type="text" name="smallPrice" id="p_s_price" value=""/></td>					
+			<td><input type="text" name="smallPrice" id="p_s_price" value="${smallPrice}"/></td>					
 		</tr>
 		<tr>
 			<td>旺季价格</td>
-			<td><input type="text" name="bigPrice" id="p_b_price" value=""/></td>					
+			<td><input type="text" name="bigPrice" id="p_b_price" value="${bigPrice}"/></td>					
 		</tr>
 		<tr>
 			<td>是否售卖</td>
@@ -48,12 +48,11 @@
 	</tbody>	
 </table>
 </div>
-<input type="hidden" value=" " id="action_type" name="actionType"/>
+<input type="hidden" value="${id}" id="p_id" name="id"/>
 <table class="creatcustomer_tfoot" width="100%">
 	<tfoot>
 		<td>
-			<input type=button  value="保存并返回" id="add_base" onclick="addBaseAndToList()"/>
-			<input type=button  value="保存并添加详情" id="add_detail" onclick="addBaseAndToDetail()"/>
+			<input type=button  value="修改" id="add_base" onclick="editBase()"/>
 		</td>
 </tfoot>
 </table>
@@ -63,14 +62,18 @@
 
 </body>
 <script>
-function addBaseAndToList(){
-	$("#action_type").val(1);
+$(function(){
+	var islandId ='${islandId}';
+	$("#island_id option[value='"+islandId+"']").attr('selected',true);
+	
+	var online = '${online}';
+	$("input[type=radio][value='"+online+"']").attr('checked',true);
+	
+	
+});
+function editBase(){
 	$("#form").submit();
 }	
 
-function addBaseAndToDetail(){
-	$("#action_type").val(2);
-	$("#form").submit();
-}	
 </script>
 </html>

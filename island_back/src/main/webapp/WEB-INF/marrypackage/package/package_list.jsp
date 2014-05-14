@@ -11,6 +11,7 @@
 
 </head>
 <body>
+<form action="${ctx}/marrypackage/package/package!list.action" id="form" method="post">
 <table class="searchbar" width="100%">
 	<tbody>
 		<tr>
@@ -32,14 +33,15 @@
 		</tr>
 	</tbody>
 </table>
-
+<input type="hidden" value="${pageNo}" name="pageNo" id="page_no"/>
+</form>
 <table class="customlist" width="100%">
 <thead>
 		<tr>
 			<td>
 				<div id="pagebar"> 
 					<div id="page"></div>
-					<code>共<strong id="total_page_size">${totalPageSize}</strong>页&nbsp;<strong>${countSize}</strong>条记录</code>
+					<code>共<strong id="total_page_size">${totalPageSize}</strong>页&nbsp;<strong>${totalSize}</strong>条记录</code>
 					<div id="go_page">
 						<input type="text" class="num numonly" size="6" id="go_no" value=""/>
 						<input type="button" value="GO" id="go"/>
@@ -71,14 +73,14 @@
 								<td>${package.title}</td>
 								<td>${package.areaName}</td>
 								<td>${package.islandName}</td>
-								<td>${package.priceBig}</td>
 								<td>${package.priceSmall}</td>
+								<td>${package.priceBig}</td>
 								<td>${package.onlineStr}</td>
 								<td width="360px">
-									<a title="${package.id}" onclick="editArea(this)" >基本信息修改</a>&nbsp;|&nbsp;
-									<a title="${package.id}" onclick="editArea(this)" >图片调整</a>&nbsp;|&nbsp;
-									<a title="${package.id}" onclick="editArea(this)" >详细信息调整</a>&nbsp;|&nbsp;
-									<a title="${package.id}" onclick="editArea(this)" >客片留影调整</a>&nbsp;|&nbsp;
+									<a title="${package.id}" onclick="editBase(this)" >基本信息管理</a>&nbsp;|&nbsp;
+									<a title="${package.id}" onclick="editArea(this)" >详细信息管理</a>&nbsp;|&nbsp;
+									<a title="${package.id}" onclick="editArea(this)" >图片管理</a>&nbsp;|&nbsp;
+									<a title="${package.id}" onclick="editArea(this)" >客片留影管理</a>&nbsp;|&nbsp;
 									<a title="${package.id}"  onclick="delArea(this)">删除</a>&nbsp;&nbsp;
 								</td>	
 							</tr>
@@ -103,8 +105,6 @@
 	//绑定事件
 	function bindEvent(){
 		$("#search").bind('click',search);
-		//$("#source_web").bind('change',changeByWeb);
-		//$("#question_parent").bind('change',changeSearchParam);
 		$("#go").bind('click',gotoPageNo);
 		$("#new_create").bind('click',newCreate);
 		
@@ -163,11 +163,14 @@
 	
 	
 	function findByNo(pageNo){
-		var islandId = $("#island_id").val();
+		/* var islandId = $("#island_id").val();
 		var title = $("#sear_title").val();
+		title = encodeURI(title);
 		var price = $("#sear_price").val();
 		var url = "${ctx}/marrypackage/package/package!list.action?islandId="+islandId+"&title="+title+"&price="+price;
-		window.location.href = url;
+		window.location.href = url; */
+		$("#page_no").val(pageNo);
+		$("#form").submit();
 	}
 	
 	function newCreate(){
@@ -175,72 +178,10 @@
 		window.location.href = url;
 	};
 	
-	////
-	
-	function changeByWeb(){
-		$("#source_web_serarch").val( $("#source_web").val() );
-		var sourceWeb = $("#source_web").val();
-		var url = "${ctx}/callcenter/question/question!list.action?sourceWeb="+sourceWeb;
-		window.location.href = url;
+	function editBase(ele){
+		var packageId = $(ele).attr('title');
+		var url =  "${ctx}/marrypackage/package/package!toEditBase.action?id="+packageId;
+		window.location.href = url; 
 	}
-	
-	function changeSearchParam(){
-		$("#source_web_serarch").val( $("#source_web").val() );
-		$("#parent_id_search").val( $("#question_parent").val() );
-	}
-	
-	function editQuestion(ele){
-		$.ajax({
-			type:"get",
-			url:"${ctx}/callcenter/question/question!isRoleEdit.action",
-			dataType:"text",
-			success:function(text){
-				if(text == "no"){
-					alert("你无权限此操作");
-				}else{
-					var link = $(ele).attr("name");
-					window.location.href = link;
-				}
-				
-			}
-		});
-	}
-	
-	function hideQuestion(ele){
-		$.ajax({
-			type:"get",
-			url:"${ctx}/callcenter/question/question!isRoleEdit.action",
-			dataType:"text",
-			success:function(text){
-				if(text == "no"){
-					alert("你无权限此操作");
-				}else{
-					var isHide = confirm('确定隐藏吗?');
-					if(isHide){
-						var questionId = $(ele).attr("title");
-						var link = $(ele).attr("name");
-						$.ajax({
-							type:"get",
-							url:"${ctx}/callcenter/question/question!checkHide.action?questionId="+questionId,
-							dataType:"text",
-							success:function(text){
-								if(text == "no"){
-									alert("请先删除其子问题");
-								}else{
-									window.location.href = link;
-								};
-								
-							}
-						});
-							
-					}
-				}
-				
-			}
-		});
-		
-		
-	}
-	
 </script>
 </html>
