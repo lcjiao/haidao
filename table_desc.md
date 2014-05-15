@@ -148,7 +148,7 @@
         `img` varchar(500) DEFAULT NULL COMMENT '图片地址',
         `desc` varchar(500) DEFAULT NULL COMMENT '描述',
         `link` varchar(500) DEFAULT NULL COMMENT '链接地址',
-        `index` int(4) DEFAULT NULL COMMENT '排序',
+        `kepian_index` int(4) DEFAULT NULL COMMENT '排序',
         `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
         `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
         `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
