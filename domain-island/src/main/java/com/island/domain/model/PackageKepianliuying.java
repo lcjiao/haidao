@@ -91,18 +91,18 @@ public class PackageKepianliuying extends AbsModel{
 	/**
 	 * 排序
 	 */
-  	private Integer index;
+  	private Integer kepianIndex;
   	/**
 	 * 设置排序
 	 */
-  	public void setIndex(Integer index){
-  		this.index=index;
+  	public void setKepianIndex(Integer kepianIndex){
+  		this.kepianIndex=kepianIndex;
   	}
   	/**
 	 * 获取排序
 	 */
-  	public Integer getIndex(){
-  		return this.index;
+  	public Integer getKepianIndex(){
+  		return this.kepianIndex;
   	}
 	/**
 	 * 是否有效 1有效  0无效
