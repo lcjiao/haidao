@@ -12,7 +12,7 @@
 			<result property="img" column="img" />
 			<result property="desc" column="desc" />
 			<result property="link" column="link" />
-			<result property="index" column="index" />
+			<result property="kepianIndex" column="kepian_index" />
 			<result property="valid" column="valid" />
 			<result property="createTime" column="create_time" />
 			<result property="createPerson" column="create_person" />
@@ -28,7 +28,7 @@
 			img,
 			desc,
 			link,
-			index,
+			kepian_index,
 			valid,
 			create_time,
 			create_person,
@@ -50,7 +50,7 @@
 			img,
 			desc,
 			link,
-			index,
+			kepian_index,
 			valid,
 			create_time,
 			create_person,
@@ -77,8 +77,8 @@
 			<if test="link !=  null">			        
 				and link=#{link}
 			</if>
-			<if test="index !=  null">			        
-				and index=#{index}
+			<if test="kepianIndex !=  null">			        
+				and kepian_index=#{kepianIndex}
 			</if>
 			<if test="valid !=  null">			        
 				and valid=#{valid}
@@ -107,7 +107,7 @@
 			img,
 			desc,
 			link,
-			index,
+			kepian_index,
 			valid,
 			create_time,
 			create_person,
@@ -134,8 +134,8 @@
 			<if test="link !=  null">			        
 				and link=#{link}
 			</if>
-			<if test="index !=  null">			        
-				and index=#{index}
+			<if test="kepianIndex !=  null">			        
+				and kepian_index=#{kepianIndex}
 			</if>
 			<if test="valid !=  null">			        
 				and valid=#{valid}
@@ -182,8 +182,8 @@
 			<if test="link !=  null">			        
 				and link=#{link}
 			</if>
-			<if test="index !=  null">			        
-				and index=#{index}
+			<if test="kepianIndex !=  null">			        
+				and kepian_index=#{kepianIndex}
 			</if>
 			<if test="valid !=  null">			        
 				and valid=#{valid}
@@ -228,8 +228,8 @@
 			<if test="link !=  null">			        
 				and link=#{link}
 			</if>
-			<if test="index !=  null">			        
-				and index=#{index}
+			<if test="kepianIndex !=  null">			        
+				and kepian_index=#{kepianIndex}
 			</if>
 			<if test="valid !=  null">			        
 				and valid=#{valid}
@@ -258,7 +258,7 @@
 			img,
 			desc,
 			link,
-			index,
+			kepian_index,
 			valid,
 			create_time,
 			create_person,
@@ -286,8 +286,8 @@
 				<if test="params.link !=  null">
 					and link=#{params.link}
 				</if>
-				<if test="params.index !=  null">
-					and index=#{params.index}
+				<if test="params.kepianIndex !=  null">
+					and kepian_index=#{params.kepianIndex}
 				</if>
 				<if test="params.valid !=  null">
 					and valid=#{params.valid}
@@ -311,8 +311,8 @@
 
 	<insert id="insert" parameterType="com.island.domain.model.PackageKepianliuying" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO	package_kepianliuying
-			(id,package_id,package_type,img,desc,link,index,valid,create_time,create_person,upd_time,upd_person)
-			VALUES(#{id},#{packageId},#{packageType},#{img},#{desc},#{link},#{index},#{valid},#{createTime},#{createPerson},#{updTime},#{updPerson})		
+			(id,package_id,package_type,img,desc,link,kepian_index,valid,create_time,create_person,upd_time,upd_person)
+			VALUES(#{id},#{packageId},#{packageType},#{img},#{desc},#{link},#{kepianIndex},#{valid},#{createTime},#{createPerson},#{updTime},#{updPerson})		
 	</insert>
 	
 	<update id="update" parameterType="com.island.domain.model.PackageKepianliuying">
@@ -337,8 +337,8 @@
 			<if test="link !=  null">			        
 				link=#{link},
 			</if>
-			<if test="index !=  null">			        
-				index=#{index},
+			<if test="kepianIndex !=  null">			        
+				kepian_index=#{kepianIndex},
 			</if>
 			<if test="valid !=  null">			        
 				valid=#{valid},
@@ -375,8 +375,8 @@
 			<if test="link !=  null">			        
 				and link=#{link}
 			</if>
-			<if test="index !=  null">			        
-				and index=#{index}
+			<if test="kepianIndex !=  null">			        
+				and kepian_index=#{kepianIndex}
 			</if>
 			<if test="valid !=  null">			        
 				and valid=#{valid}
@@ -418,8 +418,8 @@
 			<if test="link !=  null">			        
 				link=#{link},
 			</if>
-			<if test="index !=  null">			        
-				index=#{index},
+			<if test="kepianIndex !=  null">			        
+				kepian_index=#{kepianIndex},
 			</if>
 			<if test="valid !=  null">			        
 				valid=#{valid},
@@ -456,8 +456,8 @@
 			<if test="link !=  null">			        
 				and link=#{link}
 			</if>
-			<if test="index !=  null">			        
-				and index=#{index}
+			<if test="kepianIndex !=  null">			        
+				and kepian_index=#{kepianIndex}
 			</if>
 			<if test="valid !=  null">			        
 				and valid=#{valid}
@@ -500,8 +500,8 @@
 			<if test="updNewMap.link !=  null">
 				link=#{updNewMap.link},
 			</if>
-			<if test="updNewMap.index !=  null">
-				index=#{updNewMap.index},
+			<if test="updNewMap.kepianIndex !=  null">
+				kepian_index=#{updNewMap.kepianIndex},
 			</if>
 			<if test="updNewMap.valid !=  null">
 				valid=#{updNewMap.valid},
@@ -538,8 +538,8 @@
 			<if test="updCondMap.link !=  null">
 				and link=#{updCondMap.link}
 			</if>
-			<if test="updCondMap.index !=  null">
-				and index=#{updCondMap.index}
+			<if test="updCondMap.kepianIndex !=  null">
+				and kepian_index=#{updCondMap.kepianIndex}
 			</if>
 			<if test="updCondMap.valid !=  null">
 				and valid=#{updCondMap.valid}
@@ -583,8 +583,8 @@
 			<if test="link !=  null">			        
 				and link=#{link}
 			</if>
-			<if test="index !=  null">			        
-				and index=#{index}
+			<if test="kepianIndex !=  null">			        
+				and kepian_index=#{kepianIndex}
 			</if>
 			<if test="valid !=  null">			        
 				and valid=#{valid}
@@ -627,8 +627,8 @@
 			<if test="link !=  null">			        
 				and link=#{link}
 			</if>
-			<if test="index !=  null">			        
-				and index=#{index}
+			<if test="kepianIndex !=  null">			        
+				and kepian_index=#{kepianIndex}
 			</if>
 			<if test="valid !=  null">			        
 				and valid=#{valid}
