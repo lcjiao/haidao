@@ -17,13 +17,7 @@
 		<tr>
 			<td width="48">图片类型</td>
 			<td width="10">
-				<select id="img_type" name="imgType">
-					<option value="0" selected="selected">--请选择--</option>
-					<option value="1" >logo图</option>
-					<option value="2" >套餐图片集</option>
-					<option value="3" >套餐大图</option>
-					<option value="4" >套餐小图</option>
-				</select>
+				<input type="text" value="${kepianDesc}" name="kepianDesc" id="kepian_desc"/>
 			</td>
 			<td><input class="btn" type="button" value="搜索" id="search"/>
 			</td>
@@ -56,15 +50,15 @@
 				<table class="datalist ask_rel" width="100%">
 					<thead>
 						<tr>
-							<td>图片类型</td>
-							<td>图片</td>
-							<td>图片描述</td>
+							<td>链接地址</td>
+							<td>logo</td>
+							<td>描述</td>
 							<td>次序</td>
 							<td>操作</td>
 						</tr>
 					</thead>
 					<tbody id="question_list">
-						<c:forEach var="img" items="${packageImgList}" varStatus="status">
+						<c:forEach var="kepian" items="${kepianList}" varStatus="status">
 							<tr>
 								<td style="text-align:center;">${img.typeName}</td>
 								<td style="text-align:center;">
