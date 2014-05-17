@@ -80,8 +80,8 @@
 									<a title="${package.id}" onclick="editBase(this)" >基本信息管理</a>&nbsp;|&nbsp;
 									<a title="${package.id}" onclick="editDetail(this)" >详细信息管理</a>&nbsp;|&nbsp;
 									<a title="${package.id}" onclick="editImg(this)" >图片管理</a>&nbsp;|&nbsp;
-									<a title="${package.id}" onclick="editArea(this)" >客片留影管理</a>&nbsp;|&nbsp;
-									<a title="${package.id}"  onclick="delArea(this)">删除</a>&nbsp;&nbsp;
+									<a title="${package.id}" onclick="editKepian(this)" >客片留影管理</a>&nbsp;|&nbsp;
+									<a title="${package.id}"  onclick="delPackage(this)">删除</a>&nbsp;&nbsp;
 								</td>	
 							</tr>
 						</c:forEach>
@@ -190,11 +190,25 @@
 		window.location.href = url; 
 	}
 	
-	
 	function editImg(ele){
 		var packageId = $(ele).attr('title');
 		var url =  "${ctx}/marrypackage/package/package!toImgList.action?id="+packageId;
 		window.location.href = url; 
+	}
+	
+	function editKepian(ele){
+		var packageId = $(ele).attr('title');
+		var url =  "${ctx}/marrypackage/package/package!toKepianList.action?id="+packageId;
+		window.location.href = url; 
+	}
+	
+	function delPackage(ele){
+		var isHide = confirm('确定删除吗?');
+		if(isHide){
+			var packageId = $(ele).attr('title');
+			var url =  "${ctx}/marrypackage/package/package!delPackage.action?id="+packageId;
+			window.location.href = url; 
+		}
 	}
 </script>
 </html>

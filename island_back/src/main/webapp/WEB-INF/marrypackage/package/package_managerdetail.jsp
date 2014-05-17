@@ -65,7 +65,6 @@
 	}
 	function saveBack(){
 		$("#p_detail").val(editor.html());
-		alert($("#p_detail").val());
 		$("#form").submit();
 	}
 	function back(){
