@@ -288,7 +288,7 @@
         `question_type` varchar(50) DEFAULT NULL COMMENT '问题种类',
         `title` varchar(500) DEFAULT NULL COMMENT '问题标题',
         `answer` varchar(10000) DEFAULT NULL COMMENT '回答',
-        `index` int(4) DEFAULT NULL COMMENT '展示次序',
+        `qa_index` int(4) DEFAULT NULL COMMENT '展示次序',
         `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
         `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
         `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
