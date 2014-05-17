@@ -24,8 +24,7 @@ import com.island.domain.model.Island;
 import com.island.domain.model.IslandPackage;
 import com.island.domain.model.PackageDetailInfo;
 import com.island.domain.model.PackageImageRelation;
-import com.island.domain.model.Recommend;
-import com.island.domain.model.User;
+import com.island.domain.model.PackageKepianliuying;
 import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
@@ -46,6 +45,7 @@ public class PackageAction extends ActionSupport {
 	private Integer totalSize;
 	private Integer pageSize=10;
 	private Integer packageType=1;
+	
 	private Integer id;
 	private Integer islandId;
 	private String title;
@@ -53,8 +53,7 @@ public class PackageAction extends ActionSupport {
 	private Integer smallPrice;
 	private Integer bigPrice;
 	private Integer online;
-	private Integer actionType;//1保存基本信息返回列表 2:保存基本信息返回详细信息添加页 
-	//3保存详细信息并添加图片  4:管理详细信息
+	
 	
 	private String detailInfo;
 	
@@ -62,19 +61,33 @@ public class PackageAction extends ActionSupport {
 	private Integer imgType;
 	private String imgDesc;
 	private Integer imgIndex;
+	
+	private Integer kepianId;
+	private String kepianDesc;
+	private Integer kepianIndex;
+	private String kepianLink;
+	
 	private File image;
 	private String imageFileName;
 	private String imageServPath=ModuleEnum.IMAGE_SAVE_PATH;
 	private String imageServPrefix=ModuleEnum.IMAGE_SERV_PREFIX;
 	
+	private Integer actionType;//1保存基本信息返回列表 2:保存基本信息返回详细信息添加页 
+	//3保存详细信息并添加图片  4:管理详细信息
+	
 	private List<IslandPackage> packageList = new ArrayList<IslandPackage>(0);
 	private List<PackageImageRelation> packageImgList;
 	private List<Island> islandList = new ArrayList<Island>(0);
+	private List<PackageKepianliuying> kepianList;
+	
 	AreaIslandBiz areaIslandBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getAreaIslandBiz();
-	
 	MarrayPackageBiz packageBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getMarrayPackageBiz();
+	
+	/**
+	 * 套餐列表信息维护begin－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+	 */
 	
 	/**
 	 * 进入婚礼套餐列表页
@@ -84,6 +97,112 @@ public class PackageAction extends ActionSupport {
 		dolist();
 		return "list";
 	}
+	
+	
+	/**
+	 * 进入套餐列表页
+	 * @return
+	 */
+	public String back(){
+		dolist();
+		return "list";
+	}
+	
+	/**
+	 * 套餐列表筛选
+	 * @return
+	 */
+	public String dolist(){
+		initIslandList();
+		
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("valid", 1);
+		Page page = new Page();
+		page.setPageNo(pageNo);
+		page.setPageSize(pageSize);
+		params.put("begin", page.getBegin());
+		params.put("size", page.getPageSize());
+		if(title != null && !"".equals(title) ){
+			params.put("titleSear", "%"+title+"%");
+		}
+		if(price != null && price.intValue() > 0){
+			params.put("price", price);
+		}
+		if(islandId != null && islandId.intValue() > 0 ){
+			params.put("islandId", islandId);
+		}
+		params.put("packageType", 1);
+		List<IslandPackage> list = packageBiz.queryPackageByMap(params);
+		if(list != null && list.size()>0){
+			Map<String,Object> countParam = new HashMap<String,Object>(0);
+			countParam.put("valid", 1);
+			if(title != null && !"".equals(title)  ){
+				countParam.put("titleSear", "%"+title+"%");
+			}
+			if(price != null && price.intValue() > 0 ){
+				countParam.put("price", price);
+			}
+			if(islandId != null && islandId.intValue() > 0 ){
+				countParam.put("islandId", islandId);
+			}
+			this.totalSize = packageBiz.countPackageByMap(countParam);
+		}else{
+			this.totalSize=0;
+		}
+		initTotalPageSize();
+		this.packageList = list;
+		
+		return "imglist";
+	}
+	
+	
+	/**
+	 * 套餐删除
+	 * @return
+	 */
+	public String delPackage(){
+		String creater = "";
+		SessionInfo sessionInfo = RequestProcc.getSessionInfo();
+		if(sessionInfo != null ){
+			creater = sessionInfo.getUser().getUserName(); 
+		}
+		int now = (int)(System.currentTimeMillis()/1000);
+		Map<String,Object> setParams = new HashMap<String,Object>(0);
+		setParams.put("updTime", now);
+		setParams.put("valid", 0);
+		setParams.put("updPerson", creater);
+		setParams.put("id", id);
+		this.packageBiz.updPackageByMap(setParams);
+		dolist();
+		return "list";
+	}
+	
+
+	/**
+	 * 套餐信息维护end－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+	 */
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * 套餐基本信息维护begin－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+	 */
+	
 	
 	/**
 	 * 进入婚礼套餐基本信息录入页
@@ -121,7 +240,7 @@ public class PackageAction extends ActionSupport {
 		if(online != null){
 			addObj.setIsOnline(online);
 		}
-		if( islandId != null ){
+		if( islandId != null && islandId.intValue() > 0){
 			Island island = areaIslandBiz.queryIslandById(islandId);
 			addObj.setAreaId(island.getAreaId());
 			addObj.setAreaName(island.getAreaName());
@@ -152,7 +271,7 @@ public class PackageAction extends ActionSupport {
 	 */
 	public String toEditBase(){
 		initIslandList();
-		IslandPackage obj = this.packageBiz.queryById(id);
+		IslandPackage obj = this.packageBiz.queryPackageById(id);
 		this.title=obj.getTitle();
 		this.islandId=obj.getIslandId();
 		this.bigPrice=Integer.parseInt(obj.getPriceBig());
@@ -195,13 +314,42 @@ public class PackageAction extends ActionSupport {
 			params.put("islandId", islandId);
 			params.put("islandName", island.getName());
 		}
-		this.packageBiz.updByMap(params);
+		this.packageBiz.updPackageByMap(params);
 		this.islandId=null;
 		this.title=null;
 		this.price=null;
 		dolist();
 		return "list";
 	}
+	
+	
+	/**
+	 * 套餐基本信息维护end－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+	 */
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * 套餐详细信息维护begin－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+	 */
+	
 	
 	
 	/**
@@ -258,15 +406,49 @@ public class PackageAction extends ActionSupport {
 		return "list";
 	}
 	
+	/**
+	 * 套餐详细信息维护end－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+	 * 
+	 */
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * 套餐图片信息维护begin－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+	 * 
+	 */
+	
+	
+	/**
+	 * 进入套餐图片列表页
+	 * @return
+	 */
+	
 	public String toImgList(){
 		doimgList();
 		return "imglist";
 	}
 	
+	/**
+	 * 进入套餐图片添加页
+	 * @return
+	 */
 	public String toAddImg(){
 		return "addimg";
 	}
 	
+	/**
+	 * 添加套餐图片
+	 * @return
+	 */
 	public String addImg(){
 		String creater = "";
 		SessionInfo sessionInfo = RequestProcc.getSessionInfo();
@@ -295,6 +477,10 @@ public class PackageAction extends ActionSupport {
 		return "imglist";
 	}
 
+	/**
+	 * 删除套餐图片
+	 * @return
+	 */
 	public String delImg(){
 		String creater = "";
 		SessionInfo sessionInfo = RequestProcc.getSessionInfo();
@@ -306,12 +492,17 @@ public class PackageAction extends ActionSupport {
 		setParams.put("updTime", now);
 		setParams.put("valid", 0);
 		setParams.put("updPerson", creater);
-		setParams.put("id", imgId);
+		setParams.put("id", kepianId);
 		this.packageBiz.updPackageImgByMap(setParams);	
 		doimgList();
 		return "imglist";
 	}
 	
+	
+	/**
+	 * 进入套餐图片修改页
+	 * @return
+	 */
 	public String toEditImg(){
 		PackageImageRelation obj = packageBiz.queryPackageImgById(imgId);
 		this.imgDesc=obj.getImgDes();
@@ -320,6 +511,10 @@ public class PackageAction extends ActionSupport {
 		return "editimg";
 	}
 	
+	/**
+	 * 修改套餐图片
+	 * @return
+	 */
 	public String editImg(){
 		String creater = "";
 		SessionInfo sessionInfo = RequestProcc.getSessionInfo();
@@ -348,54 +543,6 @@ public class PackageAction extends ActionSupport {
 		doimgList();
 		return "imglist";
 	}
-	
-	public String back(){
-		dolist();
-		return "list";
-	}
-	public String dolist(){
-		initIslandList();
-		
-		Map<String,Object> params = new HashMap<String,Object>(0);
-		params.put("valid", 1);
-		Page page = new Page();
-		page.setPageNo(pageNo);
-		page.setPageSize(pageSize);
-		params.put("begin", page.getBegin());
-		params.put("size", page.getPageSize());
-		if(title != null && !"".equals(title) ){
-			params.put("titleSear", "%"+title+"%");
-		}
-		if(price != null && price.intValue() > 0){
-			params.put("price", price);
-		}
-		if(islandId != null && islandId.intValue() > 0 ){
-			params.put("islandId", islandId);
-		}
-		params.put("packageType", 1);
-		List<IslandPackage> list = packageBiz.queryPackageByMap(params);
-		if(list != null && list.size()>0){
-			Map<String,Object> countParam = new HashMap<String,Object>(0);
-			countParam.put("valid", 1);
-			if(title != null && !"".equals(title)  ){
-				countParam.put("titleSear", "%"+title+"%");
-			}
-			if(price != null && price.intValue() > 0 ){
-				countParam.put("price", price);
-			}
-			if(islandId != null && islandId.intValue() > 0 ){
-				countParam.put("islandId", islandId);
-			}
-			this.totalSize = packageBiz.countPackageByMap(countParam);
-		}else{
-			this.totalSize=0;
-		}
-		initTotalPageSize();
-		this.packageList = list;
-		
-		return "imglist";
-	}
-	
 	
 	/**
 	 * 套餐图片列表
@@ -433,6 +580,202 @@ public class PackageAction extends ActionSupport {
 		return "list";
 	}
 	
+	/**
+	 * 套餐图片信息维护end－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+	 * 
+	 */
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * 套餐客片信息维护begin－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+	 * 
+	 */
+	
+	
+	/**
+	 * 进入套餐客片列表页
+	 * @return
+	 */
+	public String toKepianList(){
+		doKepianList();
+		return "kepianlist";
+	}
+	
+	/**进入套餐客片添加页
+	 * 
+	 * @return
+	 */
+	public String toAddKepian(){
+		return "addkepian";
+	}
+	
+	/**
+	 * 添加套餐客片
+	 * @return
+	 */
+	public String addKepian(){
+		String creater = "";
+		SessionInfo sessionInfo = RequestProcc.getSessionInfo();
+		if(sessionInfo != null ){
+			creater = sessionInfo.getUser().getUserName(); 
+		}
+		PackageKepianliuying addObj = new PackageKepianliuying();
+		addObj.setCreatePerson(creater);
+		int now = (int)(System.currentTimeMillis()/1000);
+		addObj.setCreateTime(now);
+		if( kepianDesc != null){
+			addObj.setKepianDesc(kepianDesc);
+		}
+		if( kepianIndex != null ){
+			addObj.setKepianIndex(kepianIndex);
+		}
+		if( kepianLink != null ){
+			addObj.setLink(kepianLink);
+		}
+		addObj.setValid(1);
+		addObj.setPackageType(1);
+		addObj.setPackageId(id);
+		addObj.setImg(upload());
+		this.packageBiz.addPackageKepianliuying(addObj);
+		doKepianList();
+		return "kepianlist";
+	}
+
+	/**
+	 * 删除套餐客片案例
+	 * @return
+	 */
+	public String delKepian(){
+		String creater = "";
+		SessionInfo sessionInfo = RequestProcc.getSessionInfo();
+		if(sessionInfo != null ){
+			creater = sessionInfo.getUser().getUserName(); 
+		}
+		int now = (int)(System.currentTimeMillis()/1000);
+		Map<String,Object> setParams = new HashMap<String,Object>(0);
+		setParams.put("updTime", now);
+		setParams.put("valid", 0);
+		setParams.put("updPerson", creater);
+		setParams.put("id", kepianId);
+		this.packageBiz.updPackageKepianByMap(setParams);
+		doKepianList();
+		return "kepianlist";
+	}
+	
+	/**
+	 * 进入套餐客片修改页
+	 * @return
+	 */
+	public String toEditKepian(){
+		PackageKepianliuying obj = packageBiz.queryPackageKepianById(kepianId);
+		this.kepianDesc=obj.getKepianDesc();
+		this.kepianIndex=obj.getKepianIndex();
+		this.kepianLink=obj.getLink();
+		this.id=obj.getPackageId();
+		return "editkepian";
+	}
+	
+	/**
+	 * 修改套餐客片案例
+	 * @return
+	 */
+	public String editKepian(){
+		String creater = "";
+		SessionInfo sessionInfo = RequestProcc.getSessionInfo();
+		if(sessionInfo != null ){
+			creater = sessionInfo.getUser().getUserName(); 
+		}
+		int now = (int)(System.currentTimeMillis()/1000);
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		if( kepianDesc != null ){
+			params.put("kepianDesc", kepianDesc);
+		}
+		if( kepianIndex != null ){
+			params.put("kepianIndex", kepianIndex);
+		}
+		if( kepianLink != null ){
+			params.put("link", kepianLink);
+		}
+		if( image != null ){
+			params.put("img", upload());
+		}
+		params.put("updPerson", creater);
+		params.put("updTime", now);
+		params.put("id", kepianId);
+		
+		this.packageBiz.updPackageKepianByMap(params);
+		doKepianList();
+		return "kepianlist";
+	}
+	
+	
+	/**
+	 * 套餐客片列表
+	 * @return
+	 */
+	public String doKepianList(){
+		
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("valid", 1);
+		Page page = new Page();
+		page.setPageNo(pageNo);
+		page.setPageSize(pageSize);
+		params.put("begin", page.getBegin());
+		params.put("size", page.getPageSize());
+		if(kepianDesc != null && !"".equals(kepianDesc) ){
+			params.put("kepianDescSear", "%"+kepianDesc+"%");
+		}
+		params.put("packageId", id);
+		List<PackageKepianliuying> list = packageBiz.queryPackageKepianByMap(params);
+		if(list != null && list.size()>0){
+			Map<String,Object> countParam = new HashMap<String,Object>(0);
+			countParam.put("valid", 1);
+			countParam.put("packageId", id);
+			if(kepianDesc != null && !"".equals(kepianDesc) ){
+				params.put("kepianDescSear", "%"+kepianDesc+"%");
+			}
+			
+			this.totalSize = packageBiz.countPackageImgByMap(countParam);
+		}else{
+			this.totalSize=0;
+		}
+		initTotalPageSize();
+		this.kepianList = list;
+		
+		return "list";
+	}
+	
+	/**
+	 * 套餐客片信息维护end－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+	 * 
+	 */
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	private void initIslandList(){
 		Map<String,Object> params = new HashMap<String,Object>(0);
@@ -440,6 +783,8 @@ public class PackageAction extends ActionSupport {
 		List<Island> list = areaIslandBiz.queryIslandByMap(params);
 		this.islandList = list;
 	}
+	
+	
 	private void initTotalPageSize(){
 		if(totalSize % pageSize == 0 ){
 			this.totalPageSize = totalSize / pageSize;
@@ -447,7 +792,6 @@ public class PackageAction extends ActionSupport {
 			this.totalPageSize = ( totalSize / pageSize )+ 1;
 		}
 	}
-	
 	
 	
 	public String upload() {  
@@ -616,6 +960,37 @@ public class PackageAction extends ActionSupport {
 	}
 	public void setImgId(Integer imgId) {
 		this.imgId = imgId;
+	}
+	public String getKepianDesc() {
+		return kepianDesc;
+	}
+	public void setKepianDesc(String kepianDesc) {
+		this.kepianDesc = kepianDesc;
+	}
+	public Integer getKepianIndex() {
+		return kepianIndex;
+	}
+	public void setKepianIndex(Integer kepianIndex) {
+		this.kepianIndex = kepianIndex;
+	}
+	public String getKepianLink() {
+		return kepianLink;
+	}
+	public void setKepianLink(String kepianLink) {
+		this.kepianLink = kepianLink;
+	}
+
+	public List<PackageKepianliuying> getKepianList() {
+		return kepianList;
+	}
+	public void setKepianList(List<PackageKepianliuying> kepianList) {
+		this.kepianList = kepianList;
+	}
+	public Integer getKepianId() {
+		return kepianId;
+	}
+	public void setKepianId(Integer kepianId) {
+		this.kepianId = kepianId;
 	}
 	
 	

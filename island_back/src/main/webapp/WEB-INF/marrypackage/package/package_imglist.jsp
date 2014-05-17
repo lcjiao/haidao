@@ -46,7 +46,10 @@
 					</div>
 				</div>
 			</td>
-			<td align="right" class="tdr"><input type="button" value="新建" id="new_create"/></td>
+			<td align="right" class="tdr">
+				<input type="button" value="返回" id="back_p_list"/>
+				<input type="button" value="新建" id="new_create"/>
+			</td>
 		</tr>
 </thead>
 
@@ -100,7 +103,7 @@
 		$("#search").bind('click',search);
 		$("#go").bind('click',gotoPageNo);
 		$("#new_create").bind('click',newCreate);
-		
+		$("#back_p_list").bind('click',backList);
 	}
 	
 	function loadPage(){
@@ -180,6 +183,11 @@
 			var url =  "${ctx}/marrypackage/package/package!delImg.action?imgId="+imgId+"&id="+packageId;
 			window.location.href = url; 
 		}
+	}
+	
+	function backList(){
+		var url =  "${ctx}/marrypackage/package/package!list.action";
+		window.location.href = url; 
 	}
 	
 </script>

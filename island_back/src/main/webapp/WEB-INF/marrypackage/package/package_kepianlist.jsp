@@ -11,11 +11,11 @@
 
 </head>
 <body>
-<form action="${ctx}/marrypackage/package/package!toImgList.action" id="form" method="post">
+<form action="${ctx}/marrypackage/package/package!toKepianList.action" id="form" method="post">
 <table class="searchbar" width="100%">
 	<tbody>
 		<tr>
-			<td width="48">图片类型</td>
+			<td width="48">客片描述</td>
 			<td width="10">
 				<input type="text" value="${kepianDesc}" name="kepianDesc" id="kepian_desc"/>
 			</td>
@@ -40,7 +40,10 @@
 					</div>
 				</div>
 			</td>
-			<td align="right" class="tdr"><input type="button" value="新建" id="new_create"/></td>
+			<td align="right" class="tdr">
+				<input type="button" value="返回" id="back_p_list"/>
+				<input type="button" value="新建" id="new_create"/>
+			</td>
 		</tr>
 </thead>
 
@@ -60,15 +63,15 @@
 					<tbody id="question_list">
 						<c:forEach var="kepian" items="${kepianList}" varStatus="status">
 							<tr>
-								<td style="text-align:center;">${img.typeName}</td>
+								<td style="text-align:center;">${kepian.link}</td>
 								<td style="text-align:center;">
-									<img style="width:150px;height:120px;" alt="" src="${img.imgUrl}">
+									<img style="width:150px;height:120px;" alt="" src="${kepian.img}">
 								</td>
-								<td style="text-align:center;">${img.imgDes}</td>
-								<td style="text-align:center;">${img.imgIndex}</td>
+								<td style="text-align:center;">${kepian.kepianDesc}</td>
+								<td style="text-align:center;">${kepian.kepianIndex}</td>
 								<td style="text-align:center;">
-									<a title="${img.id}" onclick="editImg(this)" >修改</a>&nbsp;|&nbsp;
-									<a title="${img.id}"  onclick="delImg(this)">删除</a>&nbsp;&nbsp;
+									<a title="${kepian.id}" onclick="editKepian(this)" >修改</a>&nbsp;|&nbsp;
+									<a title="${kepian.id}"  onclick="delKepian(this)">删除</a>&nbsp;&nbsp;
 								</td>	
 							</tr>
 						</c:forEach>
@@ -94,7 +97,7 @@
 		$("#search").bind('click',search);
 		$("#go").bind('click',gotoPageNo);
 		$("#new_create").bind('click',newCreate);
-		
+		$("#back_p_list").bind('click',backList);
 	}
 	
 	function loadPage(){
@@ -106,8 +109,6 @@
 	
 	//初始化参数
 	function initParam(){
-		var imgType = '${imgType}';
-		$("#img_type option[value='"+imgType+"']").attr('selected',true);
 		var pageNo = '${pageNo}';
 		if(pageNo < 2){
 			$("#go_page").hide();
@@ -156,25 +157,29 @@
 	
 	function newCreate(){
 		var packageId =$("#p_id").val();
-		var url = "${ctx}/marrypackage/package/package!toAddImg.action?id="+packageId;
+		var url = "${ctx}/marrypackage/package/package!toAddKepian.action?id="+packageId;
 		window.location.href = url;
 	};
 	
-	function editImg(ele){
-		var imgId = $(ele).attr('title');
+	function editKepian(ele){
+		var kepianId = $(ele).attr('title');
 		var packageId =$("#p_id").val();
-		var url =  "${ctx}/marrypackage/package/package!toEditImg.action?imgId="+imgId+"&id="+packageId;
+		var url =  "${ctx}/marrypackage/package/package!toEditKepian.action?kepianId="+kepianId+"&id="+packageId;
 		window.location.href = url; 
 	}
-	function delImg(ele){
+	function delKepian(ele){
 		var isHide = confirm('确定删除吗?');
 		if(isHide){
-			var imgId = $(ele).attr('title');
+			var kepianId = $(ele).attr('title');
 			var packageId =$("#p_id").val();
-			var url =  "${ctx}/marrypackage/package/package!delImg.action?imgId="+imgId+"&id="+packageId;
+			var url =  "${ctx}/marrypackage/package/package!delKepian.action?kepianId="+kepianId+"&id="+packageId;
 			window.location.href = url; 
 		}
 	}
-	
+
+	function backList(){
+		var url =  "${ctx}/marrypackage/package/package!list.action";
+		window.location.href = url; 
+	}
 </script>
 </html>
