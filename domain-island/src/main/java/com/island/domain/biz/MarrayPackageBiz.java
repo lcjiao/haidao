@@ -6,14 +6,17 @@ import java.util.Map;
 import com.island.domain.dal.IslandPackageIbatisDAOImpl;
 import com.island.domain.dal.PackageDetailInfoIbatisDAOImpl;
 import com.island.domain.dal.PackageImageRelationIbatisDAOImpl;
+import com.island.domain.dal.PackageKepianliuyingIbatisDAOImpl;
 import com.island.domain.model.IslandPackage;
 import com.island.domain.model.PackageDetailInfo;
 import com.island.domain.model.PackageImageRelation;
+import com.island.domain.model.PackageKepianliuying;
 
 public class MarrayPackageBiz {
 	private IslandPackageIbatisDAOImpl islandPackageDao;
 	private PackageDetailInfoIbatisDAOImpl islandPackageDetailDao;
 	private PackageImageRelationIbatisDAOImpl islandPackageImgDao;
+	private PackageKepianliuyingIbatisDAOImpl islandPackageKepianDao;
 
 	public IslandPackageIbatisDAOImpl getIslandPackageDao() {
 		return islandPackageDao;
@@ -35,7 +38,13 @@ public class MarrayPackageBiz {
 			PackageImageRelationIbatisDAOImpl islandPackageImgDao) {
 		this.islandPackageImgDao = islandPackageImgDao;
 	}
-	
+	public PackageKepianliuyingIbatisDAOImpl getIslandPackageKepianDao() {
+		return islandPackageKepianDao;
+	}
+	public void setIslandPackageKepianDao(
+			PackageKepianliuyingIbatisDAOImpl islandPackageKepianDao) {
+		this.islandPackageKepianDao = islandPackageKepianDao;
+	}
 	
 	
 	public List<IslandPackage> queryPackageByMap(Map<String,Object> params){
@@ -48,11 +57,11 @@ public class MarrayPackageBiz {
 	public void addPackage(IslandPackage model){
 		this.islandPackageDao.insert(model);
 	}
-	public IslandPackage queryById(Integer id){
+	public IslandPackage queryPackageById(Integer id){
 		return this.islandPackageDao.queryById(id);
 	}
 	
-	public void updByMap(Map<String,Object> params){
+	public void updPackageByMap(Map<String,Object> params){
 		this.islandPackageDao.updateByMap(params);
 	}
 	public List<PackageDetailInfo> queryPackageDetailByMap(Map<String,Object> params){
@@ -78,5 +87,20 @@ public class MarrayPackageBiz {
 	}
 	public PackageImageRelation queryPackageImgById(Integer id){
 		return this.islandPackageImgDao.queryById(id);
+	}
+	public List<PackageKepianliuying> queryPackageKepianByMap(Map<String,Object> params){
+		return this.islandPackageKepianDao.queryByMap(params);
+	}
+	public Integer countPackageKepianByMap(Map<String,Object> params){
+		return this.islandPackageKepianDao.countByMap(params);
+	}
+	public void updPackageKepianByMap(Map<String,Object> params){
+		this.islandPackageKepianDao.updateByMap(params);
+	}
+	public void addPackageKepianliuying(PackageKepianliuying obj){
+		this.islandPackageKepianDao.insert(obj);
+	}
+	public PackageKepianliuying queryPackageKepianById(Integer id){
+		return this.islandPackageKepianDao.queryById(id);
 	}
 }

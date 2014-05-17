@@ -49,6 +49,7 @@
 		<property name="islandPackageDao" ref="islandPackageDao"></property>
 		<property name="islandPackageDetailDao" ref="PackageDetailInfoDAO"></property>
 		<property name="islandPackageImgDao" ref="PackageImageRelationDAO"></property>
+		<property name="islandPackageKepianDao" ref="PackageKepianliuyingDAO"></property>
 	</bean>
 	
 	<bean id="weddingPhotoBiz" class="com.island.domain.biz.WeddingPhotoBiz">

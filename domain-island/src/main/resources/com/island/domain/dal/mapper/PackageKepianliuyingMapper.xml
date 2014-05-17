@@ -10,7 +10,7 @@
 			<result property="packageId" column="package_id" />
 			<result property="packageType" column="package_type" />
 			<result property="img" column="img" />
-			<result property="desc" column="desc" />
+			<result property="kepianDesc" column="kepian_desc" />
 			<result property="link" column="link" />
 			<result property="kepianIndex" column="kepian_index" />
 			<result property="valid" column="valid" />
@@ -26,7 +26,7 @@
 			package_id,
 			package_type,
 			img,
-			desc,
+			kepian_desc,
 			link,
 			kepian_index,
 			valid,
@@ -48,7 +48,7 @@
 			package_id,
 			package_type,
 			img,
-			desc,
+			kepian_desc,
 			link,
 			kepian_index,
 			valid,
@@ -71,8 +71,8 @@
 			<if test="img !=  null">			        
 				and img=#{img}
 			</if>
-			<if test="desc !=  null">			        
-				and desc=#{desc}
+			<if test="kepianDesc !=  null">			        
+				and kepian_desc=#{kepianDesc}
 			</if>
 			<if test="link !=  null">			        
 				and link=#{link}
@@ -105,7 +105,7 @@
 			package_id,
 			package_type,
 			img,
-			desc,
+			kepian_desc,
 			link,
 			kepian_index,
 			valid,
@@ -128,8 +128,8 @@
 			<if test="img !=  null">			        
 				and img=#{img}
 			</if>
-			<if test="desc !=  null">			        
-				and desc=#{desc}
+			<if test="kepianDesc !=  null">			        
+				and `kepian_desc`=#{kepianDesc}
 			</if>
 			<if test="link !=  null">			        
 				and link=#{link}
@@ -152,6 +152,10 @@
 			<if test="updPerson !=  null">			        
 				and upd_person=#{updPerson}
 			</if>
+			<if test="kepianDescSear !=  null">			        
+				and kepian_desc like #{kepianDescSear}
+			</if>
+			
 		</where>
 		<if test="begin !=  null">			        
 				limit #{begin},#{size}
@@ -176,8 +180,8 @@
 			<if test="img !=  null">			        
 				and img=#{img}
 			</if>
-			<if test="desc !=  null">			        
-				and desc=#{desc}
+			<if test="kepianDesc !=  null">			        
+				and kepian_desc=#{kepianDesc}
 			</if>
 			<if test="link !=  null">			        
 				and link=#{link}
@@ -222,8 +226,8 @@
 			<if test="img !=  null">			        
 				and img=#{img}
 			</if>
-			<if test="desc !=  null">			        
-				and desc=#{desc}
+			<if test="kepianDesc !=  null">			        
+				and kepian_desc=#{kepianDesc}
 			</if>
 			<if test="link !=  null">			        
 				and link=#{link}
@@ -246,6 +250,9 @@
 			<if test="updPerson !=  null">			        
 				and upd_person=#{updPerson}
 			</if>
+			<if test="kepianDescSear !=  null">			        
+				and kepian_desc like #{kepianDescSear}
+			</if>
 		</where>
 				
 	</select>
@@ -256,7 +263,7 @@
 			package_id,
 			package_type,
 			img,
-			desc,
+			kepian_desc,
 			link,
 			kepian_index,
 			valid,
@@ -280,8 +287,8 @@
 				<if test="params.img !=  null">
 					and img=#{params.img}
 				</if>
-				<if test="params.desc !=  null">
-					and desc=#{params.desc}
+				<if test="params.kepian_desc !=  null">
+					and kepian_desc=#{params.kepian_desc}
 				</if>
 				<if test="params.link !=  null">
 					and link=#{params.link}
@@ -311,8 +318,8 @@
 
 	<insert id="insert" parameterType="com.island.domain.model.PackageKepianliuying" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO	package_kepianliuying
-			(id,package_id,package_type,img,desc,link,kepian_index,valid,create_time,create_person,upd_time,upd_person)
-			VALUES(#{id},#{packageId},#{packageType},#{img},#{desc},#{link},#{kepianIndex},#{valid},#{createTime},#{createPerson},#{updTime},#{updPerson})		
+			(id,package_id,package_type,img,kepian_desc,link,kepian_index,valid,create_time,create_person,upd_time,upd_person)
+			VALUES(#{id},#{packageId},#{packageType},#{img},#{kepianDesc},#{link},#{kepianIndex},#{valid},#{createTime},#{createPerson},#{updTime},#{updPerson})		
 	</insert>
 	
 	<update id="update" parameterType="com.island.domain.model.PackageKepianliuying">
@@ -331,8 +338,8 @@
 			<if test="img !=  null">			        
 				img=#{img},
 			</if>
-			<if test="desc !=  null">			        
-				desc=#{desc},
+			<if test="kepianDesc !=  null">			        
+				kepian_desc=#{kepianDesc},
 			</if>
 			<if test="link !=  null">			        
 				link=#{link},
@@ -369,8 +376,8 @@
 			<if test="img !=  null">			        
 				and img=#{img}
 			</if>
-			<if test="desc !=  null">			        
-				and desc=#{desc}
+			<if test="kepianDesc !=  null">			        
+				and kepian_desc=#{kepianDesc}
 			</if>
 			<if test="link !=  null">			        
 				and link=#{link}
@@ -412,8 +419,8 @@
 			<if test="img !=  null">			        
 				img=#{img},
 			</if>
-			<if test="desc !=  null">			        
-				desc=#{desc},
+			<if test="kepianDesc !=  null">			        
+				kepian_desc=#{kepianDesc},
 			</if>
 			<if test="link !=  null">			        
 				link=#{link},
@@ -444,36 +451,6 @@
 			<if test="packageId !=  null">			        
 				and package_id=#{packageId}
 			</if>
-			<if test="packageType !=  null">			        
-				and package_type=#{packageType}
-			</if>
-			<if test="img !=  null">			        
-				and img=#{img}
-			</if>
-			<if test="desc !=  null">			        
-				and desc=#{desc}
-			</if>
-			<if test="link !=  null">			        
-				and link=#{link}
-			</if>
-			<if test="kepianIndex !=  null">			        
-				and kepian_index=#{kepianIndex}
-			</if>
-			<if test="valid !=  null">			        
-				and valid=#{valid}
-			</if>
-			<if test="createTime !=  null">			        
-				and create_time=#{createTime}
-			</if>
-			<if test="createPerson !=  null">			        
-				and create_person=#{createPerson}
-			</if>
-			<if test="updTime !=  null">			        
-				and upd_time=#{updTime}
-			</if>
-			<if test="updPerson !=  null">			        
-				and upd_person=#{updPerson}
-			</if>
 		</where>
 		
 	</update>
@@ -494,8 +471,8 @@
 			<if test="updNewMap.img !=  null">
 				img=#{updNewMap.img},
 			</if>
-			<if test="updNewMap.desc !=  null">
-				desc=#{updNewMap.desc},
+			<if test="updNewMap.kepian_desc !=  null">
+				kepian_desc=#{updNewMap.kepian_desc},
 			</if>
 			<if test="updNewMap.link !=  null">
 				link=#{updNewMap.link},
@@ -532,8 +509,8 @@
 			<if test="updCondMap.img !=  null">
 				and img=#{updCondMap.img}
 			</if>
-			<if test="updCondMap.desc !=  null">
-				and desc=#{updCondMap.desc}
+			<if test="updCondMap.kepian_desc !=  null">
+				and kepian_desc=#{updCondMap.kepian_desc}
 			</if>
 			<if test="updCondMap.link !=  null">
 				and link=#{updCondMap.link}
@@ -577,8 +554,8 @@
 			<if test="img !=  null">			        
 				and img=#{img}
 			</if>
-			<if test="desc !=  null">			        
-				and desc=#{desc}
+			<if test="kepianDesc !=  null">			        
+				and kepian_desc=#{kepianDesc}
 			</if>
 			<if test="link !=  null">			        
 				and link=#{link}
@@ -621,8 +598,8 @@
 			<if test="img !=  null">			        
 				and img=#{img}
 			</if>
-			<if test="desc !=  null">			        
-				and desc=#{desc}
+			<if test="kepianDesc !=  null">			        
+				and kepian_desc=#{kepianDesc}
 			</if>
 			<if test="link !=  null">			        
 				and link=#{link}

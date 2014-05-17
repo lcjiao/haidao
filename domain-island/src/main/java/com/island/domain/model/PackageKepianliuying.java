@@ -59,18 +59,18 @@ public class PackageKepianliuying extends AbsModel{
   	/**
 	 * 描述
 	 */
-  	private String desc;
+  	private String kepianDesc;
   	/**
 	 * 设置描述
 	 */
-  	public void setDesc(String desc){
-  		this.desc=desc;
+  	public void setKepianDesc(String desc){
+  		this.kepianDesc=desc;
   	}
   	/**
 	 * 获取描述
 	 */
-  	public String getDesc(){
-  		return this.desc;
+  	public String getKepianDesc(){
+  		return this.kepianDesc;
   	}
   	/**
 	 * 链接地址
