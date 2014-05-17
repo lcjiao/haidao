@@ -78,7 +78,7 @@
     CREATE TABLE `image` (
     `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '主键id',
     `img_url` varchar(500) DEFAULT NULL COMMENT '图片地址',
-    `desc` varchar(100) DEFAULT NULL COMMENT '备注',
+    `img_desc` varchar(100) DEFAULT NULL COMMENT '备注',
     `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
     `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
     `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
