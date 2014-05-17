@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ include file="/common/taglibs.jsp"%>
+<%@page import="com.island.domain.model.*" %>
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +13,7 @@
 </head>
 <body>
 
-<table class="customlist" width="100%">
+<table class="customlist" style="width: 100%">
 	<thead>
 		<tr>
 			<td>
@@ -34,39 +35,49 @@
 		<tr>
 			<td colspan="2">
 				<!--表内容-->
-				<table class="datalist ask_rel" width="100%">
+				<table class="datalist ask_rel" style="width: 100%">
 					<thead>
 						<tr>
+							<td>序号</td>
 							<td>描述</td>
 							<td>链接地址</td>
 							<td>图片</td>
+							<td>所属区域</td>
+							<td>所属岛屿</td>
 							<td>排序</td>
 							<td>操作</td>
 						</tr>
 					</thead>
 					<tbody id="r_list">
-						<c:forEach var="recommend" items="${recommendList}">
-							<tr >
+						<s:iterator value="recommendList" status="_index">
+							<tr>
 								<td style="text-align:center;">
-									<c:out value="${recommend.recommendDesc}"></c:out>
+									<s:property value="#_index.index+1"/>
 								</td>
 								<td style="text-align:center;">
-									<c:out value="${recommend.linkUrl}"></c:out>
+									<s:property value="recommendDesc"/>
 								</td>
 								<td style="text-align:center;">
-									<img style="width:150px;height:120px;" alt="" src="${recommend.imgUrl}">
+									<s:property value="linkUrl"/>
 								</td>
 								<td style="text-align:center;">
-									<c:out value="${recommend.recommendIndex}"></c:out>
-									<%-- <input style="width:50px;" type="text" value="${recommend.recommendIndex}" id="r_index" name="index">
-								 --%></td>
+									<img style="width:150px;height:120px;" alt="你想看我吗？哈哈！！" src='<s:property value="imgUrl"/>'>
+								</td>
 								<td style="text-align:center;">
-									<a title="${recommend.id}" onclick="edit(this)" >修改</a>&nbsp;|&nbsp;
-									<a title="${recommend.id}" onclick="changeImg(this)" >更换图片</a>&nbsp;|&nbsp;
-									<a title="${recommend.id}" onclick="del(this)">删除</a>
+									<s:property value="areaName"/>
+								</td>
+								<td style="text-align:center;">
+									<s:property value="islandName"/>
+								</td>
+								<td style="text-align:center;">
+									<s:property value="recommendIndex"/>
+								</td>
+								<td style="text-align:center;">
+									<a title='<s:property value="id"/>' onclick="edit(this)" >修改</a>&nbsp;|&nbsp;
+									<a title="<s:property value="id"/>" onclick="del(this)">删除</a>
 								</td>							
 						    </tr>
-					    </c:forEach>
+					    </s:iterator>
 					</tbody>
 				</table>
 			</td>
@@ -109,7 +120,7 @@
 		if(totalPageSize < 2){
 			$("#go_page").hide();
 		}else{
-			$("#go_page").hide();
+			$("#go_page").show();
 		}
 		
 	}
@@ -147,13 +158,13 @@
 	
 	
 	function findByNo(pageNo){
-		var url = "${ctx}/front/masterecommend/masterecommend!list?pageNo="+pageNo;
+		var url = "${ctx}/weddingphoto/wdp/wdp!list?pageNo="+pageNo;
 		window.location.href = url;
 	}
 	
 	
 	function newCreate(){
-		var url = "${ctx}/front/masterecommend/masterecommend!toAdd.action";
+		var url = "${ctx}/weddingphoto/wdp/wdp!toAdd.action";
 		window.location.href = url;
 	};
 	
@@ -161,20 +172,14 @@
 		var isHide = confirm('确定删除吗?');
 		if(isHide){
 			var recommendId = $(ele).attr('title');
-			var url = "${ctx}/front/masterecommend/masterecommend!del.action?id="+recommendId;
+			var url = "${ctx}/weddingphoto/wdp/wdp!deleteWdp.action?rmdId="+recommendId;
 			window.location.href = url; 
 		}
 	}
 	
 	function edit(ele){
 		var recommendId = $(ele).attr('title');
-		var url =  "${ctx}/front/masterecommend/masterecommend!toEdit.action?id="+recommendId;
-		window.location.href = url; 
-	}
-	
-	function changeImg(ele){
-		var recommendId = $(ele).attr('title');
-		var url =  "${ctx}/front/masterecommend/masterecommend!toChangeImg.action?id="+recommendId;
+		var url =  "${ctx}/weddingphoto/wdp/wdp!toEditWdp.action?rmdId="+recommendId;
 		window.location.href = url; 
 	}
 </script>

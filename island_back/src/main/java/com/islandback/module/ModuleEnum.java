@@ -29,7 +29,7 @@ public class ModuleEnum {
 	public static final Integer FRONT_PACKAGE_RECOMMEND=4;
 	
 	/**
-	 * 婚纱摄影套餐推荐图片
+	 * 婚纱摄影套餐首页图片推荐
 	 */
-	public static final Integer WEDDING_PHOTO_RECOMMEND=20;
+	public static final Integer WEDDING_PHOTO_FACE_RECOMMEND=20;
 }
