@@ -146,7 +146,7 @@
         `package_id` int(8) DEFAULT NULL COMMENT '套餐编号',
         `package_type` int(2) DEFAULT NULL COMMENT '套餐类别  1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐 5:自由行套餐',
         `img` varchar(500) DEFAULT NULL COMMENT '图片地址',
-        `desc` varchar(500) DEFAULT NULL COMMENT '描述',
+        `kepian_desc` varchar(500) DEFAULT NULL COMMENT '描述',
         `link` varchar(500) DEFAULT NULL COMMENT '链接地址',
         `kepian_index` int(4) DEFAULT NULL COMMENT '排序',
         `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
