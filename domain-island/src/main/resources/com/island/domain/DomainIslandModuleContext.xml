@@ -60,5 +60,11 @@
 	<bean id="PackageKepianliuyingDAO" class="com.island.domain.dal.PackageKepianliuyingIbatisDAOImpl" />		
 	<bean id="PackageImageRelationDAO" class="com.island.domain.dal.PackageImageRelationIbatisDAOImpl" />		
 	
+	<bean id="CompanyDAO" class="com.island.domain.dal.CompanyIbatisDAOImpl" />		
+	
+	<bean id="globalNetBiz" class="com.island.domain.biz.GlobalNetBiz">
+		<property name="companyDao" ref="CompanyDAO"></property>
+		<property name="recommendDao" ref="RecommendDAO"></property>
+	</bean>
 	
 </beans>

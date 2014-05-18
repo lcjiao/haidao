@@ -2,6 +2,7 @@ package com.island.domain;
 
 import com.island.domain.biz.AreaIslandBiz;
 import com.island.domain.biz.FrontIndexBiz;
+import com.island.domain.biz.GlobalNetBiz;
 import com.island.domain.biz.MarrayPackageBiz;
 import com.island.domain.biz.WeddingPhotoBiz;
 import com.island.domain.biz.RoleBiz;
@@ -21,6 +22,8 @@ public interface DomainIslandModule {
 	@Bean("marrayPackageBiz")
 	public MarrayPackageBiz getMarrayPackageBiz();
 	
+	@Bean("globalNetBiz")
+	public GlobalNetBiz getGlobalNetBiz();
 	/**
 	 * 婚纱摄影 业务类
 	 * @return
