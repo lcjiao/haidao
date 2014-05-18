@@ -25,15 +25,29 @@ public class WeddingPhotoBiz {
 		this.recommendDao = recommendDao;
 	}
 
-	public List<Recommend> queryByMap(Map<String, Object> params) {
-		return this.recommendDao.queryByMap(params);
-	}
-
 	public Integer countByMap(Map<String, Object> params) {
 		return this.recommendDao.countByMap(params);
 	}
-	
-	
+
+	public Integer addRecommend(Recommend recommend) {
+		return this.recommendDao.insert(recommend);
+	}
+
+	public Recommend queryById(Integer id) {
+		return recommendDao.queryById(id);
+	}
+
+	public void updRecommend(Map<String, Object> oldObjParams) {
+		recommendDao.updateByMap(oldObjParams);
+	}
+
+	public List<Recommend> queryByMap(Map<String, Object> map) {
+		return recommendDao.queryByMap(map);
+	}
+
+	public Integer updateRecommend(Recommend recommend) {
+		return recommendDao.update(recommend);
+	}
 	    
 	
 }
