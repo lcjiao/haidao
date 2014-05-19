@@ -5,10 +5,12 @@ import java.util.Map;
 
 import com.island.domain.dal.AreaIbatisDAOImpl;
 import com.island.domain.dal.IslandIbatisDAOImpl;
+import com.island.domain.dal.IslandPackageIbatisDAOImpl;
 import com.island.domain.dal.PackageDetailInfoIbatisDAOImpl;
 import com.island.domain.dal.RecommendIbatisDAOImpl;
 import com.island.domain.model.Area;
 import com.island.domain.model.Island;
+import com.island.domain.model.IslandPackage;
 import com.island.domain.model.Recommend;
 
 public class WeddingPhotoBiz {
@@ -23,6 +25,12 @@ public class WeddingPhotoBiz {
 
 	public void setRecommendDao(RecommendIbatisDAOImpl recommendDao) {
 		this.recommendDao = recommendDao;
+	}
+	
+	private IslandPackageIbatisDAOImpl islandPackageDao;
+	
+	public void setIslandPackageDao(IslandPackageIbatisDAOImpl islandPackageDao) {
+		this.islandPackageDao = islandPackageDao;
 	}
 
 	public Integer countByMap(Map<String, Object> params) {
@@ -48,6 +56,13 @@ public class WeddingPhotoBiz {
 	public Integer updateRecommend(Recommend recommend) {
 		return recommendDao.update(recommend);
 	}
-	    
-	
+
+	public List<IslandPackage> queryIslandPackageByMap(Map<String, Object> map) {
+		return islandPackageDao.queryByMap(map);
+	}
+
+	public Integer countIslandPackageByMap(Map<String, Object> map) {
+		return islandPackageDao.countByMap(map);
+	}
+
 }
