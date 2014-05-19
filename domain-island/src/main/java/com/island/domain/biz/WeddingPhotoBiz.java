@@ -65,4 +65,8 @@ public class WeddingPhotoBiz {
 		return islandPackageDao.countByMap(map);
 	}
 
+	public Integer addWdpPackage(IslandPackage islandPackage) {
+		return islandPackageDao.insert(islandPackage);
+	}
+
 }

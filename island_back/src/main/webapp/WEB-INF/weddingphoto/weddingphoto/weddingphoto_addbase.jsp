@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ include file="/common/taglibs.jsp"%>
+<%@page import="com.island.domain.model.*" %>
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,7 +12,7 @@
 </head>
 <body>
 
-<form action="${ctx}/weddingphoto/weddingphoto/weddingphoto!addBaseInfo.action"   id="form" method="post">
+<form action="${ctx}/weddingphoto/weddingphoto/weddingphoto!addWdpPackage.action"   id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" style="width: 100%">
 	<tbody>

@@ -117,25 +117,17 @@ public class WeddingphotoAction extends ActionSupport implements ServletResponse
 	}
 	
 	/**
-	 * 保存婚纱摄影图片信息
+	 * 保存婚纱摄影套餐信息
 	 * @return
 	 */
-	public String addWdpRecommend(){
-		//调用图片上传方法获取图片的url
-		recommend.setImgUrl(UploadImgUtils.getImgUrl(image, imageFileName));		
-		recommend.setCreatePerson(getCreater());
-		recommend.setCreateTime((int)System.currentTimeMillis()/1000);
-		recommend.setValid(1);
-		recommend.setModuleId(ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
-		//changeIndexBySys(creater,recommend.getId(),recommend.getRecommendIndex());
-		recommend.setAreaName(areaIslandBiz.queryAreaById(recommend.getAreaId()).getName());
-		recommend.setIslandName(areaIslandBiz.queryIslandById(recommend.getIslandId()).getName());
-		weddingPhotoBiz.addRecommend(recommend);
+	public String addWdpPackage(){
+		islandPackage.setValid(1);
+		weddingPhotoBiz.addWdpPackage(islandPackage);
 		initAreaList();
-		if("return".equals(flag)){
-			list();
+		if("toList".equals(flag)){
+			return list();
 		}
-		return "add";
+		return "detail";
 	}
 	
 	public String deleteWdp(){
