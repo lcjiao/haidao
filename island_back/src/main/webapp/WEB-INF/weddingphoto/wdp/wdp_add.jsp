@@ -13,7 +13,7 @@
 <%@ include file="/common/kindeditor.jsp"%>
 </head>
 <body>
-<form action="${ctx}/weddingphoto/wdp/wdp!editRmdImg.action" enctype="multipart/form-data" id="form" method="post">
+<form action="${ctx}/weddingphoto/wdp/wdp!addWdpRecommend.action" enctype="multipart/form-data" id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" style="width: 100%">
 	<tbody>

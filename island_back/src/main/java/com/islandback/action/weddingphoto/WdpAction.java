@@ -3,13 +3,10 @@ package com.islandback.action.weddingphoto;
 
 
 import java.io.File;
-import java.io.IOException;
 import java.io.Writer;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,8 +14,6 @@ import com.alibaba.fastjson.serializer.JSONSerializer;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.http.client.protocol.ResponseProcessCookies;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ResultPath;
 import org.apache.struts2.interceptor.ServletResponseAware;
@@ -36,13 +31,12 @@ import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
 import com.islandback.web.util.RequestProcc;
 import com.islandback.web.util.UploadImgUtils;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 @Namespace("/weddingphoto/wdp")
 @ResultPath("/WEB-INF")
 /**
- *婚纱摄影
+ *婚纱摄影首页图片推荐action
  *
  */
 public class WdpAction extends ActionSupport implements ServletResponseAware {
@@ -141,7 +135,7 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 		weddingPhotoBiz.addRecommend(recommend);
 		initAreaList();
 		if("return".equals(flag)){
-			list();
+			return list();
 		}
 		return "add";
 	}
