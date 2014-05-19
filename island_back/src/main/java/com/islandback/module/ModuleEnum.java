@@ -32,4 +32,17 @@ public class ModuleEnum {
 	 * 婚纱摄影套餐首页图片推荐
 	 */
 	public static final Integer WEDDING_PHOTO_FACE_RECOMMEND=20;
+	/**
+	 * 套餐类型 1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐  5:自由行套餐'
+	 */
+	public static final Integer PACKAGE_TYPE_MARRY = 1;
+	
+	public static final Integer PACKAGE_TYPE_WEDDINGPHOTO = 2;
+	
+	public static final Integer PACKAGE_TYPE_WEDDINGPHOTO_WORKER = 3;
+	
+	public static final Integer PACKAGE_TYPE_WINESHOP = 4;
+	
+	public static final Integer PACKAGE_TYPE_FREE_WALKER = 5;
+	
 }
