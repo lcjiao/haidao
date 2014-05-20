@@ -56,6 +56,8 @@
 		<property name="packageDetailInfoDao" ref="PackageDetailInfoDAO"></property>
 		<property name="recommendDao" ref="RecommendDAO"></property>
 		<property name="islandPackageDao" ref="islandPackageDao"></property>
+		<property name="pkgImgRelationDao" ref="PackageImageRelationDAO"></property>
+		<property name="pkgKepianliuyingDao" ref="PackageKepianliuyingDAO"></property>
 	</bean>
 	
 	<bean id="PackageKepianliuyingDAO" class="com.island.domain.dal.PackageKepianliuyingIbatisDAOImpl" />		

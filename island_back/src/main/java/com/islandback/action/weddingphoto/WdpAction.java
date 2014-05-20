@@ -59,9 +59,6 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 	private Integer pageNo=1;
 	private Integer pageSize=5;
 	
-	private SessionInfo sessionInfo = RequestProcc.getSessionInfo();
-	private String creater="";
-	
 	private List<Area> areaList = new ArrayList<Area>(0);
 	private List<Island> islandList = new ArrayList<Island>(0);
 	private List<Recommend> recommendList;
@@ -70,20 +67,21 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 	AreaIslandBiz areaIslandBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getAreaIslandBiz();
 	
-	MarrayPackageBiz packageBiz = ModuleRegistry.getInstance()
-            .getModule(DomainIslandModule.class).getMarrayPackageBiz();
-	
 	
 	private String getCreater(){
+		SessionInfo sessionInfo = RequestProcc.getSessionInfo();
 		if(sessionInfo != null ){
-			creater = sessionInfo.getUser().getUserName(); 
+			return sessionInfo.getUser().getUserName(); 
 		}
-		return creater;
+		return "";
 	}
 	
+	/**
+	 * 进入 婚纱摄影套餐 图片推荐 列表页
+	 * @return
+	 */
 	public String list(){
 		doList();
-		
 		return "list";
 	}
 	
@@ -96,22 +94,25 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 		page.setPageSize(pageSize);
 		map.put("begin", page.getBegin());
 		map.put("size", page.getPageSize());
-		List<Recommend> list = weddingPhotoBiz.queryByMap(map);
-		if(list != null && list.size()>0){
+		recommendList = weddingPhotoBiz.queryByMap(map);
+		if(recommendList != null && recommendList.size()>0){
 			map.clear();
 			map.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
 			map.put("valid", 1);
 			this.totalSize = weddingPhotoBiz.countByMap(map);
 		}
 		initTotalPageSize();
-		Collections.sort(list);
-		this.recommendList = list;
+		Collections.sort(recommendList);
 	}
 	
 	private void initTotalPageSize(){
 		this.totalPageSize = totalSize % pageSize == 0 ? totalSize / pageSize : ( totalSize / pageSize )+ 1;
 	}
 	
+	/**
+	 * 进入 新增页面
+	 * @return
+	 */
 	public String toAdd(){
 		RequestProcc.getSession().invalidate();
 		initAreaList();
@@ -140,6 +141,10 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 		return "add";
 	}
 	
+	/**
+	 * 删除 图片推荐信息
+	 * @return
+	 */
 	public String deleteWdp(){
 		map.clear();
 		map.put("valid", 0);
@@ -147,10 +152,13 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 		map.put("updPerson", getCreater());
 		map.put("updTime",Calendar.getInstance().getTimeInMillis()/1000);
 		weddingPhotoBiz.updRecommend(map);
-		doList();
-		return "list";
+		return list();
 	}
 	
+	/**
+	 * 进入 修改图片推荐信息 页面
+	 * @return
+	 */
 	public String toEditWdp(){
 		map.clear();
 		map.put("id", rmdId);
@@ -162,13 +170,16 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 		return "edit";
 	}
 	
+	/**
+	 * 保存 修改图片推荐信息
+	 * @return
+	 */
 	public String editRecommend(){
 		if(null != image){
 			recommend.setImgUrl(UploadImgUtils.getImgUrl(image, imageFileName));
 		}
 		weddingPhotoBiz.updateRecommend(recommend);
-		doList();
-		return "list";
+		return list();
 	}
 		
 	private void changeIndexBySys(int id,int index){
@@ -218,13 +229,6 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 		this.islandList = islandList;
 	}
 
-	private void initIslandList(){
-		Map<String,Object> map = new HashMap<String,Object>(0);
-		map.put("valid", 1);
-		List<Island> list = areaIslandBiz.queryIslandByMap(map);
-		this.islandList = list;
-	}
-	
 	public List<Area> getAreaList() {
 		return areaList;
 	}

@@ -19,7 +19,7 @@
 		<tr>
 			<td>所属岛屿</td>
 			<td>
-				<select id="island_id" name="islandId">
+				<select id="island_id" name="wdpPackage.islandId">
 					<option value="0" selected="selected">--请选择--</option>
 					<c:forEach var="island" items="${islandList}">
 							<option value="${island.id}" >${island.name}</option>
@@ -29,21 +29,21 @@
 		</tr>
 		<tr>
 			<td>套餐标题</td>
-			<td><input type="text" name="islandPackage.title" id="p_title" value=""/></td>					
+			<td><input type="text" name="wdpPackage.title" id="p_title" value=""/></td>					
 		</tr>
 		<tr>
 			<td>淡季价格</td>
-			<td><input type="text" name="islandPackage.smallPrice" id="p_s_price" value=""/></td>					
+			<td><input type="text" name="wdpPackage.priceSmall" id="p_s_price" value=""/></td>					
 		</tr>
 		<tr>
 			<td>旺季价格</td>
-			<td><input type="text" name="islandPackage.bigPrice" id="p_b_price" value=""/></td>					
+			<td><input type="text" name="wdpPackage.priceBig" id="p_b_price" value=""/></td>					
 		</tr>
 		<tr>
 			<td>是否售卖</td>
 			<td>
-				<input style="width:20px" type=radio name="islandPackage.online"  value = "1" checked="checked"/> 售卖
-				<input style="width:20px" type=radio name="islandPackage.online" value = "2"/>非售卖
+				<input style="width:20px" type=radio name="wdpPackage.isOnline"  value = "1" checked="checked"/> 售卖
+				<input style="width:20px" type=radio name="wdpPackage.isOnline" value = "2"/>非售卖
 			</td>
 		</tr>
 	</tbody>	
@@ -60,8 +60,6 @@
 </tfoot>
 </table>
 </form>
-
-
 
 </body>
 <script>

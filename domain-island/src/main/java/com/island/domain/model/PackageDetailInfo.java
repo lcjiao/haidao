@@ -143,4 +143,5 @@ public class PackageDetailInfo extends AbsModel{
 		boolean passed = true;
 		return true;
 	}
+	
 }

@@ -1,23 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ include file="/common/taglibs.jsp"%>
+<%@page import="com.island.domain.model.*" %>
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>婚礼套餐图片列表</title>
-<link rel="stylesheet" rev="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
-<link rel="stylesheet" rev="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
+<title>婚纱套餐图片列表</title>
+<link rel="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
+<link rel="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
 <script type="text/javascript" src="${ctx}/js/common.js" ></script>
 
 </head>
 <body>
-<form action="${ctx}/marrypackage/package/package!toImgList.action" id="form" method="post">
-<table class="searchbar" width="100%">
+<form action="${ctx}/weddingphoto/weddingphoto/weddingphoto!toImgList.action" id="form" method="post">
+<table class="searchbar" style="width: 100%">
 	<tbody>
 		<tr>
 			<td width="48">图片类型</td>
 			<td width="10">
-				<select id="img_type" name="imgType">
+				<select id="img_type" name="pkgImgRelation.imgType">
 					<option value="0" selected="selected">--请选择--</option>
 					<option value="1" >logo图</option>
 					<option value="2" >套餐图片集</option>
@@ -31,9 +32,8 @@
 	</tbody>
 </table>
 <input type="hidden" value="${pageNo}" name="pageNo" id="page_no"/>
-<input type="hidden" value="${id}" name="id" id="p_id"/>
 </form>
-<table class="customlist" width="100%">
+<table class="customlist" style="width: 100%">
 <thead>
 		<tr>
 			<td>
@@ -47,7 +47,7 @@
 				</div>
 			</td>
 			<td align="right" class="tdr">
-				<input type="button" value="返回" id="back_p_list"/>
+				<input type="button" value="返回" id="back_p_list" onclick="javascript:history.go(-1);"/>
 				<input type="button" value="新建" id="new_create"/>
 			</td>
 		</tr>
@@ -56,9 +56,10 @@
 <tbody>
 		<tr>
 			<td colspan="2">
-				<table class="datalist ask_rel" width="100%">
+				<table class="datalist ask_rel" style="width: 100%">
 					<thead>
 						<tr>
+							<td>序号</td>
 							<td>图片类型</td>
 							<td>图片</td>
 							<td>图片描述</td>
@@ -67,26 +68,38 @@
 						</tr>
 					</thead>
 					<tbody id="question_list">
-						<c:forEach var="img" items="${packageImgList}" varStatus="status">
+						<s:iterator value="wdpImgList" status="_index">
 							<tr>
-								<td style="text-align:center;">${img.typeName}</td>
 								<td style="text-align:center;">
-									<img style="width:150px;height:120px;" alt="" src="${img.imgUrl}">
+									<s:property value="#_index.index+1"/>
 								</td>
-								<td style="text-align:center;">${img.imgDes}</td>
-								<td style="text-align:center;">${img.imgIndex}</td>
 								<td style="text-align:center;">
-									<a title="${img.id}" onclick="editImg(this)" >修改</a>&nbsp;|&nbsp;
-									<a title="${img.id}"  onclick="delImg(this)">删除</a>&nbsp;&nbsp;
+									<s:property value="typeName"/>
+								</td>
+								<td style="text-align:center;">
+									<s:property value="imgUrl"/>
+								</td>
+								<td style="text-align:center;">
+									<s:property value="imgDes"/>
+								</td>
+								<td style="text-align:center;">
+									<s:property value="imgIndex"/>
+								</td>
+								<td style="text-align:center;">
+									<a title="" onclick="editImg(this)" >修改</a>&nbsp;|&nbsp;
+									<a title=""  onclick="delImg(this)">删除</a>&nbsp;&nbsp;
+									<input type="hidden" id="pkgImgRlt_id" name="pkgImgRelation.id" value='<s:property value="id"/>'/>
+									<input type="hidden" name="wdpPackage.id" value='${wdpPackage.id }'/>
 								</td>	
 							</tr>
-						</c:forEach>
+						 </s:iterator>
 					</tbody>
 				</table>
 			</td>
 		</tr>
 	</tbody>
 </table>
+<s:debug></s:debug>
 </body>
 <script>
 	var  numCat = /^[1-9]*$/;
@@ -103,7 +116,6 @@
 		$("#search").bind('click',search);
 		$("#go").bind('click',gotoPageNo);
 		$("#new_create").bind('click',newCreate);
-		$("#back_p_list").bind('click',backList);
 	}
 	
 	function loadPage(){
@@ -163,32 +175,25 @@
 		$("#form").submit();
 	}
 	
+	var wdpImgId = $('#pkgImgRlt_id').val();
+	var weddingphotoId = $('#wdp_id').val();
+	
 	function newCreate(){
-		var packageId =$("#p_id").val();
-		var url = "${ctx}/marrypackage/package/package!toAddImg.action?id="+packageId;
+		var url = "${ctx}/weddingphoto/weddingphoto/weddingphoto!toAddImg.action?wdpId="+weddingphotoId;
 		window.location.href = url;
 	};
 	
 	function editImg(ele){
-		var imgId = $(ele).attr('title');
-		var packageId =$("#p_id").val();
-		var url =  "${ctx}/marrypackage/package/package!toEditImg.action?imgId="+imgId+"&id="+packageId;
+		var url =  "${ctx}/weddingphoto/weddingphoto/weddingphoto!toEditImg.action?wdpImgId="+wdpImgId+"&wdpId="+weddingphotoId;
 		window.location.href = url; 
 	}
 	function delImg(ele){
 		var isHide = confirm('确定删除吗?');
 		if(isHide){
-			var imgId = $(ele).attr('title');
-			var packageId =$("#p_id").val();
-			var url =  "${ctx}/marrypackage/package/package!delImg.action?imgId="+imgId+"&id="+packageId;
+			var url =  "${ctx}/weddingphoto/weddingphoto/weddingphoto!delImg.action?wdpImgId="+wdpImgId+"&wdpId="+weddingphotoId;
 			window.location.href = url; 
 		}
 	}
-	
-	function backList(){
-		var url =  "${ctx}/marrypackage/package/package!list.action";
-		window.location.href = url; 
-	}
-	
+		
 </script>
 </html>

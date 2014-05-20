@@ -12,13 +12,13 @@
 
 </head>
 <body>
-<form action="${ctx}/weddingphoto/weddingphoto/weddingphoto!list.action" id="form" method="post">
+<form action="${ctx}/weddingphoto/weddingphoto/weddingphoto!search.action" id="form" method="post">
 <table class="searchbar" style="width: 100%">
 	<tbody>
 		<tr>
 			<td width="48">所属岛屿</td>
 			<td width="10">
-				<select id="island_id" name="islandId">
+				<select id="island_id" name="wdpPackage.islandId">
 					<option value="0" selected="selected">--请选择--</option>
 					<c:forEach var="island" items="${islandList}">
 							<option value="${island.id}" >${island.name}</option>
@@ -26,9 +26,9 @@
 				</select>
 			</td>
 			<td width="48">套餐名称</td>
-			<td width="10"><input type="text" name="title" value="${title}" id="sear_title"/></td>
+			<td width="10"><input type="text" name="wdpPackage.title" value="${title}" id="sear_title"/></td>
 			<td width="48">套餐价格</td>
-			<td width="10"><input type="text" name="price" value="${price}" id="sear_price"/></td>
+			<td width="10"><input type="text" name="wdpPackage.price" value="${price}" id="sear_price"/></td>
 			<td><input class="btn" type="button" value="搜索" id="search"/>
 			</td>
 		</tr>
@@ -59,6 +59,7 @@
 				<table class="datalist ask_rel" style="width: 100%">
 					<thead>
 						<tr>
+							<td>序号</td>
 							<td>套餐名称</td>
 							<td>所属区域</td>
 							<td>所属岛屿</td>
@@ -69,7 +70,7 @@
 						</tr>
 					</thead>
 					<tbody id="question_list">
-						<s:iterator value="islandPackageList" status="_index">
+						<s:iterator value="wdpPackageList" status="_index">
 							<tr>
 								<td style="text-align:center;">
 									<s:property value="#_index.index+1"/>
@@ -90,14 +91,15 @@
 									<s:property value="priceBig"/>
 								</td>
 								<td style="text-align:center;">
-									<s:if test="<s:property value="isOnline"/> != 1">非在售 </s:if>在售
+									<s:property value="onlineStr"/>
 								</td>
 								<td width="360px">
-									<a title="<s:property value="id"/>" onclick="editBase(this)" >基本信息管理</a>&nbsp;|&nbsp;
-									<a title="<s:property value="id"/>" onclick="editDetail(this)" >详细信息管理</a>&nbsp;|&nbsp;
-									<a title="<s:property value="id"/>" onclick="editImg(this)" >图片管理</a>&nbsp;|&nbsp;
-									<a title="<s:property value="id"/>" onclick="editKepian(this)" >客片留影管理</a>&nbsp;|&nbsp;
-									<a title="<s:property value="id"/>"  onclick="delweddingphoto(this)">删除</a>&nbsp;&nbsp;
+									<a title="" onclick="editBase()" >基本信息管理</a>&nbsp;|&nbsp;
+									<a title="" onclick="editDetail()" >详细信息管理</a>&nbsp;|&nbsp;
+									<a title="" onclick="editImg()" >图片管理</a>&nbsp;|&nbsp;
+									<a title="" onclick="editKepian()" >客片留影管理</a>&nbsp;|&nbsp;
+									<a title=""  onclick="delweddingphoto()">删除</a>&nbsp;&nbsp;
+									<input type="hidden" id = "wdp_id" name="wdpPackage.id" value="<s:property value="id"/>" />
 								</td>							
 						    </tr>
 						</s:iterator>					
@@ -179,12 +181,6 @@
 	
 	
 	function findByNo(pageNo){
-		/* var islandId = $("#island_id").val();
-		var title = $("#sear_title").val();
-		title = encodeURI(title);
-		var price = $("#sear_price").val();
-		var url = "${ctx}/weddingphoto/weddingphoto/weddingphoto!list.action?islandId="+islandId+"&title="+title+"&price="+price;
-		window.location.href = url; */
 		$("#page_no").val(pageNo);
 		$("#form").submit();
 	}
@@ -194,35 +190,37 @@
 		window.location.href = url;
 	};
 	
+	var weddingphotoId = $('#wdp_id').val();
+	
 	function editBase(ele){
-		var weddingphotoId = $(ele).attr('title');
-		var url =  "${ctx}/weddingphoto/weddingphoto/weddingphoto!toEditBase.action?id="+weddingphotoId;
+		//var weddingphotoId = $(ele).attr('title');
+		var url =  "${ctx}/weddingphoto/weddingphoto/weddingphoto!toEditBase.action?wdpId="+weddingphotoId;
 		window.location.href = url; 
 	}
 	
 	function editDetail(ele){
-		var weddingphotoId = $(ele).attr('title');
-		var url =  "${ctx}/weddingphoto/weddingphoto/weddingphoto!toManagerDetail.action?id="+weddingphotoId;
+		//var weddingphotoId = $(ele).attr('title');
+		var url =  "${ctx}/weddingphoto/weddingphoto/weddingphoto!wdpDetail.action?wdpId="+weddingphotoId;
 		window.location.href = url; 
 	}
 	
 	function editImg(ele){
-		var weddingphotoId = $(ele).attr('title');
-		var url =  "${ctx}/weddingphoto/weddingphoto/weddingphoto!toImgList.action?id="+weddingphotoId;
+		//var weddingphotoId = $(ele).attr('title');
+		var url =  "${ctx}/weddingphoto/weddingphoto/weddingphoto!toImgList.action?wdpId="+weddingphotoId;
 		window.location.href = url; 
 	}
 	
 	function editKepian(ele){
-		var weddingphotoId = $(ele).attr('title');
-		var url =  "${ctx}/weddingphoto/weddingphoto/weddingphoto!toKepianList.action?id="+weddingphotoId;
+		//var weddingphotoId = $(ele).attr('title');
+		var url =  "${ctx}/weddingphoto/weddingphoto/weddingphoto!toKepianList.action?wdpId="+weddingphotoId;
 		window.location.href = url; 
 	}
 	
 	function delweddingphoto(ele){
 		var isHide = confirm('确定删除吗?');
 		if(isHide){
-			var weddingphotoId = $(ele).attr('title');
-			var url =  "${ctx}/weddingphoto/weddingphoto/weddingphoto!delweddingphoto.action?id="+weddingphotoId;
+			//var weddingphotoId = $(ele).attr('title');
+			var url =  "${ctx}/weddingphoto/weddingphoto/weddingphoto!delWeddingPhoto.action?wdpId="+weddingphotoId;
 			window.location.href = url; 
 		}
 	}
