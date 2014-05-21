@@ -14,19 +14,20 @@
 
 </head>
 <body>
-<form action="${ctx}/weddingphoto/weddingphoto/weddingphoto!saveWdpDetail.action" id="form" method="post">
+<form action="${ctx}/weddingphoto/wdppackage/wdppackage!saveWdpDetail.action" id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" style="width: 100%">
 	<tbody>
 		<tr>
 			<td>套餐详情</td>
 			<td>
-				<textarea name="content" style="width:300px;height:400px;"><s:property value="detailInfo"/> </textarea>
+				<textarea name="content" style="width:300px;height:400px;"><s:property value="pkgDetailInfo.content"/> </textarea>
 				<input type="hidden" name="wdpPackage.id" value="${wdpPackage.id }"/>
 				<input type="hidden" name="wdpPackage.packageType" value="${wdpPackage.packageType }"/>
 				<input type="hidden" name="pkgDetailInfo.packageId" value="${wdpPackage.id }"/>
 				<input type="hidden" name="pkgDetailInfo.packageType" value="${wdpPackage.packageType }"/>
-				<input type="hidden" name="pkgDetailInfo.valid" value="${wdpPackage.valid }"/>
+				<input type="hidden" name="pkgDetailInfo.id" value="${pkgDetailInfo.id }"/>
+				<input type="hidden" id="_copy_content" name="pkgDetailInfo.content" />
 			</td>
 		</tr>
 	</tbody>	
@@ -46,6 +47,7 @@
 		 </td>
 </tfoot>
 </table>
+<s:debug></s:debug>
 </form>
 </body>
 <script>
@@ -64,16 +66,16 @@
 	});
 	
 	function submitSave(){
-		//$("#p_detail").val(editor.html());
+		$("#_copy_content").val(editor.html());
 		$("#form").submit();
 	}
 	function saveBack(){
-		//$("#p_detail").val(editor.html());
+		$("#_copy_content").val(editor.html());
 		$("#form").submit();
 	}
 	
 	function saveAddImg(){
-		var url = "${ctx}/weddingphoto/weddingphoto/weddingphoto!back.action";
+		var url = "${ctx}/weddingphoto/wdppackage/wdppackage!back.action";
 		window.location.href = url; 
 	}
 </script>

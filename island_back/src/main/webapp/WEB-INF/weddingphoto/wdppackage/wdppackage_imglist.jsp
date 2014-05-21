@@ -12,14 +12,14 @@
 
 </head>
 <body>
-<form action="${ctx}/weddingphoto/weddingphoto/weddingphoto!toImgList.action" id="form" method="post">
+<form action="${ctx}/weddingphoto/wdppackage/wdppackage!wdpImgSearch.action" id="form" method="post">
 <table class="searchbar" style="width: 100%">
 	<tbody>
 		<tr>
 			<td width="48">图片类型</td>
 			<td width="10">
 				<select id="img_type" name="pkgImgRelation.imgType">
-					<option value="0" selected="selected">--请选择--</option>
+					<option value="" selected="selected">--请选择--</option>
 					<option value="1" >logo图</option>
 					<option value="2" >套餐图片集</option>
 					<option value="3" >套餐大图</option>
@@ -31,7 +31,7 @@
 		</tr>
 	</tbody>
 </table>
-<input type="hidden" value="${pageNo}" name="pageNo" id="page_no"/>
+<input type="hidden" value='${pageNo }' name="pageNo" id="page_no"/>
 </form>
 <table class="customlist" style="width: 100%">
 <thead>
@@ -77,7 +77,7 @@
 									<s:property value="typeName"/>
 								</td>
 								<td style="text-align:center;">
-									<s:property value="imgUrl"/>
+									<img style="width:150px;height:120px;" alt="你想看我吗？哈哈！！" src='<s:property value="imgUrl"/>'>
 								</td>
 								<td style="text-align:center;">
 									<s:property value="imgDes"/>
@@ -86,15 +86,14 @@
 									<s:property value="imgIndex"/>
 								</td>
 								<td style="text-align:center;">
-									<a title="" onclick="editImg(this)" >修改</a>&nbsp;|&nbsp;
-									<a title=""  onclick="delImg(this)">删除</a>&nbsp;&nbsp;
-									<input type="hidden" id="pkgImgRlt_id" name="pkgImgRelation.id" value='<s:property value="id"/>'/>
-									<input type="hidden" name="wdpPackage.id" value='${wdpPackage.id }'/>
+									<a title="<s:property value="id"/>" onclick="editImg(this)" >修改</a>&nbsp;|&nbsp;
+									<a title="<s:property value="id"/>"  onclick="delImg(this)">删除</a>&nbsp;&nbsp;
 								</td>	
 							</tr>
 						 </s:iterator>
 					</tbody>
 				</table>
+									<input type="hidden" id = "wdp_id" name="wdpPackage.id" value='${wdpPackage.id }'/>
 			</td>
 		</tr>
 	</tbody>
@@ -103,12 +102,14 @@
 </body>
 <script>
 	var  numCat = /^[1-9]*$/;
+	
 	$(function(){
 		loadPage();
 		
 		initParam();
 		
 		bindEvent();
+		
 	});
 	
 	//绑定事件
@@ -175,22 +176,23 @@
 		$("#form").submit();
 	}
 	
-	var wdpImgId = $('#pkgImgRlt_id').val();
 	var weddingphotoId = $('#wdp_id').val();
 	
 	function newCreate(){
-		var url = "${ctx}/weddingphoto/weddingphoto/weddingphoto!toAddImg.action?wdpId="+weddingphotoId;
+		var url = "${ctx}/weddingphoto/wdppackage/wdppackage!toAddImg.action?wdpId="+weddingphotoId;
 		window.location.href = url;
 	};
 	
 	function editImg(ele){
-		var url =  "${ctx}/weddingphoto/weddingphoto/weddingphoto!toEditImg.action?wdpImgId="+wdpImgId+"&wdpId="+weddingphotoId;
+		var wdpImgId = $(ele).attr('title');
+		var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!toEditImg.action?wdpImgId="+wdpImgId;
 		window.location.href = url; 
 	}
 	function delImg(ele){
+		var wdpImgId = $(ele).attr('title');
 		var isHide = confirm('确定删除吗?');
 		if(isHide){
-			var url =  "${ctx}/weddingphoto/weddingphoto/weddingphoto!delImg.action?wdpImgId="+wdpImgId+"&wdpId="+weddingphotoId;
+			var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!delImg.action?wdpImgId="+wdpImgId;
 			window.location.href = url; 
 		}
 	}

@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<form action="${ctx}/weddingphoto/weddingphoto/weddingphoto!addWdpPackage.action"   id="form" method="post">
+<form action="${ctx}/weddingphoto/wdppackage/wdppackage!addWdpPackage.action"   id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" style="width: 100%">
 	<tbody>

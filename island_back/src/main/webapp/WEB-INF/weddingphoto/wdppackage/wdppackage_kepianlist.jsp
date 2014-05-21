@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ include file="/common/taglibs.jsp"%>
-<%@page import="com.island.domain.model.*" %>
+<%@page import ="com.island.domain.model.*" %>
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>婚纱套餐列表</title>
+<title>婚纱套餐客片留影列表</title>
 <link rel="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
 <link rel="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
@@ -12,29 +12,22 @@
 
 </head>
 <body>
-<form action="${ctx}/weddingphoto/weddingphoto/weddingphoto!search.action" id="form" method="post">
+<form action="${ctx}/weddingphoto/wdppackage/wdppackage!kplySearch.action" id="form" method="post">
 <table class="searchbar" style="width: 100%">
 	<tbody>
 		<tr>
-			<td width="48">所属岛屿</td>
+			<td width="48">客片描述</td>
 			<td width="10">
-				<select id="island_id" name="wdpPackage.islandId">
-					<option value="0" selected="selected">--请选择--</option>
-					<c:forEach var="island" items="${islandList}">
-							<option value="${island.id}" >${island.name}</option>
-				   </c:forEach>
-				</select>
+				<input type="text" name="pkgKPLY.kepianDesc" id="kepian_desc"/>
 			</td>
-			<td width="48">套餐名称</td>
-			<td width="10"><input type="text" name="wdpPackage.title" value="${title}" id="sear_title"/></td>
-			<td width="48">套餐价格</td>
-			<td width="10"><input type="text" name="wdpPackage.price" value="${price}" id="sear_price"/></td>
 			<td><input class="btn" type="button" value="搜索" id="search"/>
 			</td>
 		</tr>
 	</tbody>
 </table>
 <input type="hidden" value="${pageNo}" name="pageNo" id="page_no"/>
+<input type="hidden" id = "wdp_id" name="wdpPackage.id" value='${wdpPackage.id }'/>
+<s:debug></s:debug>
 </form>
 <table class="customlist" style="width: 100%">
 <thead>
@@ -49,7 +42,10 @@
 					</div>
 				</div>
 			</td>
-			<td align="right" class="tdr"><input type="button" value="新建" id="new_create"/></td>
+			<td align="right" class="tdr">
+				<input type="button" value="返回" id="back_p_list" onclick="javascript:history.go(-1);"/>
+				<input type="button" value="新建" id="new_create"/>
+			</td>
 		</tr>
 </thead>
 
@@ -60,49 +56,37 @@
 					<thead>
 						<tr>
 							<td>序号</td>
-							<td>套餐名称</td>
-							<td>所属区域</td>
-							<td>所属岛屿</td>
-							<td>淡季价格</td>
-							<td>旺季价格</td>
-							<td>是否在售</td>
+							<td>链接地址</td>
+							<td>logo</td>
+							<td>描述</td>
+							<td>次序</td>
 							<td>操作</td>
 						</tr>
 					</thead>
 					<tbody id="question_list">
-						<s:iterator value="wdpPackageList" status="_index">
+						<s:iterator value="pkgKPLYList" status="_index">
 							<tr>
 								<td style="text-align:center;">
 									<s:property value="#_index.index+1"/>
 								</td>
 								<td style="text-align:center;">
-									<s:property value="title"/>
+									<s:property value="link"/>
 								</td>
 								<td style="text-align:center;">
-									<s:property value="areaName"/>
+									<img style="width:150px;height:120px;" alt="你想看我吗？哈哈！！" src='<s:property value="img"/>'>
 								</td>
 								<td style="text-align:center;">
-									<s:property value="islandName"/>
+									<s:property value="kepianDesc"/>
 								</td>
 								<td style="text-align:center;">
-									<s:property value="priceSmall"/>
+									<s:property value="kepianIndex"/>
 								</td>
 								<td style="text-align:center;">
-									<s:property value="priceBig"/>
-								</td>
-								<td style="text-align:center;">
-									<s:property value="onlineStr"/>
-								</td>
-								<td width="360px">
-									<a title="" onclick="editBase()" >基本信息管理</a>&nbsp;|&nbsp;
-									<a title="" onclick="editDetail()" >详细信息管理</a>&nbsp;|&nbsp;
-									<a title="" onclick="editImg()" >图片管理</a>&nbsp;|&nbsp;
-									<a title="" onclick="editKepian()" >客片留影管理</a>&nbsp;|&nbsp;
-									<a title=""  onclick="delweddingphoto()">删除</a>&nbsp;&nbsp;
-									<input type="hidden" id = "wdp_id" name="wdpPackage.id" value="<s:property value="id"/>" />
-								</td>							
-						    </tr>
-						</s:iterator>					
+									<a title="<s:property value="id"/>" onclick="editKepian(this)" >修改</a>&nbsp;|&nbsp;
+									<a title="<s:property value="id"/>"  onclick="delKepian(this)">删除</a>&nbsp;&nbsp;
+								</td>	
+							</tr>
+						 </s:iterator>
 					</tbody>
 				</table>
 			</td>
@@ -125,7 +109,7 @@
 		$("#search").bind('click',search);
 		$("#go").bind('click',gotoPageNo);
 		$("#new_create").bind('click',newCreate);
-		
+		//$("#back_p_list").bind('click',backList);
 	}
 	
 	function loadPage(){
@@ -137,8 +121,6 @@
 	
 	//初始化参数
 	function initParam(){
-		var islandId = '${islandId}';
-		$("#island_id option[value='"+islandId+"']").attr('selected',true);
 		var pageNo = '${pageNo}';
 		if(pageNo < 2){
 			$("#go_page").hide();
@@ -185,44 +167,29 @@
 		$("#form").submit();
 	}
 	
+	var weddingphotoId = $('#wdp_id').val();
+	
 	function newCreate(){
-		var url = "${ctx}/weddingphoto/weddingphoto/weddingphoto!toAddBase.action";
+		var packageId =$("#p_id").val();
+		var url = "${ctx}/weddingphoto/wdppackage/wdppackage!toAddKepian.action?id="+packageId;
 		window.location.href = url;
 	};
 	
-	var weddingphotoId = $('#wdp_id').val();
-	
-	function editBase(ele){
-		//var weddingphotoId = $(ele).attr('title');
-		var url =  "${ctx}/weddingphoto/weddingphoto/weddingphoto!toEditBase.action?wdpId="+weddingphotoId;
-		window.location.href = url; 
-	}
-	
-	function editDetail(ele){
-		//var weddingphotoId = $(ele).attr('title');
-		var url =  "${ctx}/weddingphoto/weddingphoto/weddingphoto!wdpDetail.action?wdpId="+weddingphotoId;
-		window.location.href = url; 
-	}
-	
-	function editImg(ele){
-		//var weddingphotoId = $(ele).attr('title');
-		var url =  "${ctx}/weddingphoto/weddingphoto/weddingphoto!toImgList.action?wdpId="+weddingphotoId;
-		window.location.href = url; 
-	}
-	
 	function editKepian(ele){
-		//var weddingphotoId = $(ele).attr('title');
-		var url =  "${ctx}/weddingphoto/weddingphoto/weddingphoto!toKepianList.action?wdpId="+weddingphotoId;
+		var kepianId = $(ele).attr('title');
+		//var packageId =$("#p_id").val();
+		var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!toEditKepian.action?kplyId="+kepianId;
 		window.location.href = url; 
 	}
-	
-	function delweddingphoto(ele){
+	function delKepian(ele){
 		var isHide = confirm('确定删除吗?');
 		if(isHide){
-			//var weddingphotoId = $(ele).attr('title');
-			var url =  "${ctx}/weddingphoto/weddingphoto/weddingphoto!delWeddingPhoto.action?wdpId="+weddingphotoId;
+			var kepianId = $(ele).attr('title');
+			//var packageId =$("#p_id").val();
+			var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!delKepian.action?kplyId="+kepianId;
 			window.location.href = url; 
 		}
 	}
+
 </script>
 </html>

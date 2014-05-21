@@ -17,35 +17,40 @@ import com.jcl.core.module.ModuleRegistry;
 import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.AreaIslandBiz;
 import com.island.domain.biz.WeddingPhotoBiz;
+import com.island.domain.dal.PackageKepianliuyingIbatisDAOImpl;
 import com.island.domain.model.Area;
 import com.island.domain.model.Island;
 import com.island.domain.model.IslandPackage;
 import com.island.domain.model.PackageDetailInfo;
 import com.island.domain.model.PackageImageRelation;
+import com.island.domain.model.PackageKepianliuying;
 import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
 import com.islandback.web.util.RequestProcc;
+import com.islandback.web.util.UploadImgUtils;
 import com.opensymphony.xwork2.ActionSupport;
 
-@Namespace("/weddingphoto/weddingphoto")
+@Namespace("/weddingphoto/wdppackage")
 @ResultPath("/WEB-INF")
 /**
  *婚纱摄影套餐action
  *
  */
-public class WeddingphotoAction extends ActionSupport  {
+public class WdppackageAction extends ActionSupport  {
 	private static final long serialVersionUID = 1L;
 
 	private IslandPackage wdpPackage;
 	private PackageDetailInfo pkgDetailInfo;
 	private PackageImageRelation pkgImgRelation;
+	private PackageKepianliuying pkgKPLY;
 	Map<String,Object> map = new HashMap<String,Object>(0);
 	
 	
 	private String flag;//判断是 保存返回，还是保存继续增加。
 	private Integer wdpId;
 	private Integer wdpImgId;
+	private Integer kplyId;
 	private Integer actionType;
 	private String detailInfo;
 	
@@ -58,14 +63,15 @@ public class WeddingphotoAction extends ActionSupport  {
 	private Integer pageNo=1;
 	private Integer pageSize=10;
 	
-	
 	private String creater="";
 	
 	private List<Area> areaList = new ArrayList<Area>(0);
 	private List<Island> islandList = new ArrayList<Island>(0);
+	
 	private List<IslandPackage> wdpPackageList = new ArrayList<IslandPackage>(0);
 	private List<PackageDetailInfo> pkgDetailInfoList = new ArrayList<PackageDetailInfo>(0);
 	private List<PackageImageRelation> wdpImgList = new ArrayList<PackageImageRelation>(0);
+	private List<PackageKepianliuying> pkgKPLYList = new ArrayList<PackageKepianliuying>(0);
 	
 	WeddingPhotoBiz weddingPhotoBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getWeddingPhotoBiz();
@@ -101,7 +107,7 @@ public class WeddingphotoAction extends ActionSupport  {
 		page.setPageSize(pageSize);
 		map.put("begin", page.getBegin());
 		map.put("size", page.getPageSize());
-		wdpPackageList = weddingPhotoBiz.queryIslandPackageByMap(map);
+		wdpPackageList = weddingPhotoBiz.queryWdpPackageByMap(map);
 		if(wdpPackageList != null && wdpPackageList.size()>0){
 			this.totalSize = weddingPhotoBiz.countIslandPackageByMap(map);
 		}
@@ -113,30 +119,59 @@ public class WeddingphotoAction extends ActionSupport  {
 	}
 	
 	/**
-	 * 搜索(查询) 功能
+	 * 婚纱摄影套餐  搜索(查询) 功能
 	 * @return
 	 */
-	public String search(){
-		if(null !=wdpPackage && !"".equals(wdpPackage)){
-			map.clear();
-			map.put("titleSear","%"+ wdpPackage.getTitle() +"%");
-			map.put("price", wdpPackage.getPriceBig());
-			map.put("islandId", wdpPackage.getIslandId());
-		}
-		wdpPackageList = weddingPhotoBiz.queryIslandPackageByMap(map);
-		if(wdpPackageList != null && wdpPackageList.size()>0){
-			map.clear();
-			map.put("valid", 1);
-			map.put("isOnline", 1);
-			map.put("packageType", ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO);
-			this.totalSize = weddingPhotoBiz.countIslandPackageByMap(map);
-		}
+	public String wdpPackageSearch(){
+		map.clear();
+		map.put("titleSear","%"+ wdpPackage.getTitle() +"%");
+		map.put("price", wdpPackage.getPriceBig());
+		map.put("islandId", wdpPackage.getIslandId());
+		map.put("valid", 1);
+		map.put("isOnline", 1);
+		map.put("packageType", ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO);
+		wdpPackageList = weddingPhotoBiz.queryWdpPackageByMap(map);
+		this.totalSize = weddingPhotoBiz.countIslandPackageByMap(map);
 		Page page = new Page();
 		page.setPageNo(pageNo);
 		page.setPageSize(pageSize);
 		initTotalPageSize();
 		initIslandList();
 		return "list";
+	}
+	
+	/**
+	 * 图片 搜索 功能。
+	 */
+	public String wdpImgSearch(){
+		map.clear();
+		map.put("imgType",pkgImgRelation.getImgType());
+		map.put("valid", 1);
+		map.put("packageType", ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO);
+		wdpImgList = weddingPhotoBiz.queryPkgImgRelationByMap(map);
+		this.totalSize = weddingPhotoBiz.countPkgImgRelationByMap(map);
+		Page page = new Page();
+		page.setPageNo(pageNo);
+		page.setPageSize(pageSize);
+		initTotalPageSize();
+		return "imglist";
+	}
+	
+	/**
+	 * 客片留影 搜索功能 
+	 */
+	public String kplySearch(){
+		map.clear();
+		map.put("kepianDescSear","%"+ pkgKPLY.getKepianDesc() +"%");
+		map.put("valid", 1);
+		map.put("packageType", ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO);
+		pkgKPLYList = weddingPhotoBiz.queryPkgKPLYByMap(map);
+		this.totalSize = weddingPhotoBiz.countPkgKPLYByMap(map);
+		Page page = new Page();
+		page.setPageNo(pageNo);
+		page.setPageSize(pageSize);
+		initTotalPageSize();
+		return "kepianlist";
 	}
 	
 	/**
@@ -182,7 +217,6 @@ public class WeddingphotoAction extends ActionSupport  {
 		pkgDetailInfoList = weddingPhotoBiz.queryPackageDetailByMap(map);
 		if(null != pkgDetailInfoList && pkgDetailInfoList.size() > 0){
 			pkgDetailInfo = pkgDetailInfoList.get(0);
-			detailInfo = pkgDetailInfo.getContent();
 		}
 		actionType = 4;
 		return "detail";
@@ -200,8 +234,6 @@ public class WeddingphotoAction extends ActionSupport  {
 		map.put("packageType", wdpPackage.getPackageType());
 		pkgDetailInfoList = weddingPhotoBiz.queryPackageDetailByMap(map);
 		if(null != pkgDetailInfoList && pkgDetailInfoList.size() > 0){//存在 就更新
-			pkgDetailInfo = pkgDetailInfoList.get(0);
-			pkgDetailInfo.setContent(pkgDetailInfo.getContent());
 			pkgDetailInfo.setUpdPerson(getCreater());
 			pkgDetailInfo.setUpdTime(new Long(Calendar.getInstance().getTimeInMillis()/1000).intValue());
 			weddingPhotoBiz.updatePkgDetailInfo(pkgDetailInfo);
@@ -259,7 +291,7 @@ public class WeddingphotoAction extends ActionSupport  {
 	}
 	
 	/**
-	 * 进入图片管理 列表页
+	 * 进入图片列表页
 	 */
 	public String toImgList(){
 		doImgList();
@@ -289,8 +321,146 @@ public class WeddingphotoAction extends ActionSupport  {
 	 * 进入 新增 婚纱摄影图片 页面
 	 */
 	public String toAddImg(){
-		
+		//根据 套餐id获取对应的套餐
+		wdpPackage = weddingPhotoBiz.queryWdpPackageByWdpId(wdpId);
+		return "addimg";
+	}
+	
+	/**
+	 * 保存图片 并返回 图片列表或继续添加图片
+	 */
+	public String saveImg(){
+		pkgImgRelation.setCreatePerson(getCreater());
+		pkgImgRelation.setCreateTime(new Long(Calendar.getInstance().getTimeInMillis()/1000).intValue());
+		pkgImgRelation.setPackageType(ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO);
+		pkgImgRelation.setValid(1);
+		pkgImgRelation.setImgUrl(UploadImgUtils.getImgUrl(image, imageFileName));
+		weddingPhotoBiz.addPkgImgRelation(pkgImgRelation);
+		if("continue".equals(flag)){//保存并继续添加
+			wdpPackage = weddingPhotoBiz.queryWdpPackageByWdpId(pkgImgRelation.getPackageId());
+			return "addimg";
+		}
 		return toImgList();
+	}
+	
+	/**
+	 * 进入 修改 图片信息 页面
+	 */
+	public String toEditImg(){
+		pkgImgRelation = weddingPhotoBiz.queryPkgImgRelationByWdpImgId(wdpImgId);
+		return "editimg";
+	}
+	
+	/**
+	 * 保存修改 图片信息
+	 */
+	public String editImg(){
+		if(null != image){//如何修改时图片不为空,则保存新的图片地址。
+			pkgImgRelation.setImgUrl(UploadImgUtils.getImgUrl(image, imageFileName));
+		}
+		pkgImgRelation.setUpdPerson(getCreater());
+		pkgImgRelation.setUpdTime(new Long(Calendar.getInstance().getTimeInMillis()/1000).intValue());
+		weddingPhotoBiz.updatePkgImgRelation(pkgImgRelation);
+		return toImgList();
+	}
+	
+	/**
+	 * 删除 图片信息
+	 */
+	public String delImg(){
+		map.clear();
+		map.put("updPerson", getCreater());
+		map.put("updTime", new Long(Calendar.getInstance().getTimeInMillis()/1000).intValue());
+		map.put("valid",0);
+		map.put("id", wdpId);
+		weddingPhotoBiz.updatePkgImgRelation(map);
+		return toImgList();
+	}
+	
+	/**
+	 * 进入 婚纱客片留影 列表页
+	 */
+	public String toKepianList(){
+		doKepianList();
+		return "kepianlist";
+	}
+	
+	private void doKepianList() {
+		map.clear();
+		map.put("packageType", ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO);
+		map.put("valid", 1);
+		Page page = new Page();
+		page.setPageNo(pageNo);
+		page.setPageSize(pageSize);
+		map.put("begin", page.getBegin());
+		map.put("size", page.getPageSize());
+		pkgKPLYList = weddingPhotoBiz.queryPkgKPLYByMap(map);
+		if(pkgKPLYList != null && pkgKPLYList.size()>0){
+			this.totalSize = weddingPhotoBiz.countPkgKPLYByMap(map);
+		}
+		//拿到对应 套餐的基本信息
+		wdpPackage = weddingPhotoBiz.queryWdpPackageByWdpId(wdpId);
+		initTotalPageSize();
+	}
+	
+	/**
+	 * 进入 新增 客片留影 页面
+	 */
+	public String toAddKepian(){
+		//根据 套餐id获取对应的套餐
+		wdpPackage = weddingPhotoBiz.queryWdpPackageByWdpId(wdpId);
+		return "addkepian";
+	}
+	
+	/**
+	 * 保存 客片留影 信息
+	 */
+	public String saveKepian(){
+		pkgKPLY.setCreatePerson(getCreater());
+		pkgKPLY.setCreateTime(new Long(Calendar.getInstance().getTimeInMillis()/1000).intValue());
+		pkgKPLY.setPackageType(ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO);
+		pkgKPLY.setValid(1);
+		pkgKPLY.setImg(UploadImgUtils.getImgUrl(image, imageFileName));
+		weddingPhotoBiz.addPkgKPLY(pkgKPLY);
+		if("continue".equals(flag)){//保存并继续添加
+			pkgKPLY = weddingPhotoBiz.queryPkgKPLYByWdpId(pkgKPLY.getPackageId());
+			return "addkepian";
+		}
+		return toKepianList();
+	}
+	
+	/**
+	 * 进入 修改客片留影 页面
+	 */
+	public String toEditKepian(){
+		pkgKPLY = weddingPhotoBiz.queryPkgKPLYByKplyId(kplyId);
+		return "editkepian";
+	}
+	
+	/**
+	 * 保存 修改客片留影 信息
+	 */
+	public String editKepian(){
+		if(null != image){//如何修改时图片不为空,则保存新的图片地址。
+			pkgKPLY.setImg(UploadImgUtils.getImgUrl(image, imageFileName));
+		}
+		pkgKPLY.setUpdPerson(getCreater());
+		pkgKPLY.setUpdTime(new Long(Calendar.getInstance().getTimeInMillis()/1000).intValue());
+		weddingPhotoBiz.updatePkgKPLY(pkgKPLY);
+		return toKepianList();
+	}
+	
+	/**
+	 * 删除 客片留影
+	 */
+	public String delKepian(){
+		map.clear();
+		map.put("updPerson", getCreater());
+		map.put("updTime", new Long(Calendar.getInstance().getTimeInMillis()/1000).intValue());
+		map.put("valid",0);
+		map.put("id", kplyId);
+		weddingPhotoBiz.updatePkgKPLY(map);
+		return toKepianList();
 	}
 
 	/**
@@ -461,6 +631,30 @@ public class WeddingphotoAction extends ActionSupport  {
 
 	public void setWdpImgId(Integer wdpImgId) {
 		this.wdpImgId = wdpImgId;
+	}
+
+	public List<PackageKepianliuying> getPkgKPLYList() {
+		return pkgKPLYList;
+	}
+
+	public void setPkgKPLYList(List<PackageKepianliuying> pkgKPLYList) {
+		this.pkgKPLYList = pkgKPLYList;
+	}
+
+	public PackageKepianliuying getPkgKPLY() {
+		return pkgKPLY;
+	}
+
+	public void setPkgKPLY(PackageKepianliuying pkgKPLY) {
+		this.pkgKPLY = pkgKPLY;
+	}
+
+	public Integer getKplyId() {
+		return kplyId;
+	}
+
+	public void setKplyId(Integer kplyId) {
+		this.kplyId = kplyId;
 	}
 
 }
