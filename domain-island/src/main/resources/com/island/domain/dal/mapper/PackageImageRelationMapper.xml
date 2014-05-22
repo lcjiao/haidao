@@ -389,36 +389,6 @@
 			<if test="packageId !=  null">			        
 				and package_id=#{packageId}
 			</if>
-			<if test="imgId !=  null">			        
-				and img_id=#{imgId}
-			</if>
-			<if test="imgType !=  null">			        
-				and img_type=#{imgType}
-			</if>
-			<if test="imgDes !=  null">			        
-				and img_des=#{imgDes}
-			</if>
-			<if test="imgIndex !=  null">			        
-				and img_index=#{imgIndex}
-			</if>
-			<if test="valid !=  null">			        
-				and valid=#{valid}
-			</if>
-			<if test="createTime !=  null">			        
-				and create_time=#{createTime}
-			</if>
-			<if test="createPerson !=  null">			        
-				and create_person=#{createPerson}
-			</if>
-			<if test="updTime !=  null">			        
-				and upd_time=#{updTime}
-			</if>
-			<if test="updPerson !=  null">			        
-				and upd_person=#{updPerson}
-			</if>
-			<if test="imgUrl !=  null">			        
-				and img_url=#{imgUrl}
-			</if>
 		</where>
 		
 	</update>

@@ -464,48 +464,6 @@
 			<if test="packageType !=  null">			        
 				and package_type=#{packageType}
 			</if>
-			<if test="title !=  null">			        
-				and title=#{title}
-			</if>
-			<if test="content !=  null">			        
-				and content=#{content}
-			</if>
-			<if test="priceBig !=  null">			        
-				and price_big=#{priceBig}
-			</if>
-			<if test="priceSmall !=  null">			        
-				and price_small=#{priceSmall}
-			</if>
-			<if test="areaId !=  null">			        
-				and area_id=#{areaId}
-			</if>
-			<if test="areaName !=  null">			        
-				and area_name=#{areaName}
-			</if>
-			<if test="islandId !=  null">			        
-				and island_id=#{islandId}
-			</if>
-			<if test="islandName !=  null">			        
-				and island_name=#{islandName}
-			</if>
-			<if test="isOnline !=  null">			        
-				and is_online=#{isOnline}
-			</if>
-			<if test="valid !=  null">			        
-				and valid=#{valid}
-			</if>
-			<if test="createTime !=  null">			        
-				and create_time=#{createTime}
-			</if>
-			<if test="createPerson !=  null">			        
-				and create_person=#{createPerson}
-			</if>
-			<if test="updTime !=  null">			        
-				and upd_time=#{updTime}
-			</if>
-			<if test="updPerson !=  null">			        
-				and upd_person=#{updPerson}
-			</if>
 		</where>
 		
 	</update>

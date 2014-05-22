@@ -294,25 +294,7 @@
 			</if>
 			<if test="packageType !=  null">			        
 				and package_type=#{packageType}
-			</if>
-			<if test="content !=  null">			        
-				and content=#{content}
-			</if>
-			<if test="valid !=  null">			        
-				and valid=#{valid}
-			</if>
-			<if test="createTime !=  null">			        
-				and create_time=#{createTime}
-			</if>
-			<if test="createPerson !=  null">			        
-				and create_person=#{createPerson}
-			</if>
-			<if test="updTime !=  null">			        
-				and upd_time=#{updTime}
-			</if>
-			<if test="updPerson !=  null">			        
-				and upd_person=#{updPerson}
-			</if>
+			</if>			
 		</where>
 		
 	</update>

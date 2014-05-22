@@ -1,0 +1,66 @@
+2014-04-28 23:16:37,062 ERROR [main] freemarker.runtime (Log4JLoggerFactory.java:96)     - begin is undefined.
+begin is undefined.
+The problematic instruction:
+----------
+==> #{begin} [on line 123, column 39 in mapper.xml.ftl]
+----------
+
+Java backtrace for programmers:
+----------
+freemarker.core.InvalidReferenceException: begin is undefined.
+	at freemarker.core.EvaluationUtil.getNumber(EvaluationUtil.java:104)
+	at freemarker.core.EvaluationUtil.getNumber(EvaluationUtil.java:92)
+	at freemarker.core.NumericalOutput.accept(NumericalOutput.java:91)
+	at freemarker.core.Environment.visit(Environment.java:210)
+	at freemarker.core.MixedContent.accept(MixedContent.java:92)
+	at freemarker.core.Environment.visit(Environment.java:210)
+	at freemarker.core.Environment.process(Environment.java:190)
+	at freemarker.template.Template.process(Template.java:237)
+	at com.jcl.gen.tool.AbsGen.create(AbsGen.java:55)
+	at com.jcl.gen.tool.DalGen.process(DalGen.java:60)
+	at com.jcl.gen.tool.DalGen.process(DalGen.java:19)
+	at com.jcl.gen.tool.DalGenFromDB.main(DalGenFromDB.java:24)
+2014-04-28 23:19:02,971 ERROR [main] freemarker.runtime (Log4JLoggerFactory.java:96)     - Expression test is undefined on line 122, column 22 in mapper.xml.ftl.
+Expression test is undefined on line 122, column 22 in mapper.xml.ftl.
+The problematic instruction:
+----------
+==> if test="begin !=  null" [on line 122, column 17 in mapper.xml.ftl]
+----------
+
+Java backtrace for programmers:
+----------
+freemarker.core.InvalidReferenceException: Expression test is undefined on line 122, column 22 in mapper.xml.ftl.
+	at freemarker.core.TemplateObject.assertNonNull(TemplateObject.java:124)
+	at freemarker.core.ComparisonExpression.isTrue(ComparisonExpression.java:121)
+	at freemarker.core.ConditionalBlock.accept(ConditionalBlock.java:77)
+	at freemarker.core.Environment.visit(Environment.java:210)
+	at freemarker.core.MixedContent.accept(MixedContent.java:92)
+	at freemarker.core.Environment.visit(Environment.java:210)
+	at freemarker.core.Environment.process(Environment.java:190)
+	at freemarker.template.Template.process(Template.java:237)
+	at com.jcl.gen.tool.AbsGen.create(AbsGen.java:55)
+	at com.jcl.gen.tool.DalGen.process(DalGen.java:60)
+	at com.jcl.gen.tool.DalGen.process(DalGen.java:19)
+	at com.jcl.gen.tool.DalGenFromDB.main(DalGenFromDB.java:24)
+2014-04-28 23:20:57,543 ERROR [main] freemarker.runtime (Log4JLoggerFactory.java:96)     - Expression test is undefined on line 122, column 22 in mapper.xml.ftl.
+Expression test is undefined on line 122, column 22 in mapper.xml.ftl.
+The problematic instruction:
+----------
+==> if test="begin !=  null" [on line 122, column 17 in mapper.xml.ftl]
+----------
+
+Java backtrace for programmers:
+----------
+freemarker.core.InvalidReferenceException: Expression test is undefined on line 122, column 22 in mapper.xml.ftl.
+	at freemarker.core.TemplateObject.assertNonNull(TemplateObject.java:124)
+	at freemarker.core.ComparisonExpression.isTrue(ComparisonExpression.java:121)
+	at freemarker.core.ConditionalBlock.accept(ConditionalBlock.java:77)
+	at freemarker.core.Environment.visit(Environment.java:210)
+	at freemarker.core.MixedContent.accept(MixedContent.java:92)
+	at freemarker.core.Environment.visit(Environment.java:210)
+	at freemarker.core.Environment.process(Environment.java:190)
+	at freemarker.template.Template.process(Template.java:237)
+	at com.jcl.gen.tool.AbsGen.create(AbsGen.java:55)
+	at com.jcl.gen.tool.DalGen.process(DalGen.java:60)
+	at com.jcl.gen.tool.DalGen.process(DalGen.java:19)
+	at com.jcl.gen.tool.DalGenFromDB.main(DalGenFromDB.java:24)
