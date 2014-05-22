@@ -16,7 +16,7 @@
 <table class="searchbar" style="width: 100%">
 	<tbody>
 		<tr>
-			<td width="48">所属岛屿</td>
+			<td width="48">所属岛屿色色</td>
 			<td width="10">
 				<select id="island_id" name="islandId">
 					<option value="0" selected="selected">--请选择--</option>
@@ -90,7 +90,7 @@
 									<s:property value="priceBig"/>
 								</td>
 								<td style="text-align:center;">
-									<s:if test="<s:property value="isOnline"/> != 1">非在售 </s:if>在售
+									<%-- <s:if test="<s:property value="isOnline"/> != 1">非在售 </s:if>在售 --%>
 								</td>
 								<td width="360px">
 									<a title="<s:property value="id"/>" onclick="editBase(this)" >基本信息管理</a>&nbsp;|&nbsp;
