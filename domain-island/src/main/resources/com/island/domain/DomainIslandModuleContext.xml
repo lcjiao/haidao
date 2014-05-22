@@ -32,7 +32,7 @@
 	</bean>
 	
 	<bean id="RecommendDAO" class="com.island.domain.dal.RecommendIbatisDAOImpl" />		
-	<bean id="frontIndexBiz" class="com.island.domain.biz.FrontIndexBiz">
+	<bean id="recommendBiz" class="com.island.domain.biz.RecommendBiz">
 		<property name="recommendDao" ref="RecommendDAO"></property>
 	</bean>
 	

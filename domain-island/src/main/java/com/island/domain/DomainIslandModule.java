@@ -1,7 +1,7 @@
 package com.island.domain;
 
 import com.island.domain.biz.AreaIslandBiz;
-import com.island.domain.biz.FrontIndexBiz;
+import com.island.domain.biz.RecommendBiz;
 import com.island.domain.biz.GlobalNetBiz;
 import com.island.domain.biz.MarrayPackageBiz;
 import com.island.domain.biz.WeddingPhotoBiz;
@@ -13,8 +13,8 @@ public interface DomainIslandModule {
 	@Bean("roleBiz")
 	public RoleBiz getRoleBiz();
 	
-	@Bean("frontIndexBiz")
-	public FrontIndexBiz getFrontIndexBiz();
+	@Bean("recommendBiz")
+	public RecommendBiz getRecommendBiz();
 
 	@Bean("areaIslandBiz")
 	public AreaIslandBiz getAreaIslandBiz();
