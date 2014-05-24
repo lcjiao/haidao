@@ -17,7 +17,7 @@ import org.apache.struts2.convention.annotation.ResultPath;
 
 import com.jcl.core.module.ModuleRegistry;
 import com.island.domain.DomainIslandModule;
-import com.island.domain.biz.FrontIndexBiz;
+import com.island.domain.biz.RecommendBiz;
 import com.island.domain.model.Recommend;
 import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
@@ -49,8 +49,8 @@ public class PackagerecommendAction extends ActionSupport {
 	private Integer pageSize=5;
 	private String type;
 	private List<Recommend> recommendList;
-	FrontIndexBiz frontIndexBiz = ModuleRegistry.getInstance()
-            .getModule(DomainIslandModule.class).getFrontIndexBiz();
+	RecommendBiz recommendBiz = ModuleRegistry.getInstance()
+            .getModule(DomainIslandModule.class).getRecommendBiz();
 	private SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 	
 	
@@ -86,7 +86,7 @@ public class PackagerecommendAction extends ActionSupport {
 			if(image != null){
 				setParams.put("imgUrl", upload());
 			}
-			this.frontIndexBiz.updRecommend(setParams);	
+			this.recommendBiz.updRecommend(setParams);	
 			doList();
 			return "list";
 		}
@@ -106,7 +106,7 @@ public class PackagerecommendAction extends ActionSupport {
 		
 		changeIndexBySys(creater);
 		
-		this.frontIndexBiz.addMasterRecommend(addObj);
+		this.recommendBiz.addMasterRecommend(addObj);
 		doList();
 		return "list";
 		
@@ -122,13 +122,13 @@ public class PackagerecommendAction extends ActionSupport {
 		setParams.put("valid", 0);
 		setParams.put("updPerson", creater);
 		setParams.put("id", id);
-		this.frontIndexBiz.updRecommend(setParams);		
+		this.recommendBiz.updRecommend(setParams);		
 		doList();
 		return "list";
 	}
 	
 	public String toEdit(){
-		Recommend obj = frontIndexBiz.queryById(id);
+		Recommend obj = recommendBiz.queryById(id);
 		this.link=obj.getLinkUrl();
 		this.desc=obj.getRecommendDesc();
 		this.index=obj.getRecommendIndex();
@@ -154,13 +154,13 @@ public class PackagerecommendAction extends ActionSupport {
 		
 		changeIndexBySys(creater);
 		
-		this.frontIndexBiz.updRecommend(params);		
+		this.recommendBiz.updRecommend(params);		
 		doList();
 		return "list";
 	}
 	
 	private void changeIndexBySys(String creater){
-		Recommend thisObj = this.frontIndexBiz.queryById(id);
+		Recommend thisObj = this.recommendBiz.queryById(id);
 		/**
 		 * 查询之前此排序得条目 如存在对调排序次序
 		 */
@@ -168,7 +168,7 @@ public class PackagerecommendAction extends ActionSupport {
 		indexParams.put("recommendIndex", index);
 		indexParams.put("moduleId", ModuleEnum.FRONT_PACKAGE_RECOMMEND);
 		indexParams.put("valid", 1);
-		List<Recommend> list = frontIndexBiz.queryByMap(indexParams);
+		List<Recommend> list = recommendBiz.queryByMap(indexParams);
 		Recommend oldIndexObj = null;
 		if( list != null && !list.isEmpty()){
 			oldIndexObj = list.get(0);
@@ -178,7 +178,7 @@ public class PackagerecommendAction extends ActionSupport {
 			oldObjParams.put("recommendIndex", thisObj.getRecommendIndex());
 			oldObjParams.put("updPerson", creater);
 			oldObjParams.put("id", oldIndexObj.getId());
-			this.frontIndexBiz.updRecommend(oldObjParams);
+			this.recommendBiz.updRecommend(oldObjParams);
 		}	
 	}
 	private void doList(){
@@ -196,12 +196,12 @@ public class PackagerecommendAction extends ActionSupport {
 		page.setPageSize(pageSize);
 		params.put("begin", page.getBegin());
 		params.put("size", page.getPageSize());
-		List<Recommend> list = frontIndexBiz.queryByMap(params);
+		List<Recommend> list = recommendBiz.queryByMap(params);
 		if(list != null && list.size()>0){
 			Map<String,Object> countParam = new HashMap<String,Object>(0);
 			countParam.put("moduleId", ModuleEnum.FRONT_PACKAGE_RECOMMEND);
 			countParam.put("valid", 1);
-			this.totalSize = frontIndexBiz.countByMap(countParam);
+			this.totalSize = recommendBiz.countByMap(countParam);
 		}else{
 			this.totalSize=0;
 		}

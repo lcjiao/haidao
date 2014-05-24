@@ -119,7 +119,9 @@
 			</#list>
 			</#if>
 		</where>
-		
+		<if test="begin !=  null">			        
+				limit ${r"#{begin}"},${r"#{size}"}
+		</if>
 	</select>
 	
 	<select id="countByModel" parameterType="${package}.model.${name}" resultType="java.lang.Integer">	

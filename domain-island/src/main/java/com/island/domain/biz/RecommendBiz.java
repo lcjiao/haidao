@@ -6,7 +6,7 @@ import java.util.Map;
 import com.island.domain.dal.RecommendIbatisDAOImpl;
 import com.island.domain.model.Recommend;
 
-public class FrontIndexBiz {
+public class RecommendBiz {
 
 	private RecommendIbatisDAOImpl recommendDao;
 

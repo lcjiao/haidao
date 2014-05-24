@@ -562,3 +562,919 @@
 2014-04-10 11:23:46,765 INFO  [Thread-8@/config/core-config.xml] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-8@/config/core-config.xml start watch /config/core-config.xml :
 2014-04-10 11:23:46,770 INFO  [main] trace             (Slf4jLogger.java:59)     - host name :jcl.local
 2014-04-10 11:23:46,771 INFO  [Thread-10@/config/database.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-10@/config/database.properties start watch /config/database.properties :
+2014-04-27 20:41:50,752 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@54bb7759: display name [org.springframework.context.support.ClassPathXmlApplicationContext@54bb7759]; startup date [Sun Apr 27 20:41:50 CST 2014]; root of context hierarchy
+2014-04-27 20:41:50,833 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-04-27 20:41:54,593 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@54bb7759]: org.springframework.beans.factory.support.DefaultListableBeanFactory@c68c26c
+2014-04-27 20:41:54,609 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@c68c26c: defining beans [configuration,templateFactory]; root of factory hierarchy
+2014-04-27 20:41:54,688 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/dal.properties', /config/dal.properties (No such file or directory)
+2014-04-27 20:41:54,689 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/dal.properties', /C:/config/dal.properties (No such file or directory)
+2014-04-27 20:41:54,690 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/dal.properties', class path resource [META-INF/config/local/dal.properties] cannot be resolved to URL because it does not exist
+2014-04-27 20:41:54,717 INFO  [Thread-2@/config/dal.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-2@/config/dal.properties start watch /config/dal.properties :
+2014-04-27 20:41:54,718 INFO  [Thread-3] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-27 20:41:54,870 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@52458f41: display name [org.springframework.context.support.ClassPathXmlApplicationContext@52458f41]; startup date [Sun Apr 27 20:41:54 CST 2014]; root of context hierarchy
+2014-04-27 20:41:54,871 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/dal/datasource/DataSourceModuleContext.xml]
+2014-04-27 20:41:58,844 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@52458f41]: org.springframework.beans.factory.support.DefaultListableBeanFactory@44cbbe
+2014-04-27 20:41:58,877 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database.properties', /C:/config/database.properties (No such file or directory)
+2014-04-27 20:41:58,878 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database.properties', class path resource [META-INF/config/local/database.properties] cannot be resolved to URL because it does not exist
+2014-04-27 20:41:58,884 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database_pay.properties', /C:/config/database_pay.properties (No such file or directory)
+2014-04-27 20:41:58,884 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database_pay.properties', class path resource [META-INF/config/local/database_pay.properties] cannot be resolved to URL because it does not exist
+2014-04-27 20:41:58,888 INFO  [Thread-5@/config/database_pay.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-5@/config/database_pay.properties start watch /config/database_pay.properties :
+2014-04-27 20:41:58,890 INFO  [Thread-6] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-27 20:41:58,928 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@44cbbe: defining beans [configuration,configuration_pay,hosts,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,datasource.HAIDAO_DB,locator,iDataSource,dbConfigManager]; root of factory hierarchy
+2014-04-27 20:41:58,929 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/DBHost.properties', /config/DBHost.properties (No such file or directory)
+2014-04-27 20:41:58,930 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/DBHost.properties', /C:/config/DBHost.properties (No such file or directory)
+2014-04-27 20:41:58,930 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/DBHost.properties', class path resource [META-INF/config/local/DBHost.properties] cannot be resolved to URL because it does not exist
+2014-04-27 20:41:58,931 INFO  [Thread-7@/config/DBHost.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-7@/config/DBHost.properties start watch /config/DBHost.properties :
+2014-04-27 20:41:58,931 INFO  [Thread-8] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-27 20:41:58,938 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@744d76b4: display name [org.springframework.context.support.ClassPathXmlApplicationContext@744d76b4]; startup date [Sun Apr 27 20:41:58 CST 2014]; root of context hierarchy
+2014-04-27 20:41:58,939 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/config/ConfigModuleContext.xml]
+2014-04-27 20:42:04,365 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@744d76b4]: org.springframework.beans.factory.support.DefaultListableBeanFactory@552c8fa8
+2014-04-27 20:42:04,366 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@552c8fa8: defining beans [core-config]; root of factory hierarchy
+2014-04-27 20:42:04,386 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/core-config.xml', /C:/config/core-config.xml (No such file or directory)
+2014-04-27 20:42:04,387 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/core-config.xml', class path resource [META-INF/config/local/core-config.xml] cannot be resolved to URL because it does not exist
+2014-04-27 20:42:04,392 INFO  [Thread-9@/config/core-config.xml] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-9@/config/core-config.xml start watch /config/core-config.xml :
+2014-04-27 20:42:04,392 INFO  [Thread-10] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-27 20:42:04,401 INFO  [main] trace             (Slf4jLogger.java:59)     - host name :jcl.local
+2014-04-27 20:42:04,401 INFO  [Thread-11@/config/database.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-11@/config/database.properties start watch /config/database.properties :
+2014-04-28 00:04:40,281 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@54bb7759: display name [org.springframework.context.support.ClassPathXmlApplicationContext@54bb7759]; startup date [Mon Apr 28 00:04:40 CST 2014]; root of context hierarchy
+2014-04-28 00:04:40,342 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-04-28 00:04:42,993 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@54bb7759]: org.springframework.beans.factory.support.DefaultListableBeanFactory@c68c26c
+2014-04-28 00:04:43,015 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@c68c26c: defining beans [configuration,templateFactory]; root of factory hierarchy
+2014-04-28 00:04:43,055 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/dal.properties', /config/dal.properties (No such file or directory)
+2014-04-28 00:04:43,056 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/dal.properties', /C:/config/dal.properties (No such file or directory)
+2014-04-28 00:04:43,057 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/dal.properties', class path resource [META-INF/config/local/dal.properties] cannot be resolved to URL because it does not exist
+2014-04-28 00:04:43,072 INFO  [Thread-2@/config/dal.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-2@/config/dal.properties start watch /config/dal.properties :
+2014-04-28 00:04:43,072 INFO  [Thread-3] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 00:04:43,150 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@38aa233f: display name [org.springframework.context.support.ClassPathXmlApplicationContext@38aa233f]; startup date [Mon Apr 28 00:04:43 CST 2014]; root of context hierarchy
+2014-04-28 00:04:43,151 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/dal/datasource/DataSourceModuleContext.xml]
+2014-04-28 00:04:46,040 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@38aa233f]: org.springframework.beans.factory.support.DefaultListableBeanFactory@7b41fab6
+2014-04-28 00:04:46,056 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database.properties', /C:/config/database.properties (No such file or directory)
+2014-04-28 00:04:46,057 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database.properties', class path resource [META-INF/config/local/database.properties] cannot be resolved to URL because it does not exist
+2014-04-28 00:04:46,061 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database_pay.properties', /C:/config/database_pay.properties (No such file or directory)
+2014-04-28 00:04:46,062 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database_pay.properties', class path resource [META-INF/config/local/database_pay.properties] cannot be resolved to URL because it does not exist
+2014-04-28 00:04:46,065 INFO  [Thread-5@/config/database_pay.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-5@/config/database_pay.properties start watch /config/database_pay.properties :
+2014-04-28 00:04:46,066 INFO  [Thread-6] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 00:04:46,102 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7b41fab6: defining beans [configuration,configuration_pay,hosts,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,datasource.HAIDAO_DB,locator,iDataSource,dbConfigManager]; root of factory hierarchy
+2014-04-28 00:04:46,103 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/DBHost.properties', /config/DBHost.properties (No such file or directory)
+2014-04-28 00:04:46,104 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/DBHost.properties', /C:/config/DBHost.properties (No such file or directory)
+2014-04-28 00:04:46,104 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/DBHost.properties', class path resource [META-INF/config/local/DBHost.properties] cannot be resolved to URL because it does not exist
+2014-04-28 00:04:46,105 INFO  [Thread-7@/config/DBHost.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-7@/config/DBHost.properties start watch /config/DBHost.properties :
+2014-04-28 00:04:46,105 INFO  [Thread-8] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 00:04:46,111 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5a199939: display name [org.springframework.context.support.ClassPathXmlApplicationContext@5a199939]; startup date [Mon Apr 28 00:04:46 CST 2014]; root of context hierarchy
+2014-04-28 00:04:46,112 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/config/ConfigModuleContext.xml]
+2014-04-28 00:04:49,929 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@5a199939]: org.springframework.beans.factory.support.DefaultListableBeanFactory@1c23f1bb
+2014-04-28 00:04:49,930 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1c23f1bb: defining beans [core-config]; root of factory hierarchy
+2014-04-28 00:04:49,948 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/core-config.xml', /C:/config/core-config.xml (No such file or directory)
+2014-04-28 00:04:49,949 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/core-config.xml', class path resource [META-INF/config/local/core-config.xml] cannot be resolved to URL because it does not exist
+2014-04-28 00:04:49,953 INFO  [Thread-9@/config/core-config.xml] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-9@/config/core-config.xml start watch /config/core-config.xml :
+2014-04-28 00:04:49,955 INFO  [Thread-10] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 00:04:49,962 INFO  [main] trace             (Slf4jLogger.java:59)     - host name :jcl.local
+2014-04-28 00:04:49,962 INFO  [Thread-11@/config/database.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-11@/config/database.properties start watch /config/database.properties :
+2014-04-28 23:14:42,873 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5cbfe9d: display name [org.springframework.context.support.ClassPathXmlApplicationContext@5cbfe9d]; startup date [Mon Apr 28 23:14:42 CST 2014]; root of context hierarchy
+2014-04-28 23:14:42,939 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-04-28 23:14:50,011 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@5cbfe9d]: org.springframework.beans.factory.support.DefaultListableBeanFactory@371bed71
+2014-04-28 23:14:50,030 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@371bed71: defining beans [configuration,templateFactory]; root of factory hierarchy
+2014-04-28 23:14:50,095 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/dal.properties', /config/dal.properties (No such file or directory)
+2014-04-28 23:14:50,096 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/dal.properties', /C:/config/dal.properties (No such file or directory)
+2014-04-28 23:14:50,097 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/dal.properties', class path resource [META-INF/config/local/dal.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:14:50,119 INFO  [Thread-3@/config/dal.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-3@/config/dal.properties start watch /config/dal.properties :
+2014-04-28 23:14:50,120 INFO  [Thread-4] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:14:50,226 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1b1756a4: display name [org.springframework.context.support.ClassPathXmlApplicationContext@1b1756a4]; startup date [Mon Apr 28 23:14:50 CST 2014]; root of context hierarchy
+2014-04-28 23:14:50,227 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/dal/datasource/DataSourceModuleContext.xml]
+2014-04-28 23:14:53,231 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@1b1756a4]: org.springframework.beans.factory.support.DefaultListableBeanFactory@7c9e67a
+2014-04-28 23:14:53,269 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database.properties', /C:/config/database.properties (No such file or directory)
+2014-04-28 23:14:53,270 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database.properties', class path resource [META-INF/config/local/database.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:14:53,275 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database_pay.properties', /C:/config/database_pay.properties (No such file or directory)
+2014-04-28 23:14:53,276 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database_pay.properties', class path resource [META-INF/config/local/database_pay.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:14:53,279 INFO  [Thread-5@/config/database_pay.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-5@/config/database_pay.properties start watch /config/database_pay.properties :
+2014-04-28 23:14:53,280 INFO  [Thread-6] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:14:53,313 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7c9e67a: defining beans [configuration,configuration_pay,hosts,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,datasource.HAIDAO_DB,locator,iDataSource,dbConfigManager]; root of factory hierarchy
+2014-04-28 23:14:53,314 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/DBHost.properties', /config/DBHost.properties (No such file or directory)
+2014-04-28 23:14:53,315 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/DBHost.properties', /C:/config/DBHost.properties (No such file or directory)
+2014-04-28 23:14:53,315 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/DBHost.properties', class path resource [META-INF/config/local/DBHost.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:14:53,316 INFO  [Thread-8] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:14:53,316 INFO  [Thread-7@/config/DBHost.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-7@/config/DBHost.properties start watch /config/DBHost.properties :
+2014-04-28 23:14:53,323 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@552c8fa8: display name [org.springframework.context.support.ClassPathXmlApplicationContext@552c8fa8]; startup date [Mon Apr 28 23:14:53 CST 2014]; root of context hierarchy
+2014-04-28 23:14:53,324 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/config/ConfigModuleContext.xml]
+2014-04-28 23:14:56,401 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@552c8fa8]: org.springframework.beans.factory.support.DefaultListableBeanFactory@4b14b82b
+2014-04-28 23:14:56,403 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4b14b82b: defining beans [core-config]; root of factory hierarchy
+2014-04-28 23:14:56,422 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/core-config.xml', /C:/config/core-config.xml (No such file or directory)
+2014-04-28 23:14:56,424 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/core-config.xml', class path resource [META-INF/config/local/core-config.xml] cannot be resolved to URL because it does not exist
+2014-04-28 23:14:56,432 INFO  [Thread-9@/config/core-config.xml] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-9@/config/core-config.xml start watch /config/core-config.xml :
+2014-04-28 23:14:56,432 INFO  [Thread-10] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:14:56,441 INFO  [main] trace             (Slf4jLogger.java:59)     - host name :jcl.workgroup
+2014-04-28 23:14:56,441 INFO  [Thread-11@/config/database.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-11@/config/database.properties start watch /config/database.properties :
+2014-04-28 23:16:31,386 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@54bb7759: display name [org.springframework.context.support.ClassPathXmlApplicationContext@54bb7759]; startup date [Mon Apr 28 23:16:31 CST 2014]; root of context hierarchy
+2014-04-28 23:16:31,432 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-04-28 23:16:34,345 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@54bb7759]: org.springframework.beans.factory.support.DefaultListableBeanFactory@c68c26c
+2014-04-28 23:16:34,357 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@c68c26c: defining beans [configuration,templateFactory]; root of factory hierarchy
+2014-04-28 23:16:34,396 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/dal.properties', /config/dal.properties (No such file or directory)
+2014-04-28 23:16:34,397 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/dal.properties', /C:/config/dal.properties (No such file or directory)
+2014-04-28 23:16:34,398 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/dal.properties', class path resource [META-INF/config/local/dal.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:16:34,411 INFO  [Thread-2@/config/dal.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-2@/config/dal.properties start watch /config/dal.properties :
+2014-04-28 23:16:34,411 INFO  [Thread-3] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:16:34,488 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1389c036: display name [org.springframework.context.support.ClassPathXmlApplicationContext@1389c036]; startup date [Mon Apr 28 23:16:34 CST 2014]; root of context hierarchy
+2014-04-28 23:16:34,489 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/dal/datasource/DataSourceModuleContext.xml]
+2014-04-28 23:16:35,537 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@1389c036]: org.springframework.beans.factory.support.DefaultListableBeanFactory@5c001eb0
+2014-04-28 23:16:35,556 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database.properties', /C:/config/database.properties (No such file or directory)
+2014-04-28 23:16:35,557 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database.properties', class path resource [META-INF/config/local/database.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:16:35,562 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database_pay.properties', /C:/config/database_pay.properties (No such file or directory)
+2014-04-28 23:16:35,564 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database_pay.properties', class path resource [META-INF/config/local/database_pay.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:16:35,567 INFO  [Thread-4@/config/database_pay.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-4@/config/database_pay.properties start watch /config/database_pay.properties :
+2014-04-28 23:16:35,567 INFO  [Thread-5] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:16:35,599 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5c001eb0: defining beans [configuration,configuration_pay,hosts,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,datasource.HAIDAO_DB,locator,iDataSource,dbConfigManager]; root of factory hierarchy
+2014-04-28 23:16:35,600 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/DBHost.properties', /config/DBHost.properties (No such file or directory)
+2014-04-28 23:16:35,601 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/DBHost.properties', /C:/config/DBHost.properties (No such file or directory)
+2014-04-28 23:16:35,601 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/DBHost.properties', class path resource [META-INF/config/local/DBHost.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:16:35,602 INFO  [Thread-6@/config/DBHost.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-6@/config/DBHost.properties start watch /config/DBHost.properties :
+2014-04-28 23:16:35,602 INFO  [Thread-7] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:16:35,608 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@10f102d3: display name [org.springframework.context.support.ClassPathXmlApplicationContext@10f102d3]; startup date [Mon Apr 28 23:16:35 CST 2014]; root of context hierarchy
+2014-04-28 23:16:35,609 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/config/ConfigModuleContext.xml]
+2014-04-28 23:16:36,493 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@10f102d3]: org.springframework.beans.factory.support.DefaultListableBeanFactory@2d1e233
+2014-04-28 23:16:36,494 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@2d1e233: defining beans [core-config]; root of factory hierarchy
+2014-04-28 23:16:36,502 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/core-config.xml', /C:/config/core-config.xml (No such file or directory)
+2014-04-28 23:16:36,503 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/core-config.xml', class path resource [META-INF/config/local/core-config.xml] cannot be resolved to URL because it does not exist
+2014-04-28 23:16:36,506 INFO  [Thread-8@/config/core-config.xml] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-8@/config/core-config.xml start watch /config/core-config.xml :
+2014-04-28 23:16:36,506 INFO  [Thread-9] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:16:36,512 INFO  [main] trace             (Slf4jLogger.java:59)     - host name :jcl.workgroup
+2014-04-28 23:16:36,513 INFO  [Thread-10@/config/database.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-10@/config/database.properties start watch /config/database.properties :
+2014-04-28 23:16:37,062 ERROR [main] freemarker.runtime (Log4JLoggerFactory.java:96)     - begin is undefined.
+begin is undefined.
+The problematic instruction:
+----------
+==> #{begin} [on line 123, column 39 in mapper.xml.ftl]
+----------
+
+Java backtrace for programmers:
+----------
+freemarker.core.InvalidReferenceException: begin is undefined.
+	at freemarker.core.EvaluationUtil.getNumber(EvaluationUtil.java:104)
+	at freemarker.core.EvaluationUtil.getNumber(EvaluationUtil.java:92)
+	at freemarker.core.NumericalOutput.accept(NumericalOutput.java:91)
+	at freemarker.core.Environment.visit(Environment.java:210)
+	at freemarker.core.MixedContent.accept(MixedContent.java:92)
+	at freemarker.core.Environment.visit(Environment.java:210)
+	at freemarker.core.Environment.process(Environment.java:190)
+	at freemarker.template.Template.process(Template.java:237)
+	at com.jcl.gen.tool.AbsGen.create(AbsGen.java:55)
+	at com.jcl.gen.tool.DalGen.process(DalGen.java:60)
+	at com.jcl.gen.tool.DalGen.process(DalGen.java:19)
+	at com.jcl.gen.tool.DalGenFromDB.main(DalGenFromDB.java:24)
+2014-04-28 23:18:57,792 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864: display name [org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864]; startup date [Mon Apr 28 23:18:57 CST 2014]; root of context hierarchy
+2014-04-28 23:18:57,839 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-04-28 23:18:59,984 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864]: org.springframework.beans.factory.support.DefaultListableBeanFactory@1fa12495
+2014-04-28 23:18:59,995 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1fa12495: defining beans [configuration,templateFactory]; root of factory hierarchy
+2014-04-28 23:19:00,037 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/dal.properties', /config/dal.properties (No such file or directory)
+2014-04-28 23:19:00,037 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/dal.properties', /C:/config/dal.properties (No such file or directory)
+2014-04-28 23:19:00,038 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/dal.properties', class path resource [META-INF/config/local/dal.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:19:00,052 INFO  [Thread-2@/config/dal.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-2@/config/dal.properties start watch /config/dal.properties :
+2014-04-28 23:19:00,052 INFO  [Thread-3] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:19:00,128 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1389c036: display name [org.springframework.context.support.ClassPathXmlApplicationContext@1389c036]; startup date [Mon Apr 28 23:19:00 CST 2014]; root of context hierarchy
+2014-04-28 23:19:00,129 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/dal/datasource/DataSourceModuleContext.xml]
+2014-04-28 23:19:01,053 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@1389c036]: org.springframework.beans.factory.support.DefaultListableBeanFactory@6ad16fc1
+2014-04-28 23:19:01,069 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database.properties', /C:/config/database.properties (No such file or directory)
+2014-04-28 23:19:01,070 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database.properties', class path resource [META-INF/config/local/database.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:19:01,074 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database_pay.properties', /C:/config/database_pay.properties (No such file or directory)
+2014-04-28 23:19:01,075 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database_pay.properties', class path resource [META-INF/config/local/database_pay.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:19:01,078 INFO  [Thread-4@/config/database_pay.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-4@/config/database_pay.properties start watch /config/database_pay.properties :
+2014-04-28 23:19:01,078 INFO  [Thread-5] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:19:01,109 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ad16fc1: defining beans [configuration,configuration_pay,hosts,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,datasource.HAIDAO_DB,locator,iDataSource,dbConfigManager]; root of factory hierarchy
+2014-04-28 23:19:01,110 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/DBHost.properties', /config/DBHost.properties (No such file or directory)
+2014-04-28 23:19:01,110 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/DBHost.properties', /C:/config/DBHost.properties (No such file or directory)
+2014-04-28 23:19:01,111 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/DBHost.properties', class path resource [META-INF/config/local/DBHost.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:19:01,112 INFO  [Thread-7] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:19:01,112 INFO  [Thread-6@/config/DBHost.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-6@/config/DBHost.properties start watch /config/DBHost.properties :
+2014-04-28 23:19:01,119 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6cb32ed4: display name [org.springframework.context.support.ClassPathXmlApplicationContext@6cb32ed4]; startup date [Mon Apr 28 23:19:01 CST 2014]; root of context hierarchy
+2014-04-28 23:19:01,119 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/config/ConfigModuleContext.xml]
+2014-04-28 23:19:02,371 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@6cb32ed4]: org.springframework.beans.factory.support.DefaultListableBeanFactory@62a2220f
+2014-04-28 23:19:02,373 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@62a2220f: defining beans [core-config]; root of factory hierarchy
+2014-04-28 23:19:02,381 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/core-config.xml', /C:/config/core-config.xml (No such file or directory)
+2014-04-28 23:19:02,382 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/core-config.xml', class path resource [META-INF/config/local/core-config.xml] cannot be resolved to URL because it does not exist
+2014-04-28 23:19:02,386 INFO  [Thread-8@/config/core-config.xml] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-8@/config/core-config.xml start watch /config/core-config.xml :
+2014-04-28 23:19:02,388 INFO  [Thread-9] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:19:02,394 INFO  [main] trace             (Slf4jLogger.java:59)     - host name :jcl.workgroup
+2014-04-28 23:19:02,395 INFO  [Thread-10@/config/database.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-10@/config/database.properties start watch /config/database.properties :
+2014-04-28 23:19:02,971 ERROR [main] freemarker.runtime (Log4JLoggerFactory.java:96)     - Expression test is undefined on line 122, column 22 in mapper.xml.ftl.
+Expression test is undefined on line 122, column 22 in mapper.xml.ftl.
+The problematic instruction:
+----------
+==> if test="begin !=  null" [on line 122, column 17 in mapper.xml.ftl]
+----------
+
+Java backtrace for programmers:
+----------
+freemarker.core.InvalidReferenceException: Expression test is undefined on line 122, column 22 in mapper.xml.ftl.
+	at freemarker.core.TemplateObject.assertNonNull(TemplateObject.java:124)
+	at freemarker.core.ComparisonExpression.isTrue(ComparisonExpression.java:121)
+	at freemarker.core.ConditionalBlock.accept(ConditionalBlock.java:77)
+	at freemarker.core.Environment.visit(Environment.java:210)
+	at freemarker.core.MixedContent.accept(MixedContent.java:92)
+	at freemarker.core.Environment.visit(Environment.java:210)
+	at freemarker.core.Environment.process(Environment.java:190)
+	at freemarker.template.Template.process(Template.java:237)
+	at com.jcl.gen.tool.AbsGen.create(AbsGen.java:55)
+	at com.jcl.gen.tool.DalGen.process(DalGen.java:60)
+	at com.jcl.gen.tool.DalGen.process(DalGen.java:19)
+	at com.jcl.gen.tool.DalGenFromDB.main(DalGenFromDB.java:24)
+2014-04-28 23:20:50,379 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5cbfe9d: display name [org.springframework.context.support.ClassPathXmlApplicationContext@5cbfe9d]; startup date [Mon Apr 28 23:20:50 CST 2014]; root of context hierarchy
+2014-04-28 23:20:50,433 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-04-28 23:20:53,300 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@5cbfe9d]: org.springframework.beans.factory.support.DefaultListableBeanFactory@c68c26c
+2014-04-28 23:20:53,312 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@c68c26c: defining beans [configuration,templateFactory]; root of factory hierarchy
+2014-04-28 23:20:53,357 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/dal.properties', /config/dal.properties (No such file or directory)
+2014-04-28 23:20:53,359 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/dal.properties', /C:/config/dal.properties (No such file or directory)
+2014-04-28 23:20:53,360 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/dal.properties', class path resource [META-INF/config/local/dal.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:20:53,374 INFO  [Thread-2@/config/dal.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-2@/config/dal.properties start watch /config/dal.properties :
+2014-04-28 23:20:53,374 INFO  [Thread-3] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:20:53,462 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1389c036: display name [org.springframework.context.support.ClassPathXmlApplicationContext@1389c036]; startup date [Mon Apr 28 23:20:53 CST 2014]; root of context hierarchy
+2014-04-28 23:20:53,463 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/dal/datasource/DataSourceModuleContext.xml]
+2014-04-28 23:20:55,739 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@1389c036]: org.springframework.beans.factory.support.DefaultListableBeanFactory@7b41fab6
+2014-04-28 23:20:55,756 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database.properties', /C:/config/database.properties (No such file or directory)
+2014-04-28 23:20:55,757 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database.properties', class path resource [META-INF/config/local/database.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:20:55,762 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database_pay.properties', /C:/config/database_pay.properties (No such file or directory)
+2014-04-28 23:20:55,763 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database_pay.properties', class path resource [META-INF/config/local/database_pay.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:20:55,765 INFO  [Thread-5@/config/database_pay.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-5@/config/database_pay.properties start watch /config/database_pay.properties :
+2014-04-28 23:20:55,766 INFO  [Thread-6] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:20:55,798 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7b41fab6: defining beans [configuration,configuration_pay,hosts,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,datasource.HAIDAO_DB,locator,iDataSource,dbConfigManager]; root of factory hierarchy
+2014-04-28 23:20:55,798 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/DBHost.properties', /config/DBHost.properties (No such file or directory)
+2014-04-28 23:20:55,799 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/DBHost.properties', /C:/config/DBHost.properties (No such file or directory)
+2014-04-28 23:20:55,800 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/DBHost.properties', class path resource [META-INF/config/local/DBHost.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:20:55,801 INFO  [Thread-7@/config/DBHost.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-7@/config/DBHost.properties start watch /config/DBHost.properties :
+2014-04-28 23:20:55,801 INFO  [Thread-8] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:20:55,806 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5a199939: display name [org.springframework.context.support.ClassPathXmlApplicationContext@5a199939]; startup date [Mon Apr 28 23:20:55 CST 2014]; root of context hierarchy
+2014-04-28 23:20:55,807 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/config/ConfigModuleContext.xml]
+2014-04-28 23:20:56,958 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@5a199939]: org.springframework.beans.factory.support.DefaultListableBeanFactory@10f102d3
+2014-04-28 23:20:56,959 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@10f102d3: defining beans [core-config]; root of factory hierarchy
+2014-04-28 23:20:56,968 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/core-config.xml', /C:/config/core-config.xml (No such file or directory)
+2014-04-28 23:20:56,969 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/core-config.xml', class path resource [META-INF/config/local/core-config.xml] cannot be resolved to URL because it does not exist
+2014-04-28 23:20:56,972 INFO  [Thread-9@/config/core-config.xml] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-9@/config/core-config.xml start watch /config/core-config.xml :
+2014-04-28 23:20:56,974 INFO  [Thread-10] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:20:56,982 INFO  [main] trace             (Slf4jLogger.java:59)     - host name :jcl.workgroup
+2014-04-28 23:20:56,982 INFO  [Thread-11@/config/database.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-11@/config/database.properties start watch /config/database.properties :
+2014-04-28 23:20:57,543 ERROR [main] freemarker.runtime (Log4JLoggerFactory.java:96)     - Expression test is undefined on line 122, column 22 in mapper.xml.ftl.
+Expression test is undefined on line 122, column 22 in mapper.xml.ftl.
+The problematic instruction:
+----------
+==> if test="begin !=  null" [on line 122, column 17 in mapper.xml.ftl]
+----------
+
+Java backtrace for programmers:
+----------
+freemarker.core.InvalidReferenceException: Expression test is undefined on line 122, column 22 in mapper.xml.ftl.
+	at freemarker.core.TemplateObject.assertNonNull(TemplateObject.java:124)
+	at freemarker.core.ComparisonExpression.isTrue(ComparisonExpression.java:121)
+	at freemarker.core.ConditionalBlock.accept(ConditionalBlock.java:77)
+	at freemarker.core.Environment.visit(Environment.java:210)
+	at freemarker.core.MixedContent.accept(MixedContent.java:92)
+	at freemarker.core.Environment.visit(Environment.java:210)
+	at freemarker.core.Environment.process(Environment.java:190)
+	at freemarker.template.Template.process(Template.java:237)
+	at com.jcl.gen.tool.AbsGen.create(AbsGen.java:55)
+	at com.jcl.gen.tool.DalGen.process(DalGen.java:60)
+	at com.jcl.gen.tool.DalGen.process(DalGen.java:19)
+	at com.jcl.gen.tool.DalGenFromDB.main(DalGenFromDB.java:24)
+2014-04-28 23:21:35,917 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@54bb7759: display name [org.springframework.context.support.ClassPathXmlApplicationContext@54bb7759]; startup date [Mon Apr 28 23:21:35 CST 2014]; root of context hierarchy
+2014-04-28 23:21:35,965 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-04-28 23:21:38,978 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@54bb7759]: org.springframework.beans.factory.support.DefaultListableBeanFactory@c68c26c
+2014-04-28 23:21:38,989 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@c68c26c: defining beans [configuration,templateFactory]; root of factory hierarchy
+2014-04-28 23:21:39,026 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/dal.properties', /config/dal.properties (No such file or directory)
+2014-04-28 23:21:39,027 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/dal.properties', /C:/config/dal.properties (No such file or directory)
+2014-04-28 23:21:39,027 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/dal.properties', class path resource [META-INF/config/local/dal.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:21:39,040 INFO  [Thread-2@/config/dal.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-2@/config/dal.properties start watch /config/dal.properties :
+2014-04-28 23:21:39,041 INFO  [Thread-3] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:21:39,140 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1389c036: display name [org.springframework.context.support.ClassPathXmlApplicationContext@1389c036]; startup date [Mon Apr 28 23:21:39 CST 2014]; root of context hierarchy
+2014-04-28 23:21:39,141 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/dal/datasource/DataSourceModuleContext.xml]
+2014-04-28 23:21:41,719 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@1389c036]: org.springframework.beans.factory.support.DefaultListableBeanFactory@7b41fab6
+2014-04-28 23:21:41,737 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database.properties', /C:/config/database.properties (No such file or directory)
+2014-04-28 23:21:41,738 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database.properties', class path resource [META-INF/config/local/database.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:21:41,743 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database_pay.properties', /C:/config/database_pay.properties (No such file or directory)
+2014-04-28 23:21:41,744 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database_pay.properties', class path resource [META-INF/config/local/database_pay.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:21:41,747 INFO  [Thread-5@/config/database_pay.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-5@/config/database_pay.properties start watch /config/database_pay.properties :
+2014-04-28 23:21:41,748 INFO  [Thread-6] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:21:41,783 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7b41fab6: defining beans [configuration,configuration_pay,hosts,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,datasource.HAIDAO_DB,locator,iDataSource,dbConfigManager]; root of factory hierarchy
+2014-04-28 23:21:41,784 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/DBHost.properties', /config/DBHost.properties (No such file or directory)
+2014-04-28 23:21:41,785 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/DBHost.properties', /C:/config/DBHost.properties (No such file or directory)
+2014-04-28 23:21:41,785 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/DBHost.properties', class path resource [META-INF/config/local/DBHost.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:21:41,787 INFO  [Thread-8] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:21:41,787 INFO  [Thread-7@/config/DBHost.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-7@/config/DBHost.properties start watch /config/DBHost.properties :
+2014-04-28 23:21:41,793 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@309ff0a8: display name [org.springframework.context.support.ClassPathXmlApplicationContext@309ff0a8]; startup date [Mon Apr 28 23:21:41 CST 2014]; root of context hierarchy
+2014-04-28 23:21:41,793 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/config/ConfigModuleContext.xml]
+2014-04-28 23:21:42,941 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@309ff0a8]: org.springframework.beans.factory.support.DefaultListableBeanFactory@6401d98a
+2014-04-28 23:21:42,942 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6401d98a: defining beans [core-config]; root of factory hierarchy
+2014-04-28 23:21:42,953 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/core-config.xml', /C:/config/core-config.xml (No such file or directory)
+2014-04-28 23:21:42,954 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/core-config.xml', class path resource [META-INF/config/local/core-config.xml] cannot be resolved to URL because it does not exist
+2014-04-28 23:21:42,958 INFO  [Thread-9@/config/core-config.xml] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-9@/config/core-config.xml start watch /config/core-config.xml :
+2014-04-28 23:21:42,958 INFO  [Thread-10] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:21:42,964 INFO  [main] trace             (Slf4jLogger.java:59)     - host name :jcl.workgroup
+2014-04-28 23:21:42,965 INFO  [Thread-11@/config/database.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-11@/config/database.properties start watch /config/database.properties :
+2014-04-28 23:23:10,138 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864: display name [org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864]; startup date [Mon Apr 28 23:23:10 CST 2014]; root of context hierarchy
+2014-04-28 23:23:10,186 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-04-28 23:23:12,673 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864]: org.springframework.beans.factory.support.DefaultListableBeanFactory@1fa12495
+2014-04-28 23:23:12,685 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1fa12495: defining beans [configuration,templateFactory]; root of factory hierarchy
+2014-04-28 23:23:12,724 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/dal.properties', /config/dal.properties (No such file or directory)
+2014-04-28 23:23:12,725 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/dal.properties', /C:/config/dal.properties (No such file or directory)
+2014-04-28 23:23:12,726 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/dal.properties', class path resource [META-INF/config/local/dal.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:23:12,749 INFO  [Thread-2@/config/dal.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-2@/config/dal.properties start watch /config/dal.properties :
+2014-04-28 23:23:12,749 INFO  [Thread-3] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:23:12,863 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1389c036: display name [org.springframework.context.support.ClassPathXmlApplicationContext@1389c036]; startup date [Mon Apr 28 23:23:12 CST 2014]; root of context hierarchy
+2014-04-28 23:23:12,864 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/dal/datasource/DataSourceModuleContext.xml]
+2014-04-28 23:23:14,805 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@1389c036]: org.springframework.beans.factory.support.DefaultListableBeanFactory@6ad16fc1
+2014-04-28 23:23:14,824 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database.properties', /C:/config/database.properties (No such file or directory)
+2014-04-28 23:23:14,825 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database.properties', class path resource [META-INF/config/local/database.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:23:14,830 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database_pay.properties', /C:/config/database_pay.properties (No such file or directory)
+2014-04-28 23:23:14,831 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database_pay.properties', class path resource [META-INF/config/local/database_pay.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:23:14,833 INFO  [Thread-4@/config/database_pay.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-4@/config/database_pay.properties start watch /config/database_pay.properties :
+2014-04-28 23:23:14,833 INFO  [Thread-5] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:23:14,871 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ad16fc1: defining beans [configuration,configuration_pay,hosts,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,datasource.HAIDAO_DB,locator,iDataSource,dbConfigManager]; root of factory hierarchy
+2014-04-28 23:23:14,872 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/DBHost.properties', /config/DBHost.properties (No such file or directory)
+2014-04-28 23:23:14,872 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/DBHost.properties', /C:/config/DBHost.properties (No such file or directory)
+2014-04-28 23:23:14,873 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/DBHost.properties', class path resource [META-INF/config/local/DBHost.properties] cannot be resolved to URL because it does not exist
+2014-04-28 23:23:14,874 INFO  [Thread-7@/config/DBHost.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-7@/config/DBHost.properties start watch /config/DBHost.properties :
+2014-04-28 23:23:14,874 INFO  [Thread-8] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:23:14,880 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@28bb494b: display name [org.springframework.context.support.ClassPathXmlApplicationContext@28bb494b]; startup date [Mon Apr 28 23:23:14 CST 2014]; root of context hierarchy
+2014-04-28 23:23:14,881 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/config/ConfigModuleContext.xml]
+2014-04-28 23:23:17,558 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@28bb494b]: org.springframework.beans.factory.support.DefaultListableBeanFactory@730efd7c
+2014-04-28 23:23:17,559 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@730efd7c: defining beans [core-config]; root of factory hierarchy
+2014-04-28 23:23:17,567 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/core-config.xml', /C:/config/core-config.xml (No such file or directory)
+2014-04-28 23:23:17,568 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/core-config.xml', class path resource [META-INF/config/local/core-config.xml] cannot be resolved to URL because it does not exist
+2014-04-28 23:23:17,571 INFO  [Thread-9@/config/core-config.xml] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-9@/config/core-config.xml start watch /config/core-config.xml :
+2014-04-28 23:23:17,571 INFO  [Thread-10] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-04-28 23:23:17,578 INFO  [main] trace             (Slf4jLogger.java:59)     - host name :jcl.workgroup
+2014-04-28 23:23:17,579 INFO  [Thread-11@/config/database.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-11@/config/database.properties start watch /config/database.properties :
+2014-04-30 19:31:51,683 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864: display name [org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864]; startup date [Wed Apr 30 19:31:51 CST 2014]; root of context hierarchy
+2014-04-30 19:31:51,731 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-04-30 19:31:51,805 WARN  [main] xml.XmlBeanDefinitionReader (SimpleSaxErrorHandler.java:47)     - Ignored XML validation warning
+org.xml.sax.SAXParseException: schema_reference.4: Failed to read schema document 'http://www.springframework.org/schema/beans/spring-beans-2.5.xsd', because 1) could not find the document; 2) the document could not be read; 3) the root element of the document is not <xsd:schema>.
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:195)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.warning(ErrorHandlerWrapper.java:96)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:380)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:318)
+	at com.sun.org.apache.xerces.internal.impl.xs.traversers.XSDHandler.reportSchemaErr(XSDHandler.java:2541)
+	at com.sun.org.apache.xerces.internal.impl.xs.traversers.XSDHandler.reportSchemaWarning(XSDHandler.java:2532)
+	at com.sun.org.apache.xerces.internal.impl.xs.traversers.XSDHandler.getSchemaDocument(XSDHandler.java:1836)
+	at com.sun.org.apache.xerces.internal.impl.xs.traversers.XSDHandler.parseSchema(XSDHandler.java:531)
+	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaLoader.loadSchema(XMLSchemaLoader.java:556)
+	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.findSchemaGrammar(XMLSchemaValidator.java:2443)
+	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.handleStartElement(XMLSchemaValidator.java:1788)
+	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.startElement(XMLSchemaValidator.java:711)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.scanStartElement(XMLNSDocumentScannerImpl.java:401)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl$NSContentDriver.scanRootElementHook(XMLNSDocumentScannerImpl.java:627)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:3115)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:921)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:647)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:140)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:513)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:815)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:744)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:128)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:233)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:287)
+	at org.springframework.beans.factory.xml.DefaultDocumentLoader.loadDocument(DefaultDocumentLoader.java:75)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:396)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:342)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:143)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:178)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:149)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:212)
+	at org.springframework.context.support.AbstractXmlApplicationContext.loadBeanDefinitions(AbstractXmlApplicationContext.java:113)
+	at org.springframework.context.support.AbstractXmlApplicationContext.loadBeanDefinitions(AbstractXmlApplicationContext.java:80)
+	at org.springframework.context.support.AbstractRefreshableApplicationContext.refreshBeanFactory(AbstractRefreshableApplicationContext.java:123)
+	at org.springframework.context.support.AbstractApplicationContext.obtainFreshBeanFactory(AbstractApplicationContext.java:422)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:352)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:139)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:105)
+	at com.jcl.core.module.ModuleRegistry.createModuleProxy(ModuleRegistry.java:91)
+	at com.jcl.core.module.ModuleRegistry.registerModule(ModuleRegistry.java:74)
+	at com.jcl.core.module.ModuleRegistry.registerModule(ModuleRegistry.java:55)
+	at com.jcl.core.module.ModuleRegistry.getModule(ModuleRegistry.java:44)
+	at com.jcl.gen.tool.AbsGen.<init>(AbsGen.java:21)
+	at com.jcl.gen.tool.DalGen.<init>(DalGen.java:11)
+	at com.jcl.gen.tool.DalGenFromDB.<init>(DalGenFromDB.java:10)
+	at com.jcl.gen.tool.DalGenFromDB.main(DalGenFromDB.java:22)
+2014-05-03 23:47:55,788 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864: display name [org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864]; startup date [Sat May 03 23:47:55 CST 2014]; root of context hierarchy
+2014-05-03 23:47:55,837 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-05-03 23:47:58,072 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864]: org.springframework.beans.factory.support.DefaultListableBeanFactory@1fa12495
+2014-05-03 23:47:58,086 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1fa12495: defining beans [configuration,templateFactory]; root of factory hierarchy
+2014-05-03 23:47:58,129 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/dal.properties', /config/dal.properties (No such file or directory)
+2014-05-03 23:47:58,130 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/dal.properties', /C:/config/dal.properties (No such file or directory)
+2014-05-03 23:47:58,131 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/dal.properties', class path resource [META-INF/config/local/dal.properties] cannot be resolved to URL because it does not exist
+2014-05-03 23:47:58,145 INFO  [Thread-2@/config/dal.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-2@/config/dal.properties start watch /config/dal.properties :
+2014-05-03 23:47:58,145 INFO  [Thread-3] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-03 23:47:58,244 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@55dec1dd: display name [org.springframework.context.support.ClassPathXmlApplicationContext@55dec1dd]; startup date [Sat May 03 23:47:58 CST 2014]; root of context hierarchy
+2014-05-03 23:47:58,245 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/dal/datasource/DataSourceModuleContext.xml]
+2014-05-03 23:48:01,669 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@55dec1dd]: org.springframework.beans.factory.support.DefaultListableBeanFactory@7b41fab6
+2014-05-03 23:48:01,697 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database.properties', /C:/config/database.properties (No such file or directory)
+2014-05-03 23:48:01,698 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database.properties', class path resource [META-INF/config/local/database.properties] cannot be resolved to URL because it does not exist
+2014-05-03 23:48:01,704 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database_pay.properties', /C:/config/database_pay.properties (No such file or directory)
+2014-05-03 23:48:01,704 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database_pay.properties', class path resource [META-INF/config/local/database_pay.properties] cannot be resolved to URL because it does not exist
+2014-05-03 23:48:01,707 INFO  [Thread-5@/config/database_pay.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-5@/config/database_pay.properties start watch /config/database_pay.properties :
+2014-05-03 23:48:01,708 INFO  [Thread-6] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-03 23:48:01,739 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7b41fab6: defining beans [configuration,configuration_pay,hosts,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,datasource.HAIDAO_DB,locator,iDataSource,dbConfigManager]; root of factory hierarchy
+2014-05-03 23:48:01,740 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/DBHost.properties', /config/DBHost.properties (No such file or directory)
+2014-05-03 23:48:01,740 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/DBHost.properties', /C:/config/DBHost.properties (No such file or directory)
+2014-05-03 23:48:01,741 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/DBHost.properties', class path resource [META-INF/config/local/DBHost.properties] cannot be resolved to URL because it does not exist
+2014-05-03 23:48:01,742 INFO  [Thread-8] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-03 23:48:01,742 INFO  [Thread-7@/config/DBHost.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-7@/config/DBHost.properties start watch /config/DBHost.properties :
+2014-05-03 23:48:01,747 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@259e215b: display name [org.springframework.context.support.ClassPathXmlApplicationContext@259e215b]; startup date [Sat May 03 23:48:01 CST 2014]; root of context hierarchy
+2014-05-03 23:48:01,748 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/config/ConfigModuleContext.xml]
+2014-05-03 23:48:05,190 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@259e215b]: org.springframework.beans.factory.support.DefaultListableBeanFactory@178aab40
+2014-05-03 23:48:05,191 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@178aab40: defining beans [core-config]; root of factory hierarchy
+2014-05-03 23:48:05,209 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/core-config.xml', /C:/config/core-config.xml (No such file or directory)
+2014-05-03 23:48:05,210 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/core-config.xml', class path resource [META-INF/config/local/core-config.xml] cannot be resolved to URL because it does not exist
+2014-05-03 23:48:05,215 INFO  [Thread-9@/config/core-config.xml] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-9@/config/core-config.xml start watch /config/core-config.xml :
+2014-05-03 23:48:05,215 INFO  [Thread-10] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-03 23:48:05,221 INFO  [main] trace             (Slf4jLogger.java:59)     - host name :localhost
+2014-05-03 23:48:05,221 INFO  [Thread-11@/config/database.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-11@/config/database.properties start watch /config/database.properties :
+2014-05-03 23:51:48,890 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@54bb7759: display name [org.springframework.context.support.ClassPathXmlApplicationContext@54bb7759]; startup date [Sat May 03 23:51:48 CST 2014]; root of context hierarchy
+2014-05-03 23:51:48,936 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-05-03 23:51:52,754 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@54bb7759]: org.springframework.beans.factory.support.DefaultListableBeanFactory@31b446d1
+2014-05-03 23:51:52,768 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@31b446d1: defining beans [configuration,templateFactory]; root of factory hierarchy
+2014-05-03 23:51:52,806 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/dal.properties', /config/dal.properties (No such file or directory)
+2014-05-03 23:51:52,807 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/dal.properties', /C:/config/dal.properties (No such file or directory)
+2014-05-03 23:51:52,808 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/dal.properties', class path resource [META-INF/config/local/dal.properties] cannot be resolved to URL because it does not exist
+2014-05-03 23:51:52,822 INFO  [Thread-2@/config/dal.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-2@/config/dal.properties start watch /config/dal.properties :
+2014-05-03 23:51:52,822 INFO  [Thread-3] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-03 23:51:52,902 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@54c01e99: display name [org.springframework.context.support.ClassPathXmlApplicationContext@54c01e99]; startup date [Sat May 03 23:51:52 CST 2014]; root of context hierarchy
+2014-05-03 23:51:52,902 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/dal/datasource/DataSourceModuleContext.xml]
+2014-05-03 23:51:54,265 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@54c01e99]: org.springframework.beans.factory.support.DefaultListableBeanFactory@44cbbe
+2014-05-03 23:51:54,283 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database.properties', /C:/config/database.properties (No such file or directory)
+2014-05-03 23:51:54,284 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database.properties', class path resource [META-INF/config/local/database.properties] cannot be resolved to URL because it does not exist
+2014-05-03 23:51:54,289 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database_pay.properties', /C:/config/database_pay.properties (No such file or directory)
+2014-05-03 23:51:54,290 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database_pay.properties', class path resource [META-INF/config/local/database_pay.properties] cannot be resolved to URL because it does not exist
+2014-05-03 23:51:54,292 INFO  [Thread-5@/config/database_pay.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-5@/config/database_pay.properties start watch /config/database_pay.properties :
+2014-05-03 23:51:54,294 INFO  [Thread-6] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-03 23:51:54,326 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@44cbbe: defining beans [configuration,configuration_pay,hosts,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,datasource.HAIDAO_DB,locator,iDataSource,dbConfigManager]; root of factory hierarchy
+2014-05-03 23:51:54,327 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/DBHost.properties', /config/DBHost.properties (No such file or directory)
+2014-05-03 23:51:54,328 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/DBHost.properties', /C:/config/DBHost.properties (No such file or directory)
+2014-05-03 23:51:54,329 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/DBHost.properties', class path resource [META-INF/config/local/DBHost.properties] cannot be resolved to URL because it does not exist
+2014-05-03 23:51:54,330 INFO  [Thread-7@/config/DBHost.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-7@/config/DBHost.properties start watch /config/DBHost.properties :
+2014-05-03 23:51:54,330 INFO  [Thread-8] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-03 23:51:54,335 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@57922f46: display name [org.springframework.context.support.ClassPathXmlApplicationContext@57922f46]; startup date [Sat May 03 23:51:54 CST 2014]; root of context hierarchy
+2014-05-03 23:51:54,336 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/config/ConfigModuleContext.xml]
+2014-05-03 23:51:56,708 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@57922f46]: org.springframework.beans.factory.support.DefaultListableBeanFactory@fc54796
+2014-05-03 23:51:56,709 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@fc54796: defining beans [core-config]; root of factory hierarchy
+2014-05-03 23:51:56,718 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/core-config.xml', /C:/config/core-config.xml (No such file or directory)
+2014-05-03 23:51:56,718 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/core-config.xml', class path resource [META-INF/config/local/core-config.xml] cannot be resolved to URL because it does not exist
+2014-05-03 23:51:56,723 INFO  [Thread-9@/config/core-config.xml] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-9@/config/core-config.xml start watch /config/core-config.xml :
+2014-05-03 23:51:56,723 INFO  [Thread-10] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-03 23:51:56,729 INFO  [main] trace             (Slf4jLogger.java:59)     - host name :localhost
+2014-05-03 23:51:56,730 INFO  [Thread-11@/config/database.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-11@/config/database.properties start watch /config/database.properties :
+2014-05-06 00:26:16,598 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864: display name [org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864]; startup date [Tue May 06 00:26:16 CST 2014]; root of context hierarchy
+2014-05-06 00:26:16,672 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-05-06 00:26:17,996 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864]: org.springframework.beans.factory.support.DefaultListableBeanFactory@dcb52ae
+2014-05-06 00:26:18,016 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@dcb52ae: defining beans [configuration,templateFactory]; root of factory hierarchy
+2014-05-06 00:26:18,078 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/dal.properties', /config/dal.properties (No such file or directory)
+2014-05-06 00:26:18,079 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/dal.properties', /C:/config/dal.properties (No such file or directory)
+2014-05-06 00:26:18,081 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/dal.properties', class path resource [META-INF/config/local/dal.properties] cannot be resolved to URL because it does not exist
+2014-05-06 00:26:18,102 INFO  [Thread-2@/config/dal.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-2@/config/dal.properties start watch /config/dal.properties :
+2014-05-06 00:26:18,102 INFO  [Thread-3] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-06 00:26:18,205 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@26afa68a: display name [org.springframework.context.support.ClassPathXmlApplicationContext@26afa68a]; startup date [Tue May 06 00:26:18 CST 2014]; root of context hierarchy
+2014-05-06 00:26:18,206 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/dal/datasource/DataSourceModuleContext.xml]
+2014-05-06 00:26:19,229 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@26afa68a]: org.springframework.beans.factory.support.DefaultListableBeanFactory@7ed75415
+2014-05-06 00:26:19,259 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database.properties', /C:/config/database.properties (No such file or directory)
+2014-05-06 00:26:19,260 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database.properties', class path resource [META-INF/config/local/database.properties] cannot be resolved to URL because it does not exist
+2014-05-06 00:26:19,265 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database_pay.properties', /C:/config/database_pay.properties (No such file or directory)
+2014-05-06 00:26:19,266 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database_pay.properties', class path resource [META-INF/config/local/database_pay.properties] cannot be resolved to URL because it does not exist
+2014-05-06 00:26:19,269 INFO  [Thread-4@/config/database_pay.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-4@/config/database_pay.properties start watch /config/database_pay.properties :
+2014-05-06 00:26:19,270 INFO  [Thread-5] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-06 00:26:19,309 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7ed75415: defining beans [configuration,configuration_pay,hosts,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,datasource.HAIDAO_DB,locator,iDataSource,dbConfigManager]; root of factory hierarchy
+2014-05-06 00:26:19,310 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/DBHost.properties', /config/DBHost.properties (No such file or directory)
+2014-05-06 00:26:19,311 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/DBHost.properties', /C:/config/DBHost.properties (No such file or directory)
+2014-05-06 00:26:19,311 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/DBHost.properties', class path resource [META-INF/config/local/DBHost.properties] cannot be resolved to URL because it does not exist
+2014-05-06 00:26:19,313 INFO  [Thread-6@/config/DBHost.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-6@/config/DBHost.properties start watch /config/DBHost.properties :
+2014-05-06 00:26:19,313 INFO  [Thread-7] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-06 00:26:19,320 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@21cc5069: display name [org.springframework.context.support.ClassPathXmlApplicationContext@21cc5069]; startup date [Tue May 06 00:26:19 CST 2014]; root of context hierarchy
+2014-05-06 00:26:19,321 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/config/ConfigModuleContext.xml]
+2014-05-06 00:26:19,777 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@21cc5069]: org.springframework.beans.factory.support.DefaultListableBeanFactory@11568fb5
+2014-05-06 00:26:19,778 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@11568fb5: defining beans [core-config]; root of factory hierarchy
+2014-05-06 00:26:19,799 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/core-config.xml', /C:/config/core-config.xml (No such file or directory)
+2014-05-06 00:26:19,800 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/core-config.xml', class path resource [META-INF/config/local/core-config.xml] cannot be resolved to URL because it does not exist
+2014-05-06 00:26:19,803 INFO  [Thread-8@/config/core-config.xml] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-8@/config/core-config.xml start watch /config/core-config.xml :
+2014-05-06 00:26:19,803 INFO  [Thread-9] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-06 00:26:19,810 INFO  [main] trace             (Slf4jLogger.java:59)     - host name :jcl.local
+2014-05-06 00:26:19,811 INFO  [Thread-10@/config/database.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-10@/config/database.properties start watch /config/database.properties :
+2014-05-07 23:30:41,885 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5cbfe9d: display name [org.springframework.context.support.ClassPathXmlApplicationContext@5cbfe9d]; startup date [Wed May 07 23:30:41 CST 2014]; root of context hierarchy
+2014-05-07 23:30:41,939 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-05-07 23:30:47,935 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@5cbfe9d]: org.springframework.beans.factory.support.DefaultListableBeanFactory@580eac5a
+2014-05-07 23:30:47,959 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@580eac5a: defining beans [configuration,templateFactory]; root of factory hierarchy
+2014-05-07 23:30:48,002 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/dal.properties', /config/dal.properties (No such file or directory)
+2014-05-07 23:30:48,003 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/dal.properties', /C:/config/dal.properties (No such file or directory)
+2014-05-07 23:30:48,003 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/dal.properties', class path resource [META-INF/config/local/dal.properties] cannot be resolved to URL because it does not exist
+2014-05-07 23:30:48,021 INFO  [Thread-3@/config/dal.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-3@/config/dal.properties start watch /config/dal.properties :
+2014-05-07 23:30:48,021 INFO  [Thread-4] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-07 23:30:48,125 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@561777b1: display name [org.springframework.context.support.ClassPathXmlApplicationContext@561777b1]; startup date [Wed May 07 23:30:48 CST 2014]; root of context hierarchy
+2014-05-07 23:30:48,126 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/dal/datasource/DataSourceModuleContext.xml]
+2014-05-07 23:30:52,624 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@561777b1]: org.springframework.beans.factory.support.DefaultListableBeanFactory@28b301f2
+2014-05-07 23:30:52,644 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database.properties', /C:/config/database.properties (No such file or directory)
+2014-05-07 23:30:52,645 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database.properties', class path resource [META-INF/config/local/database.properties] cannot be resolved to URL because it does not exist
+2014-05-07 23:30:52,649 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database_pay.properties', /C:/config/database_pay.properties (No such file or directory)
+2014-05-07 23:30:52,650 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database_pay.properties', class path resource [META-INF/config/local/database_pay.properties] cannot be resolved to URL because it does not exist
+2014-05-07 23:30:52,654 INFO  [Thread-5@/config/database_pay.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-5@/config/database_pay.properties start watch /config/database_pay.properties :
+2014-05-07 23:30:52,655 INFO  [Thread-6] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-07 23:30:52,686 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@28b301f2: defining beans [configuration,configuration_pay,hosts,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,datasource.HAIDAO_DB,locator,iDataSource,dbConfigManager]; root of factory hierarchy
+2014-05-07 23:30:52,687 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/DBHost.properties', /config/DBHost.properties (No such file or directory)
+2014-05-07 23:30:52,688 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/DBHost.properties', /C:/config/DBHost.properties (No such file or directory)
+2014-05-07 23:30:52,688 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/DBHost.properties', class path resource [META-INF/config/local/DBHost.properties] cannot be resolved to URL because it does not exist
+2014-05-07 23:30:52,689 INFO  [Thread-7@/config/DBHost.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-7@/config/DBHost.properties start watch /config/DBHost.properties :
+2014-05-07 23:30:52,689 INFO  [Thread-8] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-07 23:30:52,696 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@28db23f1: display name [org.springframework.context.support.ClassPathXmlApplicationContext@28db23f1]; startup date [Wed May 07 23:30:52 CST 2014]; root of context hierarchy
+2014-05-07 23:30:52,697 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/config/ConfigModuleContext.xml]
+2014-05-07 23:30:57,637 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@28db23f1]: org.springframework.beans.factory.support.DefaultListableBeanFactory@6a0da90c
+2014-05-07 23:30:57,638 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6a0da90c: defining beans [core-config]; root of factory hierarchy
+2014-05-07 23:30:57,657 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/core-config.xml', /C:/config/core-config.xml (No such file or directory)
+2014-05-07 23:30:57,658 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/core-config.xml', class path resource [META-INF/config/local/core-config.xml] cannot be resolved to URL because it does not exist
+2014-05-07 23:30:57,663 INFO  [Thread-9@/config/core-config.xml] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-9@/config/core-config.xml start watch /config/core-config.xml :
+2014-05-07 23:30:57,663 INFO  [Thread-10] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-07 23:30:57,670 INFO  [main] trace             (Slf4jLogger.java:59)     - host name :jcl.local
+2014-05-07 23:30:57,671 INFO  [Thread-11@/config/database.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-11@/config/database.properties start watch /config/database.properties :
+2014-05-10 23:34:20,776 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864: display name [org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864]; startup date [Sat May 10 23:34:20 CST 2014]; root of context hierarchy
+2014-05-10 23:34:20,831 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-05-10 23:34:23,014 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864]: org.springframework.beans.factory.support.DefaultListableBeanFactory@1fa12495
+2014-05-10 23:34:23,067 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1fa12495: defining beans [configuration,templateFactory]; root of factory hierarchy
+2014-05-10 23:34:23,112 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/dal.properties', /config/dal.properties (No such file or directory)
+2014-05-10 23:34:23,113 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/dal.properties', /C:/config/dal.properties (No such file or directory)
+2014-05-10 23:34:23,114 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/dal.properties', class path resource [META-INF/config/local/dal.properties] cannot be resolved to URL because it does not exist
+2014-05-10 23:34:23,132 INFO  [Thread-2@/config/dal.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-2@/config/dal.properties start watch /config/dal.properties :
+2014-05-10 23:34:23,132 INFO  [Thread-3] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-10 23:34:23,230 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@55dec1dd: display name [org.springframework.context.support.ClassPathXmlApplicationContext@55dec1dd]; startup date [Sat May 10 23:34:23 CST 2014]; root of context hierarchy
+2014-05-10 23:34:23,231 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/dal/datasource/DataSourceModuleContext.xml]
+2014-05-10 23:34:23,955 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@55dec1dd]: org.springframework.beans.factory.support.DefaultListableBeanFactory@7ed75415
+2014-05-10 23:34:23,972 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database.properties', /C:/config/database.properties (No such file or directory)
+2014-05-10 23:34:23,973 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database.properties', class path resource [META-INF/config/local/database.properties] cannot be resolved to URL because it does not exist
+2014-05-10 23:34:23,978 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database_pay.properties', /C:/config/database_pay.properties (No such file or directory)
+2014-05-10 23:34:23,979 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database_pay.properties', class path resource [META-INF/config/local/database_pay.properties] cannot be resolved to URL because it does not exist
+2014-05-10 23:34:23,982 INFO  [Thread-4@/config/database_pay.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-4@/config/database_pay.properties start watch /config/database_pay.properties :
+2014-05-10 23:34:23,982 INFO  [Thread-5] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-10 23:34:24,010 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7ed75415: defining beans [configuration,configuration_pay,hosts,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,datasource.HAIDAO_DB,locator,iDataSource,dbConfigManager]; root of factory hierarchy
+2014-05-10 23:34:24,011 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/DBHost.properties', /config/DBHost.properties (No such file or directory)
+2014-05-10 23:34:24,012 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/DBHost.properties', /C:/config/DBHost.properties (No such file or directory)
+2014-05-10 23:34:24,012 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/DBHost.properties', class path resource [META-INF/config/local/DBHost.properties] cannot be resolved to URL because it does not exist
+2014-05-10 23:34:24,013 INFO  [Thread-6@/config/DBHost.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-6@/config/DBHost.properties start watch /config/DBHost.properties :
+2014-05-10 23:34:24,013 INFO  [Thread-7] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-10 23:34:24,019 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2d2bf892: display name [org.springframework.context.support.ClassPathXmlApplicationContext@2d2bf892]; startup date [Sat May 10 23:34:24 CST 2014]; root of context hierarchy
+2014-05-10 23:34:24,019 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/config/ConfigModuleContext.xml]
+2014-05-10 23:34:24,808 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@2d2bf892]: org.springframework.beans.factory.support.DefaultListableBeanFactory@11568fb5
+2014-05-10 23:34:24,809 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@11568fb5: defining beans [core-config]; root of factory hierarchy
+2014-05-10 23:34:24,827 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/core-config.xml', /C:/config/core-config.xml (No such file or directory)
+2014-05-10 23:34:24,828 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/core-config.xml', class path resource [META-INF/config/local/core-config.xml] cannot be resolved to URL because it does not exist
+2014-05-10 23:34:24,833 INFO  [Thread-8@/config/core-config.xml] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-8@/config/core-config.xml start watch /config/core-config.xml :
+2014-05-10 23:34:24,835 INFO  [Thread-9] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-10 23:34:24,843 INFO  [main] trace             (Slf4jLogger.java:59)     - host name :jcl.local
+2014-05-10 23:34:24,844 INFO  [Thread-10@/config/database.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-10@/config/database.properties start watch /config/database.properties :
+2014-05-14 15:28:36,836 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864: display name [org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864]; startup date [Wed May 14 15:28:36 CST 2014]; root of context hierarchy
+2014-05-14 15:28:36,885 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-05-14 15:28:38,254 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864]: org.springframework.beans.factory.support.DefaultListableBeanFactory@1fa12495
+2014-05-14 15:28:38,269 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1fa12495: defining beans [configuration,templateFactory]; root of factory hierarchy
+2014-05-14 15:28:38,310 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/dal.properties', /config/dal.properties (No such file or directory)
+2014-05-14 15:28:38,311 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/dal.properties', /C:/config/dal.properties (No such file or directory)
+2014-05-14 15:28:38,312 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/dal.properties', class path resource [META-INF/config/local/dal.properties] cannot be resolved to URL because it does not exist
+2014-05-14 15:28:38,326 INFO  [Thread-2@/config/dal.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-2@/config/dal.properties start watch /config/dal.properties :
+2014-05-14 15:28:38,326 INFO  [Thread-3] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-14 15:28:38,419 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@55dec1dd: display name [org.springframework.context.support.ClassPathXmlApplicationContext@55dec1dd]; startup date [Wed May 14 15:28:38 CST 2014]; root of context hierarchy
+2014-05-14 15:28:38,420 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/dal/datasource/DataSourceModuleContext.xml]
+2014-05-14 15:28:38,878 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@55dec1dd]: org.springframework.beans.factory.support.DefaultListableBeanFactory@7ed75415
+2014-05-14 15:28:38,904 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database.properties', /C:/config/database.properties (No such file or directory)
+2014-05-14 15:28:38,905 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database.properties', class path resource [META-INF/config/local/database.properties] cannot be resolved to URL because it does not exist
+2014-05-14 15:28:38,910 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database_pay.properties', /C:/config/database_pay.properties (No such file or directory)
+2014-05-14 15:28:38,911 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database_pay.properties', class path resource [META-INF/config/local/database_pay.properties] cannot be resolved to URL because it does not exist
+2014-05-14 15:28:38,914 INFO  [Thread-4@/config/database_pay.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-4@/config/database_pay.properties start watch /config/database_pay.properties :
+2014-05-14 15:28:38,914 INFO  [Thread-5] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-14 15:28:38,946 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7ed75415: defining beans [configuration,configuration_pay,hosts,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,datasource.HAIDAO_DB,locator,iDataSource,dbConfigManager]; root of factory hierarchy
+2014-05-14 15:28:38,946 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/DBHost.properties', /config/DBHost.properties (No such file or directory)
+2014-05-14 15:28:38,947 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/DBHost.properties', /C:/config/DBHost.properties (No such file or directory)
+2014-05-14 15:28:38,947 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/DBHost.properties', class path resource [META-INF/config/local/DBHost.properties] cannot be resolved to URL because it does not exist
+2014-05-14 15:28:38,949 INFO  [Thread-6@/config/DBHost.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-6@/config/DBHost.properties start watch /config/DBHost.properties :
+2014-05-14 15:28:38,949 INFO  [Thread-7] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-14 15:28:38,955 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@67c7980c: display name [org.springframework.context.support.ClassPathXmlApplicationContext@67c7980c]; startup date [Wed May 14 15:28:38 CST 2014]; root of context hierarchy
+2014-05-14 15:28:38,956 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/config/ConfigModuleContext.xml]
+2014-05-14 15:28:39,235 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@67c7980c]: org.springframework.beans.factory.support.DefaultListableBeanFactory@62a2220f
+2014-05-14 15:28:39,236 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@62a2220f: defining beans [core-config]; root of factory hierarchy
+2014-05-14 15:28:39,255 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/core-config.xml', /C:/config/core-config.xml (No such file or directory)
+2014-05-14 15:28:39,256 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/core-config.xml', class path resource [META-INF/config/local/core-config.xml] cannot be resolved to URL because it does not exist
+2014-05-14 15:28:39,259 INFO  [Thread-8@/config/core-config.xml] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-8@/config/core-config.xml start watch /config/core-config.xml :
+2014-05-14 15:28:39,260 INFO  [Thread-9] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-14 15:28:39,266 INFO  [main] trace             (Slf4jLogger.java:59)     - host name :jcl.local
+2014-05-14 15:28:39,266 INFO  [Thread-10@/config/database.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-10@/config/database.properties start watch /config/database.properties :
+2014-05-14 15:32:59,126 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864: display name [org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864]; startup date [Wed May 14 15:32:59 CST 2014]; root of context hierarchy
+2014-05-14 15:32:59,174 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-05-14 15:33:00,887 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864]: org.springframework.beans.factory.support.DefaultListableBeanFactory@1fa12495
+2014-05-14 15:33:00,899 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1fa12495: defining beans [configuration,templateFactory]; root of factory hierarchy
+2014-05-14 15:33:00,938 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/dal.properties', /config/dal.properties (No such file or directory)
+2014-05-14 15:33:00,939 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/dal.properties', /C:/config/dal.properties (No such file or directory)
+2014-05-14 15:33:00,940 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/dal.properties', class path resource [META-INF/config/local/dal.properties] cannot be resolved to URL because it does not exist
+2014-05-14 15:33:00,954 INFO  [Thread-2@/config/dal.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-2@/config/dal.properties start watch /config/dal.properties :
+2014-05-14 15:33:00,954 INFO  [Thread-3] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-14 15:33:01,039 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@55dec1dd: display name [org.springframework.context.support.ClassPathXmlApplicationContext@55dec1dd]; startup date [Wed May 14 15:33:01 CST 2014]; root of context hierarchy
+2014-05-14 15:33:01,040 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/dal/datasource/DataSourceModuleContext.xml]
+2014-05-14 15:33:02,192 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@55dec1dd]: org.springframework.beans.factory.support.DefaultListableBeanFactory@7ed75415
+2014-05-14 15:33:02,209 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database.properties', /C:/config/database.properties (No such file or directory)
+2014-05-14 15:33:02,210 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database.properties', class path resource [META-INF/config/local/database.properties] cannot be resolved to URL because it does not exist
+2014-05-14 15:33:02,216 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database_pay.properties', /C:/config/database_pay.properties (No such file or directory)
+2014-05-14 15:33:02,217 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database_pay.properties', class path resource [META-INF/config/local/database_pay.properties] cannot be resolved to URL because it does not exist
+2014-05-14 15:33:02,221 INFO  [Thread-4@/config/database_pay.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-4@/config/database_pay.properties start watch /config/database_pay.properties :
+2014-05-14 15:33:02,221 INFO  [Thread-5] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-14 15:33:02,256 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7ed75415: defining beans [configuration,configuration_pay,hosts,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,datasource.HAIDAO_DB,locator,iDataSource,dbConfigManager]; root of factory hierarchy
+2014-05-14 15:33:02,257 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/DBHost.properties', /config/DBHost.properties (No such file or directory)
+2014-05-14 15:33:02,258 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/DBHost.properties', /C:/config/DBHost.properties (No such file or directory)
+2014-05-14 15:33:02,258 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/DBHost.properties', class path resource [META-INF/config/local/DBHost.properties] cannot be resolved to URL because it does not exist
+2014-05-14 15:33:02,259 INFO  [Thread-6@/config/DBHost.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-6@/config/DBHost.properties start watch /config/DBHost.properties :
+2014-05-14 15:33:02,259 INFO  [Thread-7] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-14 15:33:02,265 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@8691dee: display name [org.springframework.context.support.ClassPathXmlApplicationContext@8691dee]; startup date [Wed May 14 15:33:02 CST 2014]; root of context hierarchy
+2014-05-14 15:33:02,265 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/config/ConfigModuleContext.xml]
+2014-05-14 15:33:03,399 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@8691dee]: org.springframework.beans.factory.support.DefaultListableBeanFactory@53077fc9
+2014-05-14 15:33:03,400 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@53077fc9: defining beans [core-config]; root of factory hierarchy
+2014-05-14 15:33:03,409 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/core-config.xml', /C:/config/core-config.xml (No such file or directory)
+2014-05-14 15:33:03,410 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/core-config.xml', class path resource [META-INF/config/local/core-config.xml] cannot be resolved to URL because it does not exist
+2014-05-14 15:33:03,413 INFO  [Thread-8@/config/core-config.xml] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-8@/config/core-config.xml start watch /config/core-config.xml :
+2014-05-14 15:33:03,415 INFO  [Thread-9] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-14 15:33:03,423 INFO  [main] trace             (Slf4jLogger.java:59)     - host name :jcl.local
+2014-05-14 15:33:03,424 INFO  [Thread-10@/config/database.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-10@/config/database.properties start watch /config/database.properties :
+2014-05-14 15:42:31,490 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864: display name [org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864]; startup date [Wed May 14 15:42:31 CST 2014]; root of context hierarchy
+2014-05-14 15:42:31,538 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-05-14 15:42:32,878 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864]: org.springframework.beans.factory.support.DefaultListableBeanFactory@1fa12495
+2014-05-14 15:42:32,889 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1fa12495: defining beans [configuration,templateFactory]; root of factory hierarchy
+2014-05-14 15:42:32,927 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/dal.properties', /config/dal.properties (No such file or directory)
+2014-05-14 15:42:32,928 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/dal.properties', /C:/config/dal.properties (No such file or directory)
+2014-05-14 15:42:32,929 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/dal.properties', class path resource [META-INF/config/local/dal.properties] cannot be resolved to URL because it does not exist
+2014-05-14 15:42:32,944 INFO  [Thread-2@/config/dal.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-2@/config/dal.properties start watch /config/dal.properties :
+2014-05-14 15:42:32,944 INFO  [Thread-3] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-14 15:42:33,025 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@55dec1dd: display name [org.springframework.context.support.ClassPathXmlApplicationContext@55dec1dd]; startup date [Wed May 14 15:42:33 CST 2014]; root of context hierarchy
+2014-05-14 15:42:33,026 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/dal/datasource/DataSourceModuleContext.xml]
+2014-05-14 15:42:33,487 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@55dec1dd]: org.springframework.beans.factory.support.DefaultListableBeanFactory@7ed75415
+2014-05-14 15:42:33,505 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database.properties', /C:/config/database.properties (No such file or directory)
+2014-05-14 15:42:33,506 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database.properties', class path resource [META-INF/config/local/database.properties] cannot be resolved to URL because it does not exist
+2014-05-14 15:42:33,511 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database_pay.properties', /C:/config/database_pay.properties (No such file or directory)
+2014-05-14 15:42:33,512 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database_pay.properties', class path resource [META-INF/config/local/database_pay.properties] cannot be resolved to URL because it does not exist
+2014-05-14 15:42:33,516 INFO  [Thread-4@/config/database_pay.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-4@/config/database_pay.properties start watch /config/database_pay.properties :
+2014-05-14 15:42:33,516 INFO  [Thread-5] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-14 15:42:33,550 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7ed75415: defining beans [configuration,configuration_pay,hosts,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,datasource.HAIDAO_DB,locator,iDataSource,dbConfigManager]; root of factory hierarchy
+2014-05-14 15:42:33,551 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/DBHost.properties', /config/DBHost.properties (No such file or directory)
+2014-05-14 15:42:33,552 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/DBHost.properties', /C:/config/DBHost.properties (No such file or directory)
+2014-05-14 15:42:33,553 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/DBHost.properties', class path resource [META-INF/config/local/DBHost.properties] cannot be resolved to URL because it does not exist
+2014-05-14 15:42:33,554 INFO  [Thread-6@/config/DBHost.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-6@/config/DBHost.properties start watch /config/DBHost.properties :
+2014-05-14 15:42:33,554 INFO  [Thread-7] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-14 15:42:33,559 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2094257f: display name [org.springframework.context.support.ClassPathXmlApplicationContext@2094257f]; startup date [Wed May 14 15:42:33 CST 2014]; root of context hierarchy
+2014-05-14 15:42:33,560 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/config/ConfigModuleContext.xml]
+2014-05-14 15:42:34,699 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@2094257f]: org.springframework.beans.factory.support.DefaultListableBeanFactory@67c7980c
+2014-05-14 15:42:34,700 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@67c7980c: defining beans [core-config]; root of factory hierarchy
+2014-05-14 15:42:34,709 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/core-config.xml', /C:/config/core-config.xml (No such file or directory)
+2014-05-14 15:42:34,710 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/core-config.xml', class path resource [META-INF/config/local/core-config.xml] cannot be resolved to URL because it does not exist
+2014-05-14 15:42:34,715 INFO  [Thread-8@/config/core-config.xml] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-8@/config/core-config.xml start watch /config/core-config.xml :
+2014-05-14 15:42:34,716 INFO  [Thread-9] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-14 15:42:34,722 INFO  [main] trace             (Slf4jLogger.java:59)     - host name :jcl.local
+2014-05-14 15:42:34,722 INFO  [Thread-10@/config/database.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-10@/config/database.properties start watch /config/database.properties :
+2014-05-16 13:50:49,959 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864: display name [org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864]; startup date [Fri May 16 13:50:49 CST 2014]; root of context hierarchy
+2014-05-16 13:50:50,005 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-05-16 13:50:52,521 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864]: org.springframework.beans.factory.support.DefaultListableBeanFactory@dcb52ae
+2014-05-16 13:50:52,536 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@dcb52ae: defining beans [configuration,templateFactory]; root of factory hierarchy
+2014-05-16 13:50:52,577 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/dal.properties', /config/dal.properties (No such file or directory)
+2014-05-16 13:50:52,578 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/dal.properties', /C:/config/dal.properties (No such file or directory)
+2014-05-16 13:50:52,579 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/dal.properties', class path resource [META-INF/config/local/dal.properties] cannot be resolved to URL because it does not exist
+2014-05-16 13:50:52,594 INFO  [Thread-2@/config/dal.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-2@/config/dal.properties start watch /config/dal.properties :
+2014-05-16 13:50:52,594 INFO  [Thread-3] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-16 13:50:52,691 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@26afa68a: display name [org.springframework.context.support.ClassPathXmlApplicationContext@26afa68a]; startup date [Fri May 16 13:50:52 CST 2014]; root of context hierarchy
+2014-05-16 13:50:52,692 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/dal/datasource/DataSourceModuleContext.xml]
+2014-05-16 13:50:53,922 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@26afa68a]: org.springframework.beans.factory.support.DefaultListableBeanFactory@6ad16fc1
+2014-05-16 13:50:53,954 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database.properties', /C:/config/database.properties (No such file or directory)
+2014-05-16 13:50:53,955 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database.properties', class path resource [META-INF/config/local/database.properties] cannot be resolved to URL because it does not exist
+2014-05-16 13:50:53,961 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database_pay.properties', /C:/config/database_pay.properties (No such file or directory)
+2014-05-16 13:50:53,962 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database_pay.properties', class path resource [META-INF/config/local/database_pay.properties] cannot be resolved to URL because it does not exist
+2014-05-16 13:50:53,964 INFO  [Thread-4@/config/database_pay.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-4@/config/database_pay.properties start watch /config/database_pay.properties :
+2014-05-16 13:50:53,964 INFO  [Thread-5] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-16 13:50:53,993 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ad16fc1: defining beans [configuration,configuration_pay,hosts,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,datasource.HAIDAO_DB,locator,iDataSource,dbConfigManager]; root of factory hierarchy
+2014-05-16 13:50:53,994 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/DBHost.properties', /config/DBHost.properties (No such file or directory)
+2014-05-16 13:50:53,994 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/DBHost.properties', /C:/config/DBHost.properties (No such file or directory)
+2014-05-16 13:50:53,995 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/DBHost.properties', class path resource [META-INF/config/local/DBHost.properties] cannot be resolved to URL because it does not exist
+2014-05-16 13:50:53,996 INFO  [Thread-7] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-16 13:50:53,996 INFO  [Thread-6@/config/DBHost.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-6@/config/DBHost.properties start watch /config/DBHost.properties :
+2014-05-16 13:50:54,001 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3ef07355: display name [org.springframework.context.support.ClassPathXmlApplicationContext@3ef07355]; startup date [Fri May 16 13:50:54 CST 2014]; root of context hierarchy
+2014-05-16 13:50:54,002 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/config/ConfigModuleContext.xml]
+2014-05-16 13:50:54,937 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@3ef07355]: org.springframework.beans.factory.support.DefaultListableBeanFactory@215983b7
+2014-05-16 13:50:54,938 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@215983b7: defining beans [core-config]; root of factory hierarchy
+2014-05-16 13:50:54,956 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/core-config.xml', /C:/config/core-config.xml (No such file or directory)
+2014-05-16 13:50:54,957 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/core-config.xml', class path resource [META-INF/config/local/core-config.xml] cannot be resolved to URL because it does not exist
+2014-05-16 13:50:54,961 INFO  [Thread-8@/config/core-config.xml] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-8@/config/core-config.xml start watch /config/core-config.xml :
+2014-05-16 13:50:54,961 INFO  [Thread-9] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-16 13:50:54,967 INFO  [main] trace             (Slf4jLogger.java:59)     - host name :jcl.local
+2014-05-16 13:50:54,967 INFO  [Thread-10@/config/database.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-10@/config/database.properties start watch /config/database.properties :
+2014-05-16 16:39:09,939 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5cbfe9d: display name [org.springframework.context.support.ClassPathXmlApplicationContext@5cbfe9d]; startup date [Fri May 16 16:39:09 CST 2014]; root of context hierarchy
+2014-05-16 16:39:09,985 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-05-16 16:39:10,475 WARN  [main] xml.XmlBeanDefinitionReader (SimpleSaxErrorHandler.java:47)     - Ignored XML validation warning
+org.xml.sax.SAXParseException: schema_reference.4: Failed to read schema document 'http://www.springframework.org/schema/beans/spring-beans-2.5.xsd', because 1) could not find the document; 2) the document could not be read; 3) the root element of the document is not <xsd:schema>.
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:195)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.warning(ErrorHandlerWrapper.java:96)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:380)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:318)
+	at com.sun.org.apache.xerces.internal.impl.xs.traversers.XSDHandler.reportSchemaErr(XSDHandler.java:2541)
+	at com.sun.org.apache.xerces.internal.impl.xs.traversers.XSDHandler.reportSchemaWarning(XSDHandler.java:2532)
+	at com.sun.org.apache.xerces.internal.impl.xs.traversers.XSDHandler.getSchemaDocument(XSDHandler.java:1836)
+	at com.sun.org.apache.xerces.internal.impl.xs.traversers.XSDHandler.parseSchema(XSDHandler.java:531)
+	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaLoader.loadSchema(XMLSchemaLoader.java:556)
+	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.findSchemaGrammar(XMLSchemaValidator.java:2443)
+	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.handleStartElement(XMLSchemaValidator.java:1788)
+	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.startElement(XMLSchemaValidator.java:711)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.scanStartElement(XMLNSDocumentScannerImpl.java:401)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl$NSContentDriver.scanRootElementHook(XMLNSDocumentScannerImpl.java:627)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:3115)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:921)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:647)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:140)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:513)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:815)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:744)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:128)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:233)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:287)
+	at org.springframework.beans.factory.xml.DefaultDocumentLoader.loadDocument(DefaultDocumentLoader.java:75)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:396)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:342)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:143)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:178)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:149)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:212)
+	at org.springframework.context.support.AbstractXmlApplicationContext.loadBeanDefinitions(AbstractXmlApplicationContext.java:113)
+	at org.springframework.context.support.AbstractXmlApplicationContext.loadBeanDefinitions(AbstractXmlApplicationContext.java:80)
+	at org.springframework.context.support.AbstractRefreshableApplicationContext.refreshBeanFactory(AbstractRefreshableApplicationContext.java:123)
+	at org.springframework.context.support.AbstractApplicationContext.obtainFreshBeanFactory(AbstractApplicationContext.java:422)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:352)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:139)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:105)
+	at com.jcl.core.module.ModuleRegistry.createModuleProxy(ModuleRegistry.java:91)
+	at com.jcl.core.module.ModuleRegistry.registerModule(ModuleRegistry.java:74)
+	at com.jcl.core.module.ModuleRegistry.registerModule(ModuleRegistry.java:55)
+	at com.jcl.core.module.ModuleRegistry.getModule(ModuleRegistry.java:44)
+	at com.jcl.gen.tool.AbsGen.<init>(AbsGen.java:21)
+	at com.jcl.gen.tool.DalGen.<init>(DalGen.java:11)
+	at com.jcl.gen.tool.DalGenFromDB.<init>(DalGenFromDB.java:10)
+	at com.jcl.gen.tool.DalGenFromDB.main(DalGenFromDB.java:22)
+2014-05-16 16:43:28,548 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5cbfe9d: display name [org.springframework.context.support.ClassPathXmlApplicationContext@5cbfe9d]; startup date [Fri May 16 16:43:28 CST 2014]; root of context hierarchy
+2014-05-16 16:43:28,602 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-05-16 16:43:29,089 WARN  [main] xml.XmlBeanDefinitionReader (SimpleSaxErrorHandler.java:47)     - Ignored XML validation warning
+org.xml.sax.SAXParseException: schema_reference.4: Failed to read schema document 'http://www.springframework.org/schema/beans/spring-beans-2.5.xsd', because 1) could not find the document; 2) the document could not be read; 3) the root element of the document is not <xsd:schema>.
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:195)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.warning(ErrorHandlerWrapper.java:96)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:380)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:318)
+	at com.sun.org.apache.xerces.internal.impl.xs.traversers.XSDHandler.reportSchemaErr(XSDHandler.java:2541)
+	at com.sun.org.apache.xerces.internal.impl.xs.traversers.XSDHandler.reportSchemaWarning(XSDHandler.java:2532)
+	at com.sun.org.apache.xerces.internal.impl.xs.traversers.XSDHandler.getSchemaDocument(XSDHandler.java:1836)
+	at com.sun.org.apache.xerces.internal.impl.xs.traversers.XSDHandler.parseSchema(XSDHandler.java:531)
+	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaLoader.loadSchema(XMLSchemaLoader.java:556)
+	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.findSchemaGrammar(XMLSchemaValidator.java:2443)
+	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.handleStartElement(XMLSchemaValidator.java:1788)
+	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.startElement(XMLSchemaValidator.java:711)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.scanStartElement(XMLNSDocumentScannerImpl.java:401)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl$NSContentDriver.scanRootElementHook(XMLNSDocumentScannerImpl.java:627)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:3115)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:921)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:647)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:140)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:513)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:815)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:744)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:128)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:233)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:287)
+	at org.springframework.beans.factory.xml.DefaultDocumentLoader.loadDocument(DefaultDocumentLoader.java:75)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:396)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:342)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:143)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:178)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:149)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:212)
+	at org.springframework.context.support.AbstractXmlApplicationContext.loadBeanDefinitions(AbstractXmlApplicationContext.java:113)
+	at org.springframework.context.support.AbstractXmlApplicationContext.loadBeanDefinitions(AbstractXmlApplicationContext.java:80)
+	at org.springframework.context.support.AbstractRefreshableApplicationContext.refreshBeanFactory(AbstractRefreshableApplicationContext.java:123)
+	at org.springframework.context.support.AbstractApplicationContext.obtainFreshBeanFactory(AbstractApplicationContext.java:422)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:352)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:139)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:105)
+	at com.jcl.core.module.ModuleRegistry.createModuleProxy(ModuleRegistry.java:91)
+	at com.jcl.core.module.ModuleRegistry.registerModule(ModuleRegistry.java:74)
+	at com.jcl.core.module.ModuleRegistry.registerModule(ModuleRegistry.java:55)
+	at com.jcl.core.module.ModuleRegistry.getModule(ModuleRegistry.java:44)
+	at com.jcl.gen.tool.AbsGen.<init>(AbsGen.java:21)
+	at com.jcl.gen.tool.DalGen.<init>(DalGen.java:11)
+	at com.jcl.gen.tool.DalGenFromDB.<init>(DalGenFromDB.java:10)
+	at com.jcl.gen.tool.DalGenFromDB.main(DalGenFromDB.java:22)
+2014-05-16 16:44:06,378 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5cbfe9d: display name [org.springframework.context.support.ClassPathXmlApplicationContext@5cbfe9d]; startup date [Fri May 16 16:44:06 CST 2014]; root of context hierarchy
+2014-05-16 16:44:06,428 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-05-16 16:44:06,502 WARN  [main] xml.XmlBeanDefinitionReader (SimpleSaxErrorHandler.java:47)     - Ignored XML validation warning
+org.xml.sax.SAXParseException: schema_reference.4: Failed to read schema document 'http://www.springframework.org/schema/beans/spring-beans-2.5.xsd', because 1) could not find the document; 2) the document could not be read; 3) the root element of the document is not <xsd:schema>.
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:195)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.warning(ErrorHandlerWrapper.java:96)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:380)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:318)
+	at com.sun.org.apache.xerces.internal.impl.xs.traversers.XSDHandler.reportSchemaErr(XSDHandler.java:2541)
+	at com.sun.org.apache.xerces.internal.impl.xs.traversers.XSDHandler.reportSchemaWarning(XSDHandler.java:2532)
+	at com.sun.org.apache.xerces.internal.impl.xs.traversers.XSDHandler.getSchemaDocument(XSDHandler.java:1836)
+	at com.sun.org.apache.xerces.internal.impl.xs.traversers.XSDHandler.parseSchema(XSDHandler.java:531)
+	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaLoader.loadSchema(XMLSchemaLoader.java:556)
+	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.findSchemaGrammar(XMLSchemaValidator.java:2443)
+	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.handleStartElement(XMLSchemaValidator.java:1788)
+	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.startElement(XMLSchemaValidator.java:711)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.scanStartElement(XMLNSDocumentScannerImpl.java:401)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl$NSContentDriver.scanRootElementHook(XMLNSDocumentScannerImpl.java:627)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:3115)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:921)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:647)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:140)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:513)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:815)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:744)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:128)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:233)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:287)
+	at org.springframework.beans.factory.xml.DefaultDocumentLoader.loadDocument(DefaultDocumentLoader.java:75)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:396)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:342)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:143)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:178)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:149)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:212)
+	at org.springframework.context.support.AbstractXmlApplicationContext.loadBeanDefinitions(AbstractXmlApplicationContext.java:113)
+	at org.springframework.context.support.AbstractXmlApplicationContext.loadBeanDefinitions(AbstractXmlApplicationContext.java:80)
+	at org.springframework.context.support.AbstractRefreshableApplicationContext.refreshBeanFactory(AbstractRefreshableApplicationContext.java:123)
+	at org.springframework.context.support.AbstractApplicationContext.obtainFreshBeanFactory(AbstractApplicationContext.java:422)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:352)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:139)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:105)
+	at com.jcl.core.module.ModuleRegistry.createModuleProxy(ModuleRegistry.java:91)
+	at com.jcl.core.module.ModuleRegistry.registerModule(ModuleRegistry.java:74)
+	at com.jcl.core.module.ModuleRegistry.registerModule(ModuleRegistry.java:55)
+	at com.jcl.core.module.ModuleRegistry.getModule(ModuleRegistry.java:44)
+	at com.jcl.gen.tool.AbsGen.<init>(AbsGen.java:21)
+	at com.jcl.gen.tool.DalGen.<init>(DalGen.java:11)
+	at com.jcl.gen.tool.DalGenFromDB.<init>(DalGenFromDB.java:10)
+	at com.jcl.gen.tool.DalGenFromDB.main(DalGenFromDB.java:22)
+2014-05-18 00:00:47,704 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864: display name [org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864]; startup date [Sun May 18 00:00:47 CST 2014]; root of context hierarchy
+2014-05-18 00:00:47,763 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-05-18 00:00:50,406 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@13b8f864]: org.springframework.beans.factory.support.DefaultListableBeanFactory@c68c26c
+2014-05-18 00:00:50,418 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@c68c26c: defining beans [configuration,templateFactory]; root of factory hierarchy
+2014-05-18 00:00:50,456 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/dal.properties', /config/dal.properties (No such file or directory)
+2014-05-18 00:00:50,457 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/dal.properties', /C:/config/dal.properties (No such file or directory)
+2014-05-18 00:00:50,458 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/dal.properties', class path resource [META-INF/config/local/dal.properties] cannot be resolved to URL because it does not exist
+2014-05-18 00:00:50,472 INFO  [Thread-2@/config/dal.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-2@/config/dal.properties start watch /config/dal.properties :
+2014-05-18 00:00:50,472 INFO  [Thread-3] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-18 00:00:50,572 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@38aa233f: display name [org.springframework.context.support.ClassPathXmlApplicationContext@38aa233f]; startup date [Sun May 18 00:00:50 CST 2014]; root of context hierarchy
+2014-05-18 00:00:50,573 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/dal/datasource/DataSourceModuleContext.xml]
+2014-05-18 00:00:52,289 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@38aa233f]: org.springframework.beans.factory.support.DefaultListableBeanFactory@5c001eb0
+2014-05-18 00:00:52,308 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database.properties', /C:/config/database.properties (No such file or directory)
+2014-05-18 00:00:52,309 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database.properties', class path resource [META-INF/config/local/database.properties] cannot be resolved to URL because it does not exist
+2014-05-18 00:00:52,313 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database_pay.properties', /C:/config/database_pay.properties (No such file or directory)
+2014-05-18 00:00:52,314 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database_pay.properties', class path resource [META-INF/config/local/database_pay.properties] cannot be resolved to URL because it does not exist
+2014-05-18 00:00:52,317 INFO  [Thread-4@/config/database_pay.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-4@/config/database_pay.properties start watch /config/database_pay.properties :
+2014-05-18 00:00:52,318 INFO  [Thread-5] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-18 00:00:52,346 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5c001eb0: defining beans [configuration,configuration_pay,hosts,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,datasource.HAIDAO_DB,locator,iDataSource,dbConfigManager]; root of factory hierarchy
+2014-05-18 00:00:52,348 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/DBHost.properties', /config/DBHost.properties (No such file or directory)
+2014-05-18 00:00:52,349 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/DBHost.properties', /C:/config/DBHost.properties (No such file or directory)
+2014-05-18 00:00:52,349 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/DBHost.properties', class path resource [META-INF/config/local/DBHost.properties] cannot be resolved to URL because it does not exist
+2014-05-18 00:00:52,351 INFO  [Thread-6@/config/DBHost.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-6@/config/DBHost.properties start watch /config/DBHost.properties :
+2014-05-18 00:00:52,351 INFO  [Thread-7] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-18 00:00:52,357 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@50502819: display name [org.springframework.context.support.ClassPathXmlApplicationContext@50502819]; startup date [Sun May 18 00:00:52 CST 2014]; root of context hierarchy
+2014-05-18 00:00:52,357 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/config/ConfigModuleContext.xml]
+2014-05-18 00:00:54,135 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@50502819]: org.springframework.beans.factory.support.DefaultListableBeanFactory@508aeb74
+2014-05-18 00:00:54,136 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@508aeb74: defining beans [core-config]; root of factory hierarchy
+2014-05-18 00:00:54,157 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/core-config.xml', /C:/config/core-config.xml (No such file or directory)
+2014-05-18 00:00:54,158 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/core-config.xml', class path resource [META-INF/config/local/core-config.xml] cannot be resolved to URL because it does not exist
+2014-05-18 00:00:54,163 INFO  [Thread-9@/config/core-config.xml] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-9@/config/core-config.xml start watch /config/core-config.xml :
+2014-05-18 00:00:54,165 INFO  [Thread-10] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-18 00:00:54,173 INFO  [main] trace             (Slf4jLogger.java:59)     - host name :localhost
+2014-05-18 00:00:54,174 INFO  [Thread-11@/config/database.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-11@/config/database.properties start watch /config/database.properties :
+2014-05-18 00:05:16,519 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@54bb7759: display name [org.springframework.context.support.ClassPathXmlApplicationContext@54bb7759]; startup date [Sun May 18 00:05:16 CST 2014]; root of context hierarchy
+2014-05-18 00:05:16,566 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/gen/config/TemplateModuleContext.xml]
+2014-05-18 00:05:19,254 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@54bb7759]: org.springframework.beans.factory.support.DefaultListableBeanFactory@1fa12495
+2014-05-18 00:05:19,265 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1fa12495: defining beans [configuration,templateFactory]; root of factory hierarchy
+2014-05-18 00:05:19,302 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/dal.properties', /config/dal.properties (No such file or directory)
+2014-05-18 00:05:19,303 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/dal.properties', /C:/config/dal.properties (No such file or directory)
+2014-05-18 00:05:19,304 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/dal.properties', class path resource [META-INF/config/local/dal.properties] cannot be resolved to URL because it does not exist
+2014-05-18 00:05:19,317 INFO  [Thread-2@/config/dal.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-2@/config/dal.properties start watch /config/dal.properties :
+2014-05-18 00:05:19,317 INFO  [Thread-3] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-18 00:05:19,398 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1389c036: display name [org.springframework.context.support.ClassPathXmlApplicationContext@1389c036]; startup date [Sun May 18 00:05:19 CST 2014]; root of context hierarchy
+2014-05-18 00:05:19,399 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/dal/datasource/DataSourceModuleContext.xml]
+2014-05-18 00:05:22,004 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@1389c036]: org.springframework.beans.factory.support.DefaultListableBeanFactory@7b41fab6
+2014-05-18 00:05:22,020 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database.properties', /C:/config/database.properties (No such file or directory)
+2014-05-18 00:05:22,021 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database.properties', class path resource [META-INF/config/local/database.properties] cannot be resolved to URL because it does not exist
+2014-05-18 00:05:22,025 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/database_pay.properties', /C:/config/database_pay.properties (No such file or directory)
+2014-05-18 00:05:22,026 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/database_pay.properties', class path resource [META-INF/config/local/database_pay.properties] cannot be resolved to URL because it does not exist
+2014-05-18 00:05:22,029 INFO  [Thread-5@/config/database_pay.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-5@/config/database_pay.properties start watch /config/database_pay.properties :
+2014-05-18 00:05:22,030 INFO  [Thread-6] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-18 00:05:22,060 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7b41fab6: defining beans [configuration,configuration_pay,hosts,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,datasource.HAIDAO_DB,locator,iDataSource,dbConfigManager]; root of factory hierarchy
+2014-05-18 00:05:22,061 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:/config/DBHost.properties', /config/DBHost.properties (No such file or directory)
+2014-05-18 00:05:22,061 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/DBHost.properties', /C:/config/DBHost.properties (No such file or directory)
+2014-05-18 00:05:22,062 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/DBHost.properties', class path resource [META-INF/config/local/DBHost.properties] cannot be resolved to URL because it does not exist
+2014-05-18 00:05:22,063 INFO  [Thread-7@/config/DBHost.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-7@/config/DBHost.properties start watch /config/DBHost.properties :
+2014-05-18 00:05:22,063 INFO  [Thread-8] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-18 00:05:22,068 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:411)     - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@10f102d3: display name [org.springframework.context.support.ClassPathXmlApplicationContext@10f102d3]; startup date [Sun May 18 00:05:22 CST 2014]; root of context hierarchy
+2014-05-18 00:05:22,069 INFO  [main] xml.XmlBeanDefinitionReader (XmlBeanDefinitionReader.java:323)     - Loading XML bean definitions from class path resource [com/jcl/core/config/ConfigModuleContext.xml]
+2014-05-18 00:05:23,536 INFO  [main] support.ClassPathXmlApplicationContext (AbstractApplicationContext.java:426)     - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@10f102d3]: org.springframework.beans.factory.support.DefaultListableBeanFactory@215983b7
+2014-05-18 00:05:23,537 INFO  [main] support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:414)     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@215983b7: defining beans [core-config]; root of factory hierarchy
+2014-05-18 00:05:23,546 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'file:///C:/config/core-config.xml', /C:/config/core-config.xml (No such file or directory)
+2014-05-18 00:05:23,547 INFO  [main] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/core-config.xml', class path resource [META-INF/config/local/core-config.xml] cannot be resolved to URL because it does not exist
+2014-05-18 00:05:23,550 INFO  [Thread-9@/config/core-config.xml] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-9@/config/core-config.xml start watch /config/core-config.xml :
+2014-05-18 00:05:23,552 INFO  [Thread-10] config.ConfigManager (Slf4jLogger.java:59)     - watch and notify thread start:
+2014-05-18 00:05:23,559 INFO  [main] trace             (Slf4jLogger.java:59)     - host name :localhost
+2014-05-18 00:05:23,560 INFO  [Thread-11@/config/database.properties] util.FileWatchdog (Slf4jLogger.java:59)     - watch thread Thread-11@/config/database.properties start watch /config/database.properties :
