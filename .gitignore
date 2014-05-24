@@ -1,10 +1,12 @@
 *.class
+
 /.idea
 
 
 target/
 
 .project
+
 .classpath
 
 .settings/
@@ -14,10 +16,17 @@ target/
 Servers/
 
 # Package Files #
+
 *.jar
+
 build-bootstrap.jar
+
 *.war
+
 *.ear
+
 .metadata
+
 /gen-dal
-gen-dal/*
+
+gen-dal/
