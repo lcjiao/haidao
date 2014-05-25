@@ -44,6 +44,11 @@ public class ModuleEnum {
 	 * 婚礼套餐首页辅推套餐
 	 */
 	public static final Integer MARRAY_PACKAGE_INDEX_SECOEND_RECOMMEND_PACKAGE=8;
+	/**
+	 * 婚礼套餐首页辅推套餐
+	 */
+	public static final Integer MARRAY_PACKAGE_INDEX_SECOEND_RECOMMEND=7;
+	
 	
 	
 	

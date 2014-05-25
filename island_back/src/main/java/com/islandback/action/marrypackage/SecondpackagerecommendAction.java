@@ -5,6 +5,7 @@ package com.islandback.action.marrypackage;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -49,6 +50,9 @@ public class SecondpackagerecommendAction extends ActionSupport {
 	private Integer totalSize;
 	private Integer pageSize=2;
 	private Integer areaId;
+	private Integer recommendType = 2;
+	private String recommendTypeName="岛屿推荐";
+	
 	
 	
 	RecommendBiz recommendBiz = ModuleRegistry.getInstance()
@@ -57,7 +61,7 @@ public class SecondpackagerecommendAction extends ActionSupport {
 	AreaIslandBiz areaIslandBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getAreaIslandBiz();
 	
-	private List<Island> islandList;
+	private List<Island> islandList=new ArrayList<Island>(0);
 	private List<Area> areaList;
 	private List<Recommend> recommendList;
 	
@@ -68,7 +72,17 @@ public class SecondpackagerecommendAction extends ActionSupport {
 	
 	
 	public String tolist(){
+		doIslandList();
+		for(Recommend recommend : recommendList){
+		    Integer islandId = recommend.getIslandId();
+		    Island obj = areaIslandBiz.queryIslandById(islandId);
+		    islandList.add(obj);
+		 }  
+		 
 		doList();
+		
+		 
+		
 		return "list";
 	}
 	
@@ -76,6 +90,14 @@ public class SecondpackagerecommendAction extends ActionSupport {
 		Map<String,Object> params = new HashMap<String,Object>(0);
 		params.put("valid", 1);
 	    areaList = areaIslandBiz.queryAreaByMap(params);
+	    
+	    doIslandList();
+	    for(Recommend recommend : recommendList){
+	    	Integer islandId = recommend.getIslandId();
+	    	Island obj = areaIslandBiz.queryIslandById(islandId);
+	    	islandList.add(obj);
+	    }
+	    
 		return "add";
 	}
 	
@@ -89,15 +111,15 @@ public class SecondpackagerecommendAction extends ActionSupport {
 		}
 		recommend.setCreatePerson(creater);
 		int now = (int)(System.currentTimeMillis()/1000);
-		recommend.setModuleId(ModuleEnum.MARRAY_PACKAGE_INDEX_SECOEND_RECOMMEND_PACKAGE);
+		recommend.setModuleId(ModuleEnum.MARRAY_PACKAGE_INDEX_SECOEND_RECOMMEND);
 		if(image != null ){
 			recommend.setImgUrl(upload());
 		}
 		recommend.setCreatePerson(creater);
 		recommend.setCreateTime(now);
 		recommend.setValid(1);
-		
-		
+		recommend.setTypeId(recommendType);
+		recommend.setTypeName(recommendTypeName);
 		this.recommendBiz.addMasterRecommend(recommend);
 		doList();
 		return "list";
@@ -109,6 +131,12 @@ public class SecondpackagerecommendAction extends ActionSupport {
 		params.put("valid", 1);
 	    areaList = areaIslandBiz.queryAreaByMap(params);
 		
+	    doIslandList();
+	    for(Recommend recommend : recommendList){
+	    	Integer islandId = recommend.getIslandId();
+	    	Island obj = areaIslandBiz.queryIslandById(islandId);
+	    	islandList.add(obj);
+	    }
 	    
 		recommend = recommendBiz.queryById(id);
 		
@@ -181,6 +209,14 @@ public class SecondpackagerecommendAction extends ActionSupport {
 	       return imageServPrefix+namePrefix+"/"+imageFileName;  
 	  }  
 
+	 private void doIslandList(){
+			Map<String,Object> params = new HashMap<String,Object>(0);
+			params.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_SECOEND_RECOMMEND);
+			params.put("valid", 1);
+			params.put("typeId", 1);
+			List<Recommend> list = recommendBiz.queryByMap(params);
+			this.recommendList = list;
+		}
 	
 	private void doList(){
 		if(pageNo == null || pageNo < 1){
@@ -190,18 +226,27 @@ public class SecondpackagerecommendAction extends ActionSupport {
 			pageSize = 5;
 		}
 		Map<String,Object> params = new HashMap<String,Object>(0);
-		params.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_SECOEND_RECOMMEND_PACKAGE);
+		params.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_SECOEND_RECOMMEND);
 		params.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
 		page.setPageSize(pageSize);
 		params.put("begin", page.getBegin());
 		params.put("size", page.getPageSize());
+		params.put("typeId", recommendType);
+		if(recommend != null && recommend.getIslandId() != null  && recommend.getIslandId().intValue() > 0 ){
+			params.put("islandId", recommend.getIslandId());
+		}
+		
 		List<Recommend> list = recommendBiz.queryByMap(params);
 		if(list != null && list.size()>0){
 			Map<String,Object> countParam = new HashMap<String,Object>(0);
-			countParam.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_SECOEND_RECOMMEND_PACKAGE);
+			countParam.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_SECOEND_RECOMMEND);
 			countParam.put("valid", 1);
+			countParam.put("typeId", recommendType);
+			if(recommend != null && recommend.getIslandId() != null  && recommend.getIslandId().intValue() > 0 ){
+				countParam.put("islandId", recommend.getIslandId());
+			}
 			this.totalSize = recommendBiz.countByMap(countParam);
 		}else{
 			this.totalSize=0;

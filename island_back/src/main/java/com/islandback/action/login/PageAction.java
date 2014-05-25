@@ -108,8 +108,10 @@ public class PageAction extends ActionSupport{
 //			Collections.sort(this.menuList);
 //		}
 		
-		
-		
+		Map<Integer,Boolean> userMenuMap = new HashMap<Integer,Boolean>(0);
+		for(Menu menu : list ){
+			userMenuMap.put(menu.getId(), true);
+		}
 		
 		
 		
@@ -121,8 +123,18 @@ public class PageAction extends ActionSupport{
 			params.put("menuParent", menu.getId());
 			List<Menu> sonList = this.roleBiz.queryMenuByMap(params);
 			if( sonList != null && !sonList.isEmpty()){
-				menu.setChildList(sonList);
-				menuTree.put(menu.getId(), sonList);
+				List<Menu> userSonList = new ArrayList<Menu>(0);
+				for(Menu sonMenu : sonList){
+					
+					if( userMenuMap.get( sonMenu.getId() ) != null ){
+						userSonList.add(sonMenu);
+					}
+				}
+				if(userSonList.size() >  0 ){
+					menu.setChildList(userSonList);
+					menuTree.put(menu.getId(), userSonList);
+				}
+				
 			}
 		}
 		for(Menu menu : list){

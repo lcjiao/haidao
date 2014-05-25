@@ -12,6 +12,27 @@
 </head>
 <body>
 
+<form action="${ctx}/marrypackage/secondpackage/secondpackagerecommend!tolist.action" id="form" method="post">
+<table class="searchbar" width="100%">
+	<tbody>
+		<tr>
+			<td width="48">所属岛屿</td>
+			<td width="10">
+				<select id="island_id" name="recommend.islandId">
+					<option value="0" selected="selected">--请选择--</option>
+					<c:forEach var="island" items="${islandList}">
+							<option value="${island.id}" >${island.name}</option>
+				   </c:forEach>
+				</select>
+			</td>
+			<td><input class="btn" type="button" value="搜索" id="search"/>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<input type="hidden" value="${pageNo}" name="pageNo" id="page_no"/>
+</form>
+
 <table class="customlist" width="100%">
 	<thead>
 		<tr>
@@ -37,6 +58,7 @@
 				<table class="datalist ask_rel" width="100%">
 					<thead>
 						<tr>
+							<td>岛屿</td>
 							<td>标题</td>
 							<td>描述</td>
 							<td>图片</td>
@@ -48,6 +70,9 @@
 					<tbody id="r_list">
 						<c:forEach var="recommend" items="${recommendList}">
 							<tr >
+								<td style="text-align:center;">
+									<c:out value="${recommend.islandName}"></c:out>
+								</td>
 								<td style="text-align:center;">
 									<c:out value="${recommend.title}"></c:out>
 								</td>
@@ -92,6 +117,7 @@
 	function bindEvent(){
 		$("#go").bind('click',gotoPageNo);
 		$("#new_create").bind('click',newCreate);
+		$("#search").bind('click',search);
 		
 		/* $("#question_list a[title]").each(function(i){
 			$(this).bind('click',hideQuestion());
@@ -114,6 +140,10 @@
 		}else{
 			$("#go_page").hide();
 		}
+		
+		var islandId = '${recommend.islandId}';
+		$("#island_id option[value='"+islandId+"']").attr('selected',true);
+		
 		
 	}
 	
@@ -145,13 +175,16 @@
 	
 	//点击搜索
 	function search(){
+		
 		findByNo(1);
 	}
 	
 	
 	function findByNo(pageNo){
-		var url = "${ctx}/marrypackage/secondpackage/secondpackagerecommend!tolist.action?pageNo="+pageNo;
-		window.location.href = url;
+		//var url = "${ctx}/marrypackage/secondpackage/secondpackagerecommend!tolist.action?pageNo="+pageNo;
+		//window.location.href = url;
+		$("#page_no").val(pageNo);
+		$("#form").submit();
 	}
 	
 	

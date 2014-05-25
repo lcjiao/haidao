@@ -14,12 +14,23 @@
 <table class="datalist" width="100%">
 	<tbody>
 		<tr>
+			<td>所属岛屿</td>
+			<td>
+			<select id="island_id" name="recommend.islandId">
+					<option value="0" selected="selected">--请选择--</option>
+					<c:forEach var="island" items="${islandList}">
+							<option value="${island.id}" >${island.name}</option>
+				   </c:forEach>
+				</select>
+			</td>
+		</tr>
+		<tr>
 			<td>标题</td>
 			<td><input type=text class="text" value="" id="title" name="recommend.title"  style="_width:316px;"/></td>					
 		</tr>
 		<tr>
 			<td>描述</td>
-			<td><textarea width="100px" height="50px" class="text" id="desc" name="recommend.recommendDesc"  style="_width:316px;"></textarea></td>					
+			<td><textarea style="width:264px;height:50px;" class="text" id="desc" name="recommend.recommendDesc"  style="_width:316px;"></textarea></td>					
 		</tr>
 		<tr>
 			<td>图片</td>
@@ -36,6 +47,7 @@
 	</tbody>	
 </table>
 </div>
+<input type="hidden" value=" " id="island_name" name="recommend.islandName"/>
 
 <table class="creatcustomer_tfoot" width="100%">
 	<tfoot>
@@ -53,7 +65,7 @@
 
 $(function(){
 	//$("#area_id").bind('change',setAreaName);
-	//$("#island_id").bind('change',setIslandName);
+	$("#island_id").bind('change',setIslandName);
 });
 
 function setAreaName(){
