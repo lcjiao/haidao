@@ -33,9 +33,9 @@ import com.islandback.web.util.Struts2Utils;
 import com.opensymphony.xwork2.ActionSupport;
 
 //@SuppressWarnings("serial")
-@Namespace("/marrypackage/secondisland")
+@Namespace("/marrypackage/secondpackage")
 @ResultPath("/WEB-INF")
-public class SecondislandrecommendAction extends ActionSupport {
+public class SecondpackagerecommendAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private Recommend recommend;//首页主推
 	private Integer packageType=1;
@@ -89,7 +89,7 @@ public class SecondislandrecommendAction extends ActionSupport {
 		}
 		recommend.setCreatePerson(creater);
 		int now = (int)(System.currentTimeMillis()/1000);
-		recommend.setModuleId(ModuleEnum.MARRAY_PACKAGE_INDEX_SECOEND_RECOMMEND_ISLAND);
+		recommend.setModuleId(ModuleEnum.MARRAY_PACKAGE_INDEX_SECOEND_RECOMMEND_PACKAGE);
 		if(image != null ){
 			recommend.setImgUrl(upload());
 		}
@@ -190,7 +190,7 @@ public class SecondislandrecommendAction extends ActionSupport {
 			pageSize = 5;
 		}
 		Map<String,Object> params = new HashMap<String,Object>(0);
-		params.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_SECOEND_RECOMMEND_ISLAND);
+		params.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_SECOEND_RECOMMEND_PACKAGE);
 		params.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
@@ -200,7 +200,7 @@ public class SecondislandrecommendAction extends ActionSupport {
 		List<Recommend> list = recommendBiz.queryByMap(params);
 		if(list != null && list.size()>0){
 			Map<String,Object> countParam = new HashMap<String,Object>(0);
-			countParam.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_SECOEND_RECOMMEND_ISLAND);
+			countParam.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_SECOEND_RECOMMEND_PACKAGE);
 			countParam.put("valid", 1);
 			this.totalSize = recommendBiz.countByMap(countParam);
 		}else{
