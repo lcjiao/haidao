@@ -14,22 +14,28 @@ import java.util.Map;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ResultPath;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import com.jcl.core.module.ModuleRegistry;
-import com.anjuke.core.util.ObjectUtils;
 import com.island.domain.DomainIslandModule;
+import com.island.domain.biz.AreaIslandBiz;
 import com.island.domain.biz.RecommendBiz;
+import com.island.domain.model.Area;
+import com.island.domain.model.Island;
 import com.island.domain.model.Recommend;
 import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
 import com.islandback.web.util.RequestProcc;
+import com.islandback.web.util.Struts2Utils;
 import com.opensymphony.xwork2.ActionSupport;
 
 //@SuppressWarnings("serial")
 @Namespace("/marrypackage/index")
 @ResultPath("/WEB-INF")
-public class IndexmasterrecommendAction extends ActionSupport {
+public class MarraymasterrecomendAction extends ActionSupport {
 	/**
 	 * 图片  ＋ 标题  ＋ 价格 ＋ 岛屿  ＋ 时间 ＋ 链接
 	 */
@@ -44,13 +50,24 @@ public class IndexmasterrecommendAction extends ActionSupport {
 	private Integer pageNo;
 	private Integer totalPageSize;
 	private Integer totalSize;
-	private Integer pageSize=5;
+	private Integer pageSize=2;
+	private Integer areaId;
 	
-	private List<Recommend> recommendList;
+	
 	RecommendBiz recommendBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getRecommendBiz();
-	private SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 	
+	AreaIslandBiz areaIslandBiz = ModuleRegistry.getInstance()
+            .getModule(DomainIslandModule.class).getAreaIslandBiz();
+	
+	private List<Island> islandList;
+	private List<Area> areaList;
+	private List<Recommend> recommendList;
+	
+	private SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+	private ObjectMapper mapper = new ObjectMapper();
+	
+
 	
 	
 	public String tolist(){
@@ -58,7 +75,10 @@ public class IndexmasterrecommendAction extends ActionSupport {
 		return "list";
 	}
 	
-	public String toadd(){
+	public String toAdd(){
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("valid", 1);
+	    areaList = areaIslandBiz.queryAreaByMap(params);
 		return "add";
 	}
 	
@@ -88,7 +108,20 @@ public class IndexmasterrecommendAction extends ActionSupport {
 	}
 	
 	public String toEdit(){
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("valid", 1);
+	    areaList = areaIslandBiz.queryAreaByMap(params);
+		
+	    
 		recommend = recommendBiz.queryById(id);
+		
+		if( recommend.getAreaId() != null && recommend.getAreaId() > 0){
+			Map<String,Object> islandparams = new HashMap<String,Object>(0);
+			islandparams.put("valid", 1);
+			islandparams.put("areaId", recommend.getAreaId());
+			islandList = areaIslandBiz.queryIslandByMap(islandparams);
+		}
+		
 		return "edit";
 	}
 	
@@ -98,36 +131,38 @@ public class IndexmasterrecommendAction extends ActionSupport {
 		if(sessionInfo != null ){
 			creater = sessionInfo.getUser().getUserName(); 
 		}
-		Map<String,Object> params = new HashMap<String,Object>(0);
-		if(!ObjectUtils.isEmpty(recommend.getTitle()) ){
-			params.put("title", recommend.getTitle());
+		recommend.setUpdPerson(creater);
+		int now = (int)(System.currentTimeMillis()/1000);
+		if(image != null  ){
+			recommend.setImgUrl(upload());
 		}
-		if(!ObjectUtils.isEmpty(recommend.getIslandId())){
-			params.put("islandId", recommend.getIslandId());
-		}
-		if(!ObjectUtils.isEmpty(recommend.getIslandName())){
-			params.put("islandName", recommend.getIslandName());
-		}
-		if(!ObjectUtils.isEmpty( recommend.getPrice()) ){
-			params.put("price", recommend.getPrice());
-		}
-		if(!ObjectUtils.isEmpty( recommend.getRecommendTime()) ){
-			params.put("recommendTime", recommend.getRecommendTime());
-		}
-		if(!ObjectUtils.isEmpty( recommend.getImgUrl()) ){
-			params.put("imgUrl", recommend.getImgUrl());
-		}
-		if(!ObjectUtils.isEmpty( recommend.getLinkUrl()) ){
-			params.put("linkUrl", recommend.getLinkUrl());
-		}
-		if(!ObjectUtils.isEmpty( recommend.getRecommendIndex()) ){
-			params.put("recommendIndex", recommend.getRecommendIndex());
-		}
-		params.put("updPerson", creater);
-		params.put("id", id);
-		this.recommendBiz.updRecommend(params);		
+		recommend.setUpdTime(now);
+		this.recommendBiz.updRecommendByModel(recommend);
 		doList();
 		return "list";
+	}
+	
+	
+	public String del(){
+		String creater = "";
+		SessionInfo sessionInfo = RequestProcc.getSessionInfo();
+		if(sessionInfo != null ){
+			creater = sessionInfo.getUser().getUserName(); 
+		}
+		Map<String,Object> setParams = new HashMap<String,Object>(0);
+		setParams.put("valid", 0);
+		setParams.put("updPerson", creater);
+		setParams.put("id", id);
+		this.recommendBiz.updRecommend(setParams);		
+		doList();
+		return "list";
+	}
+	public void getIslandByArea() throws JsonGenerationException, JsonMappingException, IOException{
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("valid", 1);
+		params.put("areaId", areaId);
+		List<Island> list = areaIslandBiz.queryIslandByMap(params);
+		Struts2Utils.renderJson(mapper.writeValueAsString(list));
 	}
 	
 	 public String upload() {  
@@ -158,7 +193,7 @@ public class IndexmasterrecommendAction extends ActionSupport {
 			pageSize = 5;
 		}
 		Map<String,Object> params = new HashMap<String,Object>(0);
-		params.put("moduleId", ModuleEnum.FRONT_INDEX_MASTER_RECOMMEND);
+		params.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_MASTER_RECOMMEND);
 		params.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
@@ -198,7 +233,6 @@ public class IndexmasterrecommendAction extends ActionSupport {
 	public void setImageFileName(String imageFileName) {
 		this.imageFileName = imageFileName;
 	}
-	
 	public List<Recommend> getRecommendList() {
 		return recommendList;
 	}
@@ -241,13 +275,29 @@ public class IndexmasterrecommendAction extends ActionSupport {
 	public void setPackageType(Integer packageType) {
 		this.packageType = packageType;
 	}
-
 	public Recommend getRecommend() {
 		return recommend;
 	}
-
 	public void setRecommend(Recommend recommend) {
 		this.recommend = recommend;
+	}
+	public List<Island> getIslandList() {
+		return islandList;
+	}
+	public void setIslandList(List<Island> islandList) {
+		this.islandList = islandList;
+	}
+	public List<Area> getAreaList() {
+		return areaList;
+	}
+	public void setAreaList(List<Area> areaList) {
+		this.areaList = areaList;
+	}
+	public Integer getAreaId() {
+		return areaId;
+	}
+	public void setAreaId(Integer areaId) {
+		this.areaId = areaId;
 	}
 	
 

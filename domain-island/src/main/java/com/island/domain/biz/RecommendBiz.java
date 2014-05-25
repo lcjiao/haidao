@@ -30,6 +30,10 @@ public class RecommendBiz {
 		this.recommendDao.updateByMap(params);
 	}
 	
+	public void updRecommendByModel(Recommend obj){
+		this.recommendDao.update(obj);
+	}
+	
 	public Recommend queryById(Integer id){
 		return this.recommendDao.queryById(id);
 	}
