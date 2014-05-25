@@ -77,36 +77,70 @@ public class PageAction extends ActionSupport{
 		}
 		list  = roleBiz.queryMenuByIds(menuQueryParam);//用户权限菜单树 包含父级菜单
 		
-		if(list != null && !list.isEmpty()){
-			Map<Menu,List<Menu>> menuTree = new HashMap<Menu,List<Menu>>(0);
-			Map<Integer,Menu> parentMap = new HashMap<Integer,Menu>(0);
-			if(list != null && !list.isEmpty()){
-				Collections.sort(list);
-				for(Menu menu : list ){
-					if( menu.getMenuParent().intValue() == 0 ){//主菜单
-						parentMap.put(menu.getId(), menu);
-						List<Menu> childList = menuTree.get(menu);
-						if(childList == null ){
-							List<Menu> sonList = new ArrayList<Menu>(0);
-							menuTree.put(menu, sonList);
-						}
-					}else{
-						Menu parent = parentMap.get(menu.getMenuParent());
-						List<Menu> sonList = menuTree.get(parent);
-						sonList.add(menu);
+//		if(list != null && !list.isEmpty()){
+//			Map<Menu,List<Menu>> menuTree = new HashMap<Menu,List<Menu>>(0);
+//			Map<Integer,Menu> parentMap = new HashMap<Integer,Menu>(0);
+//			if(list != null && !list.isEmpty()){
+//				Collections.sort(list);
+//				for(Menu menu : list ){
+//					if( menu.getMenuParent().intValue() == 0 ){//主菜单
+//						parentMap.put(menu.getId(), menu);
+//						List<Menu> childList = menuTree.get(menu);
+//						if(childList == null ){
+//							List<Menu> sonList = new ArrayList<Menu>(0);
+//							menuTree.put(menu, sonList);
+//						}
+//					}else{
+//						Menu parent = parentMap.get(menu.getMenuParent());
+//						List<Menu> sonList = menuTree.get(parent);
+//						sonList.add(menu);
+//					}
+//				}
+//			}
+//			
+//			Set<Entry<Menu,List<Menu>>> set = menuTree.entrySet();
+//			for(Entry<Menu,List<Menu>> entry : set ){
+//				Menu parentMenu = entry.getKey();
+//				List<Menu> sonMenus = entry.getValue();
+//				parentMenu.setChildList(sonMenus);
+//				this.menuList.add(parentMenu);
+//			}
+//			Collections.sort(this.menuList);
+//		}
+		
+		
+		
+		
+		
+		
+		
+		Map<Integer,List<Menu>> menuTree = new HashMap<Integer,List<Menu>>(0);
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("valid", 1);
+		for(Menu menu : list ){
+			params.put("menuParent", menu.getId());
+			List<Menu> sonList = this.roleBiz.queryMenuByMap(params);
+			if( sonList != null && !sonList.isEmpty()){
+				menu.setChildList(sonList);
+				menuTree.put(menu.getId(), sonList);
+			}
+		}
+		for(Menu menu : list){
+			if(menu.getMenuParent().intValue() == 0 ){
+				for(Menu sonMenu : menuTree.get(menu.getId())){
+					List<Menu>  threeMenuList = menuTree.get(sonMenu.getId());
+					if( threeMenuList != null && !threeMenuList.isEmpty()){
+						sonMenu.setChildList(threeMenuList);
+						sonMenu.setHaschild(1);
 					}
 				}
+				this.menuList.add(menu);
 			}
-			
-			Set<Entry<Menu,List<Menu>>> set = menuTree.entrySet();
-			for(Entry<Menu,List<Menu>> entry : set ){
-				Menu parentMenu = entry.getKey();
-				List<Menu> sonMenus = entry.getValue();
-				parentMenu.setChildList(sonMenus);
-				this.menuList.add(parentMenu);
-			}
-			Collections.sort(this.menuList);
 		}
+
+		Collections.sort(this.menuList);
+		
+		
 		
 		return "left";
 	}

@@ -22,7 +22,12 @@
 			<li><a href="${parent.menuUrl}"><c:out value="${parent.menuName}"></c:out></a></li>
 			<ul>
 					<c:forEach var="son" items="${parent.childList}">
-						 <li><a href="${son.menuUrl}" class="test" title="${son.id}"><c:out value="${son.menuName}"></c:out></a><input type="checkbox"></li>
+						 <li><a href="${son.menuUrl}" class="test" title="${son.id}"><c:out value="${son.menuName}"></c:out></a><c:if test="${son.haschild ==0}"><input type="checkbox"></c:if></li>
+						 <ul>
+						 	<c:forEach var="three" items="${son.childList}">
+						 		<li><a href="${three.menuUrl}" class="test" title="${three.id}"><c:out value="${three.menuName}"></c:out></a><input type="checkbox"></li>
+							</c:forEach>
+						 </ul>
 					</c:forEach>
 		    </ul>
 		</c:forEach>
