@@ -37,18 +37,14 @@ public class ModuleEnum {
 	 */
 	public static final Integer MARRAY_PACKAGE_INDEX_MASTER_RECOMMEND=6;
 	/**
-	 * 婚礼套餐首页辅推岛屿
-	 */
-	public static final Integer MARRAY_PACKAGE_INDEX_SECOEND_RECOMMEND_ISLAND=7;
-	/**
-	 * 婚礼套餐首页辅推套餐
-	 */
-	public static final Integer MARRAY_PACKAGE_INDEX_SECOEND_RECOMMEND_PACKAGE=8;
-	/**
 	 * 婚礼套餐首页辅推套餐
 	 */
 	public static final Integer MARRAY_PACKAGE_INDEX_SECOEND_RECOMMEND=7;
 	
+	/**
+	 * 婚礼套餐首页区域推荐套餐
+	 */
+	public static final Integer MARRAY_PACKAGE_INDEX_AREA_RECOMMEND=8;
 	
 	
 	

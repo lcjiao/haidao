@@ -48,7 +48,7 @@ public class SecondpackagerecommendAction extends ActionSupport {
 	private Integer pageNo;
 	private Integer totalPageSize;
 	private Integer totalSize;
-	private Integer pageSize=2;
+	private Integer pageSize=10;
 	private Integer areaId;
 	private Integer recommendType = 2;
 	private String recommendTypeName="岛屿推荐";
@@ -73,11 +73,6 @@ public class SecondpackagerecommendAction extends ActionSupport {
 	
 	public String tolist(){
 		doIslandList();
-		for(Recommend recommend : recommendList){
-		    Integer islandId = recommend.getIslandId();
-		    Island obj = areaIslandBiz.queryIslandById(islandId);
-		    islandList.add(obj);
-		 }  
 		 
 		doList();
 		
@@ -92,11 +87,6 @@ public class SecondpackagerecommendAction extends ActionSupport {
 	    areaList = areaIslandBiz.queryAreaByMap(params);
 	    
 	    doIslandList();
-	    for(Recommend recommend : recommendList){
-	    	Integer islandId = recommend.getIslandId();
-	    	Island obj = areaIslandBiz.queryIslandById(islandId);
-	    	islandList.add(obj);
-	    }
 	    
 		return "add";
 	}
@@ -122,6 +112,7 @@ public class SecondpackagerecommendAction extends ActionSupport {
 		recommend.setTypeName(recommendTypeName);
 		this.recommendBiz.addMasterRecommend(recommend);
 		doList();
+		doIslandList();
 		return "list";
 		
 	}
@@ -132,20 +123,9 @@ public class SecondpackagerecommendAction extends ActionSupport {
 	    areaList = areaIslandBiz.queryAreaByMap(params);
 		
 	    doIslandList();
-	    for(Recommend recommend : recommendList){
-	    	Integer islandId = recommend.getIslandId();
-	    	Island obj = areaIslandBiz.queryIslandById(islandId);
-	    	islandList.add(obj);
-	    }
 	    
 		recommend = recommendBiz.queryById(id);
 		
-		if( recommend.getAreaId() != null && recommend.getAreaId() > 0){
-			Map<String,Object> islandparams = new HashMap<String,Object>(0);
-			islandparams.put("valid", 1);
-			islandparams.put("areaId", recommend.getAreaId());
-			islandList = areaIslandBiz.queryIslandByMap(islandparams);
-		}
 		
 		return "edit";
 	}
@@ -215,7 +195,13 @@ public class SecondpackagerecommendAction extends ActionSupport {
 			params.put("valid", 1);
 			params.put("typeId", 1);
 			List<Recommend> list = recommendBiz.queryByMap(params);
-			this.recommendList = list;
+			islandList = new ArrayList<Island>(0);
+			for(Recommend recommend : list){
+		    	Integer islandId = recommend.getIslandId();
+		    	Island obj = areaIslandBiz.queryIslandById(islandId);
+		    	islandList.add(obj);
+		    }
+		    
 		}
 	
 	private void doList(){

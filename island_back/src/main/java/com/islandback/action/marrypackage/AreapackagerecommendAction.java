@@ -5,6 +5,7 @@ package com.islandback.action.marrypackage;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -19,6 +20,7 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import com.jcl.core.module.ModuleRegistry;
+import com.anjuke.core.util.ObjectUtils;
 import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.AreaIslandBiz;
 import com.island.domain.biz.RecommendBiz;
@@ -33,14 +35,11 @@ import com.islandback.web.util.Struts2Utils;
 import com.opensymphony.xwork2.ActionSupport;
 
 //@SuppressWarnings("serial")
-@Namespace("/marrypackage/index")
+@Namespace("/marrypackage/areapackage")
 @ResultPath("/WEB-INF")
-public class MarraymasterrecomendAction extends ActionSupport {
-	/**
-	 * 图片  ＋ 标题  ＋ 价格 ＋ 岛屿  ＋ 时间 ＋ 链接
-	 */
+public class AreapackagerecommendAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
-	private Recommend recommend;//首页主推
+	private Recommend recommend=new Recommend();//首页主推
 	private Integer packageType=1;
 	private Integer id;
 	private File image;
@@ -52,6 +51,10 @@ public class MarraymasterrecomendAction extends ActionSupport {
 	private Integer totalSize;
 	private Integer pageSize=10;
 	private Integer areaId;
+	private Integer recommendType = 3;
+	private String recommendTypeName="套餐推荐";
+	private Integer islandId;
+	private String content;
 	
 	
 	RecommendBiz recommendBiz = ModuleRegistry.getInstance()
@@ -60,8 +63,8 @@ public class MarraymasterrecomendAction extends ActionSupport {
 	AreaIslandBiz areaIslandBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getAreaIslandBiz();
 	
-	private List<Island> islandList;
-	private List<Area> areaList;
+	private List<Island> islandList=new ArrayList<Island>(0);
+	private List<Area> areaList = new ArrayList<Area>(0);
 	private List<Recommend> recommendList;
 	
 	private SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
@@ -71,14 +74,16 @@ public class MarraymasterrecomendAction extends ActionSupport {
 	
 	
 	public String tolist(){
+		doAreaList();
+		doIslandList();
 		doList();
+		
 		return "list";
 	}
 	
 	public String toAdd(){
-		Map<String,Object> params = new HashMap<String,Object>(0);
-		params.put("valid", 1);
-	    areaList = areaIslandBiz.queryAreaByMap(params);
+	    doAreaList();
+	    doIslandList();
 		return "add";
 	}
 	
@@ -92,17 +97,20 @@ public class MarraymasterrecomendAction extends ActionSupport {
 		}
 		recommend.setCreatePerson(creater);
 		int now = (int)(System.currentTimeMillis()/1000);
-		recommend.setModuleId(ModuleEnum.MARRAY_PACKAGE_INDEX_MASTER_RECOMMEND);
+		recommend.setModuleId(ModuleEnum.MARRAY_PACKAGE_INDEX_AREA_RECOMMEND);
 		if(image != null ){
 			recommend.setImgUrl(upload());
 		}
 		recommend.setCreatePerson(creater);
 		recommend.setCreateTime(now);
 		recommend.setValid(1);
-		
-		
+		recommend.setTypeId(recommendType);
+		recommend.setTypeName(recommendTypeName);
 		this.recommendBiz.addMasterRecommend(recommend);
+		recommend.setIslandId(0);
 		doList();
+		doAreaList();
+		doIslandList();
 		return "list";
 		
 	}
@@ -112,15 +120,10 @@ public class MarraymasterrecomendAction extends ActionSupport {
 		params.put("valid", 1);
 	    areaList = areaIslandBiz.queryAreaByMap(params);
 		
-	    
+	    doAreaList();
+	    doIslandList();
 		recommend = recommendBiz.queryById(id);
 		
-		if( recommend.getAreaId() != null && recommend.getAreaId() > 0){
-			Map<String,Object> islandparams = new HashMap<String,Object>(0);
-			islandparams.put("valid", 1);
-			islandparams.put("areaId", recommend.getAreaId());
-			islandList = areaIslandBiz.queryIslandByMap(islandparams);
-		}
 		
 		return "edit";
 	}
@@ -138,6 +141,8 @@ public class MarraymasterrecomendAction extends ActionSupport {
 		}
 		recommend.setUpdTime(now);
 		this.recommendBiz.updRecommendByModel(recommend);
+		doAreaList();
+		doIslandList();
 		doList();
 		return "list";
 	}
@@ -153,7 +158,9 @@ public class MarraymasterrecomendAction extends ActionSupport {
 		setParams.put("valid", 0);
 		setParams.put("updPerson", creater);
 		setParams.put("id", id);
-		this.recommendBiz.updRecommend(setParams);		
+		this.recommendBiz.updRecommend(setParams);	
+		doAreaList();
+		doIslandList();
 		doList();
 		return "list";
 	}
@@ -183,7 +190,40 @@ public class MarraymasterrecomendAction extends ActionSupport {
 	        }  
 	       return imageServPrefix+namePrefix+"/"+imageFileName;  
 	  }  
+	 
+	 private void doAreaList(){
+			Map<String,Object> params = new HashMap<String,Object>(0);
+			params.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_AREA_RECOMMEND);
+			params.put("valid", 1);
+			params.put("typeId", 1);
+			List<Recommend> list = recommendBiz.queryByMap(params);
+			areaList = new ArrayList<Area>(0);
+			for(Recommend recommend : list){
+		    	Integer areaId = recommend.getAreaId();
+		    	Area obj = areaIslandBiz.queryAreaById(areaId);
+		    	areaList.add(obj);
+		    }
+//			if( recommend == null || recommend.getAreaId()== null || recommend.getAreaId().intValue() == 0){
+//				recommend.setAreaId(areaList.get(0).getId());
+//			}
+		}
 
+	 private void doIslandList(){
+			Map<String,Object> params = new HashMap<String,Object>(0);
+			params.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_AREA_RECOMMEND);
+			params.put("valid", 1);
+			params.put("typeId", 2);
+			if(recommend != null && recommend.getAreaId()!= null){
+				params.put("areaId", recommend.getAreaId());
+			}
+			List<Recommend> list = recommendBiz.queryByMap(params);
+			
+			for(Recommend recommend : list){
+		    	Integer islandId = recommend.getIslandId();
+		    	Island obj = areaIslandBiz.queryIslandById(islandId);
+		    	islandList.add(obj);
+		    }
+		}
 	
 	private void doList(){
 		if(pageNo == null || pageNo < 1){
@@ -193,18 +233,35 @@ public class MarraymasterrecomendAction extends ActionSupport {
 			pageSize = 5;
 		}
 		Map<String,Object> params = new HashMap<String,Object>(0);
-		params.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_MASTER_RECOMMEND);
+		params.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_AREA_RECOMMEND);
 		params.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
 		page.setPageSize(pageSize);
 		params.put("begin", page.getBegin());
 		params.put("size", page.getPageSize());
+		params.put("typeId", recommendType);
+		if(recommend != null && recommend.getAreaId() != null  && recommend.getAreaId().intValue() > 0 ){
+			params.put("areaId", recommend.getAreaId());
+			
+			if(recommend != null && recommend.getIslandId() != null  && recommend.getIslandId().intValue() > 0 ){
+				params.put("islandId", recommend.getIslandId());
+			}
+		}
+		
 		List<Recommend> list = recommendBiz.queryByMap(params);
 		if(list != null && list.size()>0){
 			Map<String,Object> countParam = new HashMap<String,Object>(0);
-			countParam.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_MASTER_RECOMMEND);
+			countParam.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_AREA_RECOMMEND);
 			countParam.put("valid", 1);
+			countParam.put("typeId", recommendType);
+			if(recommend != null && recommend.getAreaId() != null  && recommend.getAreaId().intValue() > 0 ){
+				countParam.put("areaId", recommend.getAreaId());
+				if(recommend != null && recommend.getIslandId() != null  && recommend.getIslandId().intValue() > 0 ){
+					countParam.put("islandId", recommend.getIslandId());
+				}
+			}
+			
 			this.totalSize = recommendBiz.countByMap(countParam);
 		}else{
 			this.totalSize=0;
@@ -298,6 +355,24 @@ public class MarraymasterrecomendAction extends ActionSupport {
 	}
 	public void setAreaId(Integer areaId) {
 		this.areaId = areaId;
+	}
+
+	public Integer getIslandId() {
+		return islandId;
+	}
+	public void setIslandId(Integer islandId) {
+		this.islandId = islandId;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+		if(!ObjectUtils.isEmpty(content)){
+			this.recommend.setRecommendDesc(content);
+		}
 	}
 	
 

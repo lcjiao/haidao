@@ -47,7 +47,7 @@ public class SecondislandrecommendAction extends ActionSupport {
 	private Integer pageNo;
 	private Integer totalPageSize;
 	private Integer totalSize;
-	private Integer pageSize=2;
+	private Integer pageSize=10;
 	private Integer areaId;
 	private Integer recommendType = 1;
 	private String recommendTypeName="岛屿推荐";

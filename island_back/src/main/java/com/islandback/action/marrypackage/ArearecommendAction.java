@@ -33,12 +33,9 @@ import com.islandback.web.util.Struts2Utils;
 import com.opensymphony.xwork2.ActionSupport;
 
 //@SuppressWarnings("serial")
-@Namespace("/marrypackage/index")
+@Namespace("/marrypackage/area")
 @ResultPath("/WEB-INF")
-public class MarraymasterrecomendAction extends ActionSupport {
-	/**
-	 * 图片  ＋ 标题  ＋ 价格 ＋ 岛屿  ＋ 时间 ＋ 链接
-	 */
+public class ArearecommendAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private Recommend recommend;//首页主推
 	private Integer packageType=1;
@@ -52,6 +49,8 @@ public class MarraymasterrecomendAction extends ActionSupport {
 	private Integer totalSize;
 	private Integer pageSize=10;
 	private Integer areaId;
+	private Integer recommendType = 1;
+	private String recommendTypeName="区域推荐";
 	
 	
 	RecommendBiz recommendBiz = ModuleRegistry.getInstance()
@@ -92,15 +91,15 @@ public class MarraymasterrecomendAction extends ActionSupport {
 		}
 		recommend.setCreatePerson(creater);
 		int now = (int)(System.currentTimeMillis()/1000);
-		recommend.setModuleId(ModuleEnum.MARRAY_PACKAGE_INDEX_MASTER_RECOMMEND);
+		recommend.setModuleId(ModuleEnum.MARRAY_PACKAGE_INDEX_AREA_RECOMMEND);
 		if(image != null ){
 			recommend.setImgUrl(upload());
 		}
 		recommend.setCreatePerson(creater);
 		recommend.setCreateTime(now);
 		recommend.setValid(1);
-		
-		
+		recommend.setTypeId(recommendType);
+		recommend.setTypeName(recommendTypeName);
 		this.recommendBiz.addMasterRecommend(recommend);
 		doList();
 		return "list";
@@ -193,18 +192,20 @@ public class MarraymasterrecomendAction extends ActionSupport {
 			pageSize = 5;
 		}
 		Map<String,Object> params = new HashMap<String,Object>(0);
-		params.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_MASTER_RECOMMEND);
+		params.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_AREA_RECOMMEND);
 		params.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
 		page.setPageSize(pageSize);
 		params.put("begin", page.getBegin());
 		params.put("size", page.getPageSize());
+		params.put("typeId", recommendType);
 		List<Recommend> list = recommendBiz.queryByMap(params);
 		if(list != null && list.size()>0){
 			Map<String,Object> countParam = new HashMap<String,Object>(0);
-			countParam.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_MASTER_RECOMMEND);
+			countParam.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_AREA_RECOMMEND);
 			countParam.put("valid", 1);
+			countParam.put("typeId", recommendType);
 			this.totalSize = recommendBiz.countByMap(countParam);
 		}else{
 			this.totalSize=0;
