@@ -45,6 +45,10 @@ public class ModuleEnum {
 	 * 婚礼套餐首页区域推荐套餐
 	 */
 	public static final Integer MARRAY_PACKAGE_INDEX_AREA_RECOMMEND=8;
+	/**
+	 * 婚礼套餐单页区域推荐
+	 */
+	public static final Integer MARRAY_PACKAGE_DETAIL_RECOMMEND=9;
 	
 	
 	
