@@ -26,6 +26,10 @@ public class ModuleTypeBiz {
 	public void updPackageTypeByMap(Map<String,Object> params){
 		this.islandPackageTypeDao.updateByMap(params);
 	}
+	
+	public void updPackageTypeByModule(IslandPackageType obj){
+		this.islandPackageTypeDao.update(obj);
+	}
 
 	public IslandPackageTypeIbatisDAOImpl getIslandPackageTypeDao() {
 		return islandPackageTypeDao;
