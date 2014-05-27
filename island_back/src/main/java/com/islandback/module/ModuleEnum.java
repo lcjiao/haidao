@@ -54,4 +54,11 @@ public class ModuleEnum {
 	
 	public static final Integer PACKAGE_TYPE_FREE_WALKER = 5;
 	
+	/**
+	 * 案例类型：1、摄影案例; 2、视频案例
+	 */
+	public static final Integer EXAM_TYPE_WEDDINGPHOTO = 1;
+	
+	public static final Integer EXAM_TYPE_VEDIO = 2;
+	
 }
