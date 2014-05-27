@@ -50,6 +50,7 @@
 		<property name="islandPackageDetailDao" ref="PackageDetailInfoDAO"></property>
 		<property name="islandPackageImgDao" ref="PackageImageRelationDAO"></property>
 		<property name="islandPackageKepianDao" ref="PackageKepianliuyingDAO"></property>
+		<property name="islandPackageTypeDao" ref="IslandPackageTypeDAO"></property>
 	</bean>
 	
 	<bean id="weddingPhotoBiz" class="com.island.domain.biz.WeddingPhotoBiz">
@@ -70,4 +71,8 @@
 		<property name="recommendDao" ref="RecommendDAO"></property>
 	</bean>
 	
+	<bean id="IslandPackageTypeDAO" class="com.island.domain.dal.IslandPackageTypeIbatisDAOImpl" />		
+	<bean id="moduleTypeBiz" class="com.island.domain.biz.ModuleTypeBiz">
+		<property name="islandPackageTypeDao" ref="IslandPackageTypeDAO"></property>
+	</bean>
 </beans>

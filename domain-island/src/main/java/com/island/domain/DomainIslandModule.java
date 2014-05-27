@@ -1,6 +1,7 @@
 package com.island.domain;
 
 import com.island.domain.biz.AreaIslandBiz;
+import com.island.domain.biz.ModuleTypeBiz;
 import com.island.domain.biz.RecommendBiz;
 import com.island.domain.biz.GlobalNetBiz;
 import com.island.domain.biz.MarrayPackageBiz;
@@ -24,6 +25,9 @@ public interface DomainIslandModule {
 	
 	@Bean("globalNetBiz")
 	public GlobalNetBiz getGlobalNetBiz();
+	
+	@Bean("moduleTypeBiz")
+	public ModuleTypeBiz getModuleTypeBiz();
 	/**
 	 * 婚纱摄影 业务类
 	 * @return

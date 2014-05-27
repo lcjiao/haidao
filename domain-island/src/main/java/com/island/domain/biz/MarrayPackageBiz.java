@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import com.island.domain.dal.IslandPackageIbatisDAOImpl;
+import com.island.domain.dal.IslandPackageTypeIbatisDAOImpl;
 import com.island.domain.dal.PackageDetailInfoIbatisDAOImpl;
 import com.island.domain.dal.PackageImageRelationIbatisDAOImpl;
 import com.island.domain.dal.PackageKepianliuyingIbatisDAOImpl;
 import com.island.domain.model.IslandPackage;
+import com.island.domain.model.IslandPackageType;
 import com.island.domain.model.PackageDetailInfo;
 import com.island.domain.model.PackageImageRelation;
 import com.island.domain.model.PackageKepianliuying;
@@ -17,6 +19,7 @@ public class MarrayPackageBiz {
 	private PackageDetailInfoIbatisDAOImpl islandPackageDetailDao;
 	private PackageImageRelationIbatisDAOImpl islandPackageImgDao;
 	private PackageKepianliuyingIbatisDAOImpl islandPackageKepianDao;
+	private IslandPackageTypeIbatisDAOImpl islandPackageTypeDao;
 
 	public IslandPackageIbatisDAOImpl getIslandPackageDao() {
 		return islandPackageDao;
@@ -45,12 +48,20 @@ public class MarrayPackageBiz {
 			PackageKepianliuyingIbatisDAOImpl islandPackageKepianDao) {
 		this.islandPackageKepianDao = islandPackageKepianDao;
 	}
+	public IslandPackageTypeIbatisDAOImpl getIslandPackageTypeDao() {
+		return islandPackageTypeDao;
+	}
+	public void setIslandPackageTypeDao(
+			IslandPackageTypeIbatisDAOImpl islandPackageTypeDao) {
+		this.islandPackageTypeDao = islandPackageTypeDao;
+	}
+	
+	
 	
 	
 	public List<IslandPackage> queryPackageByMap(Map<String,Object> params){
 		return this.islandPackageDao.queryByMap(params);
 	}
-	
 	public Integer countPackageByMap(Map<String,Object> params){
 		return this.islandPackageDao.countByMap(params);
 	}
@@ -102,5 +113,23 @@ public class MarrayPackageBiz {
 	}
 	public PackageKepianliuying queryPackageKepianById(Integer id){
 		return this.islandPackageKepianDao.queryById(id);
+	}
+	
+	public List<IslandPackageType> queryPackageTypeByMap(Map<String,Object> params){
+		return this.islandPackageTypeDao.queryByMap(params);
+	}
+	
+	public Integer countPackageTypeByMap(Map<String,Object> params){
+		return this.islandPackageTypeDao.countByMap(params);
+	}
+	
+	public void addPackageType(IslandPackageType obj){
+		this.islandPackageTypeDao.insert(obj);
+	}
+	public IslandPackageType queryPackageTypeById(Integer id){
+		return this.islandPackageTypeDao.queryById(id);
+	}
+	public void updPackageTypeByMap(Map<String,Object> params){
+		this.islandPackageTypeDao.updateByMap(params);
 	}
 }
