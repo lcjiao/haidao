@@ -104,6 +104,8 @@
     `area_name` varchar(50) DEFAULT NULL COMMENT '区域名称',
     `island_id` int(4) DEFAULT NULL COMMENT '岛屿编号',
     `island_name` varchar(50) DEFAULT NULL COMMENT '岛屿名称',
+    `type_id` int(4) DEFAULT NULL COMMENT '子类型编号',
+    `type_name` varchar(200) DEFAULT NULL COMMENT '子类型名称',
     `is_online` int(2) DEFAULT NULL COMMENT '是否有效 1上架  2下架',
     `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
     `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
@@ -500,5 +502,6 @@
         PRIMARY KEY (`id`),
         KEY `title` (`title`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8 comment '模块类型表'   
-        
+
+----------------------
         
