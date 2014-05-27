@@ -35,7 +35,7 @@ public class RolerightAction extends ActionSupport{
 	
 	
 	
-	public String manager(){
+	public String manager3(){
 		Map<String,Object> params = new HashMap<String,Object>(0);
 		params.put("valid", 1);
 		List<Menu> list  = this.roleBiz.queryMenuByMap(params);
@@ -117,4 +117,44 @@ public class RolerightAction extends ActionSupport{
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
+	
+	public String manager(){
+		Map<Integer,List<Menu>> menuTree = new HashMap<Integer,List<Menu>>(0);
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("valid", 1);
+		List<Menu> list  = this.roleBiz.queryMenuByMap(params);
+		for(Menu menu : list ){
+			params.put("menuParent", menu.getId());
+			List<Menu> sonList = this.roleBiz.queryMenuByMap(params);
+			if( sonList != null && !sonList.isEmpty()){
+				menu.setChildList(sonList);
+				menuTree.put(menu.getId(), sonList);
+			}
+		}
+		for(Menu menu : list){
+			if(menu.getMenuParent().intValue() == 0 ){
+				for(Menu sonMenu : menuTree.get(menu.getId())){
+					List<Menu>  threeMenuList = menuTree.get(sonMenu.getId());
+					if( threeMenuList != null && !threeMenuList.isEmpty()){
+						sonMenu.setChildList(threeMenuList);
+						sonMenu.setHaschild(1);
+					}
+				}
+				this.menuList.add(menu);
+			}
+		}
+
+		Collections.sort(this.menuList);
+		
+		
+		Map<String,Object> queryMap = new HashMap<String,Object>(0);
+		queryMap.put("valid", 1);
+		queryMap.put("roleId", roleId);
+		List<RoleRight> roleRightList = this.roleBiz.queryRoleRightByMap(queryMap);
+		if(roleRightList != null && !roleRightList.isEmpty()){
+			this.menuIds = roleRightList.get(0).getMenuIds();
+		}
+		return "manager";
+	}
+	
 }

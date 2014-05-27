@@ -127,4 +127,13 @@ public class Menu extends AbsModel implements Comparable{
 		return 0;
 	}
 	
+	private Integer haschild=0;
+	public Integer getHaschild() {
+		return haschild;
+	}
+	public void setHaschild(Integer haschild) {
+		this.haschild = haschild;
+	}
+	
+	
 }

@@ -43,6 +43,11 @@ $(function(){
 			<ul>
 					<c:forEach var="son" items="${parent.childList}">
 						 <li><a target="mainFrame" href="${son.menuUrl}" title="${son.id}"><c:out value="${son.menuName}"></c:out></a></li>
+						<ul>
+							<c:forEach var="three" items="${son.childList}">
+						 		<li><a target="mainFrame" href="${three.menuUrl}" title="${three.id}"><c:out value="${three.menuName}"></c:out></a></li>
+							</c:forEach>
+						</ul>
 					</c:forEach>
 		    </ul>
 	 </c:forEach>
