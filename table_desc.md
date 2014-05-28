@@ -104,6 +104,8 @@
     `area_name` varchar(50) DEFAULT NULL COMMENT '区域名称',
     `island_id` int(4) DEFAULT NULL COMMENT '岛屿编号',
     `island_name` varchar(50) DEFAULT NULL COMMENT '岛屿名称',
+    `type_id` int(4) DEFAULT NULL COMMENT '子类型编号',
+    `type_name` varchar(200) DEFAULT NULL COMMENT '子类型名称',
     `is_online` int(2) DEFAULT NULL COMMENT '是否有效 1上架  2下架',
     `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
     `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
@@ -481,7 +483,25 @@
 -------------------
         
         
-        
-        
-        
+##24. 模块类型表
+
+------------------
+        CREATE TABLE `island_package_type` (
+        `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+         `package_type` int(2) DEFAULT NULL COMMENT '套餐类别  1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐  5:自由行套餐 6:客户案例图片  7:客户案例视频',
+        `title` varchar(200) DEFAULT NULL COMMENT '类别名称',
+        `area_id` int(4) DEFAULT NULL COMMENT '区域编号',
+        `area_name` varchar(50) DEFAULT NULL COMMENT '区域名称',
+        `island_id` int(4) DEFAULT NULL COMMENT '岛屿编号',
+        `island_name` varchar(50) DEFAULT NULL COMMENT '岛屿名称',
+        `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
+        `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
+        `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
+        `upd_time` int(10) DEFAULT NULL COMMENT '更新时间',
+        `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
+        PRIMARY KEY (`id`),
+        KEY `title` (`title`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8 comment '模块类型表'   
+
+----------------------
         
