@@ -69,6 +69,24 @@ public class ModuleEnum {
 	 */
 	public static final Integer HOTEL_PACKAGE_DETAIL_RECOMMEND=13;
 	
+	/**
+	 * 自由行套餐首页主推
+	 */
+	public static final Integer FREEWALK_PACKAGE_INDEX_MASTER_RECOMMEND=14;
+	/**
+	 * 自由行套餐首页辅推套餐
+	 */
+	public static final Integer FREEWALK_PACKAGE_INDEX_SECOEND_RECOMMEND=15;
+	
+	/**
+	 * 自由行套餐首页区域推荐套餐
+	 */
+	public static final Integer FREEWALK_PACKAGE_INDEX_AREA_RECOMMEND=16;
+	/**
+	 * 自由行套餐单页区域推荐
+	 */
+	public static final Integer FREEWALK_PACKAGE_DETAIL_RECOMMEND=17;
+	
 	
 	
 	/**

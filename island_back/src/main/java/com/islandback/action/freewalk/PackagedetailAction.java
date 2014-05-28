@@ -1,4 +1,4 @@
-package com.islandback.action.hotel;
+package com.islandback.action.freewalk;
 
 
 
@@ -19,7 +19,7 @@ import com.islandback.web.util.RequestProcc;
 import com.opensymphony.xwork2.ActionSupport;
 
 //@SuppressWarnings("serial")
-@Namespace("/hotel/detail")
+@Namespace("/freewalk/detail")
 @ResultPath("/WEB-INF")
 public class PackagedetailAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
@@ -31,7 +31,7 @@ public class PackagedetailAction extends ActionSupport {
 	
 	public String toManager(){
 		Map<String,Object> params = new HashMap<String,Object>(0);
-		params.put("moduleId", ModuleEnum.HOTEL_PACKAGE_DETAIL_RECOMMEND);
+		params.put("moduleId", ModuleEnum.FREEWALK_PACKAGE_DETAIL_RECOMMEND);
 		params.put("valid", 1);
 		List<Recommend> list = recommendBiz.queryByMap(params);
 		if(list != null && list.size()>0){
@@ -50,7 +50,7 @@ public class PackagedetailAction extends ActionSupport {
 		}
 		recommend.setCreatePerson(creater);
 		int now = (int)(System.currentTimeMillis()/1000);
-		recommend.setModuleId(ModuleEnum.HOTEL_PACKAGE_DETAIL_RECOMMEND);
+		recommend.setModuleId(ModuleEnum.FREEWALK_PACKAGE_DETAIL_RECOMMEND);
 		recommend.setCreatePerson(creater);
 		recommend.setCreateTime(now);
 		recommend.setValid(1);
@@ -79,7 +79,7 @@ public class PackagedetailAction extends ActionSupport {
 	
 	public String  managerDetailRecommend(){
 		Map<String,Object> params = new HashMap<String,Object>(0);
-		params.put("moduleId", ModuleEnum.HOTEL_PACKAGE_DETAIL_RECOMMEND);
+		params.put("moduleId", ModuleEnum.FREEWALK_PACKAGE_DETAIL_RECOMMEND);
 		params.put("valid", 1);
 		List<Recommend> list = recommendBiz.queryByMap(params);
 		if(list != null && list.size()>0){
