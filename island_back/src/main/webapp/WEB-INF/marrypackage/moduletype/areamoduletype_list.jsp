@@ -74,7 +74,7 @@
 						</tr>
 					</thead>
 					<tbody id="r_list">
-						<c:forEach var="recommend" items="${moduleTypeList}">
+						<c:forEach var="moduleType" items="${moduleTypeList}">
 							<tr >
 								<td style="text-align:center;">
 									<c:out value="${moduleType.areaName}"></c:out>

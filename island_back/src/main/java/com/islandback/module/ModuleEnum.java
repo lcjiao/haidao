@@ -87,6 +87,16 @@ public class ModuleEnum {
 	 */
 	public static final Integer FREEWALK_PACKAGE_DETAIL_RECOMMEND=17;
 	
+	/**
+	 * 首页咨询标题
+	 */
+	public static final Integer FRONT_NEW_CONSULT_TITLE=18;
+	
+	/**
+	 * 友情链接
+	 */
+	public static final Integer FRIEND_LINK=19;
+	
 	
 	
 	/**

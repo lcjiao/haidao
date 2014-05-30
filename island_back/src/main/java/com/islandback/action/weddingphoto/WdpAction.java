@@ -10,7 +10,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.alibaba.fastjson.serializer.JSONSerializer;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -210,15 +209,15 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 	 * @throws Exception
 	 */
 	public void getIslandSelect() throws Exception{
-		map.clear();
-		map.put("areaId", areaId);
-		map.put("valid", 1);
-		islandList = areaIslandBiz.queryIslandByMap(map);
-		JSONSerializer	serializer = new JSONSerializer();
-		serializer.write(islandList);
-		response.setContentType("text/xml;charset=utf-8");
-		Writer writer = response.getWriter();
-		writer.write(serializer.toString());
+//		map.clear();
+//		map.put("areaId", areaId);
+//		map.put("valid", 1);
+//		islandList = areaIslandBiz.queryIslandByMap(map);
+//		JSONSerializer	serializer = new JSONSerializer();
+//		serializer.write(islandList);
+//		response.setContentType("text/xml;charset=utf-8");
+//		Writer writer = response.getWriter();
+//		writer.write(serializer.toString());
 	}
 	
 	public List<Island> getIslandList() {

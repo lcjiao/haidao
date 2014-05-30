@@ -131,6 +131,7 @@ public class PageAction extends ActionSupport{
 					}
 				}
 				if(userSonList.size() >  0 ){
+					Collections.sort(userSonList);
 					menu.setChildList(userSonList);
 					menuTree.put(menu.getId(), userSonList);
 				}
