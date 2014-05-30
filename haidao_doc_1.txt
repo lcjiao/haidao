@@ -1,5 +1,7 @@
-d得都从推荐表取数据
-      含有recommend_index得需要排序展示
+
+海岛前台页面模块数据
+注：含有module_id得都从推荐表取数据
+    含有recommend_index得需要排序展示
 
 一：首页
 1-1:首页主推产品
