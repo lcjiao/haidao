@@ -1,0 +1,313 @@
+d得都从推荐表取数据
+      含有recommend_index得需要排序展示
+
+一：首页
+1-1:首页主推产品
+
+module_id=1
+
+img_url:图片地址
+
+link_url:链接地址
+
+recommend_index:展示次序
+
+recommed_desc:备注描述
+
+valid:是否有效
+
+
+
+
+
+1-2:首页最受欢迎岛屿
+
+module_id=2
+
+title:岛屿名称
+
+img_url:图片地址
+
+big_image_url:悬浮图片地址
+
+link_url:链接地址
+
+recommend_index:展示次序
+
+valid:是否有效
+
+
+
+1-3:首页咨询内容
+
+module_id=3
+
+title:标题
+
+img_url:图片
+
+link_url:链接地址
+
+recommend_time:时间
+
+recommend_index:展示次序
+
+valid:是否有效
+
+
+
+1-4:首页套餐推荐
+
+module_id=4
+
+img_url:图片地址
+
+link_url:链接地址
+
+recommed_desc:备注描述
+
+recommend_index:展示次序
+
+valid:是否有效
+
+
+
+1-5:导航菜单
+
+module_id=5
+
+title:标题
+
+link_url:链接地址
+
+recommend_index:展示次序
+
+valid:是否有效
+
+1-6:首页咨询标题
+
+module_id=18
+
+title:标题
+
+valid:是否有效
+
+
+
+1-7:友情链接
+
+module_id=19
+
+title:名称
+
+link_url:链接地址
+
+lvalid:是否有效
+
+
+
+1-8:页脚 客户电话 qq 公司地址  等 从 公司表取数据
+
+
+
+
+
+二：婚礼套餐
+
+2-1:首页大图主推
+
+module_id=6
+
+title:标题
+
+area_id:区域编号
+
+area_name:区域名称
+
+island_id：岛屿编号
+
+island_name:岛屿名称
+
+price:价格
+
+img_url:图片
+
+ink_url:链接地址
+
+recommend_index:展示次序
+
+valid:是否有效
+
+
+2-2:首页辅推(岛屿套餐推荐)
+module_id=7
+此处有2块数据 根据module_id  +  type_id 分别获取
+
+岛屿数据 ：module_id=7  and  type_id = 1
+island_id：岛屿编号
+island_name:岛屿名称
+recommend_index:展示次序
+valid:是否有效
+
+套餐数据:module_id=7  and  type_id=2
+island_id：岛屿编号
+island_name:岛屿名称
+title:标题
+recommend_desc:描述
+img_url:logo图片
+link_url:链接地址
+recommend_index:展示次序
+valid:是否有效
+
+前台展示时候  可以先将2部分数据取出来，在程序里组合封装
+
+
+
+2-3:首页区域推荐(区域岛屿套餐推荐)
+module_id=8
+此处有3块数据 根据module_id  +  type_id 分别获取
+
+区域数据: module_id=8 and type=1
+area_id：区域编号
+area_name:区域名称
+recommend_index:展示次序
+valid:是否有效
+
+岛屿数据 ：module_id=8  and  type_id = 2
+area_id：区域编号
+area_name:区域名称
+island_id：岛屿编号
+island_name:岛屿名称
+valid:是否有效
+
+套餐数据：module_id=8 and type_id=3
+area_id：区域编号
+area_name:区域名称
+island_id：岛屿编号
+island_name:岛屿名称
+title:标题
+price_big:旺季价格
+price_small:淡季价格
+img_url:logo图片
+link_url:链接地址
+recommend_desc:简介
+valid:是否有效
+
+此处分页根据区域进行 pagesize=4
+前台展示时候  可以先将3部分数据取出来，在程序里组合封装
+
+
+2-4:婚礼套餐模块页面左上方菜单
+此处菜单 是2级结构   区域 －－－岛屿
+点击岛屿进入到相应得岛屿单页
+此处得数据 根据package_type=1从套餐表 获取含有套餐得岛屿 进行索引
+
+
+2-5:婚礼套餐模块页面左下方得 三小块推荐数据  
+注：这个地方得数据 全站统一  其他页面这里得数据 获取方式参照这里
+
+按照展示从上到下排序
+
+小模块一
+module_id=20
+title:标题
+price:价格
+img_url:logo图片
+link_url:链接地址
+recommend_index:展示次序
+valid:是否有效
+
+小模块二
+module_id=21
+title:标题
+recommend_time:时间
+img_url:logo图片
+link_url:链接地址
+recommend_index:展示次序
+valid:是否有效
+
+小模块三
+module_id=22
+title:标题
+link_url:链接地址
+recommend_index:展示次序
+valid:是否有效
+
+
+2-6:婚礼套餐首页 导航菜单  下拉显示区域列表
+此处得区域列表数据  来源2-3 下得区域数据
+点击区域 跳到区域展示得喵点位置
+
+
+2-7:婚礼套餐岛屿页 地图
+此处后台暂未实现 
+
+
+2-8:婚礼套餐岛屿页 套餐列表数据
+此处得列表数据根据该岛屿下得套餐类型 进行tag切换展示 
+该岛屿有哪几个套餐类型  从island_package_type 表中获取
+前台展示得tag为island_package_type 定义得类型 ＋  “全部“ 全部为所有类型下套餐
+这里有个排序逻辑 每个类型前3个为后台定义得推荐套餐，需要加”推荐“标记  其他得按创建时间倒序排序
+推荐套餐得判断逻辑是  套餐表里得  is_hot字段  is_hot=1表示推荐
+
+
+2-9：婚礼套餐详细页  
+基本信息来源套餐基本信息表
+此处说明几个点
+a:岛屿简介  来源该套餐属于得岛屿得介绍信息 具体信息在岛屿表内
+b：套餐图片说明  套餐后台定义了4种类型图片 
+	package_image_relation里得 img_type字段
+	img_type:1  默认logo图片
+	img_type:2 套餐图片集合  即在套餐详细页面 岛屿介绍上面展示得图片
+	img_type:3 套餐大图 即在套餐详细页面  岛屿介绍下面展示得大图
+	img_type:4 套餐小图 即在套餐详细页面  岛屿介绍下面展示得2张小图
+c:套餐详细  这个位置后台录入得内容是图片或者富文本 在package_detail_info表内获取数据
+d:客户留影  根据套餐编号从套餐客片留影表获取  package_kepianliuying
+e:咨询套餐即客户留言 由前台设计和维护表结构
+   所有得客户留言必须要有邮箱验证才可发表  ，邮箱在前台不显示 
+
+
+2-10婚礼套餐详细页 推荐模块
+module_id=23
+title:标题
+recommend_desc:描述
+img_url:logo图片
+link_url:链接地址
+recommend_index:展示次序
+valid:是否有效
+此处效果是默认显示图片 不展示文字内容，鼠标悬浮到图片位置时候  显示文字内容
+注：这个地方得数据 全站统一  其他页面这里得数据 获取方式参照这里
+
+
+
+2-11婚礼套餐详细也 注意事项
+module_id=9
+content:内容
+valid:是否有效
+此处后台录入为富文本  前台展示顺序与上面得推荐模块对调
+
+
+
+
+三：酒店套餐
+这里只定义下推荐位置得module_id 其他参照婚礼套餐
+
+3-1:首页大图主推  module_id=10
+3-2:首页辅推(岛屿套餐推荐) module_id=11
+3-3:首页区域推荐(区域岛屿套餐推荐) module_id=12
+3-4: 根据package_type=4从套餐表 获取含有套餐得岛屿 进行索引
+3-11婚礼套餐详细也 注意事项 module_id=13
+
+
+四：自由行套餐
+这里只定义下推荐位置得module_id 其他参照婚礼套餐
+
+4-1:首页大图主推  module_id=14
+4-2:首页辅推(岛屿套餐推荐) module_id=15
+4-3:首页区域推荐(区域岛屿套餐推荐) module_id=16
+4-4:根据package_type=5从套餐表 获取含有套餐得岛屿 进行索引
+4-11婚礼套餐详细也 注意事项 module_id=17
+
+
+
+
