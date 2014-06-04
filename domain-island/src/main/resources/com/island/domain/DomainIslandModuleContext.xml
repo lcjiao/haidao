@@ -70,4 +70,17 @@
 		<property name="recommendDao" ref="RecommendDAO"></property>
 	</bean>
 	
+	<bean id="customerCaseDAO" class="com.island.domain.dal.CustomerCaseIbatisDAOImpl" />
+	
+	<bean id="casePicMappingDAO" class="com.island.domain.dal.CasePicMappingIbatisDAOImpl" />		
+	
+	<bean id="caseVideoMappingDAO" class="com.island.domain.dal.CaseVideoMappingIbatisDAOImpl" />		
+	
+	<bean id="customerCaseBiz" class="com.island.domain.biz.CustomerCaseBiz">
+		<property name="customerCaseDao" ref="customerCaseDAO"></property>
+		<property name="casePicMappingDao" ref="casePicMappingDAO"></property>
+		<property name="islandPackageDao" ref="islandPackageDao"></property>
+		<property name="caseVideoMappingDao" ref="caseVideoMappingDAO"></property>
+	</bean>
+	
 </beans>
