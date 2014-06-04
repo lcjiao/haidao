@@ -57,7 +57,7 @@
 			<td><input type=text class="text" value="" id="link" name="recommend.linkUrl"  style="_width:316px;"/></td>					
 		</tr>
 		<tr>
-			<td>岛屿简介</td>
+			<td>简介</td>
 			<td>
 				<textarea name="content" style="width:700px;height:200px;"></textarea>
 			</td>

@@ -126,6 +126,9 @@ public class RolerightAction extends ActionSupport{
 		for(Menu menu : list ){
 			params.put("menuParent", menu.getId());
 			List<Menu> sonList = this.roleBiz.queryMenuByMap(params);
+//			if(sonList == null){
+//				sonList = new ArrayList<Menu>(0);
+//			}
 			if( sonList != null && !sonList.isEmpty()){
 				menu.setChildList(sonList);
 				menuTree.put(menu.getId(), sonList);
@@ -133,6 +136,9 @@ public class RolerightAction extends ActionSupport{
 		}
 		for(Menu menu : list){
 			if(menu.getMenuParent().intValue() == 0 ){
+				if(menuTree.get(menu.getId()) == null){
+					System.out.println(menu.getId());
+				}
 				for(Menu sonMenu : menuTree.get(menu.getId())){
 					List<Menu>  threeMenuList = menuTree.get(sonMenu.getId());
 					if( threeMenuList != null && !threeMenuList.isEmpty()){

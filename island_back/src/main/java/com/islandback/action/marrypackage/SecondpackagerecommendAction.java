@@ -51,7 +51,7 @@ public class SecondpackagerecommendAction extends ActionSupport {
 	private Integer pageSize=10;
 	private Integer areaId;
 	private Integer recommendType = 2;
-	private String recommendTypeName="岛屿推荐";
+	private String recommendTypeName="套餐推荐";
 	
 	
 	
