@@ -32,13 +32,13 @@ import com.islandback.web.util.RequestProcc;
 import com.islandback.web.util.UploadImgUtils;
 import com.opensymphony.xwork2.ActionSupport;
 
-@Namespace("/weddingphoto/wdp")
+@Namespace("/weddingphoto/wdptop")
 @ResultPath("/WEB-INF")
 /**
- *婚纱摄影图片推荐action(中间部分)
+ *婚纱摄影首页图片推荐action
  *
  */
-public class WdpAction extends ActionSupport implements ServletResponseAware {
+public class WdptopAction extends ActionSupport implements ServletResponseAware {
 	private static final long serialVersionUID = 1L;
 	private Recommend recommend;
 	private HttpServletResponse response;
@@ -76,7 +76,7 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 	}
 	
 	/**
-	 * 进入 婚纱摄影套餐 图片推荐 列表页
+	 * 进入 婚纱摄影套餐 顶部图片推荐 列表页
 	 * @return
 	 */
 	public String list(){
@@ -86,7 +86,7 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 	
 	private void doList(){
 		map.clear();
-		map.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
+		map.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_TOP_RECOMMEND);
 		map.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
@@ -96,7 +96,7 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 		recommendList = weddingPhotoBiz.queryByMap(map);
 		if(recommendList != null && recommendList.size()>0){
 			map.clear();
-			map.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
+			map.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_TOP_RECOMMEND);
 			map.put("valid", 1);
 			this.totalSize = weddingPhotoBiz.countByMap(map);
 		}
@@ -128,10 +128,10 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 		recommend.setCreatePerson(getCreater());
 		recommend.setCreateTime((int)System.currentTimeMillis()/1000);
 		recommend.setValid(1);
-		recommend.setModuleId(ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
+		recommend.setModuleId(ModuleEnum.WEDDING_PHOTO_FACE_TOP_RECOMMEND);
 		//changeIndexBySys(creater,recommend.getId(),recommend.getRecommendIndex());
-		recommend.setAreaName(areaIslandBiz.queryAreaById(recommend.getAreaId()).getName());
-		recommend.setIslandName(areaIslandBiz.queryIslandById(recommend.getIslandId()).getName());
+		//recommend.setAreaName(areaIslandBiz.queryAreaById(recommend.getAreaId()).getName());
+		//recommend.setIslandName(areaIslandBiz.queryIslandById(recommend.getIslandId()).getName());
 		weddingPhotoBiz.addRecommend(recommend);
 		initAreaList();
 		if("return".equals(flag)){
@@ -186,7 +186,7 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 		// 查询之前此排序得条目 如存在对调排序次序		 
 		map.clear();
 		map.put("recommendIndex", index);
-		map.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
+		map.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_TOP_RECOMMEND);
 		map.put("valid", 1);
 		List<Recommend> list = weddingPhotoBiz.queryByMap(map);
 		if( list.size() > 0 && null != list){

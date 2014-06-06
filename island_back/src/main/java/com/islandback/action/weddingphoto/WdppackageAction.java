@@ -115,7 +115,7 @@ public class WdppackageAction extends ActionSupport  {
 	}
 	
 	private void initTotalPageSize(){
-		this.totalPageSize = totalSize % pageSize == 0 ? totalSize / pageSize : ( totalSize / pageSize )+ 1;
+		this.totalPageSize = (totalSize - 1)/pageSize + 1;
 	}
 	
 	/**
