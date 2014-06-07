@@ -179,6 +179,8 @@
         `asker` varchar(50) DEFAULT NULL COMMENT '咨询人',
         `answer_time` int(10) DEFAULT NULL COMMENT '答复时间',
         `answer_person` varchar(50) DEFAULT NULL COMMENT '答复人',
+        `question_id` int(8) DEFAULT NULL COMMENT '问题ID 如果为回复则有值 如果是问题则为0',
+        `question_type` int(2) DEFAULT NULL COMMENT '1:表示问题  2:表示回复',
         PRIMARY KEY (`id`),
         KEY `package_index` (`package_id`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8
