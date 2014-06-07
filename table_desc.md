@@ -112,6 +112,7 @@
     `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
     `upd_time` int(10) DEFAULT NULL COMMENT '更新时间',
     `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
+    `is_hot` int(2) DEFAULT NULL  COMMENT '1:推荐 0:非推荐',
     PRIMARY KEY (`id`),
     KEY `title` (`title`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8
