@@ -69,6 +69,7 @@
 	<bean id="globalNetBiz" class="com.island.domain.biz.GlobalNetBiz">
 		<property name="companyDao" ref="CompanyDAO"></property>
 		<property name="recommendDao" ref="RecommendDAO"></property>
+		<property name="countryDao" ref="countryDao"></property>
 	</bean>
 	
 
@@ -90,5 +91,8 @@
 	<bean id="moduleTypeBiz" class="com.island.domain.biz.ModuleTypeBiz">
 		<property name="islandPackageTypeDao" ref="IslandPackageTypeDAO"></property>
 	</bean>
+	
+	<bean id="countryDao" class="com.island.domain.dal.CountryIbatisDAOImpl" />		
+	
 
 </beans>

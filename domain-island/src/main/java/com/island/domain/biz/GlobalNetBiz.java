@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 import com.island.domain.dal.CompanyIbatisDAOImpl;
+import com.island.domain.dal.CountryIbatisDAOImpl;
 import com.island.domain.dal.RecommendIbatisDAOImpl;
 import com.island.domain.model.Company;
+import com.island.domain.model.Country;
 import com.island.domain.model.Recommend;
 
 /**
@@ -17,6 +19,7 @@ public class GlobalNetBiz {
 
 	private RecommendIbatisDAOImpl recommendDao;
 	private CompanyIbatisDAOImpl companyDao;
+	private CountryIbatisDAOImpl countryDao;
 
 	public void setRecommendDao(RecommendIbatisDAOImpl recommendDao) {
 		this.recommendDao = recommendDao;
@@ -25,6 +28,9 @@ public class GlobalNetBiz {
 		this.companyDao = companyDao;
 	}
 	
+	public void setCountryDao(CountryIbatisDAOImpl countryDao) {
+		this.countryDao = countryDao;
+	}
 	public void addCompanyInfo(Company obj){
 		this.companyDao.insert(obj);
 	}
@@ -58,6 +64,26 @@ public class GlobalNetBiz {
 	
 	public Recommend queryRecommendById(Integer id){
 		return this.recommendDao.queryById(id);
+	}
+	
+	public void addCountry(Country obj){
+		this.countryDao.insert(obj);
+	}
+	
+	public void updConutryByModel(Country model){
+		this.countryDao.update(model);
+	}
+	public void updCountryByMap(Map<String,Object> parasm){
+		this.countryDao.updateByMap(parasm);
+	}
+	public Country queryCountryById(Integer id){
+		return this.countryDao.queryById(id);
+	}
+	public List<Country> queryCountryByMap(Map<String,Object> params){
+		return this.countryDao.queryByMap(params);
+	}
+	public Integer countCountryByMap(Map<String,Object> params){
+		return this.countryDao.countByMap(params);
 	}
 	
 }
