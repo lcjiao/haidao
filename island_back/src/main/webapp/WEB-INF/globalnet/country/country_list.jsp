@@ -161,7 +161,6 @@
 		var isHide = confirm('确定删除吗?');
 		if(isHide){
 			var id = $(ele).attr('title');
-			alert(id);
 			var url = "${ctx}/globalnet/country/country!del.action?id="+id;
 			window.location.href = url; 
 		}
