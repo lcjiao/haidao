@@ -86,14 +86,7 @@ function setIslandName(){
 }
 
 function checkData(){
-	var r = /^[0-9]+$/;
-	var index_num = $("#index_num").val();
-	if(!r.test(index_num)){
-		alert('排序只能为数字');
-		return;
-	}else{
-		$("#form").submit();
-	}
+	$("#form").submit();
 }
 </script>
 </html>
