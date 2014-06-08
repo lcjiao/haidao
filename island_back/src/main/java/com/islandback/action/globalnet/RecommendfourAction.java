@@ -33,9 +33,9 @@ import com.islandback.web.util.Struts2Utils;
 import com.opensymphony.xwork2.ActionSupport;
 
 //@SuppressWarnings("serial")
-@Namespace("/globalnet/recommendone")
+@Namespace("/globalnet/recommendfour")
 @ResultPath("/WEB-INF")
-public class RecommendoneAction extends ActionSupport {
+public class RecommendfourAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private Recommend recommend;//首页主推
 	private Integer packageType=1;

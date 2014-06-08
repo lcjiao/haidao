@@ -33,9 +33,9 @@ import com.islandback.web.util.Struts2Utils;
 import com.opensymphony.xwork2.ActionSupport;
 
 //@SuppressWarnings("serial")
-@Namespace("/globalnet/recommendone")
+@Namespace("/globalnet/recommendthree")
 @ResultPath("/WEB-INF")
-public class RecommendoneAction extends ActionSupport {
+public class RecommendthreeAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private Recommend recommend;//首页主推
 	private Integer packageType=1;
@@ -89,7 +89,7 @@ public class RecommendoneAction extends ActionSupport {
 		}
 		recommend.setCreatePerson(creater);
 		int now = (int)(System.currentTimeMillis()/1000);
-		recommend.setModuleId(ModuleEnum.GLOBAL_RECOMMEND_ONE);
+		recommend.setModuleId(ModuleEnum.GLOBAL_RECOMMEND_THREE);
 		if(image != null ){
 			recommend.setImgUrl(upload());
 		}
@@ -188,7 +188,7 @@ public class RecommendoneAction extends ActionSupport {
 			pageSize = 5;
 		}
 		Map<String,Object> params = new HashMap<String,Object>(0);
-		params.put("moduleId", ModuleEnum.GLOBAL_RECOMMEND_ONE);
+		params.put("moduleId", ModuleEnum.GLOBAL_RECOMMEND_THREE);
 		params.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
@@ -198,7 +198,7 @@ public class RecommendoneAction extends ActionSupport {
 		List<Recommend> list = recommendBiz.queryByMap(params);
 		if(list != null && list.size()>0){
 			Map<String,Object> countParam = new HashMap<String,Object>(0);
-			countParam.put("moduleId", ModuleEnum.GLOBAL_RECOMMEND_ONE);
+			countParam.put("moduleId", ModuleEnum.GLOBAL_RECOMMEND_THREE);
 			countParam.put("valid", 1);
 			this.totalSize = recommendBiz.countByMap(countParam);
 		}else{

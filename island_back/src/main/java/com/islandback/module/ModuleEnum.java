@@ -97,6 +97,27 @@ public class ModuleEnum {
 	 */
 	public static final Integer FRIEND_LINK=19;
 	
+
+	/**
+	 * 全站推荐一
+	 */
+	public static final Integer GLOBAL_RECOMMEND_ONE=20;
+	
+	/**
+	 * 全站推荐二
+	 */
+	public static final Integer GLOBAL_RECOMMEND_TWO=21;
+	
+	/**
+	 * 全站推荐三
+	 */
+	public static final Integer GLOBAL_RECOMMEND_THREE=22;
+	
+	/**
+	 * 全站推荐四
+	 */
+	public static final Integer GLOBAL_RECOMMEND_FOUR=23;
+	
 	
 	
 	/**
