@@ -121,9 +121,25 @@ public class ModuleEnum {
 	
 	
 	/**
-	 * 婚纱摄影套餐首页图片推荐
+	 * 婚纱摄影套餐图片推荐
 	 */
-	public static final Integer WEDDING_PHOTO_FACE_RECOMMEND=20;
+	public static final Integer WEDDING_PHOTO_FACE_RECOMMEND=103;
+	
+	/**
+	 * 婚纱摄影套餐首页图片推荐(最上面的大图片)
+	 */
+	public static final Integer WEDDING_PHOTO_FACE_TOP_RECOMMEND=101;
+	
+	/**
+	 * 婚纱摄影套餐左边图片推荐(上边小三块)
+	 */
+	public static final Integer WEDDING_PHOTO_FACE_LEFT_RECOMMEND=102;
+
+	/**
+	 * 婚纱摄影套餐左边图片推荐(下边小三块)
+	 */
+	public static final Integer WEDDING_PHOTO_FACE_LEFT2_RECOMMEND=104;
+
 	/**
 	 * 套餐类型 1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐  5:自由行套餐'
 	 */
