@@ -6,7 +6,7 @@ public class ModuleEnum {
 	 */
 	public static final String IMAGE_SAVE_PATH="/Users/lcjiao/index/";
 	
-	public static final String IMAGE_SERV_PREFIX="http://127.0.0.1:8888/";
+	public static final String IMAGE_SERV_PREFIX="http://192.168.2.104:8888/";
 
 	/**
 	 * 首页主推产品

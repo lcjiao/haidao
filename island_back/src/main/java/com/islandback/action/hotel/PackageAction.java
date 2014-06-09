@@ -44,7 +44,7 @@ public class PackageAction extends ActionSupport {
 	private Integer totalPageSize;
 	private Integer totalSize;
 	private Integer pageSize=10;
-	private Integer packageType=1;
+	private Integer packageType=4;
 	
 	private Integer id;
 	private Integer islandId;
@@ -131,7 +131,7 @@ public class PackageAction extends ActionSupport {
 		if(islandId != null && islandId.intValue() > 0 ){
 			params.put("islandId", islandId);
 		}
-		params.put("packageType", 1);
+		params.put("packageType", packageType);
 		List<IslandPackage> list = packageBiz.queryPackageByMap(params);
 		if(list != null && list.size()>0){
 			Map<String,Object> countParam = new HashMap<String,Object>(0);
@@ -248,7 +248,7 @@ public class PackageAction extends ActionSupport {
 			addObj.setIslandName(island.getName());
 		}
 		addObj.setValid(1);
-		addObj.setPackageType(1);
+		addObj.setPackageType(packageType);
 		this.packageBiz.addPackage(addObj);
 		if( actionType.intValue() == 1){
 			dolist();
@@ -469,7 +469,7 @@ public class PackageAction extends ActionSupport {
 			addObj.setImgType(imgType);
 		}
 		addObj.setValid(1);
-		addObj.setPackageType(1);
+		addObj.setPackageType(packageType);
 		addObj.setPackageId(id);
 		addObj.setImgUrl(upload());
 		this.packageBiz.addPackageImg(addObj);
@@ -644,7 +644,7 @@ public class PackageAction extends ActionSupport {
 			addObj.setLink(kepianLink);
 		}
 		addObj.setValid(1);
-		addObj.setPackageType(1);
+		addObj.setPackageType(packageType);
 		addObj.setPackageId(id);
 		addObj.setImg(upload());
 		this.packageBiz.addPackageKepianliuying(addObj);

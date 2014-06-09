@@ -49,7 +49,7 @@ public class SecondislandrecommendAction extends ActionSupport {
 	private Integer totalSize;
 	private Integer pageSize=10;
 	private Integer areaId;
-	private Integer recommendType = 1;
+	private Integer recommendType = 2;
 	private String recommendTypeName="岛屿推荐";
 	
 	

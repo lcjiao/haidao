@@ -50,7 +50,7 @@ public class SecondpackagerecommendAction extends ActionSupport {
 	private Integer totalSize;
 	private Integer pageSize=10;
 	private Integer areaId;
-	private Integer recommendType = 2;
+	private Integer recommendType = 3;
 	private String recommendTypeName="套餐推荐";
 	
 	
