@@ -12,7 +12,9 @@ import org.apache.struts2.convention.annotation.ResultPath;
 import com.jcl.core.module.ModuleRegistry;
 import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.AreaIslandBiz;
+import com.island.domain.biz.GlobalNetBiz;
 import com.island.domain.model.Area;
+import com.island.domain.model.Country;
 import com.island.domain.model.Island;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
@@ -43,6 +45,12 @@ public class IslandAction extends ActionSupport {
 	AreaIslandBiz areaIslandBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getAreaIslandBiz();
 	
+	GlobalNetBiz globalNetBiz = ModuleRegistry.getInstance()
+            .getModule(DomainIslandModule.class).getGlobalNetBiz();
+	
+	private List<Country> countryList;
+	
+
 	public String list(){
 		doList();
 		return "list";
@@ -55,6 +63,7 @@ public class IslandAction extends ActionSupport {
 		params.put("valid", 1);
 	    areaList = areaIslandBiz.queryAreaByMap(params);
 		
+	    countryList = globalNetBiz.queryCountryByMap(params);
 		return "add";
 	}
 	
@@ -108,6 +117,7 @@ public class IslandAction extends ActionSupport {
 		Map<String,Object> params = new HashMap<String,Object>(0);
 		params.put("valid", 1);
 	    areaList = areaIslandBiz.queryAreaByMap(params);
+	    countryList = globalNetBiz.queryCountryByMap(params);
 		return "edit";
 	}
 	
@@ -253,6 +263,12 @@ public class IslandAction extends ActionSupport {
 	}
 	public void setAreaList(List<Area> areaList) {
 		this.areaList = areaList;
+	}
+	public List<Country> getCountryList() {
+		return countryList;
+	}
+	public void setCountryList(List<Country> countryList) {
+		this.countryList = countryList;
 	}
 	
 }

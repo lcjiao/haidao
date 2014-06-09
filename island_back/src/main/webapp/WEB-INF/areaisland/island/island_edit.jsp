@@ -60,7 +60,14 @@
 		</tr>
 		<tr>
 			<td>所属国家</td>
-			<td><input type=text class="text" value="${country}" id="country" name="country"  style="_width:316px;"/></td>					
+			<td>
+			<select id="country" name="country">
+					<option value="0" selected="selected">--请选择--</option>
+					<c:forEach var="country" items="${countryList}">
+							<option value="${country.name}">${country.name}</option>
+				   </c:forEach>
+				</select>
+			</td>
 		</tr>
 		<%-- <tr>
 			<td>岛屿简介</td>
@@ -91,8 +98,13 @@
 </body>
 <script>
 	$(function(){
+		 jQuery.fn.setSelectedValue  =   function (value){   
+			       jQuery( this ).get( 0 ).value  =  value;   
+		} ; 
 		var areaId = '${areaId}';
 		$("#area_id option[value='"+areaId+"']").attr('selected',true);
+		var country= '${country}';
+		$("#country").setSelectedValue(country);
 		$("#area_id").bind('change',setAreaName);
 		$("#save").bind('click',submitSave);
 		$("#reset").bind('click',resetCreate);

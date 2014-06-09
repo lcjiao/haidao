@@ -60,7 +60,14 @@
 		</tr>
 		<tr>
 			<td>所属国家</td>
-			<td><input type=text class="text" value="" id="country" name="country"  style="_width:316px;"/></td>					
+			<td>
+			<select id="country" name="country">
+					<option value="0" selected="selected">--请选择--</option>
+					<c:forEach var="country" items="${countryList}">
+							<option value="${country.name}">${country.name}</option>
+				   </c:forEach>
+				</select>
+			</td>
 		</tr>
 		<tr>
 			<td>岛屿简介</td>
