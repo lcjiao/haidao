@@ -193,7 +193,7 @@ public class SecondpackagerecommendAction extends ActionSupport {
 			Map<String,Object> params = new HashMap<String,Object>(0);
 			params.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_SECOEND_RECOMMEND);
 			params.put("valid", 1);
-			params.put("typeId", 1);
+			params.put("typeId", 2);
 			List<Recommend> list = recommendBiz.queryByMap(params);
 			islandList = new ArrayList<Island>(0);
 			for(Recommend recommend : list){

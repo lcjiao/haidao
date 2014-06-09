@@ -40,7 +40,7 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 public class PackageAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
-	private Integer pageNo=5;
+	private Integer pageNo=1;
 	private Integer totalPageSize;
 	private Integer totalSize;
 	private Integer pageSize=10;
