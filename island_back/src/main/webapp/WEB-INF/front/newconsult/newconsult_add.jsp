@@ -16,6 +16,15 @@
 <div  class="creatcustomer" >
 <table class="datalist" width="100%">
 	<tbody>
+	    <tr>
+			<td>展示列</td>
+			<td>  
+				<select id="typeId" name="typeId">
+					<option value="1" selected="selected">--第一列--</option>
+					<option value="2">--第二列--</option>
+				</select>
+			</td>					
+		</tr>
 		<tr>
 			<td>标题</td>
 			<td><input type=text class="text" value="" id="title" name="title" style="width:255px;" /></td>					

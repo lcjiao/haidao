@@ -14,57 +14,72 @@ import java.util.Map;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ResultPath;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import com.jcl.core.module.ModuleRegistry;
 import com.island.domain.DomainIslandModule;
+import com.island.domain.biz.AreaIslandBiz;
 import com.island.domain.biz.RecommendBiz;
+import com.island.domain.model.Area;
+import com.island.domain.model.Island;
 import com.island.domain.model.Recommend;
 import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
 import com.islandback.web.util.RequestProcc;
+import com.islandback.web.util.Struts2Utils;
 import com.opensymphony.xwork2.ActionSupport;
 
-@Namespace("/front/newconsult")
+//@SuppressWarnings("serial")
+@Namespace("/front/newconsultnames")
 @ResultPath("/WEB-INF")
-/**
- *最受欢迎岛屿
- *
- */
-public class NewconsultAction extends ActionSupport {
+public class NewconsultnamesAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
+	private Recommend recommend;//首页主推
+	private Integer packageType=1;
 	private Integer id;
-	private Integer typeId;
-	private String link;
-	private Integer index;
-	private String title;
-	private String time;
-	private Integer totalPageSize;
-	private Integer totalSize;
-	private Integer pageNo=1;
-	private Integer pageSize=10;
-	private List<Recommend> recommendList;
 	private File image;
 	private String imageFileName;
 	private String imageServPath=ModuleEnum.IMAGE_SAVE_PATH;
 	private String imageServPrefix=ModuleEnum.IMAGE_SERV_PREFIX;
+	private Integer pageNo;
+	private Integer totalPageSize;
+	private Integer totalSize;
+	private Integer pageSize=10;
+	private Integer areaId;
+	
 	
 	RecommendBiz recommendBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getRecommendBiz();
-	private SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 	
-	public String list(){
+	AreaIslandBiz areaIslandBiz = ModuleRegistry.getInstance()
+            .getModule(DomainIslandModule.class).getAreaIslandBiz();
+	
+	private List<Island> islandList;
+	private List<Area> areaList;
+	private List<Recommend> recommendList;
+	
+	private SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+	private ObjectMapper mapper = new ObjectMapper();
+	
+
+	
+	
+	public String tolist(){
 		doList();
 		return "list";
 	}
 	
-	
 	public String toAdd(){
-		RequestProcc.getSession().invalidate();
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("valid", 1);
+	    areaList = areaIslandBiz.queryAreaByMap(params);
 		return "add";
 	}
 	
-	public String execute(){
+	public String add(){
 		//管理员身份验证
 		
 		String creater = "";
@@ -72,28 +87,56 @@ public class NewconsultAction extends ActionSupport {
 		if(sessionInfo != null ){
 			creater = sessionInfo.getUser().getUserName(); 
 		}
-		Recommend addObj = new Recommend();
-		addObj.setCreatePerson(creater);
+		recommend.setCreatePerson(creater);
 		int now = (int)(System.currentTimeMillis()/1000);
-		addObj.setModuleId(ModuleEnum.FRONT_NEW_CONSULT);
-		addObj.setLinkUrl(link);
-		addObj.setTitle(title);
-		addObj.setTypeId(typeId);
-		addObj.setRecommendTime(time);
+		recommend.setModuleId(ModuleEnum.GLOBAL_RECOMMEND_THREE);
 		if(image != null ){
-			addObj.setImgUrl(upload());
+			recommend.setImgUrl(upload());
 		}
-		addObj.setCreatePerson(creater);
-		addObj.setCreateTime(now);
-		addObj.setRecommendIndex(index);
-		addObj.setValid(1);
-		
-				
-		this.recommendBiz.addMasterRecommend(addObj);
+		recommend.setCreatePerson(creater);
+		recommend.setCreateTime(now);
+		recommend.setValid(1);
+		this.recommendBiz.addMasterRecommend(recommend);
 		doList();
 		return "list";
 		
 	}
+	
+	public String toEdit(){
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("valid", 1);
+	    areaList = areaIslandBiz.queryAreaByMap(params);
+		
+	    
+		recommend = recommendBiz.queryById(id);
+		
+		if( recommend.getAreaId() != null && recommend.getAreaId() > 0){
+			Map<String,Object> islandparams = new HashMap<String,Object>(0);
+			islandparams.put("valid", 1);
+			islandparams.put("areaId", recommend.getAreaId());
+			islandList = areaIslandBiz.queryIslandByMap(islandparams);
+		}
+		
+		return "edit";
+	}
+	
+	public String edit(){
+		String creater = "";
+		SessionInfo sessionInfo = RequestProcc.getSessionInfo();
+		if(sessionInfo != null ){
+			creater = sessionInfo.getUser().getUserName(); 
+		}
+		recommend.setUpdPerson(creater);
+		int now = (int)(System.currentTimeMillis()/1000);
+		if(image != null  ){
+			recommend.setImgUrl(upload());
+		}
+		recommend.setUpdTime(now);
+		this.recommendBiz.updRecommendByModel(recommend);
+		doList();
+		return "list";
+	}
+	
 	
 	public String del(){
 		String creater = "";
@@ -109,67 +152,15 @@ public class NewconsultAction extends ActionSupport {
 		doList();
 		return "list";
 	}
-	
-	public String toEdit(){
-		Recommend obj = recommendBiz.queryById(id);
-		this.link=obj.getLinkUrl();
-		this.title=obj.getTitle();
-		this.index=obj.getRecommendIndex();
-		this.time=obj.getRecommendTime();
-		this.typeId=obj.getTypeId();
-		return "edit";
-	}
-	
-	
-	public String edit(){
-		String creater = "";
-		SessionInfo sessionInfo = RequestProcc.getSessionInfo();
-		if(sessionInfo != null ){
-			creater = sessionInfo.getUser().getUserName(); 
-		}
+	public void getIslandByArea() throws JsonGenerationException, JsonMappingException, IOException{
 		Map<String,Object> params = new HashMap<String,Object>(0);
-		params.put("title", title);
-		params.put("recommendIndex", index);
-		params.put("recommendTime", time);
-		params.put("linkUrl", link);
-		params.put("typeId", typeId);
-		if(image != null ){
-			params.put("imgUrl", upload());
-		}
-		params.put("updPerson", creater);
-		params.put("id", id);
-		
-		changeIndexBySys(creater);
-
-		this.recommendBiz.updRecommend(params);		
-		doList();
-		return "list";
+		params.put("valid", 1);
+		params.put("areaId", areaId);
+		List<Island> list = areaIslandBiz.queryIslandByMap(params);
+		Struts2Utils.renderJson(mapper.writeValueAsString(list));
 	}
 	
-	private void changeIndexBySys(String creater){
-		Recommend thisObj = this.recommendBiz.queryById(id);
-		/**
-		 * 查询之前此排序得条目 如存在对调排序次序
-		 */
-		Map<String,Object> indexParams = new HashMap<String,Object>(0);
-		indexParams.put("recommendIndex", index);
-		indexParams.put("moduleId", ModuleEnum.FRONT_NEW_CONSULT);
-		indexParams.put("valid", 1);
-		List<Recommend> list = recommendBiz.queryByMap(indexParams);
-		Recommend oldIndexObj = null;
-		if( list != null && !list.isEmpty()){
-			oldIndexObj = list.get(0);
-		}
-		if( oldIndexObj != null && thisObj != null){
-			Map<String,Object> oldObjParams = new HashMap<String,Object>(0);
-			oldObjParams.put("recommendIndex", thisObj.getRecommendIndex());
-			oldObjParams.put("updPerson", creater);
-			oldObjParams.put("id", oldIndexObj.getId());
-			this.recommendBiz.updRecommend(oldObjParams);
-		}	
-	}
-
-	public String upload() {  
+	 public String upload() {  
 		   if(image == null){
 			   return "";
 		   }
@@ -187,6 +178,8 @@ public class NewconsultAction extends ActionSupport {
 	        }  
 	       return imageServPrefix+namePrefix+"/"+imageFileName;  
 	  }  
+
+	
 	private void doList(){
 		if(pageNo == null || pageNo < 1){
 			pageNo = 1;
@@ -195,7 +188,7 @@ public class NewconsultAction extends ActionSupport {
 			pageSize = 5;
 		}
 		Map<String,Object> params = new HashMap<String,Object>(0);
-		params.put("moduleId", ModuleEnum.FRONT_NEW_CONSULT);
+		params.put("moduleId", ModuleEnum.GLOBAL_RECOMMEND_THREE);
 		params.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
@@ -205,7 +198,7 @@ public class NewconsultAction extends ActionSupport {
 		List<Recommend> list = recommendBiz.queryByMap(params);
 		if(list != null && list.size()>0){
 			Map<String,Object> countParam = new HashMap<String,Object>(0);
-			countParam.put("moduleId", ModuleEnum.FRONT_NEW_CONSULT);
+			countParam.put("moduleId", ModuleEnum.GLOBAL_RECOMMEND_THREE);
 			countParam.put("valid", 1);
 			this.totalSize = recommendBiz.countByMap(countParam);
 		}else{
@@ -215,27 +208,25 @@ public class NewconsultAction extends ActionSupport {
 		Collections.sort(list);
 		this.recommendList = list;
 	}
-	
-
 	private void initTotalPageSize(){
-			if(totalSize % pageSize == 0 ){
-				this.totalPageSize = totalSize / pageSize;
-			}else{
-				this.totalPageSize = ( totalSize / pageSize )+ 1;
-			}
-			
+		if(totalSize % pageSize == 0 ){
+			this.totalPageSize = totalSize / pageSize;
+		}else{
+			this.totalPageSize = ( totalSize / pageSize )+ 1;
+		}
+		
+}
+	public File getImage() {
+		return image;
 	}
-	public String getLink() {
-		return link;
+	public void setImage(File image) {
+		this.image = image;
 	}
-	public void setLink(String link) {
-		this.link = link;
+	public String getImageFileName() {
+		return imageFileName;
 	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setImageFileName(String imageFileName) {
+		this.imageFileName = imageFileName;
 	}
 	public List<Recommend> getRecommendList() {
 		return recommendList;
@@ -267,41 +258,43 @@ public class NewconsultAction extends ActionSupport {
 	public void setPageSize(Integer pageSize) {
 		this.pageSize = pageSize;
 	}
-	public Integer getIndex() {
-		return index;
-	}
-	public void setIndex(Integer index) {
-		this.index = index;
-	}
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getTime() {
-		return time;
+	public Integer getPackageType() {
+		return packageType;
 	}
-	public void setTime(String time) {
-		this.time = time;
+	public void setPackageType(Integer packageType) {
+		this.packageType = packageType;
 	}
-	public File getImage() {
-		return image;
+	public Recommend getRecommend() {
+		return recommend;
 	}
-	public void setImage(File image) {
-		this.image = image;
+	public void setRecommend(Recommend recommend) {
+		this.recommend = recommend;
 	}
-	public String getImageFileName() {
-		return imageFileName;
+	public List<Island> getIslandList() {
+		return islandList;
 	}
-	public void setImageFileName(String imageFileName) {
-		this.imageFileName = imageFileName;
+	public void setIslandList(List<Island> islandList) {
+		this.islandList = islandList;
 	}
-	public Integer getTypeId() {
-		return typeId;
+	public List<Area> getAreaList() {
+		return areaList;
 	}
-	public void setTypeId(Integer typeId) {
-		this.typeId = typeId;
+	public void setAreaList(List<Area> areaList) {
+		this.areaList = areaList;
 	}
+	public Integer getAreaId() {
+		return areaId;
+	}
+	public void setAreaId(Integer areaId) {
+		this.areaId = areaId;
+	}
+	
+
 	
 }

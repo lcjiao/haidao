@@ -16,12 +16,21 @@
 <table class="datalist" width="100%">
 	<tbody>
 		<tr>
-			<td>链接地址</td>
-			<td><input type=text class="text" value="${link}" id="link" name="link"  style="width:255px;"/></td>					
+			<td>展示列</td>
+			<td>  
+				<select id="typeId" name="typeId">
+					<option value="1" selected="selected">--第一列--</option>
+					<option value="2">--第二列--</option>
+				</select>
+			</td>					
 		</tr>
 		<tr>
 			<td>标题</td>
 			<td><input type=text class="text" value="${title}" id="title" name="title"  style="width:255px;"/></td>					
+		</tr>
+		<tr>
+			<td>链接地址</td>
+			<td><input type=text class="text" value="${link}" id="link" name="link"  style="width:255px;"/></td>					
 		</tr>
 		<tr>
 			<td>时间</td>
@@ -50,6 +59,9 @@
 </body>
 <script>
 	$(function(){
+		var typeId = '${typeId}';
+		$("#typeId option[value='"+typeId+"']").attr('selected',true);
+		
 		$("#save").bind('click',submitSave);
 		$("#reset").bind('click',resetCreate);
 		//ie 按钮修正 input type=button:文本垂直对齐

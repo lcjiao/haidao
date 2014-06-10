@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>首页咨询内容列表</title>
+<title>全站推荐</title>
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
@@ -11,6 +11,7 @@
 
 </head>
 <body>
+
 
 <table class="customlist" width="100%">
 	<thead>
@@ -37,12 +38,8 @@
 				<table class="datalist ask_rel" width="100%">
 					<thead>
 						<tr>
-							<td>展示列</td>
 							<td>标题</td>
-							<td>链接地址</td>
-							<td>时间</td>
-							<td>图片</td>
-							<td>排序</td>
+							<td>展示列</td>
 							<td>操作</td>
 						</tr>
 					</thead>
@@ -50,24 +47,11 @@
 						<c:forEach var="recommend" items="${recommendList}">
 							<tr >
 								<td style="text-align:center;">
-									<c:out value="${recommend.typeId}"></c:out>
-								</td>
-								<td style="text-align:center;">
 									<c:out value="${recommend.title}"></c:out>
 								</td>
 								<td style="text-align:center;">
-									<c:out value="${recommend.linkUrl}"></c:out>
+									<c:out value="${recommend.typeId}"></c:out>
 								</td>
-								<td style="text-align:center;">
-									<c:out value="${recommend.recommendTime}"></c:out>
-								</td>
-								<td style="text-align:center;">
-									<img style="width:150px;height:120px;" alt="" src="${recommend.imgUrl}">
-								</td>
-								<td style="text-align:center;">
-									<c:out value="${recommend.recommendIndex}"></c:out>
-									<%-- <input style="width:50px;" type="text" value="${recommend.recommendIndex}" id="r_index" name="index">
-								 --%></td>
 								<td style="text-align:center;">
 									<a title="${recommend.id}" onclick="edit(this)" >修改</a>&nbsp;|&nbsp;
 									<a title="${recommend.id}" onclick="del(this)">删除</a>
@@ -96,6 +80,7 @@
 	function bindEvent(){
 		$("#go").bind('click',gotoPageNo);
 		$("#new_create").bind('click',newCreate);
+		$("#search").bind('click',search);
 		
 		/* $("#question_list a[title]").each(function(i){
 			$(this).bind('click',hideQuestion());
@@ -118,6 +103,10 @@
 		}else{
 			$("#go_page").hide();
 		}
+		
+		var islandId = '${recommend.islandId}';
+		$("#island_id option[value='"+islandId+"']").attr('selected',true);
+		
 		
 	}
 	
@@ -149,18 +138,21 @@
 	
 	//点击搜索
 	function search(){
+		
 		findByNo(1);
 	}
 	
 	
 	function findByNo(pageNo){
-		var url = "${ctx}/front/newconsult/newconsult!list?pageNo="+pageNo;
-		window.location.href = url;
+		//var url = "${ctx}/marrypackage/secondpackage/secondpackagerecommend!tolist.action?pageNo="+pageNo;
+		//window.location.href = url;
+		$("#page_no").val(pageNo);
+		$("#form").submit();
 	}
 	
 	
 	function newCreate(){
-		var url = "${ctx}/front/newconsult/newconsult!toAdd.action";
+		var url = "${ctx}/front/newconsultnames/newconsultnames!toAdd.action";
 		window.location.href = url;
 	};
 	
@@ -168,16 +160,17 @@
 		var isHide = confirm('确定删除吗?');
 		if(isHide){
 			var recommendId = $(ele).attr('title');
-			var url = "${ctx}/front/newconsult/newconsult!del.action?id="+recommendId;
+			var url = "${ctx}/front/newconsultnames/newconsultnames!del.action?id="+recommendId;
 			window.location.href = url; 
 		}
 	}
 	
 	function edit(ele){
 		var recommendId = $(ele).attr('title');
-		var url =  "${ctx}/front/newconsult/newconsult!toEdit.action?id="+recommendId;
+		var url =  "${ctx}/front/newconsultnames/newconsultnames!toEdit.action?id="+recommendId;
 		window.location.href = url; 
 	}
+	
 	
 </script>
 </html>

@@ -17,6 +17,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ResultPath;
 
+import com.anjuke.core.util.ObjectUtils;
 import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.AreaIslandBiz;
 import com.island.domain.biz.MarrayPackageBiz;
@@ -274,8 +275,12 @@ public class PackageAction extends ActionSupport {
 		IslandPackage obj = this.packageBiz.queryPackageById(id);
 		this.title=obj.getTitle();
 		this.islandId=obj.getIslandId();
-		this.bigPrice=Integer.parseInt(obj.getPriceBig());
-		this.smallPrice=Integer.parseInt(obj.getPriceSmall());
+		if(obj.getPriceBig() != null){
+			this.bigPrice=Integer.parseInt(obj.getPriceBig());
+		}
+		if(obj.getPriceSmall() != null ){
+			this.smallPrice=Integer.parseInt(obj.getPriceSmall());
+		}
 		this.online=obj.getIsOnline();
 		return "editbase";
 	}
@@ -295,7 +300,7 @@ public class PackageAction extends ActionSupport {
 		params.put("updPerson", creater);
 		int now = (int)(System.currentTimeMillis()/1000);
 		params.put("updTime", now);
-		if( title != null){
+		if( !ObjectUtils.isEmpty(title)){
 			params.put("title", title);
 		}
 		if( smallPrice != null ){
@@ -307,7 +312,7 @@ public class PackageAction extends ActionSupport {
 		if(online != null && online.intValue()>0){
 			params.put("isOnline", online);
 		}
-		if( islandId != null ){
+		if( islandId != null && islandId.intValue() > 0 ){
 			Island island = areaIslandBiz.queryIslandById(islandId);
 			params.put("areaId", island.getAreaId());
 			params.put("areaName", island.getAreaName());
