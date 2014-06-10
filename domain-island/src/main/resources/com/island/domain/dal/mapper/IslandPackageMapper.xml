@@ -18,6 +18,7 @@
 			<result property="islandName" column="island_name" />
 			<result property="isOnline" column="is_online" />
 			<result property="valid" column="valid" />
+			<result property="ishot" column="is_hot" />
 			<result property="createTime" column="create_time" />
 			<result property="createPerson" column="create_person" />
 			<result property="updTime" column="upd_time" />
@@ -41,7 +42,8 @@
 			create_time,
 			create_person,
 			upd_time,
-			upd_person
+			upd_person,
+			is_hot
 		FROM
 			island_package
 		<where>
@@ -67,7 +69,8 @@
 			create_time,
 			create_person,
 			upd_time,
-			upd_person
+			upd_person,
+			is_hot
 		FROM
 			island_package
 		<where>			
@@ -119,6 +122,9 @@
 			<if test="updPerson !=  null">			        
 				and upd_person=#{updPerson}
 			</if>
+			<if test="isHot !=  null">			        
+				and is_hot=#{isHot}
+			</if>
 		</where>
 		
 	</select>
@@ -140,7 +146,8 @@
 			create_time,
 			create_person,
 			upd_time,
-			upd_person
+			upd_person,
+			is_hot
 		FROM
 			island_package
 		<where>
@@ -191,6 +198,9 @@
 			</if>
 			<if test="titleSear !=  null">			        
 				and title like #{titleSear}
+			</if>
+			<if test="isHot !=  null">			        
+				and is_hot=#{isHot}
 			</if>
 			<if test="price !=  null">			        
 				and price_small <![CDATA[<=]]> #{price} and price_big >= #{price}
@@ -254,6 +264,9 @@
 			</if>
 			<if test="updPerson !=  null">			        
 				and upd_person=#{updPerson}
+			</if>
+			<if test="isHot !=  null">			        
+				and is_hot=#{isHot}
 			</if>
 		</where>
 		
@@ -319,6 +332,9 @@
 			<if test="price !=  null">			        
 				and price_small <![CDATA[<=]]> #{price} and price_big >= #{price}
 			</if>
+			<if test="isHot !=  null">			        
+				and is_hot=#{isHot}
+			</if>
 		</where>
 				
 	</select>
@@ -340,7 +356,8 @@
 			create_time,
 			create_person,
 			upd_time,
-			upd_person
+			upd_person,
+			is_hot
 		FROM
 			island_package
 		<where>
@@ -393,6 +410,9 @@
 				<if test="params.updPerson !=  null">
 					and upd_person=#{params.updPerson}
 				</if>
+				<if test="isHot !=  null">			        
+					and is_hot=#{isHot}
+				</if>
 			</if>
 		</where>
 			limit #{start},#{end}	
@@ -400,8 +420,8 @@
 
 	<insert id="insert" parameterType="com.island.domain.model.IslandPackage" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO	island_package
-			(id,package_type,title,content,price_big,price_small,area_id,area_name,island_id,island_name,is_online,valid,create_time,create_person,upd_time,upd_person)
-			VALUES(#{id},#{packageType},#{title},#{content},#{priceBig},#{priceSmall},#{areaId},#{areaName},#{islandId},#{islandName},#{isOnline},#{valid},#{createTime},#{createPerson},#{updTime},#{updPerson})		
+			(id,package_type,title,content,price_big,price_small,area_id,area_name,island_id,island_name,is_online,valid,create_time,create_person,upd_time,upd_person,is_hot)
+			VALUES(#{id},#{packageType},#{title},#{content},#{priceBig},#{priceSmall},#{areaId},#{areaName},#{islandId},#{islandName},#{isOnline},#{valid},#{createTime},#{createPerson},#{updTime},#{updPerson},#{isHot})		
 	</insert>
 	
 	<update id="update" parameterType="com.island.domain.model.IslandPackage">
@@ -455,6 +475,9 @@
 			</if>
 			<if test="updPerson !=  null">			        
 				upd_person=#{updPerson},
+			</if>
+			<if test="isHot !=  null">			        
+				is_hot=#{isHot}
 			</if>
 		</set>
 		<where>			
@@ -518,6 +541,9 @@
 			</if>
 			<if test="updPerson !=  null">			        
 				upd_person=#{updPerson},
+			</if>
+			<if test="isHot !=  null">			        
+				is_hot=#{isHot}
 			</if>
 		</set>
 		<where>
@@ -687,6 +713,9 @@
 			<if test="updPerson !=  null">			        
 				and upd_person=#{updPerson}
 			</if>
+			<if test="isHot !=  null">			        
+				and is_hot=#{isHot}
+			</if>
 		</where>
 		
 	</delete>
@@ -742,6 +771,9 @@
 			</if>
 			<if test="updPerson !=  null">			        
 				and upd_person=#{updPerson}
+			</if>
+			<if test="isHot !=  null">			        
+				and is_hot=#{isHot}
 			</if>
 		</where>
 		
