@@ -141,9 +141,29 @@
 	}
 	
 	function setAreaName(){
-		var checkText=$("#area_id").find("option:selected").text();  //获取Select选择的Text
-		$("#area_name").val(checkText);
+		
+		var areaName=$("#area_id").find("option:selected").text();  
+		var areaId = $("#area_id").val();
+		$("#area_name").val(areaName);
+		
+		
+		$.ajax({
+			type:"get",
+			url:"${ctx}/globalnet/country/country!getCountryByArea.action?areaId="+areaId,
+			dataType:"json",
+			success:function(json){
+				if( json.length > 0){
+					var html = "";
+					html +="<option value='0' selected='selected'>--请选择--</option>";
+					for( var i=0 ; i<json.length; i++){
+						html +="<option value='"+json[i].name+"'>"+json[i].name+"</option>";
+					}
+					$("#country").html(html);
+				}
+			}
+		});
 	}
+	
 	
 </script>
 </html>

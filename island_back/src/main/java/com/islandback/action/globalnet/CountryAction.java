@@ -2,12 +2,15 @@ package com.islandback.action.globalnet;
 
 
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ResultPath;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import com.jcl.core.module.ModuleRegistry;
@@ -16,9 +19,11 @@ import com.island.domain.biz.AreaIslandBiz;
 import com.island.domain.biz.GlobalNetBiz;
 import com.island.domain.model.Area;
 import com.island.domain.model.Country;
+import com.island.domain.model.Island;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
 import com.islandback.web.util.RequestProcc;
+import com.islandback.web.util.Struts2Utils;
 import com.opensymphony.xwork2.ActionSupport;
 
 //@SuppressWarnings("serial")
@@ -41,6 +46,7 @@ public class CountryAction extends ActionSupport {
 	
 	AreaIslandBiz areaIslandBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getAreaIslandBiz();
+	private ObjectMapper mapper = new ObjectMapper();
 	
 	private List<Area> areaList;
 	private List<Country> countryList;
@@ -122,6 +128,13 @@ public class CountryAction extends ActionSupport {
 		return "list";
 	}
 	
+	public void getCountryByArea() throws JsonGenerationException, JsonMappingException, IOException{
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("valid", 1);
+		params.put("areaId", areaId);
+		List<Country> list = globalNetBiz.queryCountryByMap(params);
+		Struts2Utils.renderJson(mapper.writeValueAsString(list));
+	}
 
 	
 	private void doList(){
@@ -157,6 +170,8 @@ public class CountryAction extends ActionSupport {
 		}
 		
 	}
+	
+	
 	public Integer getPageNo() {
 		return pageNo;
 	}
