@@ -16,11 +16,14 @@ import java.util.Map;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ResultPath;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
 
 import com.anjuke.core.util.ObjectUtils;
 import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.AreaIslandBiz;
 import com.island.domain.biz.MarrayPackageBiz;
+import com.island.domain.model.Country;
 import com.island.domain.model.Island;
 import com.island.domain.model.IslandPackage;
 import com.island.domain.model.PackageDetailInfo;
@@ -30,6 +33,7 @@ import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
 import com.islandback.web.util.RequestProcc;
+import com.islandback.web.util.Struts2Utils;
 import com.jcl.core.module.ModuleRegistry;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -132,7 +136,7 @@ public class PackageAction extends ActionSupport {
 		if(islandId != null && islandId.intValue() > 0 ){
 			params.put("islandId", islandId);
 		}
-		params.put("packageType", 1);
+		params.put("packageType", packageType);
 		List<IslandPackage> list = packageBiz.queryPackageByMap(params);
 		if(list != null && list.size()>0){
 			Map<String,Object> countParam = new HashMap<String,Object>(0);
@@ -146,6 +150,7 @@ public class PackageAction extends ActionSupport {
 			if(islandId != null && islandId.intValue() > 0 ){
 				countParam.put("islandId", islandId);
 			}
+			countParam.put("packageType", packageType);
 			this.totalSize = packageBiz.countPackageByMap(countParam);
 		}else{
 			this.totalSize=0;
@@ -249,7 +254,7 @@ public class PackageAction extends ActionSupport {
 			addObj.setIslandName(island.getName());
 		}
 		addObj.setValid(1);
-		addObj.setPackageType(1);
+		addObj.setPackageType(packageType);
 		this.packageBiz.addPackage(addObj);
 		if( actionType.intValue() == 1){
 			dolist();
@@ -474,7 +479,7 @@ public class PackageAction extends ActionSupport {
 			addObj.setImgType(imgType);
 		}
 		addObj.setValid(1);
-		addObj.setPackageType(1);
+		addObj.setPackageType(packageType);
 		addObj.setPackageId(id);
 		addObj.setImgUrl(upload());
 		this.packageBiz.addPackageImg(addObj);
@@ -649,7 +654,7 @@ public class PackageAction extends ActionSupport {
 			addObj.setLink(kepianLink);
 		}
 		addObj.setValid(1);
-		addObj.setPackageType(1);
+		addObj.setPackageType(packageType);
 		addObj.setPackageId(id);
 		addObj.setImg(upload());
 		this.packageBiz.addPackageKepianliuying(addObj);
@@ -818,6 +823,22 @@ public class PackageAction extends ActionSupport {
 	       return imageServPrefix+namePrefix+"/"+imageFileName;  
 	  }  
 	
+	public void setHot() throws JsonGenerationException, JsonMappingException, IOException{
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("isHot", 1);
+		params.put("id", id);
+		packageBiz.updPackageByMap(params);
+		Struts2Utils.renderText("ok");
+	}
+	
+	public void resetHot() throws JsonGenerationException, JsonMappingException, IOException{
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("isHot", 0);
+		params.put("id", id);
+		packageBiz.updPackageByMap(params);
+		Struts2Utils.renderText("ok");
+	}
+
 	private SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 	
 	public Integer getPageNo() {

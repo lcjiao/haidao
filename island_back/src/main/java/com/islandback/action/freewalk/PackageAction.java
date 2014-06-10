@@ -146,6 +146,7 @@ public class PackageAction extends ActionSupport {
 			if(islandId != null && islandId.intValue() > 0 ){
 				countParam.put("islandId", islandId);
 			}
+			countParam.put("packageType", packageType);
 			this.totalSize = packageBiz.countPackageByMap(countParam);
 		}else{
 			this.totalSize=0;

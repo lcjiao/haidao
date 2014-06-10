@@ -64,6 +64,8 @@
 							<td>淡季价格</td>
 							<td>旺季价格</td>
 							<td>是否在售</td>
+							<td>是否热推</td>
+							<td>操作</td>
 							<td>操作</td>
 						</tr>
 					</thead>
@@ -76,6 +78,11 @@
 								<td>${package.priceSmall}</td>
 								<td>${package.priceBig}</td>
 								<td>${package.onlineStr}</td>
+								<td>${package.hotStr}</td>
+								<td width="100px">
+									<a title="${package.id}" onclick="sethot(this)" >热推</a>&nbsp;|&nbsp;
+									<a title="${package.id}" onclick="resethot(this)" >取消热推</a>&nbsp;|&nbsp;
+								</td>
 								<td width="360px">
 									<a title="${package.id}" onclick="editBase(this)" >基本信息管理</a>&nbsp;|&nbsp;
 									<a title="${package.id}" onclick="editDetail(this)" >详细信息管理</a>&nbsp;|&nbsp;
@@ -209,6 +216,62 @@
 			var url =  "${ctx}/freewalk/package/package!delPackage.action?id="+packageId;
 			window.location.href = url; 
 		}
+	}
+	
+	function sethot(ele){
+		var packageId = $(ele).attr('title');
+		
+		$(ele).parent().parent().children().each(function(i){
+			if($(this).text()=="热推"){
+				alert("已经是热推套餐了!");
+				return;
+			}
+			
+			
+			if($(this).text() == "非热推"){
+				
+				$.ajax({
+					type:"get",
+					url:"${ctx}/marrypackage/package/package!setHot.action?id="+packageId,
+					dataType:"text",
+					success:function(text){
+						alert("推荐成功");
+						
+					}
+				});
+				
+				$(this).text("热推");
+			}
+		});
+	}
+	
+	
+	function resethot(ele){
+		
+		var packageId = $(ele).attr('title');
+		
+		$(ele).parent().parent().children().each(function(i){
+			if($(this).text()=="非热推"){
+				alert("已经是非热推套餐了!");
+				return;
+			}
+			
+			
+			if($(this).text() == "热推"){
+				
+				$.ajax({
+					type:"get",
+					url:"${ctx}/marrypackage/package/package!resetHot.action?id="+packageId,
+					dataType:"text",
+					success:function(text){
+						alert("取消推荐成功");
+						
+					}
+				});
+				
+				$(this).text("非热推");
+			}
+		});
 	}
 </script>
 </html>

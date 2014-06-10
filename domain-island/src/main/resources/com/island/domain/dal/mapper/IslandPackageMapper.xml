@@ -18,7 +18,7 @@
 			<result property="islandName" column="island_name" />
 			<result property="isOnline" column="is_online" />
 			<result property="valid" column="valid" />
-			<result property="ishot" column="is_hot" />
+			<result property="isHot" column="is_hot" />
 			<result property="createTime" column="create_time" />
 			<result property="createPerson" column="create_person" />
 			<result property="updTime" column="upd_time" />

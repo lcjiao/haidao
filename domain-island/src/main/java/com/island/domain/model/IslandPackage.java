@@ -263,4 +263,25 @@ public class IslandPackage extends AbsModel{
 		boolean passed = true;
 		return true;
 	}
+	
+	private Integer isHot=0;
+	public Integer getIsHot() {
+		return isHot;
+	}
+	public void setIsHot(Integer isHot) {
+		this.isHot = isHot;
+	}
+	
+	private String hotStr;
+	public String getHotStr() {
+		if(this.isHot.intValue() == 1){
+			return "热推";
+		}else{
+			return "非热推";
+		}
+	}
+	public void setHotStr(String hotStr) {
+		this.hotStr = hotStr;
+	}
+	
 }
