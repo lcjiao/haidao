@@ -1231,4 +1231,111 @@
 		</where>
 		
 	</delete>
+	
+	
+	<update id="updateByAreaIsland" parameterType="java.util.Map">
+		update 
+			recommend
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="moduleId !=  null">			        
+				module_id=#{moduleId},
+			</if>
+			<if test="moduleDesc !=  null">			        
+				module_desc=#{moduleDesc},
+			</if>
+			<if test="title !=  null">			        
+				title=#{title},
+			</if>
+			<if test="content !=  null">			        
+				content=#{content},
+			</if>
+			<if test="recommendDesc !=  null">			        
+				recommend_desc=#{recommendDesc},
+			</if>
+			<if test="imgUrl !=  null">			        
+				img_url=#{imgUrl},
+			</if>
+			<if test="linkUrl !=  null">			        
+				link_url=#{linkUrl},
+			</if>
+			<if test="price !=  null">			        
+				price=#{price},
+			</if>
+			<if test="tel !=  null">			        
+				tel=#{tel},
+			</if>
+			<if test="areaId !=  null">			        
+				area_id=#{areaId},
+			</if>
+			<if test="areaName !=  null">			        
+				area_name=#{areaName},
+			</if>
+			<if test="islandId !=  null">			        
+				island_id=#{islandId},
+			</if>
+			<if test="islandName !=  null">			        
+				island_name=#{islandName},
+			</if>
+			<if test="recommendIndex !=  null">			        
+				recommend_index=#{recommendIndex},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="bigImgUrl !=  null">			        
+				big_img_url=#{bigImgUrl},
+			</if>
+			<if test="smallImgUrl !=  null">			        
+				small_img_url=#{smallImgUrl},
+			</if>
+			<if test="linkObligate !=  null">			        
+				link_obligate=#{linkObligate},
+			</if>
+			<if test="priceBig !=  null">			        
+				price_big=#{priceBig},
+			</if>
+			<if test="priceSmall !=  null">			        
+				price_small=#{priceSmall},
+			</if>
+			<if test="createTime !=  null">			        
+				create_time=#{createTime},
+			</if>
+			<if test="createPerson !=  null">			        
+				create_person=#{createPerson},
+			</if>
+			<if test="updTime !=  null">			        
+				upd_time=#{updTime},
+			</if>
+			<if test="updPerson !=  null">			        
+				upd_person=#{updPerson},
+			</if>
+			<if test="typeId !=  null">			        
+				type_id=#{typeId},
+			</if>
+			<if test="typeName !=  null">			        
+				type_name=#{typeName},
+			</if>
+			<if test="viewLink !=  null">			        
+				view_link=#{viewLink},
+			</if>
+			<if test="recommendTime !=  null">			        
+				recommend_time=#{recommendTime},
+			</if>
+		</set>
+		<where>
+			<if test="areaId !=  null">			        
+				and area_id=#{areaId}
+			</if>
+			<if test="islandId !=  null">			        
+				and island_id=#{islandId}
+			</if>
+			<if test="moduleId !=  null">			        
+				and module_id=#{moduleId}
+			</if>
+		</where>
+		
+	</update>
 </mapper>

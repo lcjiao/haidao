@@ -38,4 +38,8 @@ public class RecommendBiz {
 		return this.recommendDao.queryById(id);
 	}
 	
+	public void updateByAreaIsland(Map<String,Object> params){
+		this.recommendDao.updateByAreaIsland(params);
+	}
+	
 }

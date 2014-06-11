@@ -159,6 +159,7 @@ public class AreapackagerecommendAction extends ActionSupport {
 		setParams.put("updPerson", creater);
 		setParams.put("id", id);
 		this.recommendBiz.updRecommend(setParams);	
+		recommend = recommendBiz.queryById(id);
 		doAreaList();
 		doIslandList();
 		doList();
