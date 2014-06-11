@@ -152,7 +152,16 @@ public class ArearecommendAction extends ActionSupport {
 		setParams.put("valid", 0);
 		setParams.put("updPerson", creater);
 		setParams.put("id", id);
-		this.recommendBiz.updRecommend(setParams);		
+		this.recommendBiz.updRecommend(setParams);	
+		
+		Recommend tempobj = recommendBiz.queryById(id);
+		Map<String,Object> areaParams = new HashMap<String,Object>(0);
+		areaParams.put("valid", 0);
+		areaParams.put("updPerson", creater);
+		areaParams.put("areaId", tempobj.getAreaId());
+		areaParams.put("moduleId", ModuleEnum.MARRAY_PACKAGE_INDEX_AREA_RECOMMEND);
+		this.recommendBiz.updateByAreaIsland(areaParams);
+		
 		doList();
 		return "list";
 	}

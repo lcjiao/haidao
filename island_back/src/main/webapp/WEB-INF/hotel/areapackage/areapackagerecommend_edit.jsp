@@ -103,7 +103,7 @@ function setAreaName(){
 	
 	$.ajax({
 		type:"get",
-		url:"${ctx}/hotel/index/marraymasterrecomend!getIslandByArea.action?areaId="+areaId,
+		url:"${ctx}/hotel/areapackage/areapackagerecommend!getIslandByArea.action?areaId="+areaId,
 		dataType:"json",
 		success:function(json){
 			if( json.length > 0){
@@ -112,6 +112,10 @@ function setAreaName(){
 				for( var i=0 ; i<json.length; i++){
 					html +="<option value='"+json[i].id+"'>"+json[i].name+"</option>";
 				}
+				$("#island_id").html(html);
+			}else{
+				var html = "";
+				html +="<option value='0' selected='selected'>--请选择--</option>";
 				$("#island_id").html(html);
 			}
 		}

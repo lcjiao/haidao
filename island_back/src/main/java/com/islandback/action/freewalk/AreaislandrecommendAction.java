@@ -156,6 +156,15 @@ public class AreaislandrecommendAction extends ActionSupport {
 		setParams.put("updPerson", creater);
 		setParams.put("id", id);
 		this.recommendBiz.updRecommend(setParams);	
+		
+		Recommend tempobj = recommendBiz.queryById(id);
+		Map<String,Object> islandParams = new HashMap<String,Object>(0);
+		islandParams.put("valid", 0);
+		islandParams.put("updPerson", creater);
+		islandParams.put("islandId", tempobj.getIslandId());
+		islandParams.put("moduleId", ModuleEnum.FREEWALK_PACKAGE_INDEX_AREA_RECOMMEND);
+		this.recommendBiz.updateByAreaIsland(islandParams);
+		
 		doAreaList();
 		doList();
 		return "list";
