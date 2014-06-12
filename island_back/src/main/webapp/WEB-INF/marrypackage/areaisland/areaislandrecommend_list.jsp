@@ -206,7 +206,7 @@
 	};
 	
 	function del(ele){
-		var isHide = confirm('确定删除吗?');
+		var isHide = confirm('删除岛屿会同步删除改岛屿下得推荐套餐,确定操作吗?');
 		if(isHide){
 			var recommendId = $(ele).attr('title');
 			var url = "${ctx}/marrypackage/areaisland/areaislandrecommend!del.action?id="+recommendId;

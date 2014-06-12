@@ -15,6 +15,15 @@
 <table class="searchbar" width="100%">
 	<tbody>
 		<tr>
+			<td width="48">所属区域</td>
+			<td width="10">
+				<select id="area_id" name="areaId">
+					<option value="0" selected="selected">--请选择--</option>
+					<c:forEach var="area" items="${areaList}">
+							<option value="${area.id}" >${area.name}</option>
+				   </c:forEach>
+				</select>
+			</td>
 			<td width="48">所属岛屿</td>
 			<td width="10">
 				<select id="island_id" name="islandId">
@@ -61,6 +70,7 @@
 							<td>套餐名称</td>
 							<td>所属区域</td>
 							<td>所属岛屿</td>
+							<td>所属类别</td>
 							<td>淡季价格</td>
 							<td>旺季价格</td>
 							<td>是否在售</td>
@@ -75,6 +85,7 @@
 								<td>${package.title}</td>
 								<td>${package.areaName}</td>
 								<td>${package.islandName}</td>
+								<td>${package.typeName}</td>
 								<td>${package.priceSmall}</td>
 								<td>${package.priceBig}</td>
 								<td>${package.onlineStr}</td>
@@ -100,6 +111,7 @@
 </table>
 </body>
 <script>
+
 	var  numCat = /^[1-9]*$/;
 	$(function(){
 		loadPage();
@@ -108,6 +120,36 @@
 		
 		bindEvent();
 	});
+	
+	$(function(){
+		$("#area_id").bind('change',setAreaName);
+	});
+
+	function setAreaName(){
+		var areaId = $("#area_id").val();
+		
+		
+		$.ajax({
+			type:"get",
+			url:"${ctx}/hotel/index/marraymasterrecomend!getIslandByArea.action?areaId="+areaId,
+			dataType:"json",
+			success:function(json){
+				if( json.length > 0){
+					var html = "";
+					html +="<option value='0' selected='selected'>--请选择--</option>";
+					for( var i=0 ; i<json.length; i++){
+						html +="<option value='"+json[i].id+"'>"+json[i].name+"</option>";
+					}
+					$("#island_id").html(html);
+				}else{
+					var html = "";
+					html +="<option value='0' selected='selected'>--请选择--</option>";
+					$("#island_id").html(html);
+				}
+			}
+		});
+	}
+
 	
 	//绑定事件
 	function bindEvent(){
@@ -128,6 +170,8 @@
 	function initParam(){
 		var islandId = '${islandId}';
 		$("#island_id option[value='"+islandId+"']").attr('selected',true);
+		var areaId = '${areaId}';
+		$("#area_id option[value='"+areaId+"']").attr('selected',true);
 		var pageNo = '${pageNo}';
 		if(pageNo < 2){
 			$("#go_page").hide();
@@ -217,6 +261,7 @@
 			window.location.href = url; 
 		}
 	}
+	
 	function sethot(ele){
 		var packageId = $(ele).attr('title');
 		

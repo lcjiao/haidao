@@ -152,7 +152,16 @@ public class SecondislandrecommendAction extends ActionSupport {
 		setParams.put("valid", 0);
 		setParams.put("updPerson", creater);
 		setParams.put("id", id);
-		this.recommendBiz.updRecommend(setParams);		
+		this.recommendBiz.updRecommend(setParams);
+		//同步删除该岛屿下得套餐
+		Recommend tempobj = recommendBiz.queryById(id);
+		Map<String,Object> islandUpdParams = new HashMap<String,Object>(0);
+		islandUpdParams.put("valid", 0);
+		islandUpdParams.put("updPerson", creater);
+		islandUpdParams.put("islandId", tempobj.getIslandId());
+		islandUpdParams.put("module_id", ModuleEnum.MARRAY_PACKAGE_INDEX_SECOEND_RECOMMEND);
+		this.recommendBiz.updateByAreaIsland(islandUpdParams);
+		//同步删除该岛屿下套餐结束
 		doList();
 		return "list";
 	}

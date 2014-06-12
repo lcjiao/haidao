@@ -159,6 +159,9 @@ public class AreapackagerecommendAction extends ActionSupport {
 		setParams.put("updPerson", creater);
 		setParams.put("id", id);
 		this.recommendBiz.updRecommend(setParams);	
+		recommend = recommendBiz.queryById(id);
+		
+		
 		doAreaList();
 		doIslandList();
 		doList();
@@ -166,10 +169,18 @@ public class AreapackagerecommendAction extends ActionSupport {
 	}
 	public void getIslandByArea() throws JsonGenerationException, JsonMappingException, IOException{
 		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("moduleId", ModuleEnum.FREEWALK_PACKAGE_INDEX_AREA_RECOMMEND);
 		params.put("valid", 1);
+		params.put("typeId", 2);
 		params.put("areaId", areaId);
-		List<Island> list = areaIslandBiz.queryIslandByMap(params);
-		Struts2Utils.renderJson(mapper.writeValueAsString(list));
+		List<Recommend> list = recommendBiz.queryByMap(params);
+		List<Island> landlist = new ArrayList<Island>(0);
+		for(Recommend recommend : list){
+	    	Integer islandId = recommend.getIslandId();
+	    	Island obj = areaIslandBiz.queryIslandById(islandId);
+	    	landlist.add(obj);
+	    }
+		Struts2Utils.renderJson(mapper.writeValueAsString(landlist));
 	}
 	
 	 public String upload() {  

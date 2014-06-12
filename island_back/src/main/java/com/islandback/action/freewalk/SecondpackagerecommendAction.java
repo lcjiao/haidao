@@ -143,6 +143,7 @@ public class SecondpackagerecommendAction extends ActionSupport {
 		}
 		recommend.setUpdTime(now);
 		this.recommendBiz.updRecommendByModel(recommend);
+		doIslandList();
 		doList();
 		return "list";
 	}
@@ -154,11 +155,13 @@ public class SecondpackagerecommendAction extends ActionSupport {
 		if(sessionInfo != null ){
 			creater = sessionInfo.getUser().getUserName(); 
 		}
+		recommend = recommendBiz.queryById(id);
 		Map<String,Object> setParams = new HashMap<String,Object>(0);
 		setParams.put("valid", 0);
 		setParams.put("updPerson", creater);
 		setParams.put("id", id);
-		this.recommendBiz.updRecommend(setParams);		
+		this.recommendBiz.updRecommend(setParams);
+		doIslandList();
 		doList();
 		return "list";
 	}

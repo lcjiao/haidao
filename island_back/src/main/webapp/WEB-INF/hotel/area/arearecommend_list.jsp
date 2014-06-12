@@ -149,7 +149,7 @@
 	};
 	
 	function del(ele){
-		var isHide = confirm('确定删除吗?');
+		var isHide = confirm('删除区域会同步删除改区域下得推荐岛屿和套餐,确定操作吗?');
 		if(isHide){
 			var recommendId = $(ele).attr('title');
 			var url = "${ctx}/hotel/area/arearecommend!del.action?id="+recommendId;

@@ -149,7 +149,7 @@
 	};
 	
 	function del(ele){
-		var isHide = confirm('确定删除吗?');
+		var isHide = confirm('删除岛屿将会同步删除该岛屿下推荐套餐,确定删除吗?');
 		if(isHide){
 			var recommendId = $(ele).attr('title');
 			var url = "${ctx}/hotel/secondisland/secondislandrecommend!del.action?id="+recommendId;

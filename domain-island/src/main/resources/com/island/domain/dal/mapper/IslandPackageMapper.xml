@@ -23,6 +23,8 @@
 			<result property="createPerson" column="create_person" />
 			<result property="updTime" column="upd_time" />
 			<result property="updPerson" column="upd_person" />
+			<result property="typeId" column="type_id" />
+			<result property="typeName" column="type_name" />
 	</resultMap>
 
 	<select id="queryById" parameterType="java.util.Map" resultMap="IslandPackageRslMap">
@@ -43,7 +45,9 @@
 			create_person,
 			upd_time,
 			upd_person,
-			is_hot
+			is_hot,
+			type_id,
+			type_name
 		FROM
 			island_package
 		<where>
@@ -70,7 +74,9 @@
 			create_person,
 			upd_time,
 			upd_person,
-			is_hot
+			is_hot,
+			type_id,
+			type_name
 		FROM
 			island_package
 		<where>			
@@ -125,6 +131,12 @@
 			<if test="isHot !=  null">			        
 				and is_hot=#{isHot}
 			</if>
+			<if test="typeId !=  null">			        
+				and type_id=#{typeId}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
 		</where>
 		
 	</select>
@@ -147,7 +159,9 @@
 			create_person,
 			upd_time,
 			upd_person,
-			is_hot
+			is_hot,
+			type_id,
+			type_name
 		FROM
 			island_package
 		<where>
@@ -201,6 +215,12 @@
 			</if>
 			<if test="isHot !=  null">			        
 				and is_hot=#{isHot}
+			</if>
+			<if test="typeId !=  null">			        
+				and type_id=#{typeId}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
 			</if>
 			<if test="price !=  null">			        
 				and price_small <![CDATA[<=]]> #{price} and price_big >= #{price}
@@ -267,6 +287,12 @@
 			</if>
 			<if test="isHot !=  null">			        
 				and is_hot=#{isHot}
+			</if>
+			<if test="typeId !=  null">			        
+				and type_id=#{typeId}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
 			</if>
 		</where>
 		
@@ -335,6 +361,12 @@
 			<if test="isHot !=  null">			        
 				and is_hot=#{isHot}
 			</if>
+			<if test="typeId !=  null">			        
+				and type_id=#{typeId}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
 		</where>
 				
 	</select>
@@ -357,7 +389,9 @@
 			create_person,
 			upd_time,
 			upd_person,
-			is_hot
+			is_hot,
+			type_id,
+			type_name
 		FROM
 			island_package
 		<where>
@@ -413,6 +447,12 @@
 				<if test="isHot !=  null">			        
 					and is_hot=#{isHot}
 				</if>
+				<if test="typeId !=  null">			        
+					and type_id=#{typeId}
+				</if>
+				<if test="typeName !=  null">			        
+					and type_name=#{typeName}
+				</if>
 			</if>
 		</where>
 			limit #{start},#{end}	
@@ -420,8 +460,8 @@
 
 	<insert id="insert" parameterType="com.island.domain.model.IslandPackage" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO	island_package
-			(id,package_type,title,content,price_big,price_small,area_id,area_name,island_id,island_name,is_online,valid,create_time,create_person,upd_time,upd_person,is_hot)
-			VALUES(#{id},#{packageType},#{title},#{content},#{priceBig},#{priceSmall},#{areaId},#{areaName},#{islandId},#{islandName},#{isOnline},#{valid},#{createTime},#{createPerson},#{updTime},#{updPerson},#{isHot})		
+			(id,package_type,title,content,price_big,price_small,area_id,area_name,island_id,island_name,is_online,valid,create_time,create_person,upd_time,upd_person,is_hot,type_id,type_name)
+			VALUES(#{id},#{packageType},#{title},#{content},#{priceBig},#{priceSmall},#{areaId},#{areaName},#{islandId},#{islandName},#{isOnline},#{valid},#{createTime},#{createPerson},#{updTime},#{updPerson},#{isHot},#{typeId},#{typeName})		
 	</insert>
 	
 	<update id="update" parameterType="com.island.domain.model.IslandPackage">
@@ -477,7 +517,13 @@
 				upd_person=#{updPerson},
 			</if>
 			<if test="isHot !=  null">			        
-				is_hot=#{isHot}
+				is_hot=#{isHot},
+			</if>
+			<if test="typeId !=  null">			        
+					 type_id=#{typeId},
+			</if>
+			<if test="typeName !=  null">			        
+					type_name=#{typeName}
 			</if>
 		</set>
 		<where>			
@@ -543,8 +589,15 @@
 				upd_person=#{updPerson},
 			</if>
 			<if test="isHot !=  null">			        
-				is_hot=#{isHot}
+				is_hot=#{isHot},
 			</if>
+			<if test="typeId !=  null">			        
+					 type_id=#{typeId},
+			</if>
+			<if test="typeName !=  null">			        
+					type_name=#{typeName}
+			</if>
+			
 		</set>
 		<where>
 			<if test="id !=  null">
@@ -716,6 +769,13 @@
 			<if test="isHot !=  null">			        
 				and is_hot=#{isHot}
 			</if>
+			
+			<if test="typeId !=  null">			        
+					 and type_id=#{typeId}
+			</if>
+			<if test="typeName !=  null">			        
+				and	type_name=#{typeName}
+			</if>
 		</where>
 		
 	</delete>
@@ -775,6 +835,13 @@
 			<if test="isHot !=  null">			        
 				and is_hot=#{isHot}
 			</if>
+			<if test="typeId !=  null">			        
+					 and type_id=#{typeId}
+			</if>
+			<if test="typeName !=  null">			        
+				and	type_name=#{typeName}
+			</if>
+			
 		</where>
 		
 	</delete>
