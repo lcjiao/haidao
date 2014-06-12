@@ -113,6 +113,7 @@
     `upd_time` int(10) DEFAULT NULL COMMENT '更新时间',
     `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
     `is_hot` int(2) DEFAULT NULL  COMMENT '1:推荐 0:非推荐',
+    `package_detail_type` int(8) DEFAULT NULL  COMMENT '套餐明细类型 和island_package_type  主健关联',
     PRIMARY KEY (`id`),
     KEY `title` (`title`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8
