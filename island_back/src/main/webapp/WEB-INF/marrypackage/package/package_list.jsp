@@ -70,6 +70,7 @@
 							<td>套餐名称</td>
 							<td>所属区域</td>
 							<td>所属岛屿</td>
+							<td>所属类别</td>
 							<td>淡季价格</td>
 							<td>旺季价格</td>
 							<td>是否在售</td>
@@ -84,6 +85,7 @@
 								<td>${package.title}</td>
 								<td>${package.areaName}</td>
 								<td>${package.islandName}</td>
+								<td>${package.typeName}</td>
 								<td>${package.priceSmall}</td>
 								<td>${package.priceBig}</td>
 								<td>${package.onlineStr}</td>

@@ -16,14 +16,19 @@ import java.util.Map;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ResultPath;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import com.anjuke.core.util.ObjectUtils;
 import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.AreaIslandBiz;
 import com.island.domain.biz.MarrayPackageBiz;
+import com.island.domain.biz.ModuleTypeBiz;
 import com.island.domain.model.Area;
 import com.island.domain.model.Island;
 import com.island.domain.model.IslandPackage;
+import com.island.domain.model.IslandPackageType;
 import com.island.domain.model.PackageDetailInfo;
 import com.island.domain.model.PackageImageRelation;
 import com.island.domain.model.PackageKepianliuying;
@@ -31,6 +36,7 @@ import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
 import com.islandback.web.util.RequestProcc;
+import com.islandback.web.util.Struts2Utils;
 import com.jcl.core.module.ModuleRegistry;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -51,6 +57,7 @@ public class PackageAction extends ActionSupport {
 	private Integer id;
 	private Integer islandId;
 	private Integer areaId;
+	private Integer packageDetailType;
 	private String title;
 	private Integer price;
 	private Integer smallPrice;
@@ -79,6 +86,7 @@ public class PackageAction extends ActionSupport {
 	//3保存详细信息并添加图片  4:管理详细信息
 	
 	private List<IslandPackage> packageList = new ArrayList<IslandPackage>(0);
+	private List<IslandPackageType> packageTypeList = new ArrayList<IslandPackageType>(0);
 	private List<PackageImageRelation> packageImgList;
 	private List<Island> islandList = new ArrayList<Island>(0);
 	private List<Area> areaList = new ArrayList<Area>(0);
@@ -88,6 +96,9 @@ public class PackageAction extends ActionSupport {
             .getModule(DomainIslandModule.class).getAreaIslandBiz();
 	MarrayPackageBiz packageBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getMarrayPackageBiz();
+	ModuleTypeBiz moduleTypeBiz = ModuleRegistry.getInstance()
+            .getModule(DomainIslandModule.class).getModuleTypeBiz();
+	private ObjectMapper mapper = new ObjectMapper();
 	
 	/**
 	 * 套餐列表信息维护begin－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
@@ -118,7 +129,7 @@ public class PackageAction extends ActionSupport {
 	 */
 	public String dolist(){
 		doAreaList();
-		initIslandList();
+		//initIslandList();
 		
 		Map<String,Object> params = new HashMap<String,Object>(0);
 		params.put("valid", 1);
@@ -194,6 +205,36 @@ public class PackageAction extends ActionSupport {
 			params.put("valid", 1);
 		    areaList = areaIslandBiz.queryAreaByMap(params);
 	}
+	 
+	public void doPackageTypeList(){
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("valid", 1);
+		params.put("packageType", packageType);
+		if(areaId != null  && areaId.intValue() > 0 ){
+			params.put("areaId", areaId);
+			
+			if(islandId != null  && islandId.intValue() > 0 ){
+				params.put("islandId", islandId);
+			}
+		}
+		
+		packageTypeList = moduleTypeBiz.queryPackageTypeByMap(params);
+		
+	}
+	
+	public void getPackageTypeByIsland() throws JsonGenerationException, JsonMappingException, IOException{
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("valid", 1);
+		params.put("packageType", packageType);
+		List<IslandPackageType >list =new ArrayList<IslandPackageType>(0);
+		if(islandId != null  && islandId.intValue() > 0 ){
+			params.put("islandId", islandId);
+			list = moduleTypeBiz.queryPackageTypeByMap(params);
+		}
+		
+		Struts2Utils.renderJson(mapper.writeValueAsString(list));
+	}
+	
 
 	/**
 	 * 套餐信息维护end－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
@@ -227,7 +268,8 @@ public class PackageAction extends ActionSupport {
 	 */
 	public String toAddBase(){
 		doAreaList();
-		initIslandList();
+		//initIslandList();
+		//doPackageTypeList();
 		return "addbase";
 	}
 	
@@ -265,6 +307,13 @@ public class PackageAction extends ActionSupport {
 			addObj.setIslandId(islandId);
 			addObj.setIslandName(island.getName());
 		}
+		if(packageDetailType != null && packageDetailType.intValue() > 0 ){
+			IslandPackageType temp = moduleTypeBiz.queryPackageTypeById(packageDetailType);
+			addObj.setTypeId(packageDetailType);
+			if( temp != null ){
+				addObj.setTypeName(temp.getTitle());
+			}
+		}
 		addObj.setValid(1);
 		addObj.setPackageType(packageType);
 		this.packageBiz.addPackage(addObj);
@@ -293,6 +342,7 @@ public class PackageAction extends ActionSupport {
 		this.title=obj.getTitle();
 		this.islandId=obj.getIslandId();
 		this.areaId=obj.getAreaId();
+		this.packageDetailType = obj.getTypeId();
 		if(obj.getPriceBig() != null){
 			this.bigPrice=Integer.parseInt(obj.getPriceBig());
 		}
@@ -302,6 +352,7 @@ public class PackageAction extends ActionSupport {
 		this.online=obj.getIsOnline();
 		doAreaList();
 		initIslandList();
+		doPackageTypeList();
 		return "editbase";
 	}
 	
@@ -338,6 +389,13 @@ public class PackageAction extends ActionSupport {
 			params.put("areaName", island.getAreaName());
 			params.put("islandId", islandId);
 			params.put("islandName", island.getName());
+		}
+		if(packageDetailType != null && packageDetailType.intValue() > 0 ){
+			IslandPackageType temp = moduleTypeBiz.queryPackageTypeById(packageDetailType);
+			params.put("typeId", packageDetailType);
+			if( temp != null ){
+				params.put("typeName", temp.getTitle());
+			}
 		}
 		this.packageBiz.updPackageByMap(params);
 		this.title=null;
@@ -1030,6 +1088,18 @@ public class PackageAction extends ActionSupport {
 	}
 	public void setAreaId(Integer areaId) {
 		this.areaId = areaId;
+	}
+	public List<IslandPackageType> getPackageTypeList() {
+		return packageTypeList;
+	}
+	public void setPackageTypeList(List<IslandPackageType> packageTypeList) {
+		this.packageTypeList = packageTypeList;
+	}
+	public Integer getPackageDetailType() {
+		return packageDetailType;
+	}
+	public void setPackageDetailType(Integer packageDetailType) {
+		this.packageDetailType = packageDetailType;
 	}
 	
 	

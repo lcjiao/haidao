@@ -38,6 +38,17 @@
 			</td>
 		</tr>
 		<tr>
+			<td>所属类别</td>
+			<td>
+				<select id="package_type_id" name="packageDetailType">
+					<option value="0" selected="selected">--请选择--</option>
+					<c:forEach var="packageType" items="${packageTypeList}">
+							<option value="${packageType.id}" >${packageType.title}</option>
+				   </c:forEach>
+				</select>
+			</td>
+		</tr>
+		<tr>
 			<td>套餐标题</td>
 			<td><input type="text" name="title" id="p_title" value="${title}"/></td>					
 		</tr>
@@ -87,6 +98,9 @@ $(function(){
 	var islandId ='${islandId}';
 	$("#island_id option[value='"+islandId+"']").attr('selected',true);
 	
+	var packageDetailType ='${packageDetailType}';
+	$("#package_type_id option[value='"+packageDetailType+"']").attr('selected',true);
+	
 	var online = '${online}';
 	$("input[type=radio][value='"+online+"']").attr('checked',true);
 	
@@ -122,7 +136,28 @@ function setAreaName(){
 
 function setIslandName(){
 	var islandName=$("#island_id").find("option:selected").text();  
+	var islandId = $("#island_id").val();
 	$("#island_name").val(islandName);
+	
+	$.ajax({
+		type:"get",
+		url:"${ctx}/hotel/package/package!getPackageTypeByIsland.action?islandId="+islandId,
+		dataType:"json",
+		success:function(json){
+			if( json.length > 0){
+				var html = "";
+				html +="<option value='0' selected='selected'>--请选择--</option>";
+				for( var i=0 ; i<json.length; i++){
+					html +="<option value='"+json[i].id+"'>"+json[i].title+"</option>";
+				}
+				$("#package_type_id").html(html);
+			}else{
+				var html = "";
+				html +="<option value='0' selected='selected'>--请选择--</option>";
+				$("#package_type_id").html(html);
+			}
+		}
+	});
 	
 }
 function editBase(){
