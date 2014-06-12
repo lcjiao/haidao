@@ -37,5 +37,5 @@ public class RecommendBiz {
 	public Recommend queryById(Integer id){
 		return this.recommendDao.queryById(id);
 	}
-	
+
 }

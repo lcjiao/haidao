@@ -247,9 +247,7 @@
 			<if test="title !=  null">			        
 				and title=#{title}
 			</if>
-			<if test="content !=  null">			        
-				and content=#{content}
-			</if>
+			
 			<if test="recommendDesc !=  null">			        
 				and recommend_desc=#{recommendDesc}
 			</if>
@@ -321,6 +319,9 @@
 			</if>
 			<if test="recommendTime !=  null">			        
 				and recommend_time=#{recommendTime}
+			</if>
+			<if test="content !=  1">			        
+				and img_url != ''
 			</if>
 		</where>
 		<if test="begin !=  null">			        
@@ -346,9 +347,7 @@
 			<if test="title !=  null">			        
 				and title=#{title}
 			</if>
-			<if test="content !=  null">			        
-				and content=#{content}
-			</if>
+			
 			<if test="recommendDesc !=  null">			        
 				and recommend_desc=#{recommendDesc}
 			</if>
@@ -420,6 +419,9 @@
 			</if>
 			<if test="recommendTime !=  null">			        
 				and recommend_time=#{recommendTime}
+			</if>
+			<if test="content !=  1">			        
+				and img_url != ''
 			</if>
 		</where>
 		
@@ -443,9 +445,6 @@
 			<if test="title !=  null">			        
 				and title=#{title}
 			</if>
-			<if test="content !=  null">			        
-				and content=#{content}
-			</if>
 			<if test="recommendDesc !=  null">			        
 				and recommend_desc=#{recommendDesc}
 			</if>
@@ -518,6 +517,10 @@
 			<if test="recommendTime !=  null">			        
 				and recommend_time=#{recommendTime}
 			</if>
+			<if test="content !=  1">			        
+				and img_url != ''
+			</if>
+			
 		</where>
 				
 	</select>

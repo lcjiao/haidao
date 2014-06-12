@@ -32,13 +32,13 @@ import com.islandback.web.util.RequestProcc;
 import com.islandback.web.util.UploadImgUtils;
 import com.opensymphony.xwork2.ActionSupport;
 
-@Namespace("/weddingphoto/wdpleft")
+@Namespace("/weddingphoto/wdpnew")
 @ResultPath("/WEB-INF")
 /**
- *婚纱摄影左边上三块图片推荐action
+ *婚纱摄影最新套餐推荐
  *
  */
-public class WdpleftAction extends ActionSupport implements ServletResponseAware {
+public class WdpnewAction extends ActionSupport implements ServletResponseAware {
 	private static final long serialVersionUID = 1L;
 	private Recommend recommend;
 	private HttpServletResponse response;
@@ -86,7 +86,7 @@ public class WdpleftAction extends ActionSupport implements ServletResponseAware
 	
 	private void doList(){
 		map.clear();
-		map.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_LEFT_RECOMMEND);
+		map.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_NEW_RECOMMEND);
 		map.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
@@ -96,7 +96,7 @@ public class WdpleftAction extends ActionSupport implements ServletResponseAware
 		recommendList = weddingPhotoBiz.queryByMap(map);
 		if(recommendList != null && recommendList.size()>0){
 			map.clear();
-			map.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_LEFT_RECOMMEND);
+			map.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_NEW_RECOMMEND);
 			map.put("valid", 1);
 			this.totalSize = weddingPhotoBiz.countByMap(map);
 		}
@@ -128,7 +128,7 @@ public class WdpleftAction extends ActionSupport implements ServletResponseAware
 		recommend.setCreatePerson(getCreater());
 		recommend.setCreateTime((int)System.currentTimeMillis()/1000);
 		recommend.setValid(1);
-		recommend.setModuleId(ModuleEnum.WEDDING_PHOTO_FACE_LEFT_RECOMMEND);
+		recommend.setModuleId(ModuleEnum.WEDDING_PHOTO_FACE_NEW_RECOMMEND);
 		//changeIndexBySys(creater,recommend.getId(),recommend.getRecommendIndex());
 		//recommend.setAreaName(areaIslandBiz.queryAreaById(recommend.getAreaId()).getName());
 		//recommend.setIslandName(areaIslandBiz.queryIslandById(recommend.getIslandId()).getName());
@@ -186,7 +186,7 @@ public class WdpleftAction extends ActionSupport implements ServletResponseAware
 		// 查询之前此排序得条目 如存在对调排序次序		 
 		map.clear();
 		map.put("recommendIndex", index);
-		map.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_LEFT_RECOMMEND);
+		map.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_NEW_RECOMMEND);
 		map.put("valid", 1);
 		List<Recommend> list = weddingPhotoBiz.queryByMap(map);
 		if( list.size() > 0 && null != list){
