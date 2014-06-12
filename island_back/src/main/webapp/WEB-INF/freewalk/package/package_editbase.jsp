@@ -16,6 +16,17 @@
 <table class="datalist" width="100%">
 	<tbody>
 		<tr>
+			<td>区域</td>
+			<td>
+			<select id="area_id" name="areaId">
+					<option value="0" selected="selected">--请选择--</option>
+					<c:forEach var="area" items="${areaList}">
+							<option value="${area.id}" >${area.name}</option>
+				   </c:forEach>
+				</select>
+			</td>
+		</tr>
+		<tr>
 			<td>所属岛屿</td>
 			<td>
 				<select id="island_id" name="islandId">
@@ -63,6 +74,16 @@
 </body>
 <script>
 $(function(){
+	$("#area_id").bind('change',setAreaName);
+	$("#island_id").bind('change',setIslandName);
+});
+
+
+
+$(function(){
+	var areaId = '${areaId}';
+	$("#area_id option[value='"+areaId+"']").attr('selected',true);
+	
 	var islandId ='${islandId}';
 	$("#island_id option[value='"+islandId+"']").attr('selected',true);
 	
@@ -71,6 +92,39 @@ $(function(){
 	
 	
 });
+
+function setAreaName(){
+	var areaName=$("#area_id").find("option:selected").text();  
+	var areaId = $("#area_id").val();
+	$("#area_name").val(areaName);
+	
+	
+	$.ajax({
+		type:"get",
+		url:"${ctx}/freewalk/index/marraymasterrecomend!getIslandByArea.action?areaId="+areaId,
+		dataType:"json",
+		success:function(json){
+			if( json.length > 0){
+				var html = "";
+				html +="<option value='0' selected='selected'>--请选择--</option>";
+				for( var i=0 ; i<json.length; i++){
+					html +="<option value='"+json[i].id+"'>"+json[i].name+"</option>";
+				}
+				$("#island_id").html(html);
+			}else{
+				var html = "";
+				html +="<option value='0' selected='selected'>--请选择--</option>";
+				$("#island_id").html(html);
+			}
+		}
+	});
+}
+
+function setIslandName(){
+	var islandName=$("#island_id").find("option:selected").text();  
+	$("#island_name").val(islandName);
+	
+}
 function editBase(){
 	$("#form").submit();
 }	

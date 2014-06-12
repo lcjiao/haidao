@@ -21,6 +21,7 @@ import com.anjuke.core.util.ObjectUtils;
 import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.AreaIslandBiz;
 import com.island.domain.biz.MarrayPackageBiz;
+import com.island.domain.model.Area;
 import com.island.domain.model.Island;
 import com.island.domain.model.IslandPackage;
 import com.island.domain.model.PackageDetailInfo;
@@ -49,6 +50,7 @@ public class PackageAction extends ActionSupport {
 	
 	private Integer id;
 	private Integer islandId;
+	private Integer areaId;
 	private String title;
 	private Integer price;
 	private Integer smallPrice;
@@ -79,6 +81,7 @@ public class PackageAction extends ActionSupport {
 	private List<IslandPackage> packageList = new ArrayList<IslandPackage>(0);
 	private List<PackageImageRelation> packageImgList;
 	private List<Island> islandList = new ArrayList<Island>(0);
+	private List<Area> areaList = new ArrayList<Area>(0);
 	private List<PackageKepianliuying> kepianList;
 	
 	AreaIslandBiz areaIslandBiz = ModuleRegistry.getInstance()
@@ -114,6 +117,7 @@ public class PackageAction extends ActionSupport {
 	 * @return
 	 */
 	public String dolist(){
+		doAreaList();
 		initIslandList();
 		
 		Map<String,Object> params = new HashMap<String,Object>(0);
@@ -129,6 +133,9 @@ public class PackageAction extends ActionSupport {
 		if(price != null && price.intValue() > 0){
 			params.put("price", price);
 		}
+		if(areaId != null && areaId.intValue() > 0 ){
+			params.put("areaId", areaId);
+		}
 		if(islandId != null && islandId.intValue() > 0 ){
 			params.put("islandId", islandId);
 		}
@@ -142,6 +149,9 @@ public class PackageAction extends ActionSupport {
 			}
 			if(price != null && price.intValue() > 0 ){
 				countParam.put("price", price);
+			}
+			if(areaId != null && areaId.intValue() > 0 ){
+				countParam.put("areaId", areaId);
 			}
 			if(islandId != null && islandId.intValue() > 0 ){
 				countParam.put("islandId", islandId);
@@ -179,6 +189,11 @@ public class PackageAction extends ActionSupport {
 		return "list";
 	}
 	
+	 private void doAreaList(){
+		 Map<String,Object> params = new HashMap<String,Object>(0);
+			params.put("valid", 1);
+		    areaList = areaIslandBiz.queryAreaByMap(params);
+	}
 
 	/**
 	 * 套餐信息维护end－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
@@ -211,6 +226,7 @@ public class PackageAction extends ActionSupport {
 	 * @return
 	 */
 	public String toAddBase(){
+		doAreaList();
 		initIslandList();
 		return "addbase";
 	}
@@ -272,10 +288,11 @@ public class PackageAction extends ActionSupport {
 	 * @return
 	 */
 	public String toEditBase(){
-		initIslandList();
+		
 		IslandPackage obj = this.packageBiz.queryPackageById(id);
 		this.title=obj.getTitle();
 		this.islandId=obj.getIslandId();
+		this.areaId=obj.getAreaId();
 		if(obj.getPriceBig() != null){
 			this.bigPrice=Integer.parseInt(obj.getPriceBig());
 		}
@@ -283,6 +300,8 @@ public class PackageAction extends ActionSupport {
 			this.smallPrice=Integer.parseInt(obj.getPriceSmall());
 		}
 		this.online=obj.getIsOnline();
+		doAreaList();
+		initIslandList();
 		return "editbase";
 	}
 	
@@ -321,7 +340,6 @@ public class PackageAction extends ActionSupport {
 			params.put("islandName", island.getName());
 		}
 		this.packageBiz.updPackageByMap(params);
-		this.islandId=null;
 		this.title=null;
 		this.price=null;
 		dolist();
@@ -786,6 +804,9 @@ public class PackageAction extends ActionSupport {
 	private void initIslandList(){
 		Map<String,Object> params = new HashMap<String,Object>(0);
 		params.put("valid", 1);
+		if(areaId != null && areaId.intValue() > 0 ){
+			params.put("areaId", areaId);
+		}
 		List<Island> list = areaIslandBiz.queryIslandByMap(params);
 		this.islandList = list;
 	}
@@ -997,6 +1018,18 @@ public class PackageAction extends ActionSupport {
 	}
 	public void setKepianId(Integer kepianId) {
 		this.kepianId = kepianId;
+	}
+	public List<Area> getAreaList() {
+		return areaList;
+	}
+	public void setAreaList(List<Area> areaList) {
+		this.areaList = areaList;
+	}
+	public Integer getAreaId() {
+		return areaId;
+	}
+	public void setAreaId(Integer areaId) {
+		this.areaId = areaId;
 	}
 	
 	

@@ -201,7 +201,6 @@
 		var areaId = $("#area_id").val();
 		$("#area_name").val(areaName);
 		
-		alert(areaId);
 		$.ajax({
 			type:"get",
 			url:"${ctx}/hotel/areapackage/areapackagerecommend!getIslandByArea.action?areaId="+areaId,
