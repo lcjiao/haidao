@@ -45,8 +45,8 @@ public class CompanyAction extends ActionSupport {
 	private String mail;
 	private File image;//公司logo
 	private String imageFileName;
-	private String imageServPath=ModuleEnum.IMAGE_SAVE_PATH;
-	private String imageServPrefix=ModuleEnum.IMAGE_SERV_PREFIX;
+	//private String imageServPath=ModuleEnum.IMAGE_SAVE_PATH;
+	//private String imageServPrefix=ModuleEnum.IMAGE_SERV_PREFIX;
 	
 	private List<Recommend> recommendList;
 	private List<Company> companyList;
@@ -184,7 +184,7 @@ public class CompanyAction extends ActionSupport {
 		   }
 		   Date date = new Date();
 	   	   String namePrefix=format.format(date);
-	       String path = imageServPath+namePrefix;
+	       String path = ModuleEnum.getImageSavePath()+namePrefix;
 	       File file = new File(path);  
 	       if (!file.exists()) {  
 	           file.mkdirs();  
@@ -194,7 +194,7 @@ public class CompanyAction extends ActionSupport {
 	        } catch (IOException e) {  
 	              e.printStackTrace();  
 	        }  
-	       return imageServPrefix+namePrefix+"/"+imageFileName;  
+	       return ModuleEnum.getImageServUrl()+namePrefix+"/"+imageFileName;  
 	  }
 
 
@@ -263,18 +263,6 @@ public class CompanyAction extends ActionSupport {
 	}
 	public void setImageFileName(String imageFileName) {
 		this.imageFileName = imageFileName;
-	}
-	public String getImageServPath() {
-		return imageServPath;
-	}
-	public void setImageServPath(String imageServPath) {
-		this.imageServPath = imageServPath;
-	}
-	public String getImageServPrefix() {
-		return imageServPrefix;
-	}
-	public void setImageServPrefix(String imageServPrefix) {
-		this.imageServPrefix = imageServPrefix;
 	}
 	public List<Recommend> getRecommendList() {
 		return recommendList;

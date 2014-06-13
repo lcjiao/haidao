@@ -127,7 +127,9 @@ public class RoleBiz extends AbsCfgListener{
 	
 	@Override
 	public void load() {
+		System.out.println("init role conf");
 		Configuration config = this.getDependencyConfig().get(0);
+		System.out.println("init role conf"+config==null);
 	}
 	
 	

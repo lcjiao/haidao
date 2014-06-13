@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 	<bean id="common" class="com.jcl.core.config.ConfigurationFactoryBean">
-		<property name="name" value="common" />
+		<property name="name" value="haidao_conf" />
 		<property name="type" value="xml" />
 		<property name="delimiterParsingDisabled" value="true" />
 		<property name="encoding" value="utf8" />
@@ -100,5 +100,12 @@
 		<property name="guestQaDao" ref="guestQaDao"></property>
 	</bean> 
 	
+	<bean id="confBiz" class="com.island.domain.biz.ConfBiz">
+		<property name="dependencyConfig">
+  			<list>
+  				<ref bean="common"/>
+  			</list>
+  		</property>	
+	</bean>
 
 </beans>

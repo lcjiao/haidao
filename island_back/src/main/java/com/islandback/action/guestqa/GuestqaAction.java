@@ -10,7 +10,9 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ResultPath;
 
 import com.island.domain.DomainIslandModule;
+import com.island.domain.biz.ConfBiz;
 import com.island.domain.biz.GuestQaBiz;
+import com.islandback.module.ModuleEnum;
 import com.jcl.core.module.ModuleRegistry;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -33,11 +35,12 @@ public class GuestqaAction extends ActionSupport {
 		this.guestqaBiz.queryGuestQaByMap(params);
 	}
 	
-	public static void main(String arg[]){
-		GuestQaBiz guestqaBiz = ModuleRegistry.getInstance()
-	            .getModule(DomainIslandModule.class).getGuestQaBiz();
-		Map<String,Object> params = new HashMap<String,Object>(0);
-		guestqaBiz.queryGuestQaByMap(params);
+	public static void main(String arg[]) throws InterruptedException{
+		for(int i=0;i<10000;i++){
+			Thread.sleep(5000);
+			System.out.println(ModuleEnum.getImageSavePath());
+			System.out.println(ModuleEnum.getImageServUrl());
+		}
 	}
 	
 }

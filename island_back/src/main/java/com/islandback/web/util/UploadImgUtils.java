@@ -11,8 +11,8 @@ import com.islandback.module.ModuleEnum;
 
 public class UploadImgUtils {
 
-	private static String imageServPath = ModuleEnum.IMAGE_SAVE_PATH;
-	private static String imageServPrefix = ModuleEnum.IMAGE_SERV_PREFIX;
+	//private static String imageServPath = ModuleEnum.IMAGE_SAVE_PATH;
+	//private static String imageServPrefix = ModuleEnum.IMAGE_SERV_PREFIX;
 	
 	public static String getImgUrl(File image,String imageFileName){
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd"); 
@@ -22,7 +22,7 @@ public class UploadImgUtils {
 		 	
 		   Date date = new Date();
 	   	   String namePrefix=format.format(date);
-	       String path = imageServPath+namePrefix;
+	       String path = ModuleEnum.getImageSavePath()+namePrefix;
 	       File file = new File(path);  
 	       if (!file.exists()) {  
 	           file.mkdirs();  
@@ -32,6 +32,6 @@ public class UploadImgUtils {
 	        } catch (IOException e) {  
 	              e.printStackTrace();  
 	        }  
-	       return imageServPrefix+namePrefix+"/"+imageFileName; 
+	       return ModuleEnum.getImageServUrl()+namePrefix+"/"+imageFileName; 
 	}
 }

@@ -1,6 +1,7 @@
 package com.island.domain;
 
 import com.island.domain.biz.AreaIslandBiz;
+import com.island.domain.biz.ConfBiz;
 import com.island.domain.biz.GuestQaBiz;
 import com.island.domain.biz.ModuleTypeBiz;
 import com.island.domain.biz.RecommendBiz;
@@ -32,6 +33,9 @@ public interface DomainIslandModule {
 	
 	@Bean("guestQaBiz")
 	public GuestQaBiz getGuestQaBiz();
+	
+	@Bean("confBiz")
+	public ConfBiz getConfBiz();
 	/**
 	 * 婚纱摄影 业务类
 	 * @return

@@ -45,8 +45,8 @@ public class MasterwelcomeislandAction extends ActionSupport {
 	
 	private File image;
 	private String imageFileName;
-	private String imageServPath=ModuleEnum.IMAGE_SAVE_PATH;
-	private String imageServPrefix=ModuleEnum.IMAGE_SERV_PREFIX;
+	//private String imageServPath=ModuleEnum.IMAGE_SAVE_PATH;
+	//private String imageServPrefix=ModuleEnum.IMAGE_SERV_PREFIX;
 	private File bigImage;
 	private String bigImageFileName;
 	private String type;
@@ -121,7 +121,7 @@ public class MasterwelcomeislandAction extends ActionSupport {
 		   }
 		   Date date = new Date();
 	   	   String namePrefix=format.format(date);
-	       String path = imageServPath+namePrefix;
+	       String path = ModuleEnum.getImageSavePath()+namePrefix;
 	       File file = new File(path);  
 	       if (!file.exists()) {  
 	           file.mkdirs();  
@@ -131,7 +131,7 @@ public class MasterwelcomeislandAction extends ActionSupport {
 	        } catch (IOException e) {  
 	              e.printStackTrace();  
 	        }  
-	       return imageServPrefix+namePrefix+"/"+bigImageFileName;  
+	       return ModuleEnum.getImageServUrl()+namePrefix+"/"+bigImageFileName;  
 	  }  
 	
 	public String uploadImage() {  
@@ -140,7 +140,7 @@ public class MasterwelcomeislandAction extends ActionSupport {
 		   }
 		   Date date = new Date();
 	   	   String namePrefix=format.format(date);
-	       String path = imageServPath+namePrefix;
+	       String path = ModuleEnum.getImageSavePath()+namePrefix;
 	       File file = new File(path);  
 	       if (!file.exists()) {  
 	           file.mkdirs();  
@@ -150,7 +150,7 @@ public class MasterwelcomeislandAction extends ActionSupport {
 	        } catch (IOException e) {  
 	              e.printStackTrace();  
 	        }  
-	       return imageServPrefix+namePrefix+"/"+imageFileName;  
+	       return ModuleEnum.getImageServUrl()+namePrefix+"/"+imageFileName;  
 	  }  
 	
 	public String del(){
@@ -333,12 +333,6 @@ public class MasterwelcomeislandAction extends ActionSupport {
 	}
 	public void setImageFileName(String imageFileName) {
 		this.imageFileName = imageFileName;
-	}
-	public String getImageServPath() {
-		return imageServPath;
-	}
-	public void setImageServPath(String imageServPath) {
-		this.imageServPath = imageServPath;
 	}
 	public File getBigImage() {
 		return bigImage;

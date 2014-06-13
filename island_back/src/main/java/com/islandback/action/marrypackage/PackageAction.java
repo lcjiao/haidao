@@ -79,8 +79,8 @@ public class PackageAction extends ActionSupport {
 	
 	private File image;
 	private String imageFileName;
-	private String imageServPath=ModuleEnum.IMAGE_SAVE_PATH;
-	private String imageServPrefix=ModuleEnum.IMAGE_SERV_PREFIX;
+	//private String imageServPath=ModuleEnum.IMAGE_SAVE_PATH;
+	//private String imageServPrefix=ModuleEnum.IMAGE_SERV_PREFIX;
 	
 	private Integer actionType;//1保存基本信息返回列表 2:保存基本信息返回详细信息添加页 
 	//3保存详细信息并添加图片  4:管理详细信息
@@ -885,7 +885,7 @@ public class PackageAction extends ActionSupport {
 		   }
 		   Date date = new Date();
 	   	   String namePrefix=format.format(date);
-	       String path = imageServPath+namePrefix;
+	       String path = ModuleEnum.getImageSavePath()+namePrefix;
 	       File file = new File(path);  
 	       if (!file.exists()) {  
 	           file.mkdirs();  
@@ -895,7 +895,7 @@ public class PackageAction extends ActionSupport {
 	        } catch (IOException e) {  
 	              e.printStackTrace();  
 	        }  
-	       return imageServPrefix+namePrefix+"/"+imageFileName;  
+	       return ModuleEnum.getImageServUrl()+namePrefix+"/"+imageFileName;  
 	  }  
 	
 	private SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");

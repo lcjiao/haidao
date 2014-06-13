@@ -1,12 +1,25 @@
 package com.islandback.module;
 
+import com.island.domain.DomainIslandModule;
+import com.island.domain.biz.ConfBiz;
+import com.jcl.core.module.ModuleRegistry;
+
 public class ModuleEnum {
 	/**
 	 * 图片存放路径
 	 */
+	static ConfBiz confBiz = ModuleRegistry.getInstance()
+            .getModule(DomainIslandModule.class).getConfBiz();
 	public static final String IMAGE_SAVE_PATH="/Users/lcjiao/index/";
 	
+	public static String getImageSavePath(){
+		return confBiz.getValue("img_save_path");
+	}
+	
 	public static final String IMAGE_SERV_PREFIX="http://192.168.2.104:8888/";
+	public static String getImageServUrl(){
+		return confBiz.getValue("img_url_path");
+	}
 
 	/**
 	 * 首页主推产品

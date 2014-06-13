@@ -45,8 +45,8 @@ public class MarraymasterrecomendAction extends ActionSupport {
 	private Integer id;
 	private File image;
 	private String imageFileName;
-	private String imageServPath=ModuleEnum.IMAGE_SAVE_PATH;
-	private String imageServPrefix=ModuleEnum.IMAGE_SERV_PREFIX;
+	//private String imageServPath=ModuleEnum.IMAGE_SAVE_PATH;
+	//private String imageServPrefix=ModuleEnum.IMAGE_SERV_PREFIX;
 	private Integer pageNo;
 	private Integer totalPageSize;
 	private Integer totalSize;
@@ -171,7 +171,7 @@ public class MarraymasterrecomendAction extends ActionSupport {
 		   }
 		   Date date = new Date();
 	   	   String namePrefix=format.format(date);
-	       String path = imageServPath+namePrefix;
+	       String path = ModuleEnum.getImageSavePath()+namePrefix;
 	       File file = new File(path);  
 	       if (!file.exists()) {  
 	           file.mkdirs();  
@@ -181,7 +181,7 @@ public class MarraymasterrecomendAction extends ActionSupport {
 	        } catch (IOException e) {  
 	              e.printStackTrace();  
 	        }  
-	       return imageServPrefix+namePrefix+"/"+imageFileName;  
+	       return ModuleEnum.getImageServUrl()+namePrefix+"/"+imageFileName;  
 	  }  
 
 	
