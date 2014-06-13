@@ -320,9 +320,6 @@
 			<if test="recommendTime !=  null">			        
 				and recommend_time=#{recommendTime}
 			</if>
-			<if test="content !=  1">			        
-				and img_url != ''
-			</if>
 		</where>
 		<if test="begin !=  null">			        
 				limit #{begin},#{size}
@@ -420,9 +417,6 @@
 			<if test="recommendTime !=  null">			        
 				and recommend_time=#{recommendTime}
 			</if>
-			<if test="content !=  1">			        
-				and img_url != ''
-			</if>
 		</where>
 		
 	</select>
@@ -516,9 +510,6 @@
 			</if>
 			<if test="recommendTime !=  null">			        
 				and recommend_time=#{recommendTime}
-			</if>
-			<if test="content !=  1">			        
-				and img_url != ''
 			</if>
 			
 		</where>
