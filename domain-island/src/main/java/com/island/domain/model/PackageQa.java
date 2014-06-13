@@ -223,4 +223,50 @@ public class PackageQa extends AbsModel{
 		boolean passed = true;
 		return true;
 	}
+	// 1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐 5:自由行套餐
+	private String packageTypeStr;
+	public String getPackageTypeStr() {
+		if( packageType != null ){
+			if(packageType.intValue() ==1 ){
+				return "婚礼套餐";
+			}
+			if(packageType.intValue() ==2 ){
+				return "婚纱摄影套餐";
+			}
+			if(packageType.intValue() ==3 ){
+				return "婚纱摄影摄影师套餐";
+			}
+			if(packageType.intValue() ==4 ){
+				return "酒店套餐";
+			}
+			if(packageType.intValue() ==5 ){
+				return "自由行套餐";
+			}
+			return "";
+		}else{
+			return "";
+		}
+	}
+	public void setPackageTypeStr(String packageTypeStr) {
+		this.packageTypeStr = packageTypeStr;
+	}
+	
+	private String hasAnswer;
+	public String getHasAnswer() {
+		if(isAnswer != null){
+			if(isAnswer.intValue() == 0 ){
+				return "无回复";
+			}
+			if(isAnswer.intValue() == 1 ){
+				return "已回复";
+			}
+		}else{
+			return "无回复";
+		}
+		return "无回复";
+	}
+	public void setHasAnswer(String hasAnswer) {
+		this.hasAnswer = hasAnswer;
+	}
+	
 }
