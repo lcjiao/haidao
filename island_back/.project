@@ -3,6 +3,7 @@
 	<name>island_back</name>
 	<comment></comment>
 	<projects>
+		<project>domain-island</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

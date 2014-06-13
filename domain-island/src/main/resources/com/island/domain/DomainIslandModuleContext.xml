@@ -92,7 +92,13 @@
 		<property name="islandPackageTypeDao" ref="IslandPackageTypeDAO"></property>
 	</bean>
 	
-	<bean id="countryDao" class="com.island.domain.dal.CountryIbatisDAOImpl" />		
+	<bean id="countryDao" class="com.island.domain.dal.CountryIbatisDAOImpl" />	
+	
+	<bean id="guestQaDao" class="com.island.domain.dal.PackageQaIbatisDAOImpl"/>	
+	
+	<bean id="guestQaBiz" class="com.island.domain.biz.GuestQaBiz">
+		<property name="guestQaDao" ref="guestQaDao"></property>
+	</bean> 
 	
 
 </beans>

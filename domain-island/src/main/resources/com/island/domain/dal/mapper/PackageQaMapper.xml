@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.island.domain.dal.mapper.PackageQaMapper">
+	<resultMap id="PackageQaRslMap" type="com.island.domain.model.PackageQa">		
+		
+			<id property="id" column="id" />
+			<result property="packageId" column="package_id" />
+			<result property="packageType" column="package_type" />
+			<result property="question" column="question" />
+			<result property="answer" column="answer" />
+			<result property="isGuest" column="is_guest" />
+			<result property="isAnswer" column="is_answer" />
+			<result property="valid" column="valid" />
+			<result property="askTime" column="ask_time" />
+			<result property="asker" column="asker" />
+			<result property="answerTime" column="answer_time" />
+			<result property="answerPerson" column="answer_person" />
+			<result property="questionId" column="question_id" />
+			<result property="questionType" column="question_type" />
+	</resultMap>
+
+	<select id="queryById" parameterType="java.util.Map" resultMap="PackageQaRslMap">
+		SELECT
+			id,
+			package_id,
+			package_type,
+			question,
+			answer,
+			is_guest,
+			is_answer,
+			valid,
+			ask_time,
+			asker,
+			answer_time,
+			answer_person,
+			question_id,
+			question_type
+		FROM
+			package_qa
+		<where>
+			and id=#{id}
+		</where>
+			limit 1
+	</select>
+
+	<select id="queryByModel" parameterType="com.island.domain.model.PackageQa" resultMap="PackageQaRslMap">		
+		SELECT
+			id,
+			package_id,
+			package_type,
+			question,
+			answer,
+			is_guest,
+			is_answer,
+			valid,
+			ask_time,
+			asker,
+			answer_time,
+			answer_person,
+			question_id,
+			question_type
+		FROM
+			package_qa
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageId !=  null">			        
+				and package_id=#{packageId}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="question !=  null">			        
+				and question=#{question}
+			</if>
+			<if test="answer !=  null">			        
+				and answer=#{answer}
+			</if>
+			<if test="isGuest !=  null">			        
+				and is_guest=#{isGuest}
+			</if>
+			<if test="isAnswer !=  null">			        
+				and is_answer=#{isAnswer}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="askTime !=  null">			        
+				and ask_time=#{askTime}
+			</if>
+			<if test="asker !=  null">			        
+				and asker=#{asker}
+			</if>
+			<if test="answerTime !=  null">			        
+				and answer_time=#{answerTime}
+			</if>
+			<if test="answerPerson !=  null">			        
+				and answer_person=#{answerPerson}
+			</if>
+			<if test="questionId !=  null">			        
+				and question_id=#{questionId}
+			</if>
+			<if test="questionType !=  null">			        
+				and question_type=#{questionType}
+			</if>
+		</where>
+		
+	</select>
+		
+	<select id="queryByMap" parameterType="java.util.Map" resultMap="PackageQaRslMap">				
+		SELECT
+			id,
+			package_id,
+			package_type,
+			question,
+			answer,
+			is_guest,
+			is_answer,
+			valid,
+			ask_time,
+			asker,
+			answer_time,
+			answer_person,
+			question_id,
+			question_type
+		FROM
+			package_qa
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageId !=  null">			        
+				and package_id=#{packageId}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="question !=  null">			        
+				and question=#{question}
+			</if>
+			<if test="answer !=  null">			        
+				and answer=#{answer}
+			</if>
+			<if test="isGuest !=  null">			        
+				and is_guest=#{isGuest}
+			</if>
+			<if test="isAnswer !=  null">			        
+				and is_answer=#{isAnswer}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="askTime !=  null">			        
+				and ask_time=#{askTime}
+			</if>
+			<if test="asker !=  null">			        
+				and asker=#{asker}
+			</if>
+			<if test="answerTime !=  null">			        
+				and answer_time=#{answerTime}
+			</if>
+			<if test="answerPerson !=  null">			        
+				and answer_person=#{answerPerson}
+			</if>
+			<if test="questionId !=  null">			        
+				and question_id=#{questionId}
+			</if>
+			<if test="questionType !=  null">			        
+				and question_type=#{questionType}
+			</if>
+		</where>
+		<if test="begin !=  null">			        
+				limit #{begin},#{size}
+		</if>
+	</select>
+	
+	<select id="countByModel" parameterType="com.island.domain.model.PackageQa" resultType="java.lang.Integer">	
+		SELECT
+			count(*)
+		FROM
+			package_qa
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageId !=  null">			        
+				and package_id=#{packageId}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="question !=  null">			        
+				and question=#{question}
+			</if>
+			<if test="answer !=  null">			        
+				and answer=#{answer}
+			</if>
+			<if test="isGuest !=  null">			        
+				and is_guest=#{isGuest}
+			</if>
+			<if test="isAnswer !=  null">			        
+				and is_answer=#{isAnswer}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="askTime !=  null">			        
+				and ask_time=#{askTime}
+			</if>
+			<if test="asker !=  null">			        
+				and asker=#{asker}
+			</if>
+			<if test="answerTime !=  null">			        
+				and answer_time=#{answerTime}
+			</if>
+			<if test="answerPerson !=  null">			        
+				and answer_person=#{answerPerson}
+			</if>
+			<if test="questionId !=  null">			        
+				and question_id=#{questionId}
+			</if>
+			<if test="questionType !=  null">			        
+				and question_type=#{questionType}
+			</if>
+		</where>
+		
+	</select>
+	
+	<select id="countByMap" parameterType="java.util.Map" resultType="java.lang.Integer">				
+		SELECT
+			count(*)
+		FROM
+			package_qa
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageId !=  null">			        
+				and package_id=#{packageId}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="question !=  null">			        
+				and question=#{question}
+			</if>
+			<if test="answer !=  null">			        
+				and answer=#{answer}
+			</if>
+			<if test="isGuest !=  null">			        
+				and is_guest=#{isGuest}
+			</if>
+			<if test="isAnswer !=  null">			        
+				and is_answer=#{isAnswer}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="askTime !=  null">			        
+				and ask_time=#{askTime}
+			</if>
+			<if test="asker !=  null">			        
+				and asker=#{asker}
+			</if>
+			<if test="answerTime !=  null">			        
+				and answer_time=#{answerTime}
+			</if>
+			<if test="answerPerson !=  null">			        
+				and answer_person=#{answerPerson}
+			</if>
+			<if test="questionId !=  null">			        
+				and question_id=#{questionId}
+			</if>
+			<if test="questionType !=  null">			        
+				and question_type=#{questionType}
+			</if>
+		</where>
+				
+	</select>
+	
+	<select id="pageQuery" parameterType="com.jcl.core.dal.Page" resultMap="PackageQaRslMap" fetchSize="15">
+		SELECT
+			id,
+			package_id,
+			package_type,
+			question,
+			answer,
+			is_guest,
+			is_answer,
+			valid,
+			ask_time,
+			asker,
+			answer_time,
+			answer_person,
+			question_id,
+			question_type
+		FROM
+			package_qa
+		<where>
+			<if test="params !=  null">
+				<if test="params.id !=  null">
+					and id=#{params.id}
+				</if>
+				<if test="params.packageId !=  null">
+					and package_id=#{params.packageId}
+				</if>
+				<if test="params.packageType !=  null">
+					and package_type=#{params.packageType}
+				</if>
+				<if test="params.question !=  null">
+					and question=#{params.question}
+				</if>
+				<if test="params.answer !=  null">
+					and answer=#{params.answer}
+				</if>
+				<if test="params.isGuest !=  null">
+					and is_guest=#{params.isGuest}
+				</if>
+				<if test="params.isAnswer !=  null">
+					and is_answer=#{params.isAnswer}
+				</if>
+				<if test="params.valid !=  null">
+					and valid=#{params.valid}
+				</if>
+				<if test="params.askTime !=  null">
+					and ask_time=#{params.askTime}
+				</if>
+				<if test="params.asker !=  null">
+					and asker=#{params.asker}
+				</if>
+				<if test="params.answerTime !=  null">
+					and answer_time=#{params.answerTime}
+				</if>
+				<if test="params.answerPerson !=  null">
+					and answer_person=#{params.answerPerson}
+				</if>
+				<if test="params.questionId !=  null">
+					and question_id=#{params.questionId}
+				</if>
+				<if test="params.questionType !=  null">
+					and question_type=#{params.questionType}
+				</if>
+			</if>
+		</where>
+			limit #{start},#{end}	
+	</select>
+
+	<insert id="insert" parameterType="com.island.domain.model.PackageQa" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO	package_qa
+			(id,package_id,package_type,question,answer,is_guest,is_answer,valid,ask_time,asker,answer_time,answer_person,question_id,question_type)
+			VALUES(#{id},#{packageId},#{packageType},#{question},#{answer},#{isGuest},#{isAnswer},#{valid},#{askTime},#{asker},#{answerTime},#{answerPerson},#{questionId},#{questionType})		
+	</insert>
+	
+	<update id="update" parameterType="com.island.domain.model.PackageQa">
+		update 
+			package_qa
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="packageId !=  null">			        
+				package_id=#{packageId},
+			</if>
+			<if test="packageType !=  null">			        
+				package_type=#{packageType},
+			</if>
+			<if test="question !=  null">			        
+				question=#{question},
+			</if>
+			<if test="answer !=  null">			        
+				answer=#{answer},
+			</if>
+			<if test="isGuest !=  null">			        
+				is_guest=#{isGuest},
+			</if>
+			<if test="isAnswer !=  null">			        
+				is_answer=#{isAnswer},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="askTime !=  null">			        
+				ask_time=#{askTime},
+			</if>
+			<if test="asker !=  null">			        
+				asker=#{asker},
+			</if>
+			<if test="answerTime !=  null">			        
+				answer_time=#{answerTime},
+			</if>
+			<if test="answerPerson !=  null">			        
+				answer_person=#{answerPerson},
+			</if>
+			<if test="questionId !=  null">			        
+				question_id=#{questionId},
+			</if>
+			<if test="questionType !=  null">			        
+				question_type=#{questionType},
+			</if>
+		</set>
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageId !=  null">			        
+				and package_id=#{packageId}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="questionId !=  null">			        
+				and question_id=#{questionId}
+			</if>
+			<if test="questionType !=  null">			        
+				and question_type=#{questionType}
+			</if>
+		</where>
+		
+	</update>
+	<update id="updateByMap" parameterType="java.util.Map">
+		update 
+			package_qa
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="packageId !=  null">			        
+				package_id=#{packageId},
+			</if>
+			<if test="packageType !=  null">			        
+				package_type=#{packageType},
+			</if>
+			<if test="question !=  null">			        
+				question=#{question},
+			</if>
+			<if test="answer !=  null">			        
+				answer=#{answer},
+			</if>
+			<if test="isGuest !=  null">			        
+				is_guest=#{isGuest},
+			</if>
+			<if test="isAnswer !=  null">			        
+				is_answer=#{isAnswer},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="askTime !=  null">			        
+				ask_time=#{askTime},
+			</if>
+			<if test="asker !=  null">			        
+				asker=#{asker},
+			</if>
+			<if test="answerTime !=  null">			        
+				answer_time=#{answerTime},
+			</if>
+			<if test="answerPerson !=  null">			        
+				answer_person=#{answerPerson},
+			</if>
+			<if test="questionId !=  null">			        
+				question_id=#{questionId},
+			</if>
+			<if test="questionType !=  null">			        
+				question_type=#{questionType},
+			</if>
+		</set>
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageId !=  null">			        
+				and package_id=#{packageId}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="questionId !=  null">			        
+				and question_id=#{questionId}
+			</if>
+			<if test="questionType !=  null">			        
+				and question_type=#{questionType}
+			</if>
+		</where>
+		
+	</update>
+	
+	<update id="cmplxUpdate" parameterType="java.util.Map">
+		update 
+			package_qa
+		<set>
+			<if test="updNewMap.id !=  null">
+				id=#{updNewMap.id},
+			</if>
+			<if test="updNewMap.packageId !=  null">
+				package_id=#{updNewMap.packageId},
+			</if>
+			<if test="updNewMap.packageType !=  null">
+				package_type=#{updNewMap.packageType},
+			</if>
+			<if test="updNewMap.question !=  null">
+				question=#{updNewMap.question},
+			</if>
+			<if test="updNewMap.answer !=  null">
+				answer=#{updNewMap.answer},
+			</if>
+			<if test="updNewMap.isGuest !=  null">
+				is_guest=#{updNewMap.isGuest},
+			</if>
+			<if test="updNewMap.isAnswer !=  null">
+				is_answer=#{updNewMap.isAnswer},
+			</if>
+			<if test="updNewMap.valid !=  null">
+				valid=#{updNewMap.valid},
+			</if>
+			<if test="updNewMap.askTime !=  null">
+				ask_time=#{updNewMap.askTime},
+			</if>
+			<if test="updNewMap.asker !=  null">
+				asker=#{updNewMap.asker},
+			</if>
+			<if test="updNewMap.answerTime !=  null">
+				answer_time=#{updNewMap.answerTime},
+			</if>
+			<if test="updNewMap.answerPerson !=  null">
+				answer_person=#{updNewMap.answerPerson},
+			</if>
+			<if test="updNewMap.questionId !=  null">
+				question_id=#{updNewMap.questionId},
+			</if>
+			<if test="updNewMap.questionType !=  null">
+				question_type=#{updNewMap.questionType},
+			</if>
+		</set>
+		<where>
+			<if test="updCondMap.id !=  null">
+				and id=#{updCondMap.id}
+			</if>
+			<if test="updCondMap.packageId !=  null">
+				and package_id=#{updCondMap.packageId}
+			</if>
+			<if test="updCondMap.packageType !=  null">
+				and package_type=#{updCondMap.packageType}
+			</if>
+			<if test="updCondMap.question !=  null">
+				and question=#{updCondMap.question}
+			</if>
+			<if test="updCondMap.answer !=  null">
+				and answer=#{updCondMap.answer}
+			</if>
+			<if test="updCondMap.isGuest !=  null">
+				and is_guest=#{updCondMap.isGuest}
+			</if>
+			<if test="updCondMap.isAnswer !=  null">
+				and is_answer=#{updCondMap.isAnswer}
+			</if>
+			<if test="updCondMap.valid !=  null">
+				and valid=#{updCondMap.valid}
+			</if>
+			<if test="updCondMap.askTime !=  null">
+				and ask_time=#{updCondMap.askTime}
+			</if>
+			<if test="updCondMap.asker !=  null">
+				and asker=#{updCondMap.asker}
+			</if>
+			<if test="updCondMap.answerTime !=  null">
+				and answer_time=#{updCondMap.answerTime}
+			</if>
+			<if test="updCondMap.answerPerson !=  null">
+				and answer_person=#{updCondMap.answerPerson}
+			</if>
+			<if test="updCondMap.questionId !=  null">
+				and question_id=#{updCondMap.questionId}
+			</if>
+			<if test="updCondMap.questionType !=  null">
+				and question_type=#{updCondMap.questionType}
+			</if>
+		</where>
+		
+	</update>
+	
+	<delete id="delete" parameterType="com.island.domain.model.PackageQa">		
+		DELETE
+		FROM
+			package_qa 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageId !=  null">			        
+				and package_id=#{packageId}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="question !=  null">			        
+				and question=#{question}
+			</if>
+			<if test="answer !=  null">			        
+				and answer=#{answer}
+			</if>
+			<if test="isGuest !=  null">			        
+				and is_guest=#{isGuest}
+			</if>
+			<if test="isAnswer !=  null">			        
+				and is_answer=#{isAnswer}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="askTime !=  null">			        
+				and ask_time=#{askTime}
+			</if>
+			<if test="asker !=  null">			        
+				and asker=#{asker}
+			</if>
+			<if test="answerTime !=  null">			        
+				and answer_time=#{answerTime}
+			</if>
+			<if test="answerPerson !=  null">			        
+				and answer_person=#{answerPerson}
+			</if>
+			<if test="questionId !=  null">			        
+				and question_id=#{questionId}
+			</if>
+			<if test="questionType !=  null">			        
+				and question_type=#{questionType}
+			</if>
+		</where>
+		
+	</delete>
+	<delete id="deleteByMap" parameterType="java.util.Map">		
+		DELETE
+		FROM
+			package_qa 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageId !=  null">			        
+				and package_id=#{packageId}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="question !=  null">			        
+				and question=#{question}
+			</if>
+			<if test="answer !=  null">			        
+				and answer=#{answer}
+			</if>
+			<if test="isGuest !=  null">			        
+				and is_guest=#{isGuest}
+			</if>
+			<if test="isAnswer !=  null">			        
+				and is_answer=#{isAnswer}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="askTime !=  null">			        
+				and ask_time=#{askTime}
+			</if>
+			<if test="asker !=  null">			        
+				and asker=#{asker}
+			</if>
+			<if test="answerTime !=  null">			        
+				and answer_time=#{answerTime}
+			</if>
+			<if test="answerPerson !=  null">			        
+				and answer_person=#{answerPerson}
+			</if>
+			<if test="questionId !=  null">			        
+				and question_id=#{questionId}
+			</if>
+			<if test="questionType !=  null">			        
+				and question_type=#{questionType}
+			</if>
+		</where>
+		
+	</delete>
+</mapper>
