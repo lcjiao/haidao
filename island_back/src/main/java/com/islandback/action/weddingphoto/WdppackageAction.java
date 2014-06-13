@@ -3,6 +3,7 @@ package com.islandback.action.weddingphoto;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -12,6 +13,8 @@ import java.util.Map;
 
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ResultPath;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
 
 import com.jcl.core.module.ModuleRegistry;
 import com.island.domain.DomainIslandModule;
@@ -28,6 +31,7 @@ import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
 import com.islandback.web.util.RequestProcc;
+import com.islandback.web.util.Struts2Utils;
 import com.islandback.web.util.UploadImgUtils;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -461,6 +465,33 @@ public class WdppackageAction extends ActionSupport  {
 		map.put("id", kplyId);
 		weddingPhotoBiz.updatePkgKPLY(map);
 		return toKepianList();
+	}
+	
+	/**
+	 * 热推
+	 * @throws JsonGenerationException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 */
+	public void setHot() throws JsonGenerationException, JsonMappingException, IOException{
+		map.clear();
+		map.put("isHot", 1);
+		map.put("id", wdpId);
+		weddingPhotoBiz.updHotFlagByMap(map);
+		Struts2Utils.renderText("ok");
+	}
+	/**
+	 * 取消热推
+	 * @throws JsonGenerationException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 */
+	public void resetHot() throws JsonGenerationException, JsonMappingException, IOException{
+		map.clear();
+		map.put("isHot", 0);
+		map.put("id", wdpId);
+		weddingPhotoBiz.updHotFlagByMap(map);
+		Struts2Utils.renderText("ok");
 	}
 
 	/**

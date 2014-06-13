@@ -1,19 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ include file="/common/taglibs.jsp"%>
-<%@page import="com.island.domain.model.*" %>
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>婚纱摄影上边小三块推荐图片</title>
-<link rel="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
-<link rel="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
+<title>婚纱套餐区域产品</title>
+<link rel="stylesheet" rev="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
+<link rel="stylesheet" rev="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
 <script type="text/javascript" src="${ctx}/js/common.js" ></script>
 
 </head>
 <body>
 
-<table class="customlist" style="width: 100%">
+<table class="customlist" width="100%">
 	<thead>
 		<tr>
 			<td>
@@ -35,45 +34,30 @@
 		<tr>
 			<td colspan="2">
 				<!--表内容-->
-				<table class="datalist ask_rel" style="width: 100%">
+				<table class="datalist ask_rel" width="100%">
 					<thead>
 						<tr>
-							<td>序号</td>
-							<td>标题</td>
-							<td>链接地址</td>
-							<td>图片</td>
-							<td>价格</td>
+							<td>区域</td>
 							<td>排序</td>
 							<td>操作</td>
 						</tr>
 					</thead>
 					<tbody id="r_list">
-						<s:iterator value="recommendList" status="_index">
-							<tr>
+						<c:forEach var="recommend" items="${recommendList}">
+							<tr >
 								<td style="text-align:center;">
-									<s:property value="#_index.index+1"/>
+									<c:out value="${recommend.areaName}"></c:out>
 								</td>
 								<td style="text-align:center;">
-									<s:property value="title"/>
-								</td>
+									<c:out value="${recommend.recommendIndex}"></c:out>
+									<%-- <input style="width:50px;" type="text" value="${recommend.recommendIndex}" id="r_index" name="index">
+								 --%></td>
 								<td style="text-align:center;">
-									<s:property value="linkUrl"/>
-								</td>
-								<td style="text-align:center;">
-									<img style="width:150px;height:120px;" alt="你想看我吗？哈哈！！" src='<s:property value="imgUrl"/>'>
-								</td>
-								<td>
-									<s:property value="price"/>
-								</td>
-								<td style="text-align:center;">
-									<s:property value="recommendIndex"/>
-								</td>
-								<td style="text-align:center;">
-									<a title='<s:property value="id"/>' onclick="edit(this)" >修改</a>&nbsp;|&nbsp;
-									<a title="<s:property value="id"/>" onclick="del(this)">删除</a>
+									<a title="${recommend.id}" onclick="edit(this)" >修改</a>&nbsp;|&nbsp;
+									<a title="${recommend.id}" onclick="del(this)">删除</a>
 								</td>							
 						    </tr>
-					    </s:iterator>
+					    </c:forEach>
 					</tbody>
 				</table>
 			</td>
@@ -116,7 +100,7 @@
 		if(totalPageSize < 2){
 			$("#go_page").hide();
 		}else{
-			$("#go_page").show();
+			$("#go_page").hide();
 		}
 		
 	}
@@ -154,13 +138,13 @@
 	
 	
 	function findByNo(pageNo){
-		var url = "${ctx}/weddingphoto/wdpleft/wdpleft!list?pageNo="+pageNo;
+		var url = "${ctx}/weddingphoto/area/arearecommend!tolist.action?pageNo="+pageNo;
 		window.location.href = url;
 	}
 	
 	
 	function newCreate(){
-		var url = "${ctx}/weddingphoto/wdpleft/wdpleft!toAdd.action";
+		var url = "${ctx}/weddingphoto/area/arearecommend!toAdd.action";
 		window.location.href = url;
 	};
 	
@@ -168,15 +152,17 @@
 		var isHide = confirm('确定删除吗?');
 		if(isHide){
 			var recommendId = $(ele).attr('title');
-			var url = "${ctx}/weddingphoto/wdpleft/wdpleft!deleteWdp.action?rmdId="+recommendId;
+			var url = "${ctx}/weddingphoto/area/arearecommend!del.action?id="+recommendId;
 			window.location.href = url; 
 		}
 	}
 	
 	function edit(ele){
 		var recommendId = $(ele).attr('title');
-		var url =  "${ctx}/weddingphoto/wdpleft/wdpleft!toEditWdp.action?rmdId="+recommendId;
+		var url =  "${ctx}/weddingphoto/area/arearecommend!toEdit.action?id="+recommendId;
 		window.location.href = url; 
 	}
+	
+	
 </script>
 </html>

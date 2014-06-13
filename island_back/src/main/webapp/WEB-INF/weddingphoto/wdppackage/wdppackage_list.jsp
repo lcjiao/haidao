@@ -66,7 +66,9 @@
 							<td>淡季价格</td>
 							<td>旺季价格</td>
 							<td>是否在售</td>
-							<td>操作</td>
+							<td>是否热推</td>
+							<td>热推操作</td>
+							<td>基本操作</td>
 						</tr>
 					</thead>
 					<tbody id="question_list">
@@ -93,6 +95,13 @@
 								<td style="text-align:center;">
 									<%-- <s:if test="<s:property value="isOnline"/> != 1">非在售 </s:if>在售 --%>
 									<s:property value="onlineStr"/>
+								</td>
+								<td style="text-align:center;" id="hot_<s:property value="#_index.index+1"/>">
+									<s:property value="hotStr"/>
+								</td>
+								<td width="100px">
+									<a title="" onclick="sethot('hot_<s:property value="#_index.index+1"/>')" >热推</a>&nbsp;|&nbsp;
+									<a title="" onclick="resethot('hot_<s:property value="#_index.index+1"/>')" >取消热推</a>&nbsp;&nbsp;
 								</td>
 								<td width="360px">
 									<a title="" onclick="editBase()" >基本信息管理</a>&nbsp;|&nbsp;
@@ -223,6 +232,51 @@
 			//var weddingphotoId = $(ele).attr('title');
 			var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!delWeddingPhoto.action?wdpId="+weddingphotoId;
 			window.location.href = url; 
+		}
+	}
+	
+	function resethot(ele){
+		//var packageId = $(ele).attr('title');
+		var txt = $('#'+ele)[0].innerText;
+		if(txt.trim()=="非热推"){
+			alert("已经是非热推套餐了!");
+			return;
+		}
+		if(txt.trim() == "热推"){
+			
+			$.ajax({
+				type:"get",
+				url:"${ctx}/weddingphoto/wdppackage/wdppackage!resetHot.action?wdpId="+weddingphotoId,
+				dataType:"text",
+				success:function(text){
+					alert("取消推荐成功");
+					
+				}
+			});
+			
+			$('#'+ele)[0].innerText = "非热推";
+		}
+	}
+	
+	function sethot(ele){
+		var txt = $('#'+ele)[0].innerText;
+		if(txt.trim()=="热推"){
+			alert("已经是热推套餐了!");
+			return;
+		}
+		if(txt.trim() == "非热推"){
+			
+			$.ajax({
+				type:"get",
+				url:"${ctx}/weddingphoto/wdppackage/wdppackage!setHot.action?wdpId="+weddingphotoId,
+				dataType:"text",
+				success:function(text){
+					alert("推荐成功");
+					
+				}
+			});
+			
+			$('#'+ele)[0].innerText = "热推";
 		}
 	}
 </script>

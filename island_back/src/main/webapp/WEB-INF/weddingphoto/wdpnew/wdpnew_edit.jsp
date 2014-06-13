@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>婚纱摄影上边小三块图片推荐</title>
+<title>婚纱摄影最新套餐推荐</title>
 <link rel="stylesheet"  href='${ctx}/css/base.css' type="text/css" media="all" />
 <link rel="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
@@ -13,7 +13,7 @@
 <%@ include file="/common/kindeditor.jsp"%>
 </head>
 <body>
-<form action="${ctx}/weddingphoto/wdpleft/wdpleft!addWdpRecommend.action" enctype="multipart/form-data" id="form" method="post">
+<form action="${ctx}/weddingphoto/wdpnew/wdpnew!editRecommend.action" enctype="multipart/form-data" id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" style="width: 100%">
 	<tbody>
@@ -21,6 +21,7 @@
 			<td>推荐图片</td>
 			<td><input type="file" name="image"/>
 				<span style="color: red"><b>*</b></span>
+				<input type="hidden" id="img_url" name="recommend.imgUrl" value="${recommend.imgUrl }">
 			</td>					
 		</tr>
 	<!-- 	<tr>
@@ -29,8 +30,8 @@
 			<select id="area_id" name="recommend.areaId" style="width: 80px">
 					<option value="0" selected="selected">--请选择--</option>
 					<c:forEach var="area" items="${areaList}">
-							<option value="${area.id}" >${area.name}</option>
-				   </c:forEach>
+							<option value="${area.id}"  <c:if test="${recommend.areaId==area.id }">selected</c:if> >${area.name}</option>
+				    </c:forEach>
 				</select>
 				<span style="color: red"><b>*</b></span>
 			</td>
@@ -38,27 +39,27 @@
 		<tr>
 			<td>所属岛屿</td>
 			<td>
-			<select id="island_id" name="recommend.islandId" style="width: 80px" disabled="disabled">
-				</select>
+			<select id="island_id" name="recommend.islandId" style="width: 80px">
+				<c:forEach var="island" items="${islandList}">
+							<option value="${island.id}"  <c:if test="${recommend.islandId==island.id }">selected</c:if> >${island.name}</option>
+				    </c:forEach>
+			</select>
 			</td>
 		</tr>
 		 -->
 		<tr>
 			<td>图片链接</td>
-			<td><input type="text" class="text" id="link_url" name="recommend.linkUrl"/></td>	
+			<td><input type="text" class="text" id="link_url" name="recommend.linkUrl" value="${recommend.linkUrl }"/></td>	
 		</tr>
 		<tr>
 			<td>标题</td>
-			<td><input type=text class="text" value="" id="title" name="recommend.title"  style="_width:316px;"/></td>
-		</tr>
-		<tr>
-			<td>价格</td>
-			<td><input type="text" name="recommend.price" id="price" value=""/></td>					
+			<td><input type=text class="text" value="${recommend.title }" id="recommend_desc" name="recommend.recommendDesc" style="_width:316px;"/></td>
 		</tr>
 		<tr>
 			<td>排序</td>
-			<td><input type=text class="text" value="" id="recommend_index" name="recommend.recommendIndex"  style="_width:316px;"/>
+			<td><input type=text class="text" value='${recommend.recommendIndex}' id="recommend_index" name="recommend.recommendIndex"  style="_width:316px;"/>
 				<span style="color: red"><b>*</b></span>
+				<input type="hidden" id="id" name="recommend.id" value="${recommend.id }"/>
 			</td>					
 		</tr>
 	</tbody>	
@@ -67,9 +68,8 @@
 <table class="creatcustomer_tfoot" style="width: 100%">
 	<tfoot>
 		<td>
-			<input type=button  value="保存并返回" id="save_return" />
-			<input type="button" value="保存并继续添加" id="save_add" />
-			<input type="hidden" id="flag" name="flag" value="">
+			<input type=button  value="修改" id="save_edit" />
+			<input type=button  value="返回" onclick="_return()" />
 		 </td>
 	</tfoot>
 </table>
@@ -80,9 +80,7 @@
 <script>
 	$(function(){
 		$("#area_id").bind('change',setIsland);
-		$("#save_return").bind('click',save_return);
-		$("#save_add").bind('click',save_add);
-				  
+		$('#save_edit').bind('click',_saveEdit);
 	});
 	
 	function setIsland(){
@@ -94,7 +92,7 @@
 			islandSelect.append("<option  value=\"0\">"+"-请选择-"+"</option>");
 			var data = {"areaId":areaId};
 			$.ajax({
-				url:"${ctx}/weddingphoto/wdpleft/wdpleft!getIslandSelect.action",
+				url:"${ctx}/weddingphoto/wdpnew/wdpnew!getIslandSelect.action",
 				type: "POST",
 		        dataType: "json",
 		        data: data,
@@ -124,21 +122,17 @@
 		}
 	}
 	
-	function save_return(){
-		$('#flag').val("return");
+	function _return(){
+		history.go(-1);
+	}
+	
+	function _saveEdit(){
 		/* if( checkData() && checkrmdIndex()){
 			$("#form").submit();
 		} 测试时暂时不核验*/
 		$("#form").submit();
 	}
 	
-	function save_add(){
-		$('#flag').val("add");
-		/* if( checkData() && checkrmdIndex()){
-			$("#form").submit();
-		} 测试时暂时不核验*/
-		$("#form").submit();
-	}
 	//校验排序。只能为数字 
 	function checkrmdIndex(){
 		var r = /^[0-9]+$/;
@@ -152,22 +146,17 @@
 	
 	//表单提交前数据验证
 	function checkData(){
-		var areaId = $('area_id').val();
+		/**var areaId = $('area_id').val();
 		var islandId = $('island_id').val();
 		var rmdIndex = $('recommend_index').val();
 		if(null == areaId || areaId == '0' || islandId == null || null == rmdIndex){
 			alert('请检查区域、排序等栏位！！！');
 			return false;
-		}
+		}*/
 		return true;
 		
-	}
-	
-	function setAreaName(){
-		var checkText=$("#area_id").find("option:selected").text();  //获取Select选择的Text
-		$("#area_name").val(checkText);
-	}
-	
+	}	
 	
 </script>
+<s:debug></s:debug>
 </html>

@@ -160,4 +160,8 @@ public class WeddingPhotoBiz {
 		return pkgKepianliuyingDao.updateByMap(map);
 	}
 
+	public Integer updHotFlagByMap(Map<String, Object> map) {
+		return islandPackageDao.updateByMap(map);
+	}
+
 }

@@ -41,5 +41,4 @@ public class RecommendBiz {
 	public void updateByAreaIsland(Map<String,Object> params){
 		this.recommendDao.updateByAreaIsland(params);
 	}
-	
 }

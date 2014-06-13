@@ -18,9 +18,11 @@ import org.apache.struts2.convention.annotation.ResultPath;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
 import com.jcl.core.module.ModuleRegistry;
+import com.alibaba.fastjson.serializer.JSONSerializer;
 import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.AreaIslandBiz;
 import com.island.domain.biz.MarrayPackageBiz;
+import com.island.domain.biz.RecommendBiz;
 import com.island.domain.biz.WeddingPhotoBiz;
 import com.island.domain.model.Area;
 import com.island.domain.model.Island;
@@ -65,6 +67,8 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
             .getModule(DomainIslandModule.class).getWeddingPhotoBiz();
 	AreaIslandBiz areaIslandBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getAreaIslandBiz();
+	RecommendBiz recommendBiz = ModuleRegistry.getInstance()
+            .getModule(DomainIslandModule.class).getRecommendBiz();
 	
 	
 	private String getCreater(){
@@ -114,7 +118,7 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 	 */
 	public String toAdd(){
 		RequestProcc.getSession().invalidate();
-		initAreaList();
+		getRmdAreaList();
 		return "add";
 	}
 	
@@ -204,20 +208,34 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 		areaList = areaIslandBiz.queryAreaByMap(map);
 	}
 	
+	private void getRmdAreaList(){
+		map.clear();
+		map.put("valid", 1);
+		map.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
+		recommendList = recommendBiz.queryByMap(map);
+		if(recommendList.size() > 0){
+			for (Recommend rmd : recommendList) {
+				int areaId = rmd.getAreaId();
+				Area obj = areaIslandBiz.queryAreaById(areaId);
+		    	areaList.add(obj);
+			}
+		}
+	}
+	
 	/**
 	 * 根据传入的areaId,动态获取岛屿
 	 * @throws Exception
 	 */
 	public void getIslandSelect() throws Exception{
-//		map.clear();
-//		map.put("areaId", areaId);
-//		map.put("valid", 1);
-//		islandList = areaIslandBiz.queryIslandByMap(map);
-//		JSONSerializer	serializer = new JSONSerializer();
-//		serializer.write(islandList);
-//		response.setContentType("text/xml;charset=utf-8");
-//		Writer writer = response.getWriter();
-//		writer.write(serializer.toString());
+		map.clear();
+		map.put("areaId", areaId);
+		map.put("valid", 1);
+		islandList = areaIslandBiz.queryIslandByMap(map);
+		JSONSerializer	serializer = new JSONSerializer();
+		serializer.write(islandList);
+		response.setContentType("text/xml;charset=utf-8");
+		Writer writer = response.getWriter();
+		writer.write(serializer.toString());
 	}
 	
 	public List<Island> getIslandList() {
