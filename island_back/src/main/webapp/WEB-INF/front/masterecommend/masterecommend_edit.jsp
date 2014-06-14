@@ -12,6 +12,8 @@
 <body>
 <form action="${ctx}/front/masterecommend/masterecommend!edit.action" enctype="multipart/form-data" id="form" method="post">
 <div  class="creatcustomer" >
+<!-- <span><font size="3" color="red">当前位置：网站首页--主打产品--修改页面</font></span>
+ -->
 <table class="datalist" width="100%">
 	<tbody>
 		<tr>

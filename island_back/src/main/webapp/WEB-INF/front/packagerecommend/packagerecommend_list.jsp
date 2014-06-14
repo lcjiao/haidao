@@ -14,6 +14,9 @@
 
 <table class="customlist" width="100%">
 	<thead>
+		<!-- <tr>
+			<td><font size="3" color="red">当前位置：网站首页--套餐推荐</font></td>
+		</tr> -->
 		<tr>
 			<td>
 				<div id="pagebar"> 
@@ -62,7 +65,7 @@
 								 --%></td>
 								<td style="text-align:center;">
 									<a title="${recommend.id}" onclick="edit(this)" >修改</a>&nbsp;|&nbsp;
-									<a title="${recommend.id}" onclick="changeImg(this)" >更换图片</a>&nbsp;|&nbsp;
+									<%-- <a title="${recommend.id}" onclick="changeImg(this)" >更换图片</a>&nbsp;|&nbsp; --%>
 									<a title="${recommend.id}" onclick="del(this)">删除</a>
 								</td>							
 						    </tr>

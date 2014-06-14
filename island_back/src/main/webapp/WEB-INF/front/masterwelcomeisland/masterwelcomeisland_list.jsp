@@ -14,6 +14,9 @@
 
 <table class="customlist" width="100%">
 	<thead>
+		<!-- <tr>
+			<td><font size="3" color="red">当前位置：网站首页--最受欢迎岛屿</font></td>
+		</tr> -->
 		<tr>
 			<td>
 				<div id="pagebar"> 
