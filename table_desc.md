@@ -173,7 +173,7 @@
         `question` varchar(500) DEFAULT NULL COMMENT '咨询内容',
         `answer` varchar(500) DEFAULT NULL COMMENT '答复内容',
         `is_guest` int(2) DEFAULT NULL COMMENT '1:游客提问  2:客服提问',
-        `is_answer` int(2) DEFAULT NULL COMMENT '是否回复 1回复 0没回复',
+        `is_answer` int(2) DEFAULT '0' COMMENT '是否回复 1回复 0没回复',
         `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
         `ask_time` int(10) DEFAULT NULL COMMENT '提问时间',
         `asker` varchar(50) DEFAULT NULL COMMENT '咨询人',
