@@ -226,6 +226,7 @@
 				and price_small <![CDATA[<=]]> #{price} and price_big >= #{price}
 			</if>
 		</where>
+		order by id desc
 		<if test="begin !=  null">			        
 				limit #{begin},#{size}
 		</if>

@@ -19,6 +19,7 @@ import com.island.domain.model.PackageQa;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
 import com.islandback.web.util.RequestProcc;
+import com.islandback.web.util.Struts2Utils;
 
 
 //@SuppressWarnings("serial")
@@ -158,7 +159,10 @@ public class GuestqaAction extends ActionSupport {
 	}
 
 	
-	
+	public void getUnAnswerNum(){
+		Integer num = guestqaBiz.getUnAnswerNum();
+		Struts2Utils.renderText(num+"");
+	}
 	
 	
 	public List<PackageQa> getQaList() {

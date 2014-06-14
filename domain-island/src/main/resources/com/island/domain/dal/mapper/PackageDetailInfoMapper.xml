@@ -123,7 +123,7 @@
 				and upd_person=#{updPerson}
 			</if>
 		</where>
-		
+		order by id desc
 	</select>
 	
 	<select id="countByModel" parameterType="com.island.domain.model.PackageDetailInfo" resultType="java.lang.Integer">	

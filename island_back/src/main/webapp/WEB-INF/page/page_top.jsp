@@ -38,7 +38,16 @@
         }
         
         function updUnAnswerNum(){
-        	$("#no_answer_num").text(100);
+
+        	$.ajax({
+        		type:"get",
+        		url:"${ctx}/guestqa/guestqa!getUnAnswerNum.action",
+        		dataType:"text",
+        		success:function(text){
+        			$("#no_answer_num").text(text);
+        		}
+        	});
+        	
         }
         
         function toNoAnswerPage(){

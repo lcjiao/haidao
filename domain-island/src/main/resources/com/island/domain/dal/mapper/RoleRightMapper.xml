@@ -113,7 +113,7 @@
 				and valid=#{valid}
 			</if>
 		</where>
-		
+		order by id desc
 	</select>
 	
 	<select id="countByModel" parameterType="com.island.domain.model.RoleRight" resultType="java.lang.Integer">	

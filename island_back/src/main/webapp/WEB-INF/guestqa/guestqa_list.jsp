@@ -128,9 +128,8 @@
 	//绑定事件
 	function bindEvent(){
 		$("#go").bind('click',gotoPageNo);
-		$("#new_create").bind('click',newCreate);
+		//$("#new_create").bind('click',newCreate);
 		$("#search").bind('click',search);
-		
 		/* $("#question_list a[title]").each(function(i){
 			$(this).bind('click',hideQuestion());
 		}); */
@@ -187,7 +186,6 @@
 	
 	//点击搜索
 	function search(){
-		
 		findByNo(1);
 	}
 	
@@ -195,6 +193,7 @@
 	function findByNo(pageNo){
 		$("#page_no").val(pageNo);
 		$("#form").submit();
+
 	}
 	
 	

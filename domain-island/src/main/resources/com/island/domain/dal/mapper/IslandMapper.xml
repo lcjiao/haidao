@@ -143,6 +143,7 @@
 				and area_name=#{areaName}
 			</if>
 		</where>
+		order by id desc
 		<if test="begin !=  null">			        
 				limit #{begin},#{size}
 		</if>

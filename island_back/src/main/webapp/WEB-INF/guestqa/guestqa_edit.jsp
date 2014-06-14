@@ -64,7 +64,7 @@
 </tfoot>
 </table>
 <input type="hidden" id="answer" name="answer" value="${answer}"/>
-<input type="hidden" id="id" name=id value="${id}"/>
+<input type="hidden" id="id" name="id" value="${id}"/>
 </form>
 </body>
 <script>
