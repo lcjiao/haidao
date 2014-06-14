@@ -575,7 +575,7 @@ public class PackageAction extends ActionSupport {
 		setParams.put("updTime", now);
 		setParams.put("valid", 0);
 		setParams.put("updPerson", creater);
-		setParams.put("id", kepianId);
+		setParams.put("id", imgId);
 		this.packageBiz.updPackageImgByMap(setParams);	
 		doimgList();
 		return "imglist";
