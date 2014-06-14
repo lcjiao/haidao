@@ -21,7 +21,7 @@
 		</tr>
 		<tr>
 			<td>时间</td>
-			 <td><input type="text" id = "time"  value="${recommend.recommendTime}"  class="Wdate" onfocus="WdatePicker()" name="recommend.recommendTime"/></td>
+			 <td><input type="text" id = "time"  value="${recommend.recommendTimeStr}"  class="Wdate" onfocus="WdatePicker()" name="recommend.recommendTime"/></td>
 		 </tr>
 		<tr>
 			<td>图片</td>

@@ -53,7 +53,7 @@
 									<c:out value="${recommend.title}"></c:out>
 								</td>
 								<td style="text-align:center;">
-									<c:out value="${recommend.recommendTime}"></c:out>
+									<c:out value="${recommend.recommendTimeStr}"></c:out>
 									<%-- <input style="width:50px;" type="text" value="${recommend.recommendIndex}" id="r_index" name="index">
 								 --%></td>
 								<td style="text-align:center;">

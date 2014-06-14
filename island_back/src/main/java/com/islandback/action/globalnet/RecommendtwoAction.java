@@ -25,6 +25,7 @@ import com.island.domain.biz.RecommendBiz;
 import com.island.domain.model.Area;
 import com.island.domain.model.Island;
 import com.island.domain.model.Recommend;
+import com.island.domain.util.IslandDateUtil;
 import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
@@ -96,6 +97,9 @@ public class RecommendtwoAction extends ActionSupport {
 		recommend.setCreatePerson(creater);
 		recommend.setCreateTime(now);
 		recommend.setValid(1);
+		if(recommend.getRecommendTime() != null){
+			recommend.setRecommendTime(IslandDateUtil.getUnixTimeByDateStr( recommend.getRecommendTime() )+"");
+		}
 		this.recommendBiz.addMasterRecommend(recommend);
 		doList();
 		return "list";
@@ -132,6 +136,9 @@ public class RecommendtwoAction extends ActionSupport {
 			recommend.setImgUrl(upload());
 		}
 		recommend.setUpdTime(now);
+		if(recommend.getRecommendTime() != null){
+			recommend.setRecommendTime(IslandDateUtil.getUnixTimeByDateStr( recommend.getRecommendTime() )+"");
+		}
 		this.recommendBiz.updRecommendByModel(recommend);
 		doList();
 		return "list";

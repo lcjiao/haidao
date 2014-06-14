@@ -1,5 +1,6 @@
 package com.island.domain.model;
 
+import com.island.domain.util.IslandDateUtil;
 import com.jcl.core.dal.AbsModel;
 
 public class Recommend extends AbsModel implements Comparable{
@@ -477,4 +478,19 @@ public class Recommend extends AbsModel implements Comparable{
 		}
 		return 0;
 	}
+	
+	private String recommendTimeStr;
+	public String getRecommendTimeStr() {
+		
+		if( this.recommendTime!= null){
+			if( this.recommendTime.startsWith("1") ){
+				return IslandDateUtil.getDateStrByUnixTime(Integer.parseInt(this.recommendTime), "yyyy-MM-dd");
+			}
+		}
+		return recommendTimeStr;
+	}
+	public void setRecommendTimeStr(String recommendTimeStr) {
+		this.recommendTimeStr = recommendTimeStr;
+	}
+	
 }

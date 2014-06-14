@@ -14,6 +14,7 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ResultPath;
 
 import com.island.domain.DomainIslandModule;
+import com.island.domain.biz.GuestQaBiz;
 import com.island.domain.biz.RoleBiz;
 import com.island.domain.model.Menu;
 import com.island.domain.model.RoleRight;
@@ -28,12 +29,16 @@ import com.opensymphony.xwork2.ActionSupport;
 public class PageAction extends ActionSupport{
 	RoleBiz roleBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getRoleBiz();
+	GuestQaBiz guestqaBiz = ModuleRegistry.getInstance()
+            .getModule(DomainIslandModule.class).getGuestQaBiz();
 	private List<Menu> menuList = new ArrayList<Menu>(0); 
 	private String userName;
+	private Integer noAnswerNum;
 	//获取页面头部信息
 	public String top(){
 		SessionInfo sessionInfo = RequestProcc.getSessionInfo();
 		this.userName = sessionInfo.getUser().getUserName();
+		this.noAnswerNum = guestqaBiz.getUnAnswerNum();
 		return "top";
 		
 	}
@@ -189,6 +194,12 @@ public class PageAction extends ActionSupport{
 
 	public void setMenuList(List<Menu> menuList) {
 		this.menuList = menuList;
+	}
+	public Integer getNoAnswerNum() {
+		return noAnswerNum;
+	}
+	public void setNoAnswerNum(Integer noAnswerNum) {
+		this.noAnswerNum = noAnswerNum;
 	}
 	
 	

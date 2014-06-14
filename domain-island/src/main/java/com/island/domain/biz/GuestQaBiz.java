@@ -1,5 +1,6 @@
 package com.island.domain.biz;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,6 +33,12 @@ public class GuestQaBiz {
 	
 	public List<PackageQa> queryGuestQaByMap(Map<String,Object> params){
 		return this.guestQaDao.queryByMap(params);
+	}
+	public Integer getUnAnswerNum(){
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("valid", 1);
+		params.put("isAnswer", 0);
+		return this.guestQaDao.countByMap(params);
 	}
 	
 }

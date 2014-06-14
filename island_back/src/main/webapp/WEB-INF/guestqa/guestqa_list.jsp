@@ -153,8 +153,8 @@
 			$("#go_page").hide();
 		}
 		
-		//var islandId = '${recommend.islandId}';
-		//$("#island_id option[value='"+islandId+"']").attr('selected',true);
+		var isAnswer = '${isAnswer}';
+		$("#is_answer option[value='"+isAnswer+"']").attr('selected',true);
 		
 		
 	}

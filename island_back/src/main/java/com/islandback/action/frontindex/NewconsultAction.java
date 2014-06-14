@@ -19,6 +19,7 @@ import com.jcl.core.module.ModuleRegistry;
 import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.RecommendBiz;
 import com.island.domain.model.Recommend;
+import com.island.domain.util.IslandDateUtil;
 import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
@@ -79,7 +80,7 @@ public class NewconsultAction extends ActionSupport {
 		addObj.setLinkUrl(link);
 		addObj.setTitle(title);
 		addObj.setTypeId(typeId);
-		addObj.setRecommendTime(time);
+		addObj.setRecommendTime(IslandDateUtil.getUnixTimeByDateStr(time)+"");
 		if(image != null ){
 			addObj.setImgUrl(upload());
 		}
@@ -116,6 +117,11 @@ public class NewconsultAction extends ActionSupport {
 		this.title=obj.getTitle();
 		this.index=obj.getRecommendIndex();
 		this.time=obj.getRecommendTime();
+		if( obj.getRecommendTime()!= null){
+			if( obj.getRecommendTime().startsWith("1") ){
+				this.time = IslandDateUtil.getDateStrByUnixTime(Integer.parseInt(obj.getRecommendTime()), "yyyy-MM-dd");
+			}
+		}
 		this.typeId=obj.getTypeId();
 		return "edit";
 	}
@@ -130,12 +136,13 @@ public class NewconsultAction extends ActionSupport {
 		Map<String,Object> params = new HashMap<String,Object>(0);
 		params.put("title", title);
 		params.put("recommendIndex", index);
-		params.put("recommendTime", time);
+		params.put("recommendTime", IslandDateUtil.getUnixTimeByDateStr(time)+"");
 		params.put("linkUrl", link);
 		params.put("typeId", typeId);
 		if(image != null ){
 			params.put("imgUrl", upload());
 		}
+		
 		params.put("updPerson", creater);
 		params.put("id", id);
 		

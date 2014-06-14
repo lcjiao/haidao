@@ -62,7 +62,7 @@
 									<c:out value="${recommend.linkUrl}"></c:out>
 								</td>
 								<td style="text-align:center;">
-									<c:out value="${recommend.recommendTime}"></c:out>
+									<c:out value="${recommend.recommendTimeStr}"></c:out>
 								</td>
 								<td style="text-align:center;">
 									<img style="width:150px;height:120px;" alt="" src="${recommend.imgUrl}">
