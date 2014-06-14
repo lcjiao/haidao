@@ -89,7 +89,7 @@ public class NewconsultnamesAction extends ActionSupport {
 		}
 		recommend.setCreatePerson(creater);
 		int now = (int)(System.currentTimeMillis()/1000);
-		recommend.setModuleId(ModuleEnum.GLOBAL_RECOMMEND_THREE);
+		recommend.setModuleId(ModuleEnum.FRONT_NEW_CONSULT_TITLE);
 		if(image != null ){
 			recommend.setImgUrl(upload());
 		}
@@ -188,7 +188,7 @@ public class NewconsultnamesAction extends ActionSupport {
 			pageSize = 5;
 		}
 		Map<String,Object> params = new HashMap<String,Object>(0);
-		params.put("moduleId", ModuleEnum.GLOBAL_RECOMMEND_THREE);
+		params.put("moduleId", ModuleEnum.FRONT_NEW_CONSULT_TITLE);
 		params.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
@@ -198,7 +198,7 @@ public class NewconsultnamesAction extends ActionSupport {
 		List<Recommend> list = recommendBiz.queryByMap(params);
 		if(list != null && list.size()>0){
 			Map<String,Object> countParam = new HashMap<String,Object>(0);
-			countParam.put("moduleId", ModuleEnum.GLOBAL_RECOMMEND_THREE);
+			countParam.put("moduleId", ModuleEnum.FRONT_NEW_CONSULT_TITLE);
 			countParam.put("valid", 1);
 			this.totalSize = recommendBiz.countByMap(countParam);
 		}else{
