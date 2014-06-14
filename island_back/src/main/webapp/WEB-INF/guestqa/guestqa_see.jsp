@@ -59,7 +59,7 @@
 <table class="creatcustomer_tfoot" width="100%">
 	<tfoot>
 		<td>
-			<!-- <input type=button  value="保存" id="save"/> -->
+			<input type=button  value="返回" id="save"/>
 		 </td>
 </tfoot>
 </table>
@@ -69,8 +69,8 @@
 </body>
 <script>
 	$(function(){
-		$("#save").bind('click',submitSave);
-		$("#reset").bind('click',resetCreate);
+		$("#save").bind('click',reset);
+		//$("#reset").bind('click',resetCreate);
 		$('input[type="button"],input[type="checkbox"],input[type="radio"]').css({
 		    'cursor':'pointer'});
 		//ie 按钮修正 input type=button:文本垂直对齐
@@ -81,9 +81,9 @@
 		  
 	});
 	
-	function submitSave(){
-		$("#answer").val(editor.html());
-		$("#form").submit();
+	function reset(){
+		var link = "${ctx}/guestqa/guestqa!tolist.action";
+		window.location.href = link; 
 	}
 	
 	

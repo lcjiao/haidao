@@ -100,6 +100,7 @@ public class PackageAction extends ActionSupport {
             .getModule(DomainIslandModule.class).getModuleTypeBiz();
 	private ObjectMapper mapper = new ObjectMapper();
 	
+	
 	/**
 	 * 套餐列表信息维护begin－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
 	 */
@@ -897,6 +898,24 @@ public class PackageAction extends ActionSupport {
 	        }  
 	       return ModuleEnum.getImageServUrl()+namePrefix+"/"+imageFileName;  
 	  }  
+	
+	
+	public void setHot() throws JsonGenerationException, JsonMappingException, IOException{
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("isHot", 1);
+		params.put("id", id);
+		packageBiz.updPackageByMap(params);
+		Struts2Utils.renderText("ok");
+	}
+	
+	public void resetHot() throws JsonGenerationException, JsonMappingException, IOException{
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("isHot", 0);
+		params.put("id", id);
+		packageBiz.updPackageByMap(params);
+		Struts2Utils.renderText("ok");
+	}
+
 	
 	private SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 	
