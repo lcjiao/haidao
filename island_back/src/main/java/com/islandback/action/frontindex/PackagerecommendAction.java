@@ -104,7 +104,7 @@ public class PackagerecommendAction extends ActionSupport {
 		addObj.setRecommendIndex(index);
 		addObj.setValid(1);
 		
-		changeIndexBySys(creater);
+		//changeIndexBySys(creater);
 		
 		this.recommendBiz.addMasterRecommend(addObj);
 		doList();
@@ -151,8 +151,11 @@ public class PackagerecommendAction extends ActionSupport {
 		params.put("linkUrl", link);
 		params.put("updPerson", creater);
 		params.put("id", id);
+		if(image != null ){
+			params.put("imgUrl", (upload()));
+		}
 		
-		changeIndexBySys(creater);
+		//changeIndexBySys(creater);
 		
 		this.recommendBiz.updRecommend(params);		
 		doList();
@@ -217,7 +220,7 @@ public class PackagerecommendAction extends ActionSupport {
 
 		   Date date = new Date();
 	   	   String namePrefix=format.format(date);
-	       String path = ModuleEnum.getImageServUrl()+namePrefix;
+	       String path = ModuleEnum.getImageSavePath()+namePrefix;
 	       File file = new File(path);  
 	       if (!file.exists()) {  
 	           file.mkdirs();  

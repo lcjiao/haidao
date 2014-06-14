@@ -87,7 +87,7 @@ public class MasterwelcomeislandAction extends ActionSupport {
 				
 			}
 			setParams.put("recommendIndex", index);
-			changeIndexBySys(creater);
+			//changeIndexBySys(creater);
 			this.recommendBiz.updRecommend(setParams);	
 			doList();
 			return "list";
@@ -195,7 +195,7 @@ public class MasterwelcomeislandAction extends ActionSupport {
 		params.put("updPerson", creater);
 		params.put("id", id);
 		
-		changeIndexBySys(creater);
+		//changeIndexBySys(creater);
 
 		
 		this.recommendBiz.updRecommend(params);		

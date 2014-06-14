@@ -38,7 +38,7 @@
 		 </tr>
 		<tr>
 			<td>排序</td>
-			<td><input type=text class="text" value="${index}" id="index_num" name="index"  style="width:255px;"/><span style="color:red;">顺序调整为对调方式</span></td>
+			<td><input type=text class="text" value="${index}" id="index_num" name="index"  style="width:255px;"/><!-- <span style="color:red;">顺序调整为对调方式</span> --></td>
 		</tr>
 		<tr>
 			<td>上传图片</td>

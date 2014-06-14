@@ -139,7 +139,7 @@ public class NewconsultAction extends ActionSupport {
 		params.put("updPerson", creater);
 		params.put("id", id);
 		
-		changeIndexBySys(creater);
+		//changeIndexBySys(creater);
 
 		this.recommendBiz.updRecommend(params);		
 		doList();

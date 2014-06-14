@@ -105,7 +105,7 @@ public class MasterecommendAction extends ActionSupport {
 		addObj.setRecommendIndex(index);
 		addObj.setValid(1);
 		
-		changeIndexBySys(creater);
+		//changeIndexBySys(creater);
 		
 		this.recommendBiz.addMasterRecommend(addObj);
 		doList();
@@ -152,8 +152,11 @@ public class MasterecommendAction extends ActionSupport {
 		params.put("linkUrl", link);
 		params.put("updPerson", creater);
 		params.put("id", id);
+		if(image != null ){
+			params.put("imgUrl", (upload()));
+		}
 		
-		changeIndexBySys(creater);
+		//changeIndexBySys(creater);
 		
 		this.recommendBiz.updRecommend(params);		
 		doList();
