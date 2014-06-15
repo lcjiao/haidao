@@ -131,6 +131,22 @@ public class ModuleEnum {
 	 */
 	public static final Integer GLOBAL_RECOMMEND_FOUR=23;
 	
+
+	/**
+	 * 公司办事处
+	 */
+	public static final Integer COMPANY_ADDRESS=24;
+	
+
+	/**
+	 * 同事
+	 */
+	public static final Integer COMPANY_FRIEND=25;
+	
+	/**
+	 * 合作伙伴
+	 */
+	public static final Integer COMPANY_MATE=26;
 	
 	
 	
