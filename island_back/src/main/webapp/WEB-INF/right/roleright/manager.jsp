@@ -85,7 +85,6 @@ $(function(){
 			
 		});
 		$("#right_ids").val(menuIds);
-		alert(menuIds);
 		$("#form").submit();
 	}
 </script>
