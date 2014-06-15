@@ -74,6 +74,7 @@
 						<tr>
 							<td>归属套餐类型</td>
 							<td>归属套餐编号</td>
+							<td>邮箱</td>
 							<td>问题</td>
 							<td>是否回复</td>
 							<td>回复</td>
@@ -88,6 +89,9 @@
 								</td>
 								<td style="text-align:center;">
 									<c:out value="${qa.packageId}"></c:out>
+								</td>
+								<td style="text-align:center;">
+									<c:out value="${qa.email}"></c:out>
 								</td>
 								<td style="text-align:center;">
 									<c:out value="${qa.question}"></c:out>

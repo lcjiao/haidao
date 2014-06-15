@@ -20,6 +20,8 @@
 			<result property="answerPerson" column="answer_person" />
 			<result property="questionId" column="question_id" />
 			<result property="questionType" column="question_type" />
+			<result property="email" column="email" />
+			
 	</resultMap>
 
 	<select id="queryById" parameterType="java.util.Map" resultMap="PackageQaRslMap">
@@ -37,7 +39,8 @@
 			answer_time,
 			answer_person,
 			question_id,
-			question_type
+			question_type,
+			email
 		FROM
 			package_qa
 		<where>
@@ -61,7 +64,8 @@
 			answer_time,
 			answer_person,
 			question_id,
-			question_type
+			question_type,
+			email
 		FROM
 			package_qa
 		<where>			
@@ -126,7 +130,8 @@
 			answer_time,
 			answer_person,
 			question_id,
-			question_type
+			question_type,
+			email
 		FROM
 			package_qa
 		<where>
@@ -298,7 +303,8 @@
 			answer_time,
 			answer_person,
 			question_id,
-			question_type
+			question_type,
+			email
 		FROM
 			package_qa
 		<where>
