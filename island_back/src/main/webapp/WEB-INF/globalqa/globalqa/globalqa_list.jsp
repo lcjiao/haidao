@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>客户咨询</title>
+<title>疑难解答</title>
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
@@ -12,32 +12,18 @@
 </head>
 <body>
 
-<form action="${ctx}/guestqa/guestqa!tolist.action" id="form" method="post">
+<form action="${ctx}/globalqa/globalqa/globalqa!tolist.action" id="form" method="post">
 <table class="searchbar" width="100%">
 	<tbody>
 		<tr>
-			<td width="48">所属套餐类型</td>
+			<td width="48">所属类型</td>
 			<td width="10">
-				<select id="package_type" name="packageType">
+				<select id="type_id" name="globalQa.questionType">
 					<option value="0" selected="selected">--请选择--</option>
-					<option value="1" >婚礼套餐</option>
-					<option value="2" >婚纱摄影套餐</option>
-					<option value="3" >婚纱摄影摄影师套餐</option>
-					<option value="4" >酒店套餐</option>
-					<option value="5" >自由行套餐</option>
+					<c:forEach var="qaType" items="${globalQaTypeList}">
+							<option value="${qaType.id}" >${qaType.typeName}</option>
+				   </c:forEach>
 				</select>
-			</td>
-			<td width="48">是否有回复</td>
-			<td width="10">
-				<select id="is_answer" name="isAnswer">
-					<option value="-1" selected="selected">--请选择--</option>
-					<option value="0" >无回复</option>
-					<option value="1" >有回复</option>
-				</select>
-			</td>
-			<td width="48">归属套餐编号</td>
-			<td width="10">
-				<input type="text" value="" name="packageId" />
 			</td>
 			<td><input class="btn" type="button" value="搜索" id="search"/>
 			</td>
@@ -61,7 +47,7 @@
 					</div>
 				</div>
 			</td>
-			<td align="right" class="tdr"><!-- <input type="button" value="新建" id="new_create"/> --></td>
+			<td align="right" class="tdr"><input type="button" value="新建" id="new_create"/></td>
 		</tr>
 	</thead>
 	
@@ -72,37 +58,23 @@
 				<table class="datalist ask_rel" width="100%">
 					<thead>
 						<tr>
-							<td>归属套餐类型</td>
-							<td>归属套餐编号</td>
-							<td>邮箱</td>
+							<td>所属类型</td>
 							<td>问题</td>
-							<td>是否回复</td>
 							<td>操作</td>
 						</tr>
 					</thead>
 					<tbody id="r_list">
-						<c:forEach var="qa" items="${qaList}">
+						<c:forEach var="qa" items="${globalQaList}">
 							<tr >
 								<td style="text-align:center;">
-									<c:out value="${qa.packageTypeStr}"></c:out>
+									<c:out value="${qa.questionTypeName}"></c:out>
 								</td>
 								<td style="text-align:center;">
-									<c:out value="${qa.packageId}"></c:out>
+									<c:out value="${qa.title}"></c:out>
 								</td>
 								<td style="text-align:center;">
-									<c:out value="${qa.email}"></c:out>
-								</td>
-								<td style="text-align:center;">
-									<c:out value="${qa.question}"></c:out>
-									<%-- <input style="width:50px;" type="text" value="${recommend.recommendIndex}" id="r_index" name="index">
-								 --%></td>
-								<td style="text-align:center;">
-									<c:out value="${qa.hasAnswer}"></c:out>
-								</td>
-								<td style="text-align:center;">
-									<a title="${qa.id}" onclick="addAnswer(this)" >回复</a>&nbsp;|&nbsp;
-									<a title="${qa.id}" onclick="editAnswer(this)" >修改回复</a>&nbsp;|&nbsp;
-									<a title="${qa.id}" onclick="seeAnswer(this)" >查看回复</a>&nbsp;|&nbsp;
+									<a title="${qa.id}" onclick="edit(this)" >修改</a>&nbsp;|&nbsp;
+									<a title="${qa.id}" onclick="seeAnswer(this)" >查看解答</a>&nbsp;|&nbsp;
 									<a title="${qa.id}" onclick="del(this)">删除</a>
 								</td>							
 						    </tr>
@@ -128,8 +100,9 @@
 	//绑定事件
 	function bindEvent(){
 		$("#go").bind('click',gotoPageNo);
-		//$("#new_create").bind('click',newCreate);
+		$("#new_create").bind('click',newCreate);
 		$("#search").bind('click',search);
+		
 		/* $("#question_list a[title]").each(function(i){
 			$(this).bind('click',hideQuestion());
 		}); */
@@ -152,8 +125,8 @@
 			$("#go_page").hide();
 		}
 		
-		var isAnswer = '${isAnswer}';
-		$("#is_answer option[value='"+isAnswer+"']").attr('selected',true);
+		var typeId = '${globalQa.questionType}';
+		$("#type_id option[value='"+typeId+"']").attr('selected',true);
 		
 		
 	}
@@ -186,46 +159,42 @@
 	
 	//点击搜索
 	function search(){
+		
 		findByNo(1);
 	}
 	
 	
 	function findByNo(pageNo){
+		//var url = "${ctx}/marrypackage/secondpackage/secondpackagerecommend!tolist.action?pageNo="+pageNo;
+		//window.location.href = url;
 		$("#page_no").val(pageNo);
 		$("#form").submit();
-
 	}
 	
 	
-	/* function newCreate(){
-		var url = "${ctx}/marrypackage/secondpackage/secondpackagerecommend!toAdd.action";
+	function newCreate(){
+		var url = "${ctx}/globalqa/globalqa/globalqa!toAdd.action";
 		window.location.href = url;
-	}; */
+	};
 	
 	function del(ele){
 		var isHide = confirm('确定删除吗?');
 		if(isHide){
-			var id = $(ele).attr('title');
-			var url = "${ctx}/guestqa/guestqa!del.action?id="+id;
+			var recommendId = $(ele).attr('title');
+			var url = "${ctx}/globalqa/globalqa/globalqa!del.action?id="+recommendId;
 			window.location.href = url; 
 		}
 	}
 	
-	function addAnswer(ele){
-		var id = $(ele).attr('title');
-		var url =  "${ctx}/guestqa/guestqa!toAddAnswer.action?id="+id;
-		window.location.href = url; 
-	}
-	
-	function editAnswer(ele){
-		var id = $(ele).attr('title');
-		var url =  "${ctx}/guestqa/guestqa!toEditAnswer.action?id="+id;
+	function edit(ele){
+		var recommendId = $(ele).attr('title');
+		var url =  "${ctx}/globalqa/globalqa/globalqa!toEdit.action?id="+recommendId;
 		window.location.href = url; 
 	}
 	
 	function seeAnswer(ele){
-		var id = $(ele).attr('title');
-		var url =  "${ctx}/guestqa/guestqa!toSeeAnswer.action?id="+id;
+		var recommendId = $(ele).attr('title');
+		var url =  "${ctx}/globalqa/globalqa/globalqa!toSee.action?id="+recommendId;
 		window.location.href = url; 
 	}
 	

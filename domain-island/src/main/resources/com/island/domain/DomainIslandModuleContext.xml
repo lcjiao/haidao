@@ -107,5 +107,12 @@
   			</list>
   		</property>	
 	</bean>
-
+	
+	<bean id="globalQaDao" class="com.island.domain.dal.GlobalQaIbatisDAOImpl"/>
+	<bean id="globalQaTypeDao" class="com.island.domain.dal.GlobalQaTypeIbatisDAOImpl"/>
+	
+	<bean id="globalQaBiz" class="com.island.domain.biz.GlobalQaBiz">
+		<property name="globalQaDao" ref="globalQaDao"></property>
+		<property name="globalQaTypeDao" ref="globalQaTypeDao"></property>
+	</bean>
 </beans>
