@@ -181,6 +181,7 @@
         `answer_person` varchar(50) DEFAULT NULL COMMENT '答复人',
         `question_id` int(8) DEFAULT NULL COMMENT '问题ID 如果为回复则有值 如果是问题则为0',
         `question_type` int(2) DEFAULT NULL COMMENT '1:表示问题  2:表示回复',
+        `email` varchar(200) DEFAULT NULL COMMENT '邮箱',
         PRIMARY KEY (`id`),
         KEY `package_index` (`package_id`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8
@@ -290,10 +291,9 @@
 
         CREATE TABLE `global_qa` (
         `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '主键id',
-        `question_type` varchar(50) DEFAULT NULL COMMENT '问题种类',
+        `question_type` int(5) DEFAULT NULL COMMENT '问题种类',
         `title` varchar(500) DEFAULT NULL COMMENT '问题标题',
         `answer` varchar(10000) DEFAULT NULL COMMENT '回答',
-        `qa_index` int(4) DEFAULT NULL COMMENT '展示次序',
         `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
         `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
         `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
@@ -507,4 +507,19 @@
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8 comment '模块类型表'   
 
 ----------------------
+
+##25. 疑难解答类型表
+
+---------------------
+
+        CREATE TABLE `global_qa_type` (
+       `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+       `type_name` varchar(50) DEFAULT NULL COMMENT '问题种类',
+       `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
+      `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
+      `create_person` varchar(50) DEFAULT NULL COMMENT '创建人',
+      `upd_time` int(10) DEFAULT NULL COMMENT '更新时间',
+      `upd_person` varchar(50) DEFAULT NULL COMMENT '更新人',
+       PRIMARY KEY (`id`)
+      ) ENGINE=MyISAM DEFAULT CHARSET=utf8
         
