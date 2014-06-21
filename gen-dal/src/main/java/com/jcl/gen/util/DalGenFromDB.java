@@ -21,7 +21,7 @@ public class DalGenFromDB extends DalGen {
 	}
 
 	public static void main(String[] args) throws Exception {
-		DalGenFromDB hf = new DalGenFromDB("haidao_db","country",
+		DalGenFromDB hf = new DalGenFromDB("haidao_db","global_qa_type",
 				new DataSourceDefinition[] { DataSourceDefinition.HAIDAO_DB,DataSourceDefinition.HAIDAO_DB});
 		hf.process();
 	}
