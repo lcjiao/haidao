@@ -27,13 +27,13 @@
 				<interceptor-ref name="paramsPrepareParamsStack" />
 			</interceptor-stack>
 			
-			<interceptor name="authInterceptor" class="com.islandnetback.web.interceptor.AuthInterceptor"></interceptor>
+			<interceptor name="authInterceptor" class="com.islandback.web.interceptor.LoginInterceptor"></interceptor>
 			
 			
 			
 			
 			<interceptor-stack name="authStack">
-				<!-- <interceptor-ref name="authInterceptor"></interceptor-ref> -->
+				<interceptor-ref name="authInterceptor"></interceptor-ref>
 				<interceptor-ref name="crudStack"></interceptor-ref>
 			</interceptor-stack>
 		

@@ -6,7 +6,7 @@ import com.islandback.web.util.SessionListener;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
-public class AuthInterceptor extends AbstractInterceptor {
+public class LoginInterceptor extends AbstractInterceptor {
 
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
@@ -18,7 +18,6 @@ public class AuthInterceptor extends AbstractInterceptor {
 		 * 如果请求登录不验证是否已经登录
 		*/
 		Object action = invocation.getAction();
-		System.out.print(action.toString());
 		if(action instanceof LoginAction){
 			return invocation.invoke();
 		}
