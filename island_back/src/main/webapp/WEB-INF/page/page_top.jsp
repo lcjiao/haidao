@@ -51,7 +51,7 @@
         }
         
         function toNoAnswerPage(){
-        	var url ="${ctx}//guestqa/guestqa!tolist.action?isAnswer=0";
+        	var url ="${ctx}/guestqa/guestqa!tolist.action?isAnswer=0&menuId=31";
         	window.top.mainFrame.location.href=url;
         }
  </script>
