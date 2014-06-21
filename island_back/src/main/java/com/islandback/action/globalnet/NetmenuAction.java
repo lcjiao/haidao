@@ -14,6 +14,7 @@ import com.jcl.core.module.ModuleRegistry;
 import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.GlobalNetBiz;
 import com.island.domain.model.Recommend;
+import com.islandback.action.base.BaseAction;
 import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
@@ -22,7 +23,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 @Namespace("/globalnet/menu")
 @ResultPath("/WEB-INF")
-public class NetmenuAction extends ActionSupport {
+public class NetmenuAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String link;

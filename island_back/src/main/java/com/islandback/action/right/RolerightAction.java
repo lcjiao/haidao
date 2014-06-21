@@ -16,6 +16,7 @@ import com.island.domain.biz.RoleBiz;
 import com.island.domain.model.Menu;
 import com.island.domain.model.Role;
 import com.island.domain.model.RoleRight;
+import com.islandback.action.base.BaseAction;
 import com.jcl.core.module.ModuleRegistry;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -23,7 +24,7 @@ import com.opensymphony.xwork2.ActionSupport;
 @Namespace("/right/roleright")
 @ResultPath("/WEB-INF")
 
-public class RolerightAction extends ActionSupport{
+public class RolerightAction extends BaseAction{
 	RoleBiz roleBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getRoleBiz();
 	

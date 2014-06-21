@@ -20,6 +20,7 @@ import com.island.domain.biz.GlobalNetBiz;
 import com.island.domain.model.Area;
 import com.island.domain.model.Country;
 import com.island.domain.model.Island;
+import com.islandback.action.base.BaseAction;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
 import com.islandback.web.util.RequestProcc;
@@ -29,7 +30,7 @@ import com.opensymphony.xwork2.ActionSupport;
 //@SuppressWarnings("serial")
 @Namespace("/globalnet/country")
 @ResultPath("/WEB-INF")
-public class CountryAction extends ActionSupport {
+public class CountryAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private Country country;
 	private Integer id;

@@ -18,6 +18,7 @@ import com.jcl.core.module.ModuleRegistry;
 import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.GlobalQaBiz;
 import com.island.domain.model.GlobalQaType;
+import com.islandback.action.base.BaseAction;
 import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
@@ -27,7 +28,7 @@ import com.opensymphony.xwork2.ActionSupport;
 //@SuppressWarnings("serial")
 @Namespace("/globalqa/globalqatype")
 @ResultPath("/WEB-INF")
-public class GlobalqatypeAction extends ActionSupport {
+public class GlobalqatypeAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private GlobalQaType globalQaType;//首页主推
 	private Integer id;

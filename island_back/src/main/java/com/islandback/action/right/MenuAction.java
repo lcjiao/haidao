@@ -11,6 +11,7 @@ import org.apache.struts2.convention.annotation.ResultPath;
 import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.RoleBiz;
 import com.island.domain.model.Menu;
+import com.islandback.action.base.BaseAction;
 import com.jcl.core.module.ModuleRegistry;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -18,7 +19,7 @@ import com.opensymphony.xwork2.ActionSupport;
 @Namespace("/right/menu")
 @ResultPath("/WEB-INF")
 
-public class MenuAction extends ActionSupport{
+public class MenuAction extends BaseAction{
 	RoleBiz roleBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getRoleBiz();
 	

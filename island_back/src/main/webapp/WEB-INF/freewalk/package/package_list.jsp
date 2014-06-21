@@ -11,6 +11,7 @@
 
 </head>
 <body>
+<%@ include file="/common/menu.jsp"%>
 <form action="${ctx}/freewalk/package/package!list.action" id="form" method="post">
 <table class="searchbar" width="100%">
 	<tbody>

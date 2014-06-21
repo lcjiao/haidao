@@ -25,6 +25,7 @@ import com.island.domain.biz.RecommendBiz;
 import com.island.domain.model.Area;
 import com.island.domain.model.Island;
 import com.island.domain.model.Recommend;
+import com.islandback.action.base.BaseAction;
 import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
@@ -35,7 +36,7 @@ import com.opensymphony.xwork2.ActionSupport;
 //@SuppressWarnings("serial")
 @Namespace("/freewalk/index")
 @ResultPath("/WEB-INF")
-public class MarraymasterrecomendAction extends ActionSupport {
+public class MarraymasterrecomendAction extends BaseAction {
 	/**
 	 * 图片  ＋ 标题  ＋ 价格 ＋ 岛屿  ＋ 时间 ＋ 链接
 	 */

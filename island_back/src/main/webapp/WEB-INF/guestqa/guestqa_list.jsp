@@ -11,7 +11,7 @@
 
 </head>
 <body>
-
+<%@ include file="/common/menu.jsp"%>
 <form action="${ctx}/guestqa/guestqa!tolist.action" id="form" method="post">
 <table class="searchbar" width="100%">
 	<tbody>

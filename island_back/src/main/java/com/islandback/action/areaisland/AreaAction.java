@@ -18,6 +18,7 @@ import com.island.domain.biz.ModuleTypeBiz;
 import com.island.domain.biz.RecommendBiz;
 import com.island.domain.model.Area;
 import com.island.domain.util.AsynBizExecutor;
+import com.islandback.action.base.BaseAction;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
 import com.islandback.web.util.RequestProcc;
@@ -29,7 +30,7 @@ import com.opensymphony.xwork2.ActionSupport;
  *区域
  *
  */
-public class AreaAction extends ActionSupport {
+public class AreaAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private Integer index;

@@ -839,3 +839,11 @@
 2014-06-13 19:55:26,747 INFO  [Thread-2@/config/haidao_conf.xml] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/local/haidao_conf.xml', class path resource [META-INF/config/local/haidao_conf.xml] cannot be resolved to URL because it does not exist
 2014-06-13 19:55:26,748 INFO  [Thread-2@/config/haidao_conf.xml] config.ConfigurationFactoryBean (Slf4jLogger.java:64)     - Skip config 'classpath:META-INF/config/default/haidao_conf.xml', class path resource [META-INF/config/default/haidao_conf.xml] cannot be resolved to URL because it does not exist
 2014-06-13 19:55:27,749 INFO  [Thread-2@/config/haidao_conf.xml] util.FileWatchdog (Slf4jLogger.java:59)     - database configure changed at 1402660526000 Fri Jun 13 19:55:26 CST 2014
+2014-06-21 11:06:35,846 INFO  [main] trace             (Slf4jLogger.java:59)     - @Threadmain:AsynBizExecutor:batch.asyn:true
+2014-06-21 11:06:35,860 INFO  [main] trace             (Executor.java:18)     - tpool anum: 1 ,psize:1,qsize: 0
+2014-06-21 11:06:45,861 INFO  [pool-1-thread-1] trace             (Slf4jLogger.java:59)     - clear prop cache in addPpcProp use:10002
+2014-06-21 11:06:45,864 INFO  [pool-1-thread-1] trace             (Slf4jLogger.java:59)     - AsynBizExecutor.execute(test) timeused=10005
+2014-06-21 11:12:53,889 INFO  [main] trace             (Slf4jLogger.java:59)     - @Threadmain:AsynBizExecutor:batch.asyn:true
+2014-06-21 11:12:53,898 INFO  [main] trace             (Executor.java:18)     - tpool anum: 1 ,psize:1,qsize: 0
+2014-06-21 11:13:03,899 INFO  [pool-1-thread-1] trace             (Slf4jLogger.java:59)     - clear prop cache in addPpcProp use:10001
+2014-06-21 11:13:03,902 INFO  [pool-1-thread-1] trace             (Slf4jLogger.java:59)     - AsynBizExecutor.execute(test) timeused=10003

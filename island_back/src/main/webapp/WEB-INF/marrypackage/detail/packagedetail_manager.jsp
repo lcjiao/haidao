@@ -13,6 +13,7 @@
 
 </head>
 <body>
+<%@ include file="/common/menu.jsp"%>
 <form action="${ctx}/marrypackage/detail/packagedetail!managerDetailRecommend.action" id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" width="100%">

@@ -12,6 +12,7 @@ import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.RoleBiz;
 import com.island.domain.model.Role;
 import com.island.domain.model.User;
+import com.islandback.action.base.BaseAction;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
 import com.islandback.web.util.RequestProcc;
@@ -23,7 +24,7 @@ import com.opensymphony.xwork2.ActionSupport;
 @Namespace("/right/backuser")
 @ResultPath("/WEB-INF")
 
-public class BackuserAction extends ActionSupport{
+public class BackuserAction extends BaseAction{
 	RoleBiz roleBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getRoleBiz();
 	private Integer pageNo;

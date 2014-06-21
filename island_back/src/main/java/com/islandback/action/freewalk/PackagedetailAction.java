@@ -13,6 +13,7 @@ import com.jcl.core.module.ModuleRegistry;
 import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.RecommendBiz;
 import com.island.domain.model.Recommend;
+import com.islandback.action.base.BaseAction;
 import com.islandback.module.ModuleEnum;
 import com.islandback.module.SessionInfo;
 import com.islandback.web.util.RequestProcc;
@@ -21,7 +22,7 @@ import com.opensymphony.xwork2.ActionSupport;
 //@SuppressWarnings("serial")
 @Namespace("/freewalk/detail")
 @ResultPath("/WEB-INF")
-public class PackagedetailAction extends ActionSupport {
+public class PackagedetailAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private Recommend recommend;
 	private Integer id;

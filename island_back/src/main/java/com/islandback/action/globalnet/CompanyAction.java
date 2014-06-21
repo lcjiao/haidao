@@ -19,6 +19,7 @@ import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.GlobalNetBiz;
 import com.island.domain.model.Company;
 import com.island.domain.model.Recommend;
+import com.islandback.action.base.BaseAction;
 import com.islandback.module.ModuleEnum;
 import com.islandback.module.SessionInfo;
 import com.islandback.web.util.RequestProcc;
@@ -32,7 +33,7 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author lcjiao
  *
  */
-public class CompanyAction extends ActionSupport {
+public class CompanyAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String name;//公司名称
