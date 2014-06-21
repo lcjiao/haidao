@@ -50,7 +50,6 @@ public class NetmenuAction extends BaseAction {
 	 * 跳转至前台菜单添加
 	 */
 	public String toAdd(){
-		RequestProcc.getSession().invalidate();
 		return "add";
 	}
 	

@@ -60,7 +60,6 @@ public class AreaAction extends BaseAction {
 	
 	
 	public String toAdd(){
-		RequestProcc.getSession().invalidate();
 		return "add";
 	}
 	

@@ -73,7 +73,6 @@ public class IslandAction extends BaseAction {
 	
 	
 	public String toAdd(){
-		RequestProcc.getSession().invalidate();
 		Map<String,Object> params = new HashMap<String,Object>(0);
 		params.put("valid", 1);
 	    areaList = areaIslandBiz.queryAreaByMap(params);

@@ -66,7 +66,6 @@ public class MasterecommendAction extends BaseAction {
 	 * 跳转至增加首页主打产品添加
 	 */
 	public String toAdd(){
-		RequestProcc.getSession().invalidate();
 		return "add";
 	}
 	/**
