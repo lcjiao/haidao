@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>婚纱套餐列表</title>
+<title>摄影团队(师)</title>
 <link rel="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
 <link rel="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
@@ -12,23 +12,24 @@
 
 </head>
 <body>
-<form action="${ctx}/weddingphoto/wdppackage/wdppackage!wdpPackageSearch.action" id="form" method="post">
+<form action="${ctx}/wdpphototeam/teampackage/teampkg!temmpkgSearch.action" id="form" method="post">
 <table class="searchbar" style="width: 100%">
 	<tbody>
 		<tr>
-			<td width="48">所属岛屿</td>
+			<td width="48">摄影类型</td>
 			<td width="10">
-				<select id="island_id" name="wdpPackage.islandId">
-					<option value="" selected="selected">--请选择--</option>
-					<c:forEach var="island" items="${islandList}">
-							<option value="${island.id}" >${island.name}</option>
-				   </c:forEach>
+				<select id="work_type" name="workman.workType">
+					<option value="0" selected="selected">--请选择--</option>
+					<option value="1" >摄影团队</option>
+					<option value="2" >摄影师</option>
+					<option value="3" >化妆师</option>
+					<option value="4" >影片师</option>
 				</select>
 			</td>
-			<td width="48">套餐名称</td>
-			<td width="10"><input type="text" name="wdpPackage.title" value="${title}" id="sear_title"/></td>
-			<td width="48">套餐价格</td>
-			<td width="10"><input type="text" name="wdpPackage.priceSmall" value="${priceSmall}" id="sear_price"/></td>
+			<td width="48">名称</td>
+			<td width="10"><input type="text" name="workman.name" value="${name}" id="sear_name"/></td>
+			<td width="48">价格</td>
+			<td width="10"><input type="text" name="workman.priceSmall" value="${priceSmall}" id="sear_price"/></td>
 			<td><input class="btn" type="button" value="搜索" id="search"/>
 			</td>
 		</tr>
@@ -60,60 +61,38 @@
 					<thead>
 						<tr>
 							<td>序号</td>
-							<td>套餐名称</td>
-							<td>所属区域</td>
-							<td>所属岛屿</td>
-							<td>所属类别</td>
+							<td>摄影类型</td>
+							<td>名称</td>
 							<td>淡季价格</td>
 							<td>旺季价格</td>
-							<td>是否在售</td>
-							<td>是否热推</td>
-							<td>热推操作</td>
 							<td>基本操作</td>
 						</tr>
 					</thead>
 					<tbody id="question_list">
-						<s:iterator value="wdpPackageList" status="_index">
+						<s:iterator value="workmanList" status="_index">
 							<tr>
 								<td style="text-align:center;">
 									<s:property value="#_index.index+1"/>
 								</td>
 								<td style="text-align:center;">
-									<s:property value="title"/>
+									<s:property value="workTypeStr"/>
 								</td>
 								<td style="text-align:center;">
-									<s:property value="areaName"/>
-								</td>
-								<td style="text-align:center;">
-									<s:property value="islandName"/>
-								</td>
-								<td>
-									<s:property value="typeName"/>
+									<s:property value="name"/>
 								</td>
 								<td style="text-align:center;">
 									<s:property value="priceSmall"/>
 								</td>
 								<td style="text-align:center;">
 									<s:property value="priceBig"/>
-								</td>
-								<td style="text-align:center;">
-									<%-- <s:if test="<s:property value="isOnline"/> != 1">非在售 </s:if>在售 --%>
-									<s:property value="onlineStr"/>
-								</td>
-								<td style="text-align:center;" id="hot_<s:property value="#_index.index+1"/>">
-									<s:property value="hotStr"/>
-								</td>
-								<td width="100px">
-									<a title="" onclick="sethot('hot_<s:property value="#_index.index+1"/>')" >热推</a>&nbsp;|&nbsp;
-									<a title="" onclick="resethot('hot_<s:property value="#_index.index+1"/>')" >取消热推</a>&nbsp;&nbsp;
-								</td>
-								<td width="360px">
+								</td>								
+								<td width="360px" style="text-align:center;">
 									<a title="" onclick="editBase(<s:property value="id"/>)" >基本信息管理</a>&nbsp;|&nbsp;
 									<a title="" onclick="editDetail(<s:property value="id"/>)" >详细信息管理</a>&nbsp;|&nbsp;
 									<a title="" onclick="editImg(<s:property value="id"/>)" >图片管理</a>&nbsp;|&nbsp;
 									<a title="" onclick="editKepian(<s:property value="id"/>)" >客片留影管理</a>&nbsp;|&nbsp;
-									<a title=""  onclick="delweddingphoto(<s:property value="id"/>)">删除</a>&nbsp;&nbsp;
-									<input type="hidden" id = "wdp_id" name="wdpPackage.id" value="<s:property value="id"/>" />
+									<a title=""  onclick="delWdpTeamPkg(<s:property value="id"/>)">删除</a>&nbsp;&nbsp;
+									<input type="hidden" id = "workman_id" name="workman.id" value="<s:property value="id"/>" />
 								</td>							
 						    </tr>
 						</s:iterator>					
@@ -200,44 +179,46 @@
 	}
 	
 	function newCreate(){
-		var url = "${ctx}/weddingphoto/wdppackage/wdppackage!toAddBase.action";
+		var url = "${ctx}/wdpphototeam/teampackage/teampkg!toAddBase.action";
 		window.location.href = url;
 	};
 	
-	//var weddingphotoId = $('#wdp_id').val();
+	//var workmanId = $('#workman_id').val();
 	
 	function editBase(ele){
 		//var weddingphotoId = $(ele).attr('title');
-		var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!toEditBase.action?wdpId="+ele;
+		var url =  "${ctx}/wdpphototeam/teampackage/teampkg!toEditBase.action?wkmId="+ele;
 		window.location.href = url; 
 	}
 	
 	function editDetail(ele){
 		//var weddingphotoId = $(ele).attr('title');
-		var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!wdpDetail.action?wdpId="+ele;
+		var url =  "${ctx}/wdpphototeam/teampackage/teampkg!wkmDetail.action?wkmId="+ele;
 		window.location.href = url; 
 	}
 	
 	function editImg(ele){
 		//var weddingphotoId = $(ele).attr('title');
-		var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!toImgList.action?wdpId="+ele;
+		var url =  "${ctx}/wdpphototeam/teampackage/teampkg!toImgList.action?wkmId="+ele;
 		window.location.href = url; 
 	}
 	
 	function editKepian(ele){
 		//var weddingphotoId = $(ele).attr('title');
-		var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!toKepianList.action?wdpId="+ele;
+		var url =  "${ctx}/wdpphototeam/teampackage/teampkg!toKepianList.action?wkmId="+ele;
 		window.location.href = url; 
 	}
 	
-	function delweddingphoto(ele){
+	function delWdpTeamPkg(ele){
 		var isHide = confirm('确定删除吗?');
 		if(isHide){
 			//var weddingphotoId = $(ele).attr('title');
-			var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!delWeddingPhoto.action?wdpId="+ele;
+			var url =  "${ctx}/wdpphototeam/teampackage/teampkg!delWdpTeamPkg.action?wkmId="+ele;
 			window.location.href = url; 
 		}
 	}
+	
+	/*
 	
 	function resethot(ele){
 		//var packageId = $(ele).attr('title');
@@ -250,7 +231,7 @@
 			
 			$.ajax({
 				type:"get",
-				url:"${ctx}/weddingphoto/wdppackage/wdppackage!resetHot.action?wdpId="+ele,
+				url:"${ctx}/wdpphototeam/teampackage/teampkg!resetHot.action?wkmId="+workmanId,
 				dataType:"text",
 				success:function(text){
 					alert("取消推荐成功");
@@ -272,7 +253,7 @@
 			
 			$.ajax({
 				type:"get",
-				url:"${ctx}/weddingphoto/wdppackage/wdppackage!setHot.action?wdpId="+ele,
+				url:"${ctx}/wdpphototeam/teampackage/teampkg!setHot.action?wkmId="+workmanId,
 				dataType:"text",
 				success:function(text){
 					alert("推荐成功");
@@ -283,5 +264,6 @@
 			$('#'+ele)[0].innerText = "热推";
 		}
 	}
+	*/
 </script>
 </html>

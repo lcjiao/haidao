@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>婚纱套餐客片留影列表</title>
+<title>婚纱摄影团队客片留影列表</title>
 <link rel="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
 <link rel="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<form action="${ctx}/weddingphoto/wdppackage/wdppackage!kplySearch.action" id="form" method="post">
+<form action="${ctx}/wdpphototeam/teampackage/teampkg!kplySearch.action" id="form" method="post">
 <table class="searchbar" style="width: 100%">
 	<tbody>
 		<tr>
@@ -26,8 +26,8 @@
 	</tbody>
 </table>
 <input type="hidden" value="${pageNo}" name="pageNo" id="page_no"/>
-<input type="hidden" id = "wdp_id" name="wdpPackage.id" value='${wdpPackage.id }'/>
-
+<input type="hidden" id = "wkm_id" name="workman.id" value='${workman.id }'/>
+<s:debug></s:debug>
 </form>
 <table class="customlist" style="width: 100%">
 <thead>
@@ -167,17 +167,17 @@
 		$("#form").submit();
 	}
 	
-	var weddingphotoId = $('#wdp_id').val();
+	var wkmId = $('#wkm_id').val();
 	
 	function newCreate(){
-		var url = "${ctx}/weddingphoto/wdppackage/wdppackage!toAddKepian.action?wdpId="+weddingphotoId;
+		var url = "${ctx}/wdpphototeam/teampackage/teampkg!toAddKepian.action?wkmId="+wkmId;
 		window.location.href = url;
 	};
 	
 	function editKepian(ele){
 		var kepianId = $(ele).attr('title');
 		//var packageId =$("#p_id").val();
-		var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!toEditKepian.action?kplyId="+kepianId;
+		var url =  "${ctx}/wdpphototeam/teampackage/teampkg!toEditKepian.action?kplyId="+kepianId;
 		window.location.href = url; 
 	}
 	function delKepian(ele){
@@ -185,7 +185,7 @@
 		if(isHide){
 			var kepianId = $(ele).attr('title');
 			//var packageId =$("#p_id").val();
-			var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!delKepian.action?kplyId="+kepianId;
+			var url =  "${ctx}/wdpphototeam/teampackage/teampkg!delKepian.action?kplyId="+kepianId;
 			window.location.href = url; 
 		}
 	}

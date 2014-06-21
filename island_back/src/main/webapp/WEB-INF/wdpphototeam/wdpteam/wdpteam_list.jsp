@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>婚纱摄影下边小三块推荐图片</title>
+<title>摄影团队(师)推荐</title>
 <link rel="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
 <link rel="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
@@ -40,9 +40,10 @@
 						<tr>
 							<td>序号</td>
 							<td>标题</td>
-							<td>时间</td>
-							<td>链接地址</td>
 							<td>图片</td>
+							<td>链接地址</td>
+							<td>创作人</td>
+							<td>创作人简介</td>
 							<td>排序</td>
 							<td>操作</td>
 						</tr>
@@ -56,14 +57,17 @@
 								<td style="text-align:center;">
 									<s:property value="title"/>
 								</td>
-								<td>
-									<s:property value="recommendTime"/>
+								<td style="text-align:center;">
+									<img style="width:150px;height:120px;" alt="你想看我吗？哈哈！！" src='<s:property value="imgUrl"/>'>
 								</td>
 								<td style="text-align:center;">
 									<s:property value="linkUrl"/>
 								</td>
 								<td style="text-align:center;">
-									<img style="width:150px;height:120px;" alt="你想看我吗？哈哈！！" src='<s:property value="imgUrl"/>'>
+									<s:property value="recommendDesc"/><!-- 创作人 -->
+								</td>
+								<td style="text-align:center;">
+									<s:property value="content"/><!-- 创作人简介 -->
 								</td>
 								<td style="text-align:center;">
 									<s:property value="recommendIndex"/>
@@ -154,13 +158,13 @@
 	
 	
 	function findByNo(pageNo){
-		var url = "${ctx}/weddingphoto/wdpleft2/wdpleft2!list?pageNo="+pageNo;
+		var url = "${ctx}/wdpphototeam/wdpteam/wdpteam!list?pageNo="+pageNo;
 		window.location.href = url;
 	}
 	
 	
 	function newCreate(){
-		var url = "${ctx}/weddingphoto/wdpleft2/wdpleft2!toAdd.action";
+		var url = "${ctx}/wdpphototeam/wdpteam/wdpteam!toAdd.action";
 		window.location.href = url;
 	};
 	
@@ -168,14 +172,14 @@
 		var isHide = confirm('确定删除吗?');
 		if(isHide){
 			var recommendId = $(ele).attr('title');
-			var url = "${ctx}/weddingphoto/wdpleft2/wdpleft2!deleteWdp.action?rmdId="+recommendId;
+			var url = "${ctx}/wdpphototeam/wdpteam/wdpteam!deleteWdpTeamInfo.action?rmdId="+recommendId;
 			window.location.href = url; 
 		}
 	}
 	
 	function edit(ele){
 		var recommendId = $(ele).attr('title');
-		var url =  "${ctx}/weddingphoto/wdpleft2/wdpleft2!toEditWdp.action?rmdId="+recommendId;
+		var url =  "${ctx}/wdpphototeam/wdpteam/wdpteam!toEditWdpTeamInfo.action?rmdId="+recommendId;
 		window.location.href = url; 
 	}
 </script>

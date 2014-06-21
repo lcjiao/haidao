@@ -1,0 +1,827 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.island.domain.dal.mapper.PhotoSubscribeMapper">
+	<resultMap id="PhotoSubscribeRslMap" type="com.island.domain.model.PhotoSubscribe">		
+		
+			<id property="id" column="id" />
+			<result property="typeId" column="type_id" />
+			<result property="typeName" column="type_name" />
+			<result property="strnamef" column="strnamef" />
+			<result property="strnamet" column="strnamet" />
+			<result property="positionId" column="position_id" />
+			<result property="positionName" column="position_name" />
+			<result property="startTime" column="start_time" />
+			<result property="endTime" column="end_time" />
+			<result property="imgUrl" column="img_url" />
+			<result property="imgLink" column="img_link" />
+			<result property="valid" column="valid" />
+			<result property="createtime" column="createtime" />
+			<result property="createperson" column="createperson" />
+			<result property="updtime" column="updtime" />
+			<result property="updperson" column="updperson" />
+	</resultMap>
+
+	<select id="queryById" parameterType="java.util.Map" resultMap="PhotoSubscribeRslMap">
+		SELECT
+			id,
+			type_id,
+			type_name,
+			strnamef,
+			strnamet,
+			position_id,
+			position_name,
+			start_time,
+			end_time,
+			img_url,
+			img_link,
+			valid,
+			createtime,
+			createperson,
+			updtime,
+			updperson
+		FROM
+			photo_subscribe
+		<where>
+			and id=#{id}
+		</where>
+			limit 1
+	</select>
+
+	<select id="queryByModel" parameterType="com.island.domain.model.PhotoSubscribe" resultMap="PhotoSubscribeRslMap">		
+		SELECT
+			id,
+			type_id,
+			type_name,
+			strnamef,
+			strnamet,
+			position_id,
+			position_name,
+			start_time,
+			end_time,
+			img_url,
+			img_link,
+			valid,
+			createtime,
+			createperson,
+			updtime,
+			updperson
+		FROM
+			photo_subscribe
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="typeId !=  null">			        
+				and type_id=#{typeId}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
+			<if test="strnamef !=  null">			        
+				and strnamef=#{strnamef}
+			</if>
+			<if test="strnamet !=  null">			        
+				and strnamet=#{strnamet}
+			</if>
+			<if test="positionId !=  null">			        
+				and position_id=#{positionId}
+			</if>
+			<if test="positionName !=  null">			        
+				and position_name=#{positionName}
+			</if>
+			<if test="startTime !=  null">			        
+				and start_time=#{startTime}
+			</if>
+			<if test="endTime !=  null">			        
+				and end_time=#{endTime}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+			<if test="imgLink !=  null">			        
+				and img_link=#{imgLink}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+		
+	</select>
+		
+	<select id="queryByMap" parameterType="java.util.Map" resultMap="PhotoSubscribeRslMap">				
+		SELECT
+			id,
+			type_id,
+			type_name,
+			strnamef,
+			strnamet,
+			position_id,
+			position_name,
+			start_time,
+			end_time,
+			img_url,
+			img_link,
+			valid,
+			createtime,
+			createperson,
+			updtime,
+			updperson
+		FROM
+			photo_subscribe
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="typeId !=  null">			        
+				and type_id=#{typeId}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
+			<if test="strnamef !=  null">			        
+				and strnamef=#{strnamef}
+			</if>
+			<if test="strnamet !=  null">			        
+				and strnamet=#{strnamet}
+			</if>
+			<if test="positionId !=  null">			        
+				and position_id=#{positionId}
+			</if>
+			<if test="positionName !=  null">			        
+				and position_name=#{positionName}
+			</if>
+			<if test="startTime !=  null">			        
+				and start_time=#{startTime}
+			</if>
+			<if test="endTime !=  null">			        
+				and end_time=#{endTime}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+			<if test="imgLink !=  null">			        
+				and img_link=#{imgLink}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+		<if test="begin !=  null">			        
+				limit #{begin},#{size}
+		</if>
+	</select>
+	
+	<select id="countByModel" parameterType="com.island.domain.model.PhotoSubscribe" resultType="java.lang.Integer">	
+		SELECT
+			count(*)
+		FROM
+			photo_subscribe
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="typeId !=  null">			        
+				and type_id=#{typeId}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
+			<if test="strnamef !=  null">			        
+				and strnamef=#{strnamef}
+			</if>
+			<if test="strnamet !=  null">			        
+				and strnamet=#{strnamet}
+			</if>
+			<if test="positionId !=  null">			        
+				and position_id=#{positionId}
+			</if>
+			<if test="positionName !=  null">			        
+				and position_name=#{positionName}
+			</if>
+			<if test="startTime !=  null">			        
+				and start_time=#{startTime}
+			</if>
+			<if test="endTime !=  null">			        
+				and end_time=#{endTime}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+			<if test="imgLink !=  null">			        
+				and img_link=#{imgLink}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+		
+	</select>
+	
+	<select id="countByMap" parameterType="java.util.Map" resultType="java.lang.Integer">				
+		SELECT
+			count(*)
+		FROM
+			photo_subscribe
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="typeId !=  null">			        
+				and type_id=#{typeId}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
+			<if test="strnamef !=  null">			        
+				and strnamef=#{strnamef}
+			</if>
+			<if test="strnamet !=  null">			        
+				and strnamet=#{strnamet}
+			</if>
+			<if test="positionId !=  null">			        
+				and position_id=#{positionId}
+			</if>
+			<if test="positionName !=  null">			        
+				and position_name=#{positionName}
+			</if>
+			<if test="startTime !=  null">			        
+				and start_time=#{startTime}
+			</if>
+			<if test="endTime !=  null">			        
+				and end_time=#{endTime}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+			<if test="imgLink !=  null">			        
+				and img_link=#{imgLink}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+				
+	</select>
+	
+	<select id="pageQuery" parameterType="com.jcl.core.dal.Page" resultMap="PhotoSubscribeRslMap" fetchSize="15">
+		SELECT
+			id,
+			type_id,
+			type_name,
+			strnamef,
+			strnamet,
+			position_id,
+			position_name,
+			start_time,
+			end_time,
+			img_url,
+			img_link,
+			valid,
+			createtime,
+			createperson,
+			updtime,
+			updperson
+		FROM
+			photo_subscribe
+		<where>
+			<if test="params !=  null">
+				<if test="params.id !=  null">
+					and id=#{params.id}
+				</if>
+				<if test="params.typeId !=  null">
+					and type_id=#{params.typeId}
+				</if>
+				<if test="params.typeName !=  null">
+					and type_name=#{params.typeName}
+				</if>
+				<if test="params.strnamef !=  null">
+					and strnamef=#{params.strnamef}
+				</if>
+				<if test="params.strnamet !=  null">
+					and strnamet=#{params.strnamet}
+				</if>
+				<if test="params.positionId !=  null">
+					and position_id=#{params.positionId}
+				</if>
+				<if test="params.positionName !=  null">
+					and position_name=#{params.positionName}
+				</if>
+				<if test="params.startTime !=  null">
+					and start_time=#{params.startTime}
+				</if>
+				<if test="params.endTime !=  null">
+					and end_time=#{params.endTime}
+				</if>
+				<if test="params.imgUrl !=  null">
+					and img_url=#{params.imgUrl}
+				</if>
+				<if test="params.imgLink !=  null">
+					and img_link=#{params.imgLink}
+				</if>
+				<if test="params.valid !=  null">
+					and valid=#{params.valid}
+				</if>
+				<if test="params.createtime !=  null">
+					and createtime=#{params.createtime}
+				</if>
+				<if test="params.createperson !=  null">
+					and createperson=#{params.createperson}
+				</if>
+				<if test="params.updtime !=  null">
+					and updtime=#{params.updtime}
+				</if>
+				<if test="params.updperson !=  null">
+					and updperson=#{params.updperson}
+				</if>
+			</if>
+		</where>
+			limit #{start},#{end}	
+	</select>
+
+	<insert id="insert" parameterType="com.island.domain.model.PhotoSubscribe" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO	photo_subscribe
+			(id,type_id,type_name,strnamef,strnamet,position_id,position_name,start_time,end_time,img_url,img_link,valid,createtime,createperson,updtime,updperson)
+			VALUES(#{id},#{typeId},#{typeName},#{strnamef},#{strnamet},#{positionId},#{positionName},#{startTime},#{endTime},#{imgUrl},#{imgLink},#{valid},#{createtime},#{createperson},#{updtime},#{updperson})		
+	</insert>
+	
+	<update id="update" parameterType="com.island.domain.model.PhotoSubscribe">
+		update 
+			photo_subscribe
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="typeId !=  null">			        
+				type_id=#{typeId},
+			</if>
+			<if test="typeName !=  null">			        
+				type_name=#{typeName},
+			</if>
+			<if test="strnamef !=  null">			        
+				strnamef=#{strnamef},
+			</if>
+			<if test="strnamet !=  null">			        
+				strnamet=#{strnamet},
+			</if>
+			<if test="positionId !=  null">			        
+				position_id=#{positionId},
+			</if>
+			<if test="positionName !=  null">			        
+				position_name=#{positionName},
+			</if>
+			<if test="startTime !=  null">			        
+				start_time=#{startTime},
+			</if>
+			<if test="endTime !=  null">			        
+				end_time=#{endTime},
+			</if>
+			<if test="imgUrl !=  null">			        
+				img_url=#{imgUrl},
+			</if>
+			<if test="imgLink !=  null">			        
+				img_link=#{imgLink},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="createtime !=  null">			        
+				createtime=#{createtime},
+			</if>
+			<if test="createperson !=  null">			        
+				createperson=#{createperson},
+			</if>
+			<if test="updtime !=  null">			        
+				updtime=#{updtime},
+			</if>
+			<if test="updperson !=  null">			        
+				updperson=#{updperson},
+			</if>
+		</set>
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="typeId !=  null">			        
+				and type_id=#{typeId}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
+			<if test="strnamef !=  null">			        
+				and strnamef=#{strnamef}
+			</if>
+			<if test="strnamet !=  null">			        
+				and strnamet=#{strnamet}
+			</if>
+			<if test="positionId !=  null">			        
+				and position_id=#{positionId}
+			</if>
+			<if test="positionName !=  null">			        
+				and position_name=#{positionName}
+			</if>
+			<if test="startTime !=  null">			        
+				and start_time=#{startTime}
+			</if>
+			<if test="endTime !=  null">			        
+				and end_time=#{endTime}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+			<if test="imgLink !=  null">			        
+				and img_link=#{imgLink}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+		
+	</update>
+	<update id="updateByMap" parameterType="java.util.Map">
+		update 
+			photo_subscribe
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="typeId !=  null">			        
+				type_id=#{typeId},
+			</if>
+			<if test="typeName !=  null">			        
+				type_name=#{typeName},
+			</if>
+			<if test="strnamef !=  null">			        
+				strnamef=#{strnamef},
+			</if>
+			<if test="strnamet !=  null">			        
+				strnamet=#{strnamet},
+			</if>
+			<if test="positionId !=  null">			        
+				position_id=#{positionId},
+			</if>
+			<if test="positionName !=  null">			        
+				position_name=#{positionName},
+			</if>
+			<if test="startTime !=  null">			        
+				start_time=#{startTime},
+			</if>
+			<if test="endTime !=  null">			        
+				end_time=#{endTime},
+			</if>
+			<if test="imgUrl !=  null">			        
+				img_url=#{imgUrl},
+			</if>
+			<if test="imgLink !=  null">			        
+				img_link=#{imgLink},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="createtime !=  null">			        
+				createtime=#{createtime},
+			</if>
+			<if test="createperson !=  null">			        
+				createperson=#{createperson},
+			</if>
+			<if test="updtime !=  null">			        
+				updtime=#{updtime},
+			</if>
+			<if test="updperson !=  null">			        
+				updperson=#{updperson},
+			</if>
+		</set>
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="typeId !=  null">			        
+				and type_id=#{typeId}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
+			<if test="strnamef !=  null">			        
+				and strnamef=#{strnamef}
+			</if>
+			<if test="strnamet !=  null">			        
+				and strnamet=#{strnamet}
+			</if>
+			<if test="positionId !=  null">			        
+				and position_id=#{positionId}
+			</if>
+			<if test="positionName !=  null">			        
+				and position_name=#{positionName}
+			</if>
+			<if test="startTime !=  null">			        
+				and start_time=#{startTime}
+			</if>
+			<if test="endTime !=  null">			        
+				and end_time=#{endTime}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+			<if test="imgLink !=  null">			        
+				and img_link=#{imgLink}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+		
+	</update>
+	
+	<update id="cmplxUpdate" parameterType="java.util.Map">
+		update 
+			photo_subscribe
+		<set>
+			<if test="updNewMap.id !=  null">
+				id=#{updNewMap.id},
+			</if>
+			<if test="updNewMap.typeId !=  null">
+				type_id=#{updNewMap.typeId},
+			</if>
+			<if test="updNewMap.typeName !=  null">
+				type_name=#{updNewMap.typeName},
+			</if>
+			<if test="updNewMap.strnamef !=  null">
+				strnamef=#{updNewMap.strnamef},
+			</if>
+			<if test="updNewMap.strnamet !=  null">
+				strnamet=#{updNewMap.strnamet},
+			</if>
+			<if test="updNewMap.positionId !=  null">
+				position_id=#{updNewMap.positionId},
+			</if>
+			<if test="updNewMap.positionName !=  null">
+				position_name=#{updNewMap.positionName},
+			</if>
+			<if test="updNewMap.startTime !=  null">
+				start_time=#{updNewMap.startTime},
+			</if>
+			<if test="updNewMap.endTime !=  null">
+				end_time=#{updNewMap.endTime},
+			</if>
+			<if test="updNewMap.imgUrl !=  null">
+				img_url=#{updNewMap.imgUrl},
+			</if>
+			<if test="updNewMap.imgLink !=  null">
+				img_link=#{updNewMap.imgLink},
+			</if>
+			<if test="updNewMap.valid !=  null">
+				valid=#{updNewMap.valid},
+			</if>
+			<if test="updNewMap.createtime !=  null">
+				createtime=#{updNewMap.createtime},
+			</if>
+			<if test="updNewMap.createperson !=  null">
+				createperson=#{updNewMap.createperson},
+			</if>
+			<if test="updNewMap.updtime !=  null">
+				updtime=#{updNewMap.updtime},
+			</if>
+			<if test="updNewMap.updperson !=  null">
+				updperson=#{updNewMap.updperson},
+			</if>
+		</set>
+		<where>
+			<if test="updCondMap.id !=  null">
+				and id=#{updCondMap.id}
+			</if>
+			<if test="updCondMap.typeId !=  null">
+				and type_id=#{updCondMap.typeId}
+			</if>
+			<if test="updCondMap.typeName !=  null">
+				and type_name=#{updCondMap.typeName}
+			</if>
+			<if test="updCondMap.strnamef !=  null">
+				and strnamef=#{updCondMap.strnamef}
+			</if>
+			<if test="updCondMap.strnamet !=  null">
+				and strnamet=#{updCondMap.strnamet}
+			</if>
+			<if test="updCondMap.positionId !=  null">
+				and position_id=#{updCondMap.positionId}
+			</if>
+			<if test="updCondMap.positionName !=  null">
+				and position_name=#{updCondMap.positionName}
+			</if>
+			<if test="updCondMap.startTime !=  null">
+				and start_time=#{updCondMap.startTime}
+			</if>
+			<if test="updCondMap.endTime !=  null">
+				and end_time=#{updCondMap.endTime}
+			</if>
+			<if test="updCondMap.imgUrl !=  null">
+				and img_url=#{updCondMap.imgUrl}
+			</if>
+			<if test="updCondMap.imgLink !=  null">
+				and img_link=#{updCondMap.imgLink}
+			</if>
+			<if test="updCondMap.valid !=  null">
+				and valid=#{updCondMap.valid}
+			</if>
+			<if test="updCondMap.createtime !=  null">
+				and createtime=#{updCondMap.createtime}
+			</if>
+			<if test="updCondMap.createperson !=  null">
+				and createperson=#{updCondMap.createperson}
+			</if>
+			<if test="updCondMap.updtime !=  null">
+				and updtime=#{updCondMap.updtime}
+			</if>
+			<if test="updCondMap.updperson !=  null">
+				and updperson=#{updCondMap.updperson}
+			</if>
+		</where>
+		
+	</update>
+	
+	<delete id="delete" parameterType="com.island.domain.model.PhotoSubscribe">		
+		DELETE
+		FROM
+			photo_subscribe 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="typeId !=  null">			        
+				and type_id=#{typeId}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
+			<if test="strnamef !=  null">			        
+				and strnamef=#{strnamef}
+			</if>
+			<if test="strnamet !=  null">			        
+				and strnamet=#{strnamet}
+			</if>
+			<if test="positionId !=  null">			        
+				and position_id=#{positionId}
+			</if>
+			<if test="positionName !=  null">			        
+				and position_name=#{positionName}
+			</if>
+			<if test="startTime !=  null">			        
+				and start_time=#{startTime}
+			</if>
+			<if test="endTime !=  null">			        
+				and end_time=#{endTime}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+			<if test="imgLink !=  null">			        
+				and img_link=#{imgLink}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+		
+	</delete>
+	<delete id="deleteByMap" parameterType="java.util.Map">		
+		DELETE
+		FROM
+			photo_subscribe 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="typeId !=  null">			        
+				and type_id=#{typeId}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
+			<if test="strnamef !=  null">			        
+				and strnamef=#{strnamef}
+			</if>
+			<if test="strnamet !=  null">			        
+				and strnamet=#{strnamet}
+			</if>
+			<if test="positionId !=  null">			        
+				and position_id=#{positionId}
+			</if>
+			<if test="positionName !=  null">			        
+				and position_name=#{positionName}
+			</if>
+			<if test="startTime !=  null">			        
+				and start_time=#{startTime}
+			</if>
+			<if test="endTime !=  null">			        
+				and end_time=#{endTime}
+			</if>
+			<if test="imgUrl !=  null">			        
+				and img_url=#{imgUrl}
+			</if>
+			<if test="imgLink !=  null">			        
+				and img_link=#{imgLink}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+		
+	</delete>
+</mapper>

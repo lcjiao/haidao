@@ -113,7 +113,7 @@ public class WdpnewAction extends ActionSupport implements ServletResponseAware 
 	 * @return
 	 */
 	public String toAdd(){
-		RequestProcc.getSession().invalidate();
+		//RequestProcc.getSession().invalidate();
 		initAreaList();
 		return "add";
 	}
@@ -126,7 +126,7 @@ public class WdpnewAction extends ActionSupport implements ServletResponseAware 
 		//调用图片上传方法获取图片的url
 		recommend.setImgUrl(UploadImgUtils.getImgUrl(image, imageFileName));		
 		recommend.setCreatePerson(getCreater());
-		recommend.setCreateTime((int)System.currentTimeMillis()/1000);
+		recommend.setCreateTime((int)(System.currentTimeMillis()/1000));
 		recommend.setValid(1);
 		recommend.setModuleId(ModuleEnum.WEDDING_PHOTO_FACE_NEW_RECOMMEND);
 		//changeIndexBySys(creater,recommend.getId(),recommend.getRecommendIndex());

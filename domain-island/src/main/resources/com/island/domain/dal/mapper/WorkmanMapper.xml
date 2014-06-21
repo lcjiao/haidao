@@ -1,0 +1,823 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.island.domain.dal.mapper.WorkmanMapper">
+	<resultMap id="WorkmanRslMap" type="com.island.domain.model.Workman">		
+		
+			<id property="id" column="id" />
+			<result property="workType" column="work_type" />
+			<result property="name" column="name" />
+			<result property="content" column="content" />
+			<result property="principal" column="principal" />
+			<result property="img" column="img" />
+			<result property="tel" column="tel" />
+			<result property="level" column="level" />
+			<result property="teamId" column="team_id" />
+			<result property="priceSmall" column="price_small" />
+			<result property="priceBig" column="price_big" />
+			<result property="valid" column="valid" />
+			<result property="createTime" column="create_time" />
+			<result property="createPerson" column="create_person" />
+			<result property="updTime" column="upd_time" />
+			<result property="updPerson" column="upd_person" />
+			<result property="teamName" column="team_name" />
+	</resultMap>
+
+	<select id="queryById" parameterType="java.util.Map" resultMap="WorkmanRslMap">
+		SELECT
+			id,
+			work_type,
+			name,
+			content,
+			principal,
+			img,
+			tel,
+			level,
+			team_id,
+			price_small,
+			price_big,
+			valid,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person,
+			team_name
+		FROM
+			workman
+		<where>
+			and id=#{id}
+		</where>
+			limit 1
+	</select>
+
+	<select id="queryByModel" parameterType="com.island.domain.model.Workman" resultMap="WorkmanRslMap">		
+		SELECT
+			id,
+			work_type,
+			name,
+			content,
+			principal,
+			img,
+			tel,
+			level,
+			team_id,
+			price_small,
+			price_big,
+			valid,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person,
+			team_name
+		FROM
+			workman
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="workType !=  null">			        
+				and work_type=#{workType}
+			</if>
+			<if test="name !=  null">			        
+				and name=#{name}
+			</if>
+			<if test="content !=  null">			        
+				and content=#{content}
+			</if>
+			<if test="principal !=  null">			        
+				and principal=#{principal}
+			</if>
+			<if test="img !=  null">			        
+				and img=#{img}
+			</if>
+			<if test="tel !=  null">			        
+				and tel=#{tel}
+			</if>
+			<if test="level !=  null">			        
+				and level=#{level}
+			</if>
+			<if test="teamId !=  null">			        
+				and team_id=#{teamId}
+			</if>
+			<if test="priceSmall !=  null">			        
+				and price_small=#{priceSmall}
+			</if>
+			<if test="priceBig !=  null">			        
+				and price_big=#{priceBig}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="teamName !=  null">			        
+				and team_name=#{teamName}
+			</if>
+		</where>
+		
+	</select>
+		
+	<select id="queryByMap" parameterType="java.util.Map" resultMap="WorkmanRslMap">				
+		SELECT
+			id,
+			work_type,
+			name,
+			content,
+			principal,
+			img,
+			tel,
+			level,
+			team_id,
+			price_small,
+			price_big,
+			valid,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person,
+			team_name
+		FROM
+			workman
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="workType !=  null">			        
+				and work_type=#{workType}
+			</if>
+			<if test="name !=  null">			        
+				and name=#{name}
+			</if>
+			<if test="content !=  null">			        
+				and content=#{content}
+			</if>
+			<if test="principal !=  null">			        
+				and principal=#{principal}
+			</if>
+			<if test="img !=  null">			        
+				and img=#{img}
+			</if>
+			<if test="tel !=  null">			        
+				and tel=#{tel}
+			</if>
+			<if test="level !=  null">			        
+				and level=#{level}
+			</if>
+			<if test="teamId !=  null">			        
+				and team_id=#{teamId}
+			</if>
+			<if test="priceSmall !=  null">			        
+				and price_small=#{priceSmall}
+			</if>
+			<if test="priceBig !=  null">			        
+				and price_big=#{priceBig}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="teamName !=  null">			        
+				and team_name=#{teamName}
+			</if>
+		</where>
+		<if test="begin !=  null">			        
+				limit #{begin},#{size}
+		</if>
+	</select>
+	
+	<select id="countByModel" parameterType="com.island.domain.model.Workman" resultType="java.lang.Integer">	
+		SELECT
+			count(*)
+		FROM
+			workman
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="workType !=  null">			        
+				and work_type=#{workType}
+			</if>
+			<if test="name !=  null">			        
+				and name=#{name}
+			</if>
+			<if test="content !=  null">			        
+				and content=#{content}
+			</if>
+			<if test="principal !=  null">			        
+				and principal=#{principal}
+			</if>
+			<if test="img !=  null">			        
+				and img=#{img}
+			</if>
+			<if test="tel !=  null">			        
+				and tel=#{tel}
+			</if>
+			<if test="level !=  null">			        
+				and level=#{level}
+			</if>
+			<if test="teamId !=  null">			        
+				and team_id=#{teamId}
+			</if>
+			<if test="priceSmall !=  null">			        
+				and price_small=#{priceSmall}
+			</if>
+			<if test="priceBig !=  null">			        
+				and price_big=#{priceBig}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="teamName !=  null">			        
+				and team_name=#{teamName}
+			</if>
+		</where>
+		
+	</select>
+	
+	<select id="countByMap" parameterType="java.util.Map" resultType="java.lang.Integer">				
+		SELECT
+			count(*)
+		FROM
+			workman
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="workType !=  null">			        
+				and work_type=#{workType}
+			</if>
+			<if test="name !=  null">			        
+				and name=#{name}
+			</if>
+			<if test="content !=  null">			        
+				and content=#{content}
+			</if>
+			<if test="principal !=  null">			        
+				and principal=#{principal}
+			</if>
+			<if test="img !=  null">			        
+				and img=#{img}
+			</if>
+			<if test="tel !=  null">			        
+				and tel=#{tel}
+			</if>
+			<if test="level !=  null">			        
+				and level=#{level}
+			</if>
+			<if test="teamId !=  null">			        
+				and team_id=#{teamId}
+			</if>
+			<if test="priceSmall !=  null">			        
+				and price_small=#{priceSmall}
+			</if>
+			<if test="priceBig !=  null">			        
+				and price_big=#{priceBig}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="teamName !=  null">			        
+				and team_name=#{teamName}
+			</if>
+		</where>
+				
+	</select>
+	
+	<select id="pageQuery" parameterType="com.jcl.core.dal.Page" resultMap="WorkmanRslMap" fetchSize="15">
+		SELECT
+			id,
+			work_type,
+			name,
+			content,
+			principal,
+			img,
+			tel,
+			level,
+			team_id,
+			price_small,
+			price_big,
+			valid,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person,
+			team_name
+		FROM
+			workman
+		<where>
+			<if test="params !=  null">
+				<if test="params.id !=  null">
+					and id=#{params.id}
+				</if>
+				<if test="params.workType !=  null">
+					and work_type=#{params.workType}
+				</if>
+				<if test="params.name !=  null">
+					and name=#{params.name}
+				</if>
+				<if test="params.content !=  null">
+					and content=#{params.content}
+				</if>
+				<if test="params.principal !=  null">
+					and principal=#{params.principal}
+				</if>
+				<if test="params.img !=  null">
+					and img=#{params.img}
+				</if>
+				<if test="params.tel !=  null">
+					and tel=#{params.tel}
+				</if>
+				<if test="params.level !=  null">
+					and level=#{params.level}
+				</if>
+				<if test="params.teamId !=  null">
+					and team_id=#{params.teamId}
+				</if>
+				<if test="params.priceSmall !=  null">
+					and price_small=#{params.priceSmall}
+				</if>
+				<if test="params.priceBig !=  null">
+					and price_big=#{params.priceBig}
+				</if>
+				<if test="params.valid !=  null">
+					and valid=#{params.valid}
+				</if>
+				<if test="params.createTime !=  null">
+					and create_time=#{params.createTime}
+				</if>
+				<if test="params.createPerson !=  null">
+					and create_person=#{params.createPerson}
+				</if>
+				<if test="params.updTime !=  null">
+					and upd_time=#{params.updTime}
+				</if>
+				<if test="params.updPerson !=  null">
+					and upd_person=#{params.updPerson}
+				</if>
+				<if test="params.teamName !=  null">
+					and team_name=#{params.teamName}
+				</if>
+			</if>
+		</where>
+			limit #{start},#{end}	
+	</select>
+
+	<insert id="insert" parameterType="com.island.domain.model.Workman" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO	workman
+			(id,work_type,name,content,principal,img,tel,level,team_id,price_small,price_big,valid,create_time,create_person,upd_time,upd_person,team_name)
+			VALUES(#{id},#{workType},#{name},#{content},#{principal},#{img},#{tel},#{level},#{teamId},#{priceSmall},#{priceBig},#{valid},#{createTime},#{createPerson},#{updTime},#{updPerson},#{teamName})		
+	</insert>
+	
+	<update id="update" parameterType="com.island.domain.model.Workman">
+		update 
+			workman
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="workType !=  null">			        
+				work_type=#{workType},
+			</if>
+			<if test="name !=  null">			        
+				name=#{name},
+			</if>
+			<if test="content !=  null">			        
+				content=#{content},
+			</if>
+			<if test="principal !=  null">			        
+				principal=#{principal},
+			</if>
+			<if test="img !=  null">			        
+				img=#{img},
+			</if>
+			<if test="tel !=  null">			        
+				tel=#{tel},
+			</if>
+			<if test="level !=  null">			        
+				level=#{level},
+			</if>
+			<if test="teamId !=  null">			        
+				team_id=#{teamId},
+			</if>
+			<if test="priceSmall !=  null">			        
+				price_small=#{priceSmall},
+			</if>
+			<if test="priceBig !=  null">			        
+				price_big=#{priceBig},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="createTime !=  null">			        
+				create_time=#{createTime},
+			</if>
+			<if test="createPerson !=  null">			        
+				create_person=#{createPerson},
+			</if>
+			<if test="updTime !=  null">			        
+				upd_time=#{updTime},
+			</if>
+			<if test="updPerson !=  null">			        
+				upd_person=#{updPerson},
+			</if>
+			<if test="teamName !=  null">			        
+				team_name=#{teamName},
+			</if>
+		</set>
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+		</where>
+		
+	</update>
+	<update id="updateByMap" parameterType="java.util.Map">
+		update 
+			workman
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="workType !=  null">			        
+				work_type=#{workType},
+			</if>
+			<if test="name !=  null">			        
+				name=#{name},
+			</if>
+			<if test="content !=  null">			        
+				content=#{content},
+			</if>
+			<if test="principal !=  null">			        
+				principal=#{principal},
+			</if>
+			<if test="img !=  null">			        
+				img=#{img},
+			</if>
+			<if test="tel !=  null">			        
+				tel=#{tel},
+			</if>
+			<if test="level !=  null">			        
+				level=#{level},
+			</if>
+			<if test="teamId !=  null">			        
+				team_id=#{teamId},
+			</if>
+			<if test="priceSmall !=  null">			        
+				price_small=#{priceSmall},
+			</if>
+			<if test="priceBig !=  null">			        
+				price_big=#{priceBig},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="createTime !=  null">			        
+				create_time=#{createTime},
+			</if>
+			<if test="createPerson !=  null">			        
+				create_person=#{createPerson},
+			</if>
+			<if test="updTime !=  null">			        
+				upd_time=#{updTime},
+			</if>
+			<if test="updPerson !=  null">			        
+				upd_person=#{updPerson},
+			</if>
+			<if test="teamName !=  null">			        
+				team_name=#{teamName},
+			</if>
+		</set>
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="workType !=  null">			        
+				and work_type=#{workType}
+			</if>
+			<if test="name !=  null">			        
+				and name=#{name}
+			</if>
+			<if test="content !=  null">			        
+				and content=#{content}
+			</if>
+			<if test="principal !=  null">			        
+				and principal=#{principal}
+			</if>
+			<if test="img !=  null">			        
+				and img=#{img}
+			</if>
+			<if test="tel !=  null">			        
+				and tel=#{tel}
+			</if>
+			<if test="level !=  null">			        
+				and level=#{level}
+			</if>
+			<if test="teamId !=  null">			        
+				and team_id=#{teamId}
+			</if>
+			<if test="priceSmall !=  null">			        
+				and price_small=#{priceSmall}
+			</if>
+			<if test="priceBig !=  null">			        
+				and price_big=#{priceBig}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="teamName !=  null">			        
+				and team_name=#{teamName}
+			</if>
+		</where>
+		
+	</update>
+	
+	<update id="cmplxUpdate" parameterType="java.util.Map">
+		update 
+			workman
+		<set>
+			<if test="updNewMap.id !=  null">
+				id=#{updNewMap.id},
+			</if>
+			<if test="updNewMap.workType !=  null">
+				work_type=#{updNewMap.workType},
+			</if>
+			<if test="updNewMap.name !=  null">
+				name=#{updNewMap.name},
+			</if>
+			<if test="updNewMap.content !=  null">
+				content=#{updNewMap.content},
+			</if>
+			<if test="updNewMap.principal !=  null">
+				principal=#{updNewMap.principal},
+			</if>
+			<if test="updNewMap.img !=  null">
+				img=#{updNewMap.img},
+			</if>
+			<if test="updNewMap.tel !=  null">
+				tel=#{updNewMap.tel},
+			</if>
+			<if test="updNewMap.level !=  null">
+				level=#{updNewMap.level},
+			</if>
+			<if test="updNewMap.teamId !=  null">
+				team_id=#{updNewMap.teamId},
+			</if>
+			<if test="updNewMap.priceSmall !=  null">
+				price_small=#{updNewMap.priceSmall},
+			</if>
+			<if test="updNewMap.priceBig !=  null">
+				price_big=#{updNewMap.priceBig},
+			</if>
+			<if test="updNewMap.valid !=  null">
+				valid=#{updNewMap.valid},
+			</if>
+			<if test="updNewMap.createTime !=  null">
+				create_time=#{updNewMap.createTime},
+			</if>
+			<if test="updNewMap.createPerson !=  null">
+				create_person=#{updNewMap.createPerson},
+			</if>
+			<if test="updNewMap.updTime !=  null">
+				upd_time=#{updNewMap.updTime},
+			</if>
+			<if test="updNewMap.updPerson !=  null">
+				upd_person=#{updNewMap.updPerson},
+			</if>
+			<if test="updNewMap.teamName !=  null">
+				team_name=#{updNewMap.teamName},
+			</if>
+		</set>
+		<where>
+			<if test="updCondMap.id !=  null">
+				and id=#{updCondMap.id}
+			</if>
+			<if test="updCondMap.workType !=  null">
+				and work_type=#{updCondMap.workType}
+			</if>
+			<if test="updCondMap.name !=  null">
+				and name=#{updCondMap.name}
+			</if>
+			<if test="updCondMap.content !=  null">
+				and content=#{updCondMap.content}
+			</if>
+			<if test="updCondMap.principal !=  null">
+				and principal=#{updCondMap.principal}
+			</if>
+			<if test="updCondMap.img !=  null">
+				and img=#{updCondMap.img}
+			</if>
+			<if test="updCondMap.tel !=  null">
+				and tel=#{updCondMap.tel}
+			</if>
+			<if test="updCondMap.level !=  null">
+				and level=#{updCondMap.level}
+			</if>
+			<if test="updCondMap.teamId !=  null">
+				and team_id=#{updCondMap.teamId}
+			</if>
+			<if test="updCondMap.priceSmall !=  null">
+				and price_small=#{updCondMap.priceSmall}
+			</if>
+			<if test="updCondMap.priceBig !=  null">
+				and price_big=#{updCondMap.priceBig}
+			</if>
+			<if test="updCondMap.valid !=  null">
+				and valid=#{updCondMap.valid}
+			</if>
+			<if test="updCondMap.createTime !=  null">
+				and create_time=#{updCondMap.createTime}
+			</if>
+			<if test="updCondMap.createPerson !=  null">
+				and create_person=#{updCondMap.createPerson}
+			</if>
+			<if test="updCondMap.updTime !=  null">
+				and upd_time=#{updCondMap.updTime}
+			</if>
+			<if test="updCondMap.updPerson !=  null">
+				and upd_person=#{updCondMap.updPerson}
+			</if>
+			<if test="updCondMap.teamName !=  null">
+				and team_name=#{updCondMap.teamName}
+			</if>
+		</where>
+		
+	</update>
+	
+	<delete id="delete" parameterType="com.island.domain.model.Workman">		
+		DELETE
+		FROM
+			workman 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="workType !=  null">			        
+				and work_type=#{workType}
+			</if>
+			<if test="name !=  null">			        
+				and name=#{name}
+			</if>
+			<if test="content !=  null">			        
+				and content=#{content}
+			</if>
+			<if test="principal !=  null">			        
+				and principal=#{principal}
+			</if>
+			<if test="img !=  null">			        
+				and img=#{img}
+			</if>
+			<if test="tel !=  null">			        
+				and tel=#{tel}
+			</if>
+			<if test="level !=  null">			        
+				and level=#{level}
+			</if>
+			<if test="teamId !=  null">			        
+				and team_id=#{teamId}
+			</if>
+			<if test="priceSmall !=  null">			        
+				and price_small=#{priceSmall}
+			</if>
+			<if test="priceBig !=  null">			        
+				and price_big=#{priceBig}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="teamName !=  null">			        
+				and team_name=#{teamName}
+			</if>
+		</where>
+		
+	</delete>
+	<delete id="deleteByMap" parameterType="java.util.Map">		
+		DELETE
+		FROM
+			workman 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="workType !=  null">			        
+				and work_type=#{workType}
+			</if>
+			<if test="name !=  null">			        
+				and name=#{name}
+			</if>
+			<if test="content !=  null">			        
+				and content=#{content}
+			</if>
+			<if test="principal !=  null">			        
+				and principal=#{principal}
+			</if>
+			<if test="img !=  null">			        
+				and img=#{img}
+			</if>
+			<if test="tel !=  null">			        
+				and tel=#{tel}
+			</if>
+			<if test="level !=  null">			        
+				and level=#{level}
+			</if>
+			<if test="teamId !=  null">			        
+				and team_id=#{teamId}
+			</if>
+			<if test="priceSmall !=  null">			        
+				and price_small=#{priceSmall}
+			</if>
+			<if test="priceBig !=  null">			        
+				and price_big=#{priceBig}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+			<if test="teamName !=  null">			        
+				and team_name=#{teamName}
+			</if>
+		</where>
+		
+	</delete>
+</mapper>

@@ -73,6 +73,38 @@ public class CaseVideoMapping extends AbsModel{
   		return this.videourl;
   	}
 	/**
+	 * 图片类型
+	 */
+  	private Integer imgType;
+  	/**
+	 * 设置图片类型
+	 */
+  	public void setImgType(Integer imgType){
+  		this.imgType=imgType;
+  	}
+  	/**
+	 * 获取图片类型
+	 */
+  	public Integer getImgType(){
+  		return this.imgType;
+  	}
+  	/**
+	 * 类型名称
+	 */
+  	private String typeName;
+  	/**
+	 * 设置类型名称
+	 */
+  	public void setTypeName(String typeName){
+  		this.typeName=typeName;
+  	}
+  	/**
+	 * 获取类型名称
+	 */
+  	public String getTypeName(){
+  		return this.typeName;
+  	}
+	/**
 	 * 是否有效,1:有效,0:无效
 	 */
   	private Integer valid;

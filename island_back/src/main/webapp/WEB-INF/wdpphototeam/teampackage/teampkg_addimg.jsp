@@ -4,14 +4,14 @@
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>婚纱摄影套餐图片添加页</title>
+<title>摄影团队(师)图片添加页</title>
 <link rel="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
 <link rel="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
 
 </head>
 <body>
-<form action="${ctx}/weddingphoto/wdppackage/wdppackage!saveImg.action" enctype="multipart/form-data" id="form" method="post">
+<form action="${ctx}/wdpphototeam/teampackage/teampkg!saveImg.action" enctype="multipart/form-data" id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" style="width: 100%">
 	<tbody>
@@ -48,7 +48,7 @@
 			<input type=button  value="保存并返回" id="add_return" onclick="saveImgAndReturn()"/>
 			<input type=button  value="保存并继续添加" id="add_continue" onclick="saveImgAndContinue()"/>
 			<input type="hidden" id="flag" name="flag" value="">
-			<input type="hidden" value="${wdpPackage.id}" id="p_id" name="pkgImgRelation.packageId"/>
+			<input type="hidden" value="${workman.id}" id="p_id" name="pkgImgRelation.packageId"/>
 		</td>
 </tfoot>
 </table>

@@ -81,11 +81,29 @@
 	
 	<bean id="customerCaseBiz" class="com.island.domain.biz.CustomerCaseBiz">
 		<property name="customerCaseDao" ref="customerCaseDAO"></property>
+		<property name="recommendDao" ref="RecommendDAO"></property>
 		<property name="casePicMappingDao" ref="casePicMappingDAO"></property>
 		<property name="islandPackageDao" ref="islandPackageDao"></property>
 		<property name="caseVideoMappingDao" ref="caseVideoMappingDAO"></property>
 	</bean>
 	
+	
+	<bean id="workmanIbatisDAO" class="com.island.domain.dal.WorkmanIbatisDAOImpl" />
+	
+	<bean id="workTeamIbatisDAO" class="com.island.domain.dal.WorkTeamIbatisDAOImpl" />
+	
+	<bean id="photoSubscribeIbatisDAO" class="com.island.domain.dal.PhotoSubscribeIbatisDAOImpl" />
+	
+	<bean id="wdpTeamBiz" class="com.island.domain.biz.WdpTeamBiz">
+		<property name="workmanDao" ref="workmanIbatisDAO"></property>
+		<property name="recommendDao" ref="RecommendDAO"></property>
+		<property name="workTeamDao" ref="workTeamIbatisDAO"></property>
+		<property name="islandPackageDao" ref="islandPackageDao"></property>
+		<property name="photoSubscribeDao" ref="photoSubscribeIbatisDAO"></property>
+		<property name="packageDetailInfoDao" ref="PackageDetailInfoDAO"></property>
+		<property name="pkgImgRelationDao" ref="PackageImageRelationDAO"></property>
+		<property name="pkgKepianliuyingDao" ref="PackageKepianliuyingDAO"></property>
+	</bean>
 
 	<bean id="IslandPackageTypeDAO" class="com.island.domain.dal.IslandPackageTypeIbatisDAOImpl" />		
 	<bean id="moduleTypeBiz" class="com.island.domain.biz.ModuleTypeBiz">

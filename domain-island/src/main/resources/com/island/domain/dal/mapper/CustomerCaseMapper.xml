@@ -1,0 +1,1179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.island.domain.dal.mapper.CustomerCaseMapper">
+	<resultMap id="CustomerCaseRslMap" type="com.island.domain.model.CustomerCase">		
+		
+			<id property="id" column="id" />
+			<result property="casetype" column="casetype" />
+			<result property="casename" column="casename" />
+			<result property="newperson" column="newperson" />
+			<result property="phototime" column="phototime" />
+			<result property="pkgpjtname1" column="pkgpjtname1" />
+			<result property="pkgpjturl1" column="pkgpjturl1" />
+			<result property="pkgpjtname2" column="pkgpjtname2" />
+			<result property="pkgpjturl2" column="pkgpjturl2" />
+			<result property="pkgpjtname3" column="pkgpjtname3" />
+			<result property="pkgpjturl3" column="pkgpjturl3" />
+			<result property="childname" column="childname" />
+			<result property="childid" column="childid" />
+			<result property="photoworker" column="photoworker" />
+			<result property="dresser" column="dresser" />
+			<result property="islandid" column="islandid" />
+			<result property="islandname" column="islandname" />
+			<result property="areaid" column="areaid" />
+			<result property="areaname" column="areaname" />
+			<result property="valid" column="valid" />
+			<result property="createtime" column="createtime" />
+			<result property="createperson" column="createperson" />
+			<result property="updtime" column="updtime" />
+			<result property="updperson" column="updperson" />
+	</resultMap>
+
+	<select id="queryById" parameterType="java.util.Map" resultMap="CustomerCaseRslMap">
+		SELECT
+			id,
+			casetype,
+			casename,
+			newperson,
+			phototime,
+			pkgpjtname1,
+			pkgpjturl1,
+			pkgpjtname2,
+			pkgpjturl2,
+			pkgpjtname3,
+			pkgpjturl3,
+			childname,
+			childid,
+			photoworker,
+			dresser,
+			islandid,
+			islandname,
+			areaid,
+			areaname,
+			valid,
+			createtime,
+			createperson,
+			updtime,
+			updperson
+		FROM
+			customer_case
+		<where>
+			and id=#{id}
+		</where>
+			limit 1
+	</select>
+
+	<select id="queryByModel" parameterType="com.island.domain.model.CustomerCase" resultMap="CustomerCaseRslMap">		
+		SELECT
+			id,
+			casetype,
+			casename,
+			newperson,
+			phototime,
+			pkgpjtname1,
+			pkgpjturl1,
+			pkgpjtname2,
+			pkgpjturl2,
+			pkgpjtname3,
+			pkgpjturl3,
+			childname,
+			childid,
+			photoworker,
+			dresser,
+			islandid,
+			islandname,
+			areaid,
+			areaname,
+			valid,
+			createtime,
+			createperson,
+			updtime,
+			updperson
+		FROM
+			customer_case
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="casetype !=  null">			        
+				and casetype=#{casetype}
+			</if>
+			<if test="casename !=  null">			        
+				and casename=#{casename}
+			</if>
+			<if test="newperson !=  null">			        
+				and newperson=#{newperson}
+			</if>
+			<if test="phototime !=  null">			        
+				and phototime=#{phototime}
+			</if>
+			<if test="pkgpjtname1 !=  null">			        
+				and pkgpjtname1=#{pkgpjtname1}
+			</if>
+			<if test="pkgpjturl1 !=  null">			        
+				and pkgpjturl1=#{pkgpjturl1}
+			</if>
+			<if test="pkgpjtname2 !=  null">			        
+				and pkgpjtname2=#{pkgpjtname2}
+			</if>
+			<if test="pkgpjturl2 !=  null">			        
+				and pkgpjturl2=#{pkgpjturl2}
+			</if>
+			<if test="pkgpjtname3 !=  null">			        
+				and pkgpjtname3=#{pkgpjtname3}
+			</if>
+			<if test="pkgpjturl3 !=  null">			        
+				and pkgpjturl3=#{pkgpjturl3}
+			</if>
+			<if test="childname !=  null">			        
+				and childname=#{childname}
+			</if>
+			<if test="childid !=  null">			        
+				and childid=#{childid}
+			</if>
+			<if test="photoworker !=  null">			        
+				and photoworker=#{photoworker}
+			</if>
+			<if test="dresser !=  null">			        
+				and dresser=#{dresser}
+			</if>
+			<if test="islandid !=  null">			        
+				and islandid=#{islandid}
+			</if>
+			<if test="islandname !=  null">			        
+				and islandname=#{islandname}
+			</if>
+			<if test="areaid !=  null">			        
+				and areaid=#{areaid}
+			</if>
+			<if test="areaname !=  null">			        
+				and areaname=#{areaname}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+		
+	</select>
+		
+	<select id="queryByMap" parameterType="java.util.Map" resultMap="CustomerCaseRslMap">				
+		SELECT
+			id,
+			casetype,
+			casename,
+			newperson,
+			phototime,
+			pkgpjtname1,
+			pkgpjturl1,
+			pkgpjtname2,
+			pkgpjturl2,
+			pkgpjtname3,
+			pkgpjturl3,
+			childname,
+			childid,
+			photoworker,
+			dresser,
+			islandid,
+			islandname,
+			areaid,
+			areaname,
+			valid,
+			createtime,
+			createperson,
+			updtime,
+			updperson
+		FROM
+			customer_case
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="casetype !=  null">			        
+				and casetype=#{casetype}
+			</if>
+			<if test="casename !=  null">			        
+				and casename=#{casename}
+			</if>
+			<if test="newperson !=  null">			        
+				and newperson=#{newperson}
+			</if>
+			<if test="phototime !=  null">			        
+				and phototime=#{phototime}
+			</if>
+			<if test="pkgpjtname1 !=  null">			        
+				and pkgpjtname1=#{pkgpjtname1}
+			</if>
+			<if test="pkgpjturl1 !=  null">			        
+				and pkgpjturl1=#{pkgpjturl1}
+			</if>
+			<if test="pkgpjtname2 !=  null">			        
+				and pkgpjtname2=#{pkgpjtname2}
+			</if>
+			<if test="pkgpjturl2 !=  null">			        
+				and pkgpjturl2=#{pkgpjturl2}
+			</if>
+			<if test="pkgpjtname3 !=  null">			        
+				and pkgpjtname3=#{pkgpjtname3}
+			</if>
+			<if test="pkgpjturl3 !=  null">			        
+				and pkgpjturl3=#{pkgpjturl3}
+			</if>
+			<if test="childname !=  null">			        
+				and childname=#{childname}
+			</if>
+			<if test="childid !=  null">			        
+				and childid=#{childid}
+			</if>
+			<if test="photoworker !=  null">			        
+				and photoworker=#{photoworker}
+			</if>
+			<if test="dresser !=  null">			        
+				and dresser=#{dresser}
+			</if>
+			<if test="islandid !=  null">			        
+				and islandid=#{islandid}
+			</if>
+			<if test="islandname !=  null">			        
+				and islandname=#{islandname}
+			</if>
+			<if test="areaid !=  null">			        
+				and areaid=#{areaid}
+			</if>
+			<if test="areaname !=  null">			        
+				and areaname=#{areaname}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+		<if test="begin !=  null">			        
+				limit #{begin},#{size}
+		</if>
+	</select>
+	
+	<select id="countByModel" parameterType="com.island.domain.model.CustomerCase" resultType="java.lang.Integer">	
+		SELECT
+			count(*)
+		FROM
+			customer_case
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="casetype !=  null">			        
+				and casetype=#{casetype}
+			</if>
+			<if test="casename !=  null">			        
+				and casename=#{casename}
+			</if>
+			<if test="newperson !=  null">			        
+				and newperson=#{newperson}
+			</if>
+			<if test="phototime !=  null">			        
+				and phototime=#{phototime}
+			</if>
+			<if test="pkgpjtname1 !=  null">			        
+				and pkgpjtname1=#{pkgpjtname1}
+			</if>
+			<if test="pkgpjturl1 !=  null">			        
+				and pkgpjturl1=#{pkgpjturl1}
+			</if>
+			<if test="pkgpjtname2 !=  null">			        
+				and pkgpjtname2=#{pkgpjtname2}
+			</if>
+			<if test="pkgpjturl2 !=  null">			        
+				and pkgpjturl2=#{pkgpjturl2}
+			</if>
+			<if test="pkgpjtname3 !=  null">			        
+				and pkgpjtname3=#{pkgpjtname3}
+			</if>
+			<if test="pkgpjturl3 !=  null">			        
+				and pkgpjturl3=#{pkgpjturl3}
+			</if>
+			<if test="childname !=  null">			        
+				and childname=#{childname}
+			</if>
+			<if test="childid !=  null">			        
+				and childid=#{childid}
+			</if>
+			<if test="photoworker !=  null">			        
+				and photoworker=#{photoworker}
+			</if>
+			<if test="dresser !=  null">			        
+				and dresser=#{dresser}
+			</if>
+			<if test="islandid !=  null">			        
+				and islandid=#{islandid}
+			</if>
+			<if test="islandname !=  null">			        
+				and islandname=#{islandname}
+			</if>
+			<if test="areaid !=  null">			        
+				and areaid=#{areaid}
+			</if>
+			<if test="areaname !=  null">			        
+				and areaname=#{areaname}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+		
+	</select>
+	
+	<select id="countByMap" parameterType="java.util.Map" resultType="java.lang.Integer">				
+		SELECT
+			count(*)
+		FROM
+			customer_case
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="casetype !=  null">			        
+				and casetype=#{casetype}
+			</if>
+			<if test="casename !=  null">			        
+				and casename=#{casename}
+			</if>
+			<if test="newperson !=  null">			        
+				and newperson=#{newperson}
+			</if>
+			<if test="phototime !=  null">			        
+				and phototime=#{phototime}
+			</if>
+			<if test="pkgpjtname1 !=  null">			        
+				and pkgpjtname1=#{pkgpjtname1}
+			</if>
+			<if test="pkgpjturl1 !=  null">			        
+				and pkgpjturl1=#{pkgpjturl1}
+			</if>
+			<if test="pkgpjtname2 !=  null">			        
+				and pkgpjtname2=#{pkgpjtname2}
+			</if>
+			<if test="pkgpjturl2 !=  null">			        
+				and pkgpjturl2=#{pkgpjturl2}
+			</if>
+			<if test="pkgpjtname3 !=  null">			        
+				and pkgpjtname3=#{pkgpjtname3}
+			</if>
+			<if test="pkgpjturl3 !=  null">			        
+				and pkgpjturl3=#{pkgpjturl3}
+			</if>
+			<if test="childname !=  null">			        
+				and childname=#{childname}
+			</if>
+			<if test="childid !=  null">			        
+				and childid=#{childid}
+			</if>
+			<if test="photoworker !=  null">			        
+				and photoworker=#{photoworker}
+			</if>
+			<if test="dresser !=  null">			        
+				and dresser=#{dresser}
+			</if>
+			<if test="islandid !=  null">			        
+				and islandid=#{islandid}
+			</if>
+			<if test="islandname !=  null">			        
+				and islandname=#{islandname}
+			</if>
+			<if test="areaid !=  null">			        
+				and areaid=#{areaid}
+			</if>
+			<if test="areaname !=  null">			        
+				and areaname=#{areaname}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+				
+	</select>
+	
+	<select id="pageQuery" parameterType="com.jcl.core.dal.Page" resultMap="CustomerCaseRslMap" fetchSize="15">
+		SELECT
+			id,
+			casetype,
+			casename,
+			newperson,
+			phototime,
+			pkgpjtname1,
+			pkgpjturl1,
+			pkgpjtname2,
+			pkgpjturl2,
+			pkgpjtname3,
+			pkgpjturl3,
+			childname,
+			childid,
+			photoworker,
+			dresser,
+			islandid,
+			islandname,
+			areaid,
+			areaname,
+			valid,
+			createtime,
+			createperson,
+			updtime,
+			updperson
+		FROM
+			customer_case
+		<where>
+			<if test="params !=  null">
+				<if test="params.id !=  null">
+					and id=#{params.id}
+				</if>
+				<if test="params.casetype !=  null">
+					and casetype=#{params.casetype}
+				</if>
+				<if test="params.casename !=  null">
+					and casename=#{params.casename}
+				</if>
+				<if test="params.newperson !=  null">
+					and newperson=#{params.newperson}
+				</if>
+				<if test="params.phototime !=  null">
+					and phototime=#{params.phototime}
+				</if>
+				<if test="params.pkgpjtname1 !=  null">
+					and pkgpjtname1=#{params.pkgpjtname1}
+				</if>
+				<if test="params.pkgpjturl1 !=  null">
+					and pkgpjturl1=#{params.pkgpjturl1}
+				</if>
+				<if test="params.pkgpjtname2 !=  null">
+					and pkgpjtname2=#{params.pkgpjtname2}
+				</if>
+				<if test="params.pkgpjturl2 !=  null">
+					and pkgpjturl2=#{params.pkgpjturl2}
+				</if>
+				<if test="params.pkgpjtname3 !=  null">
+					and pkgpjtname3=#{params.pkgpjtname3}
+				</if>
+				<if test="params.pkgpjturl3 !=  null">
+					and pkgpjturl3=#{params.pkgpjturl3}
+				</if>
+				<if test="params.childname !=  null">
+					and childname=#{params.childname}
+				</if>
+				<if test="params.childid !=  null">
+					and childid=#{params.childid}
+				</if>
+				<if test="params.photoworker !=  null">
+					and photoworker=#{params.photoworker}
+				</if>
+				<if test="params.dresser !=  null">
+					and dresser=#{params.dresser}
+				</if>
+				<if test="params.islandid !=  null">
+					and islandid=#{params.islandid}
+				</if>
+				<if test="params.islandname !=  null">
+					and islandname=#{params.islandname}
+				</if>
+				<if test="params.areaid !=  null">
+					and areaid=#{params.areaid}
+				</if>
+				<if test="params.areaname !=  null">
+					and areaname=#{params.areaname}
+				</if>
+				<if test="params.valid !=  null">
+					and valid=#{params.valid}
+				</if>
+				<if test="params.createtime !=  null">
+					and createtime=#{params.createtime}
+				</if>
+				<if test="params.createperson !=  null">
+					and createperson=#{params.createperson}
+				</if>
+				<if test="params.updtime !=  null">
+					and updtime=#{params.updtime}
+				</if>
+				<if test="params.updperson !=  null">
+					and updperson=#{params.updperson}
+				</if>
+			</if>
+		</where>
+			limit #{start},#{end}	
+	</select>
+
+	<insert id="insert" parameterType="com.island.domain.model.CustomerCase" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO	customer_case
+			(id,casetype,casename,newperson,phototime,pkgpjtname1,pkgpjturl1,pkgpjtname2,pkgpjturl2,pkgpjtname3,pkgpjturl3,childname,childid,photoworker,dresser,islandid,islandname,areaid,areaname,valid,createtime,createperson,updtime,updperson)
+			VALUES(#{id},#{casetype},#{casename},#{newperson},#{phototime},#{pkgpjtname1},#{pkgpjturl1},#{pkgpjtname2},#{pkgpjturl2},#{pkgpjtname3},#{pkgpjturl3},#{childname},#{childid},#{photoworker},#{dresser},#{islandid},#{islandname},#{areaid},#{areaname},#{valid},#{createtime},#{createperson},#{updtime},#{updperson})		
+	</insert>
+	
+	<update id="update" parameterType="com.island.domain.model.CustomerCase">
+		update 
+			customer_case
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="casetype !=  null">			        
+				casetype=#{casetype},
+			</if>
+			<if test="casename !=  null">			        
+				casename=#{casename},
+			</if>
+			<if test="newperson !=  null">			        
+				newperson=#{newperson},
+			</if>
+			<if test="phototime !=  null">			        
+				phototime=#{phototime},
+			</if>
+			<if test="pkgpjtname1 !=  null">			        
+				pkgpjtname1=#{pkgpjtname1},
+			</if>
+			<if test="pkgpjturl1 !=  null">			        
+				pkgpjturl1=#{pkgpjturl1},
+			</if>
+			<if test="pkgpjtname2 !=  null">			        
+				pkgpjtname2=#{pkgpjtname2},
+			</if>
+			<if test="pkgpjturl2 !=  null">			        
+				pkgpjturl2=#{pkgpjturl2},
+			</if>
+			<if test="pkgpjtname3 !=  null">			        
+				pkgpjtname3=#{pkgpjtname3},
+			</if>
+			<if test="pkgpjturl3 !=  null">			        
+				pkgpjturl3=#{pkgpjturl3},
+			</if>
+			<if test="childname !=  null">			        
+				childname=#{childname},
+			</if>
+			<if test="childid !=  null">			        
+				childid=#{childid},
+			</if>
+			<if test="photoworker !=  null">			        
+				photoworker=#{photoworker},
+			</if>
+			<if test="dresser !=  null">			        
+				dresser=#{dresser},
+			</if>
+			<if test="islandid !=  null">			        
+				islandid=#{islandid},
+			</if>
+			<if test="islandname !=  null">			        
+				islandname=#{islandname},
+			</if>
+			<if test="areaid !=  null">			        
+				areaid=#{areaid},
+			</if>
+			<if test="areaname !=  null">			        
+				areaname=#{areaname},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="createtime !=  null">			        
+				createtime=#{createtime},
+			</if>
+			<if test="createperson !=  null">			        
+				createperson=#{createperson},
+			</if>
+			<if test="updtime !=  null">			        
+				updtime=#{updtime},
+			</if>
+			<if test="updperson !=  null">			        
+				updperson=#{updperson},
+			</if>
+		</set>
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="casetype !=  null">			        
+				and casetype=#{casetype}
+			</if>
+			<if test="casename !=  null">			        
+				and casename=#{casename}
+			</if>
+			<if test="newperson !=  null">			        
+				and newperson=#{newperson}
+			</if>
+			<if test="phototime !=  null">			        
+				and phototime=#{phototime}
+			</if>
+			<if test="pkgpjtname1 !=  null">			        
+				and pkgpjtname1=#{pkgpjtname1}
+			</if>
+			<if test="pkgpjturl1 !=  null">			        
+				and pkgpjturl1=#{pkgpjturl1}
+			</if>
+			<if test="pkgpjtname2 !=  null">			        
+				and pkgpjtname2=#{pkgpjtname2}
+			</if>
+			<if test="pkgpjturl2 !=  null">			        
+				and pkgpjturl2=#{pkgpjturl2}
+			</if>
+			<if test="pkgpjtname3 !=  null">			        
+				and pkgpjtname3=#{pkgpjtname3}
+			</if>
+			<if test="pkgpjturl3 !=  null">			        
+				and pkgpjturl3=#{pkgpjturl3}
+			</if>
+			<if test="childname !=  null">			        
+				and childname=#{childname}
+			</if>
+			<if test="childid !=  null">			        
+				and childid=#{childid}
+			</if>
+			<if test="photoworker !=  null">			        
+				and photoworker=#{photoworker}
+			</if>
+			<if test="dresser !=  null">			        
+				and dresser=#{dresser}
+			</if>
+			<if test="islandid !=  null">			        
+				and islandid=#{islandid}
+			</if>
+			<if test="islandname !=  null">			        
+				and islandname=#{islandname}
+			</if>
+			<if test="areaid !=  null">			        
+				and areaid=#{areaid}
+			</if>
+			<if test="areaname !=  null">			        
+				and areaname=#{areaname}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+		
+	</update>
+	<update id="updateByMap" parameterType="java.util.Map">
+		update 
+			customer_case
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="casetype !=  null">			        
+				casetype=#{casetype},
+			</if>
+			<if test="casename !=  null">			        
+				casename=#{casename},
+			</if>
+			<if test="newperson !=  null">			        
+				newperson=#{newperson},
+			</if>
+			<if test="phototime !=  null">			        
+				phototime=#{phototime},
+			</if>
+			<if test="pkgpjtname1 !=  null">			        
+				pkgpjtname1=#{pkgpjtname1},
+			</if>
+			<if test="pkgpjturl1 !=  null">			        
+				pkgpjturl1=#{pkgpjturl1},
+			</if>
+			<if test="pkgpjtname2 !=  null">			        
+				pkgpjtname2=#{pkgpjtname2},
+			</if>
+			<if test="pkgpjturl2 !=  null">			        
+				pkgpjturl2=#{pkgpjturl2},
+			</if>
+			<if test="pkgpjtname3 !=  null">			        
+				pkgpjtname3=#{pkgpjtname3},
+			</if>
+			<if test="pkgpjturl3 !=  null">			        
+				pkgpjturl3=#{pkgpjturl3},
+			</if>
+			<if test="childname !=  null">			        
+				childname=#{childname},
+			</if>
+			<if test="childid !=  null">			        
+				childid=#{childid},
+			</if>
+			<if test="photoworker !=  null">			        
+				photoworker=#{photoworker},
+			</if>
+			<if test="dresser !=  null">			        
+				dresser=#{dresser},
+			</if>
+			<if test="islandid !=  null">			        
+				islandid=#{islandid},
+			</if>
+			<if test="islandname !=  null">			        
+				islandname=#{islandname},
+			</if>
+			<if test="areaid !=  null">			        
+				areaid=#{areaid},
+			</if>
+			<if test="areaname !=  null">			        
+				areaname=#{areaname},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="createtime !=  null">			        
+				createtime=#{createtime},
+			</if>
+			<if test="createperson !=  null">			        
+				createperson=#{createperson},
+			</if>
+			<if test="updtime !=  null">			        
+				updtime=#{updtime},
+			</if>
+			<if test="updperson !=  null">			        
+				updperson=#{updperson},
+			</if>
+		</set>
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="casetype !=  null">			        
+				and casetype=#{casetype}
+			</if>
+			<if test="casename !=  null">			        
+				and casename=#{casename}
+			</if>
+			<if test="newperson !=  null">			        
+				and newperson=#{newperson}
+			</if>
+			<if test="phototime !=  null">			        
+				and phototime=#{phototime}
+			</if>
+			<if test="pkgpjtname1 !=  null">			        
+				and pkgpjtname1=#{pkgpjtname1}
+			</if>
+			<if test="pkgpjturl1 !=  null">			        
+				and pkgpjturl1=#{pkgpjturl1}
+			</if>
+			<if test="pkgpjtname2 !=  null">			        
+				and pkgpjtname2=#{pkgpjtname2}
+			</if>
+			<if test="pkgpjturl2 !=  null">			        
+				and pkgpjturl2=#{pkgpjturl2}
+			</if>
+			<if test="pkgpjtname3 !=  null">			        
+				and pkgpjtname3=#{pkgpjtname3}
+			</if>
+			<if test="pkgpjturl3 !=  null">			        
+				and pkgpjturl3=#{pkgpjturl3}
+			</if>
+			<if test="childname !=  null">			        
+				and childname=#{childname}
+			</if>
+			<if test="childid !=  null">			        
+				and childid=#{childid}
+			</if>
+			<if test="photoworker !=  null">			        
+				and photoworker=#{photoworker}
+			</if>
+			<if test="dresser !=  null">			        
+				and dresser=#{dresser}
+			</if>
+			<if test="islandid !=  null">			        
+				and islandid=#{islandid}
+			</if>
+			<if test="islandname !=  null">			        
+				and islandname=#{islandname}
+			</if>
+			<if test="areaid !=  null">			        
+				and areaid=#{areaid}
+			</if>
+			<if test="areaname !=  null">			        
+				and areaname=#{areaname}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+		
+	</update>
+	
+	<update id="cmplxUpdate" parameterType="java.util.Map">
+		update 
+			customer_case
+		<set>
+			<if test="updNewMap.id !=  null">
+				id=#{updNewMap.id},
+			</if>
+			<if test="updNewMap.casetype !=  null">
+				casetype=#{updNewMap.casetype},
+			</if>
+			<if test="updNewMap.casename !=  null">
+				casename=#{updNewMap.casename},
+			</if>
+			<if test="updNewMap.newperson !=  null">
+				newperson=#{updNewMap.newperson},
+			</if>
+			<if test="updNewMap.phototime !=  null">
+				phototime=#{updNewMap.phototime},
+			</if>
+			<if test="updNewMap.pkgpjtname1 !=  null">
+				pkgpjtname1=#{updNewMap.pkgpjtname1},
+			</if>
+			<if test="updNewMap.pkgpjturl1 !=  null">
+				pkgpjturl1=#{updNewMap.pkgpjturl1},
+			</if>
+			<if test="updNewMap.pkgpjtname2 !=  null">
+				pkgpjtname2=#{updNewMap.pkgpjtname2},
+			</if>
+			<if test="updNewMap.pkgpjturl2 !=  null">
+				pkgpjturl2=#{updNewMap.pkgpjturl2},
+			</if>
+			<if test="updNewMap.pkgpjtname3 !=  null">
+				pkgpjtname3=#{updNewMap.pkgpjtname3},
+			</if>
+			<if test="updNewMap.pkgpjturl3 !=  null">
+				pkgpjturl3=#{updNewMap.pkgpjturl3},
+			</if>
+			<if test="updNewMap.childname !=  null">
+				childname=#{updNewMap.childname},
+			</if>
+			<if test="updNewMap.childid !=  null">
+				childid=#{updNewMap.childid},
+			</if>
+			<if test="updNewMap.photoworker !=  null">
+				photoworker=#{updNewMap.photoworker},
+			</if>
+			<if test="updNewMap.dresser !=  null">
+				dresser=#{updNewMap.dresser},
+			</if>
+			<if test="updNewMap.islandid !=  null">
+				islandid=#{updNewMap.islandid},
+			</if>
+			<if test="updNewMap.islandname !=  null">
+				islandname=#{updNewMap.islandname},
+			</if>
+			<if test="updNewMap.areaid !=  null">
+				areaid=#{updNewMap.areaid},
+			</if>
+			<if test="updNewMap.areaname !=  null">
+				areaname=#{updNewMap.areaname},
+			</if>
+			<if test="updNewMap.valid !=  null">
+				valid=#{updNewMap.valid},
+			</if>
+			<if test="updNewMap.createtime !=  null">
+				createtime=#{updNewMap.createtime},
+			</if>
+			<if test="updNewMap.createperson !=  null">
+				createperson=#{updNewMap.createperson},
+			</if>
+			<if test="updNewMap.updtime !=  null">
+				updtime=#{updNewMap.updtime},
+			</if>
+			<if test="updNewMap.updperson !=  null">
+				updperson=#{updNewMap.updperson},
+			</if>
+		</set>
+		<where>
+			<if test="updCondMap.id !=  null">
+				and id=#{updCondMap.id}
+			</if>
+			<if test="updCondMap.casetype !=  null">
+				and casetype=#{updCondMap.casetype}
+			</if>
+			<if test="updCondMap.casename !=  null">
+				and casename=#{updCondMap.casename}
+			</if>
+			<if test="updCondMap.newperson !=  null">
+				and newperson=#{updCondMap.newperson}
+			</if>
+			<if test="updCondMap.phototime !=  null">
+				and phototime=#{updCondMap.phototime}
+			</if>
+			<if test="updCondMap.pkgpjtname1 !=  null">
+				and pkgpjtname1=#{updCondMap.pkgpjtname1}
+			</if>
+			<if test="updCondMap.pkgpjturl1 !=  null">
+				and pkgpjturl1=#{updCondMap.pkgpjturl1}
+			</if>
+			<if test="updCondMap.pkgpjtname2 !=  null">
+				and pkgpjtname2=#{updCondMap.pkgpjtname2}
+			</if>
+			<if test="updCondMap.pkgpjturl2 !=  null">
+				and pkgpjturl2=#{updCondMap.pkgpjturl2}
+			</if>
+			<if test="updCondMap.pkgpjtname3 !=  null">
+				and pkgpjtname3=#{updCondMap.pkgpjtname3}
+			</if>
+			<if test="updCondMap.pkgpjturl3 !=  null">
+				and pkgpjturl3=#{updCondMap.pkgpjturl3}
+			</if>
+			<if test="updCondMap.childname !=  null">
+				and childname=#{updCondMap.childname}
+			</if>
+			<if test="updCondMap.childid !=  null">
+				and childid=#{updCondMap.childid}
+			</if>
+			<if test="updCondMap.photoworker !=  null">
+				and photoworker=#{updCondMap.photoworker}
+			</if>
+			<if test="updCondMap.dresser !=  null">
+				and dresser=#{updCondMap.dresser}
+			</if>
+			<if test="updCondMap.islandid !=  null">
+				and islandid=#{updCondMap.islandid}
+			</if>
+			<if test="updCondMap.islandname !=  null">
+				and islandname=#{updCondMap.islandname}
+			</if>
+			<if test="updCondMap.areaid !=  null">
+				and areaid=#{updCondMap.areaid}
+			</if>
+			<if test="updCondMap.areaname !=  null">
+				and areaname=#{updCondMap.areaname}
+			</if>
+			<if test="updCondMap.valid !=  null">
+				and valid=#{updCondMap.valid}
+			</if>
+			<if test="updCondMap.createtime !=  null">
+				and createtime=#{updCondMap.createtime}
+			</if>
+			<if test="updCondMap.createperson !=  null">
+				and createperson=#{updCondMap.createperson}
+			</if>
+			<if test="updCondMap.updtime !=  null">
+				and updtime=#{updCondMap.updtime}
+			</if>
+			<if test="updCondMap.updperson !=  null">
+				and updperson=#{updCondMap.updperson}
+			</if>
+		</where>
+		
+	</update>
+	
+	<delete id="delete" parameterType="com.island.domain.model.CustomerCase">		
+		DELETE
+		FROM
+			customer_case 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="casetype !=  null">			        
+				and casetype=#{casetype}
+			</if>
+			<if test="casename !=  null">			        
+				and casename=#{casename}
+			</if>
+			<if test="newperson !=  null">			        
+				and newperson=#{newperson}
+			</if>
+			<if test="phototime !=  null">			        
+				and phototime=#{phototime}
+			</if>
+			<if test="pkgpjtname1 !=  null">			        
+				and pkgpjtname1=#{pkgpjtname1}
+			</if>
+			<if test="pkgpjturl1 !=  null">			        
+				and pkgpjturl1=#{pkgpjturl1}
+			</if>
+			<if test="pkgpjtname2 !=  null">			        
+				and pkgpjtname2=#{pkgpjtname2}
+			</if>
+			<if test="pkgpjturl2 !=  null">			        
+				and pkgpjturl2=#{pkgpjturl2}
+			</if>
+			<if test="pkgpjtname3 !=  null">			        
+				and pkgpjtname3=#{pkgpjtname3}
+			</if>
+			<if test="pkgpjturl3 !=  null">			        
+				and pkgpjturl3=#{pkgpjturl3}
+			</if>
+			<if test="childname !=  null">			        
+				and childname=#{childname}
+			</if>
+			<if test="childid !=  null">			        
+				and childid=#{childid}
+			</if>
+			<if test="photoworker !=  null">			        
+				and photoworker=#{photoworker}
+			</if>
+			<if test="dresser !=  null">			        
+				and dresser=#{dresser}
+			</if>
+			<if test="islandid !=  null">			        
+				and islandid=#{islandid}
+			</if>
+			<if test="islandname !=  null">			        
+				and islandname=#{islandname}
+			</if>
+			<if test="areaid !=  null">			        
+				and areaid=#{areaid}
+			</if>
+			<if test="areaname !=  null">			        
+				and areaname=#{areaname}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+		
+	</delete>
+	<delete id="deleteByMap" parameterType="java.util.Map">		
+		DELETE
+		FROM
+			customer_case 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="casetype !=  null">			        
+				and casetype=#{casetype}
+			</if>
+			<if test="casename !=  null">			        
+				and casename=#{casename}
+			</if>
+			<if test="newperson !=  null">			        
+				and newperson=#{newperson}
+			</if>
+			<if test="phototime !=  null">			        
+				and phototime=#{phototime}
+			</if>
+			<if test="pkgpjtname1 !=  null">			        
+				and pkgpjtname1=#{pkgpjtname1}
+			</if>
+			<if test="pkgpjturl1 !=  null">			        
+				and pkgpjturl1=#{pkgpjturl1}
+			</if>
+			<if test="pkgpjtname2 !=  null">			        
+				and pkgpjtname2=#{pkgpjtname2}
+			</if>
+			<if test="pkgpjturl2 !=  null">			        
+				and pkgpjturl2=#{pkgpjturl2}
+			</if>
+			<if test="pkgpjtname3 !=  null">			        
+				and pkgpjtname3=#{pkgpjtname3}
+			</if>
+			<if test="pkgpjturl3 !=  null">			        
+				and pkgpjturl3=#{pkgpjturl3}
+			</if>
+			<if test="childname !=  null">			        
+				and childname=#{childname}
+			</if>
+			<if test="childid !=  null">			        
+				and childid=#{childid}
+			</if>
+			<if test="photoworker !=  null">			        
+				and photoworker=#{photoworker}
+			</if>
+			<if test="dresser !=  null">			        
+				and dresser=#{dresser}
+			</if>
+			<if test="islandid !=  null">			        
+				and islandid=#{islandid}
+			</if>
+			<if test="islandname !=  null">			        
+				and islandname=#{islandname}
+			</if>
+			<if test="areaid !=  null">			        
+				and areaid=#{areaid}
+			</if>
+			<if test="areaname !=  null">			        
+				and areaname=#{areaname}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+		
+	</delete>
+</mapper>

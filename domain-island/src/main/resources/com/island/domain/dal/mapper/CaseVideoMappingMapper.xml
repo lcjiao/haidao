@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.island.domain.dal.mapper.CaseVideoMappingMapper">
+	<resultMap id="CaseVideoMappingRslMap" type="com.island.domain.model.CaseVideoMapping">		
+		
+			<id property="id" column="id" />
+			<result property="caseid" column="caseid" />
+			<result property="logourl" column="logourl" />
+			<result property="videodesc" column="videodesc" />
+			<result property="videourl" column="videourl" />
+			<result property="valid" column="valid" />
+			<result property="createtime" column="createtime" />
+			<result property="createperson" column="createperson" />
+			<result property="updtime" column="updtime" />
+			<result property="updperson" column="updperson" />
+	</resultMap>
+
+	<select id="queryById" parameterType="java.util.Map" resultMap="CaseVideoMappingRslMap">
+		SELECT
+			id,
+			caseid,
+			logourl,
+			videodesc,
+			videourl,
+			valid,
+			createtime,
+			createperson,
+			updtime,
+			updperson
+		FROM
+			case_video_mapping
+		<where>
+			and id=#{id}
+		</where>
+			limit 1
+	</select>
+
+	<select id="queryByModel" parameterType="com.island.domain.model.CaseVideoMapping" resultMap="CaseVideoMappingRslMap">		
+		SELECT
+			id,
+			caseid,
+			logourl,
+			videodesc,
+			videourl,
+			valid,
+			createtime,
+			createperson,
+			updtime,
+			updperson
+		FROM
+			case_video_mapping
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="caseid !=  null">			        
+				and caseid=#{caseid}
+			</if>
+			<if test="logourl !=  null">			        
+				and logourl=#{logourl}
+			</if>
+			<if test="videodesc !=  null">			        
+				and videodesc=#{videodesc}
+			</if>
+			<if test="videourl !=  null">			        
+				and videourl=#{videourl}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+		
+	</select>
+		
+	<select id="queryByMap" parameterType="java.util.Map" resultMap="CaseVideoMappingRslMap">				
+		SELECT
+			id,
+			caseid,
+			logourl,
+			videodesc,
+			videourl,
+			valid,
+			createtime,
+			createperson,
+			updtime,
+			updperson
+		FROM
+			case_video_mapping
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="caseid !=  null">			        
+				and caseid=#{caseid}
+			</if>
+			<if test="logourl !=  null">			        
+				and logourl=#{logourl}
+			</if>
+			<if test="videodesc !=  null">			        
+				and videodesc=#{videodesc}
+			</if>
+			<if test="videourl !=  null">			        
+				and videourl=#{videourl}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+		<if test="begin !=  null">			        
+				limit #{begin},#{size}
+		</if>
+	</select>
+	
+	<select id="countByModel" parameterType="com.island.domain.model.CaseVideoMapping" resultType="java.lang.Integer">	
+		SELECT
+			count(*)
+		FROM
+			case_video_mapping
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="caseid !=  null">			        
+				and caseid=#{caseid}
+			</if>
+			<if test="logourl !=  null">			        
+				and logourl=#{logourl}
+			</if>
+			<if test="videodesc !=  null">			        
+				and videodesc=#{videodesc}
+			</if>
+			<if test="videourl !=  null">			        
+				and videourl=#{videourl}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+		
+	</select>
+	
+	<select id="countByMap" parameterType="java.util.Map" resultType="java.lang.Integer">				
+		SELECT
+			count(*)
+		FROM
+			case_video_mapping
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="caseid !=  null">			        
+				and caseid=#{caseid}
+			</if>
+			<if test="logourl !=  null">			        
+				and logourl=#{logourl}
+			</if>
+			<if test="videodesc !=  null">			        
+				and videodesc=#{videodesc}
+			</if>
+			<if test="videourl !=  null">			        
+				and videourl=#{videourl}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+				
+	</select>
+	
+	<select id="pageQuery" parameterType="com.jcl.core.dal.Page" resultMap="CaseVideoMappingRslMap" fetchSize="15">
+		SELECT
+			id,
+			caseid,
+			logourl,
+			videodesc,
+			videourl,
+			valid,
+			createtime,
+			createperson,
+			updtime,
+			updperson
+		FROM
+			case_video_mapping
+		<where>
+			<if test="params !=  null">
+				<if test="params.id !=  null">
+					and id=#{params.id}
+				</if>
+				<if test="params.caseid !=  null">
+					and caseid=#{params.caseid}
+				</if>
+				<if test="params.logourl !=  null">
+					and logourl=#{params.logourl}
+				</if>
+				<if test="params.videodesc !=  null">
+					and videodesc=#{params.videodesc}
+				</if>
+				<if test="params.videourl !=  null">
+					and videourl=#{params.videourl}
+				</if>
+				<if test="params.valid !=  null">
+					and valid=#{params.valid}
+				</if>
+				<if test="params.createtime !=  null">
+					and createtime=#{params.createtime}
+				</if>
+				<if test="params.createperson !=  null">
+					and createperson=#{params.createperson}
+				</if>
+				<if test="params.updtime !=  null">
+					and updtime=#{params.updtime}
+				</if>
+				<if test="params.updperson !=  null">
+					and updperson=#{params.updperson}
+				</if>
+			</if>
+		</where>
+			limit #{start},#{end}	
+	</select>
+
+	<insert id="insert" parameterType="com.island.domain.model.CaseVideoMapping" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO	case_video_mapping
+			(id,caseid,logourl,videodesc,videourl,valid,createtime,createperson,updtime,updperson)
+			VALUES(#{id},#{caseid},#{logourl},#{videodesc},#{videourl},#{valid},#{createtime},#{createperson},#{updtime},#{updperson})		
+	</insert>
+	
+	<update id="update" parameterType="com.island.domain.model.CaseVideoMapping">
+		update 
+			case_video_mapping
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="caseid !=  null">			        
+				caseid=#{caseid},
+			</if>
+			<if test="logourl !=  null">			        
+				logourl=#{logourl},
+			</if>
+			<if test="videodesc !=  null">			        
+				videodesc=#{videodesc},
+			</if>
+			<if test="videourl !=  null">			        
+				videourl=#{videourl},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="createtime !=  null">			        
+				createtime=#{createtime},
+			</if>
+			<if test="createperson !=  null">			        
+				createperson=#{createperson},
+			</if>
+			<if test="updtime !=  null">			        
+				updtime=#{updtime},
+			</if>
+			<if test="updperson !=  null">			        
+				updperson=#{updperson},
+			</if>
+		</set>
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="caseid !=  null">			        
+				and caseid=#{caseid}
+			</if>
+			<if test="logourl !=  null">			        
+				and logourl=#{logourl}
+			</if>
+			<if test="videodesc !=  null">			        
+				and videodesc=#{videodesc}
+			</if>
+			<if test="videourl !=  null">			        
+				and videourl=#{videourl}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+		
+	</update>
+	<update id="updateByMap" parameterType="java.util.Map">
+		update 
+			case_video_mapping
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="caseid !=  null">			        
+				caseid=#{caseid},
+			</if>
+			<if test="logourl !=  null">			        
+				logourl=#{logourl},
+			</if>
+			<if test="videodesc !=  null">			        
+				videodesc=#{videodesc},
+			</if>
+			<if test="videourl !=  null">			        
+				videourl=#{videourl},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="createtime !=  null">			        
+				createtime=#{createtime},
+			</if>
+			<if test="createperson !=  null">			        
+				createperson=#{createperson},
+			</if>
+			<if test="updtime !=  null">			        
+				updtime=#{updtime},
+			</if>
+			<if test="updperson !=  null">			        
+				updperson=#{updperson},
+			</if>
+		</set>
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="caseid !=  null">			        
+				and caseid=#{caseid}
+			</if>
+			<if test="logourl !=  null">			        
+				and logourl=#{logourl}
+			</if>
+			<if test="videodesc !=  null">			        
+				and videodesc=#{videodesc}
+			</if>
+			<if test="videourl !=  null">			        
+				and videourl=#{videourl}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+		
+	</update>
+	
+	<update id="cmplxUpdate" parameterType="java.util.Map">
+		update 
+			case_video_mapping
+		<set>
+			<if test="updNewMap.id !=  null">
+				id=#{updNewMap.id},
+			</if>
+			<if test="updNewMap.caseid !=  null">
+				caseid=#{updNewMap.caseid},
+			</if>
+			<if test="updNewMap.logourl !=  null">
+				logourl=#{updNewMap.logourl},
+			</if>
+			<if test="updNewMap.videodesc !=  null">
+				videodesc=#{updNewMap.videodesc},
+			</if>
+			<if test="updNewMap.videourl !=  null">
+				videourl=#{updNewMap.videourl},
+			</if>
+			<if test="updNewMap.valid !=  null">
+				valid=#{updNewMap.valid},
+			</if>
+			<if test="updNewMap.createtime !=  null">
+				createtime=#{updNewMap.createtime},
+			</if>
+			<if test="updNewMap.createperson !=  null">
+				createperson=#{updNewMap.createperson},
+			</if>
+			<if test="updNewMap.updtime !=  null">
+				updtime=#{updNewMap.updtime},
+			</if>
+			<if test="updNewMap.updperson !=  null">
+				updperson=#{updNewMap.updperson},
+			</if>
+		</set>
+		<where>
+			<if test="updCondMap.id !=  null">
+				and id=#{updCondMap.id}
+			</if>
+			<if test="updCondMap.caseid !=  null">
+				and caseid=#{updCondMap.caseid}
+			</if>
+			<if test="updCondMap.logourl !=  null">
+				and logourl=#{updCondMap.logourl}
+			</if>
+			<if test="updCondMap.videodesc !=  null">
+				and videodesc=#{updCondMap.videodesc}
+			</if>
+			<if test="updCondMap.videourl !=  null">
+				and videourl=#{updCondMap.videourl}
+			</if>
+			<if test="updCondMap.valid !=  null">
+				and valid=#{updCondMap.valid}
+			</if>
+			<if test="updCondMap.createtime !=  null">
+				and createtime=#{updCondMap.createtime}
+			</if>
+			<if test="updCondMap.createperson !=  null">
+				and createperson=#{updCondMap.createperson}
+			</if>
+			<if test="updCondMap.updtime !=  null">
+				and updtime=#{updCondMap.updtime}
+			</if>
+			<if test="updCondMap.updperson !=  null">
+				and updperson=#{updCondMap.updperson}
+			</if>
+		</where>
+		
+	</update>
+	
+	<delete id="delete" parameterType="com.island.domain.model.CaseVideoMapping">		
+		DELETE
+		FROM
+			case_video_mapping 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="caseid !=  null">			        
+				and caseid=#{caseid}
+			</if>
+			<if test="logourl !=  null">			        
+				and logourl=#{logourl}
+			</if>
+			<if test="videodesc !=  null">			        
+				and videodesc=#{videodesc}
+			</if>
+			<if test="videourl !=  null">			        
+				and videourl=#{videourl}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+		
+	</delete>
+	<delete id="deleteByMap" parameterType="java.util.Map">		
+		DELETE
+		FROM
+			case_video_mapping 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="caseid !=  null">			        
+				and caseid=#{caseid}
+			</if>
+			<if test="logourl !=  null">			        
+				and logourl=#{logourl}
+			</if>
+			<if test="videodesc !=  null">			        
+				and videodesc=#{videodesc}
+			</if>
+			<if test="videourl !=  null">			        
+				and videourl=#{videourl}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createtime !=  null">			        
+				and createtime=#{createtime}
+			</if>
+			<if test="createperson !=  null">			        
+				and createperson=#{createperson}
+			</if>
+			<if test="updtime !=  null">			        
+				and updtime=#{updtime}
+			</if>
+			<if test="updperson !=  null">			        
+				and updperson=#{updperson}
+			</if>
+		</where>
+		
+	</delete>
+</mapper>

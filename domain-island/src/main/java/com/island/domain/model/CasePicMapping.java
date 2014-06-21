@@ -73,6 +73,38 @@ public class CasePicMapping extends AbsModel{
   		return this.valid;
   	}
 	/**
+	 * 图片类型
+	 */
+  	private Integer imgType;
+  	/**
+	 * 设置图片类型
+	 */
+  	public void setImgType(Integer imgType){
+  		this.imgType=imgType;
+  	}
+  	/**
+	 * 获取图片类型
+	 */
+  	public Integer getImgType(){
+  		return this.imgType;
+  	}
+  	/**
+	 * 类型名称
+	 */
+  	private String typeName;
+  	/**
+	 * 设置类型名称
+	 */
+  	public void setTypeName(String typeName){
+  		this.typeName=typeName;
+  	}
+  	/**
+	 * 获取类型名称
+	 */
+  	public String getTypeName(){
+  		return this.typeName;
+  	}
+	/**
 	 * 创建时间
 	 */
   	private Integer createtime;
