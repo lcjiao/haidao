@@ -132,4 +132,12 @@ public class MarrayPackageBiz {
 	public void updPackageTypeByMap(Map<String,Object> params){
 		this.islandPackageTypeDao.updateByMap(params);
 	}
+	
+	public void updateByAreaIsland(Map<String,Object> params){
+		this.islandPackageDao.updateByAreaIsland(params);
+	}
+	
+	public void updateByType(Map<String,Object> params){
+		this.islandPackageDao.updateByType(params);
+	}
 }

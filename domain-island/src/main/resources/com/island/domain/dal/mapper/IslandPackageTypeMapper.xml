@@ -589,4 +589,57 @@
 		</where>
 		
 	</delete>
+	
+	<update id="updateByAreaIsland" parameterType="java.util.Map">
+		update 
+			island_package_type
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="packageType !=  null">			        
+				package_type=#{packageType},
+			</if>
+			<if test="title !=  null">			        
+				title=#{title},
+			</if>
+			<if test="areaId !=  null">			        
+				area_id=#{areaId},
+			</if>
+			<if test="areaName !=  null">			        
+				area_name=#{areaName},
+			</if>
+			<if test="islandId !=  null">			        
+				island_id=#{islandId},
+			</if>
+			<if test="islandName !=  null">			        
+				island_name=#{islandName},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="createTime !=  null">			        
+				create_time=#{createTime},
+			</if>
+			<if test="createPerson !=  null">			        
+				create_person=#{createPerson},
+			</if>
+			<if test="updTime !=  null">			        
+				upd_time=#{updTime},
+			</if>
+			<if test="updPerson !=  null">			        
+				upd_person=#{updPerson},
+			</if>
+		</set>
+		<where>
+			<if test="areaId !=  null">			        
+				and area_id=#{areaId}
+			</if>
+			<if test="islandId !=  null">			        
+				and island_id=#{islandId}
+			</if>
+		</where>
+		
+	</update>
+	
 </mapper>
