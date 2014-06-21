@@ -10,10 +10,6 @@ public class LoginInterceptor extends AbstractInterceptor {
 
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
-		// TODO Auto-generated method stub
-		/*if(RequestContext.getCurrUser().getId().intValue()==0){
-			return "login";
-		}*/
 		/**
 		 * 如果请求登录不验证是否已经登录
 		*/
@@ -21,6 +17,7 @@ public class LoginInterceptor extends AbstractInterceptor {
 		if(action instanceof LoginAction){
 			return invocation.invoke();
 		}
+		
 		/**
 		 * 判断是否已经登录
 		 */

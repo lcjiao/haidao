@@ -50,7 +50,7 @@ public class BaseAction extends ActionSupport{
 		if( father != null && !"".equals(father)){
 			father = father +"--";
 		}
-		menuAddress =gradeFather +  father + son;
+		menuAddress ="当前位置:"+gradeFather +  father + son;
 		return menuAddress;
 	}
 
