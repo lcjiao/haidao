@@ -20,10 +20,10 @@
 			<td>链接地址</td>
 			<td><input type=text class="text" value="" id="link" name="link"  style="_width:316px;"/></td>					
 		</tr>
-		<tr>
+		<!-- <tr>
 			<td>描述</td>
 			<td><input type=text class="text" value="" id="desc" name="desc"  style="_width:316px;"/></td>					
-		</tr>
+		</tr> -->
 		<tr>
 			<td>排序</td>
 			<td><input type=text class="text" value="" id="index_num" name="index"  style="_width:316px;"/></td>					

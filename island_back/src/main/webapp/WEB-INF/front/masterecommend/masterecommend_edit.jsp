@@ -20,10 +20,10 @@
 			<td>链接地址</td>
 			<td><input type=text class="text" value="${link}" id="link" name="link"  style="_width:316px;"/></td>					
 		</tr>
-		<tr>
+		<%-- <tr>
 			<td>描述</td>
 			<td><input type=text class="text" value="${desc}" id="desc" name="desc"  style="_width:316px;"/></td>					
-		</tr>
+		</tr> --%>
 		<tr>
 			<td>排序</td>
 			<td><input type=text class="text" value="${index}" id="index_num" name="index"  style="_width:316px;"/><!-- <span style="color:red;">顺序调整为对调方式</span> --></td>

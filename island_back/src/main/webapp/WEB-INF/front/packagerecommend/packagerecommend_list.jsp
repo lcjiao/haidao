@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ include file="/common/taglibs.jsp"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -50,8 +52,9 @@
 					<tbody id="r_list">
 						<c:forEach var="recommend" items="${recommendList}">
 							<tr >
-								<td style="text-align:center;">
-									<c:out value="${recommend.recommendDesc}"></c:out>
+								<td style="text-align:center;" title="${recommend.recommendDesc}">
+									<%-- <c:out value="${recommend.recommendDesc}"></c:out> --%>
+									<c:out value="${fn:substring(recommend.recommendDesc,0,20)}"/>
 								</td>
 								<td style="text-align:center;">
 									<c:out value="${recommend.linkUrl}"></c:out>

@@ -30,7 +30,7 @@
 		</tr>
 		<tr>
 			<td>描述</td>
-			<td><textarea class="text" id="title" name="recommend.recommendDesc"  style="_width:316px;">${recommend.recommendDesc}</textarea></td>					
+			<td><textarea class="text" style="width:264px;height:50px;" id="title" name="recommend.recommendDesc" >${recommend.recommendDesc}</textarea></td>					
 		</tr>
 		<tr>
 			<td>图片</td>
