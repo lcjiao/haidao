@@ -185,12 +185,12 @@ public class ModuleEnum {
 	public static final Integer CUSTOMER_CASE_TOP_RECOMMEND = 107;
 	
 	/**
-	 * 客片案例主推新产品
+	 * 客片案例视频推荐
 	 */
 	public static final Integer CUSTOMER_CASE_FACE_VIDEO_RECOMMEND = 108;
 	
 	/**
-	 * 客片案例副推新产品(视频下面的图片)
+	 * 客片案例(视频下面的图片)推荐
 	 */
 	public static final Integer CUSTOMER_CASE_FACE_IMAGE_RECOMMEND = 109;
 	

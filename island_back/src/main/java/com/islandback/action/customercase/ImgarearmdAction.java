@@ -1,4 +1,4 @@
-package com.islandback.action.weddingphoto;
+package com.islandback.action.customercase;
 
 
 
@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import com.islandback.action.base.BaseAction;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -33,12 +34,18 @@ import com.islandback.web.util.Struts2Utils;
 import com.islandback.web.util.UploadImgUtils;
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * 区域、图片推荐 (中间块)
+ * @author zhbl
+ *
+ */
+
 //@SuppressWarnings("serial")
-@Namespace("/weddingphoto/area")
+@Namespace("/customercase/imgarea")
 @ResultPath("/WEB-INF")
-public class ArearecommendAction extends ActionSupport {
+public class ImgarearmdAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
-	private Recommend recommend;//首页主推
+	private Recommend recommend;
 	private Integer packageType=1;
 	private Integer id;
 	private File image;
@@ -91,13 +98,14 @@ public class ArearecommendAction extends ActionSupport {
 		
 		recommend.setCreatePerson(getCreater());
 		int now = (int)(System.currentTimeMillis()/1000);
-		recommend.setModuleId(ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
+		recommend.setModuleId(ModuleEnum.CUSTOMER_CASE_FACE_IMAGE_RECOMMEND);
 		if(image != null ){
 			recommend.setImgUrl(UploadImgUtils.getImgUrl(image, getCreater()));
 		}
 		recommend.setCreatePerson(getCreater());
 		recommend.setCreateTime(now);
 		recommend.setValid(1);
+		recommend.setAreaName(areaIslandBiz.queryAreaById(recommend.getAreaId()).getName());
 		recommend.setTypeId(recommendType);
 		recommend.setTypeName(recommendTypeName);
 		this.recommendBiz.addMasterRecommend(recommend);
@@ -164,7 +172,7 @@ public class ArearecommendAction extends ActionSupport {
 			pageSize = 5;
 		}
 		Map<String,Object> params = new HashMap<String,Object>(0);
-		params.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
+		params.put("moduleId", ModuleEnum.CUSTOMER_CASE_FACE_IMAGE_RECOMMEND);
 		params.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
@@ -172,14 +180,12 @@ public class ArearecommendAction extends ActionSupport {
 		params.put("begin", page.getBegin());
 		params.put("size", page.getPageSize());
 		params.put("typeId", recommendType);
-		params.put("content", "1");
 		List<Recommend> list = recommendBiz.queryByMap(params);
 		if(list != null && list.size()>0){
 			Map<String,Object> countParam = new HashMap<String,Object>(0);
-			countParam.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
+			countParam.put("moduleId", ModuleEnum.CUSTOMER_CASE_FACE_IMAGE_RECOMMEND);
 			countParam.put("valid", 1);
 			countParam.put("typeId", recommendType);
-			countParam.put("content", "1");
 			this.totalSize = recommendBiz.countByMap(countParam);
 		}else{
 			this.totalSize=0;
