@@ -19,6 +19,7 @@ import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.GlobalQaBiz;
 import com.island.domain.model.GlobalQa;
 import com.island.domain.model.GlobalQaType;
+import com.islandback.action.base.BaseAction;
 import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
@@ -28,7 +29,7 @@ import com.opensymphony.xwork2.ActionSupport;
 //@SuppressWarnings("serial")
 @Namespace("/globalqa/globalqa")
 @ResultPath("/WEB-INF")
-public class GlobalqaAction extends ActionSupport {
+public class GlobalqaAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private GlobalQa globalQa;
 	private Integer id;

@@ -1,8 +1,10 @@
 package com.islandback.web.interceptor;
 
-import com.islandback.action.login.LoginAction;
-import com.islandback.web.util.RequestProcc;
-import com.islandback.web.util.SessionListener;
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.StrutsStatics;
+
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
@@ -10,29 +12,16 @@ public class AuthInterceptor extends AbstractInterceptor {
 
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
-		// TODO Auto-generated method stub
-		/*if(RequestContext.getCurrUser().getId().intValue()==0){
-			return "login";
-		}*/
-		/**
-		 * 如果请求登录不验证是否已经登录
-		*/
-		Object action = invocation.getAction();
-		System.out.print(action.toString());
-		if(action instanceof LoginAction){
-			return invocation.invoke();
-		}
-		/**
-		 * 判断是否已经登录
-		 */
-		if( SessionListener.isOnline(RequestProcc.getSession()) ){
-			return invocation.invoke();
-		}else{
-			//return invocation.invoke();
-			return "login";
-		}
 		
-		
+		 ActionContext actionContext = invocation.getInvocationContext();
+	        HttpServletRequest request = (HttpServletRequest) actionContext
+	                .get(StrutsStatics.HTTP_REQUEST);
+	       String contextPath = request.getContextPath();
+	       String servletPath = request.getServletPath();
+	       String askUrl = contextPath +servletPath;
+	       System.out.println(askUrl);
+	       
+		return invocation.invoke();
 	}
 
 }

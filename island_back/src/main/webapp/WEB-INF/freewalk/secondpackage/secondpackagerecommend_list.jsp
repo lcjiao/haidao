@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ include file="/common/taglibs.jsp"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,7 +13,7 @@
 
 </head>
 <body>
-
+<%@ include file="/common/menu.jsp"%>
 <form action="${ctx}/freewalk/secondpackage/secondpackagerecommend!tolist.action" id="form" method="post">
 <table class="searchbar" width="100%">
 	<tbody>
@@ -73,11 +75,13 @@
 								<td style="text-align:center;">
 									<c:out value="${recommend.islandName}"></c:out>
 								</td>
-								<td style="text-align:center;">
-									<c:out value="${recommend.title}"></c:out>
+								<td style="text-align:center;" title="${recommend.title}">
+									<%-- <c:out value="${recommend.title}"></c:out> --%>
+									<c:out value="${fn:substring(recommend.title,0,20)}"/>
 								</td>
-								<td style="text-align:center;">
-									<c:out value="${recommend.recommendDesc}"></c:out>
+								<td style="text-align:center;" title="${recommend.recommendDesc}">
+									<%-- <c:out value="${recommend.recommendDesc}"></c:out> --%>
+									<c:out value="${fn:substring(recommend.recommendDesc,0,20)}"/>
 									<%-- <input style="width:50px;" type="text" value="${recommend.recommendIndex}" id="r_index" name="index">
 								 --%></td>
 								<td style="text-align:center;">

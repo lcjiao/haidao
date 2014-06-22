@@ -10,6 +10,7 @@
 <%@ include file="/common/kindeditor.jsp"%>
 </head>
 <body>
+<%@ include file="/common/menu.jsp"%>
 <form action="${ctx}/globalnet/company/company!manager.action" enctype="multipart/form-data" id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" width="100%">

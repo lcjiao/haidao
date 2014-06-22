@@ -20,6 +20,7 @@ import com.anjuke.core.util.ObjectUtils;
 import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.RecommendBiz;
 import com.island.domain.model.Recommend;
+import com.islandback.action.base.BaseAction;
 import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
@@ -34,7 +35,7 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author lcjiao
  *
  */
-public class MasterecommendAction extends ActionSupport {
+public class MasterecommendAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String link;
@@ -65,7 +66,6 @@ public class MasterecommendAction extends ActionSupport {
 	 * 跳转至增加首页主打产品添加
 	 */
 	public String toAdd(){
-		RequestProcc.getSession().invalidate();
 		return "add";
 	}
 	/**

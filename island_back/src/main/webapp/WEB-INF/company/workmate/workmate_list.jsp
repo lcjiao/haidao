@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ include file="/common/taglibs.jsp"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,7 +13,7 @@
 
 </head>
 <body>
-
+<%@ include file="/common/menu.jsp"%>
 
 <table class="customlist" width="100%">
 	<thead>
@@ -52,10 +54,10 @@
 								<td style="text-align:center;">
 									<c:out value="${recommend.title}"></c:out>
 								</td>
-								<td style="text-align:center;">
-									<c:out value="${recommend.recommendDesc}"></c:out>
-									<%-- <input style="width:50px;" type="text" value="${recommend.recommendIndex}" id="r_index" name="index">
-								 --%></td>
+								<td style="text-align:center;" title="${recommend.recommendDesc}">
+									<%-- <c:out value="${recommend.title}"></c:out> --%>
+									<c:out value="${fn:substring(recommend.recommendDesc,0,20)}"/>
+								</td>
 								<td style="text-align:center;">
 									<img style="width:150px;height:120px;" alt="" src="${recommend.imgUrl}">
 								</td>

@@ -12,6 +12,7 @@ import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.RoleBiz;
 import com.island.domain.model.Role;
 import com.island.domain.model.RoleRight;
+import com.islandback.action.base.BaseAction;
 import com.islandback.module.SessionInfo;
 import com.islandback.web.util.RequestProcc;
 import com.jcl.core.module.ModuleRegistry;
@@ -21,7 +22,7 @@ import com.opensymphony.xwork2.ActionSupport;
 @Namespace("/right/role")
 @ResultPath("/WEB-INF")
 
-public class RoleAction extends ActionSupport{
+public class RoleAction extends BaseAction{
 	RoleBiz roleBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getRoleBiz();
 	

@@ -25,6 +25,8 @@ $(function(){
 			if(url.length < 10 ){
 				
 			}else{
+				var menuId = ($(a).attr('title'));
+				url = url +"?menuId="+menuId;
 				window.top.mainFrame.location.href=url;
 			}
 			

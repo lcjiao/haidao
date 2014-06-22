@@ -59,7 +59,7 @@
 		<tr>
 			<td>简介</td>
 			<td>
-				<textarea name="content" style="width:700px;height:200px;"></textarea>
+				<textarea name="recommend.recommendDesc" style="width:700px;height:200px;"></textarea>
 			</td>
 		</tr>
 	</tbody>	
@@ -67,8 +67,8 @@
 </div>
 <input type="hidden" value=" " id="island_name" name="recommend.islandName"/>
 <input type="hidden" value=" " id="area_name" name="recommend.areaName"/>
-<input type="hidden" value=" " id="package_desc" name="recommend.recommendDesc"/>
-
+<!-- <input type="hidden" value=" " id="package_desc" name="recommend.recommendDesc"/>
+ -->
 <table class="creatcustomer_tfoot" width="100%">
 	<tfoot>
 		<td>
@@ -122,7 +122,7 @@ function setIslandName(){
 }
 
 function checkData(){
-	$("#package_desc").val(editor.html());
+	//$("#package_desc").val(editor.html());
 	$("#form").submit();
 }
 </script>

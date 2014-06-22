@@ -846,4 +846,151 @@
 		</where>
 		
 	</delete>
+	
+	<update id="updateByAreaIsland" parameterType="java.util.Map">
+		update 
+			island_package
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="packageType !=  null">			        
+				package_type=#{packageType},
+			</if>
+			<if test="title !=  null">			        
+				title=#{title},
+			</if>
+			<if test="content !=  null">			        
+				content=#{content},
+			</if>
+			<if test="priceBig !=  null">			        
+				price_big=#{priceBig},
+			</if>
+			<if test="priceSmall !=  null">			        
+				price_small=#{priceSmall},
+			</if>
+			<if test="areaId !=  null">			        
+				area_id=#{areaId},
+			</if>
+			<if test="areaName !=  null">			        
+				area_name=#{areaName},
+			</if>
+			<if test="islandId !=  null">			        
+				island_id=#{islandId},
+			</if>
+			<if test="islandName !=  null">			        
+				island_name=#{islandName},
+			</if>
+			<if test="isOnline !=  null">			        
+				is_online=#{isOnline},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="createTime !=  null">			        
+				create_time=#{createTime},
+			</if>
+			<if test="createPerson !=  null">			        
+				create_person=#{createPerson},
+			</if>
+			<if test="updTime !=  null">			        
+				upd_time=#{updTime},
+			</if>
+			<if test="updPerson !=  null">			        
+				upd_person=#{updPerson},
+			</if>
+			<if test="isHot !=  null">			        
+				is_hot=#{isHot},
+			</if>
+			<if test="typeId !=  null">			        
+					 type_id=#{typeId},
+			</if>
+			<if test="typeName !=  null">			        
+					type_name=#{typeName}
+			</if>
+			
+		</set>
+		<where>
+			<if test="areaId !=  null">			        
+				and area_id=#{areaId}
+			</if>
+			<if test="islandId !=  null">			        
+				and island_id=#{islandId}
+			</if>
+		</where>
+		
+	</update>
+	
+	
+	
+	<update id="updateByType" parameterType="java.util.Map">
+		update 
+			island_package
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="packageType !=  null">			        
+				package_type=#{packageType},
+			</if>
+			<if test="title !=  null">			        
+				title=#{title},
+			</if>
+			<if test="content !=  null">			        
+				content=#{content},
+			</if>
+			<if test="priceBig !=  null">			        
+				price_big=#{priceBig},
+			</if>
+			<if test="priceSmall !=  null">			        
+				price_small=#{priceSmall},
+			</if>
+			<if test="areaId !=  null">			        
+				area_id=#{areaId},
+			</if>
+			<if test="areaName !=  null">			        
+				area_name=#{areaName},
+			</if>
+			<if test="islandId !=  null">			        
+				island_id=#{islandId},
+			</if>
+			<if test="islandName !=  null">			        
+				island_name=#{islandName},
+			</if>
+			<if test="isOnline !=  null">			        
+				is_online=#{isOnline},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="createTime !=  null">			        
+				create_time=#{createTime},
+			</if>
+			<if test="createPerson !=  null">			        
+				create_person=#{createPerson},
+			</if>
+			<if test="updTime !=  null">			        
+				upd_time=#{updTime},
+			</if>
+			<if test="updPerson !=  null">			        
+				upd_person=#{updPerson},
+			</if>
+			<if test="isHot !=  null">			        
+				is_hot=#{isHot},
+			</if>
+			<if test="typeId !=  null">			        
+					 type_id=#{typeId},
+			</if>
+			<if test="typeName !=  null">			        
+					type_name=#{typeName}
+			</if>
+			
+		</set>
+		<where>
+			<if test="typeId !=  null">			        
+				and type_id=#{typeId}
+			</if>
+		</where>
+		
+	</update>
 </mapper>

@@ -12,7 +12,7 @@
 </head>
 <body>
 
-
+<%@ include file="/common/menu.jsp"%>
 <table class="customlist" width="100%">
 	<thead>
 		<!-- <tr>

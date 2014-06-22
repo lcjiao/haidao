@@ -16,6 +16,7 @@ import com.island.domain.biz.GuestQaBiz;
 import com.jcl.core.module.ModuleRegistry;
 import com.opensymphony.xwork2.ActionSupport;
 import com.island.domain.model.PackageQa;
+import com.islandback.action.base.BaseAction;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
 import com.islandback.web.util.RequestProcc;
@@ -30,7 +31,7 @@ import com.islandback.web.util.Struts2Utils;
  * @author lcjiao
  *
  */
-public class GuestqaAction extends ActionSupport {
+public class GuestqaAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;

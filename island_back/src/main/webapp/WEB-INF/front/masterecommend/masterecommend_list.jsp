@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ include file="/common/taglibs.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,7 +12,7 @@
 
 </head>
 <body>
-
+<%@ include file="/common/menu.jsp"%>
 <table class="customlist" width="100%">
 	<thead>
 		<!-- <tr>
@@ -40,7 +41,7 @@
 				<table class="datalist ask_rel" width="100%">
 					<thead>
 						<tr>
-							<td>描述</td>
+							<!-- <td>描述</td> -->
 							<td>链接地址</td>
 							<td>图片</td>
 							<td>排序</td>
@@ -50,9 +51,10 @@
 					<tbody id="r_list">
 						<c:forEach var="recommend" items="${recommendList}">
 							<tr >
-								<td style="text-align:center;">
+								<%-- <td style="text-align:center;" title="${recommend.recommendDesc}">
+									 <c:out value="${fn:substring(recommend.recommendDesc,0,20)}"/>...
 									<c:out value="${recommend.recommendDesc}"></c:out>
-								</td>
+								</td> --%>
 								<td style="text-align:center;">
 									<c:out value="${recommend.linkUrl}"></c:out>
 								</td>
@@ -86,7 +88,12 @@
 		initParam();
 		
 		bindEvent();
+		
 	});
+	
+	function subStr(s,start,end){
+		return s.substring(start,end);
+	}
 	
 	//绑定事件
 	function bindEvent(){

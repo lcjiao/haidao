@@ -25,6 +25,7 @@ import com.island.domain.biz.RecommendBiz;
 import com.island.domain.model.Area;
 import com.island.domain.model.Island;
 import com.island.domain.model.Recommend;
+import com.islandback.action.base.BaseAction;
 import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
@@ -35,7 +36,7 @@ import com.opensymphony.xwork2.ActionSupport;
 //@SuppressWarnings("serial")
 @Namespace("/hotel/secondisland")
 @ResultPath("/WEB-INF")
-public class SecondislandrecommendAction extends ActionSupport {
+public class SecondislandrecommendAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private Recommend recommend;//首页主推
 	private Integer packageType=4;

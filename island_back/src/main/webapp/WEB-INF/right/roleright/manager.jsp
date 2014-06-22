@@ -15,6 +15,7 @@
 <script type="text/javascript" src="${ctx}/js_/SimpleTree.js"></script>
 </head>
 <body>
+<%@ include file="/common/menu.jsp"%>
 <div id="mainpanel">
 <div class="st_tree">
 	<ul>

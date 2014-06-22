@@ -52,7 +52,9 @@
 </div>
 <table class="creatcustomer_tfoot" width="100%">
 	<tfoot>
-		<td><input type=button  value="保存" id="save"/></td>
+		<td><input type=button  value="保存" id="save"/>
+		<input type=button  value="返回" id="reset" onclick="resetData()"/> 
+		</td>
 	</tfoot>
 </table>
 </form>
@@ -64,6 +66,11 @@
 	
 	function submitSave(){
 		$("#form").submit();
+	}
+
+	function resetData(){
+		var url = "${ctx}/front/newconsult/newconsult!list.action";
+		window.location.href = url;
 	}
 	function checkData(){
 		var r = /^[0-9]+$/;

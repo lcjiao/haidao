@@ -108,6 +108,7 @@
 	<bean id="IslandPackageTypeDAO" class="com.island.domain.dal.IslandPackageTypeIbatisDAOImpl" />		
 	<bean id="moduleTypeBiz" class="com.island.domain.biz.ModuleTypeBiz">
 		<property name="islandPackageTypeDao" ref="IslandPackageTypeDAO"></property>
+		<property name="islandPackageDao" ref="islandPackageDao"></property>
 	</bean>
 	
 	<bean id="countryDao" class="com.island.domain.dal.CountryIbatisDAOImpl" />	

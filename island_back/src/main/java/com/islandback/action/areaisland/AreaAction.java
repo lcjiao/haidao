@@ -9,10 +9,16 @@ import java.util.Map;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ResultPath;
 
+import com.jcl.core.logging.LogUtil;
 import com.jcl.core.module.ModuleRegistry;
 import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.AreaIslandBiz;
+import com.island.domain.biz.MarrayPackageBiz;
+import com.island.domain.biz.ModuleTypeBiz;
+import com.island.domain.biz.RecommendBiz;
 import com.island.domain.model.Area;
+import com.island.domain.util.AsynBizExecutor;
+import com.islandback.action.base.BaseAction;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
 import com.islandback.web.util.RequestProcc;
@@ -24,7 +30,7 @@ import com.opensymphony.xwork2.ActionSupport;
  *区域
  *
  */
-public class AreaAction extends ActionSupport {
+public class AreaAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private Integer index;
@@ -37,6 +43,16 @@ public class AreaAction extends ActionSupport {
 	AreaIslandBiz areaIslandBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getAreaIslandBiz();
 	
+	RecommendBiz recommendBiz = ModuleRegistry.getInstance()
+            .getModule(DomainIslandModule.class).getRecommendBiz();
+	
+	MarrayPackageBiz packageBiz = ModuleRegistry.getInstance()
+            .getModule(DomainIslandModule.class).getMarrayPackageBiz();
+	
+	ModuleTypeBiz moduleTypeBiz = ModuleRegistry.getInstance()
+            .getModule(DomainIslandModule.class).getModuleTypeBiz();
+	
+	
 	public String list(){
 		doList();
 		return "list";
@@ -44,7 +60,6 @@ public class AreaAction extends ActionSupport {
 	
 	
 	public String toAdd(){
-		RequestProcc.getSession().invalidate();
 		return "add";
 	}
 	
@@ -114,6 +129,19 @@ public class AreaAction extends ActionSupport {
 		updIslandParams.put("areaId", id);
 		this.areaIslandBiz.updateIslandByAreaId(updIslandParams);
 		
+		new AsynBizExecutor("modifyAreaNameById", true){
+			@Override
+			public void execute() {
+				long start = System.currentTimeMillis();
+				try {
+					modifyAreaNameById(id,name);
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+				long end = System.currentTimeMillis();
+				LogUtil.trace("modifyAreaNameById use:"+(end - start));
+			}
+		};
 		doList();
 		return "list";
 	}
@@ -144,6 +172,31 @@ public class AreaAction extends ActionSupport {
 		}
 		initTotalPageSize();
 		this.areaList = list;
+	}
+	
+	/**
+	 * 当区域名称更改后 级联更改其他表的区域名称
+	 */
+	public void modifyAreaNameById(Integer areaId,String areaName){
+		//推荐表
+		Map<String,Object> recommendParams = new HashMap<String,Object>(0);
+		recommendParams.put("areaId", areaId);
+		recommendParams.put("areaName", areaName);
+		this.recommendBiz.updateByAreaIsland(recommendParams);
+		
+		//套餐表
+		Map<String,Object> packageParams = new HashMap<String,Object>(0);
+		packageParams.put("areaId", areaId);
+		packageParams.put("areaName", areaName);
+		this.packageBiz.updateByAreaIsland(recommendParams);
+		
+		//套餐类型表
+		Map<String,Object> packageTypeParams = new HashMap<String,Object>(0);
+		packageTypeParams.put("areaId", areaId);
+		packageTypeParams.put("areaName", areaName);
+		this.moduleTypeBiz.updateByAreaIsland(recommendParams);
+		
+		
 	}
 	
 
