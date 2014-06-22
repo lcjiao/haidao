@@ -9,7 +9,7 @@
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
 </head>
 <body>
-<form action="${ctx}/weddingphoto/area/arearecommend!edit.action" enctype="multipart/form-data" id="form" method="post">
+<form action="${ctx}/customercase/area/arearecommend!add.action" enctype="multipart/form-data" id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" width="100%">
 	<tbody>
@@ -26,14 +26,13 @@
 		</tr>
 		<tr>
 			<td>排序</td>
-			<td><input type=text class="text" value="${recommend.recommendIndex}" id="index_num" name="recommend.recommendIndex"  style="_width:316px;"/></td>					
+			<td><input type=text class="text" value="" id="index_num" name="recommend.recommendIndex"  style="_width:316px;"/></td>					
 		</tr>
 	</tbody>	
 </table>
 </div>
-<input type="hidden" value="${recommend.areaName}" id="area_name" name="recommend.areaName"/>
-<input type="hidden" value="${recommend.islandName}" id="island_name" name="recommend.islandName"/>
-<input type="hidden" value="${recommend.id}" id="id" name="recommend.id"/>
+<input type="hidden" value=" " id="area_name" name="recommend.areaName"/>
+
 <table class="creatcustomer_tfoot" width="100%">
 	<tfoot>
 		<td>
@@ -47,25 +46,6 @@
 
 </body>
 <script>
-
-$(function(){
-	var areaId = '${recommend.areaId}';
-	$("#area_id option[value='"+areaId+"']").attr('selected',true);
-	
-	$("#area_id").bind('change',setAreaName);
-});
-
-function setAreaName(){
-	var areaName=$("#area_id").find("option:selected").text();  
-	$("#area_name").val(areaName);
-	
-}
-
-function setIslandName(){
-	var islandName=$("#island_id").find("option:selected").text();  
-	$("#island_name").val(islandName);
-	
-}
 
 function checkData(){
 	var r = /^[0-9]+$/;

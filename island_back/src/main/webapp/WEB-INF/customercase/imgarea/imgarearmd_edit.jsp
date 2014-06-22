@@ -7,9 +7,10 @@
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
+<%@ include file="/common/menu.jsp"%>
 </head>
 <body>
-<form action="${ctx}/weddingphoto/area/arearecommend!edit.action" enctype="multipart/form-data" id="form" method="post">
+<form action="${ctx}/customercase/imgarea/imgarearmd!edit.action" enctype="multipart/form-data" id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" width="100%">
 	<tbody>

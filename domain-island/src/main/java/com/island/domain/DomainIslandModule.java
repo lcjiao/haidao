@@ -2,6 +2,7 @@ package com.island.domain;
 
 import com.island.domain.biz.AreaIslandBiz;
 import com.island.domain.biz.ConfBiz;
+import com.island.domain.biz.CustomerCaseBiz;
 import com.island.domain.biz.GlobalQaBiz;
 import com.island.domain.biz.GuestQaBiz;
 import com.island.domain.biz.ModuleTypeBiz;
@@ -53,6 +54,12 @@ public interface DomainIslandModule {
 	 */
 	@Bean("wdpTeamBiz")
 	public WdpTeamBiz getWdpTeamBiz();
+	
+	/**
+	 * 客片案例业务
+	 */
+	@Bean("customerCaseBiz")
+	public CustomerCaseBiz getCustomerCaseBiz();
 	
 	//test
 

@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<form action="${ctx}/weddingphoto/wdppackage/wdppackage!saveKepian.action" enctype="multipart/form-data" id="form" method="post">
+<form action="${ctx}/wdpphototeam/teampackage/teampkg!saveKepian.action" enctype="multipart/form-data" id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" style="width: 100%">
 	<tbody>

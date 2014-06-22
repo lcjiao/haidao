@@ -1,11 +1,9 @@
-package com.islandback.action.weddingphoto;
+package com.islandback.action.customercase;
 
 
 
 import java.io.File;
-import java.io.Writer;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -13,17 +11,16 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
+import com.islandback.action.base.BaseAction;
+
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ResultPath;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
 import com.jcl.core.module.ModuleRegistry;
-import com.alibaba.fastjson.serializer.JSONSerializer;
 import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.AreaIslandBiz;
-import com.island.domain.biz.MarrayPackageBiz;
-import com.island.domain.biz.RecommendBiz;
-import com.island.domain.biz.WeddingPhotoBiz;
+import com.island.domain.biz.CustomerCaseBiz;
 import com.island.domain.model.Area;
 import com.island.domain.model.Island;
 import com.island.domain.model.Recommend;
@@ -32,15 +29,14 @@ import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
 import com.islandback.web.util.RequestProcc;
 import com.islandback.web.util.UploadImgUtils;
-import com.opensymphony.xwork2.ActionSupport;
 
-@Namespace("/weddingphoto/wdp")
+@Namespace("/customercase/ctmtop")
 @ResultPath("/WEB-INF")
 /**
- *婚纱摄影图片推荐action(中间部分)
+ *客片案例首页图片推荐action(最上面的大图)
  *
  */
-public class WdpAction extends ActionSupport implements ServletResponseAware {
+public class CtmcasetopAction extends BaseAction implements ServletResponseAware {
 	private static final long serialVersionUID = 1L;
 	private Recommend recommend;
 	private HttpServletResponse response;
@@ -51,11 +47,9 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 	
 	private String flag;//判断是 保存返回，还是保存继续增加。
 	
-	private File image;	
-	private String imageFileName;
+	private File image;
 	
-	private Integer typeId = 2;
-	private String typeName = "岛屿推荐";
+	private String imageFileName;
 
 	private Integer totalPageSize;
 	private Integer totalSize=0;
@@ -65,12 +59,12 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 	private List<Area> areaList = new ArrayList<Area>(0);
 	private List<Island> islandList = new ArrayList<Island>(0);
 	private List<Recommend> recommendList;
-	WeddingPhotoBiz weddingPhotoBiz = ModuleRegistry.getInstance()
-            .getModule(DomainIslandModule.class).getWeddingPhotoBiz();
+	
 	AreaIslandBiz areaIslandBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getAreaIslandBiz();
-	RecommendBiz recommendBiz = ModuleRegistry.getInstance()
-            .getModule(DomainIslandModule.class).getRecommendBiz();
+	
+	CustomerCaseBiz ctmCaseBiz = ModuleRegistry.getInstance()
+			.getModule(DomainIslandModule.class).getCustomerCaseBiz();
 	
 	
 	private String getCreater(){
@@ -82,7 +76,7 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 	}
 	
 	/**
-	 * 进入 婚纱摄影套餐 图片推荐 列表页
+	 * 进入 婚纱摄影套餐 顶部图片推荐 列表页
 	 * @return
 	 */
 	public String list(){
@@ -92,21 +86,19 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 	
 	private void doList(){
 		map.clear();
-		map.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
+		map.put("moduleId", ModuleEnum.CUSTOMER_CASE_TOP_RECOMMEND);
 		map.put("valid", 1);
-		map.put("typeId", typeId);
 		Page page = new Page();
 		page.setPageNo(pageNo);
 		page.setPageSize(pageSize);
 		map.put("begin", page.getBegin());
 		map.put("size", page.getPageSize());
-		recommendList = weddingPhotoBiz.queryByMap(map);
+		recommendList = ctmCaseBiz.queryByMap(map);
 		if(recommendList != null && recommendList.size()>0){
 			map.clear();
-			map.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
+			map.put("moduleId", ModuleEnum.CUSTOMER_CASE_TOP_RECOMMEND);
 			map.put("valid", 1);
-			map.put("typeId", typeId);
-			this.totalSize = weddingPhotoBiz.countByMap(map);
+			this.totalSize = ctmCaseBiz.countByMap(map);
 		}
 		initTotalPageSize();
 		Collections.sort(recommendList);
@@ -122,27 +114,25 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 	 */
 	public String toAdd(){
 		//RequestProcc.getSession().invalidate();
-		getRmdAreaList();
+		initAreaList();
 		return "add";
 	}
 	
 	/**
-	 * 保存婚纱摄影图片信息
+	 * 保存客片案例推荐图片信息(首页最上面的)
 	 * @return
 	 */
-	public String addWdpRecommend(){
+	public String addCtmCaseImgRmd(){
 		//调用图片上传方法获取图片的url
 		recommend.setImgUrl(UploadImgUtils.getImgUrl(image, imageFileName));		
 		recommend.setCreatePerson(getCreater());
 		recommend.setCreateTime((int)(System.currentTimeMillis()/1000));
 		recommend.setValid(1);
-		recommend.setTypeId(typeId);
-		recommend.setTypeName(typeName);
-		recommend.setModuleId(ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
+		recommend.setModuleId(ModuleEnum.CUSTOMER_CASE_TOP_RECOMMEND);
 		//changeIndexBySys(creater,recommend.getId(),recommend.getRecommendIndex());
-		recommend.setAreaName(areaIslandBiz.queryAreaById(recommend.getAreaId()).getName());
-		recommend.setIslandName(areaIslandBiz.queryIslandById(recommend.getIslandId()).getName());
-		weddingPhotoBiz.addRecommend(recommend);
+		//recommend.setAreaName(areaIslandBiz.queryAreaById(recommend.getAreaId()).getName());
+		//recommend.setIslandName(areaIslandBiz.queryIslandById(recommend.getIslandId()).getName());
+		ctmCaseBiz.addRecommend(recommend);
 		initAreaList();
 		if("return".equals(flag)){
 			return list();
@@ -154,13 +144,13 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 	 * 删除 图片推荐信息
 	 * @return
 	 */
-	public String deleteWdp(){
+	public String deleteCtmCaseImgRmd(){
 		map.clear();
 		map.put("valid", 0);
 		map.put("id", rmdId);
 		map.put("updPerson", getCreater());
 		map.put("updTime",(int)(System.currentTimeMillis()/1000));
-		weddingPhotoBiz.updRecommend(map);
+		ctmCaseBiz.updRecommend(map);
 		return list();
 	}
 	
@@ -168,10 +158,10 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 	 * 进入 修改图片推荐信息 页面
 	 * @return
 	 */
-	public String toEditWdp(){
+	public String toEditCtmCaseImg(){
 		map.clear();
 		map.put("id", rmdId);
-		recommend = weddingPhotoBiz.queryById(Integer.valueOf(rmdId));
+		recommend = ctmCaseBiz.queryById(Integer.valueOf(rmdId));
 		initAreaList();
 		map.clear();
 		map.put("areaId", recommend.getAreaId());
@@ -183,28 +173,28 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 	 * 保存 修改图片推荐信息
 	 * @return
 	 */
-	public String editRecommend(){
+	public String editCtmCaseImgRmd(){
 		if(null != image){
 			recommend.setImgUrl(UploadImgUtils.getImgUrl(image, imageFileName));
 		}
-		weddingPhotoBiz.updateRecommend(recommend);
+		ctmCaseBiz.updateRecommend(recommend);
 		return list();
 	}
 		
 	private void changeIndexBySys(int id,int index){
-		Recommend thisObj = weddingPhotoBiz.queryById(id);
+		Recommend thisObj = ctmCaseBiz.queryById(id);
 		// 查询之前此排序得条目 如存在对调排序次序		 
 		map.clear();
 		map.put("recommendIndex", index);
-		map.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
+		map.put("moduleId", ModuleEnum.CUSTOMER_CASE_TOP_RECOMMEND);
 		map.put("valid", 1);
-		List<Recommend> list = weddingPhotoBiz.queryByMap(map);
+		List<Recommend> list = ctmCaseBiz.queryByMap(map);
 		if( list.size() > 0 && null != list){
 			map.clear();
 			map.put("recommendIndex", thisObj.getRecommendIndex());
 			map.put("updPerson", getCreater());
 			map.put("id", list.get(0).getId());
-			weddingPhotoBiz.updRecommend(map);
+			ctmCaseBiz.updRecommend(map);
 		}	
 	}
 
@@ -214,34 +204,20 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 		areaList = areaIslandBiz.queryAreaByMap(map);
 	}
 	
-	private void getRmdAreaList(){
-		map.clear();
-		map.put("valid", 1);
-		map.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
-		recommendList = recommendBiz.queryByMap(map);
-		if(recommendList.size() > 0){
-			for (Recommend rmd : recommendList) {
-				int areaId = rmd.getAreaId();
-				Area obj = areaIslandBiz.queryAreaById(areaId);
-		    	areaList.add(obj);
-			}
-		}
-	}
-	
 	/**
 	 * 根据传入的areaId,动态获取岛屿
 	 * @throws Exception
 	 */
 	public void getIslandSelect() throws Exception{
-		map.clear();
-		map.put("areaId", areaId);
-		map.put("valid", 1);
-		islandList = areaIslandBiz.queryIslandByMap(map);
-		JSONSerializer	serializer = new JSONSerializer();
-		serializer.write(islandList);
-		response.setContentType("text/xml;charset=utf-8");
-		Writer writer = response.getWriter();
-		writer.write(serializer.toString());
+//		map.clear();
+//		map.put("areaId", areaId);
+//		map.put("valid", 1);
+//		islandList = areaIslandBiz.queryIslandByMap(map);
+//		JSONSerializer	serializer = new JSONSerializer();
+//		serializer.write(islandList);
+//		response.setContentType("text/xml;charset=utf-8");
+//		Writer writer = response.getWriter();
+//		writer.write(serializer.toString());
 	}
 	
 	public List<Island> getIslandList() {

@@ -1,4 +1,4 @@
-package com.islandback.action.weddingphoto;
+package com.islandback.action.customercase;
 
 
 
@@ -34,11 +34,11 @@ import com.islandback.web.util.UploadImgUtils;
 import com.opensymphony.xwork2.ActionSupport;
 
 //@SuppressWarnings("serial")
-@Namespace("/weddingphoto/area")
+@Namespace("/customercase/area")
 @ResultPath("/WEB-INF")
 public class ArearecommendAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
-	private Recommend recommend;//首页主推
+	private Recommend recommend;
 	private Integer packageType=1;
 	private Integer id;
 	private File image;
@@ -91,13 +91,14 @@ public class ArearecommendAction extends ActionSupport {
 		
 		recommend.setCreatePerson(getCreater());
 		int now = (int)(System.currentTimeMillis()/1000);
-		recommend.setModuleId(ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
+		recommend.setModuleId(ModuleEnum.CUSTOMER_CASE_FACE_VIDEO_RECOMMEND);
 		if(image != null ){
 			recommend.setImgUrl(UploadImgUtils.getImgUrl(image, getCreater()));
 		}
 		recommend.setCreatePerson(getCreater());
 		recommend.setCreateTime(now);
 		recommend.setValid(1);
+		recommend.setAreaName(areaIslandBiz.queryAreaById(recommend.getAreaId()).getName());
 		recommend.setTypeId(recommendType);
 		recommend.setTypeName(recommendTypeName);
 		this.recommendBiz.addMasterRecommend(recommend);
@@ -164,7 +165,7 @@ public class ArearecommendAction extends ActionSupport {
 			pageSize = 5;
 		}
 		Map<String,Object> params = new HashMap<String,Object>(0);
-		params.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
+		params.put("moduleId", ModuleEnum.CUSTOMER_CASE_FACE_VIDEO_RECOMMEND);
 		params.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
@@ -172,14 +173,12 @@ public class ArearecommendAction extends ActionSupport {
 		params.put("begin", page.getBegin());
 		params.put("size", page.getPageSize());
 		params.put("typeId", recommendType);
-		params.put("content", "1");
 		List<Recommend> list = recommendBiz.queryByMap(params);
 		if(list != null && list.size()>0){
 			Map<String,Object> countParam = new HashMap<String,Object>(0);
-			countParam.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
+			countParam.put("moduleId", ModuleEnum.CUSTOMER_CASE_FACE_VIDEO_RECOMMEND);
 			countParam.put("valid", 1);
 			countParam.put("typeId", recommendType);
-			countParam.put("content", "1");
 			this.totalSize = recommendBiz.countByMap(countParam);
 		}else{
 			this.totalSize=0;

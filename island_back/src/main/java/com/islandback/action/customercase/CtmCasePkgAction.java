@@ -1,4 +1,4 @@
-package com.islandback.action.weddingphoto;
+package com.islandback.action.customercase;
 
 
 
@@ -44,7 +44,7 @@ import com.opensymphony.xwork2.ActionSupport;
  *婚纱摄影套餐action
  *
  */
-public class WdppackageAction extends ActionSupport  {
+public class CtmCasePkgAction extends ActionSupport  {
 	private static final long serialVersionUID = 1L;
 
 	private IslandPackage wdpPackage;

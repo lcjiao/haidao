@@ -67,5 +67,21 @@ public class CustomerCaseBiz {
 	public Integer countByMap(Map<String,Object> params){
 		return this.recommendDao.countByMap(params);
 	}
+
+	public Integer addRecommend(Recommend recommend) {
+		return this.recommendDao.insert(recommend);
+	}
+
+	public Integer updRecommend(Map<String, Object> map) {
+		return this.recommendDao.updateByMap(map);
+	}
+
+	public Recommend queryById(Integer id) {
+		return this.recommendDao.queryById(id);
+	}
+
+	public Integer updateRecommend(Recommend recommend) {
+		return this.recommendDao.update(recommend);
+	}
 	
 }

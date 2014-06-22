@@ -378,6 +378,7 @@ public class TeampkgAction extends ActionSupport  {
 	private void doKepianList() {
 		map.clear();
 		map.put("packageType", ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO_WORKER);
+		map.put("packageId", wkmId);
 		map.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
