@@ -60,6 +60,8 @@
 	<tfoot>
 		<td>
 			<input type=button  value="保存" id="save"/>
+			<input type=button  value="返回" id="reset"/>
+			
 		 </td>
 </tfoot>
 </table>
@@ -70,7 +72,7 @@
 <script>
 	$(function(){
 		$("#save").bind('click',submitSave);
-		$("#reset").bind('click',resetCreate);
+		$("#reset").bind('click',resetData);
 		$('input[type="button"],input[type="checkbox"],input[type="radio"]').css({
 		    'cursor':'pointer'});
 		//ie 按钮修正 input type=button:文本垂直对齐
@@ -86,7 +88,10 @@
 		$("#form").submit();
 	}
 	
-	
+	function resetData(){
+		var link = "${ctx}/guestqa/guestqa!tolist.action";
+		window.location.href = link; 
+	}
 	
 	
 </script>

@@ -51,7 +51,7 @@
 		$("#role_sel option[value='"+roleId+"']").attr('selected',true);
 		
 		$("#save").bind('click',submitSave);
-		$("#reset").bind('click',resetCreate);
+		$("#reset").bind('click',resetData);
 		$("#role_sel").bind('change',setRoleName);
 		$('input[type="button"],input[type="checkbox"],input[type="radio"]').css({
 		    'cursor':'pointer'});
@@ -98,6 +98,11 @@
 		}
 		return true;
 		
+	}
+	
+	function resetData(){
+		var url =  "${ctx}/right/backuser/backuser!list.action";
+		window.location.href = url; 
 	}
 	
 </script>

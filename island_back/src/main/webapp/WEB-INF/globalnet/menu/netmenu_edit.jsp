@@ -25,7 +25,7 @@
 		
 		<tr>
 			<td>排序</td>
-			<td><input type=text class="text" value="${index}" id="index_num" name="index"  style="_width:316px;"/><span style="color:red;">顺序调整为对调方式</span></td>
+			<td><input type=text class="text" value="${index}" id="index_num" name="index"  style="_width:316px;"/><!-- <span style="color:red;">顺序调整为对调方式</span> --></td>
 		</tr>
 		
 	</tbody>	
@@ -35,7 +35,9 @@
 <table class="creatcustomer_tfoot" width="100%">
 	<tfoot>
 		<tr>
-		<td><input type=button  value="更新" id="save"/><input type=button  value="返回" id="reset"/></td>
+		<td><input type=button  value="更新" id="save"/>
+			<input type=button  value="返回" id="reset"/>
+		</td>
 		</tr>
 	</tfoot>
 </table>
@@ -44,7 +46,7 @@
 <script>
 	$(function(){
 		$("#save").bind('click',submitSave);
-		$("#reset").bind('click',resetCreate);
+		$("#reset").bind('click',resetData);
 		//ie 按钮修正 input type=button:文本垂直对齐
 	    if ($.browser.msie && ($.browser.version <9) && !$.support.style) {
 			$('input[type="button"]').addClass('ie6btn');
@@ -73,6 +75,11 @@
 		}else{
 			return true;
 		}
+	}
+	
+	function resetData(){
+		var link = "${ctx}/globalnet/menu/netmenu!list.action";
+		window.location.href = link; 
 	}
 	
 </script>

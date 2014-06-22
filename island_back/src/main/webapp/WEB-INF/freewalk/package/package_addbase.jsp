@@ -75,6 +75,7 @@
 <table class="creatcustomer_tfoot" width="100%">
 	<tfoot>
 		<td>
+			<input type=button  value="返回" id="back_list" onclick="resetData()"/>
 			<input type=button  value="保存并返回" id="add_base" onclick="addBaseAndToList()"/>
 			<input type=button  value="保存并添加详情" id="add_detail" onclick="addBaseAndToDetail()"/>
 		</td>
@@ -154,5 +155,10 @@ function addBaseAndToDetail(){
 	$("#action_type").val(2);
 	$("#form").submit();
 }	
+
+function resetData(){
+	var url = "${ctx}/freewalk/package/package!list.action";
+	window.location.href = url;
+}
 </script>
 </html>

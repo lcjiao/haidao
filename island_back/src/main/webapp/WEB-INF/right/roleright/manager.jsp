@@ -40,6 +40,7 @@
 	<input type="hidden" id="right_ids" name="rightIds" value=""/>
 </form>
 <input type="button" value="提交权限" id="btn"/>
+<input type="button" value="返回" id="reset" onclick="resetCreate()"/>
 </body>
 <script type="text/javascript">
 
@@ -87,6 +88,11 @@ $(function(){
 		});
 		$("#right_ids").val(menuIds);
 		$("#form").submit();
+	}
+	
+	function resetCreate(){
+		var url = "${ctx}/right/role/role!reset.action";
+		window.location.href = url;
 	}
 </script>
 </html>

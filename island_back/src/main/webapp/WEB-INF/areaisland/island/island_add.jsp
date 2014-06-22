@@ -72,7 +72,7 @@
 		<tr>
 			<td>岛屿简介</td>
 			<td>
-				<textarea name="content" style="width:700px;height:200px;">KindEditor1</textarea>
+				<textarea name="content" style="width:700px;height:200px;"></textarea>
 			</td>
 		</tr>
 	</tbody>	
@@ -82,6 +82,7 @@
 	<tfoot>
 		<td>
 			<input type=button  value="保存" id="save"/>
+			<input type=button  value="返回" id="reset"/>
 		 </td>
 </tfoot>
 </table>
@@ -93,7 +94,7 @@
 	$(function(){
 		$("#area_id").bind('change',setAreaName);
 		$("#save").bind('click',submitSave);
-		$("#reset").bind('click',resetCreate);
+		$("#reset").bind('click',resetData);
 		$('input[type="button"],input[type="checkbox"],input[type="radio"]').css({
 		    'cursor':'pointer'});
 		//ie 按钮修正 input type=button:文本垂直对齐
@@ -146,6 +147,9 @@
 		});
 	}
 	
-	
+	function resetData(){
+		var url =  "${ctx}/areaisland/island/island!list.action";
+		window.location.href = url; 
+	}
 </script>
 </html>

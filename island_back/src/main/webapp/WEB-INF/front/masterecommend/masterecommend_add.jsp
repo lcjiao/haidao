@@ -40,7 +40,7 @@
 	<tfoot>
 		<td>
 			<input type=button  value="保存" id="save" onclick="checkData()"/>
-			<input type=button  value="返回1" id="reset" onclick="resetDate()"/> 
+			<input type=button  value="返回" id="reset" onclick="resetDate()"/> 
 		</td>
 </tfoot>
 </table>

@@ -22,7 +22,6 @@
 					<option value="1" >logo图</option>
 					<option value="2" >套餐图片集</option>
 					<option value="3" >套餐大图</option>
-					<option value="4" >套餐小图</option>
 				</select>
 			</td>
 		</tr>
@@ -47,8 +46,7 @@
 	<tfoot>
 		<td>
 			<input type=button  value="保存" id="save" onclick="checkData()"/>
-			<input style="display: none" type=button  value="继续添加" id="add_more"/>
-			<!-- <input type=button  value="返回" id="reset"/> -->
+			<input type=button  value="返回" id="reset" onclick="resetData()"/> 
 		</td>
 </tfoot>
 </table>
@@ -71,6 +69,12 @@ function checkData(){
 	}else{
 		$("#form").submit();
 	}
+}
+
+function resetData(){
+	var packageId = $("#p_id").val();
+	var url =  "${ctx}/freewalk/package/package!toImgList.action?id="+packageId;
+	window.location.href = url; 
 }
 </script>
 </html>

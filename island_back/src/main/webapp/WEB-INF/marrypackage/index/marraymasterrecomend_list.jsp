@@ -39,10 +39,11 @@
 				<table class="datalist ask_rel" width="100%">
 					<thead>
 						<tr>
-							<td>标题</td>
+							<!-- <td>标题</td>
 							<td>岛屿</td>
-							<td>价格</td>
-							<td>图片</td>
+							<td>价格</td> -->
+							<td>大图片</td>
+							<td>小图片</td>
 							<td>链接</td>
 							<td>排序</td>
 							<td>操作</td>
@@ -51,8 +52,8 @@
 					<tbody id="r_list">
 						<c:forEach var="recommend" items="${recommendList}">
 							<tr >
-								<td style="text-align:center;" title="${recommend.title}">
-									<%-- <c:out value="${recommend.title}"></c:out> --%>
+								<%-- <td style="text-align:center;" title="${recommend.title}">
+									<c:out value="${recommend.title}"></c:out>
 									<c:out value="${fn:substring(recommend.title,0,20)}"/>
 								</td>
 								<td style="text-align:center;">
@@ -60,9 +61,12 @@
 								</td>
 								<td style="text-align:center;">
 									<c:out value="${recommend.price}"></c:out>
+								</td> --%>
+								<td style="text-align:center;">
+									<img style="width:150px;height:120px;" alt="" src="${recommend.bigImgUrl}">
 								</td>
 								<td style="text-align:center;">
-									<img style="width:150px;height:120px;" alt="" src="${recommend.imgUrl}">
+									<img style="width:150px;height:120px;" alt="" src="${recommend.smallImgUrl}">
 								</td>
 								<td style="text-align:center;">
 									<c:out value="${recommend.linkUrl}"></c:out>

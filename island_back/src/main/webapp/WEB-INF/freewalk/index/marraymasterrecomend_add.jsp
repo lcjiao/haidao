@@ -13,7 +13,7 @@
 <div  class="creatcustomer" >
 <table class="datalist" width="100%">
 	<tbody>
-		<tr>
+		<%-- <tr>
 			<td>标题</td>
 			<td><input type=text class="text" value="" id="title" name="recommend.title"  style="_width:316px;"/></td>					
 		</tr>
@@ -39,10 +39,14 @@
 			<td>价格</td>
 			<td><input type=text class="text" value="" id="price" name="recommend.price"  style="_width:316px;"/></td>					
 		</tr>
-		
+		 --%>
 		<tr>
-			<td>图片</td>
+			<td>大图片</td>
 			<td><input type="file" name="image"/></td>					
+		</tr>
+		<tr>
+			<td>小图片</td>
+			<td><input type="file" name="smallImage"/></td>					
 		</tr>
 		<tr>
 			<td>链接</td>
@@ -62,8 +66,7 @@
 	<tfoot>
 		<td>
 			<input type=button  value="保存" id="save" onclick="checkData()"/>
-			<input style="display: none" type=button  value="继续添加" id="add_more"/>
-			<!-- <input type=button  value="返回" id="reset"/> -->
+			<input type=button  value="返回" id="reset" onclick="resetData()"/> 
 		</td>
 </tfoot>
 </table>
@@ -73,8 +76,8 @@
 <script>
 
 $(function(){
-	$("#area_id").bind('change',setAreaName);
-	$("#island_id").bind('change',setIslandName);
+	//$("#area_id").bind('change',setAreaName);
+	//$("#island_id").bind('change',setIslandName);
 });
 
 function setAreaName(){
@@ -115,6 +118,11 @@ function checkData(){
 	}else{
 		$("#form").submit();
 	}
+}
+
+function resetData(){
+	var url =  "${ctx}/freewalk/index/marraymasterrecomend!tolist.action";
+	window.location.href = url; 
 }
 </script>
 </html>

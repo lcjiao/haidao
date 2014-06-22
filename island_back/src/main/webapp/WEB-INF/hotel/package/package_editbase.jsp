@@ -75,6 +75,7 @@
 	<tfoot>
 		<td>
 			<input type=button  value="修改" id="add_base" onclick="editBase()"/>
+			<input type=button  value="返回" id="back_list" onclick="resetData()"/>
 		</td>
 </tfoot>
 </table>
@@ -163,6 +164,9 @@ function setIslandName(){
 function editBase(){
 	$("#form").submit();
 }	
-
+function resetData(){
+	var url = "${ctx}/hotel/package/package!list.action";
+	window.location.href = url;
+}
 </script>
 </html>
