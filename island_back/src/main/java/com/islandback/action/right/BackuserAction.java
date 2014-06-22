@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ResultPath;
 
@@ -16,6 +17,7 @@ import com.islandback.action.base.BaseAction;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
 import com.islandback.web.util.RequestProcc;
+import com.islandback.web.util.SessionListener;
 import com.islandback.web.util.Struts2Utils;
 import com.jcl.core.module.ModuleRegistry;
 import com.opensymphony.xwork2.ActionSupport;
@@ -38,6 +40,7 @@ public class BackuserAction extends BaseAction{
 	private Integer roleId;
 	private String roleName;
 	private Integer userId;
+	private String newPass;
 	public Integer getPageNo() {
 		return pageNo;
 	}
@@ -387,4 +390,67 @@ public class BackuserAction extends BaseAction{
 		List<Role> list = this.roleBiz.queryRoleByMap(params);
 		roleList = list;
 	}
+	
+	
+	public String toChangePass(){
+		return "changepass";
+	}
+	
+	public void changePass(){
+		if( !newPassOne.equals(newPass)){
+			Struts2Utils.renderText("密码不一致");
+			return;
+		}
+		SessionInfo loginSession = RequestProcc.getSessionInfo();
+		User loginUser = null;
+		if( loginSession != null ){
+			loginUser = loginSession.getUser();
+		}else{
+			Struts2Utils.renderText("请登录");
+			return;
+		}
+		userName = loginUser.getUserName();
+
+		Map<String,Object> params = new HashMap<String,Object>(0);
+		params.put("userName", userName);
+		params.put("userPass", userPass);
+		List<User> list = roleBiz.queryUserByMap(params);
+		if(list == null || list.isEmpty()){
+			Struts2Utils.renderText("密码不正确");
+			return;
+		}else{
+			User user = list.get(0);
+			Map<String,Object> passParams = new HashMap<String,Object>(0);
+			passParams.put("id", user.getId());
+			passParams.put("userPass", newPass);
+			roleBiz.updUser(passParams);
+		}
+		
+		SessionInfo sessinInfo = new SessionInfo();
+		User user = list.get(0);
+		sessinInfo.setUser(user);
+		RequestProcc.setSessionInfo(sessinInfo);
+		SessionListener.isAlreadyEnter(RequestProcc.getSession(), user.getUserName() );
+		Struts2Utils.renderText("密码修改成功");
+	}
+
+	public String getNewPass() {
+		return newPass;
+	}
+
+	public void setNewPass(String newPass) {
+		this.newPass = newPass;
+	}
+	
+	private String newPassOne;
+	public String getNewPassOne() {
+		return newPassOne;
+	}
+
+	public void setNewPassOne(String newPassOne) {
+		this.newPassOne = newPassOne;
+	}
+	
+	
+	
 }
