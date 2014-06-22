@@ -72,7 +72,7 @@ public class NetmenuAction extends BaseAction {
 		addObj.setCreateTime(now);
 		addObj.setRecommendIndex(index);
 		addObj.setValid(1);
-		changeIndexBySys(creater);
+		//changeIndexBySys(creater);
 		this.globalNetBiz.addMasterRecommend(addObj);
 		doList();
 		return "list";
@@ -116,7 +116,7 @@ public class NetmenuAction extends BaseAction {
 		params.put("updPerson", creater);
 		params.put("id", id);
 		
-		changeIndexBySys(creater);
+		//changeIndexBySys(creater);
 		
 		this.globalNetBiz.updRecommend(params);		
 		doList();

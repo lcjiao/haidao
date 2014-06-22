@@ -42,8 +42,7 @@
 	<tfoot>
 		<td>
 			<input type=button  value="保存" id="save" onclick="checkData()"/>
-			<input style="display: none" type=button  value="继续添加" id="add_more"/>
-			<!-- <input type=button  value="返回" id="reset"/> -->
+			<input type=button  value="返回" id="reset" onclick="resetData()"/> 
 		</td>
 </tfoot>
 </table>
@@ -65,6 +64,10 @@ function checkData(){
 	}else{
 		$("#form").submit();
 	}
+}
+function resetData(){
+	var link = "${ctx}/globalnet/recommendfour/recommendfour!tolist.action";
+	window.location.href = link; 
 }
 </script>
 </html>

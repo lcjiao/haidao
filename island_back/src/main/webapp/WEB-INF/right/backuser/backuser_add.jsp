@@ -39,7 +39,8 @@
 <input type="hidden" value=" " id="role_name" name="roleName"/>
 <table class="creatcustomer_tfoot" width="100%">
 	<tfoot>
-		<td><input type=button  value="保存" id="save"/><input style="display: none" type=button  value="继续添加" id="add_more"/><input type=button  value="返回" id="reset"/></td>
+		<td><input type=button  value="保存" id="save"/>
+		<input type=button  value="返回" id="reset"/></td>
 </tfoot>
 </table>
 </form>
@@ -47,7 +48,7 @@
 <script>
 	$(function(){
 		$("#save").bind('click',submitSave);
-		$("#reset").bind('click',resetCreate);
+		$("#reset").bind('click',resetData);
 		$("#role_sel").bind('change',setRoleName);
 		$('input[type="button"],input[type="checkbox"],input[type="radio"]').css({
 		    'cursor':'pointer'});
@@ -94,6 +95,12 @@
 		return true;
 		
 	}
+	
+	function resetData(){
+		var url =  "${ctx}/right/backuser/backuser!list.action";
+		window.location.href = url; 
+	}
+
 	
 </script>
 </html>

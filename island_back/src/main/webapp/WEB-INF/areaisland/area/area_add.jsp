@@ -25,8 +25,7 @@
 <table class="creatcustomer_tfoot" width="100%">
 	<tfoot>
 		<td><input type=button  value="保存" id="save"/>
-		   <input style="display: none" type=button  value="继续添加" id="add_more"/>
-		   <!-- <input type=button  value="返回" id="reset"/> -->
+		   <input type=button  value="返回" id="reset"/> 
 		  </td>
 </tfoot>
 </table>
@@ -35,7 +34,7 @@
 <script>
 	$(function(){
 		$("#save").bind('click',submitSave);
-		$("#reset").bind('click',resetCreate);
+		$("#reset").bind('click',resetData);
 		$('input[type="button"],input[type="checkbox"],input[type="radio"]').css({
 		    'cursor':'pointer'});
 		//ie 按钮修正 input type=button:文本垂直对齐
@@ -61,6 +60,11 @@
 		}
 		return true;
 		
+	}
+	
+	function resetData(){
+		var url =  "${ctx}/areaisland/area/area!list.action";
+		window.location.href = url; 
 	}
 	
 </script>
