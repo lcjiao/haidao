@@ -10,10 +10,21 @@
 
 </head>
 <body>
+<table class="searchbar" width="100%">
+	<thead>
+		 <tr>
+			<td><font size="3" color="red">当前位置:密码修改页</font></td>
+		</tr>
+	</thead>
+</table>
 <form action="${ctx}/right/backuser/backuser!changePass.action" id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" width="100%">
 	<tbody>
+		<tr>
+			<td>当前用户</td>
+			<td><input type=text class="text" value="${userName}" id="user_name" name="userName"  style="_width:316px;"/></td>					
+		</tr>
 		<tr>
 			<td>旧密码</td>
 			<td><input type=text class="text" value="" id="old_pass" name="userPass"  style="_width:316px;"/></td>					
@@ -41,6 +52,11 @@
 	$(function(){
 		$("#save").bind('click',submitSave);
 		$("#reset").bind('click',resetData);
+		var userName = '${userName}';
+		$("#user_name").val(userName);
+		$("#old_pass").val("");
+		$("#user_pass_1").val("");
+		$("#user_pass_2").val("");
 		  
 	});
 	
