@@ -153,29 +153,50 @@ public class ModuleEnum {
 	/**
 	 * 婚纱摄影套餐首页图片推荐(最上面的大图片)
 	 */
-	public static final Integer WEDDING_PHOTO_FACE_TOP_RECOMMEND=101;
+	public static final Integer WEDDING_PHOTO_FACE_TOP_RECOMMEND = 101;
 	
 	/**
 	 * 婚纱摄影套餐图片推荐
 	 */
-	public static final Integer WEDDING_PHOTO_FACE_RECOMMEND=102;
+	public static final Integer WEDDING_PHOTO_FACE_RECOMMEND = 102;
 	
 	/**
 	 * 婚纱摄影套餐图 最新套餐推荐
 	 */
-	public static final Integer WEDDING_PHOTO_FACE_NEW_RECOMMEND=103;
+	public static final Integer WEDDING_PHOTO_FACE_NEW_RECOMMEND = 103;
 
 	/**
-	 * 婚纱摄影套餐左边图片推荐(下边小三块)
+	 * 婚纱摄影套餐单面推荐(套餐注意事项)就是一个富文本
 	 */
-	public static final Integer WEDDING_PHOTO_FACE_LEFT2_RECOMMEND=104;
+	public static final Integer WEDDING_PHOTO_SINGLE_PAGE_RECOMMEND = 104;
 	/**
 	 * 婚纱摄影区域推荐module_id
 	 */
-	public static final Integer WEDDING_PHOTO_AREA_RECOMMEND=105;
-
+	public static final Integer WEDDING_PHOTO_AREA_RECOMMEND = 105;
+	
 	/**
-	 * 套餐类型 1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐  5:自由行套餐'
+	 * 摄影团队推荐
+	 */
+	public static final Integer PHOTO_TEAM_RECOMMEND = 106;
+	
+	/**
+	 * 客片案例首页图片推荐 (最上面大图) 
+	 */
+	public static final Integer CUSTOMER_CASE_TOP_RECOMMEND = 107;
+	
+	/**
+	 * 客片案例主推新产品
+	 */
+	public static final Integer CUSTOMER_CASE_FACE_VIDEO_RECOMMEND = 108;
+	
+	/**
+	 * 客片案例副推新产品(视频下面的图片)
+	 */
+	public static final Integer CUSTOMER_CASE_FACE_IMAGE_RECOMMEND = 109;
+	
+	
+	/**
+	 * 套餐类型 1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐  5:自由行套餐 6：团队'
 	 */
 	public static final Integer PACKAGE_TYPE_MARRY = 1;
 	

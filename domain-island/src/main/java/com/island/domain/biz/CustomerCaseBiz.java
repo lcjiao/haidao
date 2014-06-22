@@ -1,9 +1,14 @@
 package com.island.domain.biz;
 
+import java.util.List;
+import java.util.Map;
+
 import com.island.domain.dal.CasePicMappingIbatisDAOImpl;
 import com.island.domain.dal.CaseVideoMappingIbatisDAOImpl;
 import com.island.domain.dal.CustomerCaseIbatisDAOImpl;
 import com.island.domain.dal.IslandPackageIbatisDAOImpl;
+import com.island.domain.dal.RecommendIbatisDAOImpl;
+import com.island.domain.model.Recommend;
 
 public class CustomerCaseBiz {
 
@@ -15,6 +20,12 @@ public class CustomerCaseBiz {
 	
 	private CaseVideoMappingIbatisDAOImpl caseVideoMappingDao;
 
+	private RecommendIbatisDAOImpl recommendDao;
+
+	public void setRecommendDao(RecommendIbatisDAOImpl recommendDao) {
+		this.recommendDao = recommendDao;
+	}
+	
 	public IslandPackageIbatisDAOImpl getIslandPackageDao() {
 		return islandPackageDao;
 	}
@@ -46,6 +57,15 @@ public class CustomerCaseBiz {
 	public void setCaseVideoMappingDao(
 			CaseVideoMappingIbatisDAOImpl caseVideoMappingDao) {
 		this.caseVideoMappingDao = caseVideoMappingDao;
+	}
+	
+
+	public List<Recommend> queryByMap(Map<String,Object> params){
+		return this.recommendDao.queryByMap(params);
+	}
+	
+	public Integer countByMap(Map<String,Object> params){
+		return this.recommendDao.countByMap(params);
 	}
 	
 }

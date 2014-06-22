@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>婚纱摄影下边小三块图片推荐</title>
+<title>摄影团队(师)推荐</title>
 <link rel="stylesheet"  href='${ctx}/css/base.css' type="text/css" media="all" />
 <link rel="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
@@ -13,47 +13,37 @@
 <%@ include file="/common/kindeditor.jsp"%>
 </head>
 <body>
-<form action="${ctx}/weddingphoto/wdpleft2/wdpleft2!addWdpRecommend.action" enctype="multipart/form-data" id="form" method="post">
+<form action="${ctx}/wdpphototeam/wdpteam/wdpteam!addWdpTeamInfo.action" enctype="multipart/form-data" id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" style="width: 100%">
 	<tbody>
+		<tr>
+			<td>标题:</td>
+			<td>
+				<input type=text class="text" value="" id="title" name="recommend.title" />
+			</td>
+		</tr>
 		<tr>
 			<td>推荐图片</td>
 			<td><input type="file" name="image"/>
 				<span style="color: red"><b>*</b></span>
 			</td>					
 		</tr>
-	<!-- 	<tr>
-			<td>所属区域</td>
-			<td>
-			<select id="area_id" name="recommend.areaId" style="width: 80px">
-					<option value="0" selected="selected">--请选择--</option>
-					<c:forEach var="area" items="${areaList}">
-							<option value="${area.id}" >${area.name}</option>
-				   </c:forEach>
-				</select>
-				<span style="color: red"><b>*</b></span>
-			</td>
-		</tr>
-		<tr>
-			<td>所属岛屿</td>
-			<td>
-			<select id="island_id" name="recommend.islandId" style="width: 80px" disabled="disabled">
-				</select>
-			</td>
-		</tr>
-		 -->
 		<tr>
 			<td>图片链接</td>
-			<td><input type="text" class="text" id="link_url" name="recommend.linkUrl"/></td>	
+			<td>
+				<input type=text class="text" value="" id="link_url" name="recommend.linkUrl" />
+			</td>
 		</tr>
 		<tr>
-			<td>标题</td>
-			<td><input type=text class="text" value="" id="title" name="recommend.title"  style="_width:316px;"/></td>
+			<td>创作人</td>
+			<td>
+				<input type=text class="text" value="" id="recommend_desc" name="recommend.recommendDesc" />
+			</td>
 		</tr>
 		<tr>
-			<td>时间</td>
-			<td><input type=text class="text" value="" id="recommend_time" name="recommend.recommendTime"  style="_width:316px;"/></td>
+			<td>创作人简介</td>
+			<td><input type="text" class="text" id="content" name="recommend.content"/></td>	
 		</tr>
 		<tr>
 			<td>排序</td>
@@ -79,7 +69,7 @@
 </body>
 <script>
 	$(function(){
-		$("#area_id").bind('change',setIsland);
+		//$("#area_id").bind('change',setIsland);
 		$("#save_return").bind('click',save_return);
 		$("#save_add").bind('click',save_add);
 				  
@@ -94,7 +84,7 @@
 			islandSelect.append("<option  value=\"0\">"+"-请选择-"+"</option>");
 			var data = {"areaId":areaId};
 			$.ajax({
-				url:"${ctx}/weddingphoto/wdpleft/wdpleft!getIslandSelect.action",
+				url:"${ctx}/wdpphototeam/wdpteam/wdpteam!getIslandSelect.action",
 				type: "POST",
 		        dataType: "json",
 		        data: data,

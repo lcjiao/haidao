@@ -8,6 +8,7 @@ import com.island.domain.biz.ModuleTypeBiz;
 import com.island.domain.biz.RecommendBiz;
 import com.island.domain.biz.GlobalNetBiz;
 import com.island.domain.biz.MarrayPackageBiz;
+import com.island.domain.biz.WdpTeamBiz;
 import com.island.domain.biz.WeddingPhotoBiz;
 import com.island.domain.biz.RoleBiz;
 import com.jcl.core.module.annotation.Bean;
@@ -46,6 +47,12 @@ public interface DomainIslandModule {
 	 */
 	@Bean("weddingPhotoBiz")
 	public WeddingPhotoBiz getWeddingPhotoBiz();
+	
+	/**
+	 * 摄影团队(师)业务
+	 */
+	@Bean("wdpTeamBiz")
+	public WdpTeamBiz getWdpTeamBiz();
 	
 	//test
 

@@ -27,7 +27,7 @@
 </table>
 <input type="hidden" value="${pageNo}" name="pageNo" id="page_no"/>
 <input type="hidden" id = "wdp_id" name="wdpPackage.id" value='${wdpPackage.id }'/>
-<s:debug></s:debug>
+
 </form>
 <table class="customlist" style="width: 100%">
 <thead>
@@ -170,8 +170,7 @@
 	var weddingphotoId = $('#wdp_id').val();
 	
 	function newCreate(){
-		var packageId =$("#p_id").val();
-		var url = "${ctx}/weddingphoto/wdppackage/wdppackage!toAddKepian.action?id="+packageId;
+		var url = "${ctx}/weddingphoto/wdppackage/wdppackage!toAddKepian.action?wdpId="+weddingphotoId;
 		window.location.href = url;
 	};
 	

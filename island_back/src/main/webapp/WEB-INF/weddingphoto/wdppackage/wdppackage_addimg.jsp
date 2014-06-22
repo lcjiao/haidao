@@ -29,7 +29,7 @@
 		</tr>
 		<tr>
 			<td>描述</td>
-			<td><input type=text class="text" value="" id="desc" name="pkgImgRelation.imgDesc"  style="_width:316px;"/></td>					
+			<td><input type=text class="text" value="" id="desc" name="pkgImgRelation.imgDes"  style="_width:316px;"/></td>					
 		</tr>
 		<tr>
 			<td>排序</td>

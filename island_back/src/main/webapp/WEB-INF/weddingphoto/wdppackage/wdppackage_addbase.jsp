@@ -17,12 +17,34 @@
 <table class="datalist" style="width: 100%">
 	<tbody>
 		<tr>
+			<td>区域</td>
+			<td>
+			<select id="area_id" name="wdpPackage.areaId">
+					<option value="0" selected="selected">--请选择--</option>
+					<c:forEach var="area" items="${areaList}">
+							<option value="${area.id}" >${area.name}</option>
+				   </c:forEach>
+				</select>
+			</td>
+		</tr>
+		<tr>
 			<td>所属岛屿</td>
 			<td>
 				<select id="island_id" name="wdpPackage.islandId">
 					<option value="0" selected="selected">--请选择--</option>
 					<c:forEach var="island" items="${islandList}">
 							<option value="${island.id}" >${island.name}</option>
+				   </c:forEach>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>所属类别</td>
+			<td>
+				<select id="package_type_id" name="wdpPackage.typeId">
+					<option value="0" selected="selected">--请选择--</option>
+					<c:forEach var="packageType" items="${packageTypeList}">
+							<option value="${packageType.id}" >${packageType.title}</option>
 				   </c:forEach>
 				</select>
 			</td>
@@ -63,6 +85,64 @@
 
 </body>
 <script>
+$(function(){
+	$("#area_id").bind('change',setAreaName);
+	$("#island_id").bind('change',setIslandName);
+});
+
+function setAreaName(){
+	var areaName=$("#area_id").find("option:selected").text();  
+	var areaId = $("#area_id").val();
+	$("#area_name").val(areaName);
+	
+	
+	$.ajax({
+		type:"get",
+		url:"${ctx}/marrypackage/index/marraymasterrecomend!getIslandByArea.action?areaId="+areaId,
+		dataType:"json",
+		success:function(json){
+			if( json.length > 0){
+				var html = "";
+				html +="<option value='0' selected='selected'>--请选择--</option>";
+				for( var i=0 ; i<json.length; i++){
+					html +="<option value='"+json[i].id+"'>"+json[i].name+"</option>";
+				}
+				$("#island_id").html(html);
+			}else{
+				var html = "";
+				html +="<option value='0' selected='selected'>--请选择--</option>";
+				$("#island_id").html(html);
+			}
+		}
+	});
+}
+
+function setIslandName(){
+	var islandName=$("#island_id").find("option:selected").text();  
+	var islandId = $("#island_id").val();
+	$("#island_name").val(islandName);
+	
+	$.ajax({
+		type:"get",
+		url:"${ctx}/weddingphoto/wdppackage/wdppackage!getPackageTypeByIsland.action?islandId="+islandId,
+		dataType:"json",
+		success:function(json){
+			if( json.length > 0){
+				var html = "";
+				html +="<option value='0' selected='selected'>--请选择--</option>";
+				for( var i=0 ; i<json.length; i++){
+					html +="<option value='"+json[i].id+"'>"+json[i].title+"</option>";
+				}
+				$("#package_type_id").html(html);
+			}else{
+				var html = "";
+				html +="<option value='0' selected='selected'>--请选择--</option>";
+				$("#package_type_id").html(html);
+			}
+		}
+	});
+	
+}
 function addBaseAndToList(){
 	$("#flag").val("toList");
 	$("#form").submit();

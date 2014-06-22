@@ -15,15 +15,18 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ResultPath;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import com.jcl.core.module.ModuleRegistry;
 import com.island.domain.DomainIslandModule;
 import com.island.domain.biz.AreaIslandBiz;
+import com.island.domain.biz.ModuleTypeBiz;
 import com.island.domain.biz.WeddingPhotoBiz;
 import com.island.domain.dal.PackageKepianliuyingIbatisDAOImpl;
 import com.island.domain.model.Area;
 import com.island.domain.model.Island;
 import com.island.domain.model.IslandPackage;
+import com.island.domain.model.IslandPackageType;
 import com.island.domain.model.PackageDetailInfo;
 import com.island.domain.model.PackageImageRelation;
 import com.island.domain.model.PackageKepianliuying;
@@ -57,6 +60,7 @@ public class WdppackageAction extends ActionSupport  {
 	private Integer kplyId;
 	private Integer actionType;
 	private String detailInfo;
+	private Integer islandId;
 	
 	private File image;
 	
@@ -72,15 +76,21 @@ public class WdppackageAction extends ActionSupport  {
 	private List<Area> areaList = new ArrayList<Area>(0);
 	private List<Island> islandList = new ArrayList<Island>(0);
 	
+	private ObjectMapper mapper = new ObjectMapper();
+	
 	private List<IslandPackage> wdpPackageList = new ArrayList<IslandPackage>(0);
 	private List<PackageDetailInfo> pkgDetailInfoList = new ArrayList<PackageDetailInfo>(0);
 	private List<PackageImageRelation> wdpImgList = new ArrayList<PackageImageRelation>(0);
 	private List<PackageKepianliuying> pkgKPLYList = new ArrayList<PackageKepianliuying>(0);
-	
+	private List<IslandPackageType> packageTypeList = new ArrayList<IslandPackageType>(0);
+
 	WeddingPhotoBiz weddingPhotoBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getWeddingPhotoBiz();
 	AreaIslandBiz areaIslandBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getAreaIslandBiz();
+	
+	ModuleTypeBiz moduleTypeBiz = ModuleRegistry.getInstance()
+			.getModule(DomainIslandModule.class).getModuleTypeBiz();
 	
 	
 	private String getCreater(){
@@ -105,7 +115,6 @@ public class WdppackageAction extends ActionSupport  {
 		map.clear();
 		map.put("packageType", ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO);
 		map.put("valid", 1);
-		map.put("isOnline", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
 		page.setPageSize(pageSize);
@@ -120,6 +129,22 @@ public class WdppackageAction extends ActionSupport  {
 	
 	private void initTotalPageSize(){
 		this.totalPageSize = (totalSize - 1)/pageSize + 1;
+	}
+	
+	public void doPackageTypeList(){
+		map.clear();
+		map.put("valid", 1);
+		map.put("packageType", ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO);
+		if(wdpPackage.getAreaId() != null  && wdpPackage.getAreaId().intValue() > 0 ){
+			map.put("areaId", wdpPackage.getAreaId());
+			
+			if(wdpPackage.getIslandId() != null  && wdpPackage.getIslandId().intValue() > 0 ){
+				map.put("islandId", wdpPackage.getIslandId());
+			}
+		}
+		
+		packageTypeList = moduleTypeBiz.queryPackageTypeByMap(map);
+		
 	}
 	
 	/**
@@ -183,8 +208,9 @@ public class WdppackageAction extends ActionSupport  {
 	 * @return
 	 */
 	public String toAddBase(){
-		RequestProcc.getSession().invalidate();
+		// RequestProcc.getSession().invalidate();
 		initIslandList();
+		initAreaList();
 		return "addbase";
 	}
 	
@@ -197,9 +223,10 @@ public class WdppackageAction extends ActionSupport  {
 		wdpPackage.setCreatePerson(getCreater());
 		wdpPackage.setCreateTime(new Long(Calendar.getInstance().getTimeInMillis()/1000).intValue());
 		wdpPackage.setPackageType(ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO);
-		wdpPackage.setIslandName(getIsland().getName());
-		wdpPackage.setAreaName(getIsland().getAreaName());
-		wdpPackage.setAreaId(getIsland().getAreaId());
+		wdpPackage.setIslandName(getAreaIsland().getName());
+		wdpPackage.setAreaName(getAreaIsland().getAreaName());
+		//wdpPackage.setAreaId(getAreaIsland().getAreaId());
+		wdpPackage.setTypeName(getChildTypeName().getTitle());
 		weddingPhotoBiz.addWdpPackage(wdpPackage);
 		initAreaList();
 		if("toList".equals(flag)){
@@ -207,6 +234,7 @@ public class WdppackageAction extends ActionSupport  {
 		}
 		return "detail";
 	}
+
 	
 	/**
 	 * 进入婚纱摄影信息详细页面
@@ -244,6 +272,7 @@ public class WdppackageAction extends ActionSupport  {
 		}else{//不存在,新增此婚纱摄影套餐详细信息
 			pkgDetailInfo.setCreatePerson(getCreater());
 			pkgDetailInfo.setCreateTime(new Long(Calendar.getInstance().getTimeInMillis()/1000).intValue());
+			pkgDetailInfo.setValid(1);
 			weddingPhotoBiz.addPkgDetailInfo(pkgDetailInfo);
 		}
 		return list();
@@ -255,7 +284,9 @@ public class WdppackageAction extends ActionSupport  {
 	 */
 	public String toEditBase(){
 		wdpPackage = weddingPhotoBiz.queryWdpPackageByWdpId(wdpId);
+		initAreaList();
 		initIslandList();
+		doPackageTypeList();
 		return "editbase";
 	}
 	
@@ -264,11 +295,9 @@ public class WdppackageAction extends ActionSupport  {
 	 * @return
 	 */
 	public String editBaseInfo(){
-		Island island = areaIslandBiz.queryIslandById(wdpPackage.getIslandId());
-		wdpPackage.setAreaId(island.getAreaId());
-		wdpPackage.setAreaName(island.getAreaName());
-		wdpPackage.setIslandId(island.getId());
-		wdpPackage.setIslandName(island.getName());
+		wdpPackage.setAreaName(getAreaIsland().getAreaName());
+		wdpPackage.setIslandName(getAreaIsland().getName());
+		wdpPackage.setTypeName(getChildTypeName().getTitle());
 		wdpPackage.setUpdPerson(getCreater());
 		wdpPackage.setUpdTime(new Long(Calendar.getInstance().getTimeInMillis()/1000).intValue());
 		weddingPhotoBiz.updateWdpPackage(wdpPackage);
@@ -502,10 +531,15 @@ public class WdppackageAction extends ActionSupport  {
 		return list();
 	}
 
-	private Island getIsland() {
+	private Island getAreaIsland() {
 		return areaIslandBiz.queryIslandById(wdpPackage.getIslandId());
 	}
 	
+
+	private IslandPackageType getChildTypeName() {
+		return moduleTypeBiz.queryPackageTypeById(wdpPackage.getTypeId());
+	}
+
 	
 	private void initAreaList(){
 		map.clear();
@@ -517,6 +551,27 @@ public class WdppackageAction extends ActionSupport  {
 		map.clear();
 		map.put("valid", 1);
 		islandList = areaIslandBiz.queryIslandByMap(map);
+	}
+	
+	public void getPackageTypeByIsland() throws JsonGenerationException, JsonMappingException, IOException{
+		map.clear();
+		map.put("valid", 1);
+		map.put("packageType", ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO);
+		List<IslandPackageType >list =new ArrayList<IslandPackageType>(0);
+		if(islandId != null  && islandId.intValue() > 0 ){
+			map.put("islandId", islandId);
+			list = moduleTypeBiz.queryPackageTypeByMap(map);
+		}
+		
+		Struts2Utils.renderJson(mapper.writeValueAsString(list));
+	}
+	
+	public List<IslandPackageType> getPackageTypeList() {
+		return packageTypeList;
+	}
+
+	public void setPackageTypeList(List<IslandPackageType> packageTypeList) {
+		this.packageTypeList = packageTypeList;
 	}
 	
 	public List<Island> getIslandList() {
@@ -686,6 +741,14 @@ public class WdppackageAction extends ActionSupport  {
 
 	public void setKplyId(Integer kplyId) {
 		this.kplyId = kplyId;
+	}
+
+	public Integer getIslandId() {
+		return islandId;
+	}
+
+	public void setIslandId(Integer islandId) {
+		this.islandId = islandId;
 	}
 
 }

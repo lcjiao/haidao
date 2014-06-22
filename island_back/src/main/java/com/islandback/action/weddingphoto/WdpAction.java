@@ -117,7 +117,7 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 	 * @return
 	 */
 	public String toAdd(){
-		RequestProcc.getSession().invalidate();
+		//RequestProcc.getSession().invalidate();
 		getRmdAreaList();
 		return "add";
 	}
@@ -130,7 +130,7 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 		//调用图片上传方法获取图片的url
 		recommend.setImgUrl(UploadImgUtils.getImgUrl(image, imageFileName));		
 		recommend.setCreatePerson(getCreater());
-		recommend.setCreateTime((int)System.currentTimeMillis()/1000);
+		recommend.setCreateTime((int)(System.currentTimeMillis()/1000));
 		recommend.setValid(1);
 		recommend.setModuleId(ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
 		//changeIndexBySys(creater,recommend.getId(),recommend.getRecommendIndex());
@@ -153,7 +153,7 @@ public class WdpAction extends ActionSupport implements ServletResponseAware {
 		map.put("valid", 0);
 		map.put("id", rmdId);
 		map.put("updPerson", getCreater());
-		map.put("updTime",Calendar.getInstance().getTimeInMillis()/1000);
+		map.put("updTime",(int)(System.currentTimeMillis()/1000));
 		weddingPhotoBiz.updRecommend(map);
 		return list();
 	}

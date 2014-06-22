@@ -16,7 +16,7 @@
 <table class="searchbar" style="width: 100%">
 	<tbody>
 		<tr>
-			<td width="48">所属岛屿色色</td>
+			<td width="48">所属岛屿</td>
 			<td width="10">
 				<select id="island_id" name="wdpPackage.islandId">
 					<option value="" selected="selected">--请选择--</option>
@@ -63,6 +63,7 @@
 							<td>套餐名称</td>
 							<td>所属区域</td>
 							<td>所属岛屿</td>
+							<td>所属类别</td>
 							<td>淡季价格</td>
 							<td>旺季价格</td>
 							<td>是否在售</td>
@@ -86,6 +87,9 @@
 								<td style="text-align:center;">
 									<s:property value="islandName"/>
 								</td>
+								<td>
+									<s:property value="typeName"/>
+								</td>
 								<td style="text-align:center;">
 									<s:property value="priceSmall"/>
 								</td>
@@ -104,11 +108,11 @@
 									<a title="" onclick="resethot('hot_<s:property value="#_index.index+1"/>')" >取消热推</a>&nbsp;&nbsp;
 								</td>
 								<td width="360px">
-									<a title="" onclick="editBase()" >基本信息管理</a>&nbsp;|&nbsp;
-									<a title="" onclick="editDetail()" >详细信息管理</a>&nbsp;|&nbsp;
-									<a title="" onclick="editImg()" >图片管理</a>&nbsp;|&nbsp;
-									<a title="" onclick="editKepian()" >客片留影管理</a>&nbsp;|&nbsp;
-									<a title=""  onclick="delweddingphoto()">删除</a>&nbsp;&nbsp;
+									<a title="" onclick="editBase(<s:property value="id"/>)" >基本信息管理</a>&nbsp;|&nbsp;
+									<a title="" onclick="editDetail(<s:property value="id"/>)" >详细信息管理</a>&nbsp;|&nbsp;
+									<a title="" onclick="editImg(<s:property value="id"/>)" >图片管理</a>&nbsp;|&nbsp;
+									<a title="" onclick="editKepian(<s:property value="id"/>)" >客片留影管理</a>&nbsp;|&nbsp;
+									<a title=""  onclick="delweddingphoto(<s:property value="id"/>)">删除</a>&nbsp;&nbsp;
 									<input type="hidden" id = "wdp_id" name="wdpPackage.id" value="<s:property value="id"/>" />
 								</td>							
 						    </tr>
@@ -200,29 +204,29 @@
 		window.location.href = url;
 	};
 	
-	var weddingphotoId = $('#wdp_id').val();
+	//var weddingphotoId = $('#wdp_id').val();
 	
 	function editBase(ele){
 		//var weddingphotoId = $(ele).attr('title');
-		var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!toEditBase.action?wdpId="+weddingphotoId;
+		var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!toEditBase.action?wdpId="+ele;
 		window.location.href = url; 
 	}
 	
 	function editDetail(ele){
 		//var weddingphotoId = $(ele).attr('title');
-		var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!wdpDetail.action?wdpId="+weddingphotoId;
+		var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!wdpDetail.action?wdpId="+ele;
 		window.location.href = url; 
 	}
 	
 	function editImg(ele){
 		//var weddingphotoId = $(ele).attr('title');
-		var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!toImgList.action?wdpId="+weddingphotoId;
+		var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!toImgList.action?wdpId="+ele;
 		window.location.href = url; 
 	}
 	
 	function editKepian(ele){
 		//var weddingphotoId = $(ele).attr('title');
-		var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!toKepianList.action?wdpId="+weddingphotoId;
+		var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!toKepianList.action?wdpId="+ele;
 		window.location.href = url; 
 	}
 	
@@ -230,7 +234,7 @@
 		var isHide = confirm('确定删除吗?');
 		if(isHide){
 			//var weddingphotoId = $(ele).attr('title');
-			var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!delWeddingPhoto.action?wdpId="+weddingphotoId;
+			var url =  "${ctx}/weddingphoto/wdppackage/wdppackage!delWeddingPhoto.action?wdpId="+ele;
 			window.location.href = url; 
 		}
 	}
@@ -246,7 +250,7 @@
 			
 			$.ajax({
 				type:"get",
-				url:"${ctx}/weddingphoto/wdppackage/wdppackage!resetHot.action?wdpId="+weddingphotoId,
+				url:"${ctx}/weddingphoto/wdppackage/wdppackage!resetHot.action?wdpId="+ele,
 				dataType:"text",
 				success:function(text){
 					alert("取消推荐成功");
@@ -268,7 +272,7 @@
 			
 			$.ajax({
 				type:"get",
-				url:"${ctx}/weddingphoto/wdppackage/wdppackage!setHot.action?wdpId="+weddingphotoId,
+				url:"${ctx}/weddingphoto/wdppackage/wdppackage!setHot.action?wdpId="+ele,
 				dataType:"text",
 				success:function(text){
 					alert("推荐成功");
