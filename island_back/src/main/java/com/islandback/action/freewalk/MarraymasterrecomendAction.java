@@ -46,6 +46,8 @@ public class MarraymasterrecomendAction extends BaseAction {
 	private Integer id;
 	private File image;
 	private String imageFileName;
+	private File smallImage;
+	private String smallImageFileName;
 	//private String imageServPath=ModuleEnum.IMAGE_SAVE_PATH;
 	//private String imageServPrefix=ModuleEnum.IMAGE_SERV_PREFIX;
 	private Integer pageNo;
@@ -95,8 +97,12 @@ public class MarraymasterrecomendAction extends BaseAction {
 		int now = (int)(System.currentTimeMillis()/1000);
 		recommend.setModuleId(ModuleEnum.FREEWALK_PACKAGE_INDEX_MASTER_RECOMMEND);
 		if(image != null ){
-			recommend.setImgUrl(upload());
+			recommend.setBigImgUrl(upload());
 		}
+		if(smallImage != null ){
+			recommend.setSmallImgUrl(uploadsmall());
+		}
+
 		recommend.setCreatePerson(creater);
 		recommend.setCreateTime(now);
 		recommend.setValid(1);
@@ -116,12 +122,12 @@ public class MarraymasterrecomendAction extends BaseAction {
 	    
 		recommend = recommendBiz.queryById(id);
 		
-		if( recommend.getAreaId() != null && recommend.getAreaId() > 0){
-			Map<String,Object> islandparams = new HashMap<String,Object>(0);
-			islandparams.put("valid", 1);
-			islandparams.put("areaId", recommend.getAreaId());
-			islandList = areaIslandBiz.queryIslandByMap(islandparams);
-		}
+//		if( recommend.getAreaId() != null && recommend.getAreaId() > 0){
+//			Map<String,Object> islandparams = new HashMap<String,Object>(0);
+//			islandparams.put("valid", 1);
+//			islandparams.put("areaId", recommend.getAreaId());
+//			islandList = areaIslandBiz.queryIslandByMap(islandparams);
+//		}
 		
 		return "edit";
 	}
@@ -134,9 +140,13 @@ public class MarraymasterrecomendAction extends BaseAction {
 		}
 		recommend.setUpdPerson(creater);
 		int now = (int)(System.currentTimeMillis()/1000);
-		if(image != null  ){
-			recommend.setImgUrl(upload());
+		if(image != null ){
+			recommend.setBigImgUrl(upload());
 		}
+		if(smallImage != null ){
+			recommend.setSmallImgUrl(uploadsmall());
+		}
+
 		recommend.setUpdTime(now);
 		this.recommendBiz.updRecommendByModel(recommend);
 		doList();
@@ -184,7 +194,26 @@ public class MarraymasterrecomendAction extends BaseAction {
 	        }  
 	       return ModuleEnum.getImageServUrl()+namePrefix+"/"+imageFileName;  
 	  }  
+	 
 
+	 public String uploadsmall() {  
+		   if(smallImage == null){
+			   return "";
+		   }
+		   Date date = new Date();
+	   	   String namePrefix=format.format(date);
+	       String path = ModuleEnum.getImageSavePath()+namePrefix;
+	       File file = new File(path);  
+	       if (!file.exists()) {  
+	           file.mkdirs();  
+	       }  
+	       try {  
+	              FileUtils.copyFile(smallImage, new File(file, smallImageFileName));  
+	        } catch (IOException e) {  
+	              e.printStackTrace();  
+	        }  
+	       return ModuleEnum.getImageServUrl()+namePrefix+"/"+smallImageFileName;  
+	  }  
 	
 	private void doList(){
 		if(pageNo == null || pageNo < 1){
@@ -299,6 +328,22 @@ public class MarraymasterrecomendAction extends BaseAction {
 	}
 	public void setAreaId(Integer areaId) {
 		this.areaId = areaId;
+	}
+
+	public File getSmallImage() {
+		return smallImage;
+	}
+
+	public void setSmallImage(File smallImage) {
+		this.smallImage = smallImage;
+	}
+
+	public String getSmallImageFileName() {
+		return smallImageFileName;
+	}
+
+	public void setSmallImageFileName(String smallImageFileName) {
+		this.smallImageFileName = smallImageFileName;
 	}
 	
 

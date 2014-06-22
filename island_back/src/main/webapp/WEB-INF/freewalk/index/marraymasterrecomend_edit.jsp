@@ -13,7 +13,7 @@
 <div  class="creatcustomer" >
 <table class="datalist" width="100%">
 	<tbody>
-		<tr>
+		<%-- <tr>
 			<td>标题</td>
 			<td><input type=text class="text" value="${recommend.title}" id="title" name="recommend.title"  style="_width:316px;"/></td>					
 		</tr>
@@ -42,12 +42,17 @@
 		<tr>
 			<td>价格</td>
 			<td><input type=text class="text" value="${recommend.price}" id="price" name="recommend.price"  style="_width:316px;"/></td>					
-		</tr>
+		</tr> --%>
 		
 		<tr>
-			<td>图片</td>
+			<td>大图片</td>
 			<td><input type="file" name="image"/></td>					
 		</tr>
+		<tr>
+			<td>小图片</td>
+			<td><input type="file" name="smallImage"/></td>					
+		</tr>
+		
 		<tr>
 			<td>链接</td>
 			<td><input type=text class="text" value="${recommend.linkUrl}" id="link" name="recommend.linkUrl"  style="_width:316px;"/></td>					
@@ -76,14 +81,14 @@
 <script>
 
 $(function(){
-	var areaId = '${recommend.areaId}';
+	/* var areaId = '${recommend.areaId}';
 	$("#area_id option[value='"+areaId+"']").attr('selected',true);
 	
 	var islandId = '${recommend.islandId}';
 	$("#island_id option[value='"+islandId+"']").attr('selected',true);
 	
 	$("#area_id").bind('change',setAreaName);
-	$("#island_id").bind('change',setIslandName);
+	$("#island_id").bind('change',setIslandName); */
 });
 
 function setAreaName(){
