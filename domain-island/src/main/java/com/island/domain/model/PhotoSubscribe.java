@@ -72,20 +72,20 @@ public class PhotoSubscribe extends AbsModel{
   	public String getStrnamet(){
   		return this.strnamet;
   	}
-  	/**
+	/**
 	 * 职位ID
 	 */
-  	private String positionId;
+  	private Integer positionId;
   	/**
 	 * 设置职位ID
 	 */
-  	public void setPositionId(String positionId){
+  	public void setPositionId(Integer positionId){
   		this.positionId=positionId;
   	}
   	/**
 	 * 获取职位ID
 	 */
-  	public String getPositionId(){
+  	public Integer getPositionId(){
   		return this.positionId;
   	}
   	/**
@@ -254,5 +254,21 @@ public class PhotoSubscribe extends AbsModel{
 	public boolean validate(){
 		boolean passed = true;
 		return true;
+	}
+	
+	private String workTypeStr;
+	public String getWorkTypeStr() {
+		if(this.positionId == 1){
+			return "摄影团队";
+		}else if(this.positionId == 2){
+			return "摄影师";
+		}else if(this.positionId == 3){
+			return "化妆师";
+		}else{
+			return "影片师";
+		}
+	}
+	public void setWorkTypeStr(String workTypeStr) {
+		this.workTypeStr = workTypeStr;
 	}
 }

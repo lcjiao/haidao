@@ -14,6 +14,7 @@ import com.island.domain.dal.WorkmanIbatisDAOImpl;
 import com.island.domain.model.PackageDetailInfo;
 import com.island.domain.model.PackageImageRelation;
 import com.island.domain.model.PackageKepianliuying;
+import com.island.domain.model.PhotoSubscribe;
 import com.island.domain.model.Recommend;
 import com.island.domain.model.Workman;
 
@@ -178,6 +179,30 @@ public class WdpTeamBiz {
 
 	public Integer updatePkgKPLY(Map<String, Object> map) {
 		return this.pkgKepianliuyingDao.updateByMap(map);
+	}
+
+	public List<PhotoSubscribe> queryPtoSubscribeByMap(Map<String, Object> map) {
+		return this.photoSubscribeDao.queryByMap(map);
+	}
+
+	public Integer countPtoSubscribeByMap(Map<String, Object> map) {
+		return this.photoSubscribeDao.countByMap(map);
+	}
+
+	public Integer updateSubscribe(PhotoSubscribe ptoSubscribe) {
+		return this.photoSubscribeDao.update(ptoSubscribe);
+	}
+
+	public Integer addSubscribe(PhotoSubscribe ptoSubscribe) {
+		return this.photoSubscribeDao.insert(ptoSubscribe);
+	}
+
+	public List<Workman> queryWkmByWorkId(Map<String, Object> map) {
+		return this.workmanDao.queryByMap(map);
+	}
+
+	public Integer updatePtoSubscribe(PhotoSubscribe ptoSubscribe) {
+		return this.photoSubscribeDao.update(ptoSubscribe);
 	}
 
 	

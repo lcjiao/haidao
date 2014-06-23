@@ -452,51 +452,7 @@
 			<if test="id !=  null">
 				and id=#{id}
 			</if>
-			<if test="typeId !=  null">			        
-				and type_id=#{typeId}
-			</if>
-			<if test="typeName !=  null">			        
-				and type_name=#{typeName}
-			</if>
-			<if test="strnamef !=  null">			        
-				and strnamef=#{strnamef}
-			</if>
-			<if test="strnamet !=  null">			        
-				and strnamet=#{strnamet}
-			</if>
-			<if test="positionId !=  null">			        
-				and position_id=#{positionId}
-			</if>
-			<if test="positionName !=  null">			        
-				and position_name=#{positionName}
-			</if>
-			<if test="startTime !=  null">			        
-				and start_time=#{startTime}
-			</if>
-			<if test="endTime !=  null">			        
-				and end_time=#{endTime}
-			</if>
-			<if test="imgUrl !=  null">			        
-				and img_url=#{imgUrl}
-			</if>
-			<if test="imgLink !=  null">			        
-				and img_link=#{imgLink}
-			</if>
-			<if test="valid !=  null">			        
-				and valid=#{valid}
-			</if>
-			<if test="createtime !=  null">			        
-				and createtime=#{createtime}
-			</if>
-			<if test="createperson !=  null">			        
-				and createperson=#{createperson}
-			</if>
-			<if test="updtime !=  null">			        
-				and updtime=#{updtime}
-			</if>
-			<if test="updperson !=  null">			        
-				and updperson=#{updperson}
-			</if>
+			
 		</where>
 		
 	</update>
