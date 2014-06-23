@@ -118,13 +118,14 @@
 			url:"${ctx}/wdpphototeam/subscribe/subscribe!getPositionByTypeId.action?typeId="+typeId,
 			dataType:"json",
 			success:function(json){
-				if( json.length > 0){
-					var html = "";
-					html +="<option value='0' selected='selected'>--请选择--</option>";
+				if(json.length > 0){
+					$("#position_id").prepend("<option value='0'>--请选择--</option>")
 					for( var i=0 ; i<json.length; i++){
-						html +="<option value='"+json[i].positionId+"'>"+json[i].positionName+"</option>";
+						$("#position_id").append("<option value='"+json[i].positionId+"'>"+json[i].positionName+"</option>")
 					}
-					$("#position_id").html(html);
+				}else{
+					$("#position_id").find("option").remove();
+					$("#position_id").prepend("<option value='0'>--请选择--</option>")
 				}
 			}
 		});

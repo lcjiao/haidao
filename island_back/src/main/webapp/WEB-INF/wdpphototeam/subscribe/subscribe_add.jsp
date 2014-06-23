@@ -5,21 +5,21 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>档期预约</title>
-<link rel="stylesheet"  href='${ctx}/css/base.css' type="text/css" media="all" />
+<link rel="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
 <link rel="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
-<script type="text/javascript" src="${ctx}/js/My97DatePicker/WdatePicker.js"></script>
 <%@ include file="/common/menu.jsp"%>
 <%@ include file="/common/kindeditor.jsp"%>
 </head>
 <body>
+
 <form action="${ctx}/wdpphototeam/subscribe/subscribe!addSubscribeInfo.action" enctype="multipart/form-data" id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" style="width: 100%">
 	<tbody>
 		<tr>
-			<td>摄影类型</td>
-			<td width="10">
+			<td width="38">摄影类型</td>
+			<td width="20">
 				<select id="type_id" name="ptoSubscribe.typeId">
 					<option value="0" selected="selected">--请选择--</option>
 					<option value="1" >摄影团队</option>
@@ -39,17 +39,17 @@
 					    </c:forEach>
 				</select>
 			</td>
-		</tr>
+		</tr>		
 		<tr>
 			<td>预约开始时间</td>
 			<td>
-				<input type="text" id="start_time" name="ptoSubscribe.startTime" onfocus="WdatePicker({dateFmt:'yyyy-MM'})" class="Wdate" style="width:300px"/>
+				<input type="text" id="start_time" name="ptoSubscribe.startTime" onfocus="WdatePicker({dateFmt:'yyyy-MM'})" class="Wdate" style="width:150px"/>
 			</td>					
 		</tr>
 		<tr>
 			<td>预约结束时间</td>
 			<td>
-				<input type="text" id="end_time" name="ptoSubscribe.endTime" onfocus="WdatePicker({dateFmt:'yyyy-MM'})" class="Wdate" style="width:300px"/>
+				<input type="text" id="end_time" name="ptoSubscribe.endTime" onfocus="WdatePicker({dateFmt:'yyyy-MM'})" class="Wdate" style="width:150px"/>
 			</td>					
 		</tr>
 		<tr>
@@ -102,13 +102,14 @@
 			url:"${ctx}/wdpphototeam/subscribe/subscribe!getPositionByTypeId.action?typeId="+typeId,
 			dataType:"json",
 			success:function(json){
-				if( json.length > 0){
-					var html = "";
-					html +="<option value='0' selected='selected'>--请选择--</option>";
+				if(json.length > 0){
+					$("#position_id").prepend("<option value='0'>--请选择--</option>")
 					for( var i=0 ; i<json.length; i++){
-						html +="<option value='"+json[i].positionId+"'>"+json[i].positionName+"</option>";
+						$("#position_id").append("<option value='"+json[i].positionId+"'>"+json[i].positionName+"</option>")
 					}
-					$("#position_id").html(html);
+				}else{
+					$("#position_id").find("option").remove();
+					$("#position_id").prepend("<option value='0'>--请选择--</option>")
 				}
 			}
 		});
@@ -158,9 +159,6 @@
 		return true;
 		
 	}
-	
-	
-	
 	
 </script>
 </html>
