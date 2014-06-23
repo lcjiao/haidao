@@ -9,7 +9,7 @@
 <link rel="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
 <script type="text/javascript" src="${ctx}/js/common.js" ></script>
-
+<%@ include file="/common/menu.jsp"%>
 </head>
 <body>
 <form action="${ctx}/wdpphototeam/teampackage/teampkg!wdpImgSearch.action" id="form" method="post">

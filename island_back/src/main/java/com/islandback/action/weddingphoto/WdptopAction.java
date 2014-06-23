@@ -25,6 +25,7 @@ import com.island.domain.biz.WeddingPhotoBiz;
 import com.island.domain.model.Area;
 import com.island.domain.model.Island;
 import com.island.domain.model.Recommend;
+import com.islandback.action.base.BaseAction;
 import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
@@ -38,7 +39,7 @@ import com.opensymphony.xwork2.ActionSupport;
  *婚纱摄影首页图片推荐action
  *
  */
-public class WdptopAction extends ActionSupport implements ServletResponseAware {
+public class WdptopAction extends BaseAction implements ServletResponseAware {
 	private static final long serialVersionUID = 1L;
 	private Recommend recommend;
 	private HttpServletResponse response;

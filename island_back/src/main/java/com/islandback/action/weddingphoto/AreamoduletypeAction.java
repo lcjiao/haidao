@@ -29,6 +29,7 @@ import com.island.domain.model.Area;
 import com.island.domain.model.Island;
 import com.island.domain.model.IslandPackageType;
 import com.island.domain.model.Recommend;
+import com.islandback.action.base.BaseAction;
 import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
@@ -39,7 +40,7 @@ import com.opensymphony.xwork2.ActionSupport;
 //@SuppressWarnings("serial")
 @Namespace("/weddingphoto/moduletype")
 @ResultPath("/WEB-INF")
-public class AreamoduletypeAction extends ActionSupport {
+public class AreamoduletypeAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private IslandPackageType moduleType=new IslandPackageType();//首页主推
 	private Integer id;

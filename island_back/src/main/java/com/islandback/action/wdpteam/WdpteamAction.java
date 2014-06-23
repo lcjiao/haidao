@@ -28,6 +28,7 @@ import com.island.domain.biz.WeddingPhotoBiz;
 import com.island.domain.model.Area;
 import com.island.domain.model.Island;
 import com.island.domain.model.Recommend;
+import com.islandback.action.base.BaseAction;
 import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
@@ -41,7 +42,7 @@ import com.opensymphony.xwork2.ActionSupport;
  *摄影团队推荐
  *
  */
-public class WdpteamAction extends ActionSupport implements ServletResponseAware {
+public class WdpteamAction extends BaseAction implements ServletResponseAware {
 	private static final long serialVersionUID = 1L;
 	private Recommend recommend;
 	private HttpServletResponse response;

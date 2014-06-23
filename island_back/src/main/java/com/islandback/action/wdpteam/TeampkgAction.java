@@ -31,6 +31,7 @@ import com.island.domain.model.PackageDetailInfo;
 import com.island.domain.model.PackageImageRelation;
 import com.island.domain.model.PackageKepianliuying;
 import com.island.domain.model.Workman;
+import com.islandback.action.base.BaseAction;
 import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
@@ -45,7 +46,7 @@ import com.opensymphony.xwork2.ActionSupport;
  *摄影团队(师)action
  *
  */
-public class TeampkgAction extends ActionSupport  {
+public class TeampkgAction extends BaseAction  {
 	private static final long serialVersionUID = 1L;
 
 	private Workman workman;
