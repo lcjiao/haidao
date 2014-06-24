@@ -205,5 +205,9 @@ public class WdpTeamBiz {
 		return this.photoSubscribeDao.update(ptoSubscribe);
 	}
 
+	public PhotoSubscribe queryPtoSubscribeByPsbId(Integer subscribeId) {
+		return this.photoSubscribeDao.queryById(subscribeId);
+	}
+
 	
 }

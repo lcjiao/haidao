@@ -30,8 +30,4 @@ public class PhotoSubscribeIbatisDAOImpl extends AbsiBatisDAOImpl<PhotoSubscribe
 	public DataSourceDefinition getDefQueryDB() {
 		return DataSourceDefinition.HAIDAO_DB;
 	}
-	@Override
-	public PhotoSubscribe queryById(Integer id){
-		throw new RuntimeException("该表没有主键定义，该方法不能适用，请重新实现！");
-	}
 }

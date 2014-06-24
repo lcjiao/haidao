@@ -33,6 +33,7 @@ import com.island.domain.model.PackageImageRelation;
 import com.island.domain.model.PackageKepianliuying;
 import com.island.domain.model.PhotoSubscribe;
 import com.island.domain.model.Workman;
+import com.island.domain.util.IslandDateUtil;
 import com.islandback.action.base.BaseAction;
 import com.islandback.module.ModuleEnum;
 import com.islandback.module.Page;
@@ -113,6 +114,7 @@ public class SubscribeAction extends BaseAction  {
 	}
 	
 	private void doList(){
+		List<PhotoSubscribe> psbList = new ArrayList<PhotoSubscribe>();
 		map.clear();
 		map.put("valid", 1);
 		Page page = new Page();
@@ -120,9 +122,14 @@ public class SubscribeAction extends BaseAction  {
 		page.setPageSize(pageSize);
 		map.put("begin", page.getBegin());
 		map.put("size", page.getPageSize());
-		ptoSubscribeList = wdpTeamBiz.queryPtoSubscribeByMap(map);
-		if(ptoSubscribeList != null && ptoSubscribeList.size()>0){
+		psbList = wdpTeamBiz.queryPtoSubscribeByMap(map);
+		if(psbList != null && psbList.size()>0){
 			this.totalSize = wdpTeamBiz.countPtoSubscribeByMap(map);
+			for (PhotoSubscribe psb : psbList) {
+				psb.setEndT(IslandDateUtil.getDateStrByUnixTime(psb.getEndTime(), "yyyy-MM"));
+				psb.setStartT(IslandDateUtil.getDateStrByUnixTime(psb.getStartTime(), "yyyy-MM"));
+				ptoSubscribeList.add(psb);
+			}
 		}
 		initTotalPageSize();
 	}
@@ -168,28 +175,50 @@ public class SubscribeAction extends BaseAction  {
 		ptoSubscribe.setValid(1);
 		ptoSubscribe.setCreateperson(getCreater());
 		ptoSubscribe.setCreatetime(new Long(Calendar.getInstance().getTimeInMillis()/1000).intValue());
-		
+		ptoSubscribe.setStartTime(IslandDateUtil.getUnixTimeByDateStr(ptoSubscribe.getStartT()+"-01"));
+		ptoSubscribe.setEndTime(IslandDateUtil.getUnixTimeByDateStr(ptoSubscribe.getEndT()+"-01"));
 		//wdpPackage.setAreaId(getAreaIsland().getAreaId());
 		wdpTeamBiz.addSubscribe(ptoSubscribe);
 		
-		if("toList".equals(flag)){
+		if("return".equals(flag)){
 			return list();
 		}
-		return "detail";
+		return "add";
 	}
 	/**
-	 * 进入 修改 图片信息 页面
+	 * 进入 修改  页面
 	 */
 	public String toEdit(){
+		ptoSubscribe = wdpTeamBiz.queryPtoSubscribeByPsbId(subscribeId);
+		ptoSubscribe.setEndT(IslandDateUtil.getDateStrByUnixTime(ptoSubscribe.getEndTime(), "yyyy-MM"));
+		ptoSubscribe.setStartT(IslandDateUtil.getDateStrByUnixTime(ptoSubscribe.getStartTime(), "yyyy-MM"));
+		getPositionByTypeId(ptoSubscribe.getTypeId());
 		return "edit";
 	}
 
 	public String editSubscribeInfo(){
 		ptoSubscribe.setUpdperson(getCreater());
 		ptoSubscribe.setUpdtime((int)(System.currentTimeMillis()/1000));
+		ptoSubscribe.setStartTime(IslandDateUtil.getUnixTimeByDateStr(ptoSubscribe.getStartT()+"-01"));
+		ptoSubscribe.setEndTime(IslandDateUtil.getUnixTimeByDateStr(ptoSubscribe.getEndT()+"-01"));
 		wdpTeamBiz.updatePtoSubscribe(ptoSubscribe);
 		return list();
 	}
+	private void getPositionByTypeId(Integer typId) {
+		map.clear();
+		map.put("workType", typId);
+		wkmList = wdpTeamBiz.queryWkmByWorkId(map);
+		if(wkmList != null && wkmList.size() > 0){
+			for (Workman wkm : wkmList) {
+				PhotoSubscribe pts = new PhotoSubscribe();
+				pts.setPositionId(wkm.getId());
+				pts.setPositionName(wkm.getName());
+				pts.setTypeId(typId);
+				positionList.add(pts);
+			}
+		}
+	}
+
 	/**
 	 * 删除 
 	 */
@@ -215,6 +244,7 @@ public class SubscribeAction extends BaseAction  {
 				PhotoSubscribe pts = new PhotoSubscribe();
 				pts.setPositionId(wkm.getId());
 				pts.setPositionName(wkm.getName());
+				pts.setTypeId(typeId);
 				positionList.add(pts);
 			}
 		}		

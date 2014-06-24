@@ -5,7 +5,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>档期预约修改</title>
-<link rel="stylesheet"  href='${ctx}/css/base.css' type="text/css" media="all" />
+<link rel="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
 <link rel="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
 <script type="text/javascript" src="${ctx}/js/My97DatePicker/WdatePicker.js"></script>
@@ -13,12 +13,13 @@
 <%@ include file="/common/kindeditor.jsp"%>
 </head>
 <body>
+
 <form action="${ctx}/wdpphototeam/subscribe/subscribe!editSubscribeInfo.action" enctype="multipart/form-data" id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" style="width: 100%">
-	<tbody>	
+	<tbody>
 		<tr>
-			<td>摄影类型:</td>
+			<td width="38">摄影类型:</td>
 			<td width="10">
 				<select id="type_id" name="ptoSubscribe.typeId">
 					<option value="0" selected="selected">--请选择--</option>
@@ -35,7 +36,7 @@
 				<select id="position_id" name="ptoSubscribe.positionId">
 					<option value="0" selected="selected">--请选择--</option>
 						<c:forEach var="position" items="${positionList}">
-								<option value="${position.id}" >${position.name}</option>
+								<option value="${position.positionId}" >${position.positionName}</option>
 					    </c:forEach>
 				</select>
 			</td>
@@ -43,13 +44,13 @@
 		<tr>
 			<td>预约开始时间</td>
 			<td>
-				<input type="text" id="start_time" value="${ptoSubscribe.startTime }" name="ptoSubscribe.startTime" onfocus="WdatePicker({dateFmt:'yyyy-MM'})" class="Wdate" style="width:300px"/>
+				<input type="text" id="start_time" value="${ptoSubscribe.startT }" name="ptoSubscribe.startT" onfocus="WdatePicker({dateFmt:'yyyy-MM'})" class="Wdate" style="width:300px"/>
 			</td>					
 		</tr>
 		<tr>
 			<td>预约结束时间</td>
 			<td>
-				<input type="text" id="end_time" value="${ptoSubscribe.endTime }" name="ptoSubscribe.endTime" onfocus="WdatePicker({dateFmt:'yyyy-MM'})" class="Wdate" style="width:300px"/>
+				<input type="text" id="end_time" value="${ptoSubscribe.endT }" name="ptoSubscribe.endT" onfocus="WdatePicker({dateFmt:'yyyy-MM'})" class="Wdate" style="width:300px"/>
 			</td>					
 		</tr>
 		<tr>
@@ -65,19 +66,11 @@
 				<input type="hidden" id="id" name="ptoSubscribe.id" value="${ptoSubscribe.id }"/>	
 			</td>	
 		</tr>
-		<!-- 
-		<tr>
-			<td>排序</td>
-			<td>
-				<input type=text class="text" value="${recommend.recommendIndex }" id="recommend_index" name="recommend.recommendIndex"  style="_width:316px;"/>
-			</td>					
-		</tr>
-		 -->	
 	</tbody>	
 </table>
 </div>
-<input type="hidden" id="type_name" name="ptoSubscribe.typeName"/>
-<input type="hidden" id="position_name" name="ptoSubscribe.positionName"/>
+				<input type="hidden" id="type_name" value="${ptoSubscribe.typeName }" name="ptoSubscribe.typeName"/>
+				<input type="hidden" id="position_name" name="ptoSubscribe.positionName"/>
 <table class="creatcustomer_tfoot" style="width: 100%">
 	<tfoot>
 		<td>
@@ -86,8 +79,7 @@
 		 </td>
 	</tfoot>
 </table>
-<input type="hidden" id="area_name" name="areaName" value=""/>
-<input type="hidden" id="island_desc" name="desc" value=""/>
+
 </form>
 </body>
 <script>
@@ -103,8 +95,8 @@
 		var positionId = '${ptoSubscribe.positionId}';
 		$("#position_id option[value='"+positionId+"']").attr('selected',true);
 		
-		$("#type_id").bind('change',setAreaName);
-		$("#position_id").bind('change',setIslandName);
+		$("#type_id").bind('change',setTypeName);
+		$("#position_id").bind('change',setPositionName);
 	});
 	
 	function setTypeName(){
@@ -119,6 +111,7 @@
 			dataType:"json",
 			success:function(json){
 				if(json.length > 0){
+					$("#position_id").find("option").remove();
 					$("#position_id").prepend("<option value='0'>--请选择--</option>")
 					for( var i=0 ; i<json.length; i++){
 						$("#position_id").append("<option value='"+json[i].positionId+"'>"+json[i].positionName+"</option>")
@@ -173,5 +166,4 @@
 	}	
 	
 </script>
-<s:debug></s:debug>
 </html>

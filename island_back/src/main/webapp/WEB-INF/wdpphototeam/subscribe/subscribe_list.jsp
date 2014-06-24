@@ -49,7 +49,7 @@
 						</tr>
 					</thead>
 					<tbody id="r_list">
-						<s:iterator value="recommendList" status="_index">
+						<s:iterator value="ptoSubscribeList" status="_index">
 							<tr>
 								<td style="text-align:center;">
 									<s:property value="#_index.index+1"/>
@@ -58,13 +58,13 @@
 									<s:property value="workTypeStr"/>
 								</td>
 								<td style="text-align:center;">
-									<s:property value="typeName"/>
+									<s:property value="positionName"/>
 								</td>
 								<td style="text-align:center;">
-									<s:property value="Str_startTime"/>
+									<s:property value="startT"/>
 								</td>
 								<td style="text-align:center;">
-									<s:property value="Str_endTime"/>
+									<s:property value="endT"/>
 								</td>
 								<td style="text-align:center;">
 									<s:property value="strnamef"/>

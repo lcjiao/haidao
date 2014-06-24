@@ -258,11 +258,11 @@ public class PhotoSubscribe extends AbsModel{
 	
 	private String workTypeStr;
 	public String getWorkTypeStr() {
-		if(this.positionId == 1){
+		if(this.typeId == 1){
 			return "摄影团队";
-		}else if(this.positionId == 2){
+		}else if(this.typeId == 2){
 			return "摄影师";
-		}else if(this.positionId == 3){
+		}else if(this.typeId == 3){
 			return "化妆师";
 		}else{
 			return "影片师";
@@ -271,4 +271,20 @@ public class PhotoSubscribe extends AbsModel{
 	public void setWorkTypeStr(String workTypeStr) {
 		this.workTypeStr = workTypeStr;
 	}
+	
+	private String startT;
+	private String endT;
+	public String getStartT() {
+		return startT;
+	}
+	public void setStartT(String startT) {
+		this.startT = startT;
+	}
+	public String getEndT() {
+		return endT;
+	}
+	public void setEndT(String endT) {
+		this.endT = endT;
+	}
+	
 }
