@@ -126,10 +126,9 @@
 	}
 	
 	function _saveEdit(){
-		/* if( checkData() && checkrmdIndex()){
+		if( checkData() && checkrmdIndex()){
 			$("#form").submit();
-		} 测试时暂时不核验*/
-		$("#form").submit();
+		}
 	}
 	
 	//校验排序。只能为数字 
@@ -157,5 +156,4 @@
 	}	
 	
 </script>
-<s:debug></s:debug>
 </html>

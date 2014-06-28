@@ -84,8 +84,13 @@ function setIslandName(){
 function checkData(){
 	var r = /^[0-9]+$/;
 	var index_num = $("#index_num").val();
+	var areaId = $("#area_id").val();
+	if(areaId == 0 || areaId == null){
+		alert('区域必填！');
+		return;
+	}
 	if(!r.test(index_num)){
-		alert('排序只能为数字');
+		alert('排序只能为数字且不能不空！');
 		return;
 	}else{
 		$("#form").submit();

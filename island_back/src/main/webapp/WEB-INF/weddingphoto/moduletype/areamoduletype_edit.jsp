@@ -37,7 +37,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td>标题</td>
+			<td>类别名称</td>
 			<td><input type=text class="text" value="${moduleType.title}" id="title" name="moduleType.title"  style="_width:316px;"/></td>					
 		</tr>
 	</tbody>	
@@ -102,6 +102,21 @@ function setIslandName(){
 }
 
 function checkData(){
+	var islandId = $("#island_id").val();
+	var areaId = $("#area_id").val();
+	var title = $("#title").val(); 
+	if(areaId == 0 || areaId == null){
+		alert('区域必填！');
+		return;
+	}
+	if(islandId == 0 || islandId == null){
+		alert('岛屿必填！');
+		return;
+	}
+	if("" == trim(title)){
+		alert('类别名称不能为空！');
+		return;
+	}
 	$("#form").submit();
 }
 </script>

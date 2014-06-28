@@ -98,7 +98,6 @@
 		</tr>
 	</tbody>
 </table>
-<s:debug></s:debug>
 </body>
 <script>
 	var  numCat = /^[1-9]*$/;

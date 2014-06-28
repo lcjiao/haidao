@@ -158,5 +158,4 @@
 	}	
 	
 </script>
-<s:debug></s:debug>
 </html>

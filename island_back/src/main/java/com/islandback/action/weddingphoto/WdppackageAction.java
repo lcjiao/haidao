@@ -336,7 +336,11 @@ public class WdppackageAction extends BaseAction  {
 		map.clear();
 		map.put("valid", 1);
 		map.put("packageType", ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO);
-		map.put("packageId", wdpId);
+		if(wdpId == null || wdpPackage != null){
+			map.put("packageId", wdpPackage.getId());
+		}else{
+			map.put("packageId", wdpId);
+		}
 		Page page = new Page();
 		page.setPageNo(pageNo);
 		page.setPageSize(pageSize);
@@ -370,8 +374,8 @@ public class WdppackageAction extends BaseAction  {
 		pkgImgRelation.setValid(1);
 		pkgImgRelation.setImgUrl(UploadImgUtils.getImgUrl(image, imageFileName));
 		weddingPhotoBiz.addPkgImgRelation(pkgImgRelation);
+		wdpPackage = weddingPhotoBiz.queryWdpPackageByWdpId(pkgImgRelation.getPackageId());
 		if("continue".equals(flag)){//保存并继续添加
-			wdpPackage = weddingPhotoBiz.queryWdpPackageByWdpId(pkgImgRelation.getPackageId());
 			return "addimg";
 		}
 		return toImgList();
@@ -395,6 +399,7 @@ public class WdppackageAction extends BaseAction  {
 		pkgImgRelation.setUpdPerson(getCreater());
 		pkgImgRelation.setUpdTime(new Long(Calendar.getInstance().getTimeInMillis()/1000).intValue());
 		weddingPhotoBiz.updatePkgImgRelation(pkgImgRelation);
+		this.wdpId = pkgImgRelation.getPackageId();
 		return toImgList();
 	}
 	
@@ -406,8 +411,10 @@ public class WdppackageAction extends BaseAction  {
 		map.put("updPerson", getCreater());
 		map.put("updTime", new Long(Calendar.getInstance().getTimeInMillis()/1000).intValue());
 		map.put("valid",0);
-		map.put("id", wdpId);
+		map.put("id", wdpImgId);
 		weddingPhotoBiz.updatePkgImgRelation(map);
+		pkgImgRelation = weddingPhotoBiz.queryPkgImgRelationByWdpImgId(wdpImgId);
+		this.wdpId = pkgImgRelation.getPackageId();
 		return toImgList();
 	}
 	

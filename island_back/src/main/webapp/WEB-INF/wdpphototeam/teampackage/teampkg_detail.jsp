@@ -47,7 +47,6 @@
 		 </td>
 </tfoot>
 </table>
-<s:debug></s:debug>
 </form>
 </body>
 <script>

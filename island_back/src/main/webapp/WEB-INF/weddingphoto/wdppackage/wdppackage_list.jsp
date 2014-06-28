@@ -113,7 +113,7 @@
 									<a title="" onclick="editImg(<s:property value="id"/>)" >图片管理</a>&nbsp;|&nbsp;
 									<a title="" onclick="editKepian(<s:property value="id"/>)" >客片留影管理</a>&nbsp;|&nbsp;
 									<a title=""  onclick="delweddingphoto(<s:property value="id"/>)">删除</a>&nbsp;&nbsp;
-									<input type="hidden" id = "wdp_id" name="wdpPackage.id" value="<s:property value="id"/>" />
+									<input type="hidden" id = "wdp_id" name="id" value="<s:property value="id"/>" />
 								</td>							
 						    </tr>
 						</s:iterator>					

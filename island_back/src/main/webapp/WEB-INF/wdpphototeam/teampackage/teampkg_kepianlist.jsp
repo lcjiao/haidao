@@ -27,7 +27,6 @@
 </table>
 <input type="hidden" value="${pageNo}" name="pageNo" id="page_no"/>
 <input type="hidden" id = "wkm_id" name="workman.id" value='${workman.id }'/>
-<s:debug></s:debug>
 </form>
 <table class="customlist" style="width: 100%">
 <thead>

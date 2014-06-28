@@ -23,7 +23,6 @@
 					<option value="1" >logo图</option>
 					<option value="2" >套餐图片集</option>
 					<option value="3" >套餐大图</option>
-					<option value="4" >套餐小图</option>
 				</select>
 			</td>
 		</tr>
