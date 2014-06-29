@@ -11,10 +11,15 @@
 			<result property="picturedesc" column="picturedesc" />
 			<result property="pictureurl" column="pictureurl" />
 			<result property="valid" column="valid" />
+			<result property="imgType" column="img_type" />
+			<result property="typeName" column="type_name" />
 			<result property="createtime" column="createtime" />
 			<result property="createperson" column="createperson" />
 			<result property="updtime" column="updtime" />
 			<result property="updperson" column="updperson" />
+			<result property="picLink" column="pic_link" />
+			<result property="extend1" column="extend1" />
+			<result property="extend2" column="extend2" />
 	</resultMap>
 
 	<select id="queryById" parameterType="java.util.Map" resultMap="CasePicMappingRslMap">
@@ -24,10 +29,15 @@
 			picturedesc,
 			pictureurl,
 			valid,
+			img_type,
+			type_name,
 			createtime,
 			createperson,
 			updtime,
-			updperson
+			updperson,
+			pic_link,
+			extend1,
+			extend2
 		FROM
 			case_pic_mapping
 		<where>
@@ -43,10 +53,15 @@
 			picturedesc,
 			pictureurl,
 			valid,
+			img_type,
+			type_name,
 			createtime,
 			createperson,
 			updtime,
-			updperson
+			updperson,
+			pic_link,
+			extend1,
+			extend2
 		FROM
 			case_pic_mapping
 		<where>			
@@ -65,6 +80,12 @@
 			<if test="valid !=  null">			        
 				and valid=#{valid}
 			</if>
+			<if test="imgType !=  null">			        
+				and img_type=#{imgType}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
 			<if test="createtime !=  null">			        
 				and createtime=#{createtime}
 			</if>
@@ -77,6 +98,15 @@
 			<if test="updperson !=  null">			        
 				and updperson=#{updperson}
 			</if>
+			<if test="picLink !=  null">			        
+				and pic_link=#{picLink}
+			</if>
+			<if test="extend1 !=  null">			        
+				and extend1=#{extend1}
+			</if>
+			<if test="extend2 !=  null">			        
+				and extend2=#{extend2}
+			</if>
 		</where>
 		
 	</select>
@@ -88,10 +118,15 @@
 			picturedesc,
 			pictureurl,
 			valid,
+			img_type,
+			type_name,
 			createtime,
 			createperson,
 			updtime,
-			updperson
+			updperson,
+			pic_link,
+			extend1,
+			extend2
 		FROM
 			case_pic_mapping
 		<where>
@@ -110,6 +145,12 @@
 			<if test="valid !=  null">			        
 				and valid=#{valid}
 			</if>
+			<if test="imgType !=  null">			        
+				and img_type=#{imgType}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
 			<if test="createtime !=  null">			        
 				and createtime=#{createtime}
 			</if>
@@ -121,6 +162,15 @@
 			</if>
 			<if test="updperson !=  null">			        
 				and updperson=#{updperson}
+			</if>
+			<if test="picLink !=  null">			        
+				and pic_link=#{picLink}
+			</if>
+			<if test="extend1 !=  null">			        
+				and extend1=#{extend1}
+			</if>
+			<if test="extend2 !=  null">			        
+				and extend2=#{extend2}
 			</if>
 		</where>
 		<if test="begin !=  null">			        
@@ -149,6 +199,12 @@
 			<if test="valid !=  null">			        
 				and valid=#{valid}
 			</if>
+			<if test="imgType !=  null">			        
+				and img_type=#{imgType}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
 			<if test="createtime !=  null">			        
 				and createtime=#{createtime}
 			</if>
@@ -160,6 +216,15 @@
 			</if>
 			<if test="updperson !=  null">			        
 				and updperson=#{updperson}
+			</if>
+			<if test="picLink !=  null">			        
+				and pic_link=#{picLink}
+			</if>
+			<if test="extend1 !=  null">			        
+				and extend1=#{extend1}
+			</if>
+			<if test="extend2 !=  null">			        
+				and extend2=#{extend2}
 			</if>
 		</where>
 		
@@ -186,6 +251,12 @@
 			<if test="valid !=  null">			        
 				and valid=#{valid}
 			</if>
+			<if test="imgType !=  null">			        
+				and img_type=#{imgType}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
 			<if test="createtime !=  null">			        
 				and createtime=#{createtime}
 			</if>
@@ -198,6 +269,15 @@
 			<if test="updperson !=  null">			        
 				and updperson=#{updperson}
 			</if>
+			<if test="picLink !=  null">			        
+				and pic_link=#{picLink}
+			</if>
+			<if test="extend1 !=  null">			        
+				and extend1=#{extend1}
+			</if>
+			<if test="extend2 !=  null">			        
+				and extend2=#{extend2}
+			</if>
 		</where>
 				
 	</select>
@@ -209,10 +289,15 @@
 			picturedesc,
 			pictureurl,
 			valid,
+			img_type,
+			type_name,
 			createtime,
 			createperson,
 			updtime,
-			updperson
+			updperson,
+			pic_link,
+			extend1,
+			extend2
 		FROM
 			case_pic_mapping
 		<where>
@@ -232,6 +317,12 @@
 				<if test="params.valid !=  null">
 					and valid=#{params.valid}
 				</if>
+				<if test="params.imgType !=  null">
+					and img_type=#{params.imgType}
+				</if>
+				<if test="params.typeName !=  null">
+					and type_name=#{params.typeName}
+				</if>
 				<if test="params.createtime !=  null">
 					and createtime=#{params.createtime}
 				</if>
@@ -244,6 +335,15 @@
 				<if test="params.updperson !=  null">
 					and updperson=#{params.updperson}
 				</if>
+				<if test="params.picLink !=  null">
+					and pic_link=#{params.picLink}
+				</if>
+				<if test="params.extend1 !=  null">
+					and extend1=#{params.extend1}
+				</if>
+				<if test="params.extend2 !=  null">
+					and extend2=#{params.extend2}
+				</if>
 			</if>
 		</where>
 			limit #{start},#{end}	
@@ -251,8 +351,8 @@
 
 	<insert id="insert" parameterType="com.island.domain.model.CasePicMapping" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO	case_pic_mapping
-			(id,caseid,picturedesc,pictureurl,valid,createtime,createperson,updtime,updperson)
-			VALUES(#{id},#{caseid},#{picturedesc},#{pictureurl},#{valid},#{createtime},#{createperson},#{updtime},#{updperson})		
+			(id,caseid,picturedesc,pictureurl,valid,img_type,type_name,createtime,createperson,updtime,updperson,pic_link,extend1,extend2)
+			VALUES(#{id},#{caseid},#{picturedesc},#{pictureurl},#{valid},#{imgType},#{typeName},#{createtime},#{createperson},#{updtime},#{updperson},#{picLink},#{extend1},#{extend2})		
 	</insert>
 	
 	<update id="update" parameterType="com.island.domain.model.CasePicMapping">
@@ -274,6 +374,12 @@
 			<if test="valid !=  null">			        
 				valid=#{valid},
 			</if>
+			<if test="imgType !=  null">			        
+				img_type=#{imgType},
+			</if>
+			<if test="typeName !=  null">			        
+				type_name=#{typeName},
+			</if>
 			<if test="createtime !=  null">			        
 				createtime=#{createtime},
 			</if>
@@ -286,6 +392,15 @@
 			<if test="updperson !=  null">			        
 				updperson=#{updperson},
 			</if>
+			<if test="picLink !=  null">			        
+				pic_link=#{picLink},
+			</if>
+			<if test="extend1 !=  null">			        
+				extend1=#{extend1},
+			</if>
+			<if test="extend2 !=  null">			        
+				extend2=#{extend2},
+			</if>
 		</set>
 		<where>			
 			<if test="id !=  null">
@@ -293,27 +408,6 @@
 			</if>
 			<if test="caseid !=  null">			        
 				and caseid=#{caseid}
-			</if>
-			<if test="picturedesc !=  null">			        
-				and picturedesc=#{picturedesc}
-			</if>
-			<if test="pictureurl !=  null">			        
-				and pictureurl=#{pictureurl}
-			</if>
-			<if test="valid !=  null">			        
-				and valid=#{valid}
-			</if>
-			<if test="createtime !=  null">			        
-				and createtime=#{createtime}
-			</if>
-			<if test="createperson !=  null">			        
-				and createperson=#{createperson}
-			</if>
-			<if test="updtime !=  null">			        
-				and updtime=#{updtime}
-			</if>
-			<if test="updperson !=  null">			        
-				and updperson=#{updperson}
 			</if>
 		</where>
 		
@@ -337,6 +431,12 @@
 			<if test="valid !=  null">			        
 				valid=#{valid},
 			</if>
+			<if test="imgType !=  null">			        
+				img_type=#{imgType},
+			</if>
+			<if test="typeName !=  null">			        
+				type_name=#{typeName},
+			</if>
 			<if test="createtime !=  null">			        
 				createtime=#{createtime},
 			</if>
@@ -348,6 +448,15 @@
 			</if>
 			<if test="updperson !=  null">			        
 				updperson=#{updperson},
+			</if>
+			<if test="picLink !=  null">			        
+				pic_link=#{picLink},
+			</if>
+			<if test="extend1 !=  null">			        
+				extend1=#{extend1},
+			</if>
+			<if test="extend2 !=  null">			        
+				extend2=#{extend2},
 			</if>
 		</set>
 		<where>
@@ -366,6 +475,12 @@
 			<if test="valid !=  null">			        
 				and valid=#{valid}
 			</if>
+			<if test="imgType !=  null">			        
+				and img_type=#{imgType}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
 			<if test="createtime !=  null">			        
 				and createtime=#{createtime}
 			</if>
@@ -377,6 +492,15 @@
 			</if>
 			<if test="updperson !=  null">			        
 				and updperson=#{updperson}
+			</if>
+			<if test="picLink !=  null">			        
+				and pic_link=#{picLink}
+			</if>
+			<if test="extend1 !=  null">			        
+				and extend1=#{extend1}
+			</if>
+			<if test="extend2 !=  null">			        
+				and extend2=#{extend2}
 			</if>
 		</where>
 		
@@ -401,6 +525,12 @@
 			<if test="updNewMap.valid !=  null">
 				valid=#{updNewMap.valid},
 			</if>
+			<if test="updNewMap.imgType !=  null">
+				img_type=#{updNewMap.imgType},
+			</if>
+			<if test="updNewMap.typeName !=  null">
+				type_name=#{updNewMap.typeName},
+			</if>
 			<if test="updNewMap.createtime !=  null">
 				createtime=#{updNewMap.createtime},
 			</if>
@@ -412,6 +542,15 @@
 			</if>
 			<if test="updNewMap.updperson !=  null">
 				updperson=#{updNewMap.updperson},
+			</if>
+			<if test="updNewMap.picLink !=  null">
+				pic_link=#{updNewMap.picLink},
+			</if>
+			<if test="updNewMap.extend1 !=  null">
+				extend1=#{updNewMap.extend1},
+			</if>
+			<if test="updNewMap.extend2 !=  null">
+				extend2=#{updNewMap.extend2},
 			</if>
 		</set>
 		<where>
@@ -430,6 +569,12 @@
 			<if test="updCondMap.valid !=  null">
 				and valid=#{updCondMap.valid}
 			</if>
+			<if test="updCondMap.imgType !=  null">
+				and img_type=#{updCondMap.imgType}
+			</if>
+			<if test="updCondMap.typeName !=  null">
+				and type_name=#{updCondMap.typeName}
+			</if>
 			<if test="updCondMap.createtime !=  null">
 				and createtime=#{updCondMap.createtime}
 			</if>
@@ -441,6 +586,15 @@
 			</if>
 			<if test="updCondMap.updperson !=  null">
 				and updperson=#{updCondMap.updperson}
+			</if>
+			<if test="updCondMap.picLink !=  null">
+				and pic_link=#{updCondMap.picLink}
+			</if>
+			<if test="updCondMap.extend1 !=  null">
+				and extend1=#{updCondMap.extend1}
+			</if>
+			<if test="updCondMap.extend2 !=  null">
+				and extend2=#{updCondMap.extend2}
 			</if>
 		</where>
 		
@@ -466,6 +620,12 @@
 			<if test="valid !=  null">			        
 				and valid=#{valid}
 			</if>
+			<if test="imgType !=  null">			        
+				and img_type=#{imgType}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
 			<if test="createtime !=  null">			        
 				and createtime=#{createtime}
 			</if>
@@ -477,6 +637,15 @@
 			</if>
 			<if test="updperson !=  null">			        
 				and updperson=#{updperson}
+			</if>
+			<if test="picLink !=  null">			        
+				and pic_link=#{picLink}
+			</if>
+			<if test="extend1 !=  null">			        
+				and extend1=#{extend1}
+			</if>
+			<if test="extend2 !=  null">			        
+				and extend2=#{extend2}
 			</if>
 		</where>
 		
@@ -501,6 +670,12 @@
 			<if test="valid !=  null">			        
 				and valid=#{valid}
 			</if>
+			<if test="imgType !=  null">			        
+				and img_type=#{imgType}
+			</if>
+			<if test="typeName !=  null">			        
+				and type_name=#{typeName}
+			</if>
 			<if test="createtime !=  null">			        
 				and createtime=#{createtime}
 			</if>
@@ -512,6 +687,15 @@
 			</if>
 			<if test="updperson !=  null">			        
 				and updperson=#{updperson}
+			</if>
+			<if test="picLink !=  null">			        
+				and pic_link=#{picLink}
+			</if>
+			<if test="extend1 !=  null">			        
+				and extend1=#{extend1}
+			</if>
+			<if test="extend2 !=  null">			        
+				and extend2=#{extend2}
 			</if>
 		</where>
 		

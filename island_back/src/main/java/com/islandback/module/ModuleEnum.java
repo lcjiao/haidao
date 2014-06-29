@@ -196,7 +196,7 @@ public class ModuleEnum {
 	
 	
 	/**
-	 * 套餐类型 1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐  5:自由行套餐 6：团队'
+	 * 套餐类型 1:婚礼套餐 2:婚纱摄影套餐  3:婚纱摄影摄影师套餐 4:酒店套餐  5:自由行套餐  6：团队 '
 	 */
 	public static final Integer PACKAGE_TYPE_MARRY = 1;
 	
@@ -209,10 +209,13 @@ public class ModuleEnum {
 	public static final Integer PACKAGE_TYPE_FREE_WALKER = 5;
 	
 	/**
-	 * 案例类型：1、摄影案例; 2、视频案例
+	 * 案例类型：130、摄影案例; 131、视频案例
 	 */
-	public static final Integer EXAM_TYPE_WEDDINGPHOTO = 1;
+	public static final Integer CUSTOMER_CASE_WEDDINGPHOTO = 130;
 	
-	public static final Integer EXAM_TYPE_VEDIO = 2;
+	public static final Integer CUSTOMER_CASE_VEDIO = 131;
+	
+	public static final Integer CUSTOMER_CASE_PACKAGE = 7;
+	
 	
 }

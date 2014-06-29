@@ -1,4 +1,4 @@
-package com.islandback.action.weddingphoto;
+package com.islandback.action.customercase;
 
 
 
@@ -38,11 +38,11 @@ import com.islandback.web.util.Struts2Utils;
 import com.opensymphony.xwork2.ActionSupport;
 
 //@SuppressWarnings("serial")
-@Namespace("/weddingphoto/moduletype")
+@Namespace("/customercase/moduletype")
 @ResultPath("/WEB-INF")
 public class AreamoduletypeAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
-	private IslandPackageType moduleType=new IslandPackageType();//首页主推
+	private IslandPackageType moduleType=new IslandPackageType();
 	private Integer id;
 	private File image;
 	private String imageFileName;
@@ -98,7 +98,7 @@ public class AreamoduletypeAction extends BaseAction {
 		moduleType.setCreatePerson(creater);
 		moduleType.setCreateTime(now);
 		moduleType.setValid(1);
-		moduleType.setPackageType(ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO);
+		//moduleType.setPackageType(ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO);
 		this.moduleTypeBiz.addPackageType(moduleType);
 		moduleType = new IslandPackageType();
 		doList();
@@ -188,7 +188,8 @@ public class AreamoduletypeAction extends BaseAction {
 		page.setPageSize(pageSize);
 		params.put("begin", page.getBegin());
 		params.put("size", page.getPageSize());
-		params.put("packageType", ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO);
+		String pkgType = ModuleEnum.CUSTOMER_CASE_VEDIO +", "+ModuleEnum.CUSTOMER_CASE_WEDDINGPHOTO;
+		params.put("packageType", pkgType);
 		if(moduleType != null && moduleType.getAreaId() != null  && moduleType.getAreaId().intValue() > 0 ){
 			params.put("areaId", moduleType.getAreaId());
 			
@@ -201,7 +202,7 @@ public class AreamoduletypeAction extends BaseAction {
 		if(list != null && list.size()>0){
 			Map<String,Object> countParam = new HashMap<String,Object>(0);
 			countParam.put("valid", 1);
-			countParam.put("packageType", ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO);
+			countParam.put("packageType", pkgType);
 			if(moduleType != null && moduleType.getAreaId() != null  && moduleType.getAreaId().intValue() > 0 ){
 				countParam.put("areaId", moduleType.getAreaId());
 				if(moduleType != null && moduleType.getIslandId() != null  && moduleType.getIslandId().intValue() > 0 ){

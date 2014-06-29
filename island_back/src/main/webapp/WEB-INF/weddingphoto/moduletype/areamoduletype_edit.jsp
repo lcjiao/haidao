@@ -80,7 +80,7 @@ function setAreaName(){
 	
 	$.ajax({
 		type:"get",
-		url:"${ctx}/weddingphoto/index/marraymasterrecomend!getIslandByArea.action?areaId="+areaId,
+		url:"${ctx}/marrypackage/index/marraymasterrecomend!getIslandByArea.action?areaId="+areaId,
 		dataType:"json",
 		success:function(json){
 			if( json.length > 0){

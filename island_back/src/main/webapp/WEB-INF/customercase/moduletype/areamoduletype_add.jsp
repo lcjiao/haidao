@@ -3,17 +3,27 @@
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>婚纱摄影套餐类型</title>
+<title>客片案例子类型</title>
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
 <link rel="stylesheet" rev="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
 <%@ include file="/common/menu.jsp"%>
 </head>
 <body>
-<form action="${ctx}/weddingphoto/moduletype/areamoduletype!add.action" enctype="multipart/form-data" id="form" method="post">
+<form action="${ctx}/customercase/moduletype/areamoduletype!add.action" enctype="multipart/form-data" id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" width="100%">
 	<tbody>
+		<tr>
+			<td width="48">案例类型</td>
+			<td width="10">
+				<select id="package_type" name="moduleType.packageType">
+					<option value="0" selected="selected">--请选择--</option>
+					<option value="130" >摄影案例</option>
+					<option value="131" >视频案例</option>
+				</select>
+			</td>
+		</tr>
 		<tr>
 			<td>区域</td>
 			<td>
@@ -50,7 +60,7 @@
 	<tfoot>
 		<td>
 			<input type=button  value="保存" id="save" onclick="checkData()"/>
-			<input style="display: none" type=button  value="继续添加" id="add_more"/>
+			<input type=button  value="返回" id="_return" onclick="javascript:history.go(-1);"/>
 			<!-- <input type=button  value="返回" id="reset"/> -->
 		</td>
 </tfoot>
@@ -75,7 +85,7 @@ function setAreaName(){
 		type:"get",
 		url:"${ctx}/marrypackage/index/marraymasterrecomend!getIslandByArea.action?areaId="+areaId,
 		dataType:"json",
-		success:function(json){			
+		success:function(json){
 			if(json.length > 0){
 				$("#island_id").find("option").remove();
 				$("#island_id").prepend("<option value='0'>--请选择--</option>")
@@ -93,13 +103,17 @@ function setAreaName(){
 function setIslandName(){
 	var islandName=$("#island_id").find("option:selected").text();  
 	$("#island_name").val(islandName);
-	
 }
 
 function checkData(){
 	var islandId = $("#island_id").val();
+	var pkgeType = $("#package_type").val();
 	var areaId = $("#area_id").val();
 	var title = $("#title").val(); 
+	if(pkgeType == 0 || pkgeType == null){
+		alert('案例类型必选 ！');
+		return;
+	}
 	if(areaId == 0 || areaId == null){
 		alert('区域必填！');
 		return;

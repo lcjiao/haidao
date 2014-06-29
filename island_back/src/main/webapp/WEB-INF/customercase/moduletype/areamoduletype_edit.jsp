@@ -3,17 +3,27 @@
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>婚纱摄影套餐类型</title>
-<link rel="stylesheet" rev="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
-<link rel="stylesheet" rev="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
+<title>客片案例子类型</title>
+<link rel="stylesheet" href='${ctx}/css/base.css' type="text/css" media="all" />
+<link rel="stylesheet" href='${ctx}/css/iframe.css' type="text/css" media="all" />
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
 <%@ include file="/common/menu.jsp"%>
 </head>
 <body>
-<form action="${ctx}/weddingphoto/moduletype/areamoduletype!add.action" enctype="multipart/form-data" id="form" method="post">
+<form action="${ctx}/customercase/moduletype/areamoduletype!edit.action" enctype="multipart/form-data" id="form" method="post">
 <div  class="creatcustomer" >
 <table class="datalist" width="100%">
 	<tbody>
+		<tr>
+			<td width="48">案例类型</td>
+			<td width="10">
+				<select id="package_type" name="moduleType.packageType">
+					<option value="0" selected="selected">--请选择--</option>
+					<option value="130" >摄影案例</option>
+					<option value="131" >视频案例</option>
+				</select>
+			</td>
+		</tr>
 		<tr>
 			<td>区域</td>
 			<td>
@@ -38,13 +48,14 @@
 		</tr>
 		<tr>
 			<td>类别名称</td>
-			<td><input type=text class="text" value="" id="title" name="moduleType.title"  style="_width:316px;"/></td>					
+			<td><input type=text class="text" value="${moduleType.title}" id="title" name="moduleType.title"  style="_width:316px;"/></td>					
 		</tr>
 	</tbody>	
 </table>
 </div>
-<input type="hidden" value=" " id="island_name" name="moduleType.islandName"/>
-<input type="hidden" value=" " id="area_name" name="moduleType.areaName"/>
+<input type="hidden" value="${moduleType.areaName}" id="area_name" name="moduleType.areaName"/>
+<input type="hidden" value="${moduleType.islandName}" id="island_name" name="moduleType.islandName"/>
+<input type="hidden" value="${moduleType.id}" id="id" name="moduleType.id"/>
 
 <table class="creatcustomer_tfoot" width="100%">
 	<tfoot>
@@ -61,6 +72,15 @@
 <script>
 
 $(function(){
+	var packageType = '${moduleType.packageType}';
+	$("#package_type option[value='"+packageType+"']").attr('selected',true);
+	
+	var areaId = '${moduleType.areaId}';
+	$("#area_id option[value='"+areaId+"']").attr('selected',true);
+	
+	var islandId = '${moduleType.islandId}';
+	$("#island_id option[value='"+islandId+"']").attr('selected',true);
+	
 	$("#area_id").bind('change',setAreaName);
 	$("#island_id").bind('change',setIslandName);
 });
@@ -75,7 +95,7 @@ function setAreaName(){
 		type:"get",
 		url:"${ctx}/marrypackage/index/marraymasterrecomend!getIslandByArea.action?areaId="+areaId,
 		dataType:"json",
-		success:function(json){			
+		success:function(json){
 			if(json.length > 0){
 				$("#island_id").find("option").remove();
 				$("#island_id").prepend("<option value='0'>--请选择--</option>")

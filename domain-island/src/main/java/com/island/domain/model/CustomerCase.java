@@ -8,20 +8,20 @@ public class CustomerCase extends AbsModel{
 		return "haidao_db.customer_case";
 	}
 
-  	/**
-	 * 案例类型
+	/**
+	 * 案例类型 1、视频 2、客片
 	 */
-  	private String casetype;
+  	private Integer casetype;
   	/**
-	 * 设置案例类型
+	 * 设置案例类型 1、视频 2、客片
 	 */
-  	public void setCasetype(String casetype){
+  	public void setCasetype(Integer casetype){
   		this.casetype=casetype;
   	}
   	/**
-	 * 获取案例类型
+	 * 获取案例类型 1、视频 2、客片
 	 */
-  	public String getCasetype(){
+  	public Integer getCasetype(){
   		return this.casetype;
   	}
   	/**
@@ -383,4 +383,25 @@ public class CustomerCase extends AbsModel{
 		boolean passed = true;
 		return true;
 	}
+	
+	private String caseTypeStr;
+	public String getCaseTypeStr() {
+		if(this.casetype == 130){
+			return "摄影案例";
+		}else{
+			return "视频案例";
+		}
+	}
+	public void setCaseTypeStr(String caseTypeStr) {
+		this.caseTypeStr = caseTypeStr;
+	}
+	
+	private String strPhotoTime;
+	public String getStrPhotoTime() {
+		return strPhotoTime;
+	}
+	public void setStrPhotoTime(String strPhotoTime) {
+		this.strPhotoTime = strPhotoTime;
+	}
+	
 }

@@ -120,7 +120,8 @@
 				and id=#{id}
 			</if>
 			<if test="packageType !=  null">			        
-				and package_type=#{packageType}
+				and package_type in (${packageType})
+			
 			</if>
 			<if test="title !=  null">			        
 				and title=#{title}

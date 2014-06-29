@@ -184,6 +184,54 @@ public class CaseVideoMapping extends AbsModel{
   	public String getUpdperson(){
   		return this.updperson;
   	}
+  	/**
+	 * 链接地址
+	 */
+  	private String videoLink;
+  	/**
+	 * 设置链接地址
+	 */
+  	public void setVideoLink(String videoLink){
+  		this.videoLink=videoLink;
+  	}
+  	/**
+	 * 获取链接地址
+	 */
+  	public String getVideoLink(){
+  		return this.videoLink;
+  	}
+  	/**
+	 * 扩展1
+	 */
+  	private String extend1;
+  	/**
+	 * 设置扩展1
+	 */
+  	public void setExtend1(String extend1){
+  		this.extend1=extend1;
+  	}
+  	/**
+	 * 获取扩展1
+	 */
+  	public String getExtend1(){
+  		return this.extend1;
+  	}
+  	/**
+	 * 扩展2
+	 */
+  	private String extend2;
+  	/**
+	 * 设置扩展2
+	 */
+  	public void setExtend2(String extend2){
+  		this.extend2=extend2;
+  	}
+  	/**
+	 * 获取扩展2
+	 */
+  	public String getExtend2(){
+  		return this.extend2;
+  	}
 	/**
 	 * 保存时非空数据项校验；
 	 */
