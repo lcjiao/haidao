@@ -154,8 +154,11 @@ public class WdppackageAction extends BaseAction  {
 	 */
 	public String wdpPackageSearch(){
 		map.clear();
-		map.put("titleSear","%"+ wdpPackage.getTitle() +"%");
-		map.put("price", wdpPackage.getPriceBig());
+		if(wdpPackage.getTitle()=="" || "".equals(wdpPackage.getTitle())){
+			wdpPackage.setTitle(null);
+		}
+		map.put("titleSear",wdpPackage.getTitle());
+		map.put("price", wdpPackage.getPriceSmall());
 		map.put("islandId", wdpPackage.getIslandId());
 		map.put("valid", 1);
 		map.put("isOnline", 1);
@@ -336,11 +339,10 @@ public class WdppackageAction extends BaseAction  {
 		map.clear();
 		map.put("valid", 1);
 		map.put("packageType", ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO);
-		if(wdpId == null || wdpPackage != null){
-			map.put("packageId", wdpPackage.getId());
-		}else{
-			map.put("packageId", wdpId);
+		if(wdpId == null && wdpPackage != null){
+			this.wdpId = wdpPackage.getId();
 		}
+		map.put("packageId", wdpId);		
 		Page page = new Page();
 		page.setPageNo(pageNo);
 		page.setPageSize(pageSize);
@@ -429,6 +431,9 @@ public class WdppackageAction extends BaseAction  {
 	private void doKepianList() {
 		map.clear();
 		map.put("packageType", ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO);
+		if(wdpId == null && wdpPackage != null){
+			this.wdpId = wdpPackage.getId();
+		}
 		map.put("packageId", wdpId);
 		map.put("valid", 1);
 		Page page = new Page();
