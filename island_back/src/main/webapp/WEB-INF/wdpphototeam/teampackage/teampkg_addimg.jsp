@@ -73,8 +73,13 @@ function saveImgAndContinue(){
 function checkData(){
 	var r = /^[0-9]+$/;
 	var index_num = $("#index_num").val();
+	var imgType = $("#img_type").val();
 	if(!r.test(index_num)){
 		alert('排序只能为数字');
+		return false;
+	}
+	if(imgType == 0 || imgType ==null){
+		alert("图片类型必选!!!");
 		return false;
 	}
 	return true;

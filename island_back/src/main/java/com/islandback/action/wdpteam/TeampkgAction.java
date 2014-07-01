@@ -293,6 +293,9 @@ public class TeampkgAction extends BaseAction  {
 		map.clear();
 		map.put("valid", 1);
 		map.put("packageType", ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO_WORKER);
+		if(wkmId == null && workman != null){
+			this.wkmId = workman.getId();
+		}
 		map.put("packageId", wkmId);
 		Page page = new Page();
 		page.setPageNo(pageNo);
@@ -363,8 +366,10 @@ public class TeampkgAction extends BaseAction  {
 		map.put("updPerson", getCreater());
 		map.put("updTime", new Long(Calendar.getInstance().getTimeInMillis()/1000).intValue());
 		map.put("valid",0);
-		map.put("id", wkmId);
+		map.put("id", wdpImgId);
 		weddingPhotoBiz.updatePkgImgRelation(map);
+		pkgImgRelation = weddingPhotoBiz.queryPkgImgRelationByWdpImgId(wdpImgId);
+		this.wkmId = pkgImgRelation.getPackageId();
 		return toImgList();
 	}
 	
