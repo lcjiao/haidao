@@ -355,6 +355,7 @@ public class TeampkgAction extends BaseAction  {
 		pkgImgRelation.setUpdPerson(getCreater());
 		pkgImgRelation.setUpdTime(new Long(Calendar.getInstance().getTimeInMillis()/1000).intValue());
 		weddingPhotoBiz.updatePkgImgRelation(pkgImgRelation);
+		this.wkmId = pkgImgRelation.getPackageId();
 		return toImgList();
 	}
 	
