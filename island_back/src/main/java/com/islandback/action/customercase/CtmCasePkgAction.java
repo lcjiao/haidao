@@ -50,7 +50,7 @@ import com.opensymphony.xwork2.ActionSupport;
  *客户案例套餐action
  *
  */
-public class CtmcasepkgAction extends BaseAction  {
+public class CtmCasePkgAction extends BaseAction  {
 	private static final long serialVersionUID = 1L;
 
 	Map<String,Object> map = new HashMap<String,Object>(0);

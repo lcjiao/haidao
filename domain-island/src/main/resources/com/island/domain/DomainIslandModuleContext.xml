@@ -135,4 +135,10 @@
 		<property name="globalQaDao" ref="globalQaDao"></property>
 		<property name="globalQaTypeDao" ref="globalQaTypeDao"></property>
 	</bean>
+	
+	<bean id="ImageDAO" class="com.island.domain.dal.ImageIbatisDAOImpl" />	
+	<bean id="imageBiz" class="com.island.domain.biz.ImageBiz">
+		<property name="imageDao" ref="ImageDAO"></property>
+	</bean>	
+	
 </beans>
