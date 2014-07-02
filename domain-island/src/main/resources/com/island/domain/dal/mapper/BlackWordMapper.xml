@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.island.domain.dal.mapper.BlackWordMapper">
+	<resultMap id="BlackWordRslMap" type="com.island.domain.model.BlackWord">		
+		
+			<id property="id" column="id" />
+			<result property="name" column="name" />
+			<result property="valid" column="valid" />
+			<result property="createTime" column="create_time" />
+			<result property="createPerson" column="create_person" />
+			<result property="updTime" column="upd_time" />
+			<result property="updPerson" column="upd_person" />
+	</resultMap>
+
+	<select id="queryById" parameterType="java.util.Map" resultMap="BlackWordRslMap">
+		SELECT
+			id,
+			name,
+			valid,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person
+		FROM
+			black_word
+		<where>
+			and id=#{id}
+		</where>
+			limit 1
+	</select>
+
+	<select id="queryByModel" parameterType="com.island.domain.model.BlackWord" resultMap="BlackWordRslMap">		
+		SELECT
+			id,
+			name,
+			valid,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person
+		FROM
+			black_word
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="name !=  null">			        
+				and name=#{name}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+		</where>
+		
+	</select>
+		
+	<select id="queryByMap" parameterType="java.util.Map" resultMap="BlackWordRslMap">				
+		SELECT
+			id,
+			name,
+			valid,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person
+		FROM
+			black_word
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="name !=  null">			        
+				and name=#{name}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+		</where>
+		<if test="begin !=  null">			        
+				limit #{begin},#{size}
+		</if>
+	</select>
+	
+	<select id="countByModel" parameterType="com.island.domain.model.BlackWord" resultType="java.lang.Integer">	
+		SELECT
+			count(*)
+		FROM
+			black_word
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="name !=  null">			        
+				and name=#{name}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+		</where>
+		
+	</select>
+	
+	<select id="countByMap" parameterType="java.util.Map" resultType="java.lang.Integer">				
+		SELECT
+			count(*)
+		FROM
+			black_word
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="name !=  null">			        
+				and name=#{name}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+		</where>
+				
+	</select>
+	
+	<select id="pageQuery" parameterType="com.jcl.core.dal.Page" resultMap="BlackWordRslMap" fetchSize="15">
+		SELECT
+			id,
+			name,
+			valid,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person
+		FROM
+			black_word
+		<where>
+			<if test="params !=  null">
+				<if test="params.id !=  null">
+					and id=#{params.id}
+				</if>
+				<if test="params.name !=  null">
+					and name=#{params.name}
+				</if>
+				<if test="params.valid !=  null">
+					and valid=#{params.valid}
+				</if>
+				<if test="params.createTime !=  null">
+					and create_time=#{params.createTime}
+				</if>
+				<if test="params.createPerson !=  null">
+					and create_person=#{params.createPerson}
+				</if>
+				<if test="params.updTime !=  null">
+					and upd_time=#{params.updTime}
+				</if>
+				<if test="params.updPerson !=  null">
+					and upd_person=#{params.updPerson}
+				</if>
+			</if>
+		</where>
+			limit #{start},#{end}	
+	</select>
+
+	<insert id="insert" parameterType="com.island.domain.model.BlackWord" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO	black_word
+			(id,name,valid,create_time,create_person,upd_time,upd_person)
+			VALUES(#{id},#{name},#{valid},#{createTime},#{createPerson},#{updTime},#{updPerson})		
+	</insert>
+	
+	<update id="update" parameterType="com.island.domain.model.BlackWord">
+		update 
+			black_word
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="name !=  null">			        
+				name=#{name},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="createTime !=  null">			        
+				create_time=#{createTime},
+			</if>
+			<if test="createPerson !=  null">			        
+				create_person=#{createPerson},
+			</if>
+			<if test="updTime !=  null">			        
+				upd_time=#{updTime},
+			</if>
+			<if test="updPerson !=  null">			        
+				upd_person=#{updPerson},
+			</if>
+		</set>
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+		</where>
+		
+	</update>
+	<update id="updateByMap" parameterType="java.util.Map">
+		update 
+			black_word
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="name !=  null">			        
+				name=#{name},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="createTime !=  null">			        
+				create_time=#{createTime},
+			</if>
+			<if test="createPerson !=  null">			        
+				create_person=#{createPerson},
+			</if>
+			<if test="updTime !=  null">			        
+				upd_time=#{updTime},
+			</if>
+			<if test="updPerson !=  null">			        
+				upd_person=#{updPerson},
+			</if>
+		</set>
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+		</where>
+		
+	</update>
+	
+	<update id="cmplxUpdate" parameterType="java.util.Map">
+		update 
+			black_word
+		<set>
+			<if test="updNewMap.id !=  null">
+				id=#{updNewMap.id},
+			</if>
+			<if test="updNewMap.name !=  null">
+				name=#{updNewMap.name},
+			</if>
+			<if test="updNewMap.valid !=  null">
+				valid=#{updNewMap.valid},
+			</if>
+			<if test="updNewMap.createTime !=  null">
+				create_time=#{updNewMap.createTime},
+			</if>
+			<if test="updNewMap.createPerson !=  null">
+				create_person=#{updNewMap.createPerson},
+			</if>
+			<if test="updNewMap.updTime !=  null">
+				upd_time=#{updNewMap.updTime},
+			</if>
+			<if test="updNewMap.updPerson !=  null">
+				upd_person=#{updNewMap.updPerson},
+			</if>
+		</set>
+		<where>
+			<if test="updCondMap.id !=  null">
+				and id=#{updCondMap.id}
+			</if>
+			<if test="updCondMap.name !=  null">
+				and name=#{updCondMap.name}
+			</if>
+			<if test="updCondMap.valid !=  null">
+				and valid=#{updCondMap.valid}
+			</if>
+			<if test="updCondMap.createTime !=  null">
+				and create_time=#{updCondMap.createTime}
+			</if>
+			<if test="updCondMap.createPerson !=  null">
+				and create_person=#{updCondMap.createPerson}
+			</if>
+			<if test="updCondMap.updTime !=  null">
+				and upd_time=#{updCondMap.updTime}
+			</if>
+			<if test="updCondMap.updPerson !=  null">
+				and upd_person=#{updCondMap.updPerson}
+			</if>
+		</where>
+		
+	</update>
+	
+	<delete id="delete" parameterType="com.island.domain.model.BlackWord">		
+		DELETE
+		FROM
+			black_word 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="name !=  null">			        
+				and name=#{name}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+		</where>
+		
+	</delete>
+	<delete id="deleteByMap" parameterType="java.util.Map">		
+		DELETE
+		FROM
+			black_word 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="name !=  null">			        
+				and name=#{name}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+		</where>
+		
+	</delete>
+</mapper>

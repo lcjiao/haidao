@@ -70,6 +70,7 @@
 		<property name="companyDao" ref="CompanyDAO"></property>
 		<property name="recommendDao" ref="RecommendDAO"></property>
 		<property name="countryDao" ref="countryDao"></property>
+		<property name="blackWordDao" ref="BlackWordDAO"></property>
 	</bean>
 	
 
@@ -140,5 +141,5 @@
 	<bean id="imageBiz" class="com.island.domain.biz.ImageBiz">
 		<property name="imageDao" ref="ImageDAO"></property>
 	</bean>	
-	
+	<bean id="BlackWordDAO" class="com.island.domain.dal.BlackWordIbatisDAOImpl" />	
 </beans>

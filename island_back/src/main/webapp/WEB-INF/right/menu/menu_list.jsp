@@ -11,7 +11,14 @@
 
 </head>
 <body>
-<%@ include file="/common/menu.jsp"%>
+
+<table class="searchbar" width="100%">
+	<thead>
+		 <tr>
+			<td><font size="3" color="red">当前位置:权限管理--后台菜单管理</font></td>
+		</tr>
+	</thead>
+</table>
 <table class="customlist" width="100%">
 	<thead>
 		<tr>

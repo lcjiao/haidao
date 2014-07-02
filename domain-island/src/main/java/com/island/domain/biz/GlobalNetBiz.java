@@ -3,9 +3,11 @@ package com.island.domain.biz;
 import java.util.List;
 import java.util.Map;
 
+import com.island.domain.dal.BlackWordIbatisDAOImpl;
 import com.island.domain.dal.CompanyIbatisDAOImpl;
 import com.island.domain.dal.CountryIbatisDAOImpl;
 import com.island.domain.dal.RecommendIbatisDAOImpl;
+import com.island.domain.model.BlackWord;
 import com.island.domain.model.Company;
 import com.island.domain.model.Country;
 import com.island.domain.model.Recommend;
@@ -20,7 +22,12 @@ public class GlobalNetBiz {
 	private RecommendIbatisDAOImpl recommendDao;
 	private CompanyIbatisDAOImpl companyDao;
 	private CountryIbatisDAOImpl countryDao;
+	private BlackWordIbatisDAOImpl blackWordDao;
 
+	
+	public void setBlackWordDao(BlackWordIbatisDAOImpl blackWordDao) {
+		this.blackWordDao = blackWordDao;
+	}
 	public void setRecommendDao(RecommendIbatisDAOImpl recommendDao) {
 		this.recommendDao = recommendDao;
 	}
@@ -86,4 +93,27 @@ public class GlobalNetBiz {
 		return this.countryDao.countByMap(params);
 	}
 	
+	public void addBlackWord(BlackWord obj){
+		this.blackWordDao.insert(obj);
+	}
+	
+	public void updBlackWordByMap(Map<String,Object> parasm){
+		this.blackWordDao.updateByMap(parasm);
+	}
+	
+	public Integer countBlackWordByMap(Map<String,Object> parasm){
+		return this.blackWordDao.countByMap(parasm);
+	}
+	
+	public BlackWord queryBlackWordById(Integer id){
+		return this.blackWordDao.queryById(id);
+	}
+	
+	public List<BlackWord> queryBlackWordByMap(Map<String,Object> parasm){
+		return this.blackWordDao.queryByMap(parasm);
+	}
+	
+	public void updBlackWordByModel(BlackWord model){
+		this.blackWordDao.update(model);
+	}
 }
