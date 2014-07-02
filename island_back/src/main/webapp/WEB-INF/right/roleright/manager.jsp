@@ -15,8 +15,26 @@
 <script type="text/javascript" src="${ctx}/js_/SimpleTree.js"></script>
 </head>
 <body>
-<%@ include file="/common/menu.jsp"%>
-<div id="mainpanel">
+<table class="searchbar" width="100%">
+	<thead>
+		 <tr>
+			<td><font size="3" color="red">当前位置:权限管理--角色权限分配</font></td>
+		</tr>
+	</thead>
+</table>
+<br/>
+<br/>
+<table class="searchbar" width="100%">
+	<thead>
+		 <tr>
+			<td>
+				<input style="width:20px" type=checkbox id="all_sel" value = "1" /> 全选
+				<input style="width:20px" type=checkbox id="none_sel" value = "2"/>取消全选
+			</td>
+		</tr>
+	</thead>
+</table>
+
 <div class="st_tree">
 	<ul>
 		<c:forEach var="parent" items="${menuList}">
@@ -74,6 +92,8 @@ $(function(){
 	
 	
 	$("#btn").bind('click',changeRight);
+	$("#none_sel").bind('click',noneSel);
+	$("#all_sel").bind('click',allSel);
 	
 });
 	
@@ -93,6 +113,25 @@ $(function(){
 	function resetCreate(){
 		var url = "${ctx}/right/role/role!reset.action";
 		window.location.href = url;
+	}
+	
+	
+	function allSel(){
+		
+		$(":checkbox").each(function(){
+			$(this).attr("checked",true);
+		});
+		
+		$("#none_sel").attr("checked",false);
+		
+	}
+	
+	function noneSel(){
+		$(":checkbox").each(function(){
+			$(this).attr("checked",false);
+		});
+		$("#none_sel").attr("checked",true);
+
 	}
 </script>
 </html>
