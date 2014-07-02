@@ -15,7 +15,13 @@
 <div id="header">	
 	<ul>
 		<li id="logo_server_"><a href="javascript:imageClick();"></a></li>
-		<li id="Userheader">您好，<strong> ${userName} 当前有 <a href="" id="no_answer_num" style="color:red;">${noAnswerNum}</a> 条咨询未答复</strong><span>|</span><a href="javascript:updUnAnswerNum();">更新未答复客户咨询</a> <span>|</span><a href="javascript:chgpass();">密码管理</a><span>|</span> <a href="${ctx}/login!exit.action" TARGET="_top">退出</a></li>
+		<li id="Userheader">您好，<strong> ${userName}
+		 当前有 <a href="" id="no_answer_num" style="color:red;">${noAnswerNum}</a> 条咨询未答复</strong>
+		 <span>|</span><a href="javascript:updUnAnswerNum();">更新未答复客户咨询</a>
+		 <span>|</span><a href="javascript:img();">图片管理</a> 
+		 <span>|</span><a href="javascript:chgpass();">密码管理</a>
+		 <span>|</span> <a href="${ctx}/login!exit.action" TARGET="_top">退出</a>
+		 </li>
 	</ul>
 </div>
 
@@ -53,6 +59,11 @@
         
         function toNoAnswerPage(){
         	var url ="${ctx}/guestqa/guestqa!tolist.action?isAnswer=0&menuId=31";
+        	window.top.mainFrame.location.href=url;
+        }
+        
+        function img(){
+        	var url ="${ctx}/right/image/image!list.action?menuId=101";
         	window.top.mainFrame.location.href=url;
         }
  </script>

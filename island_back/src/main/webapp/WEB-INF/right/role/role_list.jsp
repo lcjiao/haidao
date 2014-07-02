@@ -115,7 +115,7 @@
 	
 	function changeRight(ele){
 		var roleId = $(ele).attr('title');
-		var url = "${ctx}/right/roleright/roleright!manager.action?roleId="+roleId;
+		var url = "${ctx}/right/roleright/roleright!manager.action?roleId="+roleId+"&menuId=100";
 		window.location.href = url;
 	}
 </script>
