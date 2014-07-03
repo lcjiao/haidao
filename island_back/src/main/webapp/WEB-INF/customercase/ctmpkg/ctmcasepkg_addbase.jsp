@@ -145,6 +145,17 @@ $(function(){
 	$("#area_id").bind('change',setIslandName);
 	$("#island_id").bind('change',setChildName);
 	$("#child_id").bind('change',setChildTypeName);
+	
+	var d = new Date();
+    function addzero(v) {
+    	if (v < 10) 
+    		return '0' + v;
+    	return v.toString();
+    }
+    var s = d.getFullYear().toString() +"-"+ addzero(d.getMonth() + 1) +"-" +addzero(d.getDate());
+   // document.getElementById('photo_time').value=s;
+    $('#photo_time').val(s);
+
 });
 
 function setAreaName(){

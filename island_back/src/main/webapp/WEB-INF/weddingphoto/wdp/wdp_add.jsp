@@ -147,9 +147,8 @@
 	function checkData(){
 		var areaId = $('area_id').val();
 		var islandId = $('island_id').val();
-		var rmdIndex = $('recommend_index').val();
-		if(null == areaId || areaId == '0' || islandId == null || null == rmdIndex){
-			alert('请检查区域、排序等栏位！！！');
+		if(null == areaId || areaId == '0' || islandId == null ){
+			alert('请检查区域、岛屿等栏位！！！');
 			return false;
 		}
 		return true;

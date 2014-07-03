@@ -47,6 +47,10 @@
 			$('input[type="button"]').addClass('ie6btn');
 			$('ul.outwindiv').css({'width':'325','top':'20px'});
 	    }
+		var msgFlg = '${message}';
+		if(!("" == msgFlg || null==msgFlg)){
+			alert(msgFlg);
+		}
 		  
 	});
 	

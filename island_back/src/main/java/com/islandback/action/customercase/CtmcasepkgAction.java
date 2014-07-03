@@ -50,7 +50,7 @@ import com.opensymphony.xwork2.ActionSupport;
  *客户案例套餐action
  *
  */
-public class CtmCasePkgAction extends BaseAction  {
+public class CtmcasepkgAction extends BaseAction  {
 	private static final long serialVersionUID = 1L;
 
 	Map<String,Object> map = new HashMap<String,Object>(0);
@@ -164,6 +164,9 @@ public class CtmCasePkgAction extends BaseAction  {
 	public String toEditBase(){
 		ctmcase = ctmcaseBiz.queryCtmCaseById(ctmId);
 		ctmcase.setStrPhotoTime(IslandDateUtil.getDateStrByUnixTime(ctmcase.getPhototime(), "yyyy-MM-dd"));
+		initAreaList();
+		initIslandList();
+		initPkgTypeList(ctmcase.getAreaid(),ctmcase.getIslandid(),ctmcase.getCasetype());
 		return "editbase";
 	}
 
@@ -377,6 +380,24 @@ public class CtmCasePkgAction extends BaseAction  {
 		List<IslandPackageType> typeList= ctmcaseBiz.queryAreaListByCaseType(map);
 		Struts2Utils.renderJson(mapper.writeValueAsString(typeList));
 	}
+	
+
+	private void initPkgTypeList(Integer areaId, Integer islandId, Integer csType) {
+		map.clear();
+		map.put("valid", 1);
+		map.put("areaId", areaId);
+		map.put("islandId", islandId);
+		map.put("packageType", csType);
+		this.pkgTypeList = ctmcaseBiz.queryAreaListByCaseType(map);
+	}
+
+	
+	private void initAreaList(){
+		map.clear();
+		map.put("valid", 1);
+		areaList = areaIslandBiz.queryAreaByMap(map);
+	}
+	
 	
 	private void initIslandList(){
 		map.clear();
