@@ -340,6 +340,7 @@
         `mail` varchar(20) DEFAULT NULL COMMENT '邮箱地址',
         `ip` varchar(50) DEFAULT NULL COMMENT 'ip地址',
         `ask_msg` text COMMENT '咨询内容',
+        `package_ids` varchar(200) comment '客户使用套餐编号 多个编号用逗号间隔',
         `is_send` int(2) DEFAULT NULL COMMENT '1已经发送邮件  0没有发送邮件',
         `valid` int(2) DEFAULT NULL COMMENT '是否有效 1有效  0无效',
         `create_time` int(10) DEFAULT NULL COMMENT '创建时间',
