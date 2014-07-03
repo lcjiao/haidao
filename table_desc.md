@@ -331,7 +331,7 @@
         `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '主键id',
         `country` varchar(20) DEFAULT NULL COMMENT '国家',
         `wed_area` varchar(20) DEFAULT NULL COMMENT '婚礼区域',
-        `wed_from` int(20) DEFAULT NULL COMMENT '出发地',
+        `wed_from` varchar(20) DEFAULT NULL COMMENT '出发地',
         `budget` int(8) DEFAULT NULL COMMENT '婚礼预算单位元',
         `wed_person_num` int(4) DEFAULT NULL COMMENT '婚礼人数',
         `wed_name` varchar(20) DEFAULT NULL COMMENT '新人姓名',
