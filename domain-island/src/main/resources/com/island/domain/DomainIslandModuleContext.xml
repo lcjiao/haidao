@@ -142,4 +142,10 @@
 		<property name="imageDao" ref="ImageDAO"></property>
 	</bean>	
 	<bean id="BlackWordDAO" class="com.island.domain.dal.BlackWordIbatisDAOImpl" />	
+	
+	
+	<bean id="islandOrderDao" class="com.island.domain.dal.IslandOrderIbatisDAOImpl"/>
+	<bean id="orderBiz" class="com.island.domain.biz.OrderBiz">
+		<property name="orderDao" ref="islandOrderDao"></property>
+	</bean>
 </beans>

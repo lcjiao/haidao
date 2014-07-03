@@ -7,6 +7,7 @@ import com.island.domain.biz.GlobalQaBiz;
 import com.island.domain.biz.GuestQaBiz;
 import com.island.domain.biz.ImageBiz;
 import com.island.domain.biz.ModuleTypeBiz;
+import com.island.domain.biz.OrderBiz;
 import com.island.domain.biz.RecommendBiz;
 import com.island.domain.biz.GlobalNetBiz;
 import com.island.domain.biz.MarrayPackageBiz;
@@ -46,6 +47,9 @@ public interface DomainIslandModule {
 	
 	@Bean("imageBiz")
 	public ImageBiz getImageBiz();
+	
+	@Bean("orderBiz")
+	public OrderBiz getOrderBiz();
 	
 	/**
 	 * 婚纱摄影 业务类

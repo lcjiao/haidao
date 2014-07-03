@@ -1,0 +1,851 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.island.domain.dal.mapper.IslandOrderMapper">
+	<resultMap id="IslandOrderRslMap" type="com.island.domain.model.IslandOrder">		
+		
+			<id property="id" column="id" />
+			<result property="country" column="country" />
+			<result property="wedArea" column="wed_area" />
+			<result property="wedFrom" column="wed_from" />
+			<result property="budget" column="budget" />
+			<result property="wedPersonNum" column="wed_person_num" />
+			<result property="wedName" column="wed_name" />
+			<result property="tel" column="tel" />
+			<result property="qq" column="qq" />
+			<result property="mail" column="mail" />
+			<result property="ip" column="ip" />
+			<result property="askMsg" column="ask_msg" />
+			<result property="packageIds" column="package_ids" />
+			<result property="isSend" column="is_send" />
+			<result property="valid" column="valid" />
+			<result property="createTime" column="create_time" />
+			<result property="createPerson" column="create_person" />
+			<result property="updTime" column="upd_time" />
+			<result property="updPerson" column="upd_person" />
+	</resultMap>
+
+	<select id="queryById" parameterType="java.util.Map" resultMap="IslandOrderRslMap">
+		SELECT
+			id,
+			country,
+			wed_area,
+			wed_from,
+			budget,
+			wed_person_num,
+			wed_name,
+			tel,
+			qq,
+			mail,
+			ip,
+			ask_msg,
+			package_ids,
+			is_send,
+			valid,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person
+		FROM
+			island_order
+		<where>
+			and id=#{id}
+		</where>
+			limit 1
+	</select>
+
+	<select id="queryByModel" parameterType="com.island.domain.model.IslandOrder" resultMap="IslandOrderRslMap">		
+		SELECT
+			id,
+			country,
+			wed_area,
+			wed_from,
+			budget,
+			wed_person_num,
+			wed_name,
+			tel,
+			qq,
+			mail,
+			ip,
+			ask_msg,
+			package_ids,
+			is_send,
+			valid,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person
+		FROM
+			island_order
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="country !=  null">			        
+				and country=#{country}
+			</if>
+			<if test="wedArea !=  null">			        
+				and wed_area=#{wedArea}
+			</if>
+			<if test="wedFrom !=  null">			        
+				and wed_from=#{wedFrom}
+			</if>
+			<if test="budget !=  null">			        
+				and budget=#{budget}
+			</if>
+			<if test="wedPersonNum !=  null">			        
+				and wed_person_num=#{wedPersonNum}
+			</if>
+			<if test="wedName !=  null">			        
+				and wed_name like '${wedName}'
+			</if>
+			<if test="tel !=  null">			        
+				and tel like '${tel}'
+			</if>
+			<if test="qq !=  null">			        
+				and qq like '${qq}'
+			</if>
+			<if test="mail !=  null">			        
+				and mail like '${mail}'
+			</if>
+			<if test="ip !=  null">			        
+				and ip=#{ip}
+			</if>
+			<if test="askMsg !=  null">			        
+				and ask_msg=#{askMsg}
+			</if>
+			<if test="packageIds !=  null">			        
+				and package_ids=#{packageIds}
+			</if>
+			<if test="isSend !=  null">			        
+				and is_send=#{isSend}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+		</where>
+		
+	</select>
+		
+	<select id="queryByMap" parameterType="java.util.Map" resultMap="IslandOrderRslMap">				
+		SELECT
+			id,
+			country,
+			wed_area,
+			wed_from,
+			budget,
+			wed_person_num,
+			wed_name,
+			tel,
+			qq,
+			mail,
+			ip,
+			ask_msg,
+			package_ids,
+			is_send,
+			valid,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person
+		FROM
+			island_order
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="country !=  null">			        
+				and country=#{country}
+			</if>
+			<if test="wedArea !=  null">			        
+				and wed_area=#{wedArea}
+			</if>
+			<if test="wedFrom !=  null">			        
+				and wed_from=#{wedFrom}
+			</if>
+			<if test="budget !=  null">			        
+				and budget=#{budget}
+			</if>
+			<if test="wedPersonNum !=  null">			        
+				and wed_person_num=#{wedPersonNum}
+			</if>
+			<if test="wedName !=  null">			        
+				and wed_name like '${wedName}'
+			</if>
+			<if test="tel !=  null">			        
+				and tel like '${tel}'
+			</if>
+			<if test="qq !=  null">			        
+				and qq like '${qq}'
+			</if>
+			<if test="mail !=  null">			        
+				and mail like '${mail}'
+			</if>
+			<if test="ip !=  null">			        
+				and ip=#{ip}
+			</if>
+			<if test="askMsg !=  null">			        
+				and ask_msg=#{askMsg}
+			</if>
+			<if test="packageIds !=  null">			        
+				and package_ids=#{packageIds}
+			</if>
+			<if test="isSend !=  null">			        
+				and is_send=#{isSend}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+		</where>
+		<if test="begin !=  null">			        
+				limit #{begin},#{size}
+		</if>
+	</select>
+	
+	<select id="countByModel" parameterType="com.island.domain.model.IslandOrder" resultType="java.lang.Integer">	
+		SELECT
+			count(*)
+		FROM
+			island_order
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="country !=  null">			        
+				and country=#{country}
+			</if>
+			<if test="wedArea !=  null">			        
+				and wed_area=#{wedArea}
+			</if>
+			<if test="wedFrom !=  null">			        
+				and wed_from=#{wedFrom}
+			</if>
+			<if test="budget !=  null">			        
+				and budget=#{budget}
+			</if>
+			<if test="wedPersonNum !=  null">			        
+				and wed_person_num=#{wedPersonNum}
+			</if>
+			<if test="wedName !=  null">			        
+				and wed_name=#{wedName}
+			</if>
+			<if test="tel !=  null">			        
+				and tel=#{tel}
+			</if>
+			<if test="qq !=  null">			        
+				and qq=#{qq}
+			</if>
+			<if test="mail !=  null">			        
+				and mail=#{mail}
+			</if>
+			<if test="ip !=  null">			        
+				and ip=#{ip}
+			</if>
+			<if test="askMsg !=  null">			        
+				and ask_msg=#{askMsg}
+			</if>
+			<if test="packageIds !=  null">			        
+				and package_ids=#{packageIds}
+			</if>
+			<if test="isSend !=  null">			        
+				and is_send=#{isSend}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+		</where>
+		
+	</select>
+	
+	<select id="countByMap" parameterType="java.util.Map" resultType="java.lang.Integer">				
+		SELECT
+			count(*)
+		FROM
+			island_order
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="country !=  null">			        
+				and country=#{country}
+			</if>
+			<if test="wedArea !=  null">			        
+				and wed_area=#{wedArea}
+			</if>
+			<if test="wedFrom !=  null">			        
+				and wed_from=#{wedFrom}
+			</if>
+			<if test="budget !=  null">			        
+				and budget=#{budget}
+			</if>
+			<if test="wedPersonNum !=  null">			        
+				and wed_person_num=#{wedPersonNum}
+			</if>
+			<if test="wedName !=  null">			        
+				and wed_name=#{wedName}
+			</if>
+			<if test="tel !=  null">			        
+				and tel=#{tel}
+			</if>
+			<if test="qq !=  null">			        
+				and qq=#{qq}
+			</if>
+			<if test="mail !=  null">			        
+				and mail=#{mail}
+			</if>
+			<if test="ip !=  null">			        
+				and ip=#{ip}
+			</if>
+			<if test="askMsg !=  null">			        
+				and ask_msg=#{askMsg}
+			</if>
+			<if test="packageIds !=  null">			        
+				and package_ids=#{packageIds}
+			</if>
+			<if test="isSend !=  null">			        
+				and is_send=#{isSend}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+		</where>
+				
+	</select>
+	
+	<select id="pageQuery" parameterType="com.jcl.core.dal.Page" resultMap="IslandOrderRslMap" fetchSize="15">
+		SELECT
+			id,
+			country,
+			wed_area,
+			wed_from,
+			budget,
+			wed_person_num,
+			wed_name,
+			tel,
+			qq,
+			mail,
+			ip,
+			ask_msg,
+			package_ids,
+			is_send,
+			valid,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person
+		FROM
+			island_order
+		<where>
+			<if test="params !=  null">
+				<if test="params.id !=  null">
+					and id=#{params.id}
+				</if>
+				<if test="params.country !=  null">
+					and country=#{params.country}
+				</if>
+				<if test="params.wedArea !=  null">
+					and wed_area=#{params.wedArea}
+				</if>
+				<if test="params.wedFrom !=  null">
+					and wed_from=#{params.wedFrom}
+				</if>
+				<if test="params.budget !=  null">
+					and budget=#{params.budget}
+				</if>
+				<if test="params.wedPersonNum !=  null">
+					and wed_person_num=#{params.wedPersonNum}
+				</if>
+				<if test="params.wedName !=  null">
+					and wed_name=#{params.wedName}
+				</if>
+				<if test="params.tel !=  null">
+					and tel=#{params.tel}
+				</if>
+				<if test="params.qq !=  null">
+					and qq=#{params.qq}
+				</if>
+				<if test="params.mail !=  null">
+					and mail=#{params.mail}
+				</if>
+				<if test="params.ip !=  null">
+					and ip=#{params.ip}
+				</if>
+				<if test="params.askMsg !=  null">
+					and ask_msg=#{params.askMsg}
+				</if>
+				<if test="params.packageIds !=  null">
+					and package_ids=#{params.packageIds}
+				</if>
+				<if test="params.isSend !=  null">
+					and is_send=#{params.isSend}
+				</if>
+				<if test="params.valid !=  null">
+					and valid=#{params.valid}
+				</if>
+				<if test="params.createTime !=  null">
+					and create_time=#{params.createTime}
+				</if>
+				<if test="params.createPerson !=  null">
+					and create_person=#{params.createPerson}
+				</if>
+				<if test="params.updTime !=  null">
+					and upd_time=#{params.updTime}
+				</if>
+				<if test="params.updPerson !=  null">
+					and upd_person=#{params.updPerson}
+				</if>
+			</if>
+		</where>
+			limit #{start},#{end}	
+	</select>
+
+	<insert id="insert" parameterType="com.island.domain.model.IslandOrder" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO	island_order
+			(id,country,wed_area,wed_from,budget,wed_person_num,wed_name,tel,qq,mail,ip,ask_msg,package_ids,is_send,valid,create_time,create_person,upd_time,upd_person)
+			VALUES(#{id},#{country},#{wedArea},#{wedFrom},#{budget},#{wedPersonNum},#{wedName},#{tel},#{qq},#{mail},#{ip},#{askMsg},#{packageIds},#{isSend},#{valid},#{createTime},#{createPerson},#{updTime},#{updPerson})		
+	</insert>
+	
+	<update id="update" parameterType="com.island.domain.model.IslandOrder">
+		update 
+			island_order
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="country !=  null">			        
+				country=#{country},
+			</if>
+			<if test="wedArea !=  null">			        
+				wed_area=#{wedArea},
+			</if>
+			<if test="wedFrom !=  null">			        
+				wed_from=#{wedFrom},
+			</if>
+			<if test="budget !=  null">			        
+				budget=#{budget},
+			</if>
+			<if test="wedPersonNum !=  null">			        
+				wed_person_num=#{wedPersonNum},
+			</if>
+			<if test="wedName !=  null">			        
+				wed_name=#{wedName},
+			</if>
+			<if test="tel !=  null">			        
+				tel=#{tel},
+			</if>
+			<if test="qq !=  null">			        
+				qq=#{qq},
+			</if>
+			<if test="mail !=  null">			        
+				mail=#{mail},
+			</if>
+			<if test="ip !=  null">			        
+				ip=#{ip},
+			</if>
+			<if test="askMsg !=  null">			        
+				ask_msg=#{askMsg},
+			</if>
+			<if test="packageIds !=  null">			        
+				package_ids=#{packageIds},
+			</if>
+			<if test="isSend !=  null">			        
+				is_send=#{isSend},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="createTime !=  null">			        
+				create_time=#{createTime},
+			</if>
+			<if test="createPerson !=  null">			        
+				create_person=#{createPerson},
+			</if>
+			<if test="updTime !=  null">			        
+				upd_time=#{updTime},
+			</if>
+			<if test="updPerson !=  null">			        
+				upd_person=#{updPerson},
+			</if>
+		</set>
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+		</where>
+		
+	</update>
+	<update id="updateByMap" parameterType="java.util.Map">
+		update 
+			island_order
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="country !=  null">			        
+				country=#{country},
+			</if>
+			<if test="wedArea !=  null">			        
+				wed_area=#{wedArea},
+			</if>
+			<if test="wedFrom !=  null">			        
+				wed_from=#{wedFrom},
+			</if>
+			<if test="budget !=  null">			        
+				budget=#{budget},
+			</if>
+			<if test="wedPersonNum !=  null">			        
+				wed_person_num=#{wedPersonNum},
+			</if>
+			<if test="wedName !=  null">			        
+				wed_name=#{wedName},
+			</if>
+			<if test="tel !=  null">			        
+				tel=#{tel},
+			</if>
+			<if test="qq !=  null">			        
+				qq=#{qq},
+			</if>
+			<if test="mail !=  null">			        
+				mail=#{mail},
+			</if>
+			<if test="ip !=  null">			        
+				ip=#{ip},
+			</if>
+			<if test="askMsg !=  null">			        
+				ask_msg=#{askMsg},
+			</if>
+			<if test="packageIds !=  null">			        
+				package_ids=#{packageIds},
+			</if>
+			<if test="isSend !=  null">			        
+				is_send=#{isSend},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="createTime !=  null">			        
+				create_time=#{createTime},
+			</if>
+			<if test="createPerson !=  null">			        
+				create_person=#{createPerson},
+			</if>
+			<if test="updTime !=  null">			        
+				upd_time=#{updTime},
+			</if>
+			<if test="updPerson !=  null">			        
+				upd_person=#{updPerson},
+			</if>
+		</set>
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+		</where>
+		
+	</update>
+	
+	<update id="cmplxUpdate" parameterType="java.util.Map">
+		update 
+			island_order
+		<set>
+			<if test="updNewMap.id !=  null">
+				id=#{updNewMap.id},
+			</if>
+			<if test="updNewMap.country !=  null">
+				country=#{updNewMap.country},
+			</if>
+			<if test="updNewMap.wedArea !=  null">
+				wed_area=#{updNewMap.wedArea},
+			</if>
+			<if test="updNewMap.wedFrom !=  null">
+				wed_from=#{updNewMap.wedFrom},
+			</if>
+			<if test="updNewMap.budget !=  null">
+				budget=#{updNewMap.budget},
+			</if>
+			<if test="updNewMap.wedPersonNum !=  null">
+				wed_person_num=#{updNewMap.wedPersonNum},
+			</if>
+			<if test="updNewMap.wedName !=  null">
+				wed_name=#{updNewMap.wedName},
+			</if>
+			<if test="updNewMap.tel !=  null">
+				tel=#{updNewMap.tel},
+			</if>
+			<if test="updNewMap.qq !=  null">
+				qq=#{updNewMap.qq},
+			</if>
+			<if test="updNewMap.mail !=  null">
+				mail=#{updNewMap.mail},
+			</if>
+			<if test="updNewMap.ip !=  null">
+				ip=#{updNewMap.ip},
+			</if>
+			<if test="updNewMap.askMsg !=  null">
+				ask_msg=#{updNewMap.askMsg},
+			</if>
+			<if test="updNewMap.packageIds !=  null">
+				package_ids=#{updNewMap.packageIds},
+			</if>
+			<if test="updNewMap.isSend !=  null">
+				is_send=#{updNewMap.isSend},
+			</if>
+			<if test="updNewMap.valid !=  null">
+				valid=#{updNewMap.valid},
+			</if>
+			<if test="updNewMap.createTime !=  null">
+				create_time=#{updNewMap.createTime},
+			</if>
+			<if test="updNewMap.createPerson !=  null">
+				create_person=#{updNewMap.createPerson},
+			</if>
+			<if test="updNewMap.updTime !=  null">
+				upd_time=#{updNewMap.updTime},
+			</if>
+			<if test="updNewMap.updPerson !=  null">
+				upd_person=#{updNewMap.updPerson},
+			</if>
+		</set>
+		<where>
+			<if test="updCondMap.id !=  null">
+				and id=#{updCondMap.id}
+			</if>
+			<if test="updCondMap.country !=  null">
+				and country=#{updCondMap.country}
+			</if>
+			<if test="updCondMap.wedArea !=  null">
+				and wed_area=#{updCondMap.wedArea}
+			</if>
+			<if test="updCondMap.wedFrom !=  null">
+				and wed_from=#{updCondMap.wedFrom}
+			</if>
+			<if test="updCondMap.budget !=  null">
+				and budget=#{updCondMap.budget}
+			</if>
+			<if test="updCondMap.wedPersonNum !=  null">
+				and wed_person_num=#{updCondMap.wedPersonNum}
+			</if>
+			<if test="updCondMap.wedName !=  null">
+				and wed_name=#{updCondMap.wedName}
+			</if>
+			<if test="updCondMap.tel !=  null">
+				and tel=#{updCondMap.tel}
+			</if>
+			<if test="updCondMap.qq !=  null">
+				and qq=#{updCondMap.qq}
+			</if>
+			<if test="updCondMap.mail !=  null">
+				and mail=#{updCondMap.mail}
+			</if>
+			<if test="updCondMap.ip !=  null">
+				and ip=#{updCondMap.ip}
+			</if>
+			<if test="updCondMap.askMsg !=  null">
+				and ask_msg=#{updCondMap.askMsg}
+			</if>
+			<if test="updCondMap.packageIds !=  null">
+				and package_ids=#{updCondMap.packageIds}
+			</if>
+			<if test="updCondMap.isSend !=  null">
+				and is_send=#{updCondMap.isSend}
+			</if>
+			<if test="updCondMap.valid !=  null">
+				and valid=#{updCondMap.valid}
+			</if>
+			<if test="updCondMap.createTime !=  null">
+				and create_time=#{updCondMap.createTime}
+			</if>
+			<if test="updCondMap.createPerson !=  null">
+				and create_person=#{updCondMap.createPerson}
+			</if>
+			<if test="updCondMap.updTime !=  null">
+				and upd_time=#{updCondMap.updTime}
+			</if>
+			<if test="updCondMap.updPerson !=  null">
+				and upd_person=#{updCondMap.updPerson}
+			</if>
+		</where>
+		
+	</update>
+	
+	<delete id="delete" parameterType="com.island.domain.model.IslandOrder">		
+		DELETE
+		FROM
+			island_order 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="country !=  null">			        
+				and country=#{country}
+			</if>
+			<if test="wedArea !=  null">			        
+				and wed_area=#{wedArea}
+			</if>
+			<if test="wedFrom !=  null">			        
+				and wed_from=#{wedFrom}
+			</if>
+			<if test="budget !=  null">			        
+				and budget=#{budget}
+			</if>
+			<if test="wedPersonNum !=  null">			        
+				and wed_person_num=#{wedPersonNum}
+			</if>
+			<if test="wedName !=  null">			        
+				and wed_name=#{wedName}
+			</if>
+			<if test="tel !=  null">			        
+				and tel=#{tel}
+			</if>
+			<if test="qq !=  null">			        
+				and qq=#{qq}
+			</if>
+			<if test="mail !=  null">			        
+				and mail=#{mail}
+			</if>
+			<if test="ip !=  null">			        
+				and ip=#{ip}
+			</if>
+			<if test="askMsg !=  null">			        
+				and ask_msg=#{askMsg}
+			</if>
+			<if test="packageIds !=  null">			        
+				and package_ids=#{packageIds}
+			</if>
+			<if test="isSend !=  null">			        
+				and is_send=#{isSend}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+		</where>
+		
+	</delete>
+	<delete id="deleteByMap" parameterType="java.util.Map">		
+		DELETE
+		FROM
+			island_order 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="country !=  null">			        
+				and country=#{country}
+			</if>
+			<if test="wedArea !=  null">			        
+				and wed_area=#{wedArea}
+			</if>
+			<if test="wedFrom !=  null">			        
+				and wed_from=#{wedFrom}
+			</if>
+			<if test="budget !=  null">			        
+				and budget=#{budget}
+			</if>
+			<if test="wedPersonNum !=  null">			        
+				and wed_person_num=#{wedPersonNum}
+			</if>
+			<if test="wedName !=  null">			        
+				and wed_name=#{wedName}
+			</if>
+			<if test="tel !=  null">			        
+				and tel=#{tel}
+			</if>
+			<if test="qq !=  null">			        
+				and qq=#{qq}
+			</if>
+			<if test="mail !=  null">			        
+				and mail=#{mail}
+			</if>
+			<if test="ip !=  null">			        
+				and ip=#{ip}
+			</if>
+			<if test="askMsg !=  null">			        
+				and ask_msg=#{askMsg}
+			</if>
+			<if test="packageIds !=  null">			        
+				and package_ids=#{packageIds}
+			</if>
+			<if test="isSend !=  null">			        
+				and is_send=#{isSend}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+		</where>
+		
+	</delete>
+</mapper>
