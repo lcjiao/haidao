@@ -148,4 +148,9 @@
 	<bean id="orderBiz" class="com.island.domain.biz.OrderBiz">
 		<property name="orderDao" ref="islandOrderDao"></property>
 	</bean>
+	
+	<bean id="islandMapDao" class="com.island.domain.dal.IslandMapIbatisDAOImpl" />		
+	<bean id="islandMapBiz" class="com.island.domain.biz.IslandMapBiz">
+		<property name="islandMapDao" ref="islandMapDao"></property>
+	</bean>
 </beans>

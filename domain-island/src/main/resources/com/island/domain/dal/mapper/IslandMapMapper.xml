@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.island.domain.dal.mapper.IslandMapMapper">
+	<resultMap id="IslandMapRslMap" type="com.island.domain.model.IslandMap">		
+		
+			<id property="id" column="id" />
+			<result property="packageType" column="package_type" />
+			<result property="areaId" column="area_id" />
+			<result property="islandId" column="island_id" />
+			<result property="mapBigImg" column="map_big_img" />
+			<result property="mapSmallImg" column="map_small_img" />
+			<result property="mapLeft" column="map_left" />
+			<result property="mapTop" column="map_top" />
+			<result property="linkUrl" column="link_url" />
+			<result property="mapDesc" column="map_desc" />
+			<result property="valid" column="valid" />
+			<result property="createTime" column="create_time" />
+			<result property="createPerson" column="create_person" />
+			<result property="updTime" column="upd_time" />
+			<result property="updPerson" column="upd_person" />
+	</resultMap>
+
+	<select id="queryById" parameterType="java.util.Map" resultMap="IslandMapRslMap">
+		SELECT
+			id,
+			package_type,
+			area_id,
+			island_id,
+			map_big_img,
+			map_small_img,
+			map_left,
+			map_top,
+			link_url,
+			map_desc,
+			valid,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person
+		FROM
+			island_map
+		<where>
+			and id=#{id}
+		</where>
+			limit 1
+	</select>
+
+	<select id="queryByModel" parameterType="com.island.domain.model.IslandMap" resultMap="IslandMapRslMap">		
+		SELECT
+			id,
+			package_type,
+			area_id,
+			island_id,
+			map_big_img,
+			map_small_img,
+			map_left,
+			map_top,
+			link_url,
+			map_desc,
+			valid,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person
+		FROM
+			island_map
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="areaId !=  null">			        
+				and area_id=#{areaId}
+			</if>
+			<if test="islandId !=  null">			        
+				and island_id=#{islandId}
+			</if>
+			<if test="mapBigImg !=  null">			        
+				and map_big_img=#{mapBigImg}
+			</if>
+			<if test="mapSmallImg !=  null">			        
+				and map_small_img=#{mapSmallImg}
+			</if>
+			<if test="mapLeft !=  null">			        
+				and map_left=#{mapLeft}
+			</if>
+			<if test="mapTop !=  null">			        
+				and map_top=#{mapTop}
+			</if>
+			<if test="linkUrl !=  null">			        
+				and link_url=#{linkUrl}
+			</if>
+			<if test="mapDesc !=  null">			        
+				and map_desc=#{mapDesc}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+		</where>
+		
+	</select>
+		
+	<select id="queryByMap" parameterType="java.util.Map" resultMap="IslandMapRslMap">				
+		SELECT
+			id,
+			package_type,
+			area_id,
+			island_id,
+			map_big_img,
+			map_small_img,
+			map_left,
+			map_top,
+			link_url,
+			map_desc,
+			valid,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person
+		FROM
+			island_map
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="areaId !=  null">			        
+				and area_id=#{areaId}
+			</if>
+			<if test="islandId !=  null">			        
+				and island_id=#{islandId}
+			</if>
+			<if test="mapBigImg !=  null">			        
+				and map_big_img=#{mapBigImg}
+			</if>
+			<if test="mapSmallImg !=  null">			        
+				and map_small_img=#{mapSmallImg}
+			</if>
+			<if test="mapLeft !=  null">			        
+				and map_left=#{mapLeft}
+			</if>
+			<if test="mapTop !=  null">			        
+				and map_top=#{mapTop}
+			</if>
+			<if test="linkUrl !=  null">			        
+				and link_url=#{linkUrl}
+			</if>
+			<if test="mapDesc !=  null">			        
+				and map_desc=#{mapDesc}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+		</where>
+		<if test="begin !=  null">			        
+				limit #{begin},#{size}
+		</if>
+	</select>
+	
+	<select id="countByModel" parameterType="com.island.domain.model.IslandMap" resultType="java.lang.Integer">	
+		SELECT
+			count(*)
+		FROM
+			island_map
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="areaId !=  null">			        
+				and area_id=#{areaId}
+			</if>
+			<if test="islandId !=  null">			        
+				and island_id=#{islandId}
+			</if>
+			<if test="mapBigImg !=  null">			        
+				and map_big_img=#{mapBigImg}
+			</if>
+			<if test="mapSmallImg !=  null">			        
+				and map_small_img=#{mapSmallImg}
+			</if>
+			<if test="mapLeft !=  null">			        
+				and map_left=#{mapLeft}
+			</if>
+			<if test="mapTop !=  null">			        
+				and map_top=#{mapTop}
+			</if>
+			<if test="linkUrl !=  null">			        
+				and link_url=#{linkUrl}
+			</if>
+			<if test="mapDesc !=  null">			        
+				and map_desc=#{mapDesc}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+		</where>
+		
+	</select>
+	
+	<select id="countByMap" parameterType="java.util.Map" resultType="java.lang.Integer">				
+		SELECT
+			count(*)
+		FROM
+			island_map
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="areaId !=  null">			        
+				and area_id=#{areaId}
+			</if>
+			<if test="islandId !=  null">			        
+				and island_id=#{islandId}
+			</if>
+			<if test="mapBigImg !=  null">			        
+				and map_big_img=#{mapBigImg}
+			</if>
+			<if test="mapSmallImg !=  null">			        
+				and map_small_img=#{mapSmallImg}
+			</if>
+			<if test="mapLeft !=  null">			        
+				and map_left=#{mapLeft}
+			</if>
+			<if test="mapTop !=  null">			        
+				and map_top=#{mapTop}
+			</if>
+			<if test="linkUrl !=  null">			        
+				and link_url=#{linkUrl}
+			</if>
+			<if test="mapDesc !=  null">			        
+				and map_desc=#{mapDesc}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+		</where>
+				
+	</select>
+	
+	<select id="pageQuery" parameterType="com.jcl.core.dal.Page" resultMap="IslandMapRslMap" fetchSize="15">
+		SELECT
+			id,
+			package_type,
+			area_id,
+			island_id,
+			map_big_img,
+			map_small_img,
+			map_left,
+			map_top,
+			link_url,
+			map_desc,
+			valid,
+			create_time,
+			create_person,
+			upd_time,
+			upd_person
+		FROM
+			island_map
+		<where>
+			<if test="params !=  null">
+				<if test="params.id !=  null">
+					and id=#{params.id}
+				</if>
+				<if test="params.packageType !=  null">
+					and package_type=#{params.packageType}
+				</if>
+				<if test="params.areaId !=  null">
+					and area_id=#{params.areaId}
+				</if>
+				<if test="params.islandId !=  null">
+					and island_id=#{params.islandId}
+				</if>
+				<if test="params.mapBigImg !=  null">
+					and map_big_img=#{params.mapBigImg}
+				</if>
+				<if test="params.mapSmallImg !=  null">
+					and map_small_img=#{params.mapSmallImg}
+				</if>
+				<if test="params.mapLeft !=  null">
+					and map_left=#{params.mapLeft}
+				</if>
+				<if test="params.mapTop !=  null">
+					and map_top=#{params.mapTop}
+				</if>
+				<if test="params.linkUrl !=  null">
+					and link_url=#{params.linkUrl}
+				</if>
+				<if test="params.mapDesc !=  null">
+					and map_desc=#{params.mapDesc}
+				</if>
+				<if test="params.valid !=  null">
+					and valid=#{params.valid}
+				</if>
+				<if test="params.createTime !=  null">
+					and create_time=#{params.createTime}
+				</if>
+				<if test="params.createPerson !=  null">
+					and create_person=#{params.createPerson}
+				</if>
+				<if test="params.updTime !=  null">
+					and upd_time=#{params.updTime}
+				</if>
+				<if test="params.updPerson !=  null">
+					and upd_person=#{params.updPerson}
+				</if>
+			</if>
+		</where>
+			limit #{start},#{end}	
+	</select>
+
+	<insert id="insert" parameterType="com.island.domain.model.IslandMap" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO	island_map
+			(id,package_type,area_id,island_id,map_big_img,map_small_img,map_left,map_top,link_url,map_desc,valid,create_time,create_person,upd_time,upd_person)
+			VALUES(#{id},#{packageType},#{areaId},#{islandId},#{mapBigImg},#{mapSmallImg},#{mapLeft},#{mapTop},#{linkUrl},#{mapDesc},#{valid},#{createTime},#{createPerson},#{updTime},#{updPerson})		
+	</insert>
+	
+	<update id="update" parameterType="com.island.domain.model.IslandMap">
+		update 
+			island_map
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="packageType !=  null">			        
+				package_type=#{packageType},
+			</if>
+			<if test="areaId !=  null">			        
+				area_id=#{areaId},
+			</if>
+			<if test="islandId !=  null">			        
+				island_id=#{islandId},
+			</if>
+			<if test="mapBigImg !=  null">			        
+				map_big_img=#{mapBigImg},
+			</if>
+			<if test="mapSmallImg !=  null">			        
+				map_small_img=#{mapSmallImg},
+			</if>
+			<if test="mapLeft !=  null">			        
+				map_left=#{mapLeft},
+			</if>
+			<if test="mapTop !=  null">			        
+				map_top=#{mapTop},
+			</if>
+			<if test="linkUrl !=  null">			        
+				link_url=#{linkUrl},
+			</if>
+			<if test="mapDesc !=  null">			        
+				map_desc=#{mapDesc},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="createTime !=  null">			        
+				create_time=#{createTime},
+			</if>
+			<if test="createPerson !=  null">			        
+				create_person=#{createPerson},
+			</if>
+			<if test="updTime !=  null">			        
+				upd_time=#{updTime},
+			</if>
+			<if test="updPerson !=  null">			        
+				upd_person=#{updPerson},
+			</if>
+		</set>
+		<where>			
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+		</where>
+		
+	</update>
+	<update id="updateByMap" parameterType="java.util.Map">
+		update 
+			island_map
+		<set> 
+			<if test="id !=  null">
+				id=#{id},
+			</if>
+			<if test="packageType !=  null">			        
+				package_type=#{packageType},
+			</if>
+			<if test="areaId !=  null">			        
+				area_id=#{areaId},
+			</if>
+			<if test="islandId !=  null">			        
+				island_id=#{islandId},
+			</if>
+			<if test="mapBigImg !=  null">			        
+				map_big_img=#{mapBigImg},
+			</if>
+			<if test="mapSmallImg !=  null">			        
+				map_small_img=#{mapSmallImg},
+			</if>
+			<if test="mapLeft !=  null">			        
+				map_left=#{mapLeft},
+			</if>
+			<if test="mapTop !=  null">			        
+				map_top=#{mapTop},
+			</if>
+			<if test="linkUrl !=  null">			        
+				link_url=#{linkUrl},
+			</if>
+			<if test="mapDesc !=  null">			        
+				map_desc=#{mapDesc},
+			</if>
+			<if test="valid !=  null">			        
+				valid=#{valid},
+			</if>
+			<if test="createTime !=  null">			        
+				create_time=#{createTime},
+			</if>
+			<if test="createPerson !=  null">			        
+				create_person=#{createPerson},
+			</if>
+			<if test="updTime !=  null">			        
+				upd_time=#{updTime},
+			</if>
+			<if test="updPerson !=  null">			        
+				upd_person=#{updPerson},
+			</if>
+		</set>
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+		</where>
+		
+	</update>
+	
+	<update id="cmplxUpdate" parameterType="java.util.Map">
+		update 
+			island_map
+		<set>
+			<if test="updNewMap.id !=  null">
+				id=#{updNewMap.id},
+			</if>
+			<if test="updNewMap.packageType !=  null">
+				package_type=#{updNewMap.packageType},
+			</if>
+			<if test="updNewMap.areaId !=  null">
+				area_id=#{updNewMap.areaId},
+			</if>
+			<if test="updNewMap.islandId !=  null">
+				island_id=#{updNewMap.islandId},
+			</if>
+			<if test="updNewMap.mapBigImg !=  null">
+				map_big_img=#{updNewMap.mapBigImg},
+			</if>
+			<if test="updNewMap.mapSmallImg !=  null">
+				map_small_img=#{updNewMap.mapSmallImg},
+			</if>
+			<if test="updNewMap.mapLeft !=  null">
+				map_left=#{updNewMap.mapLeft},
+			</if>
+			<if test="updNewMap.mapTop !=  null">
+				map_top=#{updNewMap.mapTop},
+			</if>
+			<if test="updNewMap.linkUrl !=  null">
+				link_url=#{updNewMap.linkUrl},
+			</if>
+			<if test="updNewMap.mapDesc !=  null">
+				map_desc=#{updNewMap.mapDesc},
+			</if>
+			<if test="updNewMap.valid !=  null">
+				valid=#{updNewMap.valid},
+			</if>
+			<if test="updNewMap.createTime !=  null">
+				create_time=#{updNewMap.createTime},
+			</if>
+			<if test="updNewMap.createPerson !=  null">
+				create_person=#{updNewMap.createPerson},
+			</if>
+			<if test="updNewMap.updTime !=  null">
+				upd_time=#{updNewMap.updTime},
+			</if>
+			<if test="updNewMap.updPerson !=  null">
+				upd_person=#{updNewMap.updPerson},
+			</if>
+		</set>
+		<where>
+			<if test="updCondMap.id !=  null">
+				and id=#{updCondMap.id}
+			</if>
+			<if test="updCondMap.packageType !=  null">
+				and package_type=#{updCondMap.packageType}
+			</if>
+			<if test="updCondMap.areaId !=  null">
+				and area_id=#{updCondMap.areaId}
+			</if>
+			<if test="updCondMap.islandId !=  null">
+				and island_id=#{updCondMap.islandId}
+			</if>
+			<if test="updCondMap.mapBigImg !=  null">
+				and map_big_img=#{updCondMap.mapBigImg}
+			</if>
+			<if test="updCondMap.mapSmallImg !=  null">
+				and map_small_img=#{updCondMap.mapSmallImg}
+			</if>
+			<if test="updCondMap.mapLeft !=  null">
+				and map_left=#{updCondMap.mapLeft}
+			</if>
+			<if test="updCondMap.mapTop !=  null">
+				and map_top=#{updCondMap.mapTop}
+			</if>
+			<if test="updCondMap.linkUrl !=  null">
+				and link_url=#{updCondMap.linkUrl}
+			</if>
+			<if test="updCondMap.mapDesc !=  null">
+				and map_desc=#{updCondMap.mapDesc}
+			</if>
+			<if test="updCondMap.valid !=  null">
+				and valid=#{updCondMap.valid}
+			</if>
+			<if test="updCondMap.createTime !=  null">
+				and create_time=#{updCondMap.createTime}
+			</if>
+			<if test="updCondMap.createPerson !=  null">
+				and create_person=#{updCondMap.createPerson}
+			</if>
+			<if test="updCondMap.updTime !=  null">
+				and upd_time=#{updCondMap.updTime}
+			</if>
+			<if test="updCondMap.updPerson !=  null">
+				and upd_person=#{updCondMap.updPerson}
+			</if>
+		</where>
+		
+	</update>
+	
+	<delete id="delete" parameterType="com.island.domain.model.IslandMap">		
+		DELETE
+		FROM
+			island_map 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="areaId !=  null">			        
+				and area_id=#{areaId}
+			</if>
+			<if test="islandId !=  null">			        
+				and island_id=#{islandId}
+			</if>
+			<if test="mapBigImg !=  null">			        
+				and map_big_img=#{mapBigImg}
+			</if>
+			<if test="mapSmallImg !=  null">			        
+				and map_small_img=#{mapSmallImg}
+			</if>
+			<if test="mapLeft !=  null">			        
+				and map_left=#{mapLeft}
+			</if>
+			<if test="mapTop !=  null">			        
+				and map_top=#{mapTop}
+			</if>
+			<if test="linkUrl !=  null">			        
+				and link_url=#{linkUrl}
+			</if>
+			<if test="mapDesc !=  null">			        
+				and map_desc=#{mapDesc}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+		</where>
+		
+	</delete>
+	<delete id="deleteByMap" parameterType="java.util.Map">		
+		DELETE
+		FROM
+			island_map 
+		<where>
+			<if test="id !=  null">
+				and id=#{id}
+			</if>
+			<if test="packageType !=  null">			        
+				and package_type=#{packageType}
+			</if>
+			<if test="areaId !=  null">			        
+				and area_id=#{areaId}
+			</if>
+			<if test="islandId !=  null">			        
+				and island_id=#{islandId}
+			</if>
+			<if test="mapBigImg !=  null">			        
+				and map_big_img=#{mapBigImg}
+			</if>
+			<if test="mapSmallImg !=  null">			        
+				and map_small_img=#{mapSmallImg}
+			</if>
+			<if test="mapLeft !=  null">			        
+				and map_left=#{mapLeft}
+			</if>
+			<if test="mapTop !=  null">			        
+				and map_top=#{mapTop}
+			</if>
+			<if test="linkUrl !=  null">			        
+				and link_url=#{linkUrl}
+			</if>
+			<if test="mapDesc !=  null">			        
+				and map_desc=#{mapDesc}
+			</if>
+			<if test="valid !=  null">			        
+				and valid=#{valid}
+			</if>
+			<if test="createTime !=  null">			        
+				and create_time=#{createTime}
+			</if>
+			<if test="createPerson !=  null">			        
+				and create_person=#{createPerson}
+			</if>
+			<if test="updTime !=  null">			        
+				and upd_time=#{updTime}
+			</if>
+			<if test="updPerson !=  null">			        
+				and upd_person=#{updPerson}
+			</if>
+		</where>
+		
+	</delete>
+</mapper>
