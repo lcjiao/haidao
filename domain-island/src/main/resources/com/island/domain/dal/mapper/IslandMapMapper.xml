@@ -8,7 +8,7 @@
 		
 			<id property="id" column="id" />
 			<result property="packageType" column="package_type" />
-			<result property="areaId" column="area_id" />
+			<result property="areaId" column="type_id" />
 			<result property="islandId" column="island_id" />
 			<result property="mapBigImg" column="map_big_img" />
 			<result property="mapSmallImg" column="map_small_img" />
@@ -27,7 +27,7 @@
 		SELECT
 			id,
 			package_type,
-			area_id,
+			type_id,
 			island_id,
 			map_big_img,
 			map_small_img,
@@ -52,7 +52,7 @@
 		SELECT
 			id,
 			package_type,
-			area_id,
+			type_id,
 			island_id,
 			map_big_img,
 			map_small_img,
@@ -75,7 +75,7 @@
 				and package_type=#{packageType}
 			</if>
 			<if test="areaId !=  null">			        
-				and area_id=#{areaId}
+				and type_id=#{areaId}
 			</if>
 			<if test="islandId !=  null">			        
 				and island_id=#{islandId}
@@ -121,7 +121,7 @@
 		SELECT
 			id,
 			package_type,
-			area_id,
+			type_id,
 			island_id,
 			map_big_img,
 			map_small_img,
@@ -144,7 +144,7 @@
 				and package_type=#{packageType}
 			</if>
 			<if test="areaId !=  null">			        
-				and area_id=#{areaId}
+				and type_id=#{areaId}
 			</if>
 			<if test="islandId !=  null">			        
 				and island_id=#{islandId}
@@ -201,7 +201,7 @@
 				and package_type=#{packageType}
 			</if>
 			<if test="areaId !=  null">			        
-				and area_id=#{areaId}
+				and type_id=#{areaId}
 			</if>
 			<if test="islandId !=  null">			        
 				and island_id=#{islandId}
@@ -256,7 +256,7 @@
 				and package_type=#{packageType}
 			</if>
 			<if test="areaId !=  null">			        
-				and area_id=#{areaId}
+				and type_id=#{areaId}
 			</if>
 			<if test="islandId !=  null">			        
 				and island_id=#{islandId}
@@ -302,7 +302,7 @@
 		SELECT
 			id,
 			package_type,
-			area_id,
+			type_id,
 			island_id,
 			map_big_img,
 			map_small_img,
@@ -326,7 +326,7 @@
 					and package_type=#{params.packageType}
 				</if>
 				<if test="params.areaId !=  null">
-					and area_id=#{params.areaId}
+					and type_id=#{params.areaId}
 				</if>
 				<if test="params.islandId !=  null">
 					and island_id=#{params.islandId}
@@ -371,7 +371,7 @@
 
 	<insert id="insert" parameterType="com.island.domain.model.IslandMap" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO	island_map
-			(id,package_type,area_id,island_id,map_big_img,map_small_img,map_left,map_top,link_url,map_desc,valid,create_time,create_person,upd_time,upd_person)
+			(id,package_type,type_id,island_id,map_big_img,map_small_img,map_left,map_top,link_url,map_desc,valid,create_time,create_person,upd_time,upd_person)
 			VALUES(#{id},#{packageType},#{areaId},#{islandId},#{mapBigImg},#{mapSmallImg},#{mapLeft},#{mapTop},#{linkUrl},#{mapDesc},#{valid},#{createTime},#{createPerson},#{updTime},#{updPerson})		
 	</insert>
 	
@@ -386,7 +386,7 @@
 				package_type=#{packageType},
 			</if>
 			<if test="areaId !=  null">			        
-				area_id=#{areaId},
+				type_id=#{areaId},
 			</if>
 			<if test="islandId !=  null">			        
 				island_id=#{islandId},
@@ -443,7 +443,7 @@
 				package_type=#{packageType},
 			</if>
 			<if test="areaId !=  null">			        
-				area_id=#{areaId},
+				type_id=#{areaId},
 			</if>
 			<if test="islandId !=  null">			        
 				island_id=#{islandId},
@@ -501,7 +501,7 @@
 				package_type=#{updNewMap.packageType},
 			</if>
 			<if test="updNewMap.areaId !=  null">
-				area_id=#{updNewMap.areaId},
+				type_id=#{updNewMap.areaId},
 			</if>
 			<if test="updNewMap.islandId !=  null">
 				island_id=#{updNewMap.islandId},
@@ -548,7 +548,7 @@
 				and package_type=#{updCondMap.packageType}
 			</if>
 			<if test="updCondMap.areaId !=  null">
-				and area_id=#{updCondMap.areaId}
+				and type_id=#{updCondMap.areaId}
 			</if>
 			<if test="updCondMap.islandId !=  null">
 				and island_id=#{updCondMap.islandId}
@@ -602,7 +602,7 @@
 				and package_type=#{packageType}
 			</if>
 			<if test="areaId !=  null">			        
-				and area_id=#{areaId}
+				and type_id=#{areaId}
 			</if>
 			<if test="islandId !=  null">			        
 				and island_id=#{islandId}
@@ -655,7 +655,7 @@
 				and package_type=#{packageType}
 			</if>
 			<if test="areaId !=  null">			        
-				and area_id=#{areaId}
+				and type_id=#{areaId}
 			</if>
 			<if test="islandId !=  null">			        
 				and island_id=#{islandId}

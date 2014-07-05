@@ -26,7 +26,12 @@ $(function(){
 				
 			}else{
 				var menuId = ($(a).attr('title'));
-				url = url +"?menuId="+menuId;
+				if( url.indexOf("?") != -1 ){
+					url = url +"&menuId="+menuId;
+				}else{
+					url = url +"?menuId="+menuId;
+				}
+				
 				window.top.mainFrame.location.href=url;
 			}
 			
