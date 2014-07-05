@@ -19,7 +19,7 @@
 			<td width="48">摄影类型</td>
 			<td width="10">
 				<select id="work_type" name="workman.workType">
-					<option value="0" selected="selected">--请选择--</option>
+					<option value="" selected="selected">--请选择--</option>
 					<option value="1" >摄影团队</option>
 					<option value="2" >摄影师</option>
 					<option value="3" >化妆师</option>

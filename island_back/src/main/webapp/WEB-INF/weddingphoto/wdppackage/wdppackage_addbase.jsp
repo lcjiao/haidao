@@ -145,12 +145,29 @@ function setIslandName(){
 }
 function addBaseAndToList(){
 	$("#flag").val("toList");
-	$("#form").submit();
+	if(checkData()){
+		$("#form").submit();
+	}
 }	
 
 function addBaseAndToDetail(){
 	$("#flag").val("toDetail");
-	$("#form").submit();
-}	
+	if(checkData()){
+		$("#form").submit();
+	}
+}
+
+//表单提交前数据验证
+function checkData(){
+	var areaId = $('#area_id').val();
+	var islandId = $('#island_id').val();
+	var pkgTypeId = $('#package_type_id').val();
+	if(!(null != areaId && islandId != null && null != pkgTypeId)){
+		alert('请检查区域、岛屿、所属类别 等栏位！！！三个栏位必填！！！');
+		return false;
+	}
+	return true;
+	
+}
 </script>
 </html>

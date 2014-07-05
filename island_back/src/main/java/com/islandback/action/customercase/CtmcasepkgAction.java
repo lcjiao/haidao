@@ -50,7 +50,7 @@ import com.opensymphony.xwork2.ActionSupport;
  *客户案例套餐action
  *
  */
-public class CtmCasePkgAction extends BaseAction  {
+public class CtmcasepkgAction extends BaseAction  {
 	private static final long serialVersionUID = 1L;
 
 	Map<String,Object> map = new HashMap<String,Object>(0);
@@ -114,6 +114,36 @@ public class CtmCasePkgAction extends BaseAction  {
 	}
 	
 	/**
+	 * 婚纱摄影套餐  搜索(查询) 功能
+	 * @return
+	 */
+	public String ctmcasepkgSearch(){
+		List<CustomerCase> ctcList = new ArrayList<CustomerCase>();
+		map.clear();
+		if(ctmcase.getCasename()=="" || "".equals(ctmcase.getCasename())){
+			ctmcase.setCasename(null);
+		}
+		map.put("casenameSear",ctmcase.getCasename());
+		map.put("valid", 1);
+		map.put("casetype", ctmcase.getCasetype());
+		ctcList = ctmcaseBiz.queryCtmcasePkgByMap(map);
+		if(ctcList != null && ctcList.size()>0){
+			this.totalSize = ctmcaseBiz.countCtmcasePkgByMap(map);
+			for (CustomerCase ctc : ctcList) {
+				ctc.setStrPhotoTime(IslandDateUtil.getDateStrByUnixTime(ctc.getPhototime(), "yyyy-MM-dd"));
+				ctmcaseList.add(ctc);
+			}
+		}
+		this.totalSize = ctmcaseBiz.countCtmcasePkgByMap(map);
+		Page page = new Page();
+		page.setPageNo(pageNo);
+		page.setPageSize(pageSize);
+		initTotalPageSize();
+		initIslandList();
+		return "list";
+	}
+	
+	/**
 	 * 进入客片案例 列表页面
 	 * @return
 	 */
@@ -164,6 +194,9 @@ public class CtmCasePkgAction extends BaseAction  {
 	public String toEditBase(){
 		ctmcase = ctmcaseBiz.queryCtmCaseById(ctmId);
 		ctmcase.setStrPhotoTime(IslandDateUtil.getDateStrByUnixTime(ctmcase.getPhototime(), "yyyy-MM-dd"));
+		initAreaList();
+		initIslandList();
+		initPkgTypeList(ctmcase.getAreaid(),ctmcase.getIslandid(),ctmcase.getCasetype());
 		return "editbase";
 	}
 
@@ -377,6 +410,24 @@ public class CtmCasePkgAction extends BaseAction  {
 		List<IslandPackageType> typeList= ctmcaseBiz.queryAreaListByCaseType(map);
 		Struts2Utils.renderJson(mapper.writeValueAsString(typeList));
 	}
+	
+
+	private void initPkgTypeList(Integer areaId, Integer islandId, Integer csType) {
+		map.clear();
+		map.put("valid", 1);
+		map.put("areaId", areaId);
+		map.put("islandId", islandId);
+		map.put("packageType", csType);
+		this.pkgTypeList = ctmcaseBiz.queryAreaListByCaseType(map);
+	}
+
+	
+	private void initAreaList(){
+		map.clear();
+		map.put("valid", 1);
+		areaList = areaIslandBiz.queryAreaByMap(map);
+	}
+	
 	
 	private void initIslandList(){
 		map.clear();

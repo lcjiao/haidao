@@ -84,6 +84,15 @@
 		//$("#type_id").bind('change',setIsland);
 		$("#save_return").bind('click',save_return);
 		$("#save_add").bind('click',save_add);
+		var d = new Date();
+	    function addzero(v) {
+	    	if (v < 10) 
+	    		return '0' + v;
+	    	return v.toString();
+	    }
+	    var s = d.getFullYear().toString() +"-"+ addzero(d.getMonth() + 1);
+	   // document.getElementById('photo_time').value=s;
+	    $('#start_time').val(s);
 				  
 	});
 	

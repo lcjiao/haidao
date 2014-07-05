@@ -57,7 +57,7 @@
 			<td>
 				<select id="child_id" name="ctmcase.childid">
 					<option value="0" selected="selected">--请选择--</option>
-					<c:forEach var="packageType" items="${pkgTypeList}">
+					<c:forEach var="pkgType" items="${pkgTypeList}">
 							<option value="${pkgType.id}" >${pkgType.title}</option>
 				   </c:forEach>
 				</select>
@@ -145,13 +145,102 @@ $(function(){
 	var caseType ='${ctmcase.casetype}';
 	$("#case_type option[value='"+caseType+"']").attr('selected',true);
 	var areaId = '${ctmcase.areaid}';
-	$("#case_id option[value='"+areaId+"']").attr('selected',true);
+	$("#area_id option[value='"+areaId+"']").attr('selected',true);
 	var islandId = '${ctmcase.islandid}';
 	$("#island_id option[value='"+islandId+"']").attr('selected',true);
 	var childId = '${ctmcase.childid}';
 	$("#child_id option[value='"+childId+"']").attr('selected',true);
 		
 });
+
+$(function(){
+	$("#case_type").bind('change',setAreaName);
+	$("#area_id").bind('change',setIslandName);
+	$("#island_id").bind('change',setChildName);
+	$("#child_id").bind('change',setChildTypeName);
+});
+
+function setAreaName(){
+	var caseType = $("#case_type").val();
+	
+	$.ajax({
+		type:"get",
+		url:"${ctx}/customercase/ctmpkg/ctmcasepkg!getArea.action?csType="+caseType,
+		dataType:"json",
+		success:function(json){
+			if(json.length > 0){
+				$("#area_id").find("option").remove();
+				$("#area_id").prepend("<option value='0'>--请选择--</option>");
+				for( var i=0 ; i<json.length; i++){
+					$("#area_id").append("<option value='"+json[i].id+"'>"+json[i].name+"</option>");
+				}
+			}else{
+				$("#area_id").find("option").remove();
+				$("#area_id").prepend("<option value='0'>--请选择--</option>");
+			}
+		}
+	});
+}
+
+function setIslandName(){
+	var areaName=$("#area_id").find("option:selected").text();  
+	var areaId = $("#area_id").val();
+	var caseType = $("#case_type").val();
+	$("#area_name").val(areaName);
+	
+	
+	$.ajax({
+		type:"get",
+		url:"${ctx}/customercase/ctmpkg/ctmcasepkg!getIslandByAreaId.action?areaId="+areaId+"&csType="+caseType,
+		dataType:"json",
+		success:function(json){
+			if(json.length > 0){
+				$("#island_id").find("option").remove();
+				$("#island_id").prepend("<option value='0'>--请选择--</option>");
+				for( var i=0 ; i<json.length; i++){
+					$("#island_id").append("<option value='"+json[i].id+"'>"+json[i].name+"</option>");
+				}
+			}else{
+				$("#island_id").find("option").remove();
+				$("#island_id").prepend("<option value='0'>--请选择--</option>");
+			}
+			
+		}
+	});
+}
+
+function setChildName(){
+	var caseType = $("#case_type").val();
+	var areaId = $("#area_id").val();
+	var islandName=$("#island_id").find("option:selected").text();  
+	var islandId = $("#island_id").val();
+	$("#island_name").val(islandName);
+	
+	$.ajax({
+		type:"get",
+		url:"${ctx}/customercase/ctmpkg/ctmcasepkg!getChildType.action?islandId="+islandId+"&areaId="+areaId+"&csType="+caseType,
+		dataType:"json",
+		success:function(json){
+			if(json.length > 0){
+				$("#child_id").find("option").remove();
+				$("#child_id").prepend("<option value='0'>--请选择--</option>");
+				for( var i=0 ; i<json.length; i++){
+					$("#child_id").append("<option value='"+json[i].id+"'>"+json[i].title+"</option>");
+				}
+			}else{
+				$("#child_id").find("option").remove();
+				$("#child_id").prepend("<option value='0'>--请选择--</option>");
+			}
+			
+		}
+	});
+}
+
+function setChildTypeName(){
+	var childName=$("#child_id").find("option:selected").text();  
+	$("#child_name").val(childName);
+}
+
 function editBase(){
 	$("#_copy_content").val(editor.html());
 	$("#form").submit();

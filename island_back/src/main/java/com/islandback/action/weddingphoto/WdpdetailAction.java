@@ -2,15 +2,12 @@ package com.islandback.action.weddingphoto;
 
 
 
-import java.text.SimpleDateFormat;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ResultPath;
-import org.codehaus.jackson.map.ObjectMapper;
 
 import com.jcl.core.module.ModuleRegistry;
 import com.island.domain.DomainIslandModule;
@@ -18,10 +15,8 @@ import com.island.domain.biz.RecommendBiz;
 import com.island.domain.model.Recommend;
 import com.islandback.action.base.BaseAction;
 import com.islandback.module.ModuleEnum;
-import com.islandback.module.Page;
 import com.islandback.module.SessionInfo;
 import com.islandback.web.util.RequestProcc;
-import com.opensymphony.xwork2.ActionSupport;
 
 //@SuppressWarnings("serial")
 @Namespace("/weddingphoto/wdpdetail")
@@ -30,6 +25,7 @@ public class WdpdetailAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private Recommend recommend;
 	private Integer id;
+	private String message;
 	
 	RecommendBiz recommendBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getRecommendBiz();
@@ -63,6 +59,7 @@ public class WdpdetailAction extends BaseAction {
 		recommend.setCreateTime(now);
 		recommend.setValid(1);
 		this.recommendBiz.addMasterRecommend(recommend);
+		this.message="保存成功";
 		return "list";
 		
 	}
@@ -74,6 +71,7 @@ public class WdpdetailAction extends BaseAction {
 		int now = (int)(System.currentTimeMillis()/1000);
 		recommend.setUpdTime(now);
 		this.recommendBiz.updRecommendByModel(recommend);
+		this.message = "修改成功";
 		return "list";
 	}
 	
@@ -105,7 +103,13 @@ public class WdpdetailAction extends BaseAction {
 	public void setRecommend(Recommend recommend) {
 		this.recommend = recommend;
 	}
-	
 
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
 	
 }
