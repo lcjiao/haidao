@@ -36,6 +36,10 @@
 			<td><input type=text class="text" value="${company.phone}" id="phone" name="phone"  style="_width:316px;"/></td>					
 		</tr>
 		<tr>
+			<td>网站地址</td>
+			<td><input type=text class="text" value="${company.siteAddress}" id="mail" name="siteAddress"  style="_width:316px;"/></td>					
+		</tr>
+		<tr>
 			<td>公司邮箱</td>
 			<td><input type=text class="text" value="${company.mail}" id="mail" name="mail"  style="_width:316px;"/></td>					
 		</tr>

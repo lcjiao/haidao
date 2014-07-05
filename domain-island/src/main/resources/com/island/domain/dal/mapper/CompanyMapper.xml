@@ -530,7 +530,7 @@
 				address=#{address},
 			</if>
 			<if test="siteAddress !=  null">			        
-				site_address=#{siteAddress}
+				site_address=#{siteAddress},
 			</if>
 			<if test="qq !=  null">			        
 				qq=#{qq},
