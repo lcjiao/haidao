@@ -18,14 +18,14 @@
 		<tr>
 			<td width="48">案例类型</td>
 			<td width="10">
-				<select id="case_type" name="customerCase.caseType">
-					<option value="0" selected="selected">--请选择--</option>
+				<select id="case_type" name="ctmcase.casetype">
+					<option value="" selected="selected">--请选择--</option>
 					<option value="130" >摄影案例</option>
 					<option value="131" >视频案例</option>
 				</select>
 			</td>
 			<td width="48">案例名称</td>
-			<td width="10"><input type="text" name="customerCase.caseName" value="${name}" id="sear_name"/></td>
+			<td width="10"><input type="text" name="ctmcase.casename"  id="sear_name"/></td>
 			<td><input class="btn" type="button" value="搜索" id="search"/>
 			</td>
 		</tr>

@@ -157,6 +157,9 @@ public class WdppackageAction extends BaseAction  {
 		if(wdpPackage.getTitle()=="" || "".equals(wdpPackage.getTitle())){
 			wdpPackage.setTitle(null);
 		}
+		if(wdpPackage.getPriceSmall()=="" || "".equals(wdpPackage.getPriceSmall())){
+			wdpPackage.setPriceSmall(null);
+		}
 		map.put("titleSear",wdpPackage.getTitle());
 		map.put("price", wdpPackage.getPriceSmall());
 		map.put("islandId", wdpPackage.getIslandId());

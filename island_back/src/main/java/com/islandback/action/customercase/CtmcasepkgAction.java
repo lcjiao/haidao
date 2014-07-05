@@ -114,6 +114,36 @@ public class CtmcasepkgAction extends BaseAction  {
 	}
 	
 	/**
+	 * 婚纱摄影套餐  搜索(查询) 功能
+	 * @return
+	 */
+	public String ctmcasepkgSearch(){
+		List<CustomerCase> ctcList = new ArrayList<CustomerCase>();
+		map.clear();
+		if(ctmcase.getCasename()=="" || "".equals(ctmcase.getCasename())){
+			ctmcase.setCasename(null);
+		}
+		map.put("casenameSear",ctmcase.getCasename());
+		map.put("valid", 1);
+		map.put("casetype", ctmcase.getCasetype());
+		ctcList = ctmcaseBiz.queryCtmcasePkgByMap(map);
+		if(ctcList != null && ctcList.size()>0){
+			this.totalSize = ctmcaseBiz.countCtmcasePkgByMap(map);
+			for (CustomerCase ctc : ctcList) {
+				ctc.setStrPhotoTime(IslandDateUtil.getDateStrByUnixTime(ctc.getPhototime(), "yyyy-MM-dd"));
+				ctmcaseList.add(ctc);
+			}
+		}
+		this.totalSize = ctmcaseBiz.countCtmcasePkgByMap(map);
+		Page page = new Page();
+		page.setPageNo(pageNo);
+		page.setPageSize(pageSize);
+		initTotalPageSize();
+		initIslandList();
+		return "list";
+	}
+	
+	/**
 	 * 进入客片案例 列表页面
 	 * @return
 	 */

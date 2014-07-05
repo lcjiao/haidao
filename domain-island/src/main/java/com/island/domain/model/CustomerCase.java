@@ -19,7 +19,7 @@ public class CustomerCase extends AbsModel{
   		this.casetype=casetype;
   	}
   	/**
-	 * 获取案例类型 1、视频 2、客片
+	 * 获取案例类型 130、摄影案例 131、视频案例
 	 */
   	public Integer getCasetype(){
   		return this.casetype;

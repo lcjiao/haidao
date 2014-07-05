@@ -136,15 +136,20 @@ public class TeampkgAction extends BaseAction  {
 	 *  搜索(查询) 功能
 	 * @return
 	 */
-	public String wdpPackageSearch(){
+	public String temmpkgSearch(){
 		map.clear();
-		map.put("titleSear","%"+ workman.getName() +"%");
-		map.put("price", workman.getPriceBig());
+		if(workman.getPriceSmall()=="" || "".equals(workman.getPriceSmall())){
+			workman.setPriceSmall(null);
+		}
+		if(workman.getName()=="" || "".equals(workman.getName())){
+			workman.setName(null);
+		}
+		map.put("nameSear",workman.getName());
+		map.put("price", workman.getPriceSmall());
 		map.put("valid", 1);
-		map.put("isOnline", 1);
-		map.put("packageType", ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO_WORKER);
+		map.put("workType", workman.getWorkType());
 		workmanList = wdpTeamBiz.queryWkmPackageByMap(map);
-		this.totalSize = weddingPhotoBiz.countIslandPackageByMap(map);
+		this.totalSize = wdpTeamBiz.countWkmPackageByMap(map);
 		Page page = new Page();
 		page.setPageNo(pageNo);
 		page.setPageSize(pageSize);

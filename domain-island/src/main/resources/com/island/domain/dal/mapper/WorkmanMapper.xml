@@ -160,6 +160,9 @@
 			<if test="name !=  null">			        
 				and name=#{name}
 			</if>
+			<if test="nameSear !=  null ">			        
+				and name like '%${nameSear}%'
+			</if>
 			<if test="content !=  null">			        
 				and content=#{content}
 			</if>
@@ -201,6 +204,9 @@
 			</if>
 			<if test="teamName !=  null">			        
 				and team_name=#{teamName}
+			</if>
+			<if test="price !=  null">			        
+				and price_small <![CDATA[<=]]> #{price} and price_big >= #{price}
 			</if>
 		</where>
 		<if test="begin !=  null">			        
@@ -223,6 +229,9 @@
 			<if test="name !=  null">			        
 				and name=#{name}
 			</if>
+			<if test="nameSear !=  null ">			        
+				and name like '%${nameSear}%'
+			</if>
 			<if test="content !=  null">			        
 				and content=#{content}
 			</if>
@@ -264,6 +273,9 @@
 			</if>
 			<if test="teamName !=  null">			        
 				and team_name=#{teamName}
+			</if>
+			<if test="price !=  null">			        
+				and price_small <![CDATA[<=]]> #{price} and price_big >= #{price}
 			</if>
 		</where>
 		
@@ -325,6 +337,9 @@
 			</if>
 			<if test="teamName !=  null">			        
 				and team_name=#{teamName}
+			</if>
+			<if test="price !=  null">			        
+				and price_small <![CDATA[<=]]> #{price} and price_big >= #{price}
 			</if>
 		</where>
 				

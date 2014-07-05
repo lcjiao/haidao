@@ -272,6 +272,9 @@
 			<if test="updperson !=  null">			        
 				and updperson=#{updperson}
 			</if>
+			<if test="casenameSear !=  null ">			        
+				and casename like '%${casenameSear}%'
+			</if>
 		</where>
 		<if test="begin !=  null">			        
 				limit #{begin},#{size}
