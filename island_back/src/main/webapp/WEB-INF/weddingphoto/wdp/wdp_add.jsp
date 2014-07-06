@@ -80,43 +80,34 @@
 				  
 	});
 	
+		
 	function setIsland(){
-		var areaId = $('#area_id').val();
-		if(areaId != null){
-			var islandSelect = $("#island_id");
-			islandSelect.removeAttr('disabled');
-			islandSelect.find("option").remove();
-			islandSelect.append("<option  value=\"0\">"+"-请选择-"+"</option>");
-			var data = {"areaId":areaId};
-			$.ajax({
-				url:"${ctx}/weddingphoto/wdp/wdp!getIslandSelect.action",
-				type: "POST",
-		        dataType: "json",
-		        data: data,
-		        success: function(date) {	
-		            if(date.length !=0) {
-		            	for(var i=0;i<date.length;i++){
-							var data = date[i];
-							var key = "";
-							var value = "";
-							var option = "";
-							var selected = "";
-							for(var j in data){
-								
-								if(j=="id"){
-									key = data[j];
-								}
-								if(j=="name"){
-									value = data[j];
-								}
-							}
-							option = "<option value="+key+" "+selected+">"+value+"</option>";
-							islandSelect.append(option);					
-						}
+		var areaName=$("#area_id").find("option:selected").text();  
+		var areaId = $("#area_id").val();
+		$("#area_name").val(areaName);
+		var islandSelect = $("#island_id");
+		islandSelect.removeAttr('disabled');
+		
+		
+		$.ajax({
+			type:"get",
+			url:"${ctx}/marrypackage/index/marraymasterrecomend!getIslandByArea.action?areaId="+areaId,
+			dataType:"json",
+			success:function(json){
+				if( json.length > 0){
+					var html = "";
+					html +="<option value='0' selected='selected'>--请选择--</option>";
+					for( var i=0 ; i<json.length; i++){
+						html +="<option value='"+json[i].id+"'>"+json[i].name+"</option>";
 					}
+					$("#island_id").html(html);
+				}else{
+					var html = "";
+					html +="<option value='0' selected='selected'>--请选择--</option>";
+					$("#island_id").html(html);
 				}
-			});		
-		}
+			}
+		});
 	}
 	
 	function save_return(){
