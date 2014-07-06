@@ -51,8 +51,9 @@ public class WdptopAction extends BaseAction implements ServletResponseAware {
 	private String flag;//判断是 保存返回，还是保存继续增加。
 	
 	private File image;
-	
+	private File smallImage;
 	private String imageFileName;
+	private String smallimageFileName;
 
 	private Integer totalPageSize;
 	private Integer totalSize=0;
@@ -125,7 +126,8 @@ public class WdptopAction extends BaseAction implements ServletResponseAware {
 	 */
 	public String addWdpRecommend(){
 		//调用图片上传方法获取图片的url
-		recommend.setImgUrl(UploadImgUtils.getImgUrl(image, imageFileName));		
+		recommend.setBigImgUrl(UploadImgUtils.getImgUrl(image, imageFileName));
+		recommend.setSmallImgUrl(UploadImgUtils.getImgUrl(smallImage, smallimageFileName));
 		recommend.setCreatePerson(getCreater());
 		recommend.setCreateTime((int)(System.currentTimeMillis()/1000));
 		recommend.setValid(1);
@@ -176,7 +178,10 @@ public class WdptopAction extends BaseAction implements ServletResponseAware {
 	 */
 	public String editRecommend(){
 		if(null != image){
-			recommend.setImgUrl(UploadImgUtils.getImgUrl(image, imageFileName));
+			recommend.setBigImgUrl(UploadImgUtils.getImgUrl(image, imageFileName));
+		}
+		if(null !=smallImage){
+			recommend.setSmallImgUrl(UploadImgUtils.getImgUrl(smallImage, smallimageFileName));
 		}
 		weddingPhotoBiz.updateRecommend(recommend);
 		return list();
@@ -323,6 +328,22 @@ public class WdptopAction extends BaseAction implements ServletResponseAware {
 
 	public void setRmdId(String rmdId) {
 		this.rmdId = rmdId;
+	}
+
+	public File getSmallImage() {
+		return smallImage;
+	}
+
+	public void setSmallImage(File smallImage) {
+		this.smallImage = smallImage;
+	}
+
+	public String getSmallimageFileName() {
+		return smallimageFileName;
+	}
+
+	public void setSmallimageFileName(String smallimageFileName) {
+		this.smallimageFileName = smallimageFileName;
 	}
 	
 }

@@ -49,7 +49,10 @@ public class CtmcasetopAction extends BaseAction implements ServletResponseAware
 	
 	private File image;
 	
+	private File smallImage;
+	
 	private String imageFileName;
+	private String smallImageFileName;
 
 	private Integer totalPageSize;
 	private Integer totalSize=0;
@@ -124,7 +127,8 @@ public class CtmcasetopAction extends BaseAction implements ServletResponseAware
 	 */
 	public String addCtmCaseImgRmd(){
 		//调用图片上传方法获取图片的url
-		recommend.setImgUrl(UploadImgUtils.getImgUrl(image, imageFileName));		
+		recommend.setBigImgUrl(UploadImgUtils.getImgUrl(image, imageFileName));	
+		recommend.setSmallImgUrl(UploadImgUtils.getImgUrl(smallImage, smallImageFileName));
 		recommend.setCreatePerson(getCreater());
 		recommend.setCreateTime((int)(System.currentTimeMillis()/1000));
 		recommend.setValid(1);
@@ -175,7 +179,10 @@ public class CtmcasetopAction extends BaseAction implements ServletResponseAware
 	 */
 	public String editCtmCaseImgRmd(){
 		if(null != image){
-			recommend.setImgUrl(UploadImgUtils.getImgUrl(image, imageFileName));
+			recommend.setBigImgUrl(UploadImgUtils.getImgUrl(image, imageFileName));	
+		}
+		if(null !=smallImage){
+			recommend.setSmallImgUrl(UploadImgUtils.getImgUrl(smallImage, smallImageFileName));
 		}
 		ctmCaseBiz.updateRecommend(recommend);
 		return list();
@@ -316,12 +323,28 @@ public class CtmcasetopAction extends BaseAction implements ServletResponseAware
 		this.recommendList = recommendList;
 	}
 
+	public File getSmallImage() {
+		return smallImage;
+	}
+
+	public void setSmallImage(File smallImage) {
+		this.smallImage = smallImage;
+	}
+
 	public String getRmdId() {
 		return rmdId;
 	}
 
 	public void setRmdId(String rmdId) {
 		this.rmdId = rmdId;
+	}
+
+	public String getSmallImageFileName() {
+		return smallImageFileName;
+	}
+
+	public void setSmallImageFileName(String smallImageFileName) {
+		this.smallImageFileName = smallImageFileName;
 	}
 	
 }

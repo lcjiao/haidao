@@ -53,7 +53,7 @@
 		</tr>
 		<tr>
 			<td>标题</td>
-			<td><input type=text class="text" value="${recommend.title }" id="recommend_desc" name="recommend.recommendDesc" style="_width:316px;"/></td>
+			<td><input type=text class="text" value="${recommend.title }" id="recommend_desc" name="recommend.title" style="_width:316px;"/></td>
 		</tr>
 		<tr>
 			<td>排序</td>

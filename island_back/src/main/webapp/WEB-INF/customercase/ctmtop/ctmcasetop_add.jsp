@@ -18,12 +18,6 @@
 <div  class="creatcustomer" >
 <table class="datalist" style="width: 100%">
 	<tbody>
-		<tr>
-			<td>推荐图片</td>
-			<td><input id="img" type="file" name="image"/>
-				<span style="color: red"><b>*</b></span>
-			</td>					
-		</tr>
 	<!-- 	<tr>
 			<td>所属区域</td>
 			<td>
@@ -45,12 +39,16 @@
 		</tr>
 		 -->
 		<tr>
-			<td>图片链接</td>
-			<td><input type="text" class="text" id="link_url" name="recommend.linkUrl"/></td>	
+			<td>大图片</td>
+			<td><input id = "bigImg" type="file" name="image"/></td>					
 		</tr>
 		<tr>
-			<td>描述</td>
-			<td><input type=text class="text" value="" id="recommend_desc" name="recommend.recommendDesc"  style="_width:316px;"/></td>
+			<td>小图片</td>
+			<td><input id = "smallImg" type="file" name="smallImage"/></td>					
+		</tr>
+		<tr>
+			<td>链接</td>
+			<td><input type=text class="text" value="" id="link" name="recommend.linkUrl"  style="_width:316px;"/></td>					
 		</tr>
 		<tr>
 			<td>排序</td>
@@ -147,9 +145,10 @@
 	
 	//表单提交前数据验证
 	function checkData(){
-		var img = $('#img').val();
-		if(null == img || img == ''){
-			alert('推荐图片必选！！');
+		var bigImg = $('#bigImg').val();
+		var smallImg = $('#smallImg').val();
+		if(null == bigImg || bigImg == '' || null == smallImg || smallImg == ''){
+			alert('大、小图片必选！！');
 			return false;
 		}
 		return true;

@@ -39,9 +39,9 @@
 					<thead>
 						<tr>
 							<td>序号</td>
-							<td>描述</td>
-							<td>链接地址</td>
-							<td>图片</td>
+							<td>大图片</td>
+							<td>小图片</td>
+							<td>链接</td>
 							<td>排序</td>
 							<td>操作</td>
 						</tr>
@@ -53,13 +53,13 @@
 									<s:property value="#_index.index+1"/>
 								</td>
 								<td style="text-align:center;">
-									<s:property value="recommendDesc"/>
+									<img style="width:150px;height:120px;" alt="" src="<s:property value="bigImgUrl"/>">
+								</td>
+								<td style="text-align:center;">
+									<img style="width:150px;height:120px;" alt="" src="<s:property value="smallImgUrl"/>">
 								</td>
 								<td style="text-align:center;">
 									<s:property value="linkUrl"/>
-								</td>
-								<td style="text-align:center;">
-									<img style="width:150px;height:120px;" alt="你想看我吗？哈哈！！" src='<s:property value="imgUrl"/>'>
 								</td>
 								<td style="text-align:center;">
 									<s:property value="recommendIndex"/>

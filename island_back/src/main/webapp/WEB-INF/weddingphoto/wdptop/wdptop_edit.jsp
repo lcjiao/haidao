@@ -17,13 +17,6 @@
 <div  class="creatcustomer" >
 <table class="datalist" style="width: 100%">
 	<tbody>
-		<tr>
-			<td>推荐图片</td>
-			<td><input type="file" name="image"/>
-				<span style="color: red"><b>*</b></span>
-				<input type="hidden" id="img_url" name="recommend.imgUrl" value="${recommend.imgUrl }">
-			</td>					
-		</tr>
 	<!-- 	<tr>
 			<td>所属区域</td>
 			<td>
@@ -48,12 +41,22 @@
 		</tr>
 		 -->
 		<tr>
-			<td>图片链接</td>
-			<td><input type="text" class="text" id="link_url" name="recommend.linkUrl" value="${recommend.linkUrl }"/></td>	
+			<td>大图片</td>
+			<td><input id="bigImg" type="file" name="image"/>
+				<span style="color: red"><b>*</b></span>
+				<input type="hidden" id="img_url" name="recommend.bigImgUrl" value="${recommend.bigImgUrl }">
+			</td>					
 		</tr>
 		<tr>
-			<td>描述</td>
-			<td><input type=text class="text" value="${recommend.recommendDesc }" id="recommend_desc" name="recommend.recommendDesc" style="_width:316px;"/></td>
+			<td>小图片</td>
+			<td><input id="smallImg" type="file" name="smallImage"/>
+				<span style="color: red"><b>*</b></span>
+				<input type="hidden" id="img_url" name="recommend.smallImgUrl" value="${recommend.smallImgUrl }">
+			</td>					
+		</tr>
+		<tr>
+			<td>链接</td>
+			<td><input type=text class="text" value="${recommend.linkUrl}" id="link" name="recommend.linkUrl"  style="_width:316px;"/></td>					
 		</tr>
 		<tr>
 			<td>排序</td>
@@ -127,10 +130,9 @@
 	}
 	
 	function _saveEdit(){
-		/* if( checkData() && checkrmdIndex()){
+		if( checkData() && checkrmdIndex()){
 			$("#form").submit();
-		} 测试时暂时不核验*/
-		$("#form").submit();
+		}
 	}
 	
 	//校验排序。只能为数字 
@@ -146,16 +148,15 @@
 	
 	//表单提交前数据验证
 	function checkData(){
-		/**var areaId = $('area_id').val();
-		var islandId = $('island_id').val();
-		var rmdIndex = $('recommend_index').val();
-		if(null == areaId || areaId == '0' || islandId == null || null == rmdIndex){
-			alert('请检查区域、排序等栏位！！！');
+		var bigImg = $('#bigImg').val();
+		var smallImg = $('#smallImg').val();
+		if(null == bigImg || bigImg == '' || null == smallImg || smallImg == ''){
+			alert('大、小图片必选！！');
 			return false;
-		}*/
+		}
 		return true;
 		
-	}	
+	}
 	
 </script>
 </html>
