@@ -239,4 +239,13 @@ public class Company extends AbsModel{
 		boolean passed = true;
 		return true;
 	}
+	
+	private String siteAddress;
+	public String getSiteAddress() {
+		return siteAddress;
+	}
+	public void setSiteAddress(String siteAddress) {
+		this.siteAddress = siteAddress;
+	}
+	
 }

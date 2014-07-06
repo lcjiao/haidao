@@ -339,6 +339,7 @@ public class TeampkgAction extends BaseAction  {
 			workman = wdpTeamBiz.queryWkmPackageBywkmId(pkgImgRelation.getPackageId());
 			return "addimg";
 		}
+		this.wkmId = pkgImgRelation.getPackageId();
 		return toImgList();
 	}
 	

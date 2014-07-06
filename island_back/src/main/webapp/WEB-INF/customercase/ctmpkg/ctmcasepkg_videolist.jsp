@@ -73,13 +73,13 @@
 									<s:property value="#_index.index+1"/>
 								</td>
 								<td style="text-align:center;">
-									<s:property value="logourl"/>
+									<img style="width:150px;height:120px;" alt="你想看我吗？哈哈！！" src='<s:property value="logourl"/>'>
 								</td>
 								<td style="text-align:center;">
 									<s:property value="videodesc"/>
 								</td>
 								<td style="text-align:center;">
-									<img style="width:150px;height:120px;" alt="你想看我吗？哈哈！！" src='<s:property value="videourl"/>'>
+									<s:property value="videourl"/>
 								</td>
 								<td style="text-align:center;">
 									<a title="<s:property value="id"/>" onclick="editVideo(this)" >修改</a>&nbsp;|&nbsp;

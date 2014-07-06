@@ -42,6 +42,7 @@ public class CompanyAction extends BaseAction {
 	private String phone;//联系电话 座机
 	private String person;//联系人
 	private String address;//公司地址
+	private String siteAddress;//网站地址
 	private String qq;
 	private String mail;
 	private File image;//公司logo
@@ -106,6 +107,9 @@ public class CompanyAction extends BaseAction {
 		if( this.address != null ){
 			addObj.setAddress(address);
 		}
+		if( this.siteAddress != null ){
+			addObj.setSiteAddress(siteAddress);
+		}
 		if(this.person != null){
 			addObj.setPerson(person);
 		}
@@ -153,6 +157,9 @@ public class CompanyAction extends BaseAction {
 		}
 		if( this.address != null ){
 			params.put("address", address);
+		}
+		if( this.siteAddress != null ){
+			params.put("siteAddress", siteAddress);
 		}
 		if(this.person != null){
 			params.put("person", person);
@@ -294,6 +301,14 @@ public class CompanyAction extends BaseAction {
 	}
 	public void setFormat(SimpleDateFormat format) {
 		this.format = format;
+	}
+
+	public String getSiteAddress() {
+		return siteAddress;
+	}
+
+	public void setSiteAddress(String siteAddress) {
+		this.siteAddress = siteAddress;
 	}  
 
 	 

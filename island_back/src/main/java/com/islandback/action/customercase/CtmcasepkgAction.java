@@ -251,6 +251,7 @@ public class CtmcasepkgAction extends BaseAction  {
 		page.setPageSize(pageSize);
 		map.put("begin", page.getBegin());
 		map.put("size", page.getPageSize());
+		map.put("caseid",ctmId);//拿对应案例下的图片
 		casePMList = ctmcaseBiz.queryCasePmByMap(map);
 		if(casePMList != null && casePMList.size()>0){
 			this.totalSize = ctmcaseBiz.countCasePmByMap(map);
@@ -284,6 +285,7 @@ public class CtmcasepkgAction extends BaseAction  {
 		if("continue".equals(flag)){//保存并继续添加
 			return "addimg";
 		}
+		this.ctmId = ctmcase.getId();
 		return imglist();
 	}
 	
@@ -326,6 +328,7 @@ public class CtmcasepkgAction extends BaseAction  {
 		page.setPageSize(pageSize);
 		map.put("begin", page.getBegin());
 		map.put("size", page.getPageSize());
+		map.put("caseid",ctmId);//拿对应案例下的视频
 		caseVMList = ctmcaseBiz.queryCaseVmByMap(map);
 		if(caseVMList != null && caseVMList.size()>0){
 			this.totalSize = ctmcaseBiz.countCaseVmByMap(map);
@@ -350,6 +353,7 @@ public class CtmcasepkgAction extends BaseAction  {
 		if("continue".equals(flag)){//保存并继续添加
 			return "addvideo";
 		}
+		this.ctmId = ctmcase.getId();
 		return videolist();
 	}
 	

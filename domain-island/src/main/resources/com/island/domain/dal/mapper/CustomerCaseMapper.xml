@@ -638,76 +638,7 @@
 		<where>			
 			<if test="id !=  null">
 				and id=#{id}
-			</if>
-			<if test="casetype !=  null">			        
-				and casetype=#{casetype}
-			</if>
-			<if test="casename !=  null">			        
-				and casename=#{casename}
-			</if>
-			<if test="newperson !=  null">			        
-				and newperson=#{newperson}
-			</if>
-			<if test="phototime !=  null">			        
-				and phototime=#{phototime}
-			</if>
-			<if test="pkgpjtname1 !=  null">			        
-				and pkgpjtname1=#{pkgpjtname1}
-			</if>
-			<if test="pkgpjturl1 !=  null">			        
-				and pkgpjturl1=#{pkgpjturl1}
-			</if>
-			<if test="pkgpjtname2 !=  null">			        
-				and pkgpjtname2=#{pkgpjtname2}
-			</if>
-			<if test="pkgpjturl2 !=  null">			        
-				and pkgpjturl2=#{pkgpjturl2}
-			</if>
-			<if test="pkgpjtname3 !=  null">			        
-				and pkgpjtname3=#{pkgpjtname3}
-			</if>
-			<if test="pkgpjturl3 !=  null">			        
-				and pkgpjturl3=#{pkgpjturl3}
-			</if>
-			<if test="childname !=  null">			        
-				and childname=#{childname}
-			</if>
-			<if test="childid !=  null">			        
-				and childid=#{childid}
-			</if>
-			<if test="photoworker !=  null">			        
-				and photoworker=#{photoworker}
-			</if>
-			<if test="dresser !=  null">			        
-				and dresser=#{dresser}
-			</if>
-			<if test="islandid !=  null">			        
-				and islandid=#{islandid}
-			</if>
-			<if test="islandname !=  null">			        
-				and islandname=#{islandname}
-			</if>
-			<if test="areaid !=  null">			        
-				and areaid=#{areaid}
-			</if>
-			<if test="areaname !=  null">			        
-				and areaname=#{areaname}
-			</if>
-			<if test="valid !=  null">			        
-				and valid=#{valid}
-			</if>
-			<if test="createtime !=  null">			        
-				and createtime=#{createtime}
-			</if>
-			<if test="createperson !=  null">			        
-				and createperson=#{createperson}
-			</if>
-			<if test="updtime !=  null">			        
-				and updtime=#{updtime}
-			</if>
-			<if test="updperson !=  null">			        
-				and updperson=#{updperson}
-			</if>
+			</if>			
 		</where>
 		
 	</update>

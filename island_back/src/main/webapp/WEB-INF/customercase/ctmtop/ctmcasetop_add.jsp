@@ -20,7 +20,7 @@
 	<tbody>
 		<tr>
 			<td>推荐图片</td>
-			<td><input type="file" name="image"/>
+			<td><input id="img" type="file" name="image"/>
 				<span style="color: red"><b>*</b></span>
 			</td>					
 		</tr>
@@ -123,18 +123,16 @@
 	
 	function save_return(){
 		$('#flag').val("return");
-		/* if( checkData() && checkrmdIndex()){
+		if( checkData() && checkrmdIndex()){
 			$("#form").submit();
-		} 测试时暂时不核验*/
-		$("#form").submit();
+		}
 	}
 	
 	function save_add(){
 		$('#flag').val("add");
-		/* if( checkData() && checkrmdIndex()){
+		if( checkData() && checkrmdIndex()){
 			$("#form").submit();
-		} 测试时暂时不核验*/
-		$("#form").submit();
+		}
 	}
 	//校验排序。只能为数字 
 	function checkrmdIndex(){
@@ -149,11 +147,9 @@
 	
 	//表单提交前数据验证
 	function checkData(){
-		var areaId = $('area_id').val();
-		var islandId = $('island_id').val();
-		var rmdIndex = $('recommend_index').val();
-		if(null == areaId || areaId == '0' || islandId == null || null == rmdIndex){
-			alert('请检查区域、排序等栏位！！！');
+		var img = $('#img').val();
+		if(null == img || img == ''){
+			alert('推荐图片必选！！');
 			return false;
 		}
 		return true;

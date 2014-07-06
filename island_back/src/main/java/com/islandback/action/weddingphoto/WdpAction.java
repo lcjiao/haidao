@@ -219,6 +219,7 @@ public class WdpAction extends BaseAction implements ServletResponseAware {
 		map.clear();
 		map.put("valid", 1);
 		map.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
+		map.put("typeId", 1);
 		recommendList = recommendBiz.queryByMap(map);
 		if(recommendList.size() > 0){
 			for (Recommend rmd : recommendList) {

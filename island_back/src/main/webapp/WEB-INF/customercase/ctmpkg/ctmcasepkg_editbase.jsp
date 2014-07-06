@@ -242,9 +242,21 @@ function setChildTypeName(){
 }
 
 function editBase(){
-	$("#_copy_content").val(editor.html());
-	$("#form").submit();
-}	
+	if(checkData())
+		$("#form").submit();
+}
+
+function checkData(){
+	var caseType = $('#case_type').val(); 
+	var areaId = $('#area_id').val(); 
+	var islandId = $('#island_id').val(); 
+	var childId = $('#child_id').val();
+	if(caseType == 0 || areaId == 0 || islandId == 0 || childId == 0){
+		alert('请检查案例类型、区域、岛屿、案例类别等栏位,不能为空！！！');
+		return false;
+	}
+	return true;
+}
 
 </script>
 </html>
