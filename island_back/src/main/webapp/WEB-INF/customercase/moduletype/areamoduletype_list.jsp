@@ -11,11 +11,11 @@
 <%@ include file="/common/menu.jsp"%>
 </head>
 <body>
-
+<!--
 <form action="${ctx}/customercase/moduletype/areamoduletype!tolist.action" id="form" method="post">
 <table class="searchbar" width="100%">
 	<tbody>
-		<tr>
+		 <tr>
 			<td width="48">案例类型</td>
 			<td width="10">
 				<select id="package_type" name="moduleType.packageType">
@@ -49,9 +49,10 @@
 		</tr>
 	</tbody>
 </table>
+
 <input type="hidden" value="${pageNo}" name="pageNo" id="page_no"/>
 </form>
-
+ -->
 <table class="customlist" width="100%">
 	<thead>
 		<tr>
