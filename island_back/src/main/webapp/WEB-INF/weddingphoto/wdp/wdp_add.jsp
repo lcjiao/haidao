@@ -145,9 +145,9 @@
 	
 	//表单提交前数据验证
 	function checkData(){
-		var areaId = $('area_id').val();
-		var islandId = $('island_id').val();
-		if(null == areaId || areaId == '0' || islandId == null ){
+		var areaId = $('#area_id').val();
+		var islandId = $('#island_id').val();
+		if(null == areaId || areaId == '0' || islandId == null || islandId == '0' ){
 			alert('请检查区域、岛屿等栏位！！！');
 			return false;
 		}
