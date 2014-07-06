@@ -16,6 +16,7 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ResultPath;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import com.jcl.core.module.ModuleRegistry;
 import com.island.domain.DomainIslandModule;
@@ -68,6 +69,10 @@ public class IslandmapAction extends BaseAction {
             .getModule(DomainIslandModule.class).getIslandMapBiz();
 	
 	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+	
+	private String lngjson ;
+	
+	private ObjectMapper mapper = new ObjectMapper();
 	public String list(){
 		doList();
 		return "list";
@@ -268,6 +273,7 @@ public class IslandmapAction extends BaseAction {
 		lngParams.put("areaId", 2);
 		lngParams.put("valid", 1);
 		islandMapList = islandMapBiz.queryMapByMap(lngParams);
+		
 		
 		return "see";
 	}
@@ -494,6 +500,14 @@ public class IslandmapAction extends BaseAction {
 
 	public void setIslandMapList(List<IslandMap> islandMapList) {
 		this.islandMapList = islandMapList;
+	}
+
+	public String getLngjson() {
+		return lngjson;
+	}
+
+	public void setLngjson(String lngjson) {
+		this.lngjson = lngjson;
 	}
 	
 	

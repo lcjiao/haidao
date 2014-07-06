@@ -31,22 +31,19 @@
 }
     </style>
 
-    <script type="text/javascript">
-		
-
- function showDiv(i){
-		
-		document.getElementById("pop"+i).style.display = "block";
-	}
-	function hidDiv(i){
-		
-		document.getElementById("pop"+i).style.display = "none";
-	}
-	function gotomethod(){
-		window.location.href ="http://www1.baidu.com";
-	}
-	
-    </script>
+ <script type="text/javascript">
+/*  $(function(){
+	 var lngMap = '${lngjson}';
+	 var obj = JSON.parse(lngMap);
+	 var lnglength = obj.json.length;
+	 var html ="";
+	 for(var i=0;i<lnglength;i++){
+		html+= "<img src=\"+${ctx}+\"/front_map_js_css_img/images/arrow1.png\" style=\"cursor:pointer;left:\"+${lng.mapLeft}+\"%;top:\"+${lng.mapTop}+\"%;position:absolute;\"data-target=\"pop\"+i+\" onMouseOver=\"showDiv(\"+i+\")\" onMouseOut=\"hidDiv(\"+i+\")\" onclick=\"gotomethod()\" />";
+        html+="<div  style=\"z-index:1001;cursor:pointer;left:500px;top:200px;position:absolute; display:none;" data-easein="cardInTop" data-easeout="cardOutTop" id="pop2">	<h3 class="popover-title">描述一</h3></div>";
+        
+	 };
+ }); */
+ </script>  
 
 </head>
 <body>
@@ -72,29 +69,32 @@
   
                                                 </ul>
                                                 
-                                            	<c:forEach var="lng"  varStatus ="obj" items="${islandMapList}">
+                                            	 <c:forEach var="lng"  varStatus ="obj" items="${islandMapList}">
                                                 	  <img src="${ctx}/front_map_js_css_img/images/arrow1.png" style="cursor:pointer;left:${lng.mapLeft}%;top:${lng.mapTop}%;position:absolute;"
-                                                data-target="pop${obj.count}" onMouseOver="showDiv(${obj.count})" onMouseOut="hidDiv(${obj.count})" onclick="gotomethod()" />
+                                                data-target="pop${obj.count}" onMouseOver="showDiv(${obj.count})" onMouseOut="hidDiv(${obj.count})" onclick="gotomethod('${lng.linkUrl}')" />
                                                 
-	                                                <div  style="z-index:1001;cursor:pointer;left:500px;top:200px;position:absolute; display:none;" data-easein="cardInTop" data-easeout="cardOutTop" id="pop${obj.count}">	
+	                                                <div  style="z-index:1001;cursor:pointer;left:${lng.width}px;top:${lng.heght}px;position:absolute; display:none;" data-easein="cardInTop" data-easeout="cardOutTop" id="pop${obj.count}">	
 	                                                   <h3 class="popover-title">${lng.mapDesc}</h3>
 	                                                 </div>
-                                                </c:forEach>  
-                                                
-                                                <!--  <img src="images/arrow1.png" style="cursor:pointer;left:450px;top:260px;position:absolute;" 
-                                                data-target="pop1" onMouseOver="showDiv(1)" onMouseOut="hidDiv(1)" onclick="gotomethod()" />
-                                                
-                                                 <div  style="z-index:1001;cursor:pointer;left:400px;top:200px;position:absolute; display:none;" data-easein="cardInTop" data-easeout="cardOutTop" id="pop1">
-                                                   <h3 class="popover-title">描述二</h3>
-                                                </div>
+                                                </c:forEach>   
                                                 
                                                 
-                                                   <img src="images/arrow1.png" style="cursor:pointer;left:80%;top:70%;position:absolute;"
+                                              <!--  <div id="lng">
+                                                 <img src="images/arrow1.png" style="cursor:pointer;left:80%;top:70%;position:absolute;"
                                                 data-target="pop2" onMouseOver="showDiv(2)" onMouseOut="hidDiv(2)" onclick="gotomethod()" />
                                                 
                                                 <div  style="z-index:1001;cursor:pointer;left:500px;top:200px;position:absolute; display:none;" data-easein="cardInTop" data-easeout="cardOutTop" id="pop2">	
                                                    <h3 class="popover-title">描述一</h3>
                                                  </div>
+                                                 
+                                                 
+                                                
+                                                 <img src="images/arrow1.png" style="cursor:pointer;left:450px;top:260px;position:absolute;" 
+                                                data-target="pop1" onMouseOver="showDiv(1)" onMouseOut="hidDiv(1)" onclick="gotomethod()" />
+                                                
+                                                 <div  style="z-index:1001;cursor:pointer;left:400px;top:200px;position:absolute; display:none;" data-easein="cardInTop" data-easeout="cardOutTop" id="pop1">
+                                                   <h3 class="popover-title">描述二</h3>
+                                                </div>
                                                 
                                                 
                                                 
@@ -103,21 +103,22 @@
                                                 
                                                 <div  style="z-index:1001;cursor:pointer;left:450px;top:300px;position:absolute; display:none;" data-easein="cardInTop" data-easeout="cardOutTop" id="pop3">
                                                    <h3 class="popover-title">描述三</h3>
-                                                </div>  -->
+                                                </div>  
+                                              </div>   -->
                                                 
-                                                
-<!--                                                 <img onclick="gotomethod()" onmouseout="hidDiv(1)" onmouseover="showDiv(1)" data-target="pop1" style="cursor:pointer;left:20%;top:20%;position:absolute;" src="/island_back/front_map_js_css_img/images/arrow1.png">
+                                               <!--  <img src="/island_back/front_map_js_css_img/images/arrow1.png" style="cursor:pointer;left:20%;top:20%;position:absolute;" 
+											   data-target="pop1"  onmouseOver="showDiv(1)" onmouseOut="hidDiv(1)"  onclick="gotomethod()"  >
 <div id="pop1" data-easeout="cardOutTop" data-easein="cardInTop" style="z-index:1001;cursor:pointer;left:500px;top:200px;position:absolute; display:none;">
 <h3 class="popover-title">2</h3>
 </div>
-<img onclick="gotomethod()" onmouseout="hidDiv(2)" onmouseover="showDiv(2)" data-target="pop2" style="cursor:pointer;left:80%;top:80%;position:absolute;" src="/island_back/front_map_js_css_img/images/arrow1.png">
+<img onclick="gotomethod()" onmouseOut="hidDiv(2)" onmouseOver="showDiv(2)" data-target="pop2" style="cursor:pointer;left:80%;top:80%;position:absolute;" src="/island_back/front_map_js_css_img/images/arrow1.png">
 <div id="pop2" data-easeout="cardOutTop" data-easein="cardInTop" style="z-index:1001;cursor:pointer;left:500px;top:200px;position:absolute; display:none;">
 <h3 class="popover-title">9</h3>
 </div>
-<img onclick="gotomethod()" onmouseout="hidDiv(3)" onmouseover="showDiv(3)" data-target="pop3" style="cursor:pointer;left:77%;top:77%;position:absolute;" src="/island_back/front_map_js_css_img/images/arrow1.png">
+<img onclick="gotomethod()" onmouseOut="hidDiv(3)" onmouseOver="showDiv(3)" data-target="pop3" style="cursor:pointer;left:77%;top:77%;position:absolute;" src="/island_back/front_map_js_css_img/images/arrow1.png">
 <div id="pop3" data-easeout="cardOutTop" data-easein="cardInTop" style="z-index:1001;cursor:pointer;left:500px;top:200px;position:absolute; display:none;">
 <h3 class="popover-title">7</h3>
-</div> -->
+</div>  -->
                                                 
                                             </div>
                                             <div class="clearboth">
@@ -135,6 +136,21 @@
         </div>
     
 </body>
+ <script type="text/javascript">
+		
 
+ function showDiv(i){
+		
+		document.getElementById("pop"+i).style.display = "block";
+	}
+	function hidDiv(i){
+		
+		document.getElementById("pop"+i).style.display = "none";
+	}
+	function gotomethod(url){
+		window.location.href =url;
+	}
+	
+    </script>
 
 </html>
