@@ -198,6 +198,10 @@
 						html +="<option value='"+json[i].id+"'>"+json[i].name+"</option>";
 					}
 					$("#island_id").html(html);
+				}else{
+					var html = "";
+					html +="<option value='0' selected='selected'>--请选择--</option>";
+					$("#island_id").html(html);
 				}
 			}
 		});

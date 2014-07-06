@@ -26,13 +26,19 @@ $(function(){
 				
 			}else{
 				var menuId = ($(a).attr('title'));
-				if( url.indexOf("?") != -1 ){
+				if( menuId ==38 || menuId == 54 || menuId == 65){
 					url = url +"&menuId="+menuId;
+					window.top.mainFrame.location.href=url;
 				}else{
-					url = url +"?menuId="+menuId;
+					if( url.indexOf("?") != -1 ){
+						url = url +"&menuId="+menuId;
+					}else{
+						url = url +"?menuId="+menuId;
+					}
+					
+					window.top.mainFrame.location.href=url;
 				}
 				
-				window.top.mainFrame.location.href=url;
 			}
 			
 			

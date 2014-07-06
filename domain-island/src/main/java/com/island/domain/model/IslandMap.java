@@ -239,4 +239,24 @@ public class IslandMap extends AbsModel{
 		boolean passed = true;
 		return true;
 	}
+	
+	private Integer width;
+	private Integer heght;
+	public Integer getWidth() {
+		width = (700 * Integer.parseInt(mapLeft) /100)-40;
+		
+		return width;
+	}
+	public void setWidth(Integer width) {
+		this.width = width;
+	}
+	public Integer getHeght() {
+		heght = (460 * Integer.parseInt(mapTop) /100)-30;
+		
+		return heght;
+	}
+	public void setHeght(Integer heght) {
+		this.heght = heght;
+	}
+	
 }
