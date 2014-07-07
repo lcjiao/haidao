@@ -130,7 +130,7 @@
 	}
 	
 	function _saveEdit(){
-		if( checkData() && checkrmdIndex()){
+		if(checkrmdIndex()){
 			$("#form").submit();
 		}
 	}
@@ -146,17 +146,6 @@
 		return true;
 	}
 	
-	//表单提交前数据验证
-	function checkData(){
-		var bigImg = $('#bigImg').val();
-		var smallImg = $('#smallImg').val();
-		if(null == bigImg || bigImg == '' || null == smallImg || smallImg == ''){
-			alert('大、小图片必选！！');
-			return false;
-		}
-		return true;
-		
-	}	
 	
 </script>
 </html>
