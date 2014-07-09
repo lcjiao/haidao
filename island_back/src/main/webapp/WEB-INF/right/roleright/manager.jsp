@@ -98,14 +98,19 @@ $(function(){
 });
 	
 	function changeRight(){
+		var r = /^[0-9]+$/;
 		menuIds = "";
 		$(":checked").each(function(i){
 			var $parent = $(this).parent();
 			var $a = $($parent).find("a");
 			var menu_id = $($a).attr('title');
-			menuIds = menuIds + menu_id +",";
+			
+			if(r.test(menu_id)){
+				menuIds = menuIds + menu_id +",";
+			}
 			
 		});
+		
 		$("#right_ids").val(menuIds);
 		$("#form").submit();
 	}
