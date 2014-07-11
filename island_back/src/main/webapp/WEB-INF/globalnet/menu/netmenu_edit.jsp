@@ -35,8 +35,9 @@
 <table class="creatcustomer_tfoot" width="100%">
 	<tfoot>
 		<tr>
-		<td><input type=button  value="更新" id="save"/>
+		<td>
 			<input type=button  value="返回" id="reset"/>
+			<input type=button  value="更新" id="save"/>
 		</td>
 		</tr>
 	</tfoot>

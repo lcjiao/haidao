@@ -74,8 +74,8 @@
 <table class="creatcustomer_tfoot" style="width: 100%">
 	<tfoot>
 		<td>
-			<input type=button  value="修改" id="save_edit" />
 			<input type=button  value="返回" onclick="_return()" />
+			<input type=button  value="修改" id="save_edit" />
 		 </td>
 	</tfoot>
 </table>

@@ -48,8 +48,8 @@
 <table class="creatcustomer_tfoot" style="width: 100%">
 	<tfoot>
 		<td>
-			<input type=button  value="修改" id="save" onclick="checkData()"/>
 			<input type=button  value="返回" id="_return" onclick="javascript:history.go(-1);"/>
+			<input type=button  value="修改" id="save" onclick="checkData()"/>
 		</td>
 </tfoot>
 </table>

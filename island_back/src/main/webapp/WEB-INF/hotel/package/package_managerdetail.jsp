@@ -34,8 +34,8 @@
 				<input type=button  value="保存" id="save_back"/>
 			</c:if>
 			<c:if test="${actionType==4}">
-				<input type=button  value="提交" id="save"/>
 				<input type=button  value="返回" id="reset"/>
+				<input type=button  value="提交" id="save"/>
 			</c:if>
 			
 		 </td>

@@ -130,8 +130,8 @@
 <table class="creatcustomer_tfoot" style="width: 100%">
 	<tfoot>
 		<td>
-			<input type=button  value="保存" id="add_base" onclick="addBaseAndToList()"/>
 			<input type=button  value="返回" id="_return" onclick="javascript:history.go(-1);"/>
+			<input type=button  value="保存" id="add_base" onclick="addBaseAndToList()"/>
 			<input type="hidden" id="flag" name="flag" value="">
 		</td>
 </tfoot>

@@ -24,8 +24,9 @@
 </div>
 <table class="creatcustomer_tfoot" width="100%">
 	<tfoot>
-		<td><input type=button  value="保存" id="save"/>
-		   <input type=button  value="返回" id="reset"/> 
+		<td>
+		    <input type=button  value="返回" id="reset"/> 
+			<input type=button  value="保存" id="save"/>
 		  </td>
 </tfoot>
 </table>
