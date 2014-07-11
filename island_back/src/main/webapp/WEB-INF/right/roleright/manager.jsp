@@ -15,13 +15,13 @@
 <script type="text/javascript" src="${ctx}/js_/SimpleTree.js"></script>
 </head>
 <body>
-<table class="searchbar" width="100%">
+<!-- <table class="searchbar" width="100%">
 	<thead>
 		 <tr>
 			<td><font size="3" color="red">当前位置:权限管理--角色权限分配</font></td>
 		</tr>
 	</thead>
-</table>
+</table> -->
 <br/>
 <br/>
 <table class="searchbar" width="100%">
@@ -98,14 +98,19 @@ $(function(){
 });
 	
 	function changeRight(){
+		var r = /^[0-9]+$/;
 		menuIds = "";
 		$(":checked").each(function(i){
 			var $parent = $(this).parent();
 			var $a = $($parent).find("a");
 			var menu_id = $($a).attr('title');
-			menuIds = menuIds + menu_id +",";
+			
+			if(r.test(menu_id)){
+				menuIds = menuIds + menu_id +",";
+			}
 			
 		});
+		
 		$("#right_ids").val(menuIds);
 		$("#form").submit();
 	}
