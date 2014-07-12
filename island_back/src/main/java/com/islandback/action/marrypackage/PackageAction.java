@@ -52,7 +52,8 @@ public class PackageAction extends BaseAction {
 	private Integer pageNo=1;
 	private Integer totalPageSize;
 	private Integer totalSize;
-	private Integer pageSize=10;
+	private Integer pageSize;
+	private Integer defaultPS =10;
 	private Integer packageType=1;
 	
 	private Integer id;
@@ -137,7 +138,7 @@ public class PackageAction extends BaseAction {
 		params.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
-		page.setPageSize(pageSize);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
 		params.put("begin", page.getBegin());
 		params.put("size", page.getPageSize());
 		if(title != null && !"".equals(title) ){
@@ -638,7 +639,7 @@ public class PackageAction extends BaseAction {
 		params.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
-		page.setPageSize(pageSize);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
 		params.put("begin", page.getBegin());
 		params.put("size", page.getPageSize());
 		if(imgType != null && imgType.intValue() > 0 ){
@@ -814,7 +815,7 @@ public class PackageAction extends BaseAction {
 		params.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
-		page.setPageSize(pageSize);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
 		params.put("begin", page.getBegin());
 		params.put("size", page.getPageSize());
 		if(kepianDesc != null && !"".equals(kepianDesc) ){
@@ -873,11 +874,7 @@ public class PackageAction extends BaseAction {
 	
 	
 	private void initTotalPageSize(){
-		if(totalSize % pageSize == 0 ){
-			this.totalPageSize = totalSize / pageSize;
-		}else{
-			this.totalPageSize = ( totalSize / pageSize )+ 1;
-		}
+		this.totalPageSize = (totalSize - 1)/(pageSize == null ? defaultPS : pageSize) + 1;
 	}
 	
 	

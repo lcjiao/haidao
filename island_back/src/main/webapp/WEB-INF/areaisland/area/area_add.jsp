@@ -18,7 +18,6 @@
 			<td>区域名称</td>
 			<td><input type=text class="text" value="" id="area_name" name="name"  style="_width:316px;"/></td>					
 		</tr>
-		
 	</tbody>	
 </table>
 </div>

@@ -121,7 +121,15 @@
 			<td>
 				<input type="text" name="ctmcase.pkgpjturl3" id="_pkgpjturl3" value="${ctmcase.pkgpjturl3 }"/>
 			</td>					
-		</tr>		
+		</tr>	
+		<tr>
+			<td>
+				每页显示数：
+			</td>
+			<td>
+				<input type="text" class="text" value="${pageSize }" id="page_size" name="pageSize" style="_width:316px;"/>
+			</td>
+		</tr>	
 		
 	</tbody>	
 </table>

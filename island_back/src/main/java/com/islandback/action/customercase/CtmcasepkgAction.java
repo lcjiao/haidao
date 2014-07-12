@@ -55,9 +55,9 @@ public class CtmcasepkgAction extends BaseAction  {
 
 	Map<String,Object> map = new HashMap<String,Object>(0);
 	
-	private CustomerCase ctmcase;
-	private CasePicMapping casepm;
-	private CaseVideoMapping casevm;
+	private CustomerCase ctmcase = new CustomerCase();
+	private CasePicMapping casepm = new CasePicMapping();
+	private CaseVideoMapping casevm = new CaseVideoMapping();
 	
 	
 	private String flag;//判断是 保存返回，还是保存继续增加。
@@ -78,7 +78,9 @@ public class CtmcasepkgAction extends BaseAction  {
 	private Integer totalPageSize;
 	private Integer totalSize=0;
 	private Integer pageNo=1;
-	private Integer pageSize=10;
+	private Integer pageSize;
+	
+	private Integer defaultPS = 10;
 	
 	private String creater="";
 	
@@ -126,6 +128,11 @@ public class CtmcasepkgAction extends BaseAction  {
 		map.put("casenameSear",ctmcase.getCasename());
 		map.put("valid", 1);
 		map.put("casetype", ctmcase.getCasetype());
+		Page page = new Page();
+		page.setPageNo(pageNo);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
+		map.put("begin", page.getBegin());
+		map.put("size", page.getPageSize());
 		ctcList = ctmcaseBiz.queryCtmcasePkgByMap(map);
 		if(ctcList != null && ctcList.size()>0){
 			this.totalSize = ctmcaseBiz.countCtmcasePkgByMap(map);
@@ -135,14 +142,56 @@ public class CtmcasepkgAction extends BaseAction  {
 			}
 		}
 		this.totalSize = ctmcaseBiz.countCtmcasePkgByMap(map);
-		Page page = new Page();
-		page.setPageNo(pageNo);
-		page.setPageSize(pageSize);
 		initTotalPageSize();
 		initIslandList();
 		return "list";
 	}
 	
+	/**
+	 * 摄影案例图片搜索功能
+	 */
+	public String imgCaseSearch(){
+		map.clear();
+		map.put("imgType",casepm.getImgType());
+		map.put("valid", 1);
+		Page page = new Page();
+		page.setPageNo(pageNo);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
+		map.put("caseid",ctmId);
+		map.put("begin", page.getBegin());
+		map.put("size", page.getPageSize());
+		casePMList = ctmcaseBiz.queryCasePmByMap(map);
+		this.totalSize = ctmcaseBiz.countCasePmByMap(map);
+		ctmcase.setId(ctmId);
+		initTotalPageSize();
+		initIslandList();
+		return "imglist";
+	}
+	
+	
+	/**
+	 * 视频案例 视频搜索功能 
+	 */
+	public String videoCaseSearch(){
+		map.clear();
+		if(casevm.getVideodesc()=="" || "".equals(casevm.getVideodesc())){
+			casevm.setVideodesc(null);
+		}
+		map.put("videodesc",casevm.getVideodesc());
+		map.put("valid", 1);
+		Page page = new Page();
+		page.setPageNo(pageNo);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
+		map.put("caseid",ctmId);
+		map.put("begin", page.getBegin());
+		map.put("size", page.getPageSize());
+		caseVMList = ctmcaseBiz.queryCaseVmByMap(map);
+		this.totalSize = ctmcaseBiz.countCaseVmByMap(map);
+		ctmcase.setId(ctmId);
+		initTotalPageSize();
+		initIslandList();
+		return "videolist";
+	}
 	/**
 	 * 进入客片案例 列表页面
 	 * @return
@@ -159,7 +208,7 @@ public class CtmcasepkgAction extends BaseAction  {
 		map.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
-		page.setPageSize(pageSize);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
 		map.put("begin", page.getBegin());
 		map.put("size", page.getPageSize());
 		ctcList = ctmcaseBiz.queryCtmcasePkgByMap(map);
@@ -174,7 +223,7 @@ public class CtmcasepkgAction extends BaseAction  {
 	}
 	
 	private void initTotalPageSize(){
-		this.totalPageSize = (totalSize - 1)/pageSize + 1;
+		this.totalPageSize = (totalSize - 1)/(pageSize == null ? defaultPS : pageSize) + 1;
 	}
 	
 	public String toAddBase(){
@@ -248,7 +297,7 @@ public class CtmcasepkgAction extends BaseAction  {
 		map.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
-		page.setPageSize(pageSize);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
 		map.put("begin", page.getBegin());
 		map.put("size", page.getPageSize());
 		map.put("caseid",ctmId);//拿对应案例下的图片
@@ -325,7 +374,7 @@ public class CtmcasepkgAction extends BaseAction  {
 		map.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
-		page.setPageSize(pageSize);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
 		map.put("begin", page.getBegin());
 		map.put("size", page.getPageSize());
 		map.put("caseid",ctmId);//拿对应案例下的视频

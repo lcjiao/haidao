@@ -42,7 +42,8 @@ public class ImageAction extends BaseAction {
 	private Integer pageNo;
 	private Integer totalPageSize;
 	private Integer totalSize;
-	private Integer pageSize=5;
+	private Integer pageSize;
+	private Integer defaultPS =10;
 	private List<Image> imgList = new ArrayList<Image>(0);
 	ImageBiz imgBiz = ModuleRegistry.getInstance()
             .getModule(DomainIslandModule.class).getImageBiz();
@@ -131,14 +132,11 @@ public class ImageAction extends BaseAction {
 		if(pageNo == null || pageNo < 1){
 			pageNo = 1;
 		}
-		if( pageSize == null || pageSize < 1){
-			pageSize = 5;
-		}
 		Map<String,Object> params = new HashMap<String,Object>(0);
 		params.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
-		page.setPageSize(pageSize);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
 		params.put("begin", page.getBegin());
 		params.put("size", page.getPageSize());
 		if( img != null && img.getImgDesc() != null ){
@@ -179,12 +177,7 @@ public class ImageAction extends BaseAction {
 	  }  
 
 	private void initTotalPageSize(){
-			if(totalSize % pageSize == 0 ){
-				this.totalPageSize = totalSize / pageSize;
-			}else{
-				this.totalPageSize = ( totalSize / pageSize )+ 1;
-			}
-			
+		this.totalPageSize = (totalSize - 1)/(pageSize == null ? defaultPS : pageSize) + 1;
 	}
 	public File getImage() {
 		return image;
