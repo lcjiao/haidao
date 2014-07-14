@@ -50,12 +50,12 @@ function popup(id){
 				   </c:forEach>
 				</select>
 			</td>
-			<td width="48">套餐名称</td>
+			<td width="24">名称</td>
 			<td width="10"><input type="text" name="title" value="${title}" id="sear_title"/></td>
-			<td width="48">套餐价格</td>
+			<td width="24">价格</td>
 			<td width="10"><input type="text" name="price" value="${price}" id="sear_price"/></td>
-			<td width="48">
-				每页显示数：
+			<td width="24">
+				显示数
 			</td>
 			<td width="10">
 				<input type="text" class="text" value="${pageSize }" id="page_size" name="pageSize" style="_width:316px;"/>
