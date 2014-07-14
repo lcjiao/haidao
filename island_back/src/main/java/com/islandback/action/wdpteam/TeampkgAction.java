@@ -49,7 +49,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class TeampkgAction extends BaseAction  {
 	private static final long serialVersionUID = 1L;
 
-	private Workman workman;
+	private Workman workman = new Workman();
 	private PackageDetailInfo pkgDetailInfo;
 	private PackageImageRelation pkgImgRelation;
 	private PackageKepianliuying pkgKPLY;
@@ -70,7 +70,8 @@ public class TeampkgAction extends BaseAction  {
 	private Integer totalPageSize;
 	private Integer totalSize=0;
 	private Integer pageNo=1;
-	private Integer pageSize=10;
+	private Integer pageSize;
+	private Integer defaultPS = 10;
 	
 	private String creater="";
 	
@@ -117,7 +118,7 @@ public class TeampkgAction extends BaseAction  {
 		map.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
-		page.setPageSize(pageSize);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
 		map.put("begin", page.getBegin());
 		map.put("size", page.getPageSize());
 		workmanList = wdpTeamBiz.queryWkmPackageByMap(map);
@@ -128,12 +129,12 @@ public class TeampkgAction extends BaseAction  {
 	}
 	
 	private void initTotalPageSize(){
-		this.totalPageSize = (totalSize - 1)/pageSize + 1;
+		this.totalPageSize = (totalSize - 1)/(pageSize == null ? defaultPS : pageSize) + 1;
 	}
 	
 	
 	/**
-	 *  搜索(查询) 功能
+	 *  婚纱摄影套餐  搜索(查询) 功能
 	 * @return
 	 */
 	public String temmpkgSearch(){
@@ -148,33 +149,61 @@ public class TeampkgAction extends BaseAction  {
 		map.put("price", workman.getPriceSmall());
 		map.put("valid", 1);
 		map.put("workType", workman.getWorkType());
-		workmanList = wdpTeamBiz.queryWkmPackageByMap(map);
-		this.totalSize = wdpTeamBiz.countWkmPackageByMap(map);
 		Page page = new Page();
 		page.setPageNo(pageNo);
-		page.setPageSize(pageSize);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
+		map.put("begin", page.getBegin());
+		map.put("size", page.getPageSize());
+		workmanList = wdpTeamBiz.queryWkmPackageByMap(map);
+		this.totalSize = wdpTeamBiz.countWkmPackageByMap(map);
 		initTotalPageSize();
-	
 		return "list";
 	}
 	
 	/**
-	 * 图片 搜索 功能。
+	 * 图片管理  搜索 功能。
 	 */
 	public String wdpImgSearch(){
 		map.clear();
 		map.put("imgType",pkgImgRelation.getImgType());
 		map.put("valid", 1);
+		map.put("packageId", wkmId);
 		map.put("packageType", ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO_WORKER);
-		wdpImgList = weddingPhotoBiz.queryPkgImgRelationByMap(map);
-		this.totalSize = weddingPhotoBiz.countPkgImgRelationByMap(map);
 		Page page = new Page();
 		page.setPageNo(pageNo);
-		page.setPageSize(pageSize);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
+		map.put("begin", page.getBegin());
+		map.put("size", page.getPageSize());
+		wdpImgList = wdpTeamBiz.queryPkgImgRelationByMap(map);
+		this.totalSize = wdpTeamBiz.countPkgImgRelationByMap(map);
+		workman.setId(wkmId);
 		initTotalPageSize();
 		return "imglist";
-	}	
+	}
 	
+	/**
+	 * 客片留影 搜索 功能 
+	 */
+	public String kplySearch(){
+		map.clear();
+		if(pkgKPLY.getKepianDesc()=="" || "".equals(pkgKPLY.getKepianDesc())){
+			pkgKPLY.setKepianDesc(null);
+		}
+		map.put("kepianDescSear","%"+pkgKPLY.getKepianDesc()+"%");
+		map.put("valid", 1);
+		map.put("packageId", wkmId);
+		map.put("packageType", ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO_WORKER);
+		Page page = new Page();
+		page.setPageNo(pageNo);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
+		map.put("begin", page.getBegin());
+		map.put("size", page.getPageSize());
+		pkgKPLYList = wdpTeamBiz.queryPkgKPLYByMap(map);
+		this.totalSize = wdpTeamBiz.countPkgKPLYByMap(map);
+		workman.setId(wkmId);
+		initTotalPageSize();
+		return "kepianlist";
+	}
 	
 	/**
 	 * 新增 页面
@@ -304,7 +333,7 @@ public class TeampkgAction extends BaseAction  {
 		map.put("packageId", wkmId);
 		Page page = new Page();
 		page.setPageNo(pageNo);
-		page.setPageSize(pageSize);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
 		map.put("begin", page.getBegin());
 		map.put("size", page.getPageSize());
 		wdpImgList = wdpTeamBiz.queryPkgImgRelationByMap(map);
@@ -395,7 +424,7 @@ public class TeampkgAction extends BaseAction  {
 		map.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
-		page.setPageSize(pageSize);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
 		map.put("begin", page.getBegin());
 		map.put("size", page.getPageSize());
 		pkgKPLYList = wdpTeamBiz.queryPkgKPLYByMap(map);

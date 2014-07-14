@@ -34,6 +34,12 @@
 				   </c:forEach>
 				</select>
 			</td>
+			<td width="48">
+				每页显示数：
+			</td>
+			<td width="10">
+				<input type="text" class="text" value="${pageSize }" id="page_size" name="pageSize" style="_width:316px;"/>
+			</td>
 			<td><input class="btn" type="button" value="搜索" id="search"/>
 			</td>
 		</tr>

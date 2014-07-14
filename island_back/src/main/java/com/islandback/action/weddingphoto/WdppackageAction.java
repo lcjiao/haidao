@@ -48,7 +48,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class WdppackageAction extends BaseAction  {
 	private static final long serialVersionUID = 1L;
 
-	private IslandPackage wdpPackage;
+	private IslandPackage wdpPackage = new IslandPackage();
 	private PackageDetailInfo pkgDetailInfo;
 	private PackageImageRelation pkgImgRelation;
 	private PackageKepianliuying pkgKPLY;
@@ -70,7 +70,8 @@ public class WdppackageAction extends BaseAction  {
 	private Integer totalPageSize;
 	private Integer totalSize=0;
 	private Integer pageNo=1;
-	private Integer pageSize=10;
+	private Integer pageSize;
+	private Integer defaultPS = 10;
 	
 	private String creater="";
 	
@@ -118,7 +119,7 @@ public class WdppackageAction extends BaseAction  {
 		map.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
-		page.setPageSize(pageSize);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
 		map.put("begin", page.getBegin());
 		map.put("size", page.getPageSize());
 		wdpPackageList = weddingPhotoBiz.queryWdpPackageByMap(map);
@@ -129,7 +130,7 @@ public class WdppackageAction extends BaseAction  {
 	}
 	
 	private void initTotalPageSize(){
-		this.totalPageSize = (totalSize - 1)/pageSize + 1;
+		this.totalPageSize = (totalSize - 1)/(pageSize == null ? defaultPS : pageSize) + 1;
 	}
 	
 	public void doPackageTypeList(){
@@ -166,29 +167,35 @@ public class WdppackageAction extends BaseAction  {
 		map.put("valid", 1);
 		map.put("isOnline", 1);
 		map.put("packageType", ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO);
-		wdpPackageList = weddingPhotoBiz.queryWdpPackageByMap(map);
-		this.totalSize = weddingPhotoBiz.countIslandPackageByMap(map);
 		Page page = new Page();
 		page.setPageNo(pageNo);
-		page.setPageSize(pageSize);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
+		map.put("begin", page.getBegin());
+		map.put("size", page.getPageSize());
+		wdpPackageList = weddingPhotoBiz.queryWdpPackageByMap(map);
+		this.totalSize = weddingPhotoBiz.countIslandPackageByMap(map);
 		initTotalPageSize();
 		initIslandList();
 		return "list";
 	}
 	
 	/**
-	 * 图片 搜索 功能。
+	 * 图片管理  搜索 功能。
 	 */
 	public String wdpImgSearch(){
 		map.clear();
 		map.put("imgType",pkgImgRelation.getImgType());
 		map.put("valid", 1);
 		map.put("packageType", ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO);
-		wdpImgList = weddingPhotoBiz.queryPkgImgRelationByMap(map);
-		this.totalSize = weddingPhotoBiz.countPkgImgRelationByMap(map);
+		map.put("packageId", wdpId);
 		Page page = new Page();
 		page.setPageNo(pageNo);
-		page.setPageSize(pageSize);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
+		map.put("begin", page.getBegin());
+		map.put("size", page.getPageSize());
+		wdpImgList = weddingPhotoBiz.queryPkgImgRelationByMap(map);
+		this.totalSize = weddingPhotoBiz.countPkgImgRelationByMap(map);
+		wdpPackage.setId(wdpId);
 		initTotalPageSize();
 		return "imglist";
 	}
@@ -198,14 +205,18 @@ public class WdppackageAction extends BaseAction  {
 	 */
 	public String kplySearch(){
 		map.clear();
-		map.put("kepianDescSear","%"+ pkgKPLY.getKepianDesc() +"%");
+		map.put("kepianDescSear","%"+pkgKPLY.getKepianDesc()+"%");
 		map.put("valid", 1);
 		map.put("packageType", ModuleEnum.PACKAGE_TYPE_WEDDINGPHOTO);
-		pkgKPLYList = weddingPhotoBiz.queryPkgKPLYByMap(map);
-		this.totalSize = weddingPhotoBiz.countPkgKPLYByMap(map);
+		map.put("packageId", wdpId);
 		Page page = new Page();
 		page.setPageNo(pageNo);
-		page.setPageSize(pageSize);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
+		map.put("begin", page.getBegin());
+		map.put("size", page.getPageSize());
+		pkgKPLYList = weddingPhotoBiz.queryPkgKPLYByMap(map);
+		this.totalSize = weddingPhotoBiz.countPkgKPLYByMap(map);
+		wdpPackage.setId(wdpId);
 		initTotalPageSize();
 		return "kepianlist";
 	}
@@ -348,7 +359,7 @@ public class WdppackageAction extends BaseAction  {
 		map.put("packageId", wdpId);		
 		Page page = new Page();
 		page.setPageNo(pageNo);
-		page.setPageSize(pageSize);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
 		map.put("begin", page.getBegin());
 		map.put("size", page.getPageSize());
 		wdpImgList = weddingPhotoBiz.queryPkgImgRelationByMap(map);
@@ -441,7 +452,7 @@ public class WdppackageAction extends BaseAction  {
 		map.put("valid", 1);
 		Page page = new Page();
 		page.setPageNo(pageNo);
-		page.setPageSize(pageSize);
+		page.setPageSize(pageSize == null ? defaultPS : pageSize);
 		map.put("begin", page.getBegin());
 		map.put("size", page.getPageSize());
 		pkgKPLYList = weddingPhotoBiz.queryPkgKPLYByMap(map);

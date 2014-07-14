@@ -11,9 +11,9 @@
 <%@ include file="/common/menu.jsp"%>
 </head>
 <body>
-<!--
+
 <form action="${ctx}/customercase/moduletype/areamoduletype!tolist.action" id="form" method="post">
-<table class="searchbar" width="100%">
+<!--<table class="searchbar" width="100%">
 	<tbody>
 		 <tr>
 			<td width="48">案例类型</td>
@@ -51,8 +51,9 @@
 </table>
 
 <input type="hidden" value="${pageNo}" name="pageNo" id="page_no"/>
-</form>
  -->
+</form>
+
 <table class="customlist" width="100%">
 	<thead>
 		<tr>
@@ -67,7 +68,10 @@
 					</div>
 				</div>
 			</td>
-			<td align="right" class="tdr"><input type="button" value="新建" id="new_create"/></td>
+			<td align="right" class="tdr">
+				<input type="button" value="显示全部" id="_showall" onclick="showAll();"/>&nbsp;&nbsp;&nbsp;
+				<input type="button" value="新建" id="new_create"/>
+			</td>
 		</tr>
 	</thead>
 	
@@ -194,6 +198,10 @@
 			return;
 		}
 		findByNo(pageNo);
+	}
+	
+	function showAll(){
+		$("#form").submit();
 	}
 	
 	//点击搜索

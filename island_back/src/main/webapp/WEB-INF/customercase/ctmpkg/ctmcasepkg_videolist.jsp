@@ -13,24 +13,25 @@
 </head>
 <body>
 <form action="${ctx}/customercase/ctmpkg/ctmcasepkg!videoCaseSearch.action" id="form" method="post">
-<!-- <table class="searchbar" style="width: 100%">
+<table class="searchbar" style="width: 100%">
 	<tbody>
 		<tr>
-			<td width="48">图片类型</td>
+			<td width="48">视频描述</td>
 			<td width="10">
-				<select id="img_type" name="casepm.imgType">
-					<option value="" selected="selected">--请选择--</option>
-					<option value="1" >logo图</option>
-					<option value="2" >套餐图片集</option>
-					<option value="3" >套餐大图</option>
-				</select>
+				<input type="text" class="text" name="casevm.videodesc"/>
+			</td>
+			<td width="48">
+				每页显示数：
+			</td>
+			<td width="10">
+				<input type="text" class="text" value="${pageSize }" id="page_size" name="pageSize" style="_width:316px;"/>
 			</td>
 			<td><input class="btn" type="button" value="搜索" id="search"/>
 			</td>
 		</tr>
 	</tbody>
 </table>
- -->
+<input type="hidden" id = "ctm_id" name="ctmId" value='${ctmcase.id }'/>
 <input type="hidden" value='${pageNo }' name="pageNo" id="page_no"/>
 </form>
 <table class="customlist" style="width: 100%">
@@ -89,7 +90,7 @@
 						 </s:iterator>
 					</tbody>
 				</table>
-									<input type="hidden" id = "ctm_id" name="ctmcase.id" value='${ctmcase.id }'/>
+									
 			</td>
 		</tr>
 	</tbody>

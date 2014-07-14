@@ -59,9 +59,8 @@
 <table class="creatcustomer_tfoot" width="100%">
 	<tfoot>
 		<td>
-			<input type=button  value="保存" id="save" onclick="checkData()"/>
 			<input type=button  value="返回" id="_return" onclick="javascript:history.go(-1);"/>
-			<!-- <input type=button  value="返回" id="reset"/> -->
+			<input type=button  value="保存" id="save" onclick="checkData()"/>
 		</td>
 </tfoot>
 </table>

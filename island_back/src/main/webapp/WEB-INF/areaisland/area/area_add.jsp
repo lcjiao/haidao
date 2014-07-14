@@ -18,14 +18,14 @@
 			<td>区域名称</td>
 			<td><input type=text class="text" value="" id="area_name" name="name"  style="_width:316px;"/></td>					
 		</tr>
-		
 	</tbody>	
 </table>
 </div>
 <table class="creatcustomer_tfoot" width="100%">
 	<tfoot>
-		<td><input type=button  value="保存" id="save"/>
-		   <input type=button  value="返回" id="reset"/> 
+		<td>
+		    <input type=button  value="返回" id="reset"/> 
+			<input type=button  value="保存" id="save"/>
 		  </td>
 </tfoot>
 </table>
