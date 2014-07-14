@@ -71,12 +71,15 @@ public class RecommendAction extends BaseAction {
 		imgParams.put("valid", 1);
 		imgParams.put("imgType", 1);
 		imgParams.put("packageId", id);
-		List<PackageImageRelation> list = packageBiz.queryPackageImgByMap(imgParams);
-		if(list != null && list.size()>0){
-			PackageImageRelation logo = list.get(0);
-			islandPackage.setLogoUrl(logo.getImgUrl());
+		if( islandPackage != null){
+			List<PackageImageRelation> list = packageBiz.queryPackageImgByMap(imgParams);
+			if(list != null && list.size()>0  ){
+				PackageImageRelation logo = list.get(0);
+				islandPackage.setLogoUrl(logo.getImgUrl());
+			}
+			islandPackage.setDetailUrl( getDetailUrlByPackageId() );
+			
 		}
-		islandPackage.setDetailUrl( getDetailUrlByPackageId() );
 		
 		
 		
@@ -585,6 +588,13 @@ public class RecommendAction extends BaseAction {
 	}
 	
 	private void  recommend102(IslandPackage islandPackage,Recommend addObj){
+		Map<String,Object> islandParams = new HashMap<String,Object>(0);
+		islandParams.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
+		islandParams.put("valid", 1);
+		islandParams.put("typeId", 2);
+		Integer islandTotalSize = recommendBiz.countByMap(islandParams);
+		addObj.setRecommendIndex(islandTotalSize+1);
+		
 		addObj.setAreaId(islandPackage.getAreaId());
 		addObj.setAreaName(islandPackage.getAreaName());
 		addObj.setIslandId(islandPackage.getIslandId());
@@ -599,7 +609,6 @@ public class RecommendAction extends BaseAction {
 		params.put("moduleId", ModuleEnum.WEDDING_PHOTO_FACE_RECOMMEND);
 		params.put("valid", 1);
 		params.put("typeId", 1);
-		params.put("areaId", islandPackage.getAreaId());
 		List<Recommend> areaList = recommendBiz.queryByMap(params);
 		if( areaList == null || areaList.isEmpty() ){
 			 Recommend areaRecommend = new Recommend();
@@ -673,7 +682,7 @@ public class RecommendAction extends BaseAction {
 			if( videoCaseList != null && !videoCaseList.isEmpty()){
 				CaseVideoMapping caseVideo = videoCaseList.get(0);
 				addObj.setImgUrl(caseVideo.getLogourl());
-				addObj.setViewLink(caseVideo.getVideoLink());
+				addObj.setViewLink(caseVideo.getVideourl());
 				addObj.setRecommendDesc(caseVideo.getVideodesc());
 			}
 			this.packageType = type;
@@ -681,6 +690,14 @@ public class RecommendAction extends BaseAction {
 			addObj.setAreaId(customerCase.getAreaid());
 			addObj.setAreaName(customerCase.getAreaname());
 			addObj.setTypeId(3);
+			
+			Map<String,Object> videoParams = new HashMap<String,Object>(0);
+			videoParams.put("moduleId", ModuleEnum.CUSTOMER_CASE_FACE_VIDEO_RECOMMEND);
+			videoParams.put("valid", 1);
+			videoParams.put("typeId", 3);
+			Integer videoTotalSize = recommendBiz.countByMap(videoParams);
+			addObj.setRecommendIndex(videoTotalSize+1);
+			
 			this.recommendBiz.addMasterRecommend(addObj);
 			
 			Map<String,Object> params = new HashMap<String,Object>(0);
@@ -728,6 +745,14 @@ public class RecommendAction extends BaseAction {
 			addObj.setAreaId(customerCase.getAreaid());
 			addObj.setAreaName(customerCase.getAreaname());
 			addObj.setTypeId(4);
+			
+			Map<String,Object> imgParams = new HashMap<String,Object>(0);
+			imgParams.put("moduleId", ModuleEnum.CUSTOMER_CASE_FACE_IMAGE_RECOMMEND);
+			imgParams.put("valid", 1);
+			imgParams.put("typeId", 4);
+			Integer imgTotalSize = recommendBiz.countByMap(imgParams);
+			addObj.setRecommendIndex(imgTotalSize+1);
+			
 			this.recommendBiz.addMasterRecommend(addObj);
 			
 			Map<String,Object> params = new HashMap<String,Object>(0);

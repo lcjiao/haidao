@@ -10,6 +10,23 @@
 <script type="text/javascript" src='${ctx}/js/jquery-1.7.min.js' ></script>
 <script type="text/javascript" src="${ctx}/js/common.js" ></script>
 <%@ include file="/common/menu.jsp"%>
+<script>
+var packageId="";
+function popup(id){
+	var popupName = $("#dialog");
+	var _scrollHeight = $(document).scrollTop(),//获取当前窗口距离页面顶部高度
+	_windowHeight = $(window).height(),//获取当前窗口高度
+	_windowWidth = $(window).width(),//获取当前窗口宽度
+	_popupHeight = popupName.height(),//获取弹出层高度
+	_popupWeight = popupName.width();//获取弹出层宽度
+	_posiTop = (_windowHeight - _popupHeight)/2 + _scrollHeight;
+	_posiLeft = (_windowWidth - _popupWeight)/2;
+	popupName.css({"left": _posiLeft + "px","top":_posiTop + "px","display":"block"});//设置position
+	//$(popupName).find("div.dialog_text").first().find("input").first().val("输入姓名或邮箱地址");
+	//$("#batch_del_name").val("请输入姓名");
+	packageId = id;
+}
+</script>
 </head>
 <body>
 <form action="${ctx}/weddingphoto/wdppackage/wdppackage!wdpPackageSearch.action" id="form" method="post">
@@ -112,6 +129,8 @@
 								<td width="100px">
 									<a title="" onclick="sethot('hot_<s:property value="#_index.index+1"/>')" >热推</a>&nbsp;|&nbsp;
 									<a title="" onclick="resethot('hot_<s:property value="#_index.index+1"/>')" >取消热推</a>&nbsp;&nbsp;
+									<a title="<s:property value="id"/>" onclick="popup('<s:property value="id"/>')">系统推荐</a>
+								
 								</td>
 								<td width="360px">
 									<a title="" onclick="editBase(<s:property value="id"/>)" >基本信息管理</a>&nbsp;|&nbsp;
@@ -129,6 +148,35 @@
 		</tr>
 	</tbody>
 </table>
+<div id="dialog">
+  <div class="box" style="width:330px; height:200px">
+    <div class="xinfos" id="system_r">
+    	<ul id="r_1" >
+    		<li><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;网站首页--主打产品 &nbsp;&nbsp;&nbsp;<input width="20px"  type=checkbox  value = "1" /></h3></li>
+    		<li><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;网站首页--咨询内容&nbsp;&nbsp;&nbsp;<input width="20px" type=checkbox  value = "3" /></h3></li>
+    		<li><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;网站首页--套餐推荐&nbsp;&nbsp;&nbsp;<input width="20px" type=checkbox  value = "4" /></h3></li>
+    		<li><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;婚纱摄影套餐--主推套餐&nbsp;&nbsp;&nbsp;<input width="20px" type=checkbox  value = "101" /></h3></li>
+    		<li><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;婚纱摄影套餐--辅推套餐&nbsp;&nbsp;&nbsp;<input width="20px" type=checkbox  value = "102" /></h3></li>
+    		<li><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;婚纱摄影套餐--最新摄影套餐&nbsp;&nbsp;&nbsp;<input width="20px" type=checkbox  value = "103" /></h3></li>
+    		<li style=" float:right; width:130px;"><h3><a href="#" onClick="gotoPage(2)">下一页</a></h3></li>
+    	</ul>
+    	
+    	<ul id="r_2" style="display:none;">
+    		<li><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全站左侧导航推荐模块一&nbsp;&nbsp;&nbsp;<input width="20px"  type=checkbox  value = "20" /></h3></li>
+    		<li><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全站左侧导航推荐模块二&nbsp;&nbsp;&nbsp;<input width="20px" type=checkbox  value = "21" /></h3></li>
+    		<li><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全站左侧导航推荐模块三&nbsp;&nbsp;&nbsp;<input width="20px" type=checkbox  value = "22" /></h3></li>
+    		<li><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全站详细页推荐&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input width="20px" type=checkbox  value = "23" /></h3></li>
+    		<li style=" float:right; width:130px;"><h3><a href="#" onClick="gotoPage(1)">上一页</a></h3></li>
+    	</ul>
+    	
+    	
+    </div>
+    <div class="dialogbtn" style="width:270px;">
+    	<input type="button" onClick="popuphide('dialog')"  value="取消" name="button" class="close"/>
+    	<input type="button" value="推荐" name="button"  class="close" onClick="system_recommend()"/>
+    </div>
+  </div>
+</div>
 </body>
 <script>
 	var  numCat = /^[1-9]*$/;
@@ -289,5 +337,49 @@
 			$('#'+ele)[0].innerText = "热推";
 		}
 	}
+</script>
+<script>
+function popuphide(popupName){
+	$("#"+popupName).css({"left": _posiLeft + "px","top":_posiTop + "px","display":"none"});//设置position
+}
+
+function gotoPage(num){
+	$("#r_1").hide();
+	$("#r_2").hide();
+	$("#r_"+num).show();
+	
+}
+
+function system_recommend(){
+	var sel_modules ="";
+	var size = $("#system_r :checked").size();
+	if( size < 1 ){
+		alert("请勾选推荐位置");
+		return ;
+	}
+	
+	$("#system_r :checked").each(function(i){
+		var module_id = $(this).val();
+		sel_modules = sel_modules + module_id +",";
+	});
+	
+	var packageType = 1;
+	$.ajax({
+		type:"get",
+		url:"${ctx}/system/recommend!systemRecommend.action?id="+packageId+"&packageType="+packageType+"&modueIds="+sel_modules,
+		dataType:"text",
+		success:function(rst){
+			if( "ok" == rst ){
+				alert("推荐成功");
+				$("#system_r :checked").each(function(i){
+					$(this).attr("checked",false);
+				});
+				popuphide('dialog');
+			}
+			
+		}
+	});
+	
+};
 </script>
 </html>
