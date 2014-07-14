@@ -299,5 +299,21 @@ public class IslandPackage extends AbsModel{
 		this.typeName = typeName;
 	}
 	
+	private String logoUrl="";
+	public String getLogoUrl() {
+		return logoUrl;
+	}
+	public void setLogoUrl(String logoUrl) {
+		this.logoUrl = logoUrl;
+	}
+	
+	private String detailUrl="";
+	public String getDetailUrl() {
+		return detailUrl;
+	}
+	public void setDetailUrl(String detailUrl) {
+		this.detailUrl = detailUrl;
+	}
+	
 	
 }

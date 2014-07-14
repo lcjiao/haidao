@@ -288,4 +288,20 @@ public class Workman extends AbsModel{
 		this.workTypeStr = workTypeStr;
 	}
 	
+	private String logoUrl="";
+	public String getLogoUrl() {
+		return logoUrl;
+	}
+	public void setLogoUrl(String logoUrl) {
+		this.logoUrl = logoUrl;
+	}
+	
+	private String detailUrl="";
+	public String getDetailUrl() {
+		return detailUrl;
+	}
+	public void setDetailUrl(String detailUrl) {
+		this.detailUrl = detailUrl;
+	}
+	
 }

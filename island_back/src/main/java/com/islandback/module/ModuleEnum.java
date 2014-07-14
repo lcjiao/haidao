@@ -20,6 +20,11 @@ public class ModuleEnum {
 	public static String getImageServUrl(){
 		return confBiz.getValue("img_url_path");
 	}
+	
+	public static final String FRONT_WEB_URL="";
+	public static String getFrontWebUrl(){
+		return confBiz.getValue("front_web_url");
+	}
 
 	/**
 	 * 首页主推产品

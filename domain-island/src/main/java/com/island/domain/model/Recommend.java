@@ -487,7 +487,7 @@ public class Recommend extends AbsModel implements Comparable{
 				return IslandDateUtil.getDateStrByUnixTime(Integer.parseInt(this.recommendTime), "yyyy-MM-dd");
 			}
 		}
-		return recommendTimeStr;
+		return recommendTime;
 	}
 	public void setRecommendTimeStr(String recommendTimeStr) {
 		this.recommendTimeStr = recommendTimeStr;
