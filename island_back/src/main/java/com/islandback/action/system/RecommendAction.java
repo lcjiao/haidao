@@ -648,6 +648,7 @@ public class RecommendAction extends BaseAction {
 			PackageImageRelation logo = workManImgList.get(0);
 			workman.setLogoUrl(logo.getImgUrl());
 		}
+		packageType = 3;//婚纱摄影师团餐
 		workman.setDetailUrl( getDetailUrlByPackageId() );
 		
 		
@@ -781,11 +782,45 @@ public class RecommendAction extends BaseAction {
 	}
 
 
-	
+	/**
+	 * packageType 1:婚礼套餐  2:婚纱摄影套餐  3:婚纱摄影团队  4:酒店   5:自由行 130:图片案例   131:视频案例
+	 * @return
+	 */
 	private String getDetailUrlByPackageId(){
 		String frontUrl = ModuleEnum.getFrontWebUrl();
-		//return frontUrl+"";
-		return "http://www.baidu.com";
+		String detailUrl = "";
+		if( packageType != null && packageType.intValue() == 1){
+			IslandPackage islandPackage = packageBiz.queryPackageById(id);
+			Integer islandId = islandPackage.getIslandId();
+			detailUrl ="area!getHunLiTaoCanInfo.do?islandId="+islandId+"&packageId="+id+"#maodian";
+		}
+		if( packageType != null && packageType.intValue() == 2){
+			IslandPackage islandPackage = packageBiz.queryPackageById(id);
+			Integer islandId = islandPackage.getIslandId();
+			detailUrl = "hssy!getHssyTaoCanInfo.do?islandId="+islandId+"&packageId="+id+"#maodian";
+		}
+		if( packageType != null && packageType.intValue() == 3){
+			detailUrl = "hssy!getHssySYSInfo.do?workmanId="+id+"#maodian";
+		}
+		if( packageType != null && packageType.intValue() == 4){
+			IslandPackage islandPackage = packageBiz.queryPackageById(id);
+			Integer islandId = islandPackage.getIslandId();
+			detailUrl ="jiudian!getJiudianTaoCanInfo.do?islandId="+islandId+"&packageId="+id+"#maodian";
+		}
+		if( packageType != null && packageType.intValue() == 5){
+			IslandPackage islandPackage = packageBiz.queryPackageById(id);
+			Integer islandId = islandPackage.getIslandId();
+			detailUrl = "miyue!getMiyueTaoCanInfo.do?islandId="+islandId+"&packageId="+id+"#maodian";
+			
+		}
+		if( packageType != null && packageType.intValue() == 130){
+			detailUrl="kpal!getHlalkepianInfo.do?caseid="+id+"#maodian";
+		}
+		if( packageType != null && packageType.intValue() == 131){
+			detailUrl="kpal!getHlalSPInfo.do?caseid="+id+"#maodian";
+		}
+
+		return frontUrl + detailUrl;
 	}
 
 	public Integer getId() {

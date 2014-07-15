@@ -339,7 +339,7 @@ function system_recommend(){
 		sel_modules = sel_modules + module_id +",";
 	});
 	
-	var packageType = 1;
+	var packageType = 3;
 	$.ajax({
 		type:"get",
 		url:"${ctx}/system/recommend!systemRecommend.action?id="+packageId+"&packageType="+packageType+"&modueIds="+sel_modules,
