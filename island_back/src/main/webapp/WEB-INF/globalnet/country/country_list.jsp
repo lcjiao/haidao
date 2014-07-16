@@ -81,7 +81,7 @@
 	function bindEvent(){
 		$("#go").bind('click',gotoPageNo);
 		$("#new_create").bind('click',newCreate);
-		$("#search").bind('click',search);
+		//$("#search").bind('click',search);
 		
 		/* $("#question_list a[title]").each(function(i){
 			$(this).bind('click',hideQuestion());
@@ -105,8 +105,8 @@
 			$("#go_page").hide();
 		}
 		
-		var islandId = '${recommend.islandId}';
-		$("#island_id option[value='"+islandId+"']").attr('selected',true);
+		//var islandId = '${recommend.islandId}';
+		//$("#island_id option[value='"+islandId+"']").attr('selected',true);
 		
 		
 	}
@@ -145,10 +145,10 @@
 	
 	
 	function findByNo(pageNo){
-		//var url = "${ctx}/marrypackage/secondpackage/secondpackagerecommend!tolist.action?pageNo="+pageNo;
-		//window.location.href = url;
-		$("#page_no").val(pageNo);
-		$("#form").submit();
+		var url = "${ctx}/globalnet/country/country!tolist.action?pageNo="+pageNo;
+		window.location.href = url;
+		//$("#page_no").val(pageNo);
+		//$("#form").submit();
 	}
 	
 	
