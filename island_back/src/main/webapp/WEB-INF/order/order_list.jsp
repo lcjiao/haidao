@@ -16,24 +16,24 @@
 <table class="searchbar" width="100%">
 	<tbody>
 		<tr>
-			<td width="48">新人姓名</td>
+			<td width="24">新人姓名</td>
 			<td width="10">
 				<input type="text" value="${order.wedName}" name="order.wedName" />
 			</td>
-			<td width="48">联系电话</td>
+			<td width="24">联系电话</td>
 			<td width="10">
 				<input type="text" value="${order.tel}" name="order.tel" />
 			</td>
-			<td width="48">qq</td>
+			<td width="24">qq</td>
 			<td width="10">
 				<input type="text" value="${order.qq}" name="order.qq" />
 			</td>
-			<td width="48">邮箱</td>
+			<%-- <td width="24">邮箱</td>
 			<td width="10">
 				<input type="text" value="${order.mail}" name="order.mail" />
-			</td>
-			<td width="48">
-				每页显示数：
+			</td> --%>
+			<td width="24">
+				显示数：
 			</td>
 			<td width="10">
 				<input type="text" class="text" value="${pageSize }" id="page_size" name="pageSize" style="_width:316px;"/>

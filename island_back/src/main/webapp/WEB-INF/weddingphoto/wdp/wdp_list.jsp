@@ -22,8 +22,6 @@
 
 					<code>共<strong id="total_page_size">${totalPageSize}</strong>页&nbsp;<strong>${totalSize}</strong>条记录</code>
 					<div id="go_page">
-					<input type="text" class="num numonly" size="6" id="go_no" value=""/>
-					<input type="button" value="GO" id="go"/>
 					</div>
 				</div>
 			</td>
@@ -158,7 +156,7 @@
 	
 	
 	function findByNo(pageNo){
-		var url = "${ctx}/weddingphoto/wdp/wdp!list?pageNo="+pageNo;
+		var url = "${ctx}/weddingphoto/wdp/wdp!list.action?pageNo="+pageNo;
 		window.location.href = url;
 	}
 	
