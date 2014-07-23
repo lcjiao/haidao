@@ -208,7 +208,7 @@ function popup(id){
 	//绑定事件
 	function bindEvent(){
 		$("#search").bind('click',search);
-		//$("#go").bind('click',gotoPageNo);
+		$("#go").bind('click',gotoPageNo);
 		$("#new_create").bind('click',newCreate);
 		
 	}
@@ -241,7 +241,25 @@ function popup(id){
 		findByNo(pageNo);
 	}
 	
-	
+	//指定页数跳转
+	function gotoPageNo(){
+		var pageNo = $("#go_no").val();
+		var maxNo = $("#total_page_size").text();
+		var isNum = numCat.test(pageNo);
+		if( isNum == false ){
+			alert('请输入数字');
+			return;
+		}
+		 if(pageNo < 1 ){
+			alert('请输入正确页数');
+			return;
+		} 
+		if(pageNo > maxNo){
+			alert('请输入正确页数');
+			return;
+		}
+		findByNo(pageNo);
+	}
 	
 	//点击搜索
 	function search(){
