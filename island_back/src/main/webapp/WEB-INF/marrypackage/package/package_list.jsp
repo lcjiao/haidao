@@ -143,7 +143,7 @@ function popup(id){
     		<li><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;婚礼套餐--主推套餐&nbsp;&nbsp;&nbsp;<input width="20px" type=checkbox  value = "6" /></h3></li>
     		<li><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;婚礼套餐--辅推套餐&nbsp;&nbsp;&nbsp;<input width="20px" type=checkbox  value = "7" /></h3></li>
     		<li><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;婚礼套餐--区域推荐套餐&nbsp;&nbsp;&nbsp;<input width="20px" type=checkbox  value = "8" /></h3></li>
-    		<li style=" float:right; width:130px;"><h3><a href="#" onClick="gotoPage(2)">下一页</a></h3></li>
+    		<li style=" float:right; width:130px;"><h3><a href="#" onClick="gotoPageDiv(2)">下一页</a></h3></li>
     	</ul>
     	
     	<ul id="r_2" style="display:none;">
@@ -151,7 +151,7 @@ function popup(id){
     		<li><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全站左侧导航推荐模块二&nbsp;&nbsp;&nbsp;<input width="20px" type=checkbox  value = "21" /></h3></li>
     		<li><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全站左侧导航推荐模块三&nbsp;&nbsp;&nbsp;<input width="20px" type=checkbox  value = "22" /></h3></li>
     		<li><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全站详细页推荐&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input width="20px" type=checkbox  value = "23" /></h3></li>
-    		<li style=" float:right; width:130px;"><h3><a href="#" onClick="gotoPage(1)">上一页</a></h3></li>
+    		<li style=" float:right; width:130px;"><h3><a href="#" onClick="gotoPageDiv(1)">上一页</a></h3></li>
     	</ul>
     	
     	
@@ -208,7 +208,7 @@ function popup(id){
 	//绑定事件
 	function bindEvent(){
 		$("#search").bind('click',search);
-		$("#go").bind('click',gotoPageNo);
+		//$("#go").bind('click',gotoPageNo);
 		$("#new_create").bind('click',newCreate);
 		
 	}
@@ -241,25 +241,7 @@ function popup(id){
 		findByNo(pageNo);
 	}
 	
-	//指定页数跳转
-	function gotoPageNo(){
-		var pageNo = $("#go_no").val();
-		var maxNo = $("#total_page_size").text();
-		var isNum = numCat.test(pageNo);
-		if( isNum == false ){
-			alert('请输入数字');
-			return;
-		}
-		 if(pageNo < 1 ){
-			alert('请输入正确页数');
-			return;
-		} 
-		if(pageNo > maxNo){
-			alert('请输入正确页数');
-			return;
-		}
-		findByNo(pageNo);
-	}
+	
 	
 	//点击搜索
 	function search(){
@@ -377,7 +359,7 @@ function popuphide(popupName){
 	$("#"+popupName).css({"left": _posiLeft + "px","top":_posiTop + "px","display":"none"});//设置position
 }
 
-function gotoPage(num){
+function gotoPageDiv(num){
 	$("#r_1").hide();
 	$("#r_2").hide();
 	$("#r_"+num).show();
