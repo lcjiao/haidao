@@ -58,9 +58,7 @@
 	<logger name="com.danga.MemCached">
 		<level value="ERROR" />
 	</logger>
-	<logger name="com.anjuke">    	
-        <level value="DEBUG" />
-    </logger>
+	
     <logger name="trace">    	
         <level value="INFO" />
     </logger>
